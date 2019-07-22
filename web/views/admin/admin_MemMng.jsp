@@ -36,7 +36,7 @@
         table-layout: fixed;
         background-color: #efefef;
         padding-top: 4px;
-        width:1117px;
+        width:947px;
         height: 30px;
         border-collapse: collapse;
     }
@@ -56,7 +56,7 @@
         /*
          * tblBody의 데이터는 필요한 열의 수만큼만 만드시고 헤더와 col의 width는 동일해야 합니다.
          */
-        width: 1100px;
+        width: 940px;
         table-layout: fixed;
         height: 30px;
         border-collapse: collapse;
@@ -96,6 +96,39 @@
         border-collapse: collapse;
     }
 
+    /* 신청 기사 회원 관리 테이블 */
+    #tblBackground5 {
+        width: 940px;
+        table-layout: fixed;
+    }
+    #divHeadScroll5 {
+        width: 100%;
+        overflow-x: hidden;
+        overflow-y: hidden;
+        border-top: 2px solid #d0d0d0;
+    }
+    #tblHead5 {
+        table-layout: fixed;
+        background-color: #efefef;
+        padding-top: 4px;
+        width:1117px;
+        height: 30px;
+        border-collapse: collapse;
+    }
+    #divBodyScroll5 {
+        width: 100%;
+        height: 350px;
+        overflow-x: scroll;
+        overflow-y: scroll;
+        border-top: 1px solid #d0d0d0;
+    }
+    #tblBody5 {
+        width: 1100px;
+        table-layout: fixed;
+        height: 30px;
+        border-collapse: collapse;
+    }
+
      /* 기사 블랙리스트 관리 테이블 */
 
     #tblBackground3 {
@@ -112,7 +145,7 @@
         table-layout: fixed;
         background-color: #efefef;
         padding-top: 4px;
-        width:1117px;
+        width:947px;
         height: 30px;
         border-collapse: collapse;
     }
@@ -124,7 +157,7 @@
         border-top: 1px solid #d0d0d0;
     }
     #tblBody3 {
-        width: 1100px;
+        width: 940px;
         table-layout: fixed;
         height: 30px;
         border-collapse: collapse;
@@ -146,7 +179,7 @@
         table-layout: fixed;
         background-color: #efefef;
         padding-top: 4px;
-        width:1117px;
+        width:947px;
         height: 30px;
         border-collapse: collapse;
     }
@@ -158,7 +191,7 @@
         border-top: 1px solid #d0d0d0;
     }
     #tblBody4 {
-        width: 1100px;
+        width: 940px;
         table-layout: fixed;
         height: 30px;
         border-collapse: collapse;
@@ -190,8 +223,9 @@
 		<ul class="nav nav-tabs">
 			<li class="active"><a data-toggle="tab" href="#user">사용자</a></li>
 			<li><a data-toggle="tab" href="#menu1">기사</a></li>
-			<li><a data-toggle="tab" href="#menu2">블랙리스트 관리</a></li>
-			<li><a data-toggle="tab" href="#menu3">신고내역 관리</a></li>
+			<li><a data-toggle="tab" href="#menu2">신청한 기사 관리</a></li>
+			<li><a data-toggle="tab" href="#menu3">블랙리스트 관리</a></li>
+			<li><a data-toggle="tab" href="#menu4">신고내역 관리</a></li>
 		</ul>
 
 		<div class="tab-content">
@@ -202,10 +236,10 @@
 							<div id="divHeadScroll">
 								<table id="tblHead" border="0">
 									<colgroup>
-										<col style="width: 100px;" />
-										<col style="width: 100px;" />
-										<col style="width: 100px;" />
-										<col style="width: 100px;" />
+										<col style="width: 30px;" />
+										<col style="width: 50px;" />
+										<col style="width: 50px;" />
+										<col style="width: 50px;" />
 										<col style="width: 100px;" />
 										<col style="width: 100px;" />
 										<col style="width: 100px;" />
@@ -226,10 +260,10 @@
 							<div id="divBodyScroll">
 								<table id="tblBody" border="0">
 									<colgroup>
-										<col style="width: 100px;" class="right_border" />
-										<col style="width: 100px;" class="right_border" />
-										<col style="width: 100px;" class="right_border" />
-										<col style="width: 100px;" class="right_border" />
+										<col style="width: 30px;" class="right_border" />
+										<col style="width: 50px;" class="right_border" />
+										<col style="width: 50px;" class="right_border" />
+										<col style="width: 50px;" class="right_border" />
 										<col style="width: 100px;" class="right_border" />
 										<col style="width: 100px;" class="right_border" />
 										<col style="width: 100px;" class="right_border" />
@@ -257,7 +291,7 @@
 							<div id="divHeadScroll2">
 								<table id="tblHead2" border="0">
 									<colgroup>
-										<col style="width: 100px;" />
+										<col style="width: 40px;" />
 										<col style="width: 100px;" />
 										<col style="width: 100px;" />
 										<col style="width: 100px;" />
@@ -299,7 +333,7 @@
 							<div id="divBodyScroll2">
 								<table id="tblBody2" border="0">
 									<colgroup>
-										<col style="width: 100px;" class="right_border" />
+										<col style="width: 40px;" class="right_border" />
 										<col style="width: 100px;" class="right_border" />
 										<col style="width: 100px;" class="right_border" />
 										<col style="width: 100px;" class="right_border" />
@@ -340,13 +374,111 @@
 					</tr>
 				</table>
 			</div>
+
 			<div id="menu2" class="tab-pane fade">
+				<table id="tblBackground5" cellspacing="0">
+					<tr>
+						<td>
+							<div id="divHeadScroll5">
+								<table id="tblHead5" border="0">
+									<colgroup>
+										<col style="width: 150px;" />
+										<col style="width: 40px;" />
+										<col style="width: 100px;" />
+										<col style="width: 100px;" />
+										<col style="width: 100px;" />
+										<col style="width: 100px;" />
+										<col style="width: 200px;" />
+										<col style="width: 200px;" />
+										<col style="width: 250px;" />
+										<col style="width: 200px;" />
+										<col style="width: 100px;" />
+										<col style="width: 100px;" />
+										<col style="width: 200px;" />
+										<col style="width: 200px;" />
+										<col style="width: 200px;" />
+										<col style="width: 200px;" />
+										<col style="width: 60px;" />
+										<col style="width: 17px;" />
+									</colgroup>
+									<tr>
+										<td class="title">상태</td>
+										<td class="title">번호</td>
+										<td class="title">가입날짜</td>
+										<td class="title">아이디</td>
+										<td class="title">이름</td>
+										<td class="title">대표자이름</td>
+										<td class="title">이메일</td>
+										<td class="title">휴대폰번호</td>
+										<td class="title">사업지 주소</td>
+										<td class="title">사업자 등록번호</td>
+										<td class="title">차종</td>
+										<td class="title">차량번호</td>
+										<td class="title">기사사진</td>
+										<td class="title">차량 등록증</td>
+										<td class="title">통장사본</td>
+										<td class="title">사업자 등록증</td>
+										<td class="title">이용건수</td>
+										<td></td>
+									</tr>
+								</table>
+							</div>
+							<div id="divBodyScroll5">
+								<table id="tblBody5" border="0">
+									<colgroup>
+										<col style="width: 150px;" class="right_border" />
+										<col style="width: 40px;" class="right_border" />
+										<col style="width: 100px;" class="right_border" />
+										<col style="width: 100px;" class="right_border" />
+										<col style="width: 100px;" class="right_border" />
+										<col style="width: 100px;" class="right_border" />
+										<col style="width: 200px;" class="right_border" />
+										<col style="width: 200px;" class="right_border" />
+										<col style="width: 250px;" class="right_border" />
+										<col style="width: 200px;" class="right_border" />
+										<col style="width: 100px;" class="right_border" />
+										<col style="width: 100px;" class="right_border" />
+										<col style="width: 200px;" class="right_border" />
+										<col style="width: 200px;" class="right_border" />
+										<col style="width: 200px;" class="right_border" />
+										<col style="width: 200px;" class="right_border" />
+										<col style="width: 60px;" class="right_border" />
+									</colgroup>
+									<tr>
+										<td class="content right_border"><button onclick="yesD()">승인</button>&nbsp; <button onclick="noD()">거절</button></td>
+										<td class="content right_border">1</td>
+										<td class="content right_border">2019/07/16</td>
+										<td class="content right_border">user01</td>
+										<td class="content right_border">홍길동</td>
+										<td class="content right_border">홍길동</td>
+										<td class="content right_border">user01@user.com</td>
+										<td class="content right_border">010-1234-5678</td>
+										<td class="content right_border">서울시 강남구 역삼동 kh정보교육원</td>
+										<td class="content right_border">123-456-7890</td>
+										<td class="content right_border">포터</td>
+										<td class="content right_border">05도0123</td>
+										<td class="content right_border">views/images/aa.png</td>
+										<td class="content right_border">views/images/aa.png</td>
+										<td class="content right_border">views/images/aa.png</td>
+										<td class="content right_border">views/images/aa.png</td>
+										<td class="content right_border">2건</td>
+									</tr>
+								</table>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+
+			<div id="menu3" class="tab-pane fade">
 				<table id="tblBackground3" cellspacing="0">
 					<tr>
 						<td>
 							<div id="divHeadScroll3">
 								<table id="tblHead3" border="0">
 									<colgroup>
+										<col style="width: 50px;" />
+										<col style="width: 100px;" />
 										<col style="width: 100px;" />
 										<col style="width: 100px;" />
 										<col style="width: 100px;" />
@@ -356,6 +488,8 @@
 										<col style="width: 10px;" />
 									</colgroup>
 									<tr>
+										<td class="title">상태</td>
+										<td class="title">BL관리번호</td>
 										<td class="title">기사번호</td>
 										<td class="title">기사명</td>
 										<td class="title">정지일</td>
@@ -369,6 +503,8 @@
 							<div id="divBodyScroll3">
 								<table id="tblBody3" border="0">
 									<colgroup>
+										<col style="width: 50px;" class="right_border" />
+										<col style="width: 100px;" class="right_border" />
 										<col style="width: 100px;" class="right_border" />
 										<col style="width: 100px;" class="right_border" />
 										<col style="width: 100px;" class="right_border" />
@@ -377,6 +513,8 @@
 										<col style="width: 100px;" class="right_border" />
 									</colgroup>
 									<tr>
+										<td class="content right_border"><button onclick="removeBL()">해제</button></td>
+										<td class="content right_border">511</td>
 										<td class="content right_border">D1001</td>
 										<td class="content right_border">무권석</td>
 										<td class="content right_border">2019/07/16</td>
@@ -390,7 +528,8 @@
 					</tr>
 				</table>
 			</div>
-			<div id="menu3" class="tab-pane fade">
+
+			<div id="menu4" class="tab-pane fade">
 				<table id="tblBackground4" cellspacing="0">
 					<tr>
 						<td>
@@ -484,6 +623,45 @@
 				$('#divHeadScroll4').scrollLeft(xPoint);
 			});
 		});
+
+		$(function() {
+			// divBodyScroll의 스크롤이 동작할때에 함수를 불러옵니다.
+			$('#divBodyScroll5').scroll(function() {
+				// divBodyScroll의 x좌표가 움직인 거리를 가져옵니다.
+				var xPoint = $('#divBodyScroll5').scrollLeft();
+
+				// 가져온 x좌표를 divHeadScroll에 적용시켜 같이 움직일수 있도록 합니다.
+				$('#divHeadScroll5').scrollLeft(xPoint);
+			});
+		});
+
+		//신청 기사관리 탭의 상태 결정 버튼
+		function yesD(){
+			var result = window.confirm("해당 기사님을 짐캐리 기사로 승인하시겠습니까?")
+			if(result == true){
+				//해당 기사를 기사 db에 추가 후 기사에게 메시지 보내기
+			}else{
+				//해당 작업 취소
+			}
+		};
+		function noD(){
+			var result = window.prompt("거절 사유를 해당 기사님에게 남겨주세요.")
+			if(result == true){
+				//해당 기사에게 거절 사유 메시지 보내기
+			}else{
+				//해당 작업 취소
+			}
+		};
+		function removeBL(){
+			var result = window.prompt("해당 기사님에게 블랙리스트 해제 사유를 남겨주세요.")
+			if(result == true){
+				//해당 기사에게 블랙리스트 해제 사유 메시지 보내기
+				//DB 해당사유 컬럼에도 저장. 같은 기사가 서로 다른 사유로 오게 되면 따로 관리하여 계속 같은 기사 아이디로 새로 생긴다.
+			}else{
+				//해당 작업 취소
+			}
+		};
+
 	</script>
 
 </body>
