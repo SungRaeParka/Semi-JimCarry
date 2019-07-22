@@ -1,41 +1,31 @@
 package com.kh.jimcarry.request.model.service;
 
-import java.io.IOException;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import static com.kh.jimcarry.common.JDBCTemplate.close;
+import static com.kh.jimcarry.common.JDBCTemplate.commit;
+import static com.kh.jimcarry.common.JDBCTemplate.getConnection;
+import static com.kh.jimcarry.common.JDBCTemplate.rollback;
 
-/**
- * Servlet implementation class RequestService
- */
-@WebServlet("/RequestService")
-public class RequestService extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public RequestService() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+import java.sql.Connection;
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+import com.kh.jimcarry.request.model.dao.RequestDao;
+import com.kh.jimcarry.request.model.vo.Request;
+
+public class RequestService {
+
+	public int insertRequest(Request r) {
+		Connection con = getConnection();
+		
+		int result = new RequestDao().insertRequest(con, r);
+		
+		if(result > 0) {
+			commit(con);
+		}else {
+			rollback(con);
+		}
+		
+		close(con);
+		
+		return result;
 	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
-
+	
 }

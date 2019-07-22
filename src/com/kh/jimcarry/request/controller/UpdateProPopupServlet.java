@@ -1,4 +1,4 @@
-package com.kh.jimcarry.request.model.dao;
+package com.kh.jimcarry.request.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class ReuqestDao
+ * Servlet implementation class UpdateProPopupServlet
  */
-@WebServlet("/ReuqestDao")
-public class ReuqestDao extends HttpServlet {
+@WebServlet("/updatePopup.rq")
+public class UpdateProPopupServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ReuqestDao() {
+    public UpdateProPopupServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
