@@ -57,11 +57,20 @@ public class InsertRequestServlet extends HttpServlet {
 		
 		System.out.println("insert 수행 후 Request r :::" + r);
 		
+		String reqNo = new ProductService().selectReqNo();
+		r.setReqNo(reqNo);
+		System.out.println("select 수행 후 ReqNo ::: " + r.getReqNo());
+		
+		String proNo = new ProductService().selectProNo(reqNo);
+		r.setProNo(proNo);
+		System.out.println("select 수행 후 ProNo ::: " + r.getProNo());
+		
+		//proName = new ProductService().selectProName(reqNo, proNo);
+		
 		String page = "";
 		
 		if(result > 0) {
-			//page = "/semi/views/request/req_ProDetailSelect.jsp";
-			page = "/semi/proinfo.rq";
+			page = "views/request/req_ProDetailSelect.jsp";
 			
 			HttpSession session = request.getSession();
 			

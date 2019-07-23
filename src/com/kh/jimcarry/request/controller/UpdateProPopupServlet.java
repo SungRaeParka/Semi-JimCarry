@@ -20,6 +20,7 @@ public class UpdateProPopupServlet extends HttpServlet {
 		String proNo = "";
 		String proName = "";
 		
+		
 		if(reqNorr != null) {
 			for(int i = 0; i < reqNorr.length; i++) {
 				if(i == 0) {
