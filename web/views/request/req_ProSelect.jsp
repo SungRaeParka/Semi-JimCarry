@@ -400,7 +400,8 @@
 	<script>		
 		function insertPro(){			
 			
-			$("form").submit();						
+			$("form").submit();
+			
 		}
 		
 		var count1 = 0;

@@ -7,34 +7,55 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class UpdateProPopupServlet
- */
 @WebServlet("/updatePopup.rq")
 public class UpdateProPopupServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public UpdateProPopupServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		String[] reqNorr = request.getParameterValues("rNo[]");
+		String[] proNorr = request.getParameterValues("pNo[]");
+		String[] proNamerr = request.getParameterValues("pName[]");	
+		
+		String reqNo = "";
+		String proNo = "";
+		String proName = "";
+		
+		if(reqNorr != null) {
+			for(int i = 0; i < reqNorr.length; i++) {
+				if(i == 0) {
+					reqNo += reqNorr[i];
+				}else {
+					reqNo += ", " + reqNorr[i];
+				}
+			}
+		}
+		
+		if(proNorr != null) {
+			for(int i = 0; i < proNorr.length; i++) {
+				if(i == 0) {
+					proNo += proNorr[i];
+				}else {
+					proNo += ", " + proNorr[i];
+				}
+			}
+		}
+		
+		if(proNamerr != null) {
+			for(int i = 0; i < proNamerr.length; i++) {
+				if(i == 0) {
+					proName += proNamerr[i];
+				}else {
+					proName += ", " + proNamerr[i];
+				}
+			}
+		}
+		
+		System.out.println("reqNo :::" + reqNo);
+		System.out.println("proNo :::" + proNo);
+		System.out.println("proName :::" + proName);
+		
 	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

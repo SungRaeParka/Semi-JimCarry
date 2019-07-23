@@ -17,29 +17,51 @@ public class InsertRequestServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String[] proName = request.getParameterValues("proName");
-		String[] proKind = request.getParameterValues("proKind");
+		String[] proNamerr = request.getParameterValues("proName");
+		String[] proKindrr = request.getParameterValues("proKind");
+		String proName = "";
+		String proKind = "";
 		int bookCount = Integer.parseInt(request.getParameter("proTdcount19a"));
 		int boxCount = Integer.parseInt(request.getParameter("proTdcount20a"));
+		
+		if(proNamerr != null) {
+			for(int i = 0; i < proNamerr.length; i++) {
+				if(i == 0) {
+					proName += proNamerr[i];
+				}else {
+					proName += ", " + proNamerr[i];
+				}
+			}
+		}
+		
+		if(proKindrr != null) {
+			for(int i = 0; i < proKindrr.length; i++) {
+				if(i == 0) {
+					proKind += proKindrr[i];
+				}else {
+					proKind += ", " + proKindrr[i];
+				}
+			}
+		}
+		
+		System.out.println("proKind::::" + proKind);
 		
 		Request r = new Request();
 		
 		r.setProName(proName);
 		r.setProKind(proKind);
 		r.setBookCount(bookCount);
-		r.setBoxCount(boxCount);
-		
-		for(int i = 0; i < proName.length; i++) {
-			System.out.println(proName[i]);
-		}
+		r.setBoxCount(boxCount);	
 		
 		int result = new RequestService().insertRequest(r);		
 		
+		System.out.println("insert 수행 후 Request r :::" + r);
 		
 		String page = "";
 		
 		if(result > 0) {
-			page = "/semi/views/request/req_ProDetailSelect.jsp";
+			//page = "/semi/views/request/req_ProDetailSelect.jsp";
+			page = "/semi/proinfo.rq";
 			
 			HttpSession session = request.getSession();
 			

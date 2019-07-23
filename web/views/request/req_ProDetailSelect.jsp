@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="com.kh.jimcarry.request.model.vo.*"%>
+    pageEncoding="UTF-8" import="com.kh.jimcarry.request.model.vo.*, java.util.*"%>
 <%
 	Request r = (Request) session.getAttribute("r");
-	String[] proKind = r.getProKind();
-	String[] proName = r.getProName();
-	
+	String[] proKind = r.getProKind().split(", ");
+	String[] proName = r.getProName().split(", ");	
 	int bookCount = r.getBookCount();
 	int boxCount = r.getBoxCount();
+	
+	ArrayList<Request> list = (ArrayList<Request>) request.getAttribute("list");
 %>    
 
 <!DOCTYPE html>
@@ -18,7 +19,6 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-
 <style>
 	html, body{
 		height:100%;
@@ -76,19 +76,19 @@
 			<div style="border: 1px solid black; width: 500px;">
 				<div style="padding: 30px 0px 30px 40px; display: inline-block;">
 					<% if(proName[i].equals("냉장고")){ %>
-					<img src="../../images/ref.png" style="width: 140px; height: 140px">
+					<img src="/semi/images/ref.png" style="width: 140px; height: 140px">
 					<% }else if(proName[i].equals("세탁기")){%>					
-					<img src="../../images/washing.png" style="width: 140px; height: 140px">
+					<img src="/semi/images/washing.png" style="width: 140px; height: 140px">
 					<% }else if(proName[i].equals("TV/모니터")){%>					
-					<img src="../../images/tv.png" style="width: 140px; height: 140px">
+					<img src="/semi/images/tv.png" style="width: 140px; height: 140px">
 					<% }else if(proName[i].equals("에어컨")){%>					
-					<img src="../../images/air.png" style="width: 140px; height: 140px">
+					<img src="/semi/images/air.png" style="width: 140px; height: 140px">
 					<% }else if(proName[i].equals("정수기")){%>					
-					<img src="../../images/water.png" style="width: 140px; height: 140px">
+					<img src="/semi/images/water.png" style="width: 140px; height: 140px">
 					<% }else if(proName[i].equals("PC/노트북")){%>					
-					<img src="../../images/pc.png" style="width: 140px; height: 140px">
+					<img src="/semi/images/pc.png" style="width: 140px; height: 140px">
 					<% }else if(proName[i].equals("전자레인지")){%>					
-					<img src="../../images/oven.png" style="width: 140px; height: 140px">
+					<img src="/semi/images/oven.png" style="width: 140px; height: 140px">
 					<% } %>			
 				</div>
 				
@@ -126,27 +126,27 @@
 			<div style="border: 1px solid black; width: 500px;">
 				<div style="padding: 30px 0px 30px 40px; display: inline-block;">
 					<% if(proName[i].equals("침대")) { %>
-					<img src="../../images/bed.png" style="width: 140px; height: 140px">
+					<img src="/semi/images/bed.png" style="width: 140px; height: 140px">
 					<%}else if(proName[i].equals("의자")){ %>
-					<img src="../../images/chair.png" style="width: 140px; height: 140px">
+					<img src="/semi/images/chair.png" style="width: 140px; height: 140px">
 					<%}else if(proName[i].equals("책상/테이블")){ %>
-					<img src="../../images/desk.png" style="width: 140px; height: 140px">
+					<img src="/semi/images/desk.png" style="width: 140px; height: 140px">
 					<%}else if(proName[i].equals("책장")){ %>
-					<img src="../../images/bookshelf.png" style="width: 140px; height: 140px">
+					<img src="/semi/images/bookshelf.png" style="width: 140px; height: 140px">
 					<%}else if(proName[i].equals("옷장")){ %>
-					<img src="../../images/closet.png" style="width: 140px; height: 140px">
+					<img src="/semi/images/closet.png" style="width: 140px; height: 140px">
 					<%}else if(proName[i].equals("진열장")){ %>
-					<img src="../../images/showcase.png" style="width: 140px; height: 140px">
+					<img src="/semi/images/showcase.png" style="width: 140px; height: 140px">
 					<%}else if(proName[i].equals("쇼파")){ %>
-					<img src="../../images/sofa.png" style="width: 140px; height: 140px">
+					<img src="/semi/images/sofa.png" style="width: 140px; height: 140px">
 					<%}else if(proName[i].equals("행거")){ %>
-					<img src="../../images/hanger.png" style="width: 140px; height: 140px">
+					<img src="/semi/images/hanger.png" style="width: 140px; height: 140px">
 					<%}else if(proName[i].equals("거울")){ %>
-					<img src="../../images/mirror.png" style="width: 140px; height: 140px">
+					<img src="/semi/images/mirror.png" style="width: 140px; height: 140px">
 					<%}else if(proName[i].equals("화장대")){ %>
-					<img src="../../images/table.png" style="width: 140px; height: 140px">
+					<img src="/semi/images/table.png" style="width: 140px; height: 140px">
 					<%}else if(proName[i].equals("피아노")){ %>
-					<img src="../../images/piano.png" style="width: 140px; height: 140px">
+					<img src="/semi/images/piano.png" style="width: 140px; height: 140px">
 					<%} %>
 				</div>
 				
@@ -196,7 +196,7 @@
 			<span style="font-size: 30px; font-weight: bold">기타</span>				
 			<div style="border: 1px solid black; width: 500px;">
 				<div style="padding: 30px 0px 30px 40px; display: inline-block;">
-					<img src="../../images/books.png" style="width: 140px; height: 140px">
+					<img src="/semi./images/books.png" style="width: 140px; height: 140px">
 				</div>
 				
 				<div style="display: inline-block; padding-left: 20px;">
@@ -212,7 +212,7 @@
 			<span style="font-size: 30px; font-weight: bold">기타</span>	
 			<div style="border: 1px solid black; width: 500px;">
 				<div style="padding: 30px 0px 30px 40px; display: inline-block;">
-					<img src="../../images/box.png" style="width: 140px; height: 140px">
+					<img src="/semi/images/box.png" style="width: 140px; height: 140px">
 				</div>
 				
 				<div style="display: inline-block; padding-left: 20px;">
@@ -244,6 +244,12 @@
 			</a>
 		</div>
 	</form>
+	<% for(Request r2 : list){ %>
+		<input type="text" name="rNo[]" value="<%=r2.getReqNo() %>">
+		<input type="text" name="pNo[]" value="<%=r2.getProNo() %>">
+		<input type="text" name="pName[]" value="<%=r2.getProName() %>">		
+	<% } %>
+	<button onclick="testHidden()">확인하기</button>
 	</div>
 	<!-- 팝업창 -->
 	<!-- 팝업창 -->
@@ -294,10 +300,15 @@
 					</div>
 					<div class="modal-footer">
 						<div align="center">
-							<input type="button" value="확인" onclick="sendValue();">
+							<input type="submit" value="확인">
 						</div>
 					</div>
-				</div>			
+				</div>
+				<% for(Request r2 : list){ %>
+					<input type="hidden" name="rNo[]" value="<%=r2.getReqNo() %>">
+					<input type="hidden" name="pNo[]" value="<%=r2.getProNo() %>">
+					<input type="hidden" name="pName[]" value="<%=r2.getProName() %>">		
+				<% } %>
 			</div>
 		</form>
 		<form action="<%=request.getContextPath()%>/updatePopup.rq" method="post">			
@@ -338,7 +349,12 @@
 							<input type="button" value="확인" onclick="sendValue();">
 						</div>
 					</div>
-				</div>			
+				</div>
+				<% for(Request r2 : list){ %>
+					<input type="hidden" name="rNo[]" value="<%=r2.getReqNo() %>">
+					<input type="hidden" name="pNo[]" value="<%=r2.getProNo() %>">
+					<input type="hidden" name="pName[]" value="<%=r2.getProName() %>">		
+				<% } %>			
 			</div>
 		</form>
 		<form action="<%=request.getContextPath()%>/updatePopup.rq" method="post">	
@@ -373,7 +389,12 @@
 							<input type="button" value="확인" onclick="sendValue();">
 						</div>
 					</div>
-				</div>			
+				</div>
+				<% for(Request r2 : list){ %>
+					<input type="hidden" name="rNo[]" value="<%=r2.getReqNo() %>">
+					<input type="hidden" name="pNo[]" value="<%=r2.getProNo() %>">
+					<input type="hidden" name="pName[]" value="<%=r2.getProName() %>">		
+				<% } %>			
 			</div>
 		</form>
 		<form action="<%=request.getContextPath()%>/updatePopup.rq" method="post">	
@@ -414,7 +435,12 @@
 							<input type="button" value="확인" onclick="sendValue();">
 						</div>
 					</div>
-				</div>			
+				</div>
+				<% for(Request r2 : list){ %>
+					<input type="hidden" name="rNo[]" value="<%=r2.getReqNo() %>">
+					<input type="hidden" name="pNo[]" value="<%=r2.getProNo() %>">
+					<input type="hidden" name="pName[]" value="<%=r2.getProName() %>">		
+				<% } %>			
 			</div>
 		</form>
 		<form action="<%=request.getContextPath()%>/updatePopup.rq" method="post">	
@@ -453,7 +479,12 @@
 							<input type="button" value="확인" onclick="sendValue();">
 						</div>
 					</div>
-				</div>			
+				</div>
+				<% for(Request r2 : list){ %>
+					<input type="hidden" name="rNo[]" value="<%=r2.getReqNo() %>">
+					<input type="hidden" name="pNo[]" value="<%=r2.getProNo() %>">
+					<input type="hidden" name="pName[]" value="<%=r2.getProName() %>">		
+				<% } %>			
 			</div>
 		</form>
 		<form action="<%=request.getContextPath()%>/updatePopup.rq" method="post">	
@@ -482,7 +513,12 @@
 							<input type="button" value="확인" onclick="sendValue();">
 						</div>
 					</div>
-				</div>			
+				</div>
+				<% for(Request r2 : list){ %>
+					<input type="hidden" name="rNo[]" value="<%=r2.getReqNo() %>">
+					<input type="hidden" name="pNo[]" value="<%=r2.getProNo() %>">
+					<input type="hidden" name="pName[]" value="<%=r2.getProName() %>">		
+				<% } %>			
 			</div>
 		</form>
 		<form action="<%=request.getContextPath()%>/updatePopup.rq" method="post">	
@@ -511,7 +547,12 @@
 							<input type="button" value="확인" onclick="sendValue();">
 						</div>
 					</div>
-				</div>			
+				</div>
+				<% for(Request r2 : list){ %>
+					<input type="hidden" name="rNo[]" value="<%=r2.getReqNo() %>">
+					<input type="hidden" name="pNo[]" value="<%=r2.getProNo() %>">
+					<input type="hidden" name="pName[]" value="<%=r2.getProName() %>">		
+				<% } %>			
 			</div>
 		</form>
 		<form action="<%=request.getContextPath()%>/updatePopup.rq" method="post">	
@@ -564,7 +605,12 @@
 							<input type="button" value="확인" onclick="sendValue();">
 						</div>
 					</div>
-				</div>			
+				</div>
+				<% for(Request r2 : list){ %>
+					<input type="hidden" name="rNo[]" value="<%=r2.getReqNo() %>">
+					<input type="hidden" name="pNo[]" value="<%=r2.getProNo() %>">
+					<input type="hidden" name="pName[]" value="<%=r2.getProName() %>">		
+				<% } %>			
 			</div>
 		</form>
 		<form action="<%=request.getContextPath()%>/updatePopup.rq" method="post">	
@@ -595,7 +641,12 @@
 							<input type="button" value="확인" onclick="sendValue();">
 						</div>
 					</div>
-				</div>			
+				</div>
+				<% for(Request r2 : list){ %>
+					<input type="hidden" name="rNo[]" value="<%=r2.getReqNo() %>">
+					<input type="hidden" name="pNo[]" value="<%=r2.getProNo() %>">
+					<input type="hidden" name="pName[]" value="<%=r2.getProName() %>">		
+				<% } %>			
 			</div>
 		</form>
 		<form action="<%=request.getContextPath()%>/updatePopup.rq" method="post">	
@@ -668,7 +719,12 @@
 							<input type="button" value="확인" onclick="sendValue();">
 						</div>
 					</div>
-				</div>			
+				</div>
+				<% for(Request r2 : list){ %>
+					<input type="hidden" name="rNo[]" value="<%=r2.getReqNo() %>">
+					<input type="hidden" name="pNo[]" value="<%=r2.getProNo() %>">
+					<input type="hidden" name="pName[]" value="<%=r2.getProName() %>">		
+				<% } %>			
 			</div>
 		</form>
 		<form action="<%=request.getContextPath()%>/updatePopup.rq" method="post">	
@@ -715,7 +771,12 @@
 							<input type="button" value="확인" onclick="sendValue();">
 						</div>
 					</div>
-				</div>			
+				</div>
+				<% for(Request r2 : list){ %>
+					<input type="hidden" name="rNo[]" value="<%=r2.getReqNo() %>">
+					<input type="hidden" name="pNo[]" value="<%=r2.getProNo() %>">
+					<input type="hidden" name="pName[]" value="<%=r2.getProName() %>">		
+				<% } %>			
 			</div>
 		</form>
 		<form action="<%=request.getContextPath()%>/updatePopup.rq" method="post">	
@@ -782,7 +843,12 @@
 							<input type="button" value="확인" onclick="sendValue();">
 						</div>
 					</div>
-				</div>			
+				</div>
+				<% for(Request r2 : list){ %>
+					<input type="hidden" name="rNo[]" value="<%=r2.getReqNo() %>">
+					<input type="hidden" name="pNo[]" value="<%=r2.getProNo() %>">
+					<input type="hidden" name="pName[]" value="<%=r2.getProName() %>">		
+				<% } %>			
 			</div>
 		</form>
 		<form action="<%=request.getContextPath()%>/updatePopup.rq" method="post">	
@@ -839,7 +905,12 @@
 							<input type="button" value="확인" onclick="sendValue();">
 						</div>
 					</div>
-				</div>			
+				</div>
+				<% for(Request r2 : list){ %>
+					<input type="hidden" name="rNo[]" value="<%=r2.getReqNo() %>">
+					<input type="hidden" name="pNo[]" value="<%=r2.getProNo() %>">
+					<input type="hidden" name="pName[]" value="<%=r2.getProName() %>">		
+				<% } %>			
 			</div>
 		</form>
 		<form action="<%=request.getContextPath()%>/updatePopup.rq" method="post">	
@@ -870,7 +941,12 @@
 							<input type="button" value="확인" onclick="sendValue();">
 						</div>
 					</div>
-				</div>			
+				</div>
+				<% for(Request r2 : list){ %>
+					<input type="hidden" name="rNo[]" value="<%=r2.getReqNo() %>">
+					<input type="hidden" name="pNo[]" value="<%=r2.getProNo() %>">
+					<input type="hidden" name="pName[]" value="<%=r2.getProName() %>">		
+				<% } %>			
 			</div>
 		</form>
 		<form action="<%=request.getContextPath()%>/updatePopup.rq" method="post">	
@@ -915,7 +991,12 @@
 							<input type="button" value="확인" onclick="sendValue();">
 						</div>
 					</div>
-				</div>			
+				</div>
+				<% for(Request r2 : list){ %>
+					<input type="hidden" name="rNo[]" value="<%=r2.getReqNo() %>">
+					<input type="hidden" name="pNo[]" value="<%=r2.getProNo() %>">
+					<input type="hidden" name="pName[]" value="<%=r2.getProName() %>">		
+				<% } %>			
 			</div>
 		</form>
 		<form action="<%=request.getContextPath()%>/updatePopup.rq" method="post">	
@@ -956,7 +1037,12 @@
 							<input type="button" value="확인" onclick="sendValue();">
 						</div>
 					</div>
-				</div>			
+				</div>
+				<% for(Request r2 : list){ %>
+					<input type="hidden" name="rNo[]" value="<%=r2.getReqNo() %>">
+					<input type="hidden" name="pNo[]" value="<%=r2.getProNo() %>">
+					<input type="hidden" name="pName[]" value="<%=r2.getProName() %>">		
+				<% } %>			
 			</div>
 		</form>
 		<form action="<%=request.getContextPath()%>/updatePopup.rq" method="post">	
@@ -1001,7 +1087,12 @@
 							<input type="button" value="확인" onclick="sendValue();">
 						</div>
 					</div>
-				</div>			
+				</div>
+				<% for(Request r2 : list){ %>
+					<input type="hidden" name="rNo[]" value="<%=r2.getReqNo() %>">
+					<input type="hidden" name="pNo[]" value="<%=r2.getProNo() %>">
+					<input type="hidden" name="pName[]" value="<%=r2.getProName() %>">		
+				<% } %>			
 			</div>
 		</form>
 		<form action="<%=request.getContextPath()%>/updatePopup.rq" method="post">	
@@ -1032,23 +1123,17 @@
 							<input type="button" value="확인" onclick="sendValue();">
 						</div>
 					</div>
-				</div>			
+				</div>	
+				<% for(Request r2 : list){ %>
+					<input type="hidden" name="rNo[]" value="<%=r2.getReqNo() %>">
+					<input type="hidden" name="pNo[]" value="<%=r2.getProNo() %>">
+					<input type="hidden" name="pName[]" value="<%=r2.getProName() %>">		
+				<% } %>		
 			</div>
 		</form>
 	</div>
 	
-	<script>
-		function updateProDetail(){
-			$("form").submit();
-		}	
-		
-		function sendValue(){
-			var a = $("#pop_ref").val();
-			
-			console.log(a);
-			
-		}
-		
+	<script>		
 		/* function sendValue(){			
 			
 			var proType_ref = $("input[name=proType_ref]:checked").val()
@@ -1076,10 +1161,7 @@
 			
 			$(document).find("#popVal").val(proType);
 			
-		}	 */
-		
-		
-		
+		} */		
 	</script>
 </body>
 </html>
