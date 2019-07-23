@@ -18,7 +18,7 @@ public class ProductDao {
 	private Properties prop = new Properties();
 	
 	public ProductDao() {
-		String fileName = ProductDao.class.getResource("/sql/request/request-query.properties").getPath();
+		String fileName = ProductDao.class.getResource("/sql/request/product-query.properties").getPath();
 		
 		try {
 			prop.load(new FileReader(fileName));
