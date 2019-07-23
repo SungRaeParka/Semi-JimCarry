@@ -21,7 +21,7 @@ public class Member implements java.io.Serializable{
 	private String accountNo;
 	private String carSize;
 	private String joinCheck;
-	
+
 	public Member() {}
 
 	public Member(int seqNo, String userName, String userId, String userPwd, String userPhone, Date enrollDate,
@@ -203,7 +203,7 @@ public class Member implements java.io.Serializable{
 				+ ", joinCheck=" + joinCheck + "]";
 	}
 
-	
 
-		
+
+
 }
