@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="com.kh.jimcarry.request.model.vo.*, java.util.*"%>
 <%
-	Request r = (Request) session.getAttribute("r");
+	Product r = (Product) session.getAttribute("r");
 	String[] proKind = r.getProKind().split(", ");
 	String[] proName = r.getProName().split(", ");	
 	int bookCount = r.getBookCount();
 	int boxCount = r.getBoxCount();
 	
-	ArrayList<Request> list = (ArrayList<Request>) request.getAttribute("list");
+	ArrayList<Product> list = (ArrayList<Product>) request.getAttribute("list");
 %>    
 
 <!DOCTYPE html>
@@ -244,7 +244,7 @@
 			</a>
 		</div>
 	</form>
-	<% for(Request r2 : list){ %>
+	<% for(Product r2 : list){ %>
 		<input type="text" name="rNo[]" value="<%=r2.getReqNo() %>">
 		<input type="text" name="pNo[]" value="<%=r2.getProNo() %>">
 		<input type="text" name="pName[]" value="<%=r2.getProName() %>">		
@@ -304,7 +304,7 @@
 						</div>
 					</div>
 				</div>
-				<% for(Request r2 : list){ %>
+				<% for(Product r2 : list){ %>
 					<input type="hidden" name="rNo[]" value="<%=r2.getReqNo() %>">
 					<input type="hidden" name="pNo[]" value="<%=r2.getProNo() %>">
 					<input type="hidden" name="pName[]" value="<%=r2.getProName() %>">		
@@ -350,7 +350,7 @@
 						</div>
 					</div>
 				</div>
-				<% for(Request r2 : list){ %>
+				<% for(Product r2 : list){ %>
 					<input type="hidden" name="rNo[]" value="<%=r2.getReqNo() %>">
 					<input type="hidden" name="pNo[]" value="<%=r2.getProNo() %>">
 					<input type="hidden" name="pName[]" value="<%=r2.getProName() %>">		
@@ -390,7 +390,7 @@
 						</div>
 					</div>
 				</div>
-				<% for(Request r2 : list){ %>
+				<% for(Product r2 : list){ %>
 					<input type="hidden" name="rNo[]" value="<%=r2.getReqNo() %>">
 					<input type="hidden" name="pNo[]" value="<%=r2.getProNo() %>">
 					<input type="hidden" name="pName[]" value="<%=r2.getProName() %>">		
@@ -436,7 +436,7 @@
 						</div>
 					</div>
 				</div>
-				<% for(Request r2 : list){ %>
+				<% for(Product r2 : list){ %>
 					<input type="hidden" name="rNo[]" value="<%=r2.getReqNo() %>">
 					<input type="hidden" name="pNo[]" value="<%=r2.getProNo() %>">
 					<input type="hidden" name="pName[]" value="<%=r2.getProName() %>">		
@@ -480,7 +480,7 @@
 						</div>
 					</div>
 				</div>
-				<% for(Request r2 : list){ %>
+				<% for(Product r2 : list){ %>
 					<input type="hidden" name="rNo[]" value="<%=r2.getReqNo() %>">
 					<input type="hidden" name="pNo[]" value="<%=r2.getProNo() %>">
 					<input type="hidden" name="pName[]" value="<%=r2.getProName() %>">		
@@ -514,7 +514,7 @@
 						</div>
 					</div>
 				</div>
-				<% for(Request r2 : list){ %>
+				<% for(Product r2 : list){ %>
 					<input type="hidden" name="rNo[]" value="<%=r2.getReqNo() %>">
 					<input type="hidden" name="pNo[]" value="<%=r2.getProNo() %>">
 					<input type="hidden" name="pName[]" value="<%=r2.getProName() %>">		
@@ -548,7 +548,7 @@
 						</div>
 					</div>
 				</div>
-				<% for(Request r2 : list){ %>
+				<% for(Product r2 : list){ %>
 					<input type="hidden" name="rNo[]" value="<%=r2.getReqNo() %>">
 					<input type="hidden" name="pNo[]" value="<%=r2.getProNo() %>">
 					<input type="hidden" name="pName[]" value="<%=r2.getProName() %>">		
@@ -606,7 +606,7 @@
 						</div>
 					</div>
 				</div>
-				<% for(Request r2 : list){ %>
+				<% for(Product r2 : list){ %>
 					<input type="hidden" name="rNo[]" value="<%=r2.getReqNo() %>">
 					<input type="hidden" name="pNo[]" value="<%=r2.getProNo() %>">
 					<input type="hidden" name="pName[]" value="<%=r2.getProName() %>">		
@@ -642,7 +642,7 @@
 						</div>
 					</div>
 				</div>
-				<% for(Request r2 : list){ %>
+				<% for(Product r2 : list){ %>
 					<input type="hidden" name="rNo[]" value="<%=r2.getReqNo() %>">
 					<input type="hidden" name="pNo[]" value="<%=r2.getProNo() %>">
 					<input type="hidden" name="pName[]" value="<%=r2.getProName() %>">		
@@ -720,7 +720,7 @@
 						</div>
 					</div>
 				</div>
-				<% for(Request r2 : list){ %>
+				<% for(Product r2 : list){ %>
 					<input type="hidden" name="rNo[]" value="<%=r2.getReqNo() %>">
 					<input type="hidden" name="pNo[]" value="<%=r2.getProNo() %>">
 					<input type="hidden" name="pName[]" value="<%=r2.getProName() %>">		
@@ -772,7 +772,7 @@
 						</div>
 					</div>
 				</div>
-				<% for(Request r2 : list){ %>
+				<% for(Product r2 : list){ %>
 					<input type="hidden" name="rNo[]" value="<%=r2.getReqNo() %>">
 					<input type="hidden" name="pNo[]" value="<%=r2.getProNo() %>">
 					<input type="hidden" name="pName[]" value="<%=r2.getProName() %>">		
@@ -844,7 +844,7 @@
 						</div>
 					</div>
 				</div>
-				<% for(Request r2 : list){ %>
+				<% for(Product r2 : list){ %>
 					<input type="hidden" name="rNo[]" value="<%=r2.getReqNo() %>">
 					<input type="hidden" name="pNo[]" value="<%=r2.getProNo() %>">
 					<input type="hidden" name="pName[]" value="<%=r2.getProName() %>">		
@@ -906,7 +906,7 @@
 						</div>
 					</div>
 				</div>
-				<% for(Request r2 : list){ %>
+				<% for(Product r2 : list){ %>
 					<input type="hidden" name="rNo[]" value="<%=r2.getReqNo() %>">
 					<input type="hidden" name="pNo[]" value="<%=r2.getProNo() %>">
 					<input type="hidden" name="pName[]" value="<%=r2.getProName() %>">		
@@ -942,7 +942,7 @@
 						</div>
 					</div>
 				</div>
-				<% for(Request r2 : list){ %>
+				<% for(Product r2 : list){ %>
 					<input type="hidden" name="rNo[]" value="<%=r2.getReqNo() %>">
 					<input type="hidden" name="pNo[]" value="<%=r2.getProNo() %>">
 					<input type="hidden" name="pName[]" value="<%=r2.getProName() %>">		
@@ -992,7 +992,7 @@
 						</div>
 					</div>
 				</div>
-				<% for(Request r2 : list){ %>
+				<% for(Product r2 : list){ %>
 					<input type="hidden" name="rNo[]" value="<%=r2.getReqNo() %>">
 					<input type="hidden" name="pNo[]" value="<%=r2.getProNo() %>">
 					<input type="hidden" name="pName[]" value="<%=r2.getProName() %>">		
@@ -1038,7 +1038,7 @@
 						</div>
 					</div>
 				</div>
-				<% for(Request r2 : list){ %>
+				<% for(Product r2 : list){ %>
 					<input type="hidden" name="rNo[]" value="<%=r2.getReqNo() %>">
 					<input type="hidden" name="pNo[]" value="<%=r2.getProNo() %>">
 					<input type="hidden" name="pName[]" value="<%=r2.getProName() %>">		
@@ -1088,7 +1088,7 @@
 						</div>
 					</div>
 				</div>
-				<% for(Request r2 : list){ %>
+				<% for(Product r2 : list){ %>
 					<input type="hidden" name="rNo[]" value="<%=r2.getReqNo() %>">
 					<input type="hidden" name="pNo[]" value="<%=r2.getProNo() %>">
 					<input type="hidden" name="pName[]" value="<%=r2.getProName() %>">		
@@ -1124,7 +1124,7 @@
 						</div>
 					</div>
 				</div>	
-				<% for(Request r2 : list){ %>
+				<% for(Product r2 : list){ %>
 					<input type="hidden" name="rNo[]" value="<%=r2.getReqNo() %>">
 					<input type="hidden" name="pNo[]" value="<%=r2.getProNo() %>">
 					<input type="hidden" name="pName[]" value="<%=r2.getProName() %>">		

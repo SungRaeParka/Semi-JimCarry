@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.jimcarry.request.model.service.RequestService;
-import com.kh.jimcarry.request.model.vo.Request;
+import com.kh.jimcarry.request.model.service.ProductService;
+import com.kh.jimcarry.request.model.vo.Product;
 
 @WebServlet("/proinfo.rq")
 public class SelectProductInfoServlet extends HttpServlet {
@@ -18,7 +18,7 @@ public class SelectProductInfoServlet extends HttpServlet {
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		ArrayList<Request> list = new RequestService().selectProInfo();
+		ArrayList<Product> list = new ProductService().selectProInfo();
 		
 		System.out.println("arrayList list :::" + list);
 		
