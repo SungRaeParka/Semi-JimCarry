@@ -80,15 +80,15 @@ table * {
 		<br />
 
 		<ul class="nav nav-tabs">
-			<li class="active"><a href="admin_CCNo.jsp">공지사항</a></li>
-			<li><a href="admin_CC1on1.jsp">1:1 문의</a></li>
-			<li><a href="admin_CCQa.jsp">Q&A</a></li>
+			<li><a href="admin_CCNoList.jsp">공지사항</a></li>
+			<li><a href="admin_CC1on1List.jsp">1:1 문의</a></li>
+			<li class="active"><a href="admin_CCQaList.jsp">Q&A</a></li>
 		</ul>
 
 		<div class="tab-content">
 			<div id="user" class="tab-pane fade in active">
 				<div class="outer">
-					<h3 align="center">공지 작성</h3>
+					<h3 align="center">Q&A</h3>
 					<br />
 					<div class="tableArea" align="center">
 						<table border="1">
@@ -102,8 +102,8 @@ table * {
 								<td><input type="text"
 									value="<%-- <%= n.getnWriter()%> --%>" name="writer" readonly>
 								</td>
-								<td>작성일</td>
-								<td><input type="date" name="date"
+								<td>유형</td>
+								<td><input type="text" name="sort"
 									value="<%-- <%=n.getnDate()%> --%>" readonly></td>
 							</tr>
 							<tr>
