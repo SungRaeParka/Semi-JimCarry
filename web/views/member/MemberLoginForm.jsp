@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.kh.jimcarry.member.model.vo.Member"%>
+<%
+	Member loginUser = (Member) session.getAttribute("loginUser");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -49,6 +52,7 @@
 	<div align="center">
 		<h1>짐캐리</h1>
 	</div>
+	<form action="<%= request.getContextPath()%>/login.me" method="post" id="loginForm">
 	<div align="center">
 		<input type="text" id="userId" value="아이디">
 	</div>
@@ -71,5 +75,6 @@
 		<a href=http://www.naver.com><img src="../../images/naver.png" id="naver"></a><br>
 		<a href="#"><img src="../../images/kakao.png" id="kakao"></a>
 	</div>
+	</form>
 </body>
 </html>
