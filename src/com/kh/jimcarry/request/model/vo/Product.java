@@ -1,7 +1,7 @@
 package com.kh.jimcarry.request.model.vo;
 
 
-public class Request implements java.io.Serializable{
+public class Product implements java.io.Serializable{
 	private String reqNo;
 	private String proNo;
 	private String proName;
@@ -16,9 +16,9 @@ public class Request implements java.io.Serializable{
 	private int bookCount;
 	private int boxCount;
 	
-	public Request() {}
+	public Product() {}
 
-	public Request(String reqNo, String proNo, String proName, String proType, String proSize, String proMaterial,
+	public Product(String reqNo, String proNo, String proName, String proType, String proSize, String proMaterial,
 			String proWidth, String proHeight, String glassCheck, String uniquness, String proKind, int bookCount,
 			int boxCount) {
 		super();

@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.kh.jimcarry.request.model.service.RequestService;
-import com.kh.jimcarry.request.model.vo.Request;
+import com.kh.jimcarry.request.model.service.ProductService;
+import com.kh.jimcarry.request.model.vo.Product;
 
 @WebServlet("/insert.rq")
 public class InsertRequestServlet extends HttpServlet {
@@ -46,14 +46,14 @@ public class InsertRequestServlet extends HttpServlet {
 		
 		System.out.println("proKind::::" + proKind);
 		
-		Request r = new Request();
+		Product r = new Product();
 		
 		r.setProName(proName);
 		r.setProKind(proKind);
 		r.setBookCount(bookCount);
 		r.setBoxCount(boxCount);	
 		
-		int result = new RequestService().insertRequest(r);		
+		int result = new ProductService().insertRequest(r);		
 		
 		System.out.println("insert 수행 후 Request r :::" + r);
 		

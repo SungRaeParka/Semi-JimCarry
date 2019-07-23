@@ -12,13 +12,13 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Properties;
 
-import com.kh.jimcarry.request.model.vo.Request;
+import com.kh.jimcarry.request.model.vo.Product;
 
-public class RequestDao {
+public class ProductDao {
 	private Properties prop = new Properties();
 	
-	public RequestDao() {
-		String fileName = RequestDao.class.getResource("/sql/request/request-query.properties").getPath();
+	public ProductDao() {
+		String fileName = ProductDao.class.getResource("/sql/request/request-query.properties").getPath();
 		
 		try {
 			prop.load(new FileReader(fileName));
@@ -27,72 +27,8 @@ public class RequestDao {
 			e.printStackTrace();
 		}
 	}
-	
-	/*public Request insertRequest(Connection con, String proName) {
-		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		Request r = null;
-		
-		String[] namerr = proName.split(", ");
-		
-		for(int i = 0; i < namerr.length; i++) {
-			System.out.println("namerr[i] ::::" + namerr[i]);
-		}
-		
-		for(int i = 0; i < namerr.length; i++) {
-			if(i == 0) {
-				String query = prop.getProperty("insertRequest");
-				
-				try {
-					pstmt = con.prepareStatement(query);
-					
-					pstmt.setString(1, namerr[i]);
-					
-					rset = pstmt.executeQuery();
-					
-					while(rset.next()) {
-						r = new Request();
-						
-						r.setReqNo(rset.getString("REQ_NO"));
-						r.setProNo(rset.getString("PRODUCT_NO"));
-						
-					}
-				} catch (SQLException e) {
-					e.printStackTrace();
-				} finally {
-					close(rset);
-					close(pstmt);
-				}
-			} else {
-				String query = prop.getProperty("insertRequest2");
-				
-				try {
-					pstmt = con.prepareStatement(query);
-					
-					pstmt.setString(1, namerr[i]);
-					
-					rset = pstmt.executeQuery();
-					
-					while(rset.next()) {
-						r = new Request();
-						
-						r.setReqNo(rset.getString("REQ_NO"));
-						r.setProNo(rset.getString("PRODUCT_NO"));
-						
-					}
-				} catch (SQLException e) {
-					e.printStackTrace();
-				} finally {
-					close(rset);
-					close(pstmt);
-				}
-			}
-		}
-		
-		return r;
-	}*/
 
-	public int insertRequest(Connection con, Request r) {
+	public int insertRequest(Connection con, Product r) {
 		int result = 0;
 		PreparedStatement pstmt = null;	
 		
@@ -140,8 +76,8 @@ public class RequestDao {
 		return result;
 	}
 
-	public ArrayList<Request> selectProInfo(Connection con) {
-		ArrayList<Request> list = null;
+	public ArrayList<Product> selectProInfo(Connection con) {
+		ArrayList<Product> list = null;
 		Statement stmt = null;
 		ResultSet rset = null;
 		
@@ -151,10 +87,10 @@ public class RequestDao {
 			stmt = con.createStatement();
 			rset = stmt.executeQuery(query);
 			
-			list = new ArrayList<Request>();
+			list = new ArrayList<Product>();
 			
 			while(rset.next()) {
-				Request r = new Request();
+				Product r = new Product();
 				
 				r.setReqNo(rset.getString("REQ_NO"));
 				r.setProNo(rset.getString("PRODUCT_NO"));

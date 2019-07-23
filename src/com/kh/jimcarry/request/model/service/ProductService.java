@@ -8,31 +8,15 @@ import static com.kh.jimcarry.common.JDBCTemplate.rollback;
 import java.sql.Connection;
 import java.util.ArrayList;
 
-import com.kh.jimcarry.request.model.dao.RequestDao;
-import com.kh.jimcarry.request.model.vo.Request;
+import com.kh.jimcarry.request.model.dao.ProductDao;
+import com.kh.jimcarry.request.model.vo.Product;
 
-public class RequestService {
-	
-	/*public Request insertRequest(String proName) {
+public class ProductService {	
+
+	public int insertRequest(Product r) {
 		Connection con = getConnection();
 		
-		Request r = new RequestDao().insertRequest(con, proName);
-		
-		if(r != null) {
-			commit(con);
-		}else {
-			rollback(con);
-		}
-		
-		close(con);
-		
-		return r;
-	}*/
-
-	public int insertRequest(Request r) {
-		Connection con = getConnection();
-		
-		int result = new RequestDao().insertRequest(con, r);
+		int result = new ProductDao().insertRequest(con, r);
 		
 		if(result > 0) {
 			commit(con);
@@ -45,10 +29,10 @@ public class RequestService {
 		return result;
 	}
 
-	public ArrayList<Request> selectProInfo() {
+	public ArrayList<Product> selectProInfo() {
 		Connection con = getConnection();
 		
-		ArrayList<Request> list = new RequestDao().selectProInfo(con);
+		ArrayList<Product> list = new ProductDao().selectProInfo(con);
 		
 		close(con);
 		
