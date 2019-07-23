@@ -79,7 +79,7 @@ table {
 
 table th, table td {
 	text-align: center;
-	padding: 8px;
+	padding: 3px;
 }
 </style>
 </head>
@@ -90,34 +90,21 @@ table th, table td {
 	<div class="container" style="margin-top: 70px;">
 		<h2>고객센터 관리</h2>
 		<br />
+
 		<ul class="nav nav-tabs">
-			<li><a href="admin_CCNo.jsp">공지사항</a></li>
-			<li class="active"><a data-toggle="tab" href="#menu1">1:1 문의</a></li>
-			<li><a href="admin_CCQa.jsp">Q&A</a></li>
+			<li class="active"><a data-toggle="tab" href="#user">공지사항</a></li>
+			<li><a href="admin_CC1on1List.jsp">1:1 문의</a></li>
+			<li><a href="admin_CCQaList.jsp">Q&A</a></li>
 		</ul>
 
 		<div class="tab-content">
-			<div id="user" class="tab-pane fade"></div>
-
-			<div id="menu1" class="tab-pane fade in active">
-			<br />
+			<div id="user" class="tab-pane fade in active">
+				<br />
 				<br />
 				<div class="tableArea">
 					<table align="center" id="listArea" border="1">
 						<tr>
-							<th colspan="7">
-								<form action="">
-									<input type="radio" name="sort" id="all" value="all" checked> <label for="all">&nbsp;전체&nbsp;&nbsp;</label>
-									<input type="radio" name="sort" id="completeAns" value="completeAns"> <label for="completeAns">&nbsp;답변완료&nbsp;&nbsp;</label>
-									<input type="radio" name="sort" id="waitingAns" value="waitingAns"> <label for="waitingAns">&nbsp;답변대기&nbsp;&nbsp;</label>
-								</form>
-						<!-- 스크립트로 값에 따른 게시판 리스트 가져오기 고객센터 글도 전체 번호와 텝에따른 번호 달라야 한다. 수업시간 글,사진게시판처럼 -->
-							</th>
-						</tr>
-						<tr>
-							<th>상태</th>
 							<th>글번호</th>
-							<th>문의유형</th>
 							<th>글제목</th>
 							<th>작성자</th>
 							<th>조회수</th>
@@ -125,27 +112,25 @@ table th, table td {
 						</tr>
 						<%-- <% for(Notice n : list){ %> --%>
 						<tr>
-							<td>답변대기</td>
 							<td>1</td>
-							<td>환불</td>
 							<td>hidddfasfdqa</td>
 							<td>josh</td>
 							<td>3</td>
 							<td>2019</td>
 							<%-- <td><%= n.getNno() %>
-								</td>
-								<td>
-									<%= n.getnTitle() %>
-								</td>
-								<td>
-									<%= n.getnWriter() %>
-								</td>
-								<td>
-									<%= n.getnCount() %>
-								</td>
-								<td>
-									<%= n.getnDate() %>
-								</td> --%>
+							</td>
+							<td>
+								<%= n.getnTitle() %>
+							</td>
+							<td>
+								<%= n.getnWriter() %>
+							</td>
+							<td>
+								<%= n.getnCount() %>
+							</td>
+							<td>
+								<%= n.getnDate() %>
+							</td> --%>
 						</tr>
 						<%-- <% } %> --%>
 					</table>
@@ -158,31 +143,37 @@ table th, table td {
 						</select> <input type="search">
 						<button type="submit">검색하기</button>
 						<%--  <% if(loginUser != null && loginUser.getUserId().equals("admin")){ %> --%>
-						<!-- <button onclick="location.href='admin_CCQaInsertForm.jsp'">작성하기</button> -->
+						<button onclick="location.href='admin_CCNoInsertForm.jsp'">작성하기</button>
 						<%-- <% } %> --%>
 					</div>
 				</div>
 			</div>
 
+
 			<script>
-					//글 번호로 해당글 세부보기 함수
-					$("#listArea td").mouseenter(function () {
-						$(this).parent().css({ "background": "darkgray", "cursor": "pointer" });
-					}).mouseout(function () {
-						$(this).parent().css({ "background": "white" });
-					}).click(function () {
-						var num = $(this).parent().children().eq(0).text();
+				//글 번호로 해당글 세부보기 함수
+				$("#listArea td").mouseenter(function () {
+					$(this).parent().css({ "background": "darkgray", "cursor": "pointer" });
+				}).mouseout(function () {
+					$(this).parent().css({ "background": "white" });
+				}).click(function () {
+					var num = $(this).parent().children().eq(0).text();
 
-						// console.log(num);
+					// console.log(num);
 
-						location.href = "<%=request.getContextPath() %>/selectOne.no?num=" + num; //?가 쿼리문>
-					});
-				</script>
+					location.href = "<%=request.getContextPath() %>/selectOne.no?num=" + num; //?가 쿼리문>
+				});
+			</script>
+
+
+			<div id="menu1" class="tab-pane fade"></div>
+
 
 			<div id="menu2" class="tab-pane fade"></div>
-		</div>
-	</div>
 
+
+
+		</div>
 </body>
 
 </html>

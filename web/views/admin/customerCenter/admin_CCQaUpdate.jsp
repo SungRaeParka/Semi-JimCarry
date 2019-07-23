@@ -82,9 +82,9 @@ table th, table td {
 		<h2>고객센터 관리</h2>
 		<br />
 		<ul class="nav nav-tabs">
-			<li><a href="admin_CCNo.jsp">공지사항</a></li>
-			<li><a href="admin_CC1on1.jsp">1:1 문의</a></li>
-			<li class="active"><a href="admin_CCQa.jsp">Q&A</a></li>
+			<li><a href="admin_CCNoList.jsp">공지사항</a></li>
+			<li><a href="admin_CC1on1List.jsp">1:1 문의</a></li>
+			<li class="active"><a href="admin_CCQaList.jsp">Q&A</a></li>
 		</ul>
 		<div class="tab-content">
 			<div id="user" class="tab-pane fade in active">

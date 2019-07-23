@@ -33,9 +33,9 @@ table * {
 		<br />
 
 		<ul class="nav nav-tabs">
-			<li class="active"><a href="admin_CCNo.jsp">공지사항</a></li>
-			<li><a href="admin_CC1on1.jsp">1:1 문의</a></li>
-			<li><a href="admin_CCQa.jsp">Q&A</a></li>
+			<li class="active"><a href="admin_CCNoList.jsp">공지사항</a></li>
+			<li><a href="admin_CC1on1List.jsp">1:1 문의</a></li>
+			<li><a href="admin_CCQaList.jsp">Q&A</a></li>
 		</ul>
 
 		<div class="tab-content">
