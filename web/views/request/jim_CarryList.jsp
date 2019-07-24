@@ -1,5 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8" import="java.util.*, com.kh.jimcarry.request.model.vo.*" %>
+	
+<%
+ArrayList<Request> list = (ArrayList<Request>) request.getAttribute("list");
+PageInfo pi = (PageInfo) request.getAttribute("pi");
+int listCount = pi.getListCount();
+int currentPage = pi.getCurrentPage();
+int maxPage = pi.getMaxPage();
+int startPage = pi.getStartpage();
+int endPage = pi.getEndPage();
+
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
