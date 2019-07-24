@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 import com.kh.jimcarry.admin.member.model.dao.MemberDao;
 import com.kh.jimcarry.admin.member.model.vo.Member;
-import com.kh.jimcarry.admin.member.model.vo.User;
 
 
 public class MemberService {
