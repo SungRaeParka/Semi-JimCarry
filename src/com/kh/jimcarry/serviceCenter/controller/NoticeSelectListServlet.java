@@ -15,14 +15,14 @@ import com.kh.jimcarry.serviceCenter.model.vo.Notice;
 /**
  * Servlet implementation class NoticeSelectServlet
  */
-@WebServlet("/notice.bo")
-public class NoticeSelectServlet extends HttpServlet {
+@WebServlet("/noticelist.no")
+public class NoticeSelectListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public NoticeSelectServlet() {
+    public NoticeSelectListServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,6 +37,7 @@ public class NoticeSelectServlet extends HttpServlet {
 		String page = "";
 		
 		if (list != null) {
+			//나중에 페이지 바꾸기
 			page="views/board/user_Qna1on1List.jsp";
 			request.setAttribute("list", list);
 		} else {

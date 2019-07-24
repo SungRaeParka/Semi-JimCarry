@@ -3,6 +3,7 @@ package com.kh.jimcarry.serviceCenter.model.dao;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -16,9 +17,8 @@ public class NoticeDao {
 	private Properties prop = new Properties();
 	
 	public NoticeDao() {
-	
 	String fileName = 
-			NoticeDao.class.getResource("/sql/notice-query.properties").getPath();
+			NoticeDao.class.getResource("/sql/Notice/notice-query.properties").getPath();
 	
 	try {
 		prop.load(new FileReader(fileName));
@@ -66,6 +66,64 @@ public class NoticeDao {
 		
 		
 		return list;
+	}
+	//상세보기용
+	public Notice selectOne(Connection con, int num) {
+		// TODO Auto-generated method stub
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Notice n =null;
+		
+		String query=prop.getProperty("selectOne");
+		
+		try{
+		pstmt=con.prepareStatement(query);
+		pstmt.setInt(1,num);
+		
+		rset= pstmt.executeQuery();
+		
+		if(rset.next()){
+			n=new Notice();
+
+			n.setPostcode(rset.getString("POST_CODE"));
+			n.setUserNo(rset.getString("USER_NO"));
+			n.setPostdate(rset.getDate("POST_DATE"));
+			n.setPostTitle(rset.getString("POST_TITLE"));
+			n.setPostType(rset.getString("POST_TYPE"));
+			n.setPostNo(rset.getInt("POST_NO"));
+			n.setbCount(rset.getInt("B_COUNT"));
+			}
+		}catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		return n;
+	}
+	//조회수 증가
+	public int updateCount(Connection con, int num) {
+		// TODO Auto-generated method stub
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = prop.getProperty("updateCount");
+		
+		try {
+			pstmt=con.prepareStatement(query);
+			pstmt.setInt(1, num);
+			pstmt.setInt(2, num);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
 	}
 
 }

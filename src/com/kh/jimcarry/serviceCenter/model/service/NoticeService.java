@@ -21,6 +21,27 @@ public class NoticeService {
 		return list;
 	}
 	//공지사항 상세 보기용 메소드
+
+	public Notice selectOne(int num) {
+		// TODO Auto-generated method stub
+		
+		Connection con =getConnection();
+		
+		Notice n = new NoticeDao().selectOne(con, num);
+		
+		if (n != null) {
+			int result = new NoticeDao().updateCount(con,num);
+			
+			if (result > 0) {
+				commit(con);
+			} else {
+				rollback(con);
+			}
+		}
+		close(con);
+		
+		return n;
+	}
 	
 
 }
