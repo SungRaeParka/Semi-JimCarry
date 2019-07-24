@@ -219,8 +219,8 @@
 </style>
 </head>
 <body>
-	<%-- <%@ include file="/views/common/admin_TopBar.jsp" %>
-	<% if(loginUser != null && loginUser.getUserId().equals("admin")){ %> --%>
+	<%@ include file="/views/common/admin_TopBar.jsp" %>
+	<%-- <% if(loginUser != null && loginUser.getUserId().equals("admin")){ %> --%>
 
 	<div class="container" style="margin-top: 70px;">
 	<h2>회원 관리</h2>

@@ -218,8 +218,8 @@
 </style>
 </head>
 <body>
-	<%-- <%@ include file="/views/common/admin_TopBar.jsp" %>
-	<% if(loginUser != null && loginUser.getUserId().equals("admin")){ %> --%>
+	<%@ include file="/views/common/admin_TopBar.jsp" %>
+	<%-- <% if(loginUser != null && loginUser.getUserId().equals("admin")){ %> --%>
 
 	<div class="container" style="margin-top: 70px;">
 	<h2>회원 관리</h2>
@@ -273,7 +273,7 @@
 										<td class="title">이름</td>
 										<td class="title">연락처</td>
 										<td class="title">탈퇴여부</td>
-										<td class="title">이용건수</td>
+										<td class="title">이용건수(현재UD구분 추후 변경)</td>
 										<td class="title">대표자</td>
 										<td class="title">사업자등록번호</td>
 										<td class="title">사업장주소</td>
@@ -293,7 +293,7 @@
 								</table>
 							</div>
 							<div id="divBodyScroll2">
-								<table id="tblBody2" border="0"> 
+								<table id="tblBody2" border="0">
 									<colgroup>
 										<col style="width: 100px;" class="right_border"/>
 										<col style="width: 100px;" class="right_border"/>

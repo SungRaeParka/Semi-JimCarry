@@ -12,7 +12,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%-- <% if(loginUser != null && loginUser.getUserId().equals("admin")){ %> --%>
+<% if(loginUser != null && loginUser.getUserId().equals("admin")){ %>
 	<div class="w3-top">
 		<div class="w3-bar w3-white w3-wide w3-padding w3-card">
 			<a href="#" class="w3-bar-item w3-button"><b>짐 캐리</b></a>
@@ -33,9 +33,9 @@
 		};
 	</script>
 
- 	<%-- <%}else{
+ 	<%}else{
 		request.setAttribute("msg", "잘못된 경로로 접근하셨습니다.");
-		request.getRequestDispatcher("/semi/views/common/errorPage.jsp").forward(request, response);
-	}%> --%>
+		request.getRequestDispatcher("/views/common/errorPage.jsp").forward(request, response);
+	}%>
 </body>
 </html>

@@ -37,4 +37,12 @@ public class MemberService {
 		return list;
 	}
 
+	public ArrayList<Member> approveDriver() {
+		Connection con = getConnection();
+
+		ArrayList<Member> list = new MemberDao().approveDriver(con);
+		close(con);
+		return list;
+	}
+
 }

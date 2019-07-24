@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="java.util.*, com.kh.jimcarry.member.model.vo.*"%>
+<%
+	ArrayList<Member> list = (ArrayList<Member>) request.getAttribute("list");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +12,210 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="../../../css/admin_MemberMng.css">
+<!-- <link rel="stylesheet" type="text/css" href="../../../css/admin_MemberMng.css"> -->
+<style>
+	/* 사용자 회원 관리 테이블 */
+  #tblBackground {
+    /*
+     *  화면에 보여야 할 Table의 가로크기를 잡아줍니다.
+     */
+    width: 940px;
+    table-layout: fixed;
+}
+#divHeadScroll {
+    /*
+     *  안의 내용이 790보다 길게 적용이 되므로 overflow-x, overflow-y를 hidden을 걸어줘서 설정한 가로너비만큼만 화면에 보이도록 잡아줍니다.
+     */
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    border-top: 2px solid #d0d0d0;
+}
+#tblHead {
+    /*
+     *  Table의 필드명의 너비를 여기에서 지정합니다.
+     *  필드명을 보여줄 테이블은 body보다 하나의 td를 더 가지며 마지막 td는 아무것도 입력하지 않고 크기만 잡아줍니다.
+     *  이렇게 하는 이유는 데이터를 보여주는 테이블은 세로 스크롤의 가로두께만큼 더 이동하기 때문입니다.
+     */
+    table-layout: fixed;
+    background-color: #efefef;
+    padding-top: 4px;
+    width:947px;
+    height: 30px;
+    border-collapse: collapse;
+}
+#divBodyScroll {
+    /*
+     *  overflow-x, overflow-y는 scroll로 지정하고,
+     *  height는 테이블의 데이터가 나올 기본 크기를 잡아줍니다.
+     *  세로길이를 잡아주지 않으면 overflow-y가 걸리지 않습니다.
+     */
+    width: 100%;
+    height: 350px;
+    overflow-x: scroll;
+    overflow-y: scroll;
+    border-top: 1px solid #d0d0d0;
+}
+#tblBody {
+    /*
+     * tblBody의 데이터는 필요한 열의 수만큼만 만드시고 헤더와 col의 width는 동일해야 합니다.
+     */
+    width: 940px;
+    table-layout: fixed;
+    height: 30px;
+    border-collapse: collapse;
+}
+
+/* 기사 회원 관리 테이블 */
+
+#tblBackground2 {
+    width: 940px;
+    table-layout: fixed;
+}
+#divHeadScroll2 {
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    border-top: 2px solid #d0d0d0;
+}
+#tblHead2 {
+    table-layout: fixed;
+    background-color: #efefef;
+    padding-top: 4px;
+    width:1117px;
+    height: 30px;
+    border-collapse: collapse;
+}
+#divBodyScroll2 {
+    width: 100%;
+    height: 350px;
+    overflow-x: scroll;
+    overflow-y: scroll;
+    border-top: 1px solid #d0d0d0;
+}
+#tblBody2 {
+    width: 1100px;
+    table-layout: fixed;
+    height: 30px;
+    border-collapse: collapse;
+}
+
+/* 신청 기사 회원 관리 테이블 */
+#tblBackground5 {
+    width: 940px;
+    table-layout: fixed;
+}
+#divHeadScroll5 {
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    border-top: 2px solid #d0d0d0;
+}
+#tblHead5 {
+    table-layout: fixed;
+    background-color: #efefef;
+    padding-top: 4px;
+    width:1117px;
+    height: 30px;
+    border-collapse: collapse;
+}
+#divBodyScroll5 {
+    width: 100%;
+    height: 350px;
+    overflow-x: scroll;
+    overflow-y: scroll;
+    border-top: 1px solid #d0d0d0;
+}
+#tblBody5 {
+    width: 1100px;
+    table-layout: fixed;
+    height: 30px;
+    border-collapse: collapse;
+}
+
+ /* 기사 블랙리스트 관리 테이블 */
+
+#tblBackground3 {
+    width: 940px;
+    table-layout: fixed;
+}
+#divHeadScroll3 {
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    border-top: 2px solid #d0d0d0;
+}
+#tblHead3 {
+    table-layout: fixed;
+    background-color: #efefef;
+    padding-top: 4px;
+    width:947px;
+    height: 30px;
+    border-collapse: collapse;
+}
+#divBodyScroll3 {
+    width: 100%;
+    height: 350px;
+    overflow-x: scroll;
+    overflow-y: scroll;
+    border-top: 1px solid #d0d0d0;
+}
+#tblBody3 {
+    width: 940px;
+    table-layout: fixed;
+    height: 30px;
+    border-collapse: collapse;
+}
+
+ /* 신고내역 관리 테이블 */
+
+#tblBackground4 {
+    width: 940px;
+    table-layout: fixed;
+}
+#divHeadScroll4 {
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    border-top: 2px solid #d0d0d0;
+}
+#tblHead4 {
+    table-layout: fixed;
+    background-color: #efefef;
+    padding-top: 4px;
+    width:947px;
+    height: 30px;
+    border-collapse: collapse;
+}
+#divBodyScroll4 {
+    width: 100%;
+    height: 350px;
+    overflow-x: scroll;
+    overflow-y: scroll;
+    border-top: 1px solid #d0d0d0;
+}
+#tblBody4 {
+    width: 940px;
+    table-layout: fixed;
+    height: 30px;
+    border-collapse: collapse;
+}
+
+/* 테이블 스타일용 */
+.title {
+    text-align: center;
+    font-weight: bold;
+}
+.content {
+    border-bottom: 1px solid #efefef;
+    padding: 10px 10px 10px 10px;
+    text-align: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+
+}
+</style>
 </head>
 <body>
 	<%@ include file="/views/common/admin_TopBar.jsp" %>
@@ -19,11 +225,11 @@
 	<br />
 
 		<ul class="nav nav-tabs">
-			<li><a href="admin_UserMng.jsp">사용자</a></li>
-			<li><a href="admin_DriverMng.jsp">기사</a></li>
+			<li><a href="/semi/selectAll.u">사용자</a></li>
+			<li><a href="/semi/selectAll.d">기사</a></li>
 			<li class="active"><a data-toggle="tab" href="#menu2">신청한 기사 관리</a></li>
 			<li><a href="admin_BlackListDriverMng.jsp">블랙리스트 관리</a></li>
-			<li><a href="admin_DelareDriverMng.jsp">신고내역 관리</a></li>
+			<li><a href="/semi/dclare.d">신고내역 관리</a></li>
 		</ul>
 
 		<div class="tab-content">
@@ -39,42 +245,52 @@
 								<table id="tblHead5" border="0">
 									<colgroup>
 										<col style="width: 150px;" />
-										<col style="width: 40px;" />
 										<col style="width: 100px;" />
 										<col style="width: 100px;" />
 										<col style="width: 100px;" />
 										<col style="width: 100px;" />
-										<col style="width: 200px;" />
-										<col style="width: 200px;" />
-										<col style="width: 250px;" />
-										<col style="width: 200px;" />
+										<col style="width: 150px;" />
+										<col style="width: 50px;" />
+										<col style="width: 70px;" />
+										<col style="width: 100px;" />
+										<col style="width: 150px;" />
+										<col style="width: 300px;" />
+										<col style="width: 100px;" />
+										<col style="width: 100px;" />
+										<col style="width: 50px;" />
+										<col style="width: 150px;" />
 										<col style="width: 100px;" />
 										<col style="width: 100px;" />
 										<col style="width: 200px;" />
 										<col style="width: 200px;" />
 										<col style="width: 200px;" />
 										<col style="width: 200px;" />
-										<col style="width: 60px;" />
+										<col style="width: 200px;" />
 										<col style="width: 17px;" />
 									</colgroup>
 									<tr>
 										<td class="title">상태</td>
-										<td class="title">번호</td>
-										<td class="title">가입날짜</td>
+										<td class="title">회원번호</td>
+										<td class="title">가입일</td>
 										<td class="title">아이디</td>
 										<td class="title">이름</td>
-										<td class="title">대표자이름</td>
-										<td class="title">이메일</td>
-										<td class="title">휴대폰번호</td>
-										<td class="title">사업지 주소</td>
-										<td class="title">사업자 등록번호</td>
+										<td class="title">연락처</td>
+										<td class="title">탈퇴여부</td>
+										<td class="title">이용건수</td>
+										<td class="title">대표자</td>
+										<td class="title">사업자등록번호</td>
+										<td class="title">사업장주소</td>
 										<td class="title">차종</td>
 										<td class="title">차량번호</td>
+										<td class="title">은행명</td>
+										<td class="title">계좌번호</td>
+										<td class="title">블랙리스트 여부</td>
+										<td class="title">가입승인</td>
+										<td class="title">거절사유</td>
 										<td class="title">기사사진</td>
 										<td class="title">차량 등록증</td>
 										<td class="title">통장사본</td>
 										<td class="title">사업자 등록증</td>
-										<td class="title">이용건수</td>
 										<td></td>
 									</tr>
 								</table>
@@ -83,42 +299,59 @@
 								<table id="tblBody5" border="0">
 									<colgroup>
 										<col style="width: 150px;" class="right_border" />
-										<col style="width: 40px;" class="right_border" />
-										<col style="width: 100px;" class="right_border" />
-										<col style="width: 100px;" class="right_border" />
-										<col style="width: 100px;" class="right_border" />
-										<col style="width: 100px;" class="right_border" />
-										<col style="width: 200px;" class="right_border" />
-										<col style="width: 200px;" class="right_border" />
-										<col style="width: 250px;" class="right_border" />
-										<col style="width: 200px;" class="right_border" />
-										<col style="width: 100px;" class="right_border" />
-										<col style="width: 100px;" class="right_border" />
-										<col style="width: 200px;" class="right_border" />
-										<col style="width: 200px;" class="right_border" />
-										<col style="width: 200px;" class="right_border" />
-										<col style="width: 200px;" class="right_border" />
-										<col style="width: 60px;" class="right_border" />
+										<col style="width: 100px;" class="right_border"/>
+										<col style="width: 100px;" class="right_border"/>
+										<col style="width: 100px;" class="right_border"/>
+										<col style="width: 100px;" class="right_border"/>
+										<col style="width: 150px;" class="right_border"/>
+										<col style="width: 70px;" class="right_border"/>
+										<col style="width: 50px;" class="right_border"/>
+										<col style="width: 100px;" class="right_border"/>
+										<col style="width: 150px;" class="right_border"/>
+										<col style="width: 300px;" class="right_border"/>
+										<col style="width: 100px;" class="right_border"/>
+										<col style="width: 100px;" class="right_border"/>
+										<col style="width: 50px;" class="right_border"/>
+										<col style="width: 150px;" class="right_border"/>
+										<col style="width: 100px;" class="right_border"/>
+										<col style="width: 100px;" class="right_border"/>
+										<col style="width: 200px;" class="right_border"/>
+										<col style="width: 200px;" class="right_border"/>
+										<col style="width: 200px;" class="right_border"/>
+										<col style="width: 200px;" class="right_border"/>
+										<col style="width: 200px;" class="right_border"/>
 									</colgroup>
+									<% for(Member m : list){ %>
 									<tr>
-										<td class="content right_border"><button onclick="yesD()">승인</button>&nbsp; <button onclick="noD()">거절</button></td>
-										<td class="content right_border">1</td>
-										<td class="content right_border">2019/07/16</td>
-										<td class="content right_border">user01</td>
-										<td class="content right_border">홍길동</td>
-										<td class="content right_border">홍길동</td>
-										<td class="content right_border">user01@user.com</td>
-										<td class="content right_border">010-1234-5678</td>
-										<td class="content right_border">서울시 강남구 역삼동 kh정보교육원</td>
-										<td class="content right_border">123-456-7890</td>
-										<td class="content right_border">포터</td>
-										<td class="content right_border">05도0123</td>
+										<form action="">
+											<!-- <input type="button" name="result" id="yesD" value="승인" onclick="<%= request.getContextPath()%>/approve.d">&nbsp;<input type="button" name="result" id="noD" value="거절" onclick="noD()">  -->
+											
+										</form>
+										<td class="content right_border"><button id="yesD" name="yesD" value="yesD" onclick="yesD()">승인</button>&nbsp; <button id="noD" name="noD" value="noD" onclick="noD()">거절</button></td>
+										<td class="content right_border"><%=m.getSeqNo()%></td>
+										<td class="content right_border"><%=m.getEnrollDate()%></td>
+										<td class="content right_border"><%=m.getUserId() %></td>
+										<td class="content right_border"><%=m.getUserName() %></td>
+										<td class="content right_border"><%=m.getPhone() %></td>
+										<td class="content right_border"><%=m.getStatusCheck() %></td>
+										<td class="content right_border"><%=m.getUdCheck() %></td>
+										<td class="content right_border"><%=m.getAgent() %></td>
+										<td class="content right_border"><%=m.getBusinessNo() %></td>
+										<td class="content right_border"><%=m.getBusinessAddress() %></td>
+										<td class="content right_border"><%=m.getCarType() %></td>
+										<td class="content right_border"><%=m.getCarNo() %></td>
+										<td class="content right_border"><%=m.getBankName() %></td>
+										<td class="content right_border"><%=m.getAccountNo() %></td>
+										<td class="content right_border"><%=m.getBlacklistCheck() %></td>
+										<td class="content right_border"><%=m.getJoinCheck() %></td>
+										<td class="content right_border"><%=m.getRefuseReason() %></td>
+
 										<td class="content right_border">views/images/aa.png</td>
 										<td class="content right_border">views/images/aa.png</td>
 										<td class="content right_border">views/images/aa.png</td>
 										<td class="content right_border">views/images/aa.png</td>
-										<td class="content right_border">2건</td>
 									</tr>
+									<% } %>
 								</table>
 							</div>
 						</td>
@@ -194,6 +427,7 @@
 			var result = window.confirm("해당 기사님을 짐캐리 기사로 승인하시겠습니까?")
 			if(result == true){
 				//해당 기사를 기사 db에 추가 후 기사에게 메시지 보내기
+				$("#yesD").attr("action", "<%= request.getContextPath()%>/approve.d")
 			}else{
 				//해당 작업 취소
 			}
