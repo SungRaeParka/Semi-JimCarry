@@ -36,7 +36,7 @@ public class MemberDao {
 			pstmt.setString(1, m.getUserId());
 			pstmt.setString(2, m.getUserPwd());
 			pstmt.setString(3, m.getUserName());
-			pstmt.setString(4, m.getUserPhone());
+			pstmt.setString(4, m.getphone());
 			
 			result = pstmt.executeUpdate();
 			
@@ -60,22 +60,21 @@ public class MemberDao {
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, userId);
 			pstmt.setString(2, userPwd);
-			System.out.println(userId +"-"+ userPwd);
 			
 			rset = pstmt.executeQuery();
 			
 			if(rset.next()) {
 				loginUser = new Member();
 				
-				loginUser.setSeqNo(rset.getInt("USER_NO"));
+				loginUser.setSeqNo(rset.getString("USER_NO"));
 				loginUser.setUserId(rset.getString("USER_ID"));
 				loginUser.setUserPwd(rset.getString("USER_PWD"));
-				loginUser.setUserPhone(rset.getString("USER_PHONE"));
+				loginUser.setphone(rset.getString("PHONE"));
 				loginUser.setEnrollDate(rset.getDate("ENROLL_DATE"));
 				loginUser.setStatusCheck(rset.getString("STATUS_CHECK"));
-				loginUser.setBlacklistCheck(rset.getString("BLACKLIST_CHECK"));
 				loginUser.setUdCheck(rset.getString("UD_CHECK"));
 			}
+			
 			
 		} catch (SQLException e) {
 			e.printStackTrace();

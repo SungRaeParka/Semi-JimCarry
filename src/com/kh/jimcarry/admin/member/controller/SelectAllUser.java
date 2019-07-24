@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.kh.jimcarry.admin.member.model.service.MemberService;
 import com.kh.jimcarry.admin.member.model.vo.Member;
+import com.kh.jimcarry.admin.member.model.vo.User;
 
 /**
  * Servlet implementation class SelectAllUser
@@ -36,15 +37,16 @@ public class SelectAllUser extends HttpServlet {
 		String page ="";
 
 		if(list != null) {
-			request.setAttribute("list", list);
 			page = "views/admin/memberMng/admin_UserMng.jsp";
+			request.setAttribute("list", list);
 		}else {
-			request.setAttribute("msg", "목록 조회 실패!");
 			page = "views/common/erroPage.jsp";
+			request.setAttribute("msg", "목록 조회 실패!");
 		}
-		System.out.println("controller list : " + list);
+		System.out.println("SelectAllUser.svl list : " + list);
 
 		request.getRequestDispatcher(page).forward(request, response);
+
 	}
 
 	/**

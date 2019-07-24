@@ -18,7 +18,7 @@ public class SelectProductInfoServlet extends HttpServlet {
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		ArrayList<Product> list = new ProductService().selectProInfo();
+		/*ArrayList<Product> list = new ProductService().selectProInfo();
 		
 		System.out.println("arrayList list :::" + list);
 		
@@ -34,7 +34,7 @@ public class SelectProductInfoServlet extends HttpServlet {
 			request.setAttribute("msg", "견적 정보 조회 실패");
 		}
 		
-		request.getRequestDispatcher(page).forward(request, response);
+		request.getRequestDispatcher(page).forward(request, response);*/
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
