@@ -32,7 +32,7 @@ public class zUpdatePopRefServlet extends HttpServlet {
 		p.setProType(proType_ref);
 		p.setProSize(proSize_ref);
 		p.setReqNo(reqNo);
-		p.setProNo(proNo);
+		p.setProNo(proNo); 
 		
 		System.out.println("p.getProType() ::::" + p.getProType());
 		System.out.println("p.getProSize() ::::" + p.getProSize());

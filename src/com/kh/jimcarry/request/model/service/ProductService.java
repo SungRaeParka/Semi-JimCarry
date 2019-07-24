@@ -71,7 +71,7 @@ public class ProductService {
 		return proName;
 	}*/
 
-	public int updateRef(Product p) {
+	public int updateRef(Product p) { 
 		Connection con = getConnection();
 		
 		String refProNo = new ProductDao().selectRefProNo(con, p);

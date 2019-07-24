@@ -24,7 +24,7 @@ public class UpdateProPopupServlet extends HttpServlet {
 		if(reqNorr != null) {
 			for(int i = 0; i < reqNorr.length; i++) {
 				if(i == 0) {
-					reqNo += reqNorr[i];
+					reqNo += reqNorr[i]; 
 				}else {
 					reqNo += ", " + reqNorr[i];
 				}

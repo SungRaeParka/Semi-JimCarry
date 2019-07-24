@@ -261,7 +261,7 @@ public class ProductDao {
 						pstmt.setString(4, refNorr[i]);
 						pstmt.setString(5, "냉장고");
 						
-						result = pstmt.executeUpdate(); 
+						result = pstmt.executeUpdate();  
 						
 					} catch (SQLException e) {
 						e.printStackTrace();

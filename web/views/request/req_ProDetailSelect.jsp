@@ -277,7 +277,7 @@
 						
 						<hr>
 						
-						<div align="center">
+						<div align="center"> 
 							<span style="font-size: 20px;">용량</span><br><br>
 							<input type="radio" id="refrigerator_liter1" name="proSize_ref" value="130리터 미만">
 							<label for="refrigerator_liter1">130리터 미만</label><br>

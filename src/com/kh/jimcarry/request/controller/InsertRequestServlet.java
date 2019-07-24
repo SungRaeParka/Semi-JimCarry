@@ -61,7 +61,7 @@ public class InsertRequestServlet extends HttpServlet {
 		r.setReqNo(reqNo);
 		System.out.println("select 수행 후 ReqNo ::: " + r.getReqNo());
 		
-		String proNo = new ProductService().selectProNo(reqNo);
+		String proNo = new ProductService().selectProNo(reqNo); 
 		r.setProNo(proNo);
 		System.out.println("select 수행 후 ProNo ::: " + r.getProNo());
 		
