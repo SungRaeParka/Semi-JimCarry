@@ -58,12 +58,16 @@ public class MemberDao {
 		
 		try {
 			pstmt = con.prepareStatement(query);
+			
 			pstmt.setString(1, userId);
 			pstmt.setString(2, userPwd);
 			
 			rset = pstmt.executeQuery();
 			
+			
 			if(rset.next()) {
+				System.out.println(rset.getString("MEMBER_ID"));
+				
 				loginUser = new Member();
 				
 				loginUser.setSeqNo(rset.getString("MEMBER_NO"));
@@ -75,6 +79,7 @@ public class MemberDao {
 				loginUser.setUdCheck(rset.getString("UD_CHECK"));
 			}
 			
+			System.out.println("DAO loginUser userId :::: " + loginUser.getUserId());
 			
 		} catch (SQLException e) {
 			e.printStackTrace();

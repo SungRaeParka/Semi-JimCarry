@@ -41,12 +41,14 @@ public class LoginServlet extends HttpServlet {
 		
 		Member loginUser = new MemberService().loginCheck(userId, userPwd);
 		
+		System.out.println("loginUser userId :::: " + loginUser.getUserId());
+		
 		if(loginUser != null) {
-			if(loginUser.getUserId().contains("admin")) {
+			if(loginUser.getUserId().equals("admin")) {
 				HttpSession session = request.getSession();
 				session.setAttribute("loginUser", loginUser);
 				
-				response.sendRedirect("views/admin/admin_MemMng.jsp");
+				response.sendRedirect("/semi/views/admin/admin_MemMng.jsp");
 			}else if(loginUser.getSeqNo().contains("D")) {
 				HttpSession session = request.getSession();
 				session.setAttribute("loginUser", loginUser);
