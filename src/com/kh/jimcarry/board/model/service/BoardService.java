@@ -12,6 +12,7 @@ import static com.kh.jimcarry.common.JDBCTemplate.*;
 
 public class BoardService {
 
+	//게시판 전체 조회 메소드
 	public ArrayList<Board> selectList() {
 		Connection con = getConnection();
 
@@ -21,6 +22,23 @@ public class BoardService {
 
 		return list;
 	}
+	//페이징 메소드
+	public ArrayList<Board> selectList(int currentPage, int limit) {
+		Connection con = getConnection();
+
+		ArrayList<Board> list = new BoardDao().selectList(con,currentPage,limit);
+
+		System.out.println(list);
+		close(con);
+		return list;
+	}
+
+	//게시물 카운터 메소드드
+	public int getListCount() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 	// 게시판 인설트
 	public int insertBoard(Board b, ArrayList<Attachment> fileList) {
 		Connection con = getConnection();
@@ -46,6 +64,8 @@ public class BoardService {
 		}else {
 			rollback(con);
 		}
+		System.out.println();
 		return result;
 	}
+
 }

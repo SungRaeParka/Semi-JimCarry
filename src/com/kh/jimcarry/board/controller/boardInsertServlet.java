@@ -37,7 +37,7 @@ public class boardInsertServlet extends HttpServlet {
 
 			System.out.println(root);
 			//파일 저장 경로(web/thumbnail_uploadFiles)
-			String savePath = root + "thumbnail_uploadFiles/";
+			String savePath = root + "images_uploadFiles/";
 
 
 			//FileRenamePolicy 상속 후 오버라이딩
@@ -73,18 +73,22 @@ public class boardInsertServlet extends HttpServlet {
 			}
 			//MultipartRequest 객체를 이용하여 파일 외의 값들도 꺼낼 수 있다.
 
-			String multiTitle = multiRequest.getParameter("title");
-			String multiiContent = multiRequest.getParameter("content");
-			//String userNo = ((Member)(request.getSession().getAttribute("loginUser"))).getUser();
-			/*
+			String multiTitle = multiRequest.getParameter("btitle");
+			String multiiContent = multiRequest.getParameter("bcontent");
+			String userNo = ((Member)(request.getSession().getAttribute("loginUser"))).getSeqNo();
+
 			System.out.println(multiTitle);
-			System.out.println(multiiContent);*/
+			System.out.println(multiiContent);
+			System.out.println(userNo);
+
 
 			//Board객체 생성
 			Board b = new Board();
 			b.setPostTitle(multiTitle);
 			b.setPostContents(multiiContent);
-			//b.setUserNo(userNo);
+			b.setUserNo(userNo);
+
+			System.out.println("servlet b " + b);
 
 
 
@@ -100,7 +104,7 @@ public class boardInsertServlet extends HttpServlet {
 				fileList.add(at);
 			}
 
-				System.out.println("controller board : " + b);
+				System.out.println("controller board 나와라 : " + b);
 				System.out.println("controller attachment list : " + fileList);
 
 				int result = new BoardService().insertBoard(b,fileList);
@@ -113,7 +117,7 @@ public class boardInsertServlet extends HttpServlet {
 						File failedFile = new File(savePath + saveFiles.get(i));
 						failedFile.delete();
 					}
-					request.setAttribute("msg", "사진게시판 등록 실패");
+					request.setAttribute("msg", "게시판  등록 실패");
 					request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
 				}
 

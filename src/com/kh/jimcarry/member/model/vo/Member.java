@@ -202,8 +202,4 @@ public class Member implements java.io.Serializable{
 				+ ", carNo=" + carNo + ", bankName=" + bankName + ", accountNo=" + accountNo + ", carSize=" + carSize
 				+ ", joinCheck=" + joinCheck + "]";
 	}
-
-
-
-
 }
