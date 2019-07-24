@@ -16,6 +16,7 @@
 	margin-top: auto;
 }
 
+
 table {
 	border: 5px solid #eeeeee;
 	/* width: 100%; */

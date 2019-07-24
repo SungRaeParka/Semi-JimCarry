@@ -91,7 +91,7 @@ public class BoardDao {
 		}finally {
 			close(pstmt);
 		}
-		System.out.println("insertBoardContent" + result);
+		System.out.println("insertBoardContent 나와라" + result);
 		return result;
 	}
 	//Board테이블의 현재 sequence값을 가져오는 메소드

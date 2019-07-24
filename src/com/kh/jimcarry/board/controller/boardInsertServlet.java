@@ -104,7 +104,7 @@ public class boardInsertServlet extends HttpServlet {
 				fileList.add(at);
 			}
 
-				System.out.println("controller board : " + b);
+				System.out.println("controller board 나와라 : " + b);
 				System.out.println("controller attachment list : " + fileList);
 
 				int result = new BoardService().insertBoard(b,fileList);

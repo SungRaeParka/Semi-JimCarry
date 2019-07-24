@@ -41,7 +41,7 @@ public class boardSelectServlet extends HttpServlet {
 
 		int listCount = new BoardService().getListCount();
 
-		System.out.println("listCount 페이지 갯수는? :  " + listCount);
+		System.out.println("listCount 페이지 갯수는?? :  " + listCount);
 
 		maxPage = (int)((double)listCount / limit + 0.9);
 

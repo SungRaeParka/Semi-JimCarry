@@ -33,7 +33,7 @@ public class BoardService {
 		return list;
 	}
 
-	//게시물 카운터 메소드
+	//게시물 카운터 메소드드
 	public int getListCount() {
 		// TODO Auto-generated method stub
 		return 0;

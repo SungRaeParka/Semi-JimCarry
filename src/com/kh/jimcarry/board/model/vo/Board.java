@@ -21,6 +21,7 @@ public class Board implements java.io.Serializable {
 	}
 
 
+
 	public Board(String postCode, String userNo, Date postDate, String postTitle, String postContents,
 			String attachments, String postType, String questionType, int postNo, int bCount, Date delDate) {
 		super();

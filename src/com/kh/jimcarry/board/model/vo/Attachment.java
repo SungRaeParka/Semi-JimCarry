@@ -20,6 +20,7 @@ public class Attachment implements java.io.Serializable {
 
 	}
 
+
 	public Attachment(String attachNo, String originName, String changeName, String filePath, Date uploadDate,
 			String status, int fileLevel, String attachType, String productNo, String reqNo, String driverNo,
 			String postCode) {
