@@ -7,7 +7,6 @@
 	int bookCount = r.getBookCount();
 	int boxCount = r.getBoxCount();
 	
-	ArrayList<Product> list = (ArrayList<Product>) request.getAttribute("list");
 %>    
 
 <!DOCTYPE html>
@@ -243,13 +242,7 @@
 				<span id="updateProDetail" onclick="updateProDetail();" style="font-size: 30px" >다음 단계로</span>	
 			</a>
 		</div>
-	</form>
-	<% for(Product r2 : list){ %>
-		<input type="text" name="rNo[]" value="<%=r2.getReqNo() %>">
-		<input type="text" name="pNo[]" value="<%=r2.getProNo() %>">
-		<input type="text" name="pName[]" value="<%=r2.getProName() %>">		
-	<% } %>
-	<button onclick="testHidden()">확인하기</button>
+	</form>	
 	</div>
 	<!-- 팝업창 -->
 	<!-- 팝업창 -->
@@ -258,7 +251,7 @@
 	
 	<div>
 		<!-- 냉장고 팝업창 -->
-		<form action="<%=request.getContextPath()%>/updatePopup.rq" method="post">		
+		<form action="<%=request.getContextPath()%>/updateRef.pr" method="post">		
 			<div class="modal fade" id="pop_ref" tabindex="-1" role="dialog" aria-labelledby="popRefLabel" aria-hidden="true">
 				<div class="modal-dialog modal-sm" role="document">
 					<div class="modal-header">
@@ -284,7 +277,7 @@
 						
 						<hr>
 						
-						<div align="center">
+						<div align="center"> 
 							<span style="font-size: 20px;">용량</span><br><br>
 							<input type="radio" id="refrigerator_liter1" name="proSize_ref" value="130리터 미만">
 							<label for="refrigerator_liter1">130리터 미만</label><br>
@@ -300,15 +293,12 @@
 					</div>
 					<div class="modal-footer">
 						<div align="center">
-							<input type="submit" value="확인">
+							<input type="submit" value="확인" onclick="self.close()">
 						</div>
 					</div>
 				</div>
-				<% for(Product r2 : list){ %>
-					<input type="hidden" name="rNo[]" value="<%=r2.getReqNo() %>">
-					<input type="hidden" name="pNo[]" value="<%=r2.getProNo() %>">
-					<input type="hidden" name="pName[]" value="<%=r2.getProName() %>">		
-				<% } %>
+				<input type="hidden" name="reqNo" value="<%=r.getReqNo()%>">
+				<input type="hidden" name="proNo" value="<%=r.getProNo()%>">
 			</div>
 		</form>
 		<form action="<%=request.getContextPath()%>/updatePopup.rq" method="post">			
@@ -350,11 +340,8 @@
 						</div>
 					</div>
 				</div>
-				<% for(Product r2 : list){ %>
-					<input type="hidden" name="rNo[]" value="<%=r2.getReqNo() %>">
-					<input type="hidden" name="pNo[]" value="<%=r2.getProNo() %>">
-					<input type="hidden" name="pName[]" value="<%=r2.getProName() %>">		
-				<% } %>			
+				<input type="hidden" name="reqNo" value="<%=r.getReqNo()%>">
+				<input type="hidden" name="proNo" value="<%=r.getProNo()%>">
 			</div>
 		</form>
 		<form action="<%=request.getContextPath()%>/updatePopup.rq" method="post">	
@@ -390,11 +377,8 @@
 						</div>
 					</div>
 				</div>
-				<% for(Product r2 : list){ %>
-					<input type="hidden" name="rNo[]" value="<%=r2.getReqNo() %>">
-					<input type="hidden" name="pNo[]" value="<%=r2.getProNo() %>">
-					<input type="hidden" name="pName[]" value="<%=r2.getProName() %>">		
-				<% } %>			
+				<input type="hidden" name="reqNo" value="<%=r.getReqNo()%>">
+				<input type="hidden" name="proNo" value="<%=r.getProNo()%>">
 			</div>
 		</form>
 		<form action="<%=request.getContextPath()%>/updatePopup.rq" method="post">	
@@ -436,11 +420,8 @@
 						</div>
 					</div>
 				</div>
-				<% for(Product r2 : list){ %>
-					<input type="hidden" name="rNo[]" value="<%=r2.getReqNo() %>">
-					<input type="hidden" name="pNo[]" value="<%=r2.getProNo() %>">
-					<input type="hidden" name="pName[]" value="<%=r2.getProName() %>">		
-				<% } %>			
+				<input type="hidden" name="reqNo" value="<%=r.getReqNo()%>">
+				<input type="hidden" name="proNo" value="<%=r.getProNo()%>">
 			</div>
 		</form>
 		<form action="<%=request.getContextPath()%>/updatePopup.rq" method="post">	
@@ -480,11 +461,8 @@
 						</div>
 					</div>
 				</div>
-				<% for(Product r2 : list){ %>
-					<input type="hidden" name="rNo[]" value="<%=r2.getReqNo() %>">
-					<input type="hidden" name="pNo[]" value="<%=r2.getProNo() %>">
-					<input type="hidden" name="pName[]" value="<%=r2.getProName() %>">		
-				<% } %>			
+				<input type="hidden" name="reqNo" value="<%=r.getReqNo()%>">
+				<input type="hidden" name="proNo" value="<%=r.getProNo()%>">
 			</div>
 		</form>
 		<form action="<%=request.getContextPath()%>/updatePopup.rq" method="post">	
@@ -514,11 +492,8 @@
 						</div>
 					</div>
 				</div>
-				<% for(Product r2 : list){ %>
-					<input type="hidden" name="rNo[]" value="<%=r2.getReqNo() %>">
-					<input type="hidden" name="pNo[]" value="<%=r2.getProNo() %>">
-					<input type="hidden" name="pName[]" value="<%=r2.getProName() %>">		
-				<% } %>			
+				<input type="hidden" name="reqNo" value="<%=r.getReqNo()%>">
+				<input type="hidden" name="proNo" value="<%=r.getProNo()%>">
 			</div>
 		</form>
 		<form action="<%=request.getContextPath()%>/updatePopup.rq" method="post">	
@@ -548,11 +523,8 @@
 						</div>
 					</div>
 				</div>
-				<% for(Product r2 : list){ %>
-					<input type="hidden" name="rNo[]" value="<%=r2.getReqNo() %>">
-					<input type="hidden" name="pNo[]" value="<%=r2.getProNo() %>">
-					<input type="hidden" name="pName[]" value="<%=r2.getProName() %>">		
-				<% } %>			
+				<input type="hidden" name="reqNo" value="<%=r.getReqNo()%>">
+				<input type="hidden" name="proNo" value="<%=r.getProNo()%>">
 			</div>
 		</form>
 		<form action="<%=request.getContextPath()%>/updatePopup.rq" method="post">	
@@ -606,11 +578,8 @@
 						</div>
 					</div>
 				</div>
-				<% for(Product r2 : list){ %>
-					<input type="hidden" name="rNo[]" value="<%=r2.getReqNo() %>">
-					<input type="hidden" name="pNo[]" value="<%=r2.getProNo() %>">
-					<input type="hidden" name="pName[]" value="<%=r2.getProName() %>">		
-				<% } %>			
+				<input type="hidden" name="reqNo" value="<%=r.getReqNo()%>">
+				<input type="hidden" name="proNo" value="<%=r.getProNo()%>">
 			</div>
 		</form>
 		<form action="<%=request.getContextPath()%>/updatePopup.rq" method="post">	
@@ -642,11 +611,8 @@
 						</div>
 					</div>
 				</div>
-				<% for(Product r2 : list){ %>
-					<input type="hidden" name="rNo[]" value="<%=r2.getReqNo() %>">
-					<input type="hidden" name="pNo[]" value="<%=r2.getProNo() %>">
-					<input type="hidden" name="pName[]" value="<%=r2.getProName() %>">		
-				<% } %>			
+				<input type="hidden" name="reqNo" value="<%=r.getReqNo()%>">
+				<input type="hidden" name="proNo" value="<%=r.getProNo()%>">
 			</div>
 		</form>
 		<form action="<%=request.getContextPath()%>/updatePopup.rq" method="post">	
@@ -720,11 +686,8 @@
 						</div>
 					</div>
 				</div>
-				<% for(Product r2 : list){ %>
-					<input type="hidden" name="rNo[]" value="<%=r2.getReqNo() %>">
-					<input type="hidden" name="pNo[]" value="<%=r2.getProNo() %>">
-					<input type="hidden" name="pName[]" value="<%=r2.getProName() %>">		
-				<% } %>			
+				<input type="hidden" name="reqNo" value="<%=r.getReqNo()%>">
+				<input type="hidden" name="proNo" value="<%=r.getProNo()%>">
 			</div>
 		</form>
 		<form action="<%=request.getContextPath()%>/updatePopup.rq" method="post">	
@@ -772,14 +735,11 @@
 						</div>
 					</div>
 				</div>
-				<% for(Product r2 : list){ %>
-					<input type="hidden" name="rNo[]" value="<%=r2.getReqNo() %>">
-					<input type="hidden" name="pNo[]" value="<%=r2.getProNo() %>">
-					<input type="hidden" name="pName[]" value="<%=r2.getProName() %>">		
-				<% } %>			
+				<input type="hidden" name="reqNo" value="<%=r.getReqNo()%>">
+				<input type="hidden" name="proNo" value="<%=r.getProNo()%>">
 			</div>
 		</form>
-		<form action="<%=request.getContextPath()%>/updatePopup.rq" method="post">	
+		<form action="<%=request.getContextPath()%>/updatePopup.rq" method="post">			
 		<!-- 옷장 팝업창  -->
 			<div class="modal fade" id="pop_closet" tabindex="-1" role="dialog" aria-labelledby="popRefLabel" aria-hidden="true">
 				<div class="modal-dialog modal-sm" role="document">
@@ -844,11 +804,8 @@
 						</div>
 					</div>
 				</div>
-				<% for(Product r2 : list){ %>
-					<input type="hidden" name="rNo[]" value="<%=r2.getReqNo() %>">
-					<input type="hidden" name="pNo[]" value="<%=r2.getProNo() %>">
-					<input type="hidden" name="pName[]" value="<%=r2.getProName() %>">		
-				<% } %>			
+				<input type="hidden" name="reqNo" value="<%=r.getReqNo()%>">
+				<input type="hidden" name="proNo" value="<%=r.getProNo()%>">
 			</div>
 		</form>
 		<form action="<%=request.getContextPath()%>/updatePopup.rq" method="post">	
@@ -906,11 +863,8 @@
 						</div>
 					</div>
 				</div>
-				<% for(Product r2 : list){ %>
-					<input type="hidden" name="rNo[]" value="<%=r2.getReqNo() %>">
-					<input type="hidden" name="pNo[]" value="<%=r2.getProNo() %>">
-					<input type="hidden" name="pName[]" value="<%=r2.getProName() %>">		
-				<% } %>			
+				<input type="hidden" name="reqNo" value="<%=r.getReqNo()%>">
+				<input type="hidden" name="proNo" value="<%=r.getProNo()%>">
 			</div>
 		</form>
 		<form action="<%=request.getContextPath()%>/updatePopup.rq" method="post">	
@@ -942,11 +896,8 @@
 						</div>
 					</div>
 				</div>
-				<% for(Product r2 : list){ %>
-					<input type="hidden" name="rNo[]" value="<%=r2.getReqNo() %>">
-					<input type="hidden" name="pNo[]" value="<%=r2.getProNo() %>">
-					<input type="hidden" name="pName[]" value="<%=r2.getProName() %>">		
-				<% } %>			
+				<input type="hidden" name="reqNo" value="<%=r.getReqNo()%>">
+				<input type="hidden" name="proNo" value="<%=r.getProNo()%>">
 			</div>
 		</form>
 		<form action="<%=request.getContextPath()%>/updatePopup.rq" method="post">	
@@ -992,11 +943,8 @@
 						</div>
 					</div>
 				</div>
-				<% for(Product r2 : list){ %>
-					<input type="hidden" name="rNo[]" value="<%=r2.getReqNo() %>">
-					<input type="hidden" name="pNo[]" value="<%=r2.getProNo() %>">
-					<input type="hidden" name="pName[]" value="<%=r2.getProName() %>">		
-				<% } %>			
+				<input type="hidden" name="reqNo" value="<%=r.getReqNo()%>">
+				<input type="hidden" name="proNo" value="<%=r.getProNo()%>">
 			</div>
 		</form>
 		<form action="<%=request.getContextPath()%>/updatePopup.rq" method="post">	
@@ -1038,11 +986,8 @@
 						</div>
 					</div>
 				</div>
-				<% for(Product r2 : list){ %>
-					<input type="hidden" name="rNo[]" value="<%=r2.getReqNo() %>">
-					<input type="hidden" name="pNo[]" value="<%=r2.getProNo() %>">
-					<input type="hidden" name="pName[]" value="<%=r2.getProName() %>">		
-				<% } %>			
+				<input type="hidden" name="reqNo" value="<%=r.getReqNo()%>">
+				<input type="hidden" name="proNo" value="<%=r.getProNo()%>">
 			</div>
 		</form>
 		<form action="<%=request.getContextPath()%>/updatePopup.rq" method="post">	
@@ -1088,11 +1033,8 @@
 						</div>
 					</div>
 				</div>
-				<% for(Product r2 : list){ %>
-					<input type="hidden" name="rNo[]" value="<%=r2.getReqNo() %>">
-					<input type="hidden" name="pNo[]" value="<%=r2.getProNo() %>">
-					<input type="hidden" name="pName[]" value="<%=r2.getProName() %>">		
-				<% } %>			
+				<input type="hidden" name="reqNo" value="<%=r.getReqNo()%>">
+				<input type="hidden" name="proNo" value="<%=r.getProNo()%>">
 			</div>
 		</form>
 		<form action="<%=request.getContextPath()%>/updatePopup.rq" method="post">	
@@ -1124,44 +1066,12 @@
 						</div>
 					</div>
 				</div>	
-				<% for(Product r2 : list){ %>
-					<input type="hidden" name="rNo[]" value="<%=r2.getReqNo() %>">
-					<input type="hidden" name="pNo[]" value="<%=r2.getProNo() %>">
-					<input type="hidden" name="pName[]" value="<%=r2.getProName() %>">		
-				<% } %>		
+				<input type="hidden" name="reqNo" value="<%=r.getReqNo()%>">
+				<input type="hidden" name="proNo" value="<%=r.getProNo()%>">
 			</div>
 		</form>
 	</div>
 	
-	<script>		
-		/* function sendValue(){			
-			
-			var proType_ref = $("input[name=proType_ref]:checked").val()
-			var proType_wash = $("input[name=proType_wash]:checked").val();		
-			var proType_air = $("input[name=proType_air]:checked").val();		
-			var proType_pc = $("input[name=proType_pc]:checked").val();		
-			var proType_oven = $("input[name=proType_oven]:checked").val();		
-			var proType_bed = $("input[name=proType_bed]:checked").val();		
-			var proType_chair = $("input[name=proType_chair]:checked").val();		
-			var proType_table = $("input[name=proType_table]:checked").val();		
-			var proType_clo = $("input[name=proType_clo]:checked").val();		
-			var proType_hang = $("input[name=proType_hang]:checked").val();		
-			var proType_mir = $("input[name=proType_mir]:checked").val();		
-			var proType_make = $("input[name=proType_make]:checked").val();		
-			var proType_piano = $("input[name=proType_piano]:checked").val();		
-			
-			var a = new Array(proType_ref, proType_wash, proType_air, proType_pc, proType_oven, proType_bed, proType_chair, proType_table, proType_clo, proType_hang, proType_mir, proType_make, proType_piano);
-			var proType = new Array();
-			
-			for(var i = 0; i < a.length; i++){
-				if(a[i] != null){
-					proType.push(a[i]);
-				}
-			}			
-			
-			$(document).find("#popVal").val(proType);
-			
-		} */		
-	</script>
+	
 </body>
 </html>

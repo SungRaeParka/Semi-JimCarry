@@ -20,6 +20,8 @@ public class ProductService {
 		
 		if(result > 0) {
 			commit(con);
+			//String reqNo = new ProductDao().selectReqNo(con);
+			//String proNo = new ProductDao().selectProNo(con, reqNo);
 		}else {
 			rollback(con);
 		}
@@ -29,7 +31,7 @@ public class ProductService {
 		return result;
 	}
 
-	public ArrayList<Product> selectProInfo() {
+	/*public ArrayList<Product> selectProInfo() {
 		Connection con = getConnection();
 		
 		ArrayList<Product> list = new ProductDao().selectProInfo(con);
@@ -37,7 +39,60 @@ public class ProductService {
 		close(con);
 		
 		return list;
+	}*/
+
+	public String selectReqNo() {		
+		Connection con = getConnection();
+		
+		String reqNo = new ProductDao().selectReqNo(con);
+		
+		close(con);
+		
+		return reqNo;
 	}
+
+	public String selectProNo(String reqNo) {
+		Connection con = getConnection();
+		
+		String proNo = new ProductDao().selectProNo(con, reqNo);
+		
+		close(con);
+		
+		return proNo;
+	}
+	
+	/*public String selectProName(String reqNo, String proNo) {
+		Connection con = getConnection();
+		
+		String proName = new ProductDao().selectProName(con, reqNo, proNo);
+		
+		close(con);
+		
+		return proName;
+	}*/
+
+	public int updateRef(Product p) { 
+		Connection con = getConnection();
+		
+		String refProNo = new ProductDao().selectRefProNo(con, p);
+		
+		System.out.println("Service refProNo :::" + refProNo);
+		
+		int result = new ProductDao().updateRef(con, p, refProNo);
+		
+		if(result > 0) {
+			commit(con);
+		}else {
+			rollback(con);
+		}
+		
+		close(con);
+		
+		return result;
+	}
+
+
+
 
 	
 
