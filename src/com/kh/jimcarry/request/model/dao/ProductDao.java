@@ -48,7 +48,10 @@ public class ProductDao {
 				try {
 					pstmt = con.prepareStatement(query);	
 
-					pstmt.setString(1, namerr[i]);				
+					pstmt.setString(1, namerr[i]);
+					pstmt.setString(2, kindrr[i]);
+					pstmt.setInt(3, r.getBookCount());
+					pstmt.setInt(4, r.getBoxCount());
 
 					result = pstmt.executeUpdate();						
 
@@ -64,6 +67,9 @@ public class ProductDao {
 					pstmt = con.prepareStatement(query);	
 
 					pstmt.setString(1, namerr[i]);
+					pstmt.setString(2, kindrr[i]);
+					pstmt.setInt(3, r.getBookCount());
+					pstmt.setInt(4, r.getBoxCount());
 
 					result = pstmt.executeUpdate();					
 
@@ -75,40 +81,7 @@ public class ProductDao {
 			}						
 		}
 		return result;
-	}
-
-	/*public ArrayList<Product> selectProInfo(Connection con) {
-		ArrayList<Product> list = null;
-		Statement stmt = null;
-		ResultSet rset = null;
-
-		String query = prop.getProperty("selectProInfo");
-
-		try {
-			stmt = con.createStatement();
-			rset = stmt.executeQuery(query);
-
-			list = new ArrayList<Product>();
-
-			while(rset.next()) {
-				Product r = new Product();
-
-				r.setReqNo(rset.getString("REQ_NO"));
-				r.setProNo(rset.getString("PRODUCT_NO"));
-				r.setProName(rset.getString("PRODUCT_NAME"));
-
-				list.add(r);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(rset);
-			close(stmt);
-		}
-
-
-		return list;
-	}*/
+	}	
 
 	public String selectReqNo(Connection con) {
 		Statement stmt = null;
@@ -175,23 +148,7 @@ public class ProductDao {
 
 		return proNo;
 	}
-
-	/*public String selectProName(Connection con, String reqNo, String proNo) {
-		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		Product p = null;
-		String proName = "";
-
-		String query = prop.getProperty("selectProName");
-
-		String[] proNorr = proNo.split(",");
-
-		for(int i = 0; i < proNorr.length; i++) {
-			System.out.println("proNamerr[i] :::: " + proNorr[i]);
-		}
-		return null;
-	}*/
-
+	
 	public String selectRefProNo(Connection con, Product p) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -226,77 +183,30 @@ public class ProductDao {
 		int result = 0;		
 		
 		String[] refNorr = refProNo.split(",");
-		String[] proNorr = p.getProNo().split(",");
 		
 		System.out.println(refNorr.length);
 
-		String query = prop.getProperty("updateRef");
+		String query = prop.getProperty("updateRef");		
+
+		try {
+			pstmt = con.prepareStatement(query);
+
+			pstmt.setString(1, p.getProType());
+			pstmt.setString(2, p.getProSize());
+			pstmt.setString(3, "R" + p.getReqNo());
+			pstmt.setString(4, refNorr[0]);
+			pstmt.setString(5, "냉장고");
+
+			result = pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}		
 		
-		if(refNorr.length == 1) {
-			try {
-				pstmt = con.prepareStatement(query);
-				
-				pstmt.setString(1, p.getProType());
-				pstmt.setString(2, p.getProSize());
-				pstmt.setString(3, "R" + p.getReqNo());
-				pstmt.setString(4, refNorr[0]);
-				pstmt.setString(5, "냉장고");
-				
-				result = pstmt.executeUpdate();
-				
-			} catch (SQLException e) {
-				e.printStackTrace();
-			} finally {
-				close(pstmt);
-			}		
-		}else if(refNorr.length > 1) {
-			for(int i = 0; i < refNorr.length; i++) {
-				if(refNorr[i].equals(proNorr[0])) {
-					try {
-						pstmt = con.prepareStatement(query);
-						
-						pstmt.setString(1, p.getProType());
-						pstmt.setString(2, p.getProSize());
-						pstmt.setString(3, "R" + p.getReqNo());
-						pstmt.setString(4, refNorr[i]);
-						pstmt.setString(5, "냉장고");
-						
-						result = pstmt.executeUpdate();  
-						
-					} catch (SQLException e) {
-						e.printStackTrace();
-					} finally {
-						close(pstmt);
-					}				
-				}else if(!refNorr[i].equals(proNorr[0])){
-					try {
-						pstmt = con.prepareStatement(query);
-						
-						pstmt.setString(1, p.getProType());
-						pstmt.setString(2, p.getProSize());
-						pstmt.setString(3, "R" + p.getReqNo());
-						pstmt.setString(4, refNorr[i]);
-						pstmt.setString(5, "냉장고");
-						
-						result = pstmt.executeUpdate();
-						
-					} catch (SQLException e) {
-						e.printStackTrace();
-					} finally {
-						close(pstmt);
-					}	
-				}
-			}
-		}
-
-
-
-
 		return result;
 	}
-
-
-
 
 
 }	
