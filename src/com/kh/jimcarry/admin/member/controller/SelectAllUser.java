@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.kh.jimcarry.admin.member.model.service.MemberService;
-import com.kh.jimcarry.admin.member.model.vo.Member;
+import com.kh.jimcarry.member.model.vo.Member;
 
 /**
  * Servlet implementation class SelectAllUser

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.*, com.kh.jimcarry.admin.member.model.vo.*"%>
+    pageEncoding="UTF-8" import="java.util.*, com.kh.jimcarry.member.model.vo.*"%>
  <%
 	ArrayList<Member> list = (ArrayList<Member>) request.getAttribute("list");
 %>
@@ -219,8 +219,8 @@
 </style>
 </head>
 <body>
-	<%@ include file="/views/common/admin_TopBar.jsp" %>
-	<%-- <% if(loginUser != null && loginUser.getUserId().equals("admin")){ %> --%>
+	<%-- <%@ include file="/views/common/admin_TopBar.jsp" %>
+	<% if(loginUser != null && loginUser.getUserId().equals("admin")){ %> --%>
 
 	<div class="container" style="margin-top: 70px;">
 	<h2>회원 관리</h2>
@@ -228,10 +228,10 @@
 
 		<ul class="nav nav-tabs">
 			<li class="active"><a data-toggle="tab" href="#user">사용자</a></li>
-			<li><a href="admin_DriverMng.jsp">기사</a></li>
+			<li><a href="/semi/selectAll.d">기사</a></li>
 			<li><a href="admin_ApproveDriverMng.jsp">신청한 기사 관리</a></li>
 			<li><a href="admin_BlackListDriverMng.jsp">블랙리스트 관리</a></li>
-			<li><a href="admin_DelareDriverMng.jsp">신고내역 관리</a></li>
+			<li><a href="/semi/dclare.d">신고내역 관리</a></li>
 		</ul>
 
 		<div class="tab-content">
@@ -258,7 +258,7 @@
 										<td class="title">이름</td>
 										<td class="title">연락처</td>
 										<td class="title">탈퇴 여부</td>
-										<td class="title">이용건수</td>
+										<td class="title">이용건수(현재UD구분 추후 변경)</td>
 										<td></td>
 									</tr>
 								</table>
@@ -387,7 +387,7 @@
 		};
 
 	</script>
-<%-- 	<%}else{
+ 	<%-- <%}else{
 		request.setAttribute("msg", "잘못된 경로로 접근하셨습니다.");
 		request.getRequestDispatcher("/semi/views/common/errorPage.jsp").forward(request, response);
 	}%> --%>
