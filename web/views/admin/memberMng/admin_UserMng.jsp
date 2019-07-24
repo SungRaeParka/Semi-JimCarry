@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="java.util.*, com.kh.jimcarry.admin.member.model.vo.*"%>
+ <%
+	ArrayList<Member> list = (ArrayList<Member>) request.getAttribute("list");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,10 +12,215 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="../../../css/admin_MemberMng.css">
+<!-- <link rel="stylesheet" type="text/css" href="../../../css/admin_MemberMng.css"> -->
+<!-- <link rel="stylesheet" type="text/css" href="/web/css/admin_MemberMng.css"> -->
+<style>
+	/* 사용자 회원 관리 테이블 */
+  #tblBackground {
+    /*
+     *  화면에 보여야 할 Table의 가로크기를 잡아줍니다.
+     */
+    width: 940px;
+    table-layout: fixed;
+}
+#divHeadScroll {
+    /*
+     *  안의 내용이 790보다 길게 적용이 되므로 overflow-x, overflow-y를 hidden을 걸어줘서 설정한 가로너비만큼만 화면에 보이도록 잡아줍니다.
+     */
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    border-top: 2px solid #d0d0d0;
+}
+#tblHead {
+    /*
+     *  Table의 필드명의 너비를 여기에서 지정합니다.
+     *  필드명을 보여줄 테이블은 body보다 하나의 td를 더 가지며 마지막 td는 아무것도 입력하지 않고 크기만 잡아줍니다.
+     *  이렇게 하는 이유는 데이터를 보여주는 테이블은 세로 스크롤의 가로두께만큼 더 이동하기 때문입니다.
+     */
+    table-layout: fixed;
+    background-color: #efefef;
+    padding-top: 4px;
+    width:947px;
+    height: 30px;
+    border-collapse: collapse;
+}
+#divBodyScroll {
+    /*
+     *  overflow-x, overflow-y는 scroll로 지정하고,
+     *  height는 테이블의 데이터가 나올 기본 크기를 잡아줍니다.
+     *  세로길이를 잡아주지 않으면 overflow-y가 걸리지 않습니다.
+     */
+    width: 100%;
+    height: 350px;
+    overflow-x: scroll;
+    overflow-y: scroll;
+    border-top: 1px solid #d0d0d0;
+}
+#tblBody {
+    /*
+     * tblBody의 데이터는 필요한 열의 수만큼만 만드시고 헤더와 col의 width는 동일해야 합니다.
+     */
+    width: 940px;
+    table-layout: fixed;
+    height: 30px;
+    border-collapse: collapse;
+}
+
+/* 기사 회원 관리 테이블 */
+
+#tblBackground2 {
+    width: 940px;
+    table-layout: fixed;
+}
+#divHeadScroll2 {
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    border-top: 2px solid #d0d0d0;
+}
+#tblHead2 {
+    table-layout: fixed;
+    background-color: #efefef;
+    padding-top: 4px;
+    width:1117px;
+    height: 30px;
+    border-collapse: collapse;
+}
+#divBodyScroll2 {
+    width: 100%;
+    height: 350px;
+    overflow-x: scroll;
+    overflow-y: scroll;
+    border-top: 1px solid #d0d0d0;
+}
+#tblBody2 {
+    width: 1100px;
+    table-layout: fixed;
+    height: 30px;
+    border-collapse: collapse;
+}
+
+/* 신청 기사 회원 관리 테이블 */
+#tblBackground5 {
+    width: 940px;
+    table-layout: fixed;
+}
+#divHeadScroll5 {
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    border-top: 2px solid #d0d0d0;
+}
+#tblHead5 {
+    table-layout: fixed;
+    background-color: #efefef;
+    padding-top: 4px;
+    width:1117px;
+    height: 30px;
+    border-collapse: collapse;
+}
+#divBodyScroll5 {
+    width: 100%;
+    height: 350px;
+    overflow-x: scroll;
+    overflow-y: scroll;
+    border-top: 1px solid #d0d0d0;
+}
+#tblBody5 {
+    width: 1100px;
+    table-layout: fixed;
+    height: 30px;
+    border-collapse: collapse;
+}
+
+ /* 기사 블랙리스트 관리 테이블 */
+
+#tblBackground3 {
+    width: 940px;
+    table-layout: fixed;
+}
+#divHeadScroll3 {
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    border-top: 2px solid #d0d0d0;
+}
+#tblHead3 {
+    table-layout: fixed;
+    background-color: #efefef;
+    padding-top: 4px;
+    width:947px;
+    height: 30px;
+    border-collapse: collapse;
+}
+#divBodyScroll3 {
+    width: 100%;
+    height: 350px;
+    overflow-x: scroll;
+    overflow-y: scroll;
+    border-top: 1px solid #d0d0d0;
+}
+#tblBody3 {
+    width: 940px;
+    table-layout: fixed;
+    height: 30px;
+    border-collapse: collapse;
+}
+
+ /* 신고내역 관리 테이블 */
+
+#tblBackground4 {
+    width: 940px;
+    table-layout: fixed;
+}
+#divHeadScroll4 {
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    border-top: 2px solid #d0d0d0;
+}
+#tblHead4 {
+    table-layout: fixed;
+    background-color: #efefef;
+    padding-top: 4px;
+    width:947px;
+    height: 30px;
+    border-collapse: collapse;
+}
+#divBodyScroll4 {
+    width: 100%;
+    height: 350px;
+    overflow-x: scroll;
+    overflow-y: scroll;
+    border-top: 1px solid #d0d0d0;
+}
+#tblBody4 {
+    width: 940px;
+    table-layout: fixed;
+    height: 30px;
+    border-collapse: collapse;
+}
+
+/* 테이블 스타일용 */
+.title {
+    text-align: center;
+    font-weight: bold;
+}
+.content {
+    border-bottom: 1px solid #efefef;
+    padding: 10px 10px 10px 10px;
+    text-align: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+
+}
+</style>
 </head>
 <body>
 	<%@ include file="/views/common/admin_TopBar.jsp" %>
+	<%-- <% if(loginUser != null && loginUser.getUserId().equals("admin")){ %> --%>
 
 	<div class="container" style="margin-top: 70px;">
 	<h2>회원 관리</h2>
@@ -34,22 +242,22 @@
 							<div id="divHeadScroll">
 								<table id="tblHead" border="0">
 									<colgroup>
-										<col style="width: 30px;" />
-										<col style="width: 50px;" />
-										<col style="width: 50px;" />
-										<col style="width: 50px;" />
+										<col style="width: 100px;" />
+										<col style="width: 100px;" />
+										<col style="width: 100px;" />
+										<col style="width: 100px;" />
 										<col style="width: 100px;" />
 										<col style="width: 100px;" />
 										<col style="width: 100px;" />
 										<col style="width: 10px;" />
 									</colgroup>
 									<tr>
-										<td class="title">번호</td>
-										<td class="title">가입날짜</td>
+										<td class="title">회원번호</td>
+										<td class="title">가입일</td>
 										<td class="title">아이디</td>
 										<td class="title">이름</td>
-										<td class="title">이메일</td>
-										<td class="title">휴대폰번호</td>
+										<td class="title">연락처</td>
+										<td class="title">탈퇴 여부</td>
 										<td class="title">이용건수</td>
 										<td></td>
 									</tr>
@@ -58,23 +266,25 @@
 							<div id="divBodyScroll">
 								<table id="tblBody" border="0">
 									<colgroup>
-										<col style="width: 30px;" class="right_border" />
-										<col style="width: 50px;" class="right_border" />
-										<col style="width: 50px;" class="right_border" />
-										<col style="width: 50px;" class="right_border" />
+										<col style="width: 100px;" class="right_border" />
+										<col style="width: 100px;" class="right_border" />
+										<col style="width: 100px;" class="right_border" />
+										<col style="width: 100px;" class="right_border" />
 										<col style="width: 100px;" class="right_border" />
 										<col style="width: 100px;" class="right_border" />
 										<col style="width: 100px;" class="right_border" />
 									</colgroup>
+									<% for(Member m : list){ %>
 									<tr>
-										<td class="content right_border">1</td>
-										<td class="content right_border">2019/07/16</td>
-										<td class="content right_border">user01</td>
-										<td class="content right_border">홍길동</td>
-										<td class="content right_border">user01@user.com</td>
-										<td class="content right_border">010-1234-5678</td>
-										<td class="content right_border">2건</td>
+										<td class="content right_border"><%=m.getSeqNo()%></td>
+										<td class="content right_border"><%=m.getEnrollDate()%></td>
+										<td class="content right_border"><%=m.getUserId() %></td>
+										<td class="content right_border"><%=m.getUserName() %></td>
+										<td class="content right_border"><%=m.getPhone() %></td>
+										<td class="content right_border"><%=m.getStatusCheck() %></td>
+										<td class="content right_border"><%=m.getUdCheck() %></td>
 									</tr>
+									<% } %>
 								</table>
 							</div>
 						</td>
@@ -177,6 +387,10 @@
 		};
 
 	</script>
+<%-- 	<%}else{
+		request.setAttribute("msg", "잘못된 경로로 접근하셨습니다.");
+		request.getRequestDispatcher("/semi/views/common/errorPage.jsp").forward(request, response);
+	}%> --%>
 
 </body>
 </html>

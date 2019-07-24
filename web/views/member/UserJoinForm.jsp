@@ -42,6 +42,7 @@
 	<h1 align="center">사용자 회원가입</h1>
 	<br><br>
 		<div align="center">
+		<form action="<%=request.getContextPath() %>/insert.me" method="post">
 		<table>
 			<tr>
 				<td><label>이름</label></td>
@@ -70,9 +71,10 @@
 			</tr>
 			<tr>
 				<td></td>
-				<td><a href="/semi/views/member/MemberLoginForm.jsp"><button id="join" onclick="ok();">가입하기</button></a></td>
+				<td><button id="join" onclick="ok();">가입하기</button></td>
 			</tr>
 		</table>
+		</form>
 		</div>
 		<script>
 		function check(){
@@ -85,7 +87,7 @@
 			window.alert("인증완료!");
 		}
 		function ok(){
-			window.alert("가입완료!");
+			$("form").submit();
 		}
 		</script>
 	

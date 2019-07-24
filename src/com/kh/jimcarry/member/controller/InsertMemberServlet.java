@@ -30,25 +30,26 @@ public class InsertMemberServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
+	//	request.setCharacterEncoding("UTF-8");
 		
 		String userId = request.getParameter("userId");
-		String userName = request.getParameter("userName");
 		String userPwd = request.getParameter("password");
+		String userName = request.getParameter("userName");
 		String tel1 = request.getParameter("tel1");
 		String tel2 = request.getParameter("tel2");
 		String tel3 = request.getParameter("tel3");
-		String userPhone = tel1 + "-" + tel2 + "-" + tel3;
-		String enrollDate = request.getParameter("enroll_Date");
-		String statusCheck = request.getParameter("status_Check");
-		String blacklistCheck = request.getParameter("blacklist_Check");
-		String udCheck = request.getParameter("ud_Check");
+		String phone = tel1 + "-" + tel2 + "-" + tel3;
+		
+		System.out.println(userId);
+		System.out.println(userPwd);
+		System.out.println(userName);
+		System.out.println(phone);
 		
 		Member m = new Member();
 		m.setUserId(userId);
 		m.setUserPwd(userPwd);
 		m.setUserName(userName);
-		m.setUserPhone(userPhone);
+		m.setphone(phone);
 		
 		System.out.println(m);
 		int result = new MemberService().insertMember(m);
