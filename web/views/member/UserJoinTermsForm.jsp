@@ -6,8 +6,8 @@
   <meta charset="utf-8">
   <title>짐캐리 약관동의</title>
   <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-  <script src="</script'>http://code.jquery.com/jquery-1.10.2.js"></script>
-  <script src="</script'>http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <script src="</script'>http://code.jquery.com/jquery-1.10.2.js'"></script>
+  <script src="</script'>http://code.jquery.com/ui/1.11.4/jquery-ui.js'"></script>
   <link rel="stylesheet" href="/resources/demos/style.css">
    <style type="text/css">
     #d1{
@@ -28,7 +28,7 @@
    </style>
 </head>
 <body>
-<form action="/semi/views/member/user/UserJoinForm.jsp" method="get" id="form1">
+<form action="/semi/views/member/UserJoinForm.jsp" method="get" id="form1">
 <div id="d1">
  <h2 align="center">이용약관동의</h2><br/><br/>
   <tr>
@@ -563,7 +563,7 @@ var doc = document;
   } 
   
   
-   c1.onclick = c2.onclick = c3.onclick = checkboxListener;   //c1, C2, C3를 checkBoxListenner를 호출하여
+//   c1.onclick = c2.onclick = c3.onclick = checkboxListener;   //c1, C2, C3를 checkBoxListenner를 호출하여
                                                                    //Checked로 바꿈
    var all = doc.getElementById('all');  //전체 체크를 위한 체크박스 선언
   
