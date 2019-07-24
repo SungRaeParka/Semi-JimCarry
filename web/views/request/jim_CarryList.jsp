@@ -88,14 +88,81 @@ int endPage = pi.getEndPage();
 
 		<div id="filt" align="right">
 			<select name="national">
-				<option value="a">예약중</option>
-				<option value="b">매칭전</option>
-				<option value="c">완료전</option>
-				<option value="d">완료후</option>
+				<option value="a">매칭대기</option>
+				<option value="b">매칭완료</option>
+				<option value="c">이용대기</option>
+				<option value="d">이용완료</option>
 			</select>
 		</div>
 
 		<hr>
+
+		<%
+			Request req = new Request();
+			
+			Date finishTime = req.getReqFinish();
+			Date now = new Date();
+			
+		
+
+			for (int i = 0; i < list.size(); i++) {
+				req = list.get(i);
+
+				if (req.getCondition().equals("매칭대기")) {
+		%>
+
+		<div>
+			<img src="../../images/mc1.png" class="imgs" style="float: left">
+
+			<div id="reqno">
+				<p>견적번호 : <%=req.getReqNo() %></p>
+			</div>
+
+			<div id="title" class="text">
+				<h1><%=req.getStartPoint() %> → <%= req.getArrivalPoint()%></h1>
+			</div>
+			<div id="reqInfo">
+				<h4>
+					<a href="/semi/views/request/jim_CarryCheckReq.jsp">견적확인 →</a>
+				</h4>
+			</div>
+
+			<div id="date" class="text">
+				<h3>예약일 : <%= req.getReservationDate() %></h3>
+			</div>
+			<div id="reqpri">
+				<h4>
+					<a href="/semi/views/request/req_ReqList.jsp">입찰내역 확인 →</a>
+				</h4>
+			</div>
+
+			<div id="count" class="text">
+				<h3>받은 견적 수 : <%=req.getReqCount() %></h3>
+			</div>
+			<div id="time" align="right">
+
+				<h3>남은 시간 : time</h3>
+
+			</div>
+
+		</div>
+
+		<%
+				} else if (req.getCondition().equals("매칭완료")) {
+
+				} else if (req.getCondition().equals("이용대기")) {
+
+				} else if (req.getCondition().equals("이용완료")) {
+
+				}
+
+			}
+		%>
+
+
+
+
+
 
 		<div>
 			<img src="../../images/box.png" class="imgs" style="float: left">

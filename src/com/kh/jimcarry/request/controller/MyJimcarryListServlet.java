@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.kh.jimcarry.member.model.vo.Member;
 import com.kh.jimcarry.request.model.service.RequestService;
-import com.kh.jimcarry.request.model.vo.Member;
 import com.kh.jimcarry.request.model.vo.PageInfo;
 import com.kh.jimcarry.request.model.vo.Request;
 
@@ -39,14 +39,18 @@ public class MyJimcarryListServlet extends HttpServlet {
 		
 		if(request.getParameter("currentPage") !=null) {
 			currentPage = Integer.parseInt(request.getParameter("currentPage"));
+			
 		}
+		
 		
 		limit=5;
 		
 		
 		HttpSession session = request.getSession();
 		Member loginUser = (Member)session.getAttribute("loginUser");
-		String logUserNo = loginUser.getMno();
+		System.out.println(loginUser);
+		String logUserNo = loginUser.getSeqNo();
+		
 		
 		//전체목록갯수 리턴
 		int listCount = new RequestService().getListCount(logUserNo);
@@ -66,12 +70,16 @@ public class MyJimcarryListServlet extends HttpServlet {
 		
 		ArrayList<Request> list = new RequestService().selectList(currentPage,limit,logUserNo);
 		
+		
+		
+		
 		String page="";
 		
 		if(list != null) {
 			page = "views/request/jim_CarryList.jsp";
 			request.setAttribute("list", list);
 			request.setAttribute("pi", pi);
+			
 		}else {
 			page="views/common/errorPage.jsp";
 			request.setAttribute("msg", "짐캐리 리스트 조회 실패");
