@@ -52,7 +52,7 @@
 	<h1 align="center">기사 회원가입</h1>
 	<br><br>
 	<div class="main" align="center">
-		<form action="" method="post">
+		<form action="<%=request.getContextPath() %>/insertDriver.me" method="post">
 		<div class="main1">
 		<table class="table1">
 			<tr>

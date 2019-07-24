@@ -6,8 +6,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Properties;
 
+import com.kh.jimcarry.member.model.vo.AttachmentMember;
 import com.kh.jimcarry.member.model.vo.Member;
 import static com.kh.jimcarry.common.JDBCTemplate.*;
 
@@ -36,7 +38,7 @@ public class MemberDao {
 			pstmt.setString(1, m.getUserId());
 			pstmt.setString(2, m.getUserPwd());
 			pstmt.setString(3, m.getUserName());
-			pstmt.setString(4, m.getphone());
+			pstmt.setString(4, m.getPhone());
 			
 			result = pstmt.executeUpdate();
 			
@@ -73,7 +75,7 @@ public class MemberDao {
 				loginUser.setSeqNo(rset.getString("MEMBER_NO"));
 				loginUser.setUserId(rset.getString("MEMBER_ID"));
 				loginUser.setUserPwd(rset.getString("MEMBER_PWD"));
-				loginUser.setphone(rset.getString("PHONE"));
+				loginUser.setPhone(rset.getString("PHONE"));
 				loginUser.setEnrollDate(rset.getDate("ENROLL_DATE"));
 				loginUser.setStatusCheck(rset.getString("STATUS_CHECK"));
 				loginUser.setUdCheck(rset.getString("UD_CHECK"));
@@ -90,6 +92,25 @@ public class MemberDao {
 		
 		
 		return loginUser;
+	}
+
+	public int insertAttachment(Connection con, ArrayList<AttachmentMember> fileList) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = prop.getProperty("insertAttachment");
+		
+		
+		return 0;
+	}
+
+	public int insertDriver(Connection con, Member m) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Member loginUser = null;
+		
+		String query = prop.getProperty("insertDriver");
+		
+		return 0;
 	}
 
 }

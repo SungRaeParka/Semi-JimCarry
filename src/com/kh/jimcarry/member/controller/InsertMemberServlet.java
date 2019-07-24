@@ -49,10 +49,10 @@ public class InsertMemberServlet extends HttpServlet {
 		m.setUserId(userId);
 		m.setUserPwd(userPwd);
 		m.setUserName(userName);
-		m.setphone(phone);
+		m.setPhone(phone);
 		
-		System.out.println(m);
 		int result = new MemberService().insertMember(m);
+		System.out.println(m);
 		
 		String page = "";
 		

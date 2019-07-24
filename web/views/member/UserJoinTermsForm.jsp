@@ -301,7 +301,7 @@
 ② '짐캐리'와 이용자간에 제기된 전자거래 소송에는 한국법을 적용합니다.
                                                                                                                            
    </textarea>
-   <h3 align="right"><a href="#"><font size="2">짐캐리 이용약관 동의(필수)</font><input type="checkbox" name="c1" id="c1"/></a></h3>
+   <h3 align="right"><a><font size="2">짐캐리 이용약관 동의(필수)</font><input type="checkbox" name="c1" id="c1"/></a></h3>
    <div>
      <textarea readonly="readonly" rows="10" cols="106">
 ► 총칙
