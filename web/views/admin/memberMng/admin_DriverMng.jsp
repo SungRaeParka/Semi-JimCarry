@@ -293,7 +293,7 @@
 								</table>
 							</div>
 							<div id="divBodyScroll2">
-								<table id="tblBody2" border="0">
+								<table id="tblBody2" border="0"> 
 									<colgroup>
 										<col style="width: 100px;" class="right_border"/>
 										<col style="width: 100px;" class="right_border"/>

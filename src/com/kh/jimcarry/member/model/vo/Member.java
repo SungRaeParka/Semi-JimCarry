@@ -10,24 +10,25 @@ public class Member implements java.io.Serializable{
 	private String phone;
 	private Date enrollDate;
 	private String statusCheck;
-	private String blacklistCheck;
 	private String udCheck;
 	private String agent;
-	private String businessAddress;
 	private String businessNo;
+	private String businessAddress;
 	private String carType;
 	private String carNo;
 	private String bankName;
 	private String accountNo;
 	private String carSize;
+	private String blacklistCheck;
 	private String joinCheck;
+	private String refuseReason;
 
 	public Member() {}
 
 	public Member(String seqNo, String userName, String userId, String userPwd, String phone, Date enrollDate,
-			String statusCheck, String blacklistCheck, String udCheck, String agent, String businessAddress,
-			String businessNo, String carType, String carNo, String bankName, String accountNo, String carSize,
-			String joinCheck) {
+			String statusCheck, String udCheck, String agent, String businessNo, String businessAddress, String carType,
+			String carNo, String bankName, String accountNo, String carSize, String blacklistCheck, String joinCheck,
+			String refuseReason) {
 		super();
 		this.seqNo = seqNo;
 		this.userName = userName;
@@ -36,17 +37,18 @@ public class Member implements java.io.Serializable{
 		this.phone = phone;
 		this.enrollDate = enrollDate;
 		this.statusCheck = statusCheck;
-		this.blacklistCheck = blacklistCheck;
 		this.udCheck = udCheck;
 		this.agent = agent;
-		this.businessAddress = businessAddress;
 		this.businessNo = businessNo;
+		this.businessAddress = businessAddress;
 		this.carType = carType;
 		this.carNo = carNo;
 		this.bankName = bankName;
 		this.accountNo = accountNo;
 		this.carSize = carSize;
+		this.blacklistCheck = blacklistCheck;
 		this.joinCheck = joinCheck;
+		this.refuseReason = refuseReason;
 	}
 
 	public String getSeqNo() {
@@ -105,14 +107,6 @@ public class Member implements java.io.Serializable{
 		this.statusCheck = statusCheck;
 	}
 
-	public String getBlacklistCheck() {
-		return blacklistCheck;
-	}
-
-	public void setBlacklistCheck(String blacklistCheck) {
-		this.blacklistCheck = blacklistCheck;
-	}
-
 	public String getUdCheck() {
 		return udCheck;
 	}
@@ -129,20 +123,20 @@ public class Member implements java.io.Serializable{
 		this.agent = agent;
 	}
 
-	public String getBusinessAddress() {
-		return businessAddress;
-	}
-
-	public void setBusinessAddress(String businessAddress) {
-		this.businessAddress = businessAddress;
-	}
-
 	public String getBusinessNo() {
 		return businessNo;
 	}
 
 	public void setBusinessNo(String businessNo) {
 		this.businessNo = businessNo;
+	}
+
+	public String getBusinessAddress() {
+		return businessAddress;
+	}
+
+	public void setBusinessAddress(String businessAddress) {
+		this.businessAddress = businessAddress;
 	}
 
 	public String getCarType() {
@@ -185,6 +179,14 @@ public class Member implements java.io.Serializable{
 		this.carSize = carSize;
 	}
 
+	public String getBlacklistCheck() {
+		return blacklistCheck;
+	}
+
+	public void setBlacklistCheck(String blacklistCheck) {
+		this.blacklistCheck = blacklistCheck;
+	}
+
 	public String getJoinCheck() {
 		return joinCheck;
 	}
@@ -193,15 +195,25 @@ public class Member implements java.io.Serializable{
 		this.joinCheck = joinCheck;
 	}
 
+	public String getRefuseReason() {
+		return refuseReason; 
+	}
+
+	public void setRefuseReason(String refuseReason) {
+		this.refuseReason = refuseReason;
+	}
+
 	@Override
 	public String toString() {
 		return "Member [seqNo=" + seqNo + ", userName=" + userName + ", userId=" + userId + ", userPwd=" + userPwd
-				+ ", phone=" + phone + ", enrollDate=" + enrollDate + ", statusCheck=" + statusCheck
-				+ ", blacklistCheck=" + blacklistCheck + ", udCheck=" + udCheck + ", agent=" + agent
-				+ ", businessAddress=" + businessAddress + ", businessNo=" + businessNo + ", carType=" + carType
-				+ ", carNo=" + carNo + ", bankName=" + bankName + ", accountNo=" + accountNo + ", carSize=" + carSize
-				+ ", joinCheck=" + joinCheck + "]";
+				+ ", phone=" + phone + ", enrollDate=" + enrollDate + ", statusCheck=" + statusCheck + ", udCheck="
+				+ udCheck + ", agent=" + agent + ", businessNo=" + businessNo + ", businessAddress=" + businessAddress
+				+ ", carType=" + carType + ", carNo=" + carNo + ", bankName=" + bankName + ", accountNo=" + accountNo
+				+ ", carSize=" + carSize + ", blacklistCheck=" + blacklistCheck + ", joinCheck=" + joinCheck
+				+ ", refuseReason=" + refuseReason + "]";
 	}
+
+	
 
 	
 }
