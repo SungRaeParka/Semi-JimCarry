@@ -58,7 +58,7 @@ public class boardInsertServlet extends HttpServlet {
 				//파일 리턴
 				String name = files.nextElement();
 
-				//System.out.println("name " + name);
+				System.out.println("name " + name);
 
 				//저장된 이름 가져올떄
 				saveFiles.add(multiRequest.getFilesystemName(name));
@@ -77,9 +77,9 @@ public class boardInsertServlet extends HttpServlet {
 			String multiiContent = multiRequest.getParameter("bcontent");
 			String userNo = ((Member)(request.getSession().getAttribute("loginUser"))).getSeqNo();
 
-			System.out.println(multiTitle);
-			System.out.println(multiiContent);
-			System.out.println(userNo);
+			System.out.println("multiTitle : " + multiTitle);
+			System.out.println("multiiContent : " + multiiContent);
+			System.out.println("userNo : " + userNo);
 
 
 			//Board객체 생성
@@ -87,6 +87,8 @@ public class boardInsertServlet extends HttpServlet {
 			b.setPostTitle(multiTitle);
 			b.setPostContents(multiiContent);
 			b.setUserNo(userNo);
+			b.setPostType("사용후기");
+
 
 			System.out.println("servlet b " + b);
 

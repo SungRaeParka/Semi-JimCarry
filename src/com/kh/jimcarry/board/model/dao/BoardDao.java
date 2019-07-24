@@ -48,7 +48,7 @@ public class BoardDao {
 				Board b = new Board();
 
 				b.setPostCode(rset.getString("POST_CODE"));
-				b.setUserNo(rset.getString("USER_NO"));
+				b.setUserNo(rset.getString("MEMBER_NO"));
 				b.setPostDate(rset.getDate("POST_DATE"));
 				b.setPostTitle(rset.getString("POST_TITLE"));
 				b.setPostContents(rset.getString("POST_CONTENTS"));
@@ -91,7 +91,7 @@ public class BoardDao {
 		}finally {
 			close(pstmt);
 		}
-		System.out.println("insertBoardContent 나와라" + result);
+		System.out.println("insertBoardContent 나와라 : " + result);
 		return result;
 	}
 	//Board테이블의 현재 sequence값을 가져오는 메소드

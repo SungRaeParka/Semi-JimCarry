@@ -1,10 +1,28 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" import="com.kh.jimcarry.member.model.vo.Member"%>
+	pageEncoding="UTF-8" import="com.kh.jimcarry.member.model.vo.Member,com.kh.jimcarry.board.model.vo.*"
+						 import="java.util.Date"
+						 import="java.text.SimpleDateFormat" %>
+
+
+
+	<%
+		Member loginUser = (Member) session.getAttribute("loginUser");
+		Board b = (Board) request.getAttribute("b");
+
+		Date now = new Date();
+		String date1 = String.format("%tF",now);
+
+/*
+		SimpleDateFormat postDate = new SimpleDateFormat("yyyy-MM-dd");
+		Date date = postDate.parse(date1);
+ */
+
+	%>
 
 <!DOCTYPE html>
 <html>
 <head>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <style>
 .outer {
 	width: 800px;
@@ -89,19 +107,19 @@ td {
 
 
 	<div class="outer">
-		<form action="<%=request.getContextPath()%>/insert.bo" method="post" encType="multipart/form-data">
+		<form action="<%=request.getContextPath()%>/insert.bo" method="post" enctype="multipart/form-data">
 			<div class="insertArea">
 				<table align="center" border=1>
 					<tr>
 						<td width="100px" height="50px"align="center" >제목</td>
-						<td colspan="4"><label>hhh</label></td>
+						<td colspan="4"><input type="text" size=40 name="btitle"></td>
 
 					</tr>
 					<tr align="center">
 						<td height="50x">작성자</td>
-						<td style="width: 150px"><label for="" >cdfx</label></td>
+						<td style="width: 150px"><label for="" ><%=loginUser.getUserId() %></label></td>
 						<td>작성일자</td>
-						<td><label for="">2096-12-42</label></td>
+						<td><label for=""><%=date1%></label></td>
 					</tr>
 
 					<tr>
@@ -109,18 +127,18 @@ td {
 
 						</td>
 						<td colspan="3" style="color:red;">
-							<input type="file" multiple="multiple" name=pho  />
+							<input type="file"  name=photo1 id="contentImgArea1"  />
 						</td>
 
 					</tr>
 
 
-					<tr>
+				 	<tr>
 						<td height="100px" style="color: red; height: 50px;" align="center">이미지
 
 						</td>
 						<td colspan="3" style="color:red;">
-							<input type="file" multiple="multiple" name=pho  />
+							<input type="file"  name=photo2 id="contentImgArea2"  />
 						</td>
 
 					</tr>
@@ -129,7 +147,7 @@ td {
 
 					<tr>
 						<th align="center" style="color: red">내용</th>
-						<td colspan="4"><textarea name="" id="" cols="40%" rows="10%"
+						<td colspan="4"><textarea cols="40%" rows="10%"
 								maxlength="2048" placeholder="글 내용" name="bcontent"></textarea>
 
 						</td>
@@ -148,6 +166,23 @@ td {
 		</form>
 
 	</div>
+
+	<script>
+	function loadImg(value, num) {
+		if(value.files && value.files[0]) {
+			var reader = new FileReader();
+
+			reader.onload = function(e) {
+				switch(num){
+					case 1 : $("#contentImg1").attr("src", e.target.result); break;
+					case 2 : $("#contentImg2").attr("src", e.target.result); break;
+				}
+			}
+
+			reader.readAsDataURL(value.files[0]);
+		}
+	}
+	</script>
 
 
 </body>
