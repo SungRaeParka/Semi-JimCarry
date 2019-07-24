@@ -34,15 +34,17 @@
 		background:#5e5e5e;
 		color:#ffffff;
 	}
-	#btn{
-		height:30px;
-		width:80px;
-		border:3px solid #5e5e5e;
-		border-radius:10px;
+	input[type=file]{
+		height:35px;
+		width:200px; 
+		border:1px solid white;
 		margin-top:5px;
 		font-size:15px;
-		background:#5e5e5e;
-		color:#ffffff;
+		background:white;
+		color:black;
+	}
+	.table1 {
+		margin-bottom:50px;
 	}
 </style>
 </head>
@@ -50,16 +52,17 @@
 	<h1 align="center">기사 회원가입</h1>
 	<br><br>
 	<div class="main" align="center">
+		<form action="" method="post">
 		<div class="main1">
-		<table>
-			<tr>
-				<td><label>이름</label></td>
-				<td><input type="text" name="userName" id="box"></td>
-			</tr>
+		<table class="table1">
 			<tr>
 				<td><label>아이디</label>
 				<td><input type="text" name="userId" id="box"></td>
 				<td><button id="btn" onclick="check();">중복확인</button></td>
+			</tr>
+			<tr>
+				<td><label>이름</label></td>
+				<td><input type="text" name="userName" id="box"></td>
 			</tr>
 			<tr>
 				<td><label>비밀번호</label>
@@ -80,7 +83,7 @@
 			</tr>
 			<tr>
 				<td><label>대표자</label>
-				<td><input type="text" name="delegate" id="box"></td>	
+				<td><input type="text" name="agent" id="box"></td>	
 			</tr>
 			<tr>
 				<td><label>사업자등록번호</label>
@@ -97,36 +100,40 @@
 			<tr>
 				<td><label>차량번호</label>
 				<td>
-				<input type="text" name="carNumber" id="ca">
-				<input type="text" name="carNumber" id="ca">
+				<input type="text" name="carNo" id="ca">
+				<input type="text" name="carNo" id="ca">
 				</td>
 			</tr>
 			<tr>
+				<td><label>은행명</label>
+				<td><input type="text" name="bankName" id="box"></td>
+			</tr>
+			<tr>
+				<td><label>계좌번호</label>
+				<td><input type="text" name="accountNo" id="box"></td>
+			</tr>
+			<tr>
 				<td><label>본인사진</label>
-				<td><input type="text" name="idPhoto" id="box"></td>
-				<td><button id="btn">파일선택</button></td>
+				<td><input type="file" name="idPhoto"></td>
 			</tr>
 			<tr>
 				<td><label>차량등록증</label>
-				<td><input type="text" name="certificate" id="box"></td>
-				<td><button id="btn">파일선택</button></td>
+				<td><input type="file" name="certificate" ></td>
 			</tr>
 			<tr>
 				<td><label>통장사본</label>
-				<td><input type="text" name="bankBook" id="box"></td>
-				<td><button id="btn">파일선택</button></td>
+				<td><input type="file" name="bankBook"></td>
 			</tr>
 			<tr>
 				<td><label>사업자등록증</label>
-				<td><input type="text" name="attestation" id="box"></td>
-				<td><button id="btn">파일선택</button></td>
+				<td><input type="file" name="attestation"></td>
 			</tr>
-			<tr>
-				<td></td>
-				<td><a href="/semi/views/member/MemberLoginForm.jsp"><button id="join" onclick="ok();">가입신청</button></a></td>
-			</tr>
-		</table>
+			</table>
 		</div>
+			<div align="center">
+				<a href="../views/login.jsp"><button id="join" onclick="ok();">가입신청</button></a>
+			</div>
+		</form>
 	</div>
 	<script>
 	function check(){
@@ -145,4 +152,28 @@
 	
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

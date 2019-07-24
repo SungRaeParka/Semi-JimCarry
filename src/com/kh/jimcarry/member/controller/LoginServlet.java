@@ -18,7 +18,7 @@ import com.kh.jimcarry.member.model.vo.Member;
 @WebServlet("/login.me")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+	
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -31,24 +31,38 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
+		//request.setCharacterEncoding("UTF-8");
 		
 		String userId = request.getParameter("userId");
 		String userPwd = request.getParameter("password");
+		System.out.println(userId);
+		System.out.println(userPwd);
 		
 		
 		Member loginUser = new MemberService().loginCheck(userId, userPwd);
 		
 		if(loginUser != null) {
-			HttpSession session = request.getSession();
-			session.setAttribute("loginUser", loginUser);
-			
-			response.sendRedirect("mainPage.jsp");
-		}else {
-			request.setAttribute("msg", "로그인 실패 다시 입력해주세요~");
-			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+			if(loginUser.getUserId().contains("admin")) {
+				HttpSession session = request.getSession();
+				session.setAttribute("loginUser", loginUser);
+				
+				response.sendRedirect("views/admin/admin_MemMng.jsp");
+			}else if(loginUser.getSeqNo().contains("D")) {
+				HttpSession session = request.getSession();
+				session.setAttribute("loginUser", loginUser);
+				
+				response.sendRedirect("views/driver_MainPage.jsp");
+			}else if(loginUser.getSeqNo().contains("U")) {
+				HttpSession session = request.getSession();
+				session.setAttribute("loginUser", loginUser);
+				
+				response.sendRedirect("views/mainPage.jsp");
+			}else {
+				request.setAttribute("msg", "로그인 실패 다시 입력해주세요~");
+				request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);				
+				
+			}
 		}
-		
 	}
 
 	/**

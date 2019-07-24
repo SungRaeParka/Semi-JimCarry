@@ -3,11 +3,11 @@ package com.kh.jimcarry.member.model.vo;
 import java.sql.Date;
 
 public class Member implements java.io.Serializable{
-	private int seqNo;
+	private String seqNo;
 	private String userName;
 	private String userId;
 	private String userPwd;
-	private String userPhone;
+	private String phone;
 	private Date enrollDate;
 	private String statusCheck;
 	private String blacklistCheck;
@@ -24,7 +24,7 @@ public class Member implements java.io.Serializable{
 	
 	public Member() {}
 
-	public Member(int seqNo, String userName, String userId, String userPwd, String userPhone, Date enrollDate,
+	public Member(String seqNo, String userName, String userId, String userPwd, String phone, Date enrollDate,
 			String statusCheck, String blacklistCheck, String udCheck, String agent, String businessAddress,
 			String businessNo, String carType, String carNo, String bankName, String accountNo, String carSize,
 			String joinCheck) {
@@ -33,7 +33,7 @@ public class Member implements java.io.Serializable{
 		this.userName = userName;
 		this.userId = userId;
 		this.userPwd = userPwd;
-		this.userPhone = userPhone;
+		this.phone = phone;
 		this.enrollDate = enrollDate;
 		this.statusCheck = statusCheck;
 		this.blacklistCheck = blacklistCheck;
@@ -49,11 +49,11 @@ public class Member implements java.io.Serializable{
 		this.joinCheck = joinCheck;
 	}
 
-	public int getSeqNo() {
+	public String getSeqNo() {
 		return seqNo;
 	}
 
-	public void setSeqNo(int seqNo) {
+	public void setSeqNo(String seqNo) {
 		this.seqNo = seqNo;
 	}
 
@@ -81,12 +81,12 @@ public class Member implements java.io.Serializable{
 		this.userPwd = userPwd;
 	}
 
-	public String getUserPhone() {
-		return userPhone;
+	public String getphone() {
+		return phone;
 	}
 
-	public void setUserPhone(String userPhone) {
-		this.userPhone = userPhone;
+	public void setphone(String phone) {
+		this.phone = phone;
 	}
 
 	public Date getEnrollDate() {
@@ -196,7 +196,7 @@ public class Member implements java.io.Serializable{
 	@Override
 	public String toString() {
 		return "Member [seqNo=" + seqNo + ", userName=" + userName + ", userId=" + userId + ", userPwd=" + userPwd
-				+ ", userPhone=" + userPhone + ", enrollDate=" + enrollDate + ", statusCheck=" + statusCheck
+				+ ", phone=" + phone + ", enrollDate=" + enrollDate + ", statusCheck=" + statusCheck
 				+ ", blacklistCheck=" + blacklistCheck + ", udCheck=" + udCheck + ", agent=" + agent
 				+ ", businessAddress=" + businessAddress + ", businessNo=" + businessNo + ", carType=" + carType
 				+ ", carNo=" + carNo + ", bankName=" + bankName + ", accountNo=" + accountNo + ", carSize=" + carSize
