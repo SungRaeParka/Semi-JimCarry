@@ -91,7 +91,7 @@ public class BoardDao {
 		}finally {
 			close(pstmt);
 		}
-
+		System.out.println("insertBoardContent" + result);
 		return result;
 	}
 	//Board테이블의 현재 sequence값을 가져오는 메소드
@@ -108,7 +108,7 @@ public class BoardDao {
 			rset = stmt.executeQuery(querty);
 
 			if(rset.next()) {
-				//postCode = rset.getInt(colum);
+				postCode = rset.getString("currval");
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -118,7 +118,7 @@ public class BoardDao {
 			close(rset);
 		}
 
-
+		System.out.println("insertBoardContent : " + postCode );
 		return postCode;
 	}
 	//첨부파일정보 insert용 메소드 insertAttachment
@@ -127,7 +127,50 @@ public class BoardDao {
 		int result = 0;
 
 		String query = prop.getProperty("insertAttachment");
-		return 0;
+
+		for(int i = 0; i < fileList.size(); i++) {
+			try {
+				pstmt = con.prepareStatement(query);
+				pstmt.setString(1, fileList.get(i).getAttachNo());
+				pstmt.setString(2, fileList.get(i).getOriginName());
+				pstmt.setString(3, fileList.get(i).getChangeName());
+				pstmt.setString(4, fileList.get(i).getFilePath());
+
+				int level = 0;
+				if(i == 0) {
+					level = 0;
+				}else {
+					level = 1;
+				}
+
+				pstmt.setInt(5, level);
+
+				result += pstmt.executeUpdate();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				close(pstmt);
+			}
+		}
+		System.out.println("insertAttachment" + result);
+		return result;
+	}
+	//페이징
+	public ArrayList<Board> selectList(Connection con, int currentPage, int limit) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<Board> list = null;
+
+		String query = prop.getProperty("selectListWithPageing");
+
+		try {
+			pstmt = con.prepareStatement(query);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 

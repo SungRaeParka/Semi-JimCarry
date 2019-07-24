@@ -2,7 +2,7 @@ package com.kh.jimcarry.board.model.vo;
 
 import java.sql.Date;
 
-public class Attachment {
+public class Attachment implements java.io.Serializable {
 	private String attachNo; //첨부파일번호
 	private String originName; //파일 저장 이름
 	private String changeName; //바뀐 파일 저장 이름

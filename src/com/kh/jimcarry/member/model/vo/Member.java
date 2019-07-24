@@ -3,7 +3,7 @@ package com.kh.jimcarry.member.model.vo;
 import java.sql.Date;
 
 public class Member implements java.io.Serializable{
-	private int seqNo;
+	private String seqNo;
 	private String userName;
 	private String userId;
 	private String userPwd;
@@ -21,10 +21,10 @@ public class Member implements java.io.Serializable{
 	private String accountNo;
 	private String carSize;
 	private String joinCheck;
-	
+
 	public Member() {}
 
-	public Member(int seqNo, String userName, String userId, String userPwd, String userPhone, Date enrollDate,
+	public Member(String seqNo, String userName, String userId, String userPwd, String userPhone, Date enrollDate,
 			String statusCheck, String blacklistCheck, String udCheck, String agent, String businessAddress,
 			String businessNo, String carType, String carNo, String bankName, String accountNo, String carSize,
 			String joinCheck) {
@@ -49,11 +49,11 @@ public class Member implements java.io.Serializable{
 		this.joinCheck = joinCheck;
 	}
 
-	public int getSeqNo() {
+	public String getSeqNo() {
 		return seqNo;
 	}
 
-	public void setSeqNo(int seqNo) {
+	public void setSeqNo(String seqNo) {
 		this.seqNo = seqNo;
 	}
 
@@ -203,7 +203,9 @@ public class Member implements java.io.Serializable{
 				+ ", joinCheck=" + joinCheck + "]";
 	}
 
-	
 
-		
+
+
+
+
 }

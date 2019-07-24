@@ -7,18 +7,18 @@
 
 <style>
 .outer {
-	width: 500px;
-	height: 500px;
+	width: 800px;
+	height: 650px;
 	border: 1px solid red;
-	color: white;
+	color: black;
 	margin-left: auto;
 	margin-right: auto;
-	margin-top: 50px;
+	margin-top: auto;
 }
 
 table {
 	border: 5px solid #eeeeee;
-	width: 100%;
+	/* width: 100%; */
 }
 
 .insertform {
@@ -91,34 +91,45 @@ td {
 		<form action="<%=request.getContextPath()%>/insert.bo" method="post" encType="multipart/form-data">
 			<div class="insertArea">
 				<table align="center" border=1>
-
-
 					<tr>
-						<td align="center" width="100px" height="50px" style="color: red;">제목</td>
-						<td rowspan="1"><input type="text" placeholder="제목" name="btitle" /></td>
+						<td width="100px" height="50px"align="center" >제목</td>
+						<td colspan="4"><label>hhh</label></td>
 
 					</tr>
-					<tr>
-						<td align="center" height="50px" style="color: red;">작성자</td>
-						<td><input type="text" /></td>
-
+					<tr align="center">
+						<td height="50x">작성자</td>
+						<td style="width: 150px"><label for="" >cdfx</label></td>
+						<td>작성일자</td>
+						<td><label for="">2096-12-42</label></td>
 					</tr>
 
 					<tr>
-						<th height="100px" style="color: red; height: 50px;">이미지 :
+						<td style="color: red; height: 50px;" align="center">이미지
 
-						</th>
-						<td colspan="1" style="color:red;">
+						</td>
+						<td colspan="3" style="color:red;">
 							<input type="file" multiple="multiple" name=pho  />
 						</td>
 
+					</tr>
+
+
+					<tr>
+						<td height="100px" style="color: red; height: 50px;" align="center">이미지
+
+						</td>
+						<td colspan="3" style="color:red;">
+							<input type="file" multiple="multiple" name=pho  />
+						</td>
 
 					</tr>
+
+
 
 					<tr>
 						<th align="center" style="color: red">내용</th>
 						<td colspan="4"><textarea name="" id="" cols="40%" rows="10%"
-								maxlength="2048" placeholder="글 내용" name="content"></textarea>
+								maxlength="2048" placeholder="글 내용" name="bcontent"></textarea>
 
 						</td>
 
