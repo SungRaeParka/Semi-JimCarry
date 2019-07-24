@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import com.kh.jimcarry.admin.member.model.vo.Member;
-import com.kh.jimcarry.admin.member.model.vo.User;
 
 
 public class MemberDao {
