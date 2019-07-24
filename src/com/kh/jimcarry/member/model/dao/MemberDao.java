@@ -66,9 +66,9 @@ public class MemberDao {
 			if(rset.next()) {
 				loginUser = new Member();
 				
-				loginUser.setSeqNo(rset.getString("USER_NO"));
-				loginUser.setUserId(rset.getString("USER_ID"));
-				loginUser.setUserPwd(rset.getString("USER_PWD"));
+				loginUser.setSeqNo(rset.getString("MEMBER_NO"));
+				loginUser.setUserId(rset.getString("MEMBER_ID"));
+				loginUser.setUserPwd(rset.getString("MEMBER_PWD"));
 				loginUser.setphone(rset.getString("PHONE"));
 				loginUser.setEnrollDate(rset.getDate("ENROLL_DATE"));
 				loginUser.setStatusCheck(rset.getString("STATUS_CHECK"));
