@@ -88,7 +88,7 @@ public class RequestDao {
 			while(rset.next()) {
 				Request req = new Request();
 				
-				req.setReqDate(rset.getDate("RESERVATION_DATE"));
+				req.setReservationDate(rset.getDate("RESERVATION_DATE"));
 				req.setStartPoint(rset.getString("START_POINT"));
 				req.setArrivalPoint(rset.getString("ARRIVE_POINT"));
 				req.setReqStart(rset.getDate("REQ_START"));
@@ -100,6 +100,8 @@ public class RequestDao {
 				req.setOrderPrice(rset.getInt("ORDER_PRICE"));
 				req.setMatchDate(rset.getDate("MATCHING_DATE"));
 				req.setMatchCheck(rset.getString("MATCHING_CHECK"));
+				req.setDriverName(rset.getString("MEMBER_NAME"));
+				
 				
 				list.add(req);
 			}

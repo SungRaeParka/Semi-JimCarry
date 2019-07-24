@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.sql.Date;
 
 public class Request implements Serializable{
-	private Date reqDate;
+	private Date reservationDate;
 	private String startPoint;
 	private String arrivalPoint;
 	private Date reqStart;
@@ -12,13 +12,14 @@ public class Request implements Serializable{
 	private String memo;
 	private String userNo;
 	private String reqNo;
+	private String proNo;
+	private String condition;
 	
 	private String driverNo;
 	private int orderPrice;
 	private Date matchDate;
 	private String matchCheck;
 	
-	private String proNo;
 	private String proName;
 	private String proType;
 	private String proSize;
@@ -31,14 +32,17 @@ public class Request implements Serializable{
 	private int bookCount;
 	private int boxCount;
 	
+	private int reqCount;
+	private String driverName;
+	
 	
 	public Request() {}
 
 
-	public Request(Date reqDate, String startPoint, String arrivalPoint, Date reqStart, Date reqFinish, String memo,
+	public Request(Date reservationDate, String startPoint, String arrivalPoint, Date reqStart, Date reqFinish, String memo,
 			String userNo, String reqNo, String driverNo, int orderPrice, Date matchDate, String matchCheck) {
 		super();
-		this.reqDate = reqDate;
+		this.reservationDate = reservationDate;
 		this.startPoint = startPoint;
 		this.arrivalPoint = arrivalPoint;
 		this.reqStart = reqStart;
@@ -52,7 +56,144 @@ public class Request implements Serializable{
 		this.matchCheck = matchCheck;
 	}
 
+
+
+
+	public Request(Date reservationDate, String startPoint, String arrivalPoint, Date reqStart, Date reqFinish, String memo,
+			String userNo, String reqNo, String proNo, String condition, String driverNo, int orderPrice,
+			Date matchDate, String matchCheck, String proName, String proType, String proSize, String proMaterial,
+			String proWidth, String proHeight, String glassCheck, String uniquness, String proKind, int bookCount,
+			int boxCount, int reqCount, String driverName) {
+		super();
+		this.reservationDate = reservationDate;
+		this.startPoint = startPoint;
+		this.arrivalPoint = arrivalPoint;
+		this.reqStart = reqStart;
+		this.reqFinish = reqFinish;
+		this.memo = memo;
+		this.userNo = userNo;
+		this.reqNo = reqNo;
+		this.proNo = proNo;
+		this.condition = condition;
+		this.driverNo = driverNo;
+		this.orderPrice = orderPrice;
+		this.matchDate = matchDate;
+		this.matchCheck = matchCheck;
+		this.proName = proName;
+		this.proType = proType;
+		this.proSize = proSize;
+		this.proMaterial = proMaterial;
+		this.proWidth = proWidth;
+		this.proHeight = proHeight;
+		this.glassCheck = glassCheck;
+		this.uniquness = uniquness;
+		this.proKind = proKind;
+		this.bookCount = bookCount;
+		this.boxCount = boxCount;
+		this.reqCount = reqCount;
+		this.driverName = driverName;
+	}
+
+	public int getReqCount() {
+		return reqCount;
+	}
 	
+	
+	public void setReqCount(int reqCount) {
+		this.reqCount = reqCount;
+	}
+	
+	
+	public String getDriverName() {
+		return driverName;
+	}
+	
+	
+	public void setDriverName(String driverName) {
+		this.driverName = driverName;
+	}
+
+	
+	public Date getReservationDate() {
+		return reservationDate;
+	}
+
+
+	public void setReservationDate(Date reservationDate) {
+		this.reservationDate = reservationDate;
+	}
+
+
+	public String getStartPoint() {
+		return startPoint;
+	}
+
+
+	public void setStartPoint(String startPoint) {
+		this.startPoint = startPoint;
+	}
+
+
+	public String getArrivalPoint() {
+		return arrivalPoint;
+	}
+
+
+	public void setArrivalPoint(String arrivalPoint) {
+		this.arrivalPoint = arrivalPoint;
+	}
+
+
+	public Date getReqStart() {
+		return reqStart;
+	}
+
+
+	public void setReqStart(Date reqStart) {
+		this.reqStart = reqStart;
+	}
+
+
+	public Date getReqFinish() {
+		return reqFinish;
+	}
+
+
+	public void setReqFinish(Date reqFinish) {
+		this.reqFinish = reqFinish;
+	}
+
+
+	public String getMemo() {
+		return memo;
+	}
+
+
+	public void setMemo(String memo) {
+		this.memo = memo;
+	}
+
+
+	public String getUserNo() {
+		return userNo;
+	}
+
+
+	public void setUserNo(String userNo) {
+		this.userNo = userNo;
+	}
+
+
+	public String getReqNo() {
+		return reqNo;
+	}
+
+
+	public void setReqNo(String reqNo) {
+		this.reqNo = reqNo;
+	}
+
+
 	public String getProNo() {
 		return proNo;
 	}
@@ -60,6 +201,56 @@ public class Request implements Serializable{
 
 	public void setProNo(String proNo) {
 		this.proNo = proNo;
+	}
+
+
+	public String getCondition() {
+		return condition;
+	}
+
+
+	public void setCondition(String condition) {
+		this.condition = condition;
+	}
+
+
+	public String getDriverNo() {
+		return driverNo;
+	}
+
+
+	public void setDriverNo(String driverNo) {
+		this.driverNo = driverNo;
+	}
+
+
+	public int getOrderPrice() {
+		return orderPrice;
+	}
+
+
+	public void setOrderPrice(int orderPrice) {
+		this.orderPrice = orderPrice;
+	}
+
+
+	public Date getMatchDate() {
+		return matchDate;
+	}
+
+
+	public void setMatchDate(Date matchDate) {
+		this.matchDate = matchDate;
+	}
+
+
+	public String getMatchCheck() {
+		return matchCheck;
+	}
+
+
+	public void setMatchCheck(String matchCheck) {
+		this.matchCheck = matchCheck;
 	}
 
 
@@ -172,157 +363,7 @@ public class Request implements Serializable{
 		this.boxCount = boxCount;
 	}
 
-
-	public Request(Date reqDate, String startPoint, String arrivalPoint, Date reqStart, Date reqFinish, String memo,
-			String userNo, String reqNo, String driverNo, int orderPrice, Date matchDate, String matchCheck,
-			String proNo, String proName, String proType, String proSize, String proMaterial, String proWidth,
-			String proHeight, String glassCheck, String uniquness, String proKind, int bookCount, int boxCount) {
-		super();
-		this.reqDate = reqDate;
-		this.startPoint = startPoint;
-		this.arrivalPoint = arrivalPoint;
-		this.reqStart = reqStart;
-		this.reqFinish = reqFinish;
-		this.memo = memo;
-		this.userNo = userNo;
-		this.reqNo = reqNo;
-		this.driverNo = driverNo;
-		this.orderPrice = orderPrice;
-		this.matchDate = matchDate;
-		this.matchCheck = matchCheck;
-		this.proNo = proNo;
-		this.proName = proName;
-		this.proType = proType;
-		this.proSize = proSize;
-		this.proMaterial = proMaterial;
-		this.proWidth = proWidth;
-		this.proHeight = proHeight;
-		this.glassCheck = glassCheck;
-		this.uniquness = uniquness;
-		this.proKind = proKind;
-		this.bookCount = bookCount;
-		this.boxCount = boxCount;
-	}
-
-
-	public Date getReqDate() {
-		return reqDate;
-	}
-
-
-	public void setReqDate(Date reqDate) {
-		this.reqDate = reqDate;
-	}
-
-
-	public String getStartPoint() {
-		return startPoint;
-	}
-
-
-	public void setStartPoint(String startPoint) {
-		this.startPoint = startPoint;
-	}
-
-
-	public String getArrivalPoint() {
-		return arrivalPoint;
-	}
-
-
-	public void setArrivalPoint(String arrivalPoint) {
-		this.arrivalPoint = arrivalPoint;
-	}
-
-
-	public Date getReqStart() {
-		return reqStart;
-	}
-
-
-	public void setReqStart(Date reqStart) {
-		this.reqStart = reqStart;
-	}
-
-
-	public Date getReqFinish() {
-		return reqFinish;
-	}
-
-
-	public void setReqFinish(Date reqFinish) {
-		this.reqFinish = reqFinish;
-	}
-
-
-	public String getMemo() {
-		return memo;
-	}
-
-
-	public void setMemo(String memo) {
-		this.memo = memo;
-	}
-
-
-	public String getUserNo() {
-		return userNo;
-	}
-
-
-	public void setUserNo(String userNo) {
-		this.userNo = userNo;
-	}
-
-
-	public String getReqNo() {
-		return reqNo;
-	}
-
-
-	public void setReqNo(String reqNo) {
-		this.reqNo = reqNo;
-	}
-
-
-	public String getDriverNo() {
-		return driverNo;
-	}
-
-
-	public void setDriverNo(String driverNo) {
-		this.driverNo = driverNo;
-	}
-
-
-	public int getOrderPrice() {
-		return orderPrice;
-	}
-
-
-	public void setOrderPrice(int orderPrice) {
-		this.orderPrice = orderPrice;
-	}
-
-
-	public Date getMatchDate() {
-		return matchDate;
-	}
-
-
-	public void setMatchDate(Date matchDate) {
-		this.matchDate = matchDate;
-	}
-
-
-	public String getMatchCheck() {
-		return matchCheck;
-	}
-
-
-	public void setMatchCheck(String matchCheck) {
-		this.matchCheck = matchCheck;
-	}
+	
 	
 	
 	
