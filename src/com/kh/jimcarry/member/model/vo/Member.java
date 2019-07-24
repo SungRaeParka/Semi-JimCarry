@@ -81,11 +81,11 @@ public class Member implements java.io.Serializable{
 		this.userPwd = userPwd;
 	}
 
-	public String getphone() {
+	public String getPhone() {
 		return phone;
 	}
 
-	public void setphone(String phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 
@@ -202,4 +202,6 @@ public class Member implements java.io.Serializable{
 				+ ", carNo=" + carNo + ", bankName=" + bankName + ", accountNo=" + accountNo + ", carSize=" + carSize
 				+ ", joinCheck=" + joinCheck + "]";
 	}
+
+	
 }
