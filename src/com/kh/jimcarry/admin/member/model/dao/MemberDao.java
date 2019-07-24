@@ -30,7 +30,7 @@ public class MemberDao {
 	public ArrayList<Member> selectAll(Connection con) {
 		Statement stmt = null;
 		ResultSet rset = null;
-		ArrayList<Member> list = null;
+		ArrayList<Member> list = null; 
 
 		String query = prop.getProperty("selectAll");
 
