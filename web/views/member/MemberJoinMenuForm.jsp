@@ -23,8 +23,8 @@
 </head>
 <body>
 	<div align="center">
-		<a href="/semi/views/member/user/UserJoinTermsForm.jsp"><button id="btn">사용자 회원가입</button></a><br>
-		<a href="/semi/views/member/driver/DriverJoinTermsForm.jsp"><button id="btn">기사 회원가입</button></a>
+		<a href="/semi/views/member/UserJoinTermsForm.jsp"><button id="btn">사용자 회원가입</button></a><br>
+		<a href="/semi/views/member/DriverJoinTermsForm.jsp"><button id="btn">기사 회원가입</button></a>
 	</div>	
 </body>
 </html>

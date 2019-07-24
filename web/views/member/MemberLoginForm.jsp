@@ -8,6 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <style>
 
 	input {
@@ -54,10 +55,10 @@
 	</div>
 	<form action="<%= request.getContextPath()%>/login.me" method="post" id="loginForm">
 	<div align="center">
-		<input type="text" id="userId" value="아이디">
+		<input type="text" name="userId" id="userId" value="">
 	</div>
 	<div align="center">
-		<input type="password" id="password" value="비밀번호">
+		<input type="password" name="password" id="password">
 	</div>
 	<div align="center" id="ch">
 		<input type="checkbox" name="ot" id="ot" checked="checked">로그인 상태유지
@@ -71,10 +72,13 @@
 		<a href="/semi/views/member/MemberJoinMenuForm.jsp">회원가입</a>
 	</div>
 	<div align="center">
-		<a href="/semi/views/mainPage.jsp"><button id="login">로그인</button></a><br>
+		<a href="views/mainPage.jsp"><button id="login">로그인</button></a><br>
 		<a href=http://www.naver.com><img src="../../images/naver.png" id="naver"></a><br>
 		<a href="#"><img src="../../images/kakao.png" id="kakao"></a>
 	</div>
 	</form>
+	<script>
+		
+	</script>
 </body>
 </html>
