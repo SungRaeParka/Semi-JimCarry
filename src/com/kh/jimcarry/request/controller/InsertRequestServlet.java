@@ -65,7 +65,6 @@ public class InsertRequestServlet extends HttpServlet {
 		r.setProNo(proNo);
 		System.out.println("select 수행 후 ProNo ::: " + r.getProNo());
 		
-		//proName = new ProductService().selectProName(reqNo, proNo);
 		
 		String page = "";
 		
