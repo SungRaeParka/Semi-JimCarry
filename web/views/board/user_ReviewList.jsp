@@ -1,5 +1,23 @@
+
+
+<%@page import="java.nio.channels.SeekableByteChannel"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="java.util.*,com.kh.jimcarry.board.model.vo.*"
+                         import="com.kh.jimcarry.member.model.vo.Member"%>
+	<%
+		ArrayList<Board> list = (ArrayList<Board>) request.getAttribute("list");
+		PageInfo pi = (PageInfo) request.getAttribute("pi");
+		int listCount = pi.getListCount();
+		int currentPage = pi.getCurrentPage();
+		int maxPage = pi.getMaxPage();
+		int startPage = pi.getStartPage();
+		int endPage = pi.getEndPage();
+
+		Member loginUser = (Member) session.getAttribute("loginUser");
+
+	%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,7 +44,7 @@ ul, li {list-style-none;
 	margin-top: 200px;
 }
 
-.boardcss_list_table, list_table, table, list_table, thead, tbody {
+.boardcss_list_table, list_table, table, list_table, thead{
 	text-align: center;
 	font-size: 14pt;
 	height: 40px;
@@ -35,7 +53,7 @@ ul, li {list-style-none;
 }
 
 .boardcss_list_table {
-	
+
 }
 
 .list_table {
@@ -96,7 +114,7 @@ a.btn_02 {
 		</div>
 		<br>
 		<br>
-
+		<div>
 		<table class="list_table">
 
 			<colgroup>
@@ -119,59 +137,38 @@ a.btn_02 {
 				</tr>
 			</thead>
 
-			<tbody class="tbody" style="color: red;">
-				<tr>
-					<td style="color: red;">공지</td>
-					<td>정신차리자!</td>
-					<td>user</td>
-					<td>2019-07-12</td>
-					<td>10</td>
-				</tr>
-			</tbody>
 
-			<tbody>
+			<% for(Board b : list) { %>
 				<tr>
-					<td>1</td>
-					<td>짐캐리 짱짱</td>
-					<td>user</td>
-					<td>2019-07-12</td>
-					<td>10</td>
+					<input type="hidden" value="<%=b.getPostCode() %>" />
+					<td><%=b.getPostNo() %></td>
+					<td><%=b.getPostTitle() %></td>
+					<td><%=b.getWriter() %></td>
+					<td><%=b.getPostDate() %></td>
+					<td><%=b.getbCount() %></td>
 				</tr>
-			</tbody>
-
-			<tbody>
-				<tr>
-					<td>1</td>
-					<td>짐캐리 짱짱</td>
-					<td>user</td>
-					<td>2019-07-12</td>
-					<td>10</td>
-				</tr>
-			</tbody>
-
-			<tbody>
-				<tr>
-					<td>1</td>
-					<td>짐캐리 짱짱</td>
-					<td>user</td>
-					<td>2019-07-12</td>
-					<td>10</td>
-				</tr>
-			</tbody>
-
-			<tbody>
-				<tr>
-					<td>1</td>
-					<td>짐캐리 짱짱</td>
-					<td>user</td>
-					<td>2019-07-12</td>
-					<td>10</td>
-				</tr>
-			</tbody>
+			<% } %>
 
 		</table>
+		</div>
 
-		<div class="con">
+		<%-- 페이징처리 --%>
+		<div class="panginArea" align="center">
+			<button onclick="location.href'<%=request.getContextPath()%>/selectList.bo?currentPage=1'"><<</button>
+			<%if(currentPage <= 1) { %>
+				<button disabled><<</button>
+			<% }else { %>
+				<button onclick="location.href='<%=request.getContextPath()%>/selectList.bo?currentPage=<%=currentPage -1%>'"><</button>
+			<% } %>
+				<button onclick="location.href'<%=request.getContextPath()%>/selectList.bo?currentPage=<%=currentPage -1%>'"><</button>
+		
+		
+		
+		</div>
+
+
+
+		<!-- <div class="con">
 			<ul class="pagination">
 				<li><a href="#">1</a></li>
 				<li class="active"><a href="#">2</a></li>
@@ -181,7 +178,8 @@ a.btn_02 {
 				<li><a href="#">다음</a></li>
 				<li><a href="#">맨끝</a></li>
 			</ul>
-		</div>
+		</div> -->
+
 
 		<div>
 			<select id='search'>
@@ -191,6 +189,6 @@ a.btn_02 {
 			</select> <input id='txtKeyWord' /> <input type='button' value='검색' />
 		</div>
 	</div>
-	
+
 </body>
 </html>

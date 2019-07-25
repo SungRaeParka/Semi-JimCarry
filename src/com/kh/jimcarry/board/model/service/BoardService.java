@@ -3,6 +3,7 @@ package com.kh.jimcarry.board.model.service;
 import java.sql.Connection;
 import java.util.ArrayList;
 
+import javax.swing.plaf.synth.SynthSpinnerUI;
 
 import com.kh.jimcarry.board.model.dao.BoardDao;
 import com.kh.jimcarry.board.model.vo.Attachment;
@@ -19,7 +20,7 @@ public class BoardService {
 		ArrayList<Board> list = new BoardDao().selectList(con);
 
 		close(con);
-
+		System.out.println("service : " + list);
 		return list;
 	}
 	//페이징 메소드
@@ -35,8 +36,12 @@ public class BoardService {
 
 	//게시물 카운터 메소드드
 	public int getListCount() {
-		// TODO Auto-generated method stub
-		return 0;
+		Connection con = getConnection();
+
+		int listCount = new BoardDao().getListCount(con);
+		close(con);
+
+		return listCount;
 	}
 
 	// 게시판 인설트
@@ -64,7 +69,7 @@ public class BoardService {
 		}else {
 			rollback(con);
 		}
-		System.out.println();
+
 		return result;
 	}
 
