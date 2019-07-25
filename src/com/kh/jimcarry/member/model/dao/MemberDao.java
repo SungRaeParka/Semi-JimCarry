@@ -1,5 +1,6 @@
 package com.kh.jimcarry.member.model.dao;
 
+import java.sql.Statement;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
@@ -94,25 +95,38 @@ public class MemberDao {
 		return loginUser;
 	}
 
-	public int insertAttachment(Connection con, ArrayList<AttachmentMember> fileList) {
-		PreparedStatement pstmt = null;
-		int result = 0;
-		String query = prop.getProperty("insertAttachment");
-		
-		
-		return 0;
-	}
-
 	public int insertDriver(Connection con, Member m) {
 		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		Member loginUser = null;
+		int result = 0;
 		
 		String query = prop.getProperty("insertDriver");
 		
-		return 0;
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, m.getUserId());
+			pstmt.setString(2, m.getUserPwd());
+			pstmt.setString(3, m.getUserName());
+			pstmt.setString(4, m.getPhone());
+			pstmt.setString(5, m.getAgent());
+			pstmt.setString(6, m.getBusinessNo());
+			pstmt.setString(7, m.getBusinessAddress());
+			pstmt.setString(8, m.getCarType());
+			pstmt.setString(9, m.getCarNo());
+			pstmt.setString(10, m.getBankName());
+			pstmt.setString(11, m.getAccountNo());
+			pstmt.setString(12, m.getCarSize());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
 	}
-
+	
+	
 }
 
 

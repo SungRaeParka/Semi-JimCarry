@@ -44,14 +44,14 @@ public class LoginServlet extends HttpServlet {
 		System.out.println("loginUser userId :::: " + loginUser.getUserId());
 		
 		if(loginUser != null) {
-			if(loginUser.getUserId().equals("admin")) {
+			if(loginUser.getUserId().contains("admin")) {
 				HttpSession session = request.getSession();
 				session.setAttribute("loginUser", loginUser);
 				
-				response.sendRedirect("/semi/views/admin/admin_MemMng.jsp");
+				response.sendRedirect("views/admin/admin_MemMng.jsp");
 			}else if(loginUser.getSeqNo().contains("D")) {
-				HttpSession session = request.getSession();
-				session.setAttribute("loginUser", loginUser);
+					HttpSession session = request.getSession();
+					session.setAttribute("loginUser", loginUser);		
 				
 				response.sendRedirect("views/driver_MainPage.jsp");
 			}else if(loginUser.getSeqNo().contains("U")) {
