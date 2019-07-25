@@ -18,7 +18,7 @@ public class RequestDao {
 	private Properties prop = new Properties();
 	
 	public RequestDao(){
-		String fileName = RequestDao.class.getResource("sql/request/request-query.properties").getPath();
+		String fileName = RequestDao.class.getResource("/sql/request/request-query.properties").getPath();
 		
 		try {
 			prop.load(new FileReader(fileName));
@@ -89,6 +89,7 @@ public class RequestDao {
 				Request req = new Request();
 				
 				req.setReservationDate(rset.getDate("RESERVATION_DATE"));
+				req.setReservationTime(rset.getInt("RESERVATION_TIME"));
 				req.setStartPoint(rset.getString("START_POINT"));
 				req.setArrivalPoint(rset.getString("ARRIVE_POINT"));
 				req.setReqStart(rset.getDate("REQ_START"));
@@ -96,14 +97,23 @@ public class RequestDao {
 				req.setMemo(rset.getString("MEMO"));
 				req.setUserNo(rset.getString("USER_NO"));
 				req.setReqNo(rset.getString("REQ_NO"));
+				req.setCondition(rset.getString("CONDITION"));
 				req.setDriverNo(rset.getString("DRIVER_NO"));
 				req.setOrderPrice(rset.getInt("ORDER_PRICE"));
+				req.setGrade(rset.getString("GRADE"));
+				req.setOrderDate(rset.getDate("ORDER_DATE"));
 				req.setMatchDate(rset.getDate("MATCHING_DATE"));
 				req.setMatchCheck(rset.getString("MATCHING_CHECK"));
 				req.setDriverName(rset.getString("MEMBER_NAME"));
 				
 				
 				list.add(req);
+				
+				System.out.println("리스트에 담김");
+				System.out.println("Dao에서 확인 유저넘버:"+req.getUserNo());
+				System.out.println("Dao에서 확인 평점:"+req.getGrade());
+				System.out.println("Dao에서 확인 예약시간:"+req.getReservationTime());
+				System.out.println("Dao에서 확인 오더날짜:"+req.getOrderDate());
 			}
 			
 			

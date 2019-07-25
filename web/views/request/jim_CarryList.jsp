@@ -1,15 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" import="java.util.*, com.kh.jimcarry.request.model.vo.*" %>
-	
-<%
-ArrayList<Request> list = (ArrayList<Request>) request.getAttribute("list");
-PageInfo pi = (PageInfo) request.getAttribute("pi");
-int listCount = pi.getListCount();
-int currentPage = pi.getCurrentPage();
-int maxPage = pi.getMaxPage();
-int startPage = pi.getStartpage();
-int endPage = pi.getEndPage();
+	pageEncoding="UTF-8"
+	import="java.util.*,java.text.SimpleDateFormat, com.kh.jimcarry.request.model.vo.*"%>
 
+<%
+	ArrayList<Request> list = (ArrayList<Request>) request.getAttribute("list");
+	PageInfo pi = (PageInfo) request.getAttribute("pi");
+	int listCount = pi.getListCount();
+	int currentPage = pi.getCurrentPage();
+	int maxPage = pi.getMaxPage();
+	int startPage = pi.getStartpage();
+	int endPage = pi.getEndPage();
 %>
 
 <!DOCTYPE html>
@@ -99,27 +99,71 @@ int endPage = pi.getEndPage();
 
 		<%
 			Request req = new Request();
+
+			Date startDay = new Date(); //견적매칭 시작일
+			Date finishDay = new Date(); //견적매칭 종료일
+			Date nowDay = new Date(); //현재날짜
+			Date moveDay = new Date(); //예약일(짐옮기는 날)
+			long startTime;
+			long nowTime;
+			long finishTime;
+			long moveTime;
 			
-			Date finishTime = req.getReqFinish();
-			Date now = new Date();
+			long timeRemain;//남은시간
+			long timeReH; //남은시간_시간
+			long timeReM; //남은시간_분
 			
-		
 
 			for (int i = 0; i < list.size(); i++) {
 				req = list.get(i);
+				
+				startDay = req.getReqStart();
+				finishDay = req.getReqFinish();
+				moveDay = req.getReservationDate();
+				System.out.println(nowDay);
+				System.out.println(startDay);
+				System.out.println(finishDay);
+				System.out.println(moveDay);
+				
+				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+				
+				startTime = startDay.getTime();
+				System.out.println("견적매칭 시작날짜 : "+startDay);
+				System.out.println(startTime);
+				
+				nowDay = dateFormat.parse(dateFormat.format(nowDay));
+				nowTime = nowDay.getTime();
+				System.out.println("현재날짜 : "+nowDay);
+				System.out.println(nowTime);
 
+				finishTime = finishDay.getTime();
+				System.out.println("견적매칭 종료날짜 : "+finishDay);
+				System.out.println(finishTime);
+				
+				moveTime = moveDay.getTime();
+				System.out.println("이사 날짜 : "+moveDay);
+				System.out.println(moveTime);
+				
+				timeRemain = finishTime+86400000-nowTime;
+				//timeReM = timeRemain/60000;
+				timeReH = (timeRemain/60000)/60;
+				timeReM = (timeRemain/60000)%60;
+				
 				if (req.getCondition().equals("매칭대기")) {
 		%>
-
 		<div>
-			<img src="../../images/mc1.png" class="imgs" style="float: left">
+			<img src="/semi/images/mc1.png" class="imgs" style="float: left">
 
 			<div id="reqno">
-				<p>견적번호 : <%=req.getReqNo() %></p>
+				<p>
+					견적번호 :
+					<%=req.getReqNo()%></p>
 			</div>
 
 			<div id="title" class="text">
-				<h1><%=req.getStartPoint() %> → <%= req.getArrivalPoint()%></h1>
+				<h1><%=req.getStartPoint()%>
+					→
+					<%=req.getArrivalPoint()%></h1>
 			</div>
 			<div id="reqInfo">
 				<h4>
@@ -128,7 +172,9 @@ int endPage = pi.getEndPage();
 			</div>
 
 			<div id="date" class="text">
-				<h3>예약일 : <%= req.getReservationDate() %></h3>
+				<h3>
+					예약일 :
+					<%=req.getReservationDate()%></h3>
 			</div>
 			<div id="reqpri">
 				<h4>
@@ -137,92 +183,54 @@ int endPage = pi.getEndPage();
 			</div>
 
 			<div id="count" class="text">
-				<h3>받은 견적 수 : <%=req.getReqCount() %></h3>
+				<h3>
+					받은 견적 수 :
+					<%=req.getReqCount()%></h3>
 			</div>
 			<div id="time" align="right">
 
-				<h3>남은 시간 : time</h3>
+				<h3>남은 시간 : <%=timeReH %> 시간 &nbsp; <%=timeReM %> 분</h3>
 
 			</div>
-
-		</div>
-
-		<%
-				} else if (req.getCondition().equals("매칭완료")) {
-
-				} else if (req.getCondition().equals("이용대기")) {
-
-				} else if (req.getCondition().equals("이용완료")) {
-
-				}
-
-			}
-		%>
-
-
-
-
-
-
-		<div>
-			<img src="../../images/box.png" class="imgs" style="float: left">
-
-			<div id="reqno">
-				<p>견적번호 : A1001</p>
-			</div>
-
-			<div id="title" class="text">
-				<h1>서울시 강남구 → 수원시 권선구</h1>
-			</div>
-			<div id="reqInfo">
-				<h4>
-					<a href="/semi/views/request/jim_CarryCheckReq.jsp">견적확인 →</a>
-				</h4>
-			</div>
-
-			<div id="date" class="text">
-				<h3>예약일 : 2019-07-13</h3>
-			</div>
-			<div id="reqpri">
-				<h4>
-					<a href="/semi/views/request/req_ReqList.jsp">입찰내역 확인 →</a>
-				</h4>
-			</div>
-
-			<div id="count" class="text">
-				<h3>받은 견적 수 : 5개</h3>
-			</div>
-			<div id="time" align="right">
-
-				<h3>남은 시간 : time</h3>
-
-			</div>
-
 			<hr>
 		</div>
 
-
+		<%
+			} else if (req.getCondition().equals("매칭완료")) {
+		%>
 		<div>
-			<img src="../../images/box.png" class="imgs" style="float: left">
+			<img src="/semi/images/mc2.png" class="imgs" style="float: left">
 
 			<div id="reqno">
-				<p>견적번호 : A1002</p>
+				<p>
+					견적번호 :
+					<%=req.getReqNo()%></p>
 			</div>
 
 			<div id="title" class="text">
-				<h1>서울시 강남구 → 용인시 처인구</h1>
+				<h1><%=req.getStartPoint()%>
+					→
+					<%=req.getArrivalPoint()%></h1>
 			</div>
 
 
 			<div id="date" class="text">
-				<h3>예약일 : 2019-07-13</h3>
+				<h3>
+					예약일 :
+					<%=req.getReservationDate()%></h3>
 			</div>
 			<div id="reqprice">
-				<h4>이용요금 : 400000</h4>
+				<h4>
+					이용요금 :
+					<%=req.getOrderPrice()%></h4>
 			</div>
 
 			<div id="count" class="text">
-				<h3>기사명 : 박성래 &nbsp;&nbsp;평점 : 5.0</h3>
+				<h3>
+					기사명 :
+					<%=req.getDriverName()%>
+					&nbsp;&nbsp;평점 :
+					<%=req.getGrade()%></h3>
 			</div>
 			<div id="reqcencle" align="right">
 
@@ -236,46 +244,207 @@ int endPage = pi.getEndPage();
 		</div>
 
 
-
-		<div>
-			<img src="../../images/box.png" class="imgs" style="float: left">
+		<%
+			} else if (req.getCondition().equals("이용대기")) {
+				if(nowTime < (moveTime+86400000)){//예약시간받아서 예약시간 getTime 더하기로 수정할것
+		%>			
+					<div>
+			<img src="/semi/images/mc3.png" class="imgs" style="float: left">
 
 			<div id="reqno">
-				<p>견적번호 : A1002</p>
+				<p>
+					견적번호 :
+					<%=req.getReqNo()%></p>
 			</div>
 
 			<div id="title" class="text">
-				<h1>서울시 강남구 → 용인시 처인구</h1>
+				<h1><%=req.getStartPoint()%>
+					→
+					<%=req.getArrivalPoint()%></h1>
 			</div>
 
 
 			<div id="date" class="text">
-				<h3>예약일 : 2019-07-13</h3>
+				<h3>
+					예약일 :
+					<%=req.getReservationDate()%></h3>
 			</div>
 			<div id="reqprice">
-				<h4>이용요금 : 400000</h4>
+				<h4>
+					이용요금 :
+					<%=req.getOrderPrice()%></h4>
 			</div>
 
 			<div id="count" class="text">
-				<h3>기사명 : 박성래 &nbsp;&nbsp;평점 : 5.0</h3>
+				<h3>
+					기사명 :
+					<%=req.getDriverName()%>
+					&nbsp;&nbsp;평점 :
+					<%=req.getGrade()%></h3>
 			</div>
-			<div id="done" align="right">
+			<div id="reqcencle" align="right">
 
 				<h3>
-					<a href="/semi/views/request/popup/pop_reqSuccess.jsp">완료하기→</a>
+					<a href="/semi/views/request/popup/pop_reqCancel.jsp">입찰 취소→</a>
 				</h3>
 
 			</div>
 
 			<hr>
 		</div>
+					
+		<% 		
+				}else{
+		%>			
+					<div>
+			<img src="/semi/images/mc3.png" class="imgs" style="float: left">
 
-		<br>
-		<br>
-		<br>
-		<br>
+			<div id="reqno">
+				<p>
+					견적번호 :
+					<%=req.getReqNo()%></p>
+			</div>
+
+			<div id="title" class="text">
+				<h1><%=req.getStartPoint()%>
+					→
+					<%=req.getArrivalPoint()%></h1>
+			</div>
+
+
+			<div id="date" class="text">
+				<h3>
+					예약일 :
+					<%=req.getReservationDate()%></h3>
+			</div>
+			<div id="reqprice">
+				<h4>
+					이용요금 :
+					<%=req.getOrderPrice()%></h4>
+			</div>
+
+			<div id="count" class="text">
+				<h3>
+					기사명 :
+					<%=req.getDriverName()%>
+					&nbsp;&nbsp;평점 :
+					<%=req.getGrade()%></h3>
+			</div>
+			<div id="reqcencle" align="right">
+
+				<h3>
+					<a href="#">완료하기→</a>
+				</h3>
+
+			</div>
+
+			<hr>
+		</div>
+					
+					
+		<% 			
+				}
+		%>
+		
+		<%
+			} else if (req.getCondition().equals("이용완료")) {
+		%>
+
+		<div>
+			<img src="/semi/images/mc4.png" class="imgs" style="float: left">
+
+			<div id="reqno">
+				<p>견적번호 : <%=req.getReqNo() %></p>
+			</div>
+
+			<div id="title" class="text">
+				<h1><%=req.getStartPoint() %> → <%=req.getArrivalPoint() %></h1>
+			</div>
+
+
+			<div id="date" class="text">
+				<h3>완료일 : <%=req.getReservationDate() %></h3>
+			</div>
+			<div id="reqprice">
+				<h4>이용요금 : <%=req.getOrderPrice() %></h4>
+			</div>
+
+			<div id="count" class="text">
+				<h3>기사명 : <%=req.getDriverName() %> &nbsp;&nbsp;평점 : <%=req.getGrade() %></h3>
+			</div>
+			
+			<div id="done" align="right">
+				<h5>이용 완료된 견적 입니다.</h5>
+			</div>
+
+			<hr>
+		</div>
+		<%
+			}
+
+			}
+		%>
+
+		<br> <br> <br> <br>
+
+
+		<%-- 페이징처리 --%>
+		<div class="pagingArea" align="center">
+			<button
+				onclick="location.href='<%=request.getContextPath()%>/myJcarrylist.jc?currentPage=1'">
+				<<</button>
+
+			<%
+				if (currentPage <= 1) {
+			%>
+			<button disabled><</button>
+			<%
+				} else {
+			%>
+			<button
+				onclick="location.href='<%=request.getContextPath()%>/myJcarrylist.jc?currentPage=<%=currentPage - 1%>'">
+				<</button>
+			<%
+				}
+			%>
+
+
+			<%
+				for (int p = startPage; p <= endPage; p++) {
+					if (currentPage == p) {
+			%>
+			<button disabled><%=p%></button>
+			<%
+				} else {
+			%>
+			<button
+				onclick="location.href='<%=request.getContextPath()%>/myJcarrylist.jc?currentPage=<%=p%>'"><%=p%></button>
+			<%
+				}
+				}
+			%>
+
+			<%
+				if (currentPage >= maxPage) {
+			%>
+			<button disabled>></button>
+			<%
+				} else {
+			%>
+			<button
+				onclick="location.href='<%=request.getContextPath()%>/myJcarrylist.jc?currentPage=<%=currentPage + 1%>'">
+				></button>
+			<%} %>
+			<button
+				onclick="location.href='<%=request.getContextPath() %>/myJcarrylist.jc?currentPage=<%=maxPage %>'">
+				>></button>
+
+		</div>
+
 
 	</div>
+
+
 
 </body>
 </html>
