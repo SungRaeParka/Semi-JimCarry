@@ -34,23 +34,23 @@ public class MemberService {
 		
 		return loginUser;
 	}
-	//기사 회원가입
-	/*public int insertDriver(Member m, ArrayList<AttachmentMember> fileList) {
+
+	public int insertDriver(Member m) {
 		Connection con = getConnection();
-		int result = 0;
 		
-		int result1 = new MemberDao().insertDriver(con, m);
+		int result = new MemberDao().insertDriver(con, m);
 		
-		if(result1 > 0) {
-			String seqNo = new MemberDao().selectCurrval(con);
-			for(int i = 0; i < fileList.size(); i++) {
-				fileList.get(i).setDriverNo(seqNo);
-			}
+		if(result > 0) {
+			commit(con);
+		}else {
+			rollback(con);
 		}
+		close(con);
 		
 		
-		return 0;
-	}*/
+		return result;
+	}
+	
 }
 
 
