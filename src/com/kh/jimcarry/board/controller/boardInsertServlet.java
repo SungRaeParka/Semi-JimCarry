@@ -87,7 +87,8 @@ public class boardInsertServlet extends HttpServlet {
 			b.setPostTitle(multiTitle);
 			b.setPostContents(multiiContent);
 			b.setUserNo(userNo);
-			b.setPostType("사용후기");
+			String reViews = "사용후기";
+			b.setPostType(reViews);
 
 
 			System.out.println("servlet b " + b);
@@ -102,6 +103,7 @@ public class boardInsertServlet extends HttpServlet {
 				at.setFilePath(savePath);
 				at.setOriginName(originFiles.get(i));
 				at.setChangeName(saveFiles.get(i));
+				at.setAttachType(reViews);
 
 				fileList.add(at);
 			}
