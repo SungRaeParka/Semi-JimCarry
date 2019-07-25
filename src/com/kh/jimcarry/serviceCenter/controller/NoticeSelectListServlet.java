@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.kh.jimcarry.serviceCenter.model.service.NoticeService;
+import com.kh.jimcarry.serviceCenter.model.service.QandAService;
 import com.kh.jimcarry.serviceCenter.model.vo.Notice;
+import com.kh.jimcarry.serviceCenter.model.vo.QandA;
 
 /**
  * Servlet implementation class NoticeSelectServlet
@@ -33,20 +35,28 @@ public class NoticeSelectListServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		ArrayList<Notice> list = new NoticeService().selectList();
+		ArrayList<QandA> list1=new QandAService().selectList();
 		
 		String page = "";
 		
-		if (list != null) {
-			//나중에 페이지 바꾸기
+		if (list != null && list1 != null) {
 			page="views/board/user_Qna1on1List.jsp";
 			request.setAttribute("list", list);
+			request.setAttribute("list1", list1);
 		} else {
-			page="views/common/errorPage.jsp";
-			request.setAttribute("msg", "공지사항 조회 실패!");
+			if (list ==null) {
+				page="views/common/errorPage.jsp";
+				request.setAttribute("msg", "공지사항 조회 실패!");
+			} else {
+				page="views/common/errorPage.jsp";
+				request.setAttribute("msg", "Q&A 조회 실패!");
+			}
 		}
 		
 		request.getRequestDispatcher(page).forward(request, response);
 	}
+	
+	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
