@@ -37,6 +37,7 @@ public class NoticeSelectOneServlet extends HttpServlet {
 		String page="";
 		
 		if(n !=null) {
+			//나중에 페이지 바꾸기
 			page="view/board/user_Insert1on1.jsp";
 			request.setAttribute("n", n);
 		}else {

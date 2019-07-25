@@ -1,7 +1,10 @@
 <%@page import="com.kh.jimcarry.serviceCenter.model.vo.Notice"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="java.util.*, com.kh.jimcarry.serviceCenter.model.vo.*"%>
-    <%ArrayList<Notice> list=(ArrayList<Notice>) request.getAttribute("list"); %>
+    <%
+    ArrayList<Notice> list=(ArrayList<Notice>) request.getAttribute("list"); 
+    ArrayList<QandA> list1=(ArrayList<QandA>)request.getAttribute("list1");
+    %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,7 +44,7 @@ container{
     <%for(Notice n : list) {%>
       <tr>
       <td><%=n.getPostcode() %></td>
-      <td><%=n.getPostContent() %></td>
+      <td><%=n.getPostTitle() %></td>
       <td><%=n.getUserNo() %></td>
       <td><%=n.getPostdate() %></td>
       <td><%=n.getbCount() %></td>
@@ -85,169 +88,156 @@ container{
   </ul>
   
   <div class="tab-content">
+   
     <div id="home" class="tab-pane fade in active">
+    <%for(QandA qa : list1) {%>
   <div class="panel-group" id="accordion">
     <div class="panel panel-default">
       <div class="panel-heading">
         <h4 class="panel-title">
-          <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Q이사를 취소 하고 싶어요.</a>
+        
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse1"><%=qa.getPostTitle() %></a>
         </h4>
       </div>
       <div id="collapse1" class="panel-collapse collapse in">
-        <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+        <div class="panel-body"><%=qa.getPostContent() %></div>
       </div>
     </div>
     <div class="panel panel-default">
       <div class="panel-heading">
         <h4 class="panel-title">
-          <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Q 이사 날짜를 변경하고 싶어요.</a>
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse2"><%=qa.getPostTitle() %></a>
         </h4>
       </div>
       <div id="collapse2" class="panel-collapse collapse">
-        <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+        <div class="panel-body"><%=qa.getPostContent() %></div>
       </div>
     </div>
     <div class="panel panel-default">
       <div class="panel-heading">
         <h4 class="panel-title">
-          <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Q 짐이 추가 되었어요</a>
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse3"><%=qa.getPostTitle() %></a>
         </h4>
       </div>
       <div id="collapse3" class="panel-collapse collapse">
-        <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+        <div class="panel-body"><%=qa.getPostContent() %></div>
       </div>
     </div>
-  </div> 
+  </div>
+  <%} %> 
 </div>
 
 	<div id="menu1" class="tab-pane fade">
+	<%for(QandA qa : list1) {%>
 	<div class="panel-group" id="accordion">
     <div class="panel panel-default">
       <div class="panel-heading">
         <h4 class="panel-title">
-          <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">Q1</a>
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse4"><%=qa.getPostTitle() %></a>
         </h4>
       </div>
       <div id="collapse4" class="panel-collapse collapse in">
-        <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+        <div class="panel-body"><%=qa.getPostContent() %></div>
       </div>
     </div>
     <div class="panel panel-default">
       <div class="panel-heading">
         <h4 class="panel-title">
-          <a data-toggle="collapse" data-parent="#accordion" href="#collapse5">Q2</a>
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse5"><%=qa.getPostTitle() %></a>
         </h4>
       </div>
       <div id="collapse5" class="panel-collapse collapse">
-        <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+        <div class="panel-body"><%=qa.getPostContent() %></div>
       </div>
     </div>
     <div class="panel panel-default">
       <div class="panel-heading">
         <h4 class="panel-title">
-          <a data-toggle="collapse" data-parent="#accordion" href="#collapse6">Q3</a>
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse6"><%=qa.getPostTitle() %></a>
         </h4>
       </div>
       <div id="collapse6" class="panel-collapse collapse">
-        <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+        <div class="panel-body"><%=qa.getPostContent() %></div>
       </div>
     </div>
   </div>
+  <%} %>
 	</div>
 	
 	<div id="menu2" class="tab-pane fade">
+	<%for(QandA qa : list1) {%>
 	<div class="panel-group" id="accordion">
     <div class="panel panel-default">
       <div class="panel-heading">
         <h4 class="panel-title">
-          <a data-toggle="collapse" data-parent="#accordion" href="#collapse7">Q4</a>
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse7"><%=qa.getPostTitle() %></a>
         </h4>
       </div>
       <div id="collapse7" class="panel-collapse collapse in">
-        <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+        <div class="panel-body"><%=qa.getPostContent() %></div>
       </div>
     </div>
     <div class="panel panel-default">
       <div class="panel-heading">
         <h4 class="panel-title">
-          <a data-toggle="collapse" data-parent="#accordion" href="#collapse8">Q5</a>
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse8"><%=qa.getPostTitle() %></a>
         </h4>
       </div>
       <div id="collapse8" class="panel-collapse collapse">
-        <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+        <div class="panel-body"><%=qa.getPostContent() %></div>
       </div>
     </div>
     <div class="panel panel-default">
       <div class="panel-heading">
         <h4 class="panel-title">
-          <a data-toggle="collapse" data-parent="#accordion" href="#collapse9">Q6</a>
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse9"><%=qa.getPostTitle() %></a>
         </h4>
       </div>
       <div id="collapse9" class="panel-collapse collapse">
-        <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+        <div class="panel-body"><%=qa.getPostContent() %></div>
       </div>
     </div>
   </div>
+  <%} %>
 	</div>
 	
 	<div id="menu3" class="tab-pane fade">
+	<%for(QandA qa : list1) {%>
 	<div class="panel-group" id="accordion">
     <div class="panel panel-default">
       <div class="panel-heading">
         <h4 class="panel-title">
-          <a data-toggle="collapse" data-parent="#accordion" href="#collapse10">Q7</a>
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse10"><%=qa.getPostTitle() %></a>
         </h4>
       </div>
       <div id="collapse10" class="panel-collapse collapse in">
-        <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+        <div class="panel-body"><%=qa.getPostContent() %></div>
       </div>
     </div>
     <div class="panel panel-default">
       <div class="panel-heading">
         <h4 class="panel-title">
-          <a data-toggle="collapse" data-parent="#accordion" href="#collapse11">Q 8</a>
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse11"><%=qa.getPostTitle() %></a>
         </h4>
       </div>
       <div id="collapse11" class="panel-collapse collapse">
-        <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+        <div class="panel-body"><%=qa.getPostContent() %></div>
       </div>
     </div>
     <div class="panel panel-default">
       <div class="panel-heading">
         <h4 class="panel-title">
-          <a data-toggle="collapse" data-parent="#accordion" href="#collapse12">Q 9</a>
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse12"><%=qa.getPostTitle() %></a>
         </h4>
       </div>
       <div id="collapse12" class="panel-collapse collapse">
-        <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+        <div class="panel-body"><%=qa.getPostContent() %></div>
       </div>
     </div>
+    <%} %>
   </div>
 	</div>
+
 </div>
 </div>
 

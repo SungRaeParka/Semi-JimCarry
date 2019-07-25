@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.util.ArrayList;
 
 import com.kh.jimcarry.serviceCenter.model.dao.QandADao;
+import com.kh.jimcarry.serviceCenter.model.vo.Notice;
 import com.kh.jimcarry.serviceCenter.model.vo.QandA;
 
 import static com.kh.jimcarry.common.JDBCTemplate.*;
@@ -17,11 +18,11 @@ public class QandAService {
 		
 		Connection con = getConnection();
 		
-		ArrayList<QandA> list = new QandADao().selectList(con);
+		ArrayList<QandA> list1 = new QandADao().selectList(con);
 		
 		close(con);
 		
-		return list;
+		return list1;
 	}
 
 }
