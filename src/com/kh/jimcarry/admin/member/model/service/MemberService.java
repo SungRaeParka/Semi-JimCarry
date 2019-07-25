@@ -1,7 +1,6 @@
 package com.kh.jimcarry.admin.member.model.service;
 
-import static com.kh.jimcarry.common.JDBCTemplate.close;
-import static com.kh.jimcarry.common.JDBCTemplate.getConnection;
+import static com.kh.jimcarry.common.JDBCTemplate.*;
 
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -42,6 +41,28 @@ public class MemberService {
 
 		ArrayList<Member> list = new MemberDao().approveDriver(con);
 		close(con);
+		return list;
+	}
+
+	public ArrayList<Member> UdateApproveDriver(String yesD, String driverNo) {
+		Connection con = getConnection();
+
+
+//		if (list != null) {
+			int result = new MemberDao().UdateApproveDriver(con,yesD,driverNo);
+
+			if(result > 0) {
+				commit(con);
+			}else {
+				rollback(con);
+			}
+//		}else {
+//
+//		}
+		ArrayList<Member> list = new MemberDao().approveDriver(con);
+
+		close(con);
+
 		return list;
 	}
 

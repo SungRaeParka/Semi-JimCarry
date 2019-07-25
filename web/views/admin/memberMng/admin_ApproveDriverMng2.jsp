@@ -320,104 +320,133 @@
 								</table>
 							</div>
 							<div id="divBodyScroll5">
-								<form action="">
-									<table id="tblBody5" border="0">
-										<colgroup>
-											<col style="width: 150px;" class="right_border" />
-											<col style="width: 100px;" class="right_border" />
-											<col style="width: 100px;" class="right_border" />
-											<col style="width: 100px;" class="right_border" />
-											<col style="width: 100px;" class="right_border" />
-											<col style="width: 150px;" class="right_border" />
-											<col style="width: 70px;" class="right_border" />
-											<col style="width: 50px;" class="right_border" />
-											<col style="width: 100px;" class="right_border" />
-											<col style="width: 150px;" class="right_border" />
-											<col style="width: 300px;" class="right_border" />
-											<col style="width: 100px;" class="right_border" />
-											<col style="width: 100px;" class="right_border" />
-											<col style="width: 50px;" class="right_border" />
-											<col style="width: 150px;" class="right_border" />
-											<col style="width: 100px;" class="right_border" />
-											<col style="width: 100px;" class="right_border" />
-											<col style="width: 200px;" class="right_border" />
-											<col style="width: 200px;" class="right_border" />
-											<col style="width: 200px;" class="right_border" />
-											<col style="width: 200px;" class="right_border" />
-											<col style="width: 200px;" class="right_border" />
-										</colgroup>
-										<% for(Member m : list){
+								<table id="tblBody5" border="0">
+									<colgroup>
+										<col style="width: 150px;" class="right_border" />
+										<col style="width: 100px;" class="right_border" />
+										<col style="width: 100px;" class="right_border" />
+										<col style="width: 100px;" class="right_border" />
+										<col style="width: 100px;" class="right_border" />
+										<col style="width: 150px;" class="right_border" />
+										<col style="width: 70px;" class="right_border" />
+										<col style="width: 50px;" class="right_border" />
+										<col style="width: 100px;" class="right_border" />
+										<col style="width: 150px;" class="right_border" />
+										<col style="width: 300px;" class="right_border" />
+										<col style="width: 100px;" class="right_border" />
+										<col style="width: 100px;" class="right_border" />
+										<col style="width: 50px;" class="right_border" />
+										<col style="width: 150px;" class="right_border" />
+										<col style="width: 100px;" class="right_border" />
+										<col style="width: 100px;" class="right_border" />
+										<col style="width: 200px;" class="right_border" />
+										<col style="width: 200px;" class="right_border" />
+										<col style="width: 200px;" class="right_border" />
+										<col style="width: 200px;" class="right_border" />
+										<col style="width: 200px;" class="right_border" />
+									</colgroup>
+									<% for(Member m : list){
 									index++; %>
-										<tr>
-
+									<tr>
+										<!-- <form action="" method="get"> -->
 											<td class="content right_border">
-												<button type="button" id="yesD" name="yesD" value="승인" onclick="yes();">승인</button> &nbsp;
+												<button id="yesD" name="yesD" value="승인" onclick="yesD();">승인</button>&nbsp;
 												<button id="noD" name="noD" value="거절" onclick="noD();">거절</button>
+												<input type="hidden" id="driverNo" name="driverNo_<%=index %>" value="<%=m.getSeqNo()%>">
 											</td>
-											<td class="content right_border">
-												<%=m.getSeqNo()%>
-											</td>
-											<td class="content right_border">
-												<%=m.getEnrollDate()%>
-											</td>
-											<td class="content right_border">
-												<%=m.getUserId() %>
-											</td>
-											<td class="content right_border">
-												<%=m.getUserName() %>
-											</td>
-											<td class="content right_border">
-												<%=m.getPhone() %>
-											</td>
-											<td class="content right_border">
-												<%=m.getStatusCheck() %>
-											</td>
-											<td class="content right_border">
-												<%=m.getUdCheck() %>
-											</td>
-											<td class="content right_border">
-												<%=m.getAgent() %>
-											</td>
-											<td class="content right_border">
-												<%=m.getBusinessNo() %>
-											</td>
-											<td class="content right_border">
-												<%=m.getBusinessAddress() %>
-											</td>
-											<td class="content right_border">
-												<%=m.getCarType() %>
-											</td>
-											<td class="content right_border">
-												<%=m.getCarNo() %>
-											</td>
-											<td class="content right_border">
-												<%=m.getBankName() %>
-											</td>
-											<td class="content right_border">
-												<%=m.getAccountNo() %>
-											</td>
-											<td class="content right_border">
-												<%=m.getBlacklistCheck() %>
-											</td>
-											<td class="content right_border">
-												<%=m.getJoinCheck() %>
-											</td>
-											<td class="content right_border">
-												<%=m.getRefuseReason() %>
-											</td>
+										<!-- </form> -->
+										<script>
+										//신청 기사관리 탭의 상태 결정 버튼
+										function yesD() {
+											var result = window.confirm("해당 기사님을 짐캐리 기사로 승인하시겠습니까?")
+											var yesD = $("#yesD").val();
+											var driverNo = $("#driverNo").val();
+											console.log("driverNo : " + driverNo);
+											var yes = {yesD:yesD, driverNo:driverNo};
 
-											<td class="content right_border">views/images/aa.png</td>
-											<td class="content right_border">views/images/aa.png</td>
-											<td class="content right_border">views/images/aa.png</td>
-											<td class="content right_border">views/images/aa.png</td>
-										</tr>
-										<% } %>
-									</table>
+											if (result == true) {
+												//해당 기사를 기사 db에 추가 후 기사에게 메시지 보내기
+												$.ajax({
+													url:'updateApprove.d',
+													data:{yesD:yesD, driverNo:driverNo},
+													success:function(data){
+														$("#yesD").attr("action", "<%= request.getContextPath()%>/UpdateApprove.d")
+													},
+													error:function(){
+														console.log("error");
+													}
+												});
+												<%-- $("#yesD").attr("action", "<%= request.getContextPath()%>/UpdateApprove.d") --%>
+											} else {
+												//해당 작업 취소
+												console.log("해당작업취소")
+											}
+										};
+										</script>
+
+										<td class="content right_border">
+											<%=m.getSeqNo()%>
+										</td>
+										<td class="content right_border">
+											<%=m.getEnrollDate()%>
+										</td>
+										<td class="content right_border">
+											<%=m.getUserId() %>
+										</td>
+										<td class="content right_border">
+											<%=m.getUserName() %>
+										</td>
+										<td class="content right_border">
+											<%=m.getPhone() %>
+										</td>
+										<td class="content right_border">
+											<%=m.getStatusCheck() %>
+										</td>
+										<td class="content right_border">
+											<%=m.getUdCheck() %>
+										</td>
+										<td class="content right_border">
+											<%=m.getAgent() %>
+										</td>
+										<td class="content right_border">
+											<%=m.getBusinessNo() %>
+										</td>
+										<td class="content right_border">
+											<%=m.getBusinessAddress() %>
+										</td>
+										<td class="content right_border">
+											<%=m.getCarType() %>
+										</td>
+										<td class="content right_border">
+											<%=m.getCarNo() %>
+										</td>
+										<td class="content right_border">
+											<%=m.getBankName() %>
+										</td>
+										<td class="content right_border">
+											<%=m.getAccountNo() %>
+										</td>
+										<td class="content right_border">
+											<%=m.getBlacklistCheck() %>
+										</td>
+										<td class="content right_border">
+											<%=m.getJoinCheck() %>
+										</td>
+										<td class="content right_border">
+											<%=m.getRefuseReason() %>
+										</td>
+
+										<td class="content right_border">views/images/aa.png</td>
+										<td class="content right_border">views/images/aa.png</td>
+										<td class="content right_border">views/images/aa.png</td>
+										<td class="content right_border">views/images/aa.png</td>
+									</tr>
+									<% } %>
+								</table>
 							</div>
 						</td>
 					</tr>
 				</table>
-				</form>
 			</div>
 
 			<div id="menu3" class="tab-pane fade"></div>
@@ -484,25 +513,25 @@
 		});
 
 		<%-- //신청 기사관리 탭의 상태 결정 버튼
-			function yesD() {
-				var result = window.confirm("해당 기사님을 짐캐리 기사로 승인하시겠습니까?")
+		function yesD() {
+			var result = window.confirm("해당 기사님을 짐캐리 기사로 승인하시겠습니까?")
 
-				if (result == true) {
-					//해당 기사를 기사 db에 추가 후 기사에게 메시지 보내기
-					$("#yesD").attr("action", "<%= request.getContextPath()%>/UpdateApprove.d")
-				} else {
-					//해당 작업 취소
-					console.log("해당작업취소")
-				}
-			}; --%>
-				function noD() {
-					var result = window.prompt("거절 사유를 해당 기사님에게 남겨주세요.")
-					if (result == true) {
-						//해당 기사에게 거절 사유 메시지 보내기
-					} else {
-						//해당 작업 취소
-					}
-				};
+			if (result == true) {
+				//해당 기사를 기사 db에 추가 후 기사에게 메시지 보내기
+				$("#yesD").attr("action", "<%= request.getContextPath()%>/UpdateApprove.d")
+			} else {
+				//해당 작업 취소
+				console.log("해당작업취소")
+			}
+		}; --%>
+		function noD() {
+			var result = window.prompt("거절 사유를 해당 기사님에게 남겨주세요.")
+			if (result == true) {
+				//해당 기사에게 거절 사유 메시지 보내기
+			} else {
+				//해당 작업 취소
+			}
+		};
 		function removeBL() {
 			var result = window.prompt("해당 기사님에게 블랙리스트 해제 사유를 남겨주세요.")
 			if (result == true) {
@@ -513,24 +542,6 @@
 			}
 		};
 
-	</script>
-	<script>
-		//신청 기사관리 탭의 상태 결정 버튼
-		function yes() {
-			var result = window.confirm("해당 기사님을 짐캐리 기사로 승인하시겠습니까?")
-			var yesD = $("#yesD").val();
-			var driverNo = $("#driverNo").val();
-			console.log("driverNo : " + driverNo);
-			var yes = { yesD: yesD, driverNo: driverNo };
-			$("#yesD").attr("action", "<%= request.getContextPath()%>/UpdateApprove.d")
-			if (result == true) {
-				//해당 기사를 기사 db에 추가 후 기사에게 메시지 보내기
-				$("#yesD").attr("action", "<%= request.getContextPath()%>/UpdateApprove.d")
-			} else {
-				//해당 작업 취소
-				console.log("해당작업취소")
-			}
-		};
 	</script>
 
 </body>
