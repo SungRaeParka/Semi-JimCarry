@@ -47,33 +47,5 @@ public class ProductService {
 		close(con);
 		
 		return proNo;
-	}	
-	
-
-	public int updateRef(Product p) { 
-		Connection con = getConnection();
-		
-		String refProNo = new ProductDao().selectRefProNo(con, p);
-		
-		System.out.println("Service refProNo :::" + refProNo);
-		
-		int result = new ProductDao().updateRef(con, p, refProNo);
-		
-		if(result > 0) {
-			commit(con);			
-		}else {
-			rollback(con);
-		}
-		
-		close(con);
-		
-		return result;
-	}
-
-
-
-
-	
-
-	
+	}		
 }
