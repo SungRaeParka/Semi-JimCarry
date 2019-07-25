@@ -2,8 +2,10 @@
     pageEncoding="UTF-8" import="com.kh.jimcarry.request.model.vo.*, java.util.*"%>
 <%
 	Product r = (Product) session.getAttribute("r");
+	
 	String[] proKind = r.getProKind().split(", ");
 	String[] proName = r.getProName().split(", ");	
+	
 	int bookCount = r.getBookCount();
 	int boxCount = r.getBoxCount();
 	
@@ -45,7 +47,7 @@
 <body>
 	<%@ include file="/views/common/user_TopBar.jsp" %>
 	<div id="main">
-	<form action="" method="post">
+	<form action="<%=request.getContextPath()%>/updateAll.pr" method="post" id="frm">
 		<div style="padding-top: 65px; padding-left: 20px;">
 			<span style="font-size: 45px; font-weight: bold">선택한 짐들의 상세정보를 선택하세요.</span><br>
 			<span>물품명을 선택하시면 상세정보를 선택 할 수 있습니다.</span>
@@ -238,9 +240,10 @@
 			<a href="req_ProSelect.jsp" style="text-decoration: none">
 				<span style="font-size: 30px">뒤로가기</span>	
 			</a>
-			<a href="req_PlaceSelect.jsp" style="text-decoration: none; padding-left: 40px;">
-				<span id="updateProDetail" onclick="updateProDetail();" style="font-size: 30px" >다음 단계로</span>	
-			</a>
+			<span id="updateProDetail" onclick="updateProDetail();" style="font-size: 30px; cursor: pointer;" >다음 단계로</span>	
+		</div>
+		<div id="hiddenArea">
+		
 		</div>
 	</form>	
 	</div>
@@ -251,7 +254,7 @@
 	
 	<div>
 		<!-- 냉장고 팝업창 -->
-		<form action="<%=request.getContextPath()%>/updateRef.pr" method="post">		
+	
 			<div class="modal fade" id="pop_ref" tabindex="-1" role="dialog" aria-labelledby="popRefLabel" aria-hidden="true">
 				<div class="modal-dialog modal-sm" role="document">
 					<div class="modal-header">
@@ -293,14 +296,14 @@
 					</div>
 					<div class="modal-footer">
 						<div align="center">
-							<input type="submit" value="확인" onclick="self.close()">
+							<input type="button" value="확인" id="updateRef">
 						</div>
 					</div>
 				</div>
 				<input type="hidden" name="reqNo" value="<%=r.getReqNo()%>">
 				<input type="hidden" name="proNo" value="<%=r.getProNo()%>">
 			</div>
-		</form>
+	
 		<form action="<%=request.getContextPath()%>/updatePopup.rq" method="post">			
 		<!-- 세탁기 팝업창  -->
 			<div class="modal fade" id="pop_wash" tabindex="-1" role="dialog" aria-labelledby="popRefLabel" aria-hidden="true">
@@ -1071,6 +1074,51 @@
 			</div>
 		</form>
 	</div>
+	<script>
+		function updateProDetail(){
+			$("#frm").submit();
+		}		
+	
+		 $("#updateRef").on("click", function() {			
+			var $div = $("#hiddenArea");
+			var $inputRefNo = $("<input>");
+			var $inputRefType = $("<input>");
+			var $inputRefSize = $("<input>");
+			var proType_refval = $(":input:radio[name=proType_ref]:checked").val();
+			var proSize_refval = $(":input:radio[name=proSize_ref]:checked").val();		
+
+			$inputRefNo.attr({
+				type: 'hidden',
+				name: 'proNo_Ref2',
+				value: '<%=r.getProNo()%>'
+			});
+			
+			$inputRefType.attr({
+				type: 'hidden',
+				name: 'proType_Ref2',
+				value: proType_refval
+			});
+			
+			$inputRefSize.attr({
+				type: 'hidden',
+				name: 'proSize_Ref2',
+				value: proSize_refval
+			});
+
+			$div.html("");
+
+			$div.append($inputRefNo);	
+			$div.append($inputRefType);
+			$div.append($inputRefSize);
+			
+			$(":input:radio[name=proType_ref]").prop('checked', false);
+			$(":input:radio[name=proSize_ref]").prop('checked', false);
+			
+			$("#pop_ref").modal("hide");
+			
+			
+		});
+	</script>
 	
 	
 </body>
