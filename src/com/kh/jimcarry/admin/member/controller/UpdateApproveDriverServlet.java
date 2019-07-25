@@ -9,20 +9,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
 import com.kh.jimcarry.admin.member.model.service.MemberService;
 import com.kh.jimcarry.member.model.vo.Member;
 
 /**
- * Servlet implementation class ApproveDriver
+ * Servlet implementation class UpdateApproveDriverServlet
  */
-@WebServlet("/approve.d")
-public class ApproveDriver extends HttpServlet {
+@WebServlet("/updateApprove.d")
+public class UpdateApproveDriverServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ApproveDriver() {
+    public UpdateApproveDriverServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,20 +32,29 @@ public class ApproveDriver extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<Member> list = new MemberService().approveDriver();
+		String yesD = request.getParameter("yesD");
+		String driverNo = request.getParameter("driverNo");
 
-		String page ="";
+		System.out.println("yesD in controller : " + yesD);
+		System.out.println("driverNo in controller : " + driverNo);
 
-		if(list != null) {
-			page = "views/admin/memberMng/admin_ApproveDriverMng.jsp";
-			request.setAttribute("list", list);
-		}else {
-			page = "views/common/erroPage.jsp";
-			request.setAttribute("msg", "목록 조회 실패!");
-		}
-		System.out.println("SelectAllDriver.svl list : " + list);
+		ArrayList<Member> list = new MemberService().UdateApproveDriver(yesD, driverNo);
 
-		request.getRequestDispatcher(page).forward(request, response);
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8");
+		new Gson().toJson(list, response.getWriter());
+//		String page ="";
+//
+//		if(list != null) {
+//			page = "views/admin/memberMng/admin_ApproveDriverMng.jsp";
+//			request.setAttribute("list", list);
+//		}else {
+//			page = "views/common/erroPage.jsp";
+//			request.setAttribute("msg", "목록 조회 실패!");
+//		}
+//		System.out.println("SelectAllDriver.svl list : " + list);
+//
+//		request.getRequestDispatcher(page).forward(request, response);
 	}
 
 	/**
