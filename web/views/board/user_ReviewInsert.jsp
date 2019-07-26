@@ -93,7 +93,7 @@ td {
 </head>
 <body>
 
-	<%@ include file="/views/common/user_TopBar.jsp"%>
+	<%@ include file="/views/common/main_TopBar.jsp"%>
 
 	<br>
 	<br>

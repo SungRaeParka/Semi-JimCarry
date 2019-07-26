@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Properties;
 
 import com.kh.jimcarry.board.model.vo.Attachment;
@@ -153,6 +154,74 @@ public class BoardDao {
 		return listCount;
 	}
 
+
+	//조회수 카운터
+	public int updateCount(Connection con, int num) {
+		PreparedStatement pstmt = null;
+
+		int result = 0;
+
+		String query = prop.getProperty("updateCount");
+
+
+
+		return 0;
+	}
+
+	//게시판 상세보기
+	public HashMap<String, Object> selectBoardMap(Connection con, int num) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		HashMap<String, Object> hmap = null;
+		Board b = null;
+		Attachment at = null;
+		ArrayList<Attachment> list = null;
+
+		String query = prop.getProperty("selectBoardOne");
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, num);
+
+			rset = pstmt.executeQuery();
+
+			list = new ArrayList<Attachment>();
+
+			while(rset.next()) {
+				b = new Board();
+				b.setPostCode(rset.getString("POST_CODE"));
+				b.setPostNo(rset.getInt("POST_NO"));
+				b.setPostTitle(rset.getString("POST_TITLE"));
+				b.setPostContents(rset.getString("POST_CONTENTS"));
+				b.setbCount(rset.getInt("B_COUNT"));
+				b.setPostDate(rset.getDate("POST_DATE"));
+				b.setWriter(rset.getString("MEMBER_ID"));
+
+				at = new Attachment();
+				at.setAttachNo(rset.getString("ATTACH_NO"));
+				at.setOriginName(rset.getString("ORIGIN_NAME"));
+				at.setChangeName(rset.getString("CHANGE_NAME"));
+				at.setFilePath(rset.getString("FILE_PATH"));
+				at.setUploadDate(rset.getDate("UPLOAD_DATE"));
+
+				list.add(at);
+			}
+
+			hmap = new HashMap<String, Object>();
+			hmap.put("board", b);
+			hmap.put("attachment", list);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+
+		return hmap;
+	}
+
+
+
 	// 게시판 삽입용메소드
 	public int insertBoardContent(Connection con, Board b) {
 		PreparedStatement pstmt = null;
@@ -244,7 +313,6 @@ public class BoardDao {
 		System.out.println("insertAttachment" + result);
 		return result;
 	}
-
 
 
 }

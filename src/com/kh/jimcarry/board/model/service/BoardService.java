@@ -2,6 +2,7 @@ package com.kh.jimcarry.board.model.service;
 
 import java.sql.Connection;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.swing.plaf.synth.SynthSpinnerUI;
 
@@ -44,6 +45,25 @@ public class BoardService {
 		return listCount;
 	}
 
+	//게시판 상세보기
+		public HashMap<String, Object> selectBoardMap(int num) {
+			Connection con = getConnection();
+
+			HashMap<String, Object> hmap = null;
+
+			int result = new BoardDao().updateCount(con,num);
+
+			if(result > 0) {
+				commit(con);
+				hmap = new BoardDao().selectBoardMap(con,num);
+			}else {
+				rollback(con);
+			}
+			close(con);
+
+			return hmap;
+		}
+
 	// 게시판 인설트
 	public int insertBoard(Board b, ArrayList<Attachment> fileList) {
 		Connection con = getConnection();
@@ -69,8 +89,10 @@ public class BoardService {
 		}else {
 			rollback(con);
 		}
-
+			close(con);
 		return result;
 	}
+
+
 
 }

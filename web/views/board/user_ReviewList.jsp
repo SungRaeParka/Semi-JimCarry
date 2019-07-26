@@ -14,7 +14,14 @@
 		int startPage = pi.getStartPage();
 		int endPage = pi.getEndPage();
 
-		Member loginUser = (Member) session.getAttribute("loginUser");
+		System.out.println("listCount : " + listCount);
+		System.out.println("currentPage : " + currentPage);
+		System.out.println("maxPage : " + maxPage);
+		System.out.println("startPage : " + startPage);
+		System.out.println("endPage : " + endPage);
+
+
+		//Member loginUser = (Member) session.getAttribute("loginUser");
 
 	%>
 
@@ -75,6 +82,7 @@ td {
 	border-bottom: 1px solid #eeeeee
 }
 
+
 a.btn_02 {
 	display: inline-block;
 	padding: 7px 7px;
@@ -85,18 +93,14 @@ a.btn_02 {
 	float: right;
 }
 
-.con {
-	border: 1px solid red;
-	margin: 0 auto;
-	padding: 1px;
-}
+
 </style>
 
 <title>Insert title here</title>
 </head>
 <body>
 
-	<%@ include file="/views/common/user_TopBar.jsp"%>
+	<%@ include file="/views/common/main_TopBar.jsp"%>
 	<br>
 	<br>
 	<br>
@@ -110,12 +114,13 @@ a.btn_02 {
 			<h2>짐캐리 사용후기</h2>
 		</div>
 		<div>
-			<a href="/semi/views/board/review/user_ReviewInsert.jsp" class="btn_02">글쓰기</a>
+			<a onclick="location.href='views/board/user_ReviewInsert.jsp'" class="btn_02">글쓰기</a>
 		</div>
+
 		<br>
 		<br>
 		<div>
-		<table class="list_table">
+		<table class="list_table" id="listArea">
 
 			<colgroup>
 				<col width="10%" />
@@ -155,15 +160,30 @@ a.btn_02 {
 		<%-- 페이징처리 --%>
 		<div class="panginArea" align="center">
 			<button onclick="location.href'<%=request.getContextPath()%>/selectList.bo?currentPage=1'"><<</button>
-			<%if(currentPage <= 1) { %>
-				<button disabled><<</button>
-			<% }else { %>
-				<button onclick="location.href='<%=request.getContextPath()%>/selectList.bo?currentPage=<%=currentPage -1%>'"><</button>
-			<% } %>
-				<button onclick="location.href'<%=request.getContextPath()%>/selectList.bo?currentPage=<%=currentPage -1%>'"><</button>
-		
-		
-		
+		<% if(currentPage <= 1) { %>
+					<button disabled><<</button>
+					<% }else { %>
+					<button onclick="location.href='<%=request.getContextPath() %>/selectList.bo?currentPage=<%=currentPage -1%>'"><</button>
+				 <% } %>
+
+			<% for(int p = startPage; p <= endPage; p++){
+				if(currentPage == p){
+			%>
+					<button disabled style="color:red;"><%= p %></button>
+			<% } else { %>
+					<button onclick="location.href='<%=request.getContextPath()%>/selectList.bo?currentPage=<%=p%>'"><%= p %></button>
+			<%
+				}
+			   }
+			%>
+
+				 <% if(currentPage >= maxPage) { %>
+
+				  <% }else {%>
+				  	<button onclick="location.href='<%=request.getContextPath() %>/selectList.bo?currentPage=<%=currentPage +1%>'">></button>
+
+				  <% } %>
+			<button onclick="location.href='<%=request.getContextPath()%>/selectList.bo?currentPage=<%=maxPage%>'">>></button>
 		</div>
 
 
@@ -189,6 +209,22 @@ a.btn_02 {
 			</select> <input id='txtKeyWord' /> <input type='button' value='검색' />
 		</div>
 	</div>
+
+
+	<script>
+	$(function(){
+		$("#listArea td").mouseenter(function(){
+			$(this).parent().css({"background":"darkgray", "cursor":"pointer"});
+		}).mouseout(function(){
+			$(this).parent().css({"background":"white"});
+		}).click(function(){
+			var num = $(this).parent().children("input").val();
+
+			location.href="<%=request.getContextPath()%>/selectOne.bo?num=" + num;
+		});
+	});
+	</script>
+
 
 </body>
 </html>
