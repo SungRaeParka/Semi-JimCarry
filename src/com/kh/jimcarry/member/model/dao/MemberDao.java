@@ -82,7 +82,6 @@ public class MemberDao {
 				loginUser.setUdCheck(rset.getString("UD_CHECK"));
 			}
 			
-			System.out.println("DAO loginUser userId :::: " + loginUser.getUserId());
 			
 		} catch (SQLException e) {
 			e.printStackTrace();

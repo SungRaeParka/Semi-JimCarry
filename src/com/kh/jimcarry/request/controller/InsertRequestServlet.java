@@ -53,9 +53,17 @@ public class InsertRequestServlet extends HttpServlet {
 		r.setBookCount(bookCount);
 		r.setBoxCount(boxCount);	
 		
-		int result = new ProductService().insertRequest(r);		
+		int result = new ProductService().insertRequest(r);	
 		
-		System.out.println("insert 수행 후 Request r :::" + r);
+		System.out.println("insertrequest 수행 후 Request r :::" + r);
+		
+		if(boxCount > 0) {
+			int result2 = new ProductService().insertBoxCount(r);			
+		}
+		
+		if(bookCount > 0) {
+			int result3 = new ProductService().insertBookCount(r);
+		}
 		
 		String reqNo = new ProductService().selectReqNo();
 		r.setReqNo(reqNo);

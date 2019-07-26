@@ -26,7 +26,7 @@
 		margin: 0;
 		padding: 0;		
 	}	
-	#main {
+	#main { 
 		min-height: 100%;
 	}	
 	
@@ -73,6 +73,9 @@
 		<%if(proKind[i].equals("가전") && (proName[i].equals("냉장고") || proName[i].equals("세탁기") || proName[i].equals("TV/모니터") || proName[i].equals("에어컨") || proName[i].equals("정수기") || proName[i].equals("PC/노트북") || proName[i].equals("전자레인지"))) { %>
 		
 		<div style="padding-left: 20px">
+			<input type="hidden" name="reqNo" value="<%=r.getReqNo()%>">
+			<input type="hidden" name="proNo" value="<%=r.getProNo()%>">
+			<input type="hidden" name="proName" value="<%=r.getProName()%>">
 			<span style="font-size: 30px; font-weight: bold"><%= proKind[i] %></span>	
 			<div style="border: 1px solid black; width: 500px;">
 				<div style="padding: 30px 0px 30px 40px; display: inline-block;">
@@ -123,6 +126,9 @@
 		<% } else if(proKind[i].equals("가구") && (proName[i].equals("침대") || proName[i].equals("의자") || proName[i].equals("책상/테이블") || proName[i].equals("책장") || proName[i].equals("옷장") || proName[i].equals("진열장") || proName[i].equals("쇼파") || proName[i].equals("행거") || proName[i].equals("거울") || proName[i].equals("화장대") || proName[i].equals("피아노"))) { %>
 			
 		<div style="padding-left: 20px">
+			<input type="hidden" name="reqNo" value="<%=r.getReqNo()%>">
+			<input type="hidden" name="proNo" value="<%=r.getProNo()%>">
+			<input type="hidden" name="proName" value="<%=r.getProName()%>">
 			<span style="font-size: 30px; font-weight: bold"><%= proKind[i] %></span>		
 			<div style="border: 1px solid black; width: 500px;">
 				<div style="padding: 30px 0px 30px 40px; display: inline-block;">
@@ -197,7 +203,7 @@
 			<span style="font-size: 30px; font-weight: bold">기타</span>				
 			<div style="border: 1px solid black; width: 500px;">
 				<div style="padding: 30px 0px 30px 40px; display: inline-block;">
-					<img src="/semi./images/books.png" style="width: 140px; height: 140px">
+					<img src="/semi/images/books.png" style="width: 140px; height: 140px">
 				</div>
 				
 				<div style="display: inline-block; padding-left: 20px;">
@@ -242,7 +248,7 @@
 			</a>
 			<span id="updateProDetail" onclick="updateProDetail();" style="font-size: 30px; cursor: pointer;" >다음 단계로</span>	
 		</div>
-		<div id="hiddenArea">
+		<div class="hiddenArea">
 		
 		</div>
 	</form>	
@@ -253,8 +259,7 @@
 	<!-- 팝업창 -->
 	
 	<div>
-		<!-- 냉장고 팝업창 -->
-	
+		<!-- 냉장고 팝업창 -->	
 			<div class="modal fade" id="pop_ref" tabindex="-1" role="dialog" aria-labelledby="popRefLabel" aria-hidden="true">
 				<div class="modal-dialog modal-sm" role="document">
 					<div class="modal-header">
@@ -300,11 +305,8 @@
 						</div>
 					</div>
 				</div>
-				<input type="hidden" name="reqNo" value="<%=r.getReqNo()%>">
-				<input type="hidden" name="proNo" value="<%=r.getProNo()%>">
 			</div>
 	
-		<form action="<%=request.getContextPath()%>/updatePopup.rq" method="post">			
 		<!-- 세탁기 팝업창  -->
 			<div class="modal fade" id="pop_wash" tabindex="-1" role="dialog" aria-labelledby="popRefLabel" aria-hidden="true">
 				<div class="modal-dialog modal-sm" role="document">
@@ -339,15 +341,12 @@
 					</div>
 					<div class="modal-footer">
 						<div align="center">
-							<input type="button" value="확인" onclick="sendValue();">
+							<input type="button" value="확인" id="updateWash">
 						</div>
 					</div>
 				</div>
-				<input type="hidden" name="reqNo" value="<%=r.getReqNo()%>">
-				<input type="hidden" name="proNo" value="<%=r.getProNo()%>">
 			</div>
-		</form>
-		<form action="<%=request.getContextPath()%>/updatePopup.rq" method="post">	
+			
 		<!-- tv 팝업창  -->
 			<div class="modal fade" id="pop_tv" tabindex="-1" role="dialog" aria-labelledby="popRefLabel" aria-hidden="true">
 				<div class="modal-dialog modal-sm" role="document">
@@ -376,15 +375,12 @@
 					</div>
 					<div class="modal-footer">
 						<div align="center">
-							<input type="button" value="확인" onclick="sendValue();">
+							<input type="button" value="확인" id="updateTv">
 						</div>
 					</div>
 				</div>
-				<input type="hidden" name="reqNo" value="<%=r.getReqNo()%>">
-				<input type="hidden" name="proNo" value="<%=r.getProNo()%>">
 			</div>
-		</form>
-		<form action="<%=request.getContextPath()%>/updatePopup.rq" method="post">	
+			
 		<!-- 에어컨 팝업창  -->
 			<div class="modal fade" id="pop_air" tabindex="-1" role="dialog" aria-labelledby="popRefLabel" aria-hidden="true">
 				<div class="modal-dialog modal-sm" role="document">
@@ -419,15 +415,12 @@
 					</div>
 					<div class="modal-footer">
 						<div align="center">
-							<input type="button" value="확인" onclick="sendValue();">
+							<input type="button" value="확인" id="updateAir">
 						</div>
 					</div>
 				</div>
-				<input type="hidden" name="reqNo" value="<%=r.getReqNo()%>">
-				<input type="hidden" name="proNo" value="<%=r.getProNo()%>">
 			</div>
-		</form>
-		<form action="<%=request.getContextPath()%>/updatePopup.rq" method="post">	
+			
 		<!-- 정수기 팝업창  -->
 			<div class="modal fade" id="pop_water" tabindex="-1" role="dialog" aria-labelledby="popRefLabel" aria-hidden="true">
 				<div class="modal-dialog modal-sm" role="document">
@@ -460,15 +453,12 @@
 					</div>
 					<div class="modal-footer">
 						<div align="center">
-							<input type="button" value="확인" onclick="sendValue();">
+							<input type="button" value="확인" id="updateWater">
 						</div>
 					</div>
 				</div>
-				<input type="hidden" name="reqNo" value="<%=r.getReqNo()%>">
-				<input type="hidden" name="proNo" value="<%=r.getProNo()%>">
 			</div>
-		</form>
-		<form action="<%=request.getContextPath()%>/updatePopup.rq" method="post">	
+			
 		<!-- PC/노트북 팝업창  -->
 			<div class="modal fade" id="pop_pc" tabindex="-1" role="dialog" aria-labelledby="popRefLabel" aria-hidden="true">
 				<div class="modal-dialog modal-sm" role="document">
@@ -491,15 +481,12 @@
 					</div>						
 					<div class="modal-footer">
 						<div align="center">
-							<input type="button" value="확인" onclick="sendValue();">
+							<input type="button" value="확인" id="updatePc">
 						</div>
 					</div>
 				</div>
-				<input type="hidden" name="reqNo" value="<%=r.getReqNo()%>">
-				<input type="hidden" name="proNo" value="<%=r.getProNo()%>">
 			</div>
-		</form>
-		<form action="<%=request.getContextPath()%>/updatePopup.rq" method="post">	
+			
 		<!-- 전자레인지 팝업창  -->
 			<div class="modal fade" id="pop_oven" tabindex="-1" role="dialog" aria-labelledby="popRefLabel" aria-hidden="true">
 				<div class="modal-dialog modal-sm" role="document">
@@ -522,15 +509,12 @@
 					</div>						
 					<div class="modal-footer">
 						<div align="center">
-							<input type="button" value="확인" onclick="sendValue();">
+							<input type="button" value="확인" id="updateOven">
 						</div>
 					</div>
 				</div>
-				<input type="hidden" name="reqNo" value="<%=r.getReqNo()%>">
-				<input type="hidden" name="proNo" value="<%=r.getProNo()%>">
 			</div>
-		</form>
-		<form action="<%=request.getContextPath()%>/updatePopup.rq" method="post">	
+			
 		<!-- 침대 팝업창  -->
 			<div class="modal fade" id="pop_bed" tabindex="-1" role="dialog" aria-labelledby="popRefLabel" aria-hidden="true">
 				<div class="modal-dialog modal-sm" role="document">
@@ -577,15 +561,12 @@
 					</div>					
 					<div class="modal-footer">
 						<div align="center">
-							<input type="button" value="확인" onclick="sendValue();">
+							<input type="button" value="확인" id="updateBed">
 						</div>
 					</div>
 				</div>
-				<input type="hidden" name="reqNo" value="<%=r.getReqNo()%>">
-				<input type="hidden" name="proNo" value="<%=r.getProNo()%>">
 			</div>
-		</form>
-		<form action="<%=request.getContextPath()%>/updatePopup.rq" method="post">	
+			
 		<!-- 의자 팝업창  -->
 			<div class="modal fade" id="pop_chair" tabindex="-1" role="dialog" aria-labelledby="popRefLabel" aria-hidden="true">
 				<div class="modal-dialog modal-sm" role="document">
@@ -610,15 +591,12 @@
 					</div>					
 					<div class="modal-footer">
 						<div align="center">
-							<input type="button" value="확인" onclick="sendValue();">
+							<input type="button" value="확인" id="updateChair">
 						</div>
 					</div>
 				</div>
-				<input type="hidden" name="reqNo" value="<%=r.getReqNo()%>">
-				<input type="hidden" name="proNo" value="<%=r.getProNo()%>">
 			</div>
-		</form>
-		<form action="<%=request.getContextPath()%>/updatePopup.rq" method="post">	
+			
 		<!-- 책상/테이블 팝업창  -->
 			<div class="modal fade" id="pop_table" tabindex="-1" role="dialog" aria-labelledby="popRefLabel" aria-hidden="true">
 				<div class="modal-dialog modal-sm" role="document">
@@ -685,15 +663,12 @@
 					</div>					
 					<div class="modal-footer">
 						<div align="center">
-							<input type="button" value="확인" onclick="sendValue();">
+							<input type="button" value="확인" id="updateTable">
 						</div>
 					</div>
 				</div>
-				<input type="hidden" name="reqNo" value="<%=r.getReqNo()%>">
-				<input type="hidden" name="proNo" value="<%=r.getProNo()%>">
 			</div>
-		</form>
-		<form action="<%=request.getContextPath()%>/updatePopup.rq" method="post">	
+			
 		<!-- 책장 팝업창  -->
 			<div class="modal fade" id="pop_bookcase" tabindex="-1" role="dialog" aria-labelledby="popRefLabel" aria-hidden="true">
 				<div class="modal-dialog modal-sm" role="document">
@@ -734,15 +709,12 @@
 					</div>					
 					<div class="modal-footer">
 						<div align="center">
-							<input type="button" value="확인" onclick="sendValue();">
+							<input type="button" value="확인" id="updateBc">
 						</div>
 					</div>
 				</div>
-				<input type="hidden" name="reqNo" value="<%=r.getReqNo()%>">
-				<input type="hidden" name="proNo" value="<%=r.getProNo()%>">
 			</div>
-		</form>
-		<form action="<%=request.getContextPath()%>/updatePopup.rq" method="post">			
+			
 		<!-- 옷장 팝업창  -->
 			<div class="modal fade" id="pop_closet" tabindex="-1" role="dialog" aria-labelledby="popRefLabel" aria-hidden="true">
 				<div class="modal-dialog modal-sm" role="document">
@@ -803,15 +775,12 @@
 					</div>					
 					<div class="modal-footer">
 						<div align="center">
-							<input type="button" value="확인" onclick="sendValue();">
+							<input type="button" value="확인" id="updateClo">
 						</div>
 					</div>
 				</div>
-				<input type="hidden" name="reqNo" value="<%=r.getReqNo()%>">
-				<input type="hidden" name="proNo" value="<%=r.getProNo()%>">
 			</div>
-		</form>
-		<form action="<%=request.getContextPath()%>/updatePopup.rq" method="post">	
+			
 		<!-- 진열장 팝업창  -->
 			<div class="modal fade" id="pop_showcase" tabindex="-1" role="dialog" aria-labelledby="popRefLabel" aria-hidden="true">
 				<div class="modal-dialog modal-sm" role="document">
@@ -862,15 +831,12 @@
 					</div>					
 					<div class="modal-footer">
 						<div align="center">
-							<input type="button" value="확인" onclick="sendValue();">
+							<input type="button" value="확인" id="updateSc">
 						</div>
 					</div>
 				</div>
-				<input type="hidden" name="reqNo" value="<%=r.getReqNo()%>">
-				<input type="hidden" name="proNo" value="<%=r.getProNo()%>">
 			</div>
-		</form>
-		<form action="<%=request.getContextPath()%>/updatePopup.rq" method="post">	
+			
 		<!-- 쇼파 팝업창  -->
 			<div class="modal fade" id="pop_sofa" tabindex="-1" role="dialog" aria-labelledby="popRefLabel" aria-hidden="true">
 				<div class="modal-dialog modal-sm" role="document">
@@ -895,15 +861,12 @@
 					</div>					
 					<div class="modal-footer">
 						<div align="center">
-							<input type="button" value="확인" onclick="sendValue();">
+							<input type="button" value="확인" id="updateSofa">
 						</div>
 					</div>
 				</div>
-				<input type="hidden" name="reqNo" value="<%=r.getReqNo()%>">
-				<input type="hidden" name="proNo" value="<%=r.getProNo()%>">
 			</div>
-		</form>
-		<form action="<%=request.getContextPath()%>/updatePopup.rq" method="post">	
+			
 		<!-- 행거 팝업창  -->
 			<div class="modal fade" id="pop_hanger" tabindex="-1" role="dialog" aria-labelledby="popRefLabel" aria-hidden="true">
 				<div class="modal-dialog modal-sm" role="document">
@@ -942,15 +905,12 @@
 					</div>					
 					<div class="modal-footer">
 						<div align="center">
-							<input type="button" value="확인" onclick="sendValue();">
+							<input type="button" value="확인" id="updateHang">
 						</div>
 					</div>
 				</div>
-				<input type="hidden" name="reqNo" value="<%=r.getReqNo()%>">
-				<input type="hidden" name="proNo" value="<%=r.getProNo()%>">
 			</div>
-		</form>
-		<form action="<%=request.getContextPath()%>/updatePopup.rq" method="post">	
+			
 		<!-- 거울 팝업창  -->
 			<div class="modal fade" id="pop_mirror" tabindex="-1" role="dialog" aria-labelledby="popRefLabel" aria-hidden="true">
 				<div class="modal-dialog modal-sm" role="document">
@@ -985,15 +945,12 @@
 					</div>					
 					<div class="modal-footer">
 						<div align="center">
-							<input type="button" value="확인" onclick="sendValue();">
+							<input type="button" value="확인" id="updateMir">
 						</div>
 					</div>
 				</div>
-				<input type="hidden" name="reqNo" value="<%=r.getReqNo()%>">
-				<input type="hidden" name="proNo" value="<%=r.getProNo()%>">
 			</div>
-		</form>
-		<form action="<%=request.getContextPath()%>/updatePopup.rq" method="post">	
+			
 		<!-- 화장대 팝업창  -->
 			<div class="modal fade" id="pop_makeup" tabindex="-1" role="dialog" aria-labelledby="popRefLabel" aria-hidden="true">
 				<div class="modal-dialog modal-sm" role="document">
@@ -1032,15 +989,12 @@
 					</div>					
 					<div class="modal-footer">
 						<div align="center">
-							<input type="button" value="확인" onclick="sendValue();">
+							<input type="button" value="확인" id="updateMake">
 						</div>
 					</div>
 				</div>
-				<input type="hidden" name="reqNo" value="<%=r.getReqNo()%>">
-				<input type="hidden" name="proNo" value="<%=r.getProNo()%>">
 			</div>
-		</form>
-		<form action="<%=request.getContextPath()%>/updatePopup.rq" method="post">	
+			
 		<!-- 피아노 팝업창  -->
 			<div class="modal fade" id="pop_piano" tabindex="-1" role="dialog" aria-labelledby="popRefLabel" aria-hidden="true">
 				<div class="modal-dialog modal-sm" role="document">
@@ -1065,57 +1019,626 @@
 					</div>
 					<div class="modal-footer">
 						<div align="center">
-							<input type="button" value="확인" onclick="sendValue();">
+							<input type="button" value="확인" id="updatePiano">
 						</div>
 					</div>
 				</div>	
-				<input type="hidden" name="reqNo" value="<%=r.getReqNo()%>">
-				<input type="hidden" name="proNo" value="<%=r.getProNo()%>">
 			</div>
-		</form>
 	</div>
+	
+	
+	
 	<script>
 		function updateProDetail(){
 			$("#frm").submit();
 		}		
 	
-		 $("#updateRef").on("click", function() {			
-			var $div = $("#hiddenArea");
-			var $inputRefNo = $("<input>");
+		/* 냉장고 */
+		 $("#updateRef").click(function() {			 
+				 
+			var $div = $(".hiddenArea");			
+			var $div2 = $("<div>");
 			var $inputRefType = $("<input>");
 			var $inputRefSize = $("<input>");
 			var proType_refval = $(":input:radio[name=proType_ref]:checked").val();
 			var proSize_refval = $(":input:radio[name=proSize_ref]:checked").val();		
-
-			$inputRefNo.attr({
-				type: 'hidden',
-				name: 'proNo_Ref2',
-				value: '<%=r.getProNo()%>'
-			});
-			
+				
 			$inputRefType.attr({
 				type: 'hidden',
 				name: 'proType_Ref2',
 				value: proType_refval
 			});
-			
+				
 			$inputRefSize.attr({
 				type: 'hidden',
 				name: 'proSize_Ref2',
 				value: proSize_refval
 			});
-
-			$div.html("");
-
-			$div.append($inputRefNo);	
-			$div.append($inputRefType);
-			$div.append($inputRefSize);
+	
+			$div.html("");				
 			
+			$div2.append($inputRefType);
+			$div2.append($inputRefSize);	
+			$div.before($div2);
+				
 			$(":input:radio[name=proType_ref]").prop('checked', false);
 			$(":input:radio[name=proSize_ref]").prop('checked', false);
 			
-			$("#pop_ref").modal("hide");
+				
+			$("#pop_ref").modal("hide");		
+		});
+		
+		$("#updateWash").click(function(){
 			
+			var $div = $(".hiddenArea");
+			var $div2 = $("<div>");
+			var $inputWashType = $("<input>");
+			var $inputWashSize = $("<input>");
+			var proType_washval = $(":input:radio[name=proType_wash]:checked").val();
+			var proSize_washval = $(":input:radio[name=proSize_wash]:checked").val();
+			
+			$inputWashType.attr({
+				type: 'hidden',
+				name: 'proType_Wash2',
+				value: proType_washval
+			});
+			
+			$inputWashSize.attr({
+				type: 'hidden',
+				name: 'proSize_Wash2',
+				value: proSize_washval
+			});
+			
+			$div.html("");				
+			
+			$div2.append($inputWashType);
+			$div2.append($inputWashSize);	
+			$div.before($div2);
+				
+			$(":input:radio[name=proType_wash]").prop('checked', false);
+			$(":input:radio[name=proSize_wash]").prop('checked', false);
+			
+				
+			$("#pop_wash").modal("hide");
+			
+		});
+		
+		$("#updateTv").click(function(){
+			
+			var $div = $(".hiddenArea");
+			var $div2 = $("<div>");
+			var $inputTvSize = $("<input>");
+			var proSize_tvval = $(":input:radio[name=proSize_tv]:checked").val();
+			
+			$inputTvSize.attr({
+				type: 'hidden',
+				name: 'proSize_Tv2',
+				value: proSize_tvval
+			});			
+			
+			$div.html("");				
+			
+			$div2.append($inputTvSize);
+			$div.before($div2);
+				
+			$(":input:radio[name=proSize_tv]").prop('checked', false);
+			
+				
+			$("#pop_tv").modal("hide");			
+		});
+		
+		$("#updateAir").click(function(){
+			
+			var $div = $(".hiddenArea");
+			var $div2 = $("<div>");
+			var $inputAirType = $("<input>");
+			var $inputAirUni = $("<input>");
+			var proType_airval = $(":input:radio[name=proType_air]:checked").val();
+			var proUni_airval = $(":input:radio[name=proUni_air]:checked").val();
+			
+			$inputAirType.attr({
+				type: 'hidden',
+				name: 'proType_Air2',
+				value: proType_airval
+			});
+			
+			$inputAirUni.attr({
+				type: 'hidden',
+				name: 'proUni_Air2',
+				value: proUni_airval
+			});
+			
+			$div.html("");				
+			
+			$div2.append($inputAirType);
+			$div2.append($inputAirUni);	
+			$div.before($div2);
+				
+			$(":input:radio[name=proType_air]").prop('checked', false);
+			$(":input:radio[name=proUni_air]").prop('checked', false);
+			
+				
+			$("#pop_air").modal("hide");
+			
+		});
+		
+		$("#updateWater").click(function(){
+			
+			var $div = $(".hiddenArea");
+			var $div2 = $("<div>");
+			var $inputWaterSize = $("<input>");
+			var $inputWaterUni = $("<input>");
+			var proSize_waterval = $(":input:radio[name=proSize_water]:checked").val();
+			var proUni_waterval = $(":input:radio[name=proUni_water]:checked").val();
+			
+			$inputWaterSize.attr({
+				type: 'hidden',
+				name: 'proSize_Water2',
+				value: proSize_waterval
+			});
+			
+			$inputWaterUni.attr({
+				type: 'hidden',
+				name: 'proUni_Water2',
+				value: proUni_waterval
+			});
+			
+			$div.html("");				
+			
+			$div2.append($inputWaterSize);
+			$div2.append($inputWaterUni);	
+			$div.before($div2);
+				
+			$(":input:radio[name=proSize_water]").prop('checked', false);
+			$(":input:radio[name=proUni_water]").prop('checked', false);
+			
+				
+			$("#pop_water").modal("hide");
+			
+		});
+		
+		$("#updatePc").click(function(){
+			
+			var $div = $(".hiddenArea");
+			var $div2 = $("<div>");
+			var $inputPcType = $("<input>");
+			var proType_pcval = $(":input:radio[name=proType_pc]:checked").val();
+			
+			$inputPcType.attr({
+				type: 'hidden',
+				name: 'proType_Pc2',
+				value: proType_pcval
+			});
+			
+			$div.html("");				
+			
+			$div2.append($inputPcType);
+			$div.before($div2);
+				
+			$(":input:radio[name=proType_pc]").prop('checked', false);
+			
+				
+			$("#pop_pc").modal("hide");
+			
+		});
+		
+		$("#updateOven").click(function(){
+			
+			var $div = $(".hiddenArea");
+			var $div2 = $("<div>");
+			var $inputOvenType = $("<input>");
+			var proType_ovenval = $(":input:radio[name=proType_oven]:checked").val();
+			
+			$inputOvenType.attr({
+				type: 'hidden',
+				name: 'proType_Oven2',
+				value: proType_ovenval
+			});
+			
+			$div.html("");				
+			
+			$div2.append($inputOvenType);
+			$div.before($div2);
+				
+			$(":input:radio[name=proType_oven]").prop('checked', false);
+			
+				
+			$("#pop_oven").modal("hide");
+			
+		});
+		
+		$("#updateBed").click(function(){
+			
+			var $div = $(".hiddenArea");
+			var $div2 = $("<div>");
+			var $inputBedType = $("<input>");
+			var $inputBedSize = $("<input>");
+			var proType_bedval = $(":input:radio[name=proType_bed]:checked").val();
+			var proSize_bedval = $(":input:radio[name=proSize_bed]:checked").val();
+			
+			$inputBedType.attr({
+				type: 'hidden',
+				name: 'proType_Bed2',
+				value: proType_bedval
+			});
+			
+			$inputBedSize.attr({
+				type: 'hidden',
+				name: 'proSize_Bed2',
+				value: proSize_bedval
+			});
+			
+			$div.html("");				
+			
+			$div2.append($inputBedType);
+			$div2.append($inputBedSize);
+			$div.before($div2);
+				
+			$(":input:radio[name=proType_bed]").prop('checked', false);
+			$(":input:radio[name=proSize_bed]").prop('checked', false);
+			
+				
+			$("#pop_bed").modal("hide");
+			
+		});
+		
+		$("#updateChair").click(function(){
+			
+			var $div = $(".hiddenArea");
+			var $div2 = $("<div>");
+			var $inputChairType = $("<input>");
+			var proType_chairval = $(":input:radio[name=proType_chair]:checked").val();
+			
+			$inputChairType.attr({
+				type: 'hidden',
+				name: 'proType_Chair2',
+				value: proType_chairval
+			});
+			
+			$div.html("");				
+			
+			$div2.append($inputChairType);
+			$div.before($div2);
+				
+			$(":input:radio[name=proType_chair]").prop('checked', false);
+			
+				
+			$("#pop_chair").modal("hide");
+			
+		});
+		
+		$("#updateTable").click(function(){
+			
+			var $div = $(".hiddenArea");
+			var $div2 = $("<div>");
+			var $inputTableType = $("<input>");
+			var $inputTableSize = $("<input>");
+			var $inputTableMat = $("<input>");
+			var $inputTableWidth = $("<input>");
+			var proType_tableval = $(":input:radio[name=proType_table]:checked").val();
+			var proSize_tableval = $(":input:radio[name=proSize_table]:checked").val();
+			var proMat_tableval = $(":input:radio[name=proMat_table]:checked").val();
+			var proWidth_tableval = $(":input:radio[name=proWidth_table]:checked").val();
+			
+			$inputTableType.attr({
+				type: 'hidden',
+				name: 'proType_Table2',
+				value: proType_tableval
+			});
+			
+			$inputTableSize.attr({
+				type: 'hidden',
+				name: 'proSize_Table2',
+				value: proSize_tableval
+			});
+			
+			$inputTableMat.attr({
+				type: 'hidden',
+				name: 'proMat_Table2',
+				value: proMat_tableval
+			});
+			
+			$inputTableWidth.attr({
+				type: 'hidden',
+				name: 'proWidth_Table2',
+				value: proWidth_tableval
+			});
+			
+			$div.html("");				
+			
+			$div2.append($inputTableType);
+			$div2.append($inputTableSize);
+			$div2.append($inputTableMat);
+			$div2.append($inputTableWidth);
+			$div.before($div2);
+				
+			$(":input:radio[name=proType_table]").prop('checked', false);
+			$(":input:radio[name=proSize_table]").prop('checked', false);
+			$(":input:radio[name=proMat_table]").prop('checked', false);
+			$(":input:radio[name=proWidth_table]").prop('checked', false);
+			
+				
+			$("#pop_table").modal("hide");
+			
+		});
+		
+		$("#updateBc").click(function(){
+			
+			var $div = $(".hiddenArea");
+			var $div2 = $("<div>");
+			var $inputBcWidth = $("<input>");
+			var $inputBcHeight = $("<input>");
+			var proWidth_bcval = $(":input:radio[name=proWidth_bc]:checked").val();
+			var proHeight_bcval = $(":input:radio[name=proHeight_bc]:checked").val();
+			
+			$inputBcWidth.attr({
+				type: 'hidden',
+				name: 'proWidth_Bc2',
+				value: proWidth_bcval
+			});
+			
+			$inputBcHeight.attr({
+				type: 'hidden',
+				name: 'proHeight_Bc2',
+				value: proHeight_bcval
+			});
+			
+			$div.html("");				
+			
+			$div2.append($inputBcWidth);
+			$div2.append($inputBcHeight);
+			$div.before($div2);
+				
+			$(":input:radio[name=proWidth_bc]").prop('checked', false);
+			$(":input:radio[name=proHeight_bc]").prop('checked', false);
+			
+				
+			$("#pop_bookcase").modal("hide");
+			
+		});
+		
+		$("#updateClo").click(function(){
+			
+			var $div = $(".hiddenArea");
+			var $div2 = $("<div>");
+			var $inputCloType = $("<input>");
+			var $inputCloUni = $("<input>");
+			var $inputCloWidth = $("<input>");
+			var proType_cloval = $(":input:radio[name=proType_clo]:checked").val();
+			var proUni_cloval = $(":input:radio[name=proUni_clo]:checked").val();
+			var proWidth_cloval = $(":input:radio[name=proWidth_clo]:checked").val();
+			
+			$inputCloType.attr({
+				type: 'hidden',
+				name: 'proType_Clo2',
+				value: proType_cloval
+			});
+			
+			$inputCloUni.attr({
+				type: 'hidden',
+				name: 'proUni_Clo2',
+				value: proUni_cloval
+			});
+			
+			$inputCloWidth.attr({
+				type: 'hidden',
+				name: 'proWidth_Clo2',
+				value: proWidth_cloval
+			});
+			
+			$div.html("");				
+			
+			$div2.append($inputCloType);
+			$div2.append($inputCloUni);
+			$div2.append($inputCloWidth);
+			$div.before($div2);
+				
+			$(":input:radio[name=proType_clo]").prop('checked', false);
+			$(":input:radio[name=proUni_clo]").prop('checked', false);
+			$(":input:radio[name=proWidth_clo]").prop('checked', false);
+			
+				
+			$("#pop_closet").modal("hide");
+			
+		});
+		
+		$("#updateSc").click(function(){
+			
+			var $div = $(".hiddenArea");
+			var $div2 = $("<div>");
+			var $inputScgck = $("<input>");
+			var $inputScWidth = $("<input>");
+			var $inputScHeight = $("<input>");
+			var proGck_scval = $(":input:radio[name=glassCheck_sc]:checked").val();
+			var proWidth_scval = $(":input:radio[name=proWidth_sc]:checked").val();
+			var proHeight_scval = $(":input:radio[name=proHeight_sc]:checked").val();
+			
+			$inputScgck.attr({
+				type: 'hidden',
+				name: 'proGck_Sc2',
+				value: proGck_scval
+			});
+			
+			$inputScWidth.attr({
+				type: 'hidden',
+				name: 'proWidth_Sc2',
+				value: proWidth_scval
+			});
+			
+			$inputScHeight.attr({
+				type: 'hidden',
+				name: 'proHeight_Sc2',
+				value: proHeight_scval
+			});
+			
+			$div.html("");				
+			
+			$div2.append($inputScgck);
+			$div2.append($inputScWidth);
+			$div2.append($inputScHeight);
+			$div.before($div2);
+				
+			$(":input:radio[name=glassCheck_sc]").prop('checked', false);
+			$(":input:radio[name=proWidth_sc]").prop('checked', false);
+			$(":input:radio[name=proHeight_sc]").prop('checked', false);
+			
+				
+			$("#pop_showcase").modal("hide");
+			
+		});
+		
+		$("#updateSofa").click(function(){
+			
+			var $div = $(".hiddenArea");
+			var $div2 = $("<div>");
+			var $inputSofaSize = $("<input>");
+			var proSize_sofaval = $(":input:radio[name=proSize_sofa]:checked").val();
+			
+			$inputSofaSize.attr({
+				type: 'hidden',
+				name: 'proSize_Sofa2',
+				value: proSize_sofaval
+			});
+			
+			$div.html("");				
+			
+			$div2.append($inputSofaSize);
+			$div.before($div2);
+				
+			$(":input:radio[name=proSize_sofa]").prop('checked', false);
+			
+				
+			$("#pop_sofa").modal("hide");
+			
+		});
+		
+		$("#updateHang").click(function(){
+			
+			var $div = $(".hiddenArea");
+			var $div2 = $("<div>");
+			var $inputHangType = $("<input>");
+			var $inputHangWidth = $("<input>");
+			var proType_hangval = $(":input:radio[name=proType_hang]:checked").val();
+			var proWidth_hangval = $(":input:radio[name=proWidth_hang]:checked").val();
+			
+			$inputHangType.attr({
+				type: 'hidden',
+				name: 'proType_Hang2',
+				value: proType_hangval
+			});
+			
+			$inputHangWidth.attr({
+				type: 'hidden',
+				name: 'proWidth_Hang2',
+				value: proWidth_hangval
+			});
+			
+			$div.html("");				
+			
+			$div2.append($inputHangType);
+			$div2.append($inputHangWidth);
+			$div.before($div2);
+				
+			$(":input:radio[name=proType_hang]").prop('checked', false);
+			$(":input:radio[name=proWidth_hang]").prop('checked', false);
+			
+				
+			$("#pop_hanger").modal("hide");
+			
+		});
+		
+		$("#updateMir").click(function(){
+			
+			var $div = $(".hiddenArea");
+			var $div2 = $("<div>");
+			var $inputMirType = $("<input>");
+			var $inputMirSize = $("<input>");
+			var proType_mirval = $(":input:radio[name=proType_mir]:checked").val();
+			var proSize_mirval = $(":input:radio[name=proSize_mir]:checked").val();
+			
+			$inputMirType.attr({
+				type: 'hidden',
+				name: 'proType_Mir2',
+				value: proType_mirval
+			});
+			
+			$inputMirSize.attr({
+				type: 'hidden',
+				name: 'proSize_Mir2',
+				value: proSize_mirval
+			});
+			
+			$div.html("");				
+			
+			$div2.append($inputMirType);
+			$div2.append($inputMirSize);	
+			$div.before($div2);
+				
+			$(":input:radio[name=proType_mir]").prop('checked', false);
+			$(":input:radio[name=proSize_mir]").prop('checked', false);
+			
+				
+			$("#pop_mirror").modal("hide");
+			
+		});
+		
+		$("#updateMake").click(function(){
+			
+			var $div = $(".hiddenArea");
+			var $div2 = $("<div>");
+			var $inputMakeType = $("<input>");
+			var $inputMakeMat = $("<input>");
+			var proType_makeval = $(":input:radio[name=proType_make]:checked").val();
+			var proMat_makeval = $(":input:radio[name=proMat_make]:checked").val();
+			
+			$inputMakeType.attr({
+				type: 'hidden',
+				name: 'proType_Make2',
+				value: proType_makeval
+			});
+			
+			$inputMakeMat.attr({
+				type: 'hidden',
+				name: 'proMat_Make2',
+				value: proMat_makeval
+			});
+			
+			$div.html("");				
+			
+			$div2.append($inputMakeType);
+			$div2.append($inputMakeMat);	
+			$div.before($div2);
+				
+			$(":input:radio[name=proType_make]").prop('checked', false);
+			$(":input:radio[name=proMat_make]").prop('checked', false);
+			
+				
+			$("#pop_makeup").modal("hide");
+			
+		});
+		
+		$("#updatePiano").click(function(){
+			
+			var $div = $(".hiddenArea");
+			var $div2 = $("<div>");
+			var $inputPianoType = $("<input>");
+			var proType_pianoval = $(":input:radio[name=proType_piano]:checked").val();
+			
+			$inputPianoType.attr({
+				type: 'hidden',
+				name: 'proType_Piano2',
+				value: proType_pianoval
+			});
+			
+			$div.html("");				
+			
+			$div2.append($inputPianoType);
+			$div.before($div2);
+				
+			$(":input:radio[name=proType_piano]").prop('checked', false);
+			
+				
+			$("#pop_piano").modal("hide");
 			
 		});
 	</script>
@@ -1123,3 +1646,50 @@
 	
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
