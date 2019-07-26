@@ -42,7 +42,7 @@ public class boardSelectServlet extends HttpServlet {
 		int listCount = new BoardService().getListCount();
 
 
-
+		System.out.println();
 		System.out.println("listCount 페이지 갯수는?? :  " + listCount);
 
 		maxPage = (int)((double)listCount / limit + 0.9);
@@ -58,7 +58,7 @@ public class boardSelectServlet extends HttpServlet {
 
 		PageInfo pi = new PageInfo(currentPage, listCount, limit, maxPage, startPage, endPage);
 
-		ArrayList<Board> list = new BoardService().selectList();
+		ArrayList<Board> list = new BoardService().selectList(currentPage,limit);
 		System.out.println("list  : " + list );
 		String page = "";
 
