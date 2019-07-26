@@ -4,6 +4,7 @@
     <%
     ArrayList<Notice> list=(ArrayList<Notice>) request.getAttribute("list"); 
     ArrayList<QandA> list1=(ArrayList<QandA>)request.getAttribute("list1");
+    ArrayList<OneQ> list2=(ArrayList<OneQ>)request.getAttribute("list2");
     %>
 <!DOCTYPE html>
 <html>
@@ -246,7 +247,7 @@ container{
 <div class="container">
   <h2>1:1문의</h2>
   <p style="float:left">내가 문의한 내용 보기</p>  
-  <button  style="float:right;">문의하기</button>     
+  <a href="/semi/views/board/user_Insert1on1.jsp"><button  style="float:right;">문의하기</button></a>     
   <br><br><br>   
   <table class="table">
     <thead>
@@ -258,24 +259,14 @@ container{
       </tr>
     </thead>
     <tbody>
+     <%for(OneQ one : list2) {%>
       <tr>
-        <td>매칭관련</td>
-        <td>매칭 어쩌고</td>
-        <td>2091.07.01</td>
-        <td>답변완료</td>
-      </tr>
-      <tr>
-        <td>이사관련</td>
-        <td>이사 어쩌고</td>
-        <td>2019.06.01</td>
-        <td>답변완료</td>
-      </tr>
-      <tr>
-        <td>취소</td>
-        <td>취고 어쩌고</td>
-        <td>2019.04.28</td>
-        <td>답변대기</td>
-      </tr>
+      <th><%=one.getQuestionType() %></th>
+      <th><%=one.getPostTitle() %></th>
+      <th><%=one.getPostDate() %></th>
+      <th><%=one.getAnswer() %></th>
+      
+      <%} %>
     </tbody>
   </table>
 </div>

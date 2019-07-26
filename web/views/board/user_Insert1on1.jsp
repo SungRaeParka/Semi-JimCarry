@@ -27,6 +27,7 @@
 	<%@ include file="/views/common/user_TopBar.jsp"%>
 
 <h1 align="center">1:1 문의</h1>
+<form action="<%=request.getContextPath() %>/notice.no" method="post">
 <table>
 		<th>문의 유형</th>
 		<th>
@@ -55,8 +56,9 @@
 		</th>
 	</tr>
 </table>
+</form>
 	<div align="center" style="margin-top: 10px;">
-		<a href="/semi/views/board/serviceCenter/user_Qna1on1List.jsp"><input type="button" value="문의하기"></a>
+		<a href="/semi/noticelist.no"><input type="button" value="문의하기"></a>
 	</div>
 	
 	
