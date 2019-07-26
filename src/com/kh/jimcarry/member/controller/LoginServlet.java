@@ -48,7 +48,7 @@ public class LoginServlet extends HttpServlet {
 				HttpSession session = request.getSession();
 				session.setAttribute("loginUser", loginUser);
 				
-				response.sendRedirect("views/admin/admin_MemMng.jsp");
+				response.sendRedirect("/semi/selectAll.u");
 			}else if(loginUser.getSeqNo().contains("D")) {
 					HttpSession session = request.getSession();
 					session.setAttribute("loginUser", loginUser);		

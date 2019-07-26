@@ -50,6 +50,16 @@ public class MemberService {
 		
 		return result;
 	}
+
+	public int userIdCheck(String userId) {
+		Connection con = getConnection();
+		
+		int result = new MemberDao().userIdCheck(con, userId);
+		
+		close(con);
+		
+		return result;
+	}
 	
 }
 

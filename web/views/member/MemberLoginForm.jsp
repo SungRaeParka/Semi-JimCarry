@@ -55,26 +55,21 @@
 	</div>
 	<form action="<%= request.getContextPath()%>/login.me" method="post" id="loginForm">
 	<div align="center">
-		<input type="text" name="userId" id="userId" value="">
+		<input type="text" name="userId" id="userId" placeholder="아이디">
 	</div>
 	<div align="center">
-		<input type="password" name="password" id="password">
+		<input type="password" name="password" id="password" placeholder="비밀번호">
 	</div>
-	<div align="center" id="ch">
-		<input type="checkbox" name="ot" id="ot" checked="checked">로그인 상태유지
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	</div>
+	<br>
 	<div align="center" id="join">
 		<a href="/semi/views/member/MemberSearchIdForm.jsp">아이디 찾기</a>&nbsp;
 		<a href="/semi/views/member/MemberSearchPwdForm.jsp">비밀번호 찾기</a>
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		&nbsp;&nbsp;&nbsp;&nbsp;
 		<a href="/semi/views/member/MemberJoinMenuForm.jsp">회원가입</a>
 	</div>
 	<div align="center">
 		<a href="views/mainPage.jsp"><button id="login">로그인</button></a><br>
-		<a href=http://www.naver.com><img src="../../images/naver.png" id="naver"></a><br>
-		<a href="#"><img src="../../images/kakao.png" id="kakao"></a>
+		<a href="#"><img src="../../images/logo.PNG" id="logo"></a>
 	</div>
 	</form>
 	<script>

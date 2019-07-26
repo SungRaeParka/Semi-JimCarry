@@ -47,6 +47,26 @@
 	.table1 {
 		margin-bottom:50px;
 	}
+	#check{
+		height:25px;
+		width:60px;
+		border:3px solid #5e5e5e;
+		border-radius:10px;
+		text-align:center;
+		margin-top:5px;
+		font-size:15px;
+		background:#5e5e5e;
+		color:#ffffff;
+	}
+	#btn {
+		border:3px solid #5e5e5e;
+		border-radius:10px;
+		text-align:center;
+		margin-top:5px;
+		font-size:15px;
+		background:#5e5e5e;
+		color:#ffffff;
+	}
 </style>
 </head>
 <body>
@@ -57,13 +77,13 @@
 		<div class="main1">
 		<table class="table1">
 			<tr>
-				<td><label>아이디</label>
-				<td><input type="text" name="userId" id="box" placeholder="아이디 입력"></td>
-				<td><button id="btn" onclick="check();">중복확인</button></td>
-			</tr>
-			<tr>
 				<td><label>이름</label></td>
 				<td><input type="text" name="userName" id="box" placeholder="이름"></td>
+			</tr>
+			<tr>
+				<td><label>아이디</label>
+				<td><input type="text" name="userId" id="box" placeholder="아이디 입력"></td>
+				<td><div id="check">중복확인</div></td>
 			</tr>
 			<tr>
 				<td><label>비밀번호</label>
@@ -93,7 +113,7 @@
 			<tr>
 				<td><label>우편 번호</label></td>
 				<td><input type="text" id="sample6_postcode" name = "address1" placeholder="우편번호" style="width:150px; height:20px;"></td>
-         		<td><input type="button" name="zipCode"class="btn_overlap" onclick="sample6_execDaumPostcode()"value="검색"></td>
+         		<td><input type="button" id="btn" name="zipCode"class="btn_overlap" onclick="sample6_execDaumPostcode()"value="검색"></td>
          	</tr>
          	<tr>
          		<td><label>사업장 주소</label></td>
@@ -204,7 +224,30 @@
     }
     function ok(){
 		$("form").submit();
-	}
+	};
+	/* $(function(){
+		$("#check").click(function(){
+			var userId = $("#userId").val();
+			
+			$.ajax({
+				url:"/semi/userIdCheck.me",
+				type:"post",
+				data:{userId:userId},
+				success:function(data){
+					
+					if(data === "fail"){
+						alert("아이디가 중복됩니다.");
+						$("#userId").val("").focus();
+					}else{
+						alert("사용 가능합니다.");
+					}
+				},
+				error:function(){
+					console.log("실패!");
+				}
+			});
+		});
+	}); */
 	</script>
 	
 </body>
