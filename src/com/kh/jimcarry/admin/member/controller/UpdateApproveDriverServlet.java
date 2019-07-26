@@ -32,29 +32,48 @@ public class UpdateApproveDriverServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String yesD = request.getParameter("yesD");
+		String resultD = request.getParameter("resultD");
 		String driverNo = request.getParameter("driverNo");
+		String prompt = request.getParameter("prompt");
 
-		System.out.println("yesD in controller : " + yesD);
+
+		System.out.println("resultD in controller : " + resultD);
 		System.out.println("driverNo in controller : " + driverNo);
+		System.out.println("prompt in controller : " + prompt);
 
-		ArrayList<Member> list = new MemberService().UdateApproveDriver(yesD, driverNo);
+		if(prompt != null) {
+			ArrayList<Member> list = new MemberService().UdateRefuseDriver(resultD, driverNo, prompt);
 
-		response.setContentType("application/json");
-		response.setCharacterEncoding("UTF-8");
-		new Gson().toJson(list, response.getWriter());
-//		String page ="";
-//
-//		if(list != null) {
-//			page = "views/admin/memberMng/admin_ApproveDriverMng.jsp";
-//			request.setAttribute("list", list);
-//		}else {
-//			page = "views/common/erroPage.jsp";
-//			request.setAttribute("msg", "목록 조회 실패!");
-//		}
-//		System.out.println("SelectAllDriver.svl list : " + list);
-//
-//		request.getRequestDispatcher(page).forward(request, response);
+				String page ="";
+
+				if(list != null) {
+					page = "/semi/approve.d";
+//					request.setAttribute("list", list);
+					response.sendRedirect(page);
+				}else {
+					page = "views/common/erroPage.jsp";
+					request.setAttribute("msg", "목록 조회 실패!");
+					request.getRequestDispatcher(page).forward(request, response);
+				}
+				System.out.println("SelectAllDriver.svl list : " + list);
+
+		}else {
+			ArrayList<Member> list = new MemberService().UdateApproveDriver(resultD, driverNo);
+
+			String page ="";
+
+			if(list != null) {
+				page = "/approve.d";
+				request.setAttribute("list", list);
+			}else {
+				page = "views/common/erroPage.jsp";
+				request.setAttribute("msg", "목록 조회 실패!");
+			}
+			System.out.println("SelectAllDriver.svl list : " + list);
+
+			request.getRequestDispatcher(page).forward(request, response);
+		}
+
 	}
 
 	/**
