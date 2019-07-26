@@ -15,13 +15,13 @@ public class Request implements Serializable{
 	private String userNo;
 	private String reqNo;
 	private String proNo;
-	private String condition;
+	private String conditionReq;
 	
 	private String driverNo;
 	private int orderPrice;
 	private Date orderDate;
 	private Date matchDate;
-	private String matchCheck;
+	private String conditionDo;
 	
 	private String proName;
 	private String proType;
@@ -36,6 +36,7 @@ public class Request implements Serializable{
 	private int boxCount;
 	
 	private int reqCount;
+	private String userName;
 	private String driverName;
 	private String grade;
 	
@@ -44,10 +45,11 @@ public class Request implements Serializable{
 
 
 	public Request(Date reservationDate, int reservationTime, String startPoint, String arrivalPoint, Date reqStart,
-			Date reqFinish, String memo, String userNo, String reqNo, String proNo, String condition, String driverNo,
-			int orderPrice, Date orderDate, Date matchDate, String matchCheck, String proName, String proType,
-			String proSize, String proMaterial, String proWidth, String proHeight, String glassCheck, String uniquness,
-			String proKind, int bookCount, int boxCount, int reqCount, String driverName, String grade) {
+			Date reqFinish, String memo, String userNo, String reqNo, String proNo, String conditionReq,
+			String driverNo, int orderPrice, Date orderDate, Date matchDate, String conditionDo, String proName,
+			String proType, String proSize, String proMaterial, String proWidth, String proHeight, String glassCheck,
+			String uniquness, String proKind, int bookCount, int boxCount, int reqCount, String userName,
+			String driverName, String grade) {
 		super();
 		this.reservationDate = reservationDate;
 		this.reservationTime = reservationTime;
@@ -59,12 +61,12 @@ public class Request implements Serializable{
 		this.userNo = userNo;
 		this.reqNo = reqNo;
 		this.proNo = proNo;
-		this.condition = condition;
+		this.conditionReq = conditionReq;
 		this.driverNo = driverNo;
 		this.orderPrice = orderPrice;
 		this.orderDate = orderDate;
 		this.matchDate = matchDate;
-		this.matchCheck = matchCheck;
+		this.conditionDo = conditionDo;
 		this.proName = proName;
 		this.proType = proType;
 		this.proSize = proSize;
@@ -77,6 +79,7 @@ public class Request implements Serializable{
 		this.bookCount = bookCount;
 		this.boxCount = boxCount;
 		this.reqCount = reqCount;
+		this.userName = userName;
 		this.driverName = driverName;
 		this.grade = grade;
 	}
@@ -182,13 +185,13 @@ public class Request implements Serializable{
 	}
 
 
-	public String getCondition() {
-		return condition;
+	public String getConditionReq() {
+		return conditionReq;
 	}
 
 
-	public void setCondition(String condition) {
-		this.condition = condition;
+	public void setConditionReq(String conditionReq) {
+		this.conditionReq = conditionReq;
 	}
 
 
@@ -232,13 +235,13 @@ public class Request implements Serializable{
 	}
 
 
-	public String getMatchCheck() {
-		return matchCheck;
+	public String getConditionDo() {
+		return conditionDo;
 	}
 
 
-	public void setMatchCheck(String matchCheck) {
-		this.matchCheck = matchCheck;
+	public void setConditionDo(String conditionDo) {
+		this.conditionDo = conditionDo;
 	}
 
 
@@ -362,6 +365,16 @@ public class Request implements Serializable{
 	}
 
 
+	public String getUserName() {
+		return userName;
+	}
+
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+
 	public String getDriverName() {
 		return driverName;
 	}
@@ -386,17 +399,16 @@ public class Request implements Serializable{
 	public String toString() {
 		return "Request [reservationDate=" + reservationDate + ", reservationTime=" + reservationTime + ", startPoint="
 				+ startPoint + ", arrivalPoint=" + arrivalPoint + ", reqStart=" + reqStart + ", reqFinish=" + reqFinish
-				+ ", memo=" + memo + ", userNo=" + userNo + ", reqNo=" + reqNo + ", proNo=" + proNo + ", condition="
-				+ condition + ", driverNo=" + driverNo + ", orderPrice=" + orderPrice + ", orderDate=" + orderDate
-				+ ", matchDate=" + matchDate + ", matchCheck=" + matchCheck + ", proName=" + proName + ", proType="
+				+ ", memo=" + memo + ", userNo=" + userNo + ", reqNo=" + reqNo + ", proNo=" + proNo + ", conditionReq="
+				+ conditionReq + ", driverNo=" + driverNo + ", orderPrice=" + orderPrice + ", orderDate=" + orderDate
+				+ ", matchDate=" + matchDate + ", conditionDo=" + conditionDo + ", proName=" + proName + ", proType="
 				+ proType + ", proSize=" + proSize + ", proMaterial=" + proMaterial + ", proWidth=" + proWidth
 				+ ", proHeight=" + proHeight + ", glassCheck=" + glassCheck + ", uniquness=" + uniquness + ", proKind="
 				+ proKind + ", bookCount=" + bookCount + ", boxCount=" + boxCount + ", reqCount=" + reqCount
-				+ ", driverName=" + driverName + ", grade=" + grade + "]";
+				+ ", userName=" + userName + ", driverName=" + driverName + ", grade=" + grade + "]";
 	}
 
 
-	
 	
 
 	

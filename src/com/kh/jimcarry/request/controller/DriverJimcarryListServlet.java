@@ -16,12 +16,12 @@ import com.kh.jimcarry.request.model.vo.PageInfo;
 import com.kh.jimcarry.request.model.vo.Request;
 
 
-@WebServlet("/myJcarrylist.jc")
-public class MyJimcarryListServlet extends HttpServlet {
+@WebServlet("/driverJcarrylist.jc")
+public class DriverJimcarryListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     
-    public MyJimcarryListServlet() {
+    public DriverJimcarryListServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,20 +29,17 @@ public class MyJimcarryListServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
 		int currentPage;
 		int limit;
 		int maxPage;
 		int startPage;
 		int endPage;
 		
-		currentPage=1;
+		currentPage = 1;
 		
-		if(request.getParameter("currentPage") !=null) {
-			currentPage = Integer.parseInt(request.getParameter("currentPage"));
-			
+		if(request.getParameter("currentPage") != null) {
+			currentPage = Integer.parseInt(request.getParameter("currentPage"));	
 		}
-		
 		
 		limit=5;
 		
@@ -51,10 +48,10 @@ public class MyJimcarryListServlet extends HttpServlet {
 		Member loginUser = (Member)session.getAttribute("loginUser");
 		String logUserNo = loginUser.getSeqNo();
 		
-		//전체목록갯수 리턴
+		
 		int listCount = new RequestService().getListCount(logUserNo);
 		
-		System.out.println("listcount : "+listCount);
+		System.out.println("driverlistCount: "+ listCount);
 		
 		maxPage = (int)((double)listCount/limit+0.95);
 		
@@ -67,22 +64,10 @@ public class MyJimcarryListServlet extends HttpServlet {
 		
 		PageInfo pi = new PageInfo(currentPage,listCount,limit,maxPage,startPage,endPage);
 		
+		ArrayList<Request> list = new RequestService().selectDriverList(currentPage,limit,logUserNo);
 		
-		ArrayList<Request> list = new RequestService().selectList(currentPage,limit,logUserNo);
-	
 		
 		String page="";
-		
-		if(list != null) {
-			page = "views/request/jim_CarryList.jsp";
-			request.setAttribute("list", list);
-			request.setAttribute("pi", pi);
-			
-		}else {
-			page="views/common/errorPage.jsp";
-			request.setAttribute("msg", "짐캐리 리스트 없어");
-		}
-		request.getRequestDispatcher(page).forward(request, response);
 		
 	}
 

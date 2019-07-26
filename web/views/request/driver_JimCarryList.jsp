@@ -29,10 +29,12 @@
 		<div align="right">
 			<select id="driver_filter" name="driver_filter" style="height: 50px;">
 				<option value="전체 보기" selected>전체 보기</option>
-				<option value="매칭 대기중">매칭 대기중</option>
-				<option value="매칭 완료">매칭 완료</option>
-				<option value="서비스 이용 완료">서비스 이용 완료</option>
-				<option value="금액 정산 완료">금액 정산 완료</option>
+				<option value="매칭대기">매칭대기</option>
+				<option value="매칭완료">매칭완료</option>
+				<option value="이용대기">이용대기</option>
+				<option value="이용완료">이용완료</option>
+				<option value="정산대기">정산대기</option>
+				<option value="정산완료">정산완료</option>
 			</select>
 		</div>
 		
