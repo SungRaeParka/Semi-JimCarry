@@ -156,20 +156,30 @@ public class BoardDao {
 
 
 	//조회수 카운터
-	public int updateCount(Connection con, int num) {
+	public int updateCount(Connection con, String num) {
 		PreparedStatement pstmt = null;
 
 		int result = 0;
 
 		String query = prop.getProperty("updateCount");
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1,num);
+			pstmt.setString(2, num);
 
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
 
-
-		return 0;
+		return result;
 	}
 
 	//게시판 상세보기
-	public HashMap<String, Object> selectBoardMap(Connection con, int num) {
+	public HashMap<String, Object> selectBoardMap(Connection con, String num) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		HashMap<String, Object> hmap = null;
@@ -180,7 +190,7 @@ public class BoardDao {
 		String query = prop.getProperty("selectBoardOne");
 		try {
 			pstmt = con.prepareStatement(query);
-			pstmt.setInt(1, num);
+			pstmt.setString(1, num);
 
 			rset = pstmt.executeQuery();
 
@@ -203,6 +213,7 @@ public class BoardDao {
 				at.setFilePath(rset.getString("FILE_PATH"));
 				at.setUploadDate(rset.getDate("UPLOAD_DATE"));
 
+				System.out.println("상세보기 DB : " + b);
 				list.add(at);
 			}
 
@@ -216,7 +227,7 @@ public class BoardDao {
 			close(rset);
 			close(pstmt);
 		}
-
+		System.out.println("상세보기DB : " + hmap);
 		return hmap;
 	}
 
