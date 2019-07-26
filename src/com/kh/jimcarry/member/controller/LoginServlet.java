@@ -41,7 +41,6 @@ public class LoginServlet extends HttpServlet {
 		
 		Member loginUser = new MemberService().loginCheck(userId, userPwd);
 		
-		System.out.println("loginUser userId :::: " + loginUser.getUserId());
 		
 		if(loginUser != null) {
 			if(loginUser.getUserId().contains("admin")) {
