@@ -228,8 +228,8 @@
 		<ul class="nav nav-tabs">
 			<li><a href="/semi/selectAll.u">사용자</a></li>
 			<li class="active"><a data-toggle="tab" href="#menu1">기사</a></li>
-			<li><a href="admin_ApproveDriverMng.jsp">신청한 기사 관리</a></li>
-			<li><a href="admin_BlackListDriverMng.jsp">블랙리스트 관리</a></li>
+			<li><a href="/semi/approve.d">신청한 기사 관리</a></li>
+			<li><a href="/semi/blackList.d">블랙리스트 관리</a></li>
 			<li><a href="/semi/dclare.d">신고내역 관리</a></li>
 		</ul>
 

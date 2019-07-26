@@ -184,15 +184,36 @@ public class MemberDao {
 		}
 		return list;
 	}
-	public int UdateApproveDriver(Connection con, String yesD, String driverNo) {
+	public int UdateApproveDriver(Connection con, String resultD, String driverNo) {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		String query = prop.getProperty("UdateApproveDriver");
 
 		try {
 			pstmt = con.prepareStatement(query);
-			pstmt.setString(1, yesD);
+			pstmt.setString(1, resultD);
 			pstmt.setString(2, driverNo);
+
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+
+		return result;
+	}
+	public int UdateRefuseDriver(Connection con, String resultD, String driverNo, String prompt) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = prop.getProperty("UdateRefuseDriver");
+
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, resultD);
+			pstmt.setString(2, prompt);
+			pstmt.setString(3, driverNo);
 
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {

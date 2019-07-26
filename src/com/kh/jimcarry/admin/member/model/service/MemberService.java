@@ -44,12 +44,34 @@ public class MemberService {
 		return list;
 	}
 
-	public ArrayList<Member> UdateApproveDriver(String yesD, String driverNo) {
+	public ArrayList<Member> UdateApproveDriver(String resultD, String driverNo) {
 		Connection con = getConnection();
 
 
 //		if (list != null) {
-			int result = new MemberDao().UdateApproveDriver(con,yesD,driverNo);
+			int result = new MemberDao().UdateApproveDriver(con,resultD,driverNo);
+
+			if(result > 0) {
+				commit(con);
+			}else {
+				rollback(con);
+			}
+//		}else {
+//
+//		}
+		ArrayList<Member> list = new MemberDao().approveDriver(con);
+
+		close(con);
+
+		return list;
+	}
+
+	public ArrayList<Member> UdateRefuseDriver(String resultD, String driverNo, String prompt) {
+		Connection con = getConnection();
+
+
+//		if (list != null) {
+			int result = new MemberDao().UdateRefuseDriver(con,resultD,driverNo,prompt);
 
 			if(result > 0) {
 				commit(con);
