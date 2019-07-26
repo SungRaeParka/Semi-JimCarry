@@ -69,6 +69,15 @@ public class DriverJimcarryListServlet extends HttpServlet {
 		
 		String page="";
 		
+		if(list != null) {
+			page = "views/request/driver_JimCarryList.jsp";
+			request.setAttribute("list", list);
+			request.setAttribute("pi", pi);
+		}else {
+			page="views/common/errorPage.jsp";
+			request.setAttribute("msg", "기사 짐캐리 리스트 없어");
+		}
+		request.getRequestDispatcher(page).forward(request, response);
 	}
 
 	

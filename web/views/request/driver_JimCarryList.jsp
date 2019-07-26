@@ -1,33 +1,110 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"
+	import="java.util.*,java.text.SimpleDateFormat, com.kh.jimcarry.request.model.vo.*"%>
+
+<%
+	ArrayList<Request> list = (ArrayList<Request>) request.getAttribute("list");
+	PageInfo pi = (PageInfo) request.getAttribute("pi");
+	int listCount = pi.getListCount();
+	int currentPage = pi.getCurrentPage();
+	int maxPage = pi.getMaxPage();
+	int startPage = pi.getStartpage();
+	int endPage = pi.getEndPage();
+%>
+
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset=UTF-8>
-<title>Insert title here</title>
+<title>기사 짐캐리 리스트</title>
+<!-- 
 <style>
-	html, body{
-		height:100%;
-		margin: 0;
-		padding: 0;		
-	}	
-	#main {
-		min-height: 100%;
-	}
+html, body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+#main {
+	min-height: 100%;
+}
 </style>
+ -->
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+<style>
+#outer {
+	width: 870px;
+	margin: 0 auto;
+}
+
+.imgs {
+	width: 150px;
+	height: 150px;
+}
+
+#reqno {
+	float: right;
+}
+
+.text {
+	padding-left: 200px;
+}
+
+#title {
+	padding-top: 3px;
+}
+
+#date {
+	padding-top: 5px;
+}
+
+#count {
+	padding-top: 3px;
+}
+
+#reqInfo, #reqpri, #reqprice {
+	float: right;
+}
+
+#reqInfo {
+	margin-top: -10px;
+}
+
+#reqpri {
+	margin-top: -20px;
+}
+
+#reqprice {
+	margin-top: -25px;
+}
+
+#time, #reqcencle, #done {
+	margin-top: -15px;
+}
+</style>
+ 
+ 
+ 
 </head>
 <body>
-	<%@ include file="/views/common/driver_TopBar.jsp" %>
+	<%@ include file="/views/common/driver_TopBar.jsp"%>
+
+	<div id="outer">
+	<br> <br> <br> <br>
 	
-	<div id="main">	
-		<div align="center" style="padding-top: 100px;">
-			<span style="font-size: 45px; font-weight: bold">기사 짐 캐리 리스트</span><br>
-			<br>
-			<br>
-		</div>
-		
-		<div align="right">
-			<select id="driver_filter" name="driver_filter" style="height: 50px;">
+	
+		<h1>기사 짐캐리 리스트</h1>
+
+		<div id="filt" align="right">
+			<select name="driver_filter">
 				<option value="전체 보기" selected>전체 보기</option>
 				<option value="매칭대기">매칭대기</option>
 				<option value="매칭완료">매칭완료</option>
@@ -35,131 +112,279 @@
 				<option value="이용완료">이용완료</option>
 				<option value="정산대기">정산대기</option>
 				<option value="정산완료">정산완료</option>
+				<option value="매칭취소">매칭취소</option>
 			</select>
 		</div>
-		
+
 		<hr>
+
+		<%
+			Request req = new Request();
 		
-		<div style="display: table">
+			Date finishDay = new Date();
+			Date nowDay = new Date();
+			Date moveDay = new Date();
+			int moveTimeH;
+			String ampm;
+			
+			long finishTime;
+			long nowTime;
+			long moveTime;
+			
+			long timeRemain;
+			long timeReH;
+			long timeReM;
+			
+			
+
+			for (int i = 0; i < list.size(); i++) {
+				req = list.get(i);
+				
+				finishDay = req.getReqFinish();
+				moveDay = req.getReservationDate();
+				moveTimeH = req.getReservationTime();
+				
+				System.out.println("finishDay: "+req.getReqFinish());
+				System.out.println("moveDay: "+req.getReservationDate());
+				System.out.println("moveTimeH: "+req.getReservationTime());
+				
+				if(moveTimeH<12){
+					ampm="오전";
+				}else if(moveTimeH==12){
+					ampm="오후";
+				}else{
+					ampm="오후";					
+					moveTimeH -=12;
+				}
+				
+				
+				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+				
+				nowDay = dateFormat.parse(dateFormat.format(nowDay));
+				nowTime = nowDay.getTime();
+				System.out.println(nowDay);
+				System.out.println(nowTime);
+				//오늘 날,시간 getTime
+				
+				finishTime = finishDay.getTime();
+				System.out.println(finishDay);
+				System.out.println(finishTime);
+				//견적매칭 종료일 getTime
+				
+				moveTime = moveDay.getTime();
+				System.out.println(moveDay);
+				System.out.println(moveTime);
+				//짐옮기는날 getTime
+				
+				
+				timeRemain = finishTime+86400000-nowTime;
+				timeReH = (timeRemain/60000)/60;
+				timeReM = (timeRemain/60000)%60;
+				
+
+				if (req.getConditionDo().equals("매칭대기")) {
+		%>
+		<div>
+			<img src="/semi/images/mc1.png" class="imgs" style="float: left">
+
+			<div id="reqno">
+				<p>
+					견적번호 :
+					<%=req.getReqNo()%></p>
+			</div>
+
+			<div id="title" class="text">
+				<h1><%=req.getStartPoint()%>
+					→
+					<%=req.getArrivalPoint()%></h1>
+			</div>
+			<div id="reqInfo">
+				<h4>
+					<input type="hidden" value="<%=req.getReqNo() %>">
+					<a id="reqInfoBtn">견적확인 →</a>
+				</h4>
+			</div>
+
+			<div id="date" class="text">
+				<h3>
+					예약일 :
+					<%=req.getReservationDate()%>&nbsp;
+					<%=ampm %><%=moveTimeH %>시
+				</h3>
+			</div>
+			<div id="reqpri">
+				<h4>
+					<a href="/semi/views/request/req_ReqList.jsp">입찰내역 확인 →</a>
+				</h4>
+			</div>
+
+			<div id="count" class="text">
+				<h3>
+					받은 견적 수 :
+					<%=req.getReqCount()%></h3>
+			</div>
+			<div id="time" align="right">
+
+				<h3>남은 시간 : <%=timeReH %> 시간 &nbsp; <%=timeReM %> 분</h3>
+
+			</div>
+			<hr>
+		</div>
+		
+		
+		
+
+		<%
+			} else if (req.getConditionDo().equals("매칭취소")) {
+		%>
+
+		<%
+			} else if (req.getConditionDo().equals("매칭완료")) {
+		%>
+
+		<%
+			} else if (req.getConditionDo().equals("이용대기")) {
+		%>
+
+		<%
+			} else if (req.getConditionDo().equals("이용완료")) {
+		%>
+
+		<%
+			} else if (req.getConditionDo().equals("정산대기")) {
+		%>
+
+		<%
+			} else {
+		%>
+
+		<%
+			}
+
+			}
+		%>
+
+
+
+<%-- 
+	<hr><hr><hr><hr>
+	<div style="display: table">
 			<div style="float: left">
-				<img src="../../images/main_4.png" style="width: 120px; height: 120px; margin-left: 50px; margin-top: 30px; margin-bottom: 30px;">
+				<img src="/semi/images/mc1.png"
+					style="width: 120px; height: 120px; margin-left: 50px; margin-top: 30px; margin-bottom: 30px;">
 			</div>
 			<div style="float: left; padding-left: 20px; padding-top: 20px;">
-				<span style="font-size: 40px; font-weight: bold;">출발지</span>
-				<span style="font-size: 40px; font-weight: bold;">→</span>
-				<span style="font-size: 40px; font-weight: bold;">도착지</span>
-				<br>
-				<span style="font-size: 20px;">고객명 : 박성래</span>
-				<br>
-				<span style="font-size: 20px;">받은 견적수 : 5건</span>
-				<br>
-				<span style="font-size: 20px;">입찰 요금 : 140,000원</span>
-			</div>	
+				<span style="font-size: 40px; font-weight: bold;"><%=req.getStartPoint() %></span> 
+				<span style="font-size: 40px; font-weight: bold;">→</span> 
+				<span style="font-size: 40px; font-weight: bold;"><%=req.getArrivalPoint() %></span> <br> <span
+					style="font-size: 20px;">고객명 : <%=req.getUserName() %></span> <br> <span
+					style="font-size: 20px;">받은 견적수 : <%=req.getReqCount() %></span> <br> <span
+					style="font-size: 20px;">입찰 요금 : <%=req.getOrderPrice() %></span>
+			</div>
 			<div style="float: left; padding-left: 230px; padding-top: 100px;">
-				<a href="#" style="text-decoration: none;">
-					<span style="font-size: 30px">상세 견적 보기</span>
+				<a href="#" style="text-decoration: none;"> <span
+					style="font-size: 30px">상세 견적 보기</span>
 				</a>
 			</div>
 			<div style="float: right;">
-				<span style="font-size: 30px">남은 시간 : 10시간 12분</span>
-			</div>		
+				<span style="font-size: 30px">남은 시간 : <%=timeReH %>시간 &nbsp; <%=timeReM %> 분</span>
+			</div>
 		</div>
-		
+
 		<hr>
+		
+	
+	
 		
 		<div style="display: table">
 			<div style="float: left">
-				<img src="../../images/main_4.png" style="width: 120px; height: 120px; margin-left: 50px; margin-top: 30px; margin-bottom: 30px;">
+				<img src="../../images/main_4.png"
+					style="width: 120px; height: 120px; margin-left: 50px; margin-top: 30px; margin-bottom: 30px;">
 			</div>
 			<div style="float: left; padding-left: 20px; padding-top: 20px;">
-				<span style="font-size: 40px; font-weight: bold;">출발지</span>
-				<span style="font-size: 40px; font-weight: bold;">→</span>
-				<span style="font-size: 40px; font-weight: bold;">도착지</span>
-				<br>
-				<span style="font-size: 20px;">고객명 : 박성래</span>
-				<br>
-				<span style="font-size: 20px;">이용일 : 2019-07-02</span>
-				<br>
-				<span style="font-size: 20px;">입찰 요금 : 140,000원</span>
-			</div>	
+				<span style="font-size: 40px; font-weight: bold;">출발지</span> <span
+					style="font-size: 40px; font-weight: bold;">→</span> <span
+					style="font-size: 40px; font-weight: bold;">도착지</span> <br> <span
+					style="font-size: 20px;">고객명 : 박성래</span> <br> <span
+					style="font-size: 20px;">이용일 : 2019-07-02</span> <br> <span
+					style="font-size: 20px;">입찰 요금 : 140,000원</span>
+			</div>
 			<div style="float: left; padding-left: 230px; padding-top: 100px;">
-				<a href="#" style="text-decoration: none;">
-					<span style="font-size: 30px">이용 완료 처리</span>
+				<a href="#" style="text-decoration: none;"> <span
+					style="font-size: 30px">이용 완료 처리</span>
 				</a>
-			</div>				
+			</div>
 		</div>
-		
+
 		<hr>
-		
+
 		<div style="display: table">
 			<div style="float: left">
-				<img src="../../images/main_4.png" style="width: 120px; height: 120px; margin-left: 50px; margin-top: 30px; margin-bottom: 30px;">
+				<img src="../../images/main_4.png"
+					style="width: 120px; height: 120px; margin-left: 50px; margin-top: 30px; margin-bottom: 30px;">
 			</div>
 			<div style="float: left; padding-left: 20px; padding-top: 20px;">
-				<span style="font-size: 40px; font-weight: bold;">출발지</span>
-				<span style="font-size: 40px; font-weight: bold;">→</span>
-				<span style="font-size: 40px; font-weight: bold;">도착지</span>
-				<br>
-				<span style="font-size: 20px;">고객명 : 박성래</span>
-				<br>
-				<span style="font-size: 20px;">이용일 : 2019-07-02</span>
-				<br>
-				<span style="font-size: 20px;">입찰 요금 : 140,000원</span>
-			</div>	
+				<span style="font-size: 40px; font-weight: bold;">출발지</span> <span
+					style="font-size: 40px; font-weight: bold;">→</span> <span
+					style="font-size: 40px; font-weight: bold;">도착지</span> <br> <span
+					style="font-size: 20px;">고객명 : 박성래</span> <br> <span
+					style="font-size: 20px;">이용일 : 2019-07-02</span> <br> <span
+					style="font-size: 20px;">입찰 요금 : 140,000원</span>
+			</div>
 			<div style="float: left; padding-left: 200px; padding-top: 100px;">
 				<span style="font-size: 15px">고객이 완료 처리시 정산 신청이 가능합니다.</span>
-			</div>				
+			</div>
 		</div>
-		
+
 		<hr>
-		
+
 		<div style="display: table">
 			<div style="float: left">
-				<img src="../../images/main_4.png" style="width: 120px; height: 120px; margin-left: 50px; margin-top: 30px; margin-bottom: 30px;">
+				<img src="../../images/main_4.png"
+					style="width: 120px; height: 120px; margin-left: 50px; margin-top: 30px; margin-bottom: 30px;">
 			</div>
 			<div style="float: left; padding-left: 20px; padding-top: 20px;">
-				<span style="font-size: 40px; font-weight: bold;">출발지</span>
-				<span style="font-size: 40px; font-weight: bold;">→</span>
-				<span style="font-size: 40px; font-weight: bold;">도착지</span>
-				<br>
-				<span style="font-size: 20px;">고객명 : 박성래</span>
-				<br>
-				<span style="font-size: 20px;">이용일 : 2019-07-02</span>
-				<br>
-				<span style="font-size: 20px;">입찰 요금 : 140,000원</span>
-			</div>	
+				<span style="font-size: 40px; font-weight: bold;">출발지</span> <span
+					style="font-size: 40px; font-weight: bold;">→</span> <span
+					style="font-size: 40px; font-weight: bold;">도착지</span> <br> <span
+					style="font-size: 20px;">고객명 : 박성래</span> <br> <span
+					style="font-size: 20px;">이용일 : 2019-07-02</span> <br> <span
+					style="font-size: 20px;">입찰 요금 : 140,000원</span>
+			</div>
 			<div style="float: left; padding-left: 230px; padding-top: 100px;">
-				<a href="/semi/views/request/popup/pop_Driver_Calculate.jsp" style="text-decoration: none;">
-					<span style="font-size: 30px">정산 신청</span>
+				<a href="/semi/views/request/popup/pop_Driver_Calculate.jsp"
+					style="text-decoration: none;"> <span style="font-size: 30px">정산
+						신청</span>
 				</a>
-			</div>			
+			</div>
 		</div>
-		
+
 		<hr>
-		
+
 		<div style="display: table">
 			<div style="float: left">
-				<img src="../../images/main_4.png" style="width: 120px; height: 120px; margin-left: 50px; margin-top: 30px; margin-bottom: 30px;">
+				<img src="../../images/main_4.png"
+					style="width: 120px; height: 120px; margin-left: 50px; margin-top: 30px; margin-bottom: 30px;">
 			</div>
 			<div style="float: left; padding-left: 20px; padding-top: 20px;">
-				<span style="font-size: 40px; font-weight: bold;">출발지</span>
-				<span style="font-size: 40px; font-weight: bold;">→</span>
-				<span style="font-size: 40px; font-weight: bold;">도착지</span>
-				<br>
-				<span style="font-size: 20px;">고객명 : 박성래</span>
-				<br>
-				<span style="font-size: 20px;">이용일 : 2019-07-02</span>
-				<br>
-				<span style="font-size: 20px;">입찰 요금 : 140,000원</span>
-				<br>
-				<span style="font-size: 20px;">정산 요금 : 120,000원</span>
-			</div>	
+				<span style="font-size: 40px; font-weight: bold;">출발지</span> <span
+					style="font-size: 40px; font-weight: bold;">→</span> <span
+					style="font-size: 40px; font-weight: bold;">도착지</span> <br> <span
+					style="font-size: 20px;">고객명 : 박성래</span> <br> <span
+					style="font-size: 20px;">이용일 : 2019-07-02</span> <br> <span
+					style="font-size: 20px;">입찰 요금 : 140,000원</span> <br> <span
+					style="font-size: 20px;">정산 요금 : 120,000원</span>
+			</div>
 			<div style="float: left; padding-left: 200px; padding-top: 100px;">
 				<span style="font-size: 15px">정산이 완료된 내역입니다.</span>
-			</div>			
+			</div>
 		</div>
-		
+
 		<hr>
+		 --%>
+		
+		
+		
 	</div>
 </body>
 </html>
