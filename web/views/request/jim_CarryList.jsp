@@ -104,10 +104,15 @@
 			Date finishDay = new Date(); //견적매칭 종료일
 			Date nowDay = new Date(); //현재날짜
 			Date moveDay = new Date(); //예약일(짐옮기는 날)
-			long startTime;
-			long nowTime;
-			long finishTime;
-			long moveTime;
+			int moveTimeH;  //예약일 짐옮기는 시간
+			String ampm;  //오전오후 출력용
+			long plusTimeS;  //이용날 + 이용시간 -> 버튼 바뀌는 시점 설정 위해
+			
+			long startTime; //견적매칭 시작일 getTime
+			long nowTime;  //오늘 날,시간 getTime
+			long finishTime;  //견적매칭 종료일 getTime
+			long moveTime;  //짐옮기는날 getTime
+			
 			
 			long timeRemain;//남은시간
 			long timeReH; //남은시간_시간
@@ -117,39 +122,47 @@
 			for (int i = 0; i < list.size(); i++) {
 				req = list.get(i);
 				
-				startDay = req.getReqStart();
-				finishDay = req.getReqFinish();
-				moveDay = req.getReservationDate();
-				System.out.println(nowDay);
-				System.out.println(startDay);
-				System.out.println(finishDay);
-				System.out.println(moveDay);
+				startDay = req.getReqStart();  //견적매칭 시작일
+				finishDay = req.getReqFinish();  //견적매칭 종료일
+				moveDay = req.getReservationDate(); //예약일(짐옮기는 날)
+				moveTimeH = req.getReservationTime(); //예약일 짐옮기는 시간
+				
+				//plusTimeS = moveTimeH*3600000;  //이용시간getTime -> 버튼 바뀌는 시점 설정 위해
+				//하루 : 86400000 1시간 : 3600000
+				
+				
+				if(moveTimeH<12){
+					ampm="오전";
+				}else if(moveTimeH==12){
+					ampm="오후";
+				}else{
+					ampm="오후";					
+					moveTimeH -=12;
+				}
+				
+				
 				
 				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm");
 				
 				startTime = startDay.getTime();
-				System.out.println("견적매칭 시작날짜 : "+startDay);
-				System.out.println(startTime);
+				//견적매칭 시작일 getTime
 				
 				nowDay = dateFormat.parse(dateFormat.format(nowDay));
 				nowTime = nowDay.getTime();
-				System.out.println("현재날짜 : "+nowDay);
-				System.out.println(nowTime);
+				//오늘 날,시간 getTime
 
 				finishTime = finishDay.getTime();
-				System.out.println("견적매칭 종료날짜 : "+finishDay);
-				System.out.println(finishTime);
+				//견적매칭 종료일 getTime
 				
 				moveTime = moveDay.getTime();
-				System.out.println("이사 날짜 : "+moveDay);
-				System.out.println(moveTime);
+				//짐옮기는날 getTime
+				
 				
 				timeRemain = finishTime+86400000-nowTime;
-				//timeReM = timeRemain/60000;
 				timeReH = (timeRemain/60000)/60;
 				timeReM = (timeRemain/60000)%60;
 				
-				if (req.getCondition().equals("매칭대기")) {
+				if (req.getConditionReq().equals("매칭대기")) {
 		%>
 		<div>
 			<img src="/semi/images/mc1.png" class="imgs" style="float: left">
@@ -167,14 +180,17 @@
 			</div>
 			<div id="reqInfo">
 				<h4>
-					<a href="/semi/views/request/jim_CarryCheckReq.jsp">견적확인 →</a>
+					<input type="hidden" value="<%=req.getReqNo() %>">
+					<a id="reqInfoBtn">견적확인 →</a>
 				</h4>
 			</div>
 
 			<div id="date" class="text">
 				<h3>
 					예약일 :
-					<%=req.getReservationDate()%></h3>
+					<%=req.getReservationDate()%>&nbsp;
+					<%=ampm %><%=moveTimeH %>시
+				</h3>
 			</div>
 			<div id="reqpri">
 				<h4>
@@ -196,7 +212,7 @@
 		</div>
 
 		<%
-			} else if (req.getCondition().equals("매칭완료")) {
+			} else if (req.getConditionReq().equals("매칭완료")) {
 		%>
 		<div>
 			<img src="/semi/images/mc2.png" class="imgs" style="float: left">
@@ -245,8 +261,13 @@
 
 
 		<%
-			} else if (req.getCondition().equals("이용대기")) {
-				if(nowTime < (moveTime+86400000)){//예약시간받아서 예약시간 getTime 더하기로 수정할것
+			} else if (req.getConditionReq().equals("이용대기")) {
+				
+				System.out.println(nowTime);
+				System.out.println(moveTime+moveTimeH*3600000);
+				
+				
+				if(nowTime < moveTime+moveTimeH*3600000){
 		%>			
 					<div>
 			<img src="/semi/images/mc3.png" class="imgs" style="float: left">
@@ -347,7 +368,7 @@
 		%>
 		
 		<%
-			} else if (req.getCondition().equals("이용완료")) {
+			} else if (req.getConditionReq().equals("이용완료")) {
 		%>
 
 		<div>
@@ -443,6 +464,21 @@
 
 
 	</div>
+	
+	
+	
+	<script>
+	$(function(){
+		$("#reqInfoBtn").click(function(){
+			var no = $(this).parent().children("input").val();
+			
+			location.href="<%=request.getContextPath()%>/checkReq.jc?no=" + no;
+		});
+	});
+	
+	
+	
+	</script>
 
 
 

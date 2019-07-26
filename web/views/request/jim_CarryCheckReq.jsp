@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"
+	import="java.util.*, com.kh.jimcarry.request.model.vo.*"%>
+	
+	
+	
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,12 +43,19 @@
 	<div id="outer">
 
 		<br> <br> <br> <br>
+		
+		
+		<%
+		
+		
+		
+		%>
 
 		<h1 align="center">최종 견적서</h1>
 		<hr>
 		<div>
 			<h3>예정일</h3>
-			<p>년 월 일 시간</p>
+			<p><%= %></p>
 		</div>
 		<hr>
 
@@ -69,7 +81,7 @@
 
 		<div>
 			<h3>사진 정보</h3>
-			<img src="../../images/box.png" id="imgs">
+			<img src="/semi/images/box.png" id="imgs">
 
 		</div>
 		<hr>
@@ -98,7 +110,7 @@
 		<br> <br>
 
 		<div align="center" style="margin-bottom: 10px">
-			<a href="jim_CarryList.jsp" style="text-decoration: none; padding-left: 40px;">
+			<a href="/semi/myJcarrylist.jc" style="text-decoration: none; padding-left: 40px;">
 				<span style="font-size: 30px">확인</span>	
 			</a>
 		</div>
