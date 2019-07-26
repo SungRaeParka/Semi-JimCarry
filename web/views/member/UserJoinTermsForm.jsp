@@ -32,7 +32,7 @@
 <div id="d1">
  <h2 align="center">이용약관동의</h2><br/><br/>
   <tr>
-   <td align="left"><font size="2">이용약관, 개인정보 수집 및 이용, 위치정보 이용약관(선택), 프로모션 안내 메일 수신(선택)에 모두 동의합니다.</font></td>
+   <td align="left"><font size="2">이용약관, 개인정보 수집 및 이용, 위치정보 이용약관(필수), 프로모션 안내 메일 수신(선택)에 모두 동의합니다.</font></td>
  
    <td><input type="checkbox" name="all" id="all"></td><hr/>
   </tr>
@@ -533,7 +533,8 @@
  </div>
   <tr>
    <td align="left"><font size="2">이벤트 등 프로모션 알림 메일 수신(선택)</font></td>
-   <td><input type="checkbox" name="c4" id="c4"></td><hr/>
+   <td><input type="checkbox" name="c4" id="c4"></td>
+   <hr>
   </tr>
  
  <div align="center">
@@ -545,65 +546,93 @@
 </form>
 <!-- check Box 이벤트처리를 위한 Script -->
 <script>
-var doc = document;  
-  var form1 = doc.getElementById('form1');  
-  var inputs = form1.getElementsByTagName('INPUT');  
-  var form1_data = { 
-   "c1": false,  //전체 선택
-   "c2": false,  //필수 선택 1
-   "c3": false   //필수 선택 2
-  };  
-  
-  var c1 = doc.getElementById('c1');  
-  var c2 = doc.getElementById('c2');  
-  var c3 = doc.getElementById('c3');  
-  
-  function checkboxListener() { 
-   form1_data[this.name] = this.checked; //각각 자신의 checkBox를 Checked 상태로 바꿈  
-  } 
-  
-  
-//   c1.onclick = c2.onclick = c3.onclick = checkboxListener;   //c1, C2, C3를 checkBoxListenner를 호출하여
-                                                                   //Checked로 바꿈
-   var all = doc.getElementById('all');  //전체 체크를 위한 체크박스 선언
-  
-   all.onclick = function() {  //전체 체크를 누를 시
-    if (this.checked) { 
-     setCheckbox(form1_data, true);   //form1_data(c1,c2,c3)의 값을 모두 Checked로 바꿈
-    } else { 
-     setCheckbox(form1_data, false);  ////form1_data(c1,c2,c3)의 값을 모두 no checked로 바꿈
-    } 
-   };  
-  
-  
-   function setCheckbox(obj, state) { //checkbox상태 변경하는 함수
-    for (var x in obj) { 
-     obj[x] = state;  
-  
-     for(var i = 0; i < inputs.length; i++) { 
-      if(inputs[i].type == "checkbox") { 
-       inputs[i].checked = state;  
-      } 
-     } 
-  
-    } 
-   } 
-  
-  form1.onsubmit = function(e) { 
-   e.preventDefault(); 
-  
-   if ( !form1_data['c1'] ) { 
-    alert('이용동의 약관에 동의하지 않았습니다.');   
-    return false;  
-   } 
-  
-   if ( !form1_data['c2'] ) { 
-    alert('개인정보 수집 및 이용에 대한 안내를 동의하지 않았습니다.');  
-    return false;  
-   } 
-  
-   this.submit();  
-  };  
+var doc = document; 
+var form1 = doc.getElementById('form1'); 
+var inputs = form1.getElementsByTagName('INPUT'); 
+var form1_data = {
+	"c1": false, 
+	"c2": false, 
+	"c3": false
+}; 
+var c1 = doc.getElementById('c1'); 
+var c2 = doc.getElementById('c2'); 
+var c3 = doc.getElementById('c3'); 
+function checkboxListener() {
+	form1_data[this.name] = this.checked; 
+	if(this.checked) {
+		// submit 할때 체크하지 않아 색이 변한 font 를 다시 원래 색으로 바꾸는 부분. 
+		this.parentNode.style.color = "#000"; 
+	}
+}
+	/* c1.onclick = c2.onclick = c3.onclick = checkboxListener;  */
+	var all = doc.getElementById('all'); 
+	all.onclick = function() {
+		if (this.checked) {
+			setCheckbox(form1_data, true); 
+		} else {
+			setCheckbox(form1_data, false); 
+		}
+	}; 
+	function setCheckbox(obj, state) {
+		for (var x in obj) {
+			obj[x] = state; 
+			for(var i = 0; i < inputs.length; i++) {
+				if(inputs[i].type == "checkbox") {
+					inputs[i].checked = state; 
+				}
+			}
+		}
+	}
+/*all.onclick = function() {
+	if (this.checked) {
+		for (var x in form1_data) {
+			form1_data[x] = true; 
+			for(var i = 0; i < inputs.length; i++) {
+				if(inputs[i].type == "checkbox") {
+					inputs[i].checked = true; 
+				}
+			}
+		}
+	} else {
+		for (var x in form1_data) {
+			form1_data[x] = false; 
+			for(var i = 0; i < inputs.length; i++) {
+				if(inputs[i].type == "checkbox") {
+					inputs[i].checked = false; 
+				}
+			}
+		}
+	}
+}; */
+form1.onsubmit = function(e) {
+	e.preventDefault(); // 서브밋 될때 화면이 깜빡이지 않게 방지
+	if ( !form1_data['c1'] ) {
+		alert('네이버 이용약관 동의를 하지 않았습니다'); 
+		c1.parentNode.style.color = 'red'; 
+		return false; 
+	}
+	if ( !form1_data['c2'] ) {
+		alert('개인정보 수집 및 이용에 대한 안내를 선택하지 않았습니다.'); 
+		return false; 
+	}
+	this.submit(); 
+};
 </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

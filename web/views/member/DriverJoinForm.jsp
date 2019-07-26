@@ -13,7 +13,7 @@
 		margin:50px;
 		margin-top:10px;
 	}
-	#box {
+	#box , #userId{
 		height:35px;
 		width:150px;
 	}
@@ -82,7 +82,7 @@
 			</tr>
 			<tr>
 				<td><label>아이디</label>
-				<td><input type="text" name="userId" id="box" placeholder="아이디 입력"></td>
+				<td><input type="text" name="userId" id="userId" placeholder="아이디 입력"></td>
 				<td><div id="check">중복확인</div></td>
 			</tr>
 			<tr>
@@ -225,12 +225,12 @@
     function ok(){
 		$("form").submit();
 	};
-	/* $(function(){
+	$(function(){
 		$("#check").click(function(){
 			var userId = $("#userId").val();
 			
 			$.ajax({
-				url:"/semi/userIdCheck.me",
+				url:"/semi/driverIdCheck.me",
 				type:"post",
 				data:{userId:userId},
 				success:function(data){
@@ -247,7 +247,7 @@
 				}
 			});
 		});
-	}); */
+	});
 	</script>
 	
 </body>
