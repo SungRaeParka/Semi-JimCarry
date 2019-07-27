@@ -65,7 +65,7 @@
 		<hr>
 		
 		<div style="padding-left: 50px; padding-top: 10px; padding-bottom: 50px;">
-			<img src="../../images/pointer.PNG" style="float:left" id="imgs">
+			<img src="/semi/images/pointer.PNG" style="float:left" id="imgs">
 			<h3 style="float: left">출발지 정보</h3>
 			<h5 id="input" align="right" style="padding-right: 150px;"><a href="#">상세정보입력</a></h5>
 		</div>
@@ -73,7 +73,7 @@
 		<hr>
 
 		<div style="padding-left: 50px; padding-top: 10px; padding-bottom: 50px;">
-			<img src="../../images/pointer.PNG" style="float:left" id="imgs">
+			<img src="/semi/images/pointer.PNG" style="float:left" id="imgs">
 			<h3 style="float: left">도착지 정보</h3>
 			<h5 id="input" align="right" style="padding-right: 150px;"><a href="#">상세정보입력</a></h5>
 		</div>
@@ -81,7 +81,7 @@
 		<hr>
 
 		<div style="padding-left: 50px; padding-top: 10px; padding-bottom: 50px;">
-			<img src="../../images/cal.PNG" style="float: left" id="imgs">
+			<img src="/semi/images/cal.PNG" style="float: left" id="imgs">
 			<h3 style="float: left">날짜 선택</h3>
 			<h5 id="input" align="right" style="padding-right: 150px;"><a href="#">상세정보입력</a></h5>
 		</div>
@@ -89,7 +89,7 @@
 		<hr>
 
 		<div style="padding-left: 50px; padding-top: 10px; padding-bottom: 50px;">
-			<img src="../../images/imgatt.PNG" style="float: left" id="imgs">
+			<img src="/semi/images/imgatt.PNG" style="float: left" id="imgs">
 			<h3 style="float: left">사진 첨부</h3>
 			<p id="att">상세한 짐 사진을 올려주세요</p>
 			<div id="input" align="right" style="padding-right: 150px;"><button>파일첨부</button></div>

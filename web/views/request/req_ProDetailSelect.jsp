@@ -72,7 +72,7 @@
 		<% for(int i = 0; i < proKind.length; i++) { %>				
 		<%if(proKind[i].equals("가전") && (proName[i].equals("냉장고") || proName[i].equals("세탁기") || proName[i].equals("TV/모니터") || proName[i].equals("에어컨") || proName[i].equals("정수기") || proName[i].equals("PC/노트북") || proName[i].equals("전자레인지"))) { %>
 		
-		<div style="padding-left: 20px">
+		<div style="padding-left: 20px" id="refDiv">
 			<input type="hidden" name="reqNo" value="<%=r.getReqNo()%>">
 			<input type="hidden" name="proNo" value="<%=r.getProNo()%>">
 			<input type="hidden" name="proName" value="<%=r.getProName()%>">
@@ -99,25 +99,25 @@
 				<div style="display: inline-block; padding-left: 20px;">
 					<% if(proName[i].equals("냉장고")){ %>
 					<span id="proName" data-toggle="modal" data-target="#pop_ref" style="font-size: 35px; font-weight: bold"><%=proName[i]%></span><br>
-					<span>상세 정보</span>
+					<span class="refDetailInfo">상세 정보</span>
 					<% }else if(proName[i].equals("세탁기")){%>
 					<span id="proName" data-toggle="modal" data-target="#pop_wash" style="font-size: 35px; font-weight: bold"><%=proName[i]%></span><br>
-					<span>상세 정보</span>					
+					<span class="washDetailInfo">상세 정보</span>					
 					<% }else if(proName[i].equals("TV/모니터")){%>
 					<span id="proName" data-toggle="modal" data-target="#pop_tv" style="font-size: 35px; font-weight: bold"><%=proName[i]%></span><br>
-					<span>상세 정보</span>					
+					<span class="tvDetailInfo">상세 정보</span>					
 					<% }else if(proName[i].equals("에어컨")){%>	
 					<span id="proName" data-toggle="modal" data-target="#pop_air" style="font-size: 35px; font-weight: bold"><%=proName[i]%></span><br>
-					<span>상세 정보</span>				
+					<span class="airDetailInfo">상세 정보</span>				
 					<% }else if(proName[i].equals("정수기")){%>	
 					<span id="proName" data-toggle="modal" data-target="#pop_water" style="font-size: 35px; font-weight: bold"><%=proName[i]%></span><br>
-					<span>상세 정보</span>				
+					<span class="waterDetailInfo">상세 정보</span>				
 					<% }else if(proName[i].equals("PC/노트북")){%>
 					<span id="proName" data-toggle="modal" data-target="#pop_pc" style="font-size: 35px; font-weight: bold"><%=proName[i]%></span><br>
-					<span>상세 정보</span>					
+					<span class="pcDetailInfo">상세 정보</span>					
 					<% }else if(proName[i].equals("전자레인지")){%>
 					<span id="proName" data-toggle="modal" data-target="#pop_oven" style="font-size: 35px; font-weight: bold"><%=proName[i]%></span><br>
-					<span>상세 정보</span>					
+					<span class="ovenDetailInfo">상세 정보</span>					
 					<% } %>						
 				</div>				
 			</div>
@@ -160,37 +160,37 @@
 				<div style="display: inline-block; padding-left: 20px;">
 					<% if(proName[i].equals("침대")) { %>
 					<span id="proName" data-toggle="modal" data-target="#pop_bed" style="font-size: 35px; font-weight: bold"><%=proName[i]%></span><br>
-					<span>상세 정보</span>
+					<span class="bedDetailInfo">상세 정보</span>
 					<%}else if(proName[i].equals("의자")){ %>
 					<span id="proName" data-toggle="modal" data-target="#pop_chair" style="font-size: 35px; font-weight: bold"><%=proName[i]%></span><br>
-					<span>상세 정보</span>
+					<span class="chairDetailInfo">상세 정보</span>
 					<%}else if(proName[i].equals("책상/테이블")){ %>
 					<span id="proName" data-toggle="modal" data-target="#pop_table" style="font-size: 35px; font-weight: bold"><%=proName[i]%></span><br>
-					<span>상세 정보</span>
+					<span class="tableDetailInfo">상세 정보</span>
 					<%}else if(proName[i].equals("책장")){ %>
 					<span id="proName" data-toggle="modal" data-target="#pop_bookcase" style="font-size: 35px; font-weight: bold"><%=proName[i]%></span><br>
-					<span>상세 정보</span>
+					<span class="bcDetailInfo">상세 정보</span>
 					<%}else if(proName[i].equals("옷장")){ %>
 					<span id="proName" data-toggle="modal" data-target="#pop_closet" style="font-size: 35px; font-weight: bold"><%=proName[i]%></span><br>
-					<span>상세 정보</span>
+					<span class="cloDetailInfo">상세 정보</span>
 					<%}else if(proName[i].equals("진열장")){ %>
 					<span id="proName" data-toggle="modal" data-target="#pop_showcase" style="font-size: 35px; font-weight: bold"><%=proName[i]%></span><br>
-					<span>상세 정보</span>
+					<span class="scDetailInfo">상세 정보</span>
 					<%}else if(proName[i].equals("쇼파")){ %>
 					<span id="proName" data-toggle="modal" data-target="#pop_sofa" style="font-size: 35px; font-weight: bold"><%=proName[i]%></span><br>
-					<span>상세 정보</span>
+					<span class="sofaDetailInfo">상세 정보</span>
 					<%}else if(proName[i].equals("행거")){ %>
 					<span id="proName" data-toggle="modal" data-target="#pop_hanger" style="font-size: 35px; font-weight: bold"><%=proName[i]%></span><br>
-					<span>상세 정보</span>
+					<span class="hangDetailInfo">상세 정보</span>
 					<%}else if(proName[i].equals("거울")){ %>
 					<span id="proName" data-toggle="modal" data-target="#pop_mirror" style="font-size: 35px; font-weight: bold"><%=proName[i]%></span><br>
-					<span>상세 정보</span>
+					<span class="mirDetailInfo">상세 정보</span>
 					<%}else if(proName[i].equals("화장대")){ %>
 					<span id="proName" data-toggle="modal" data-target="#pop_makeup" style="font-size: 35px; font-weight: bold"><%=proName[i]%></span><br>
-					<span>상세 정보</span>
+					<span class="makeDetailInfo">상세 정보</span>
 					<%}else if(proName[i].equals("피아노")){ %>
 					<span id="proName" data-toggle="modal" data-target="#pop_piano" style="font-size: 35px; font-weight: bold"><%=proName[i]%></span><br>
-					<span>상세 정보</span>
+					<span class="pianoDetailInfo">상세 정보</span>
 					<%} %>
 				</div>				
 			</div>
@@ -235,7 +235,7 @@
 		<div style="padding-left: 20px">
 			<span style="font-size: 30px; font-weight: bold">메모</span>			
 			<div>
-				<textarea placeholder="요청사항 및 특이사항을 입력하세요." style="width: 300px; height: 200px;"></textarea>
+				<textarea placeholder="요청사항 및 특이사항을 입력하세요." style="width: 300px; height: 200px;" name="memo"></textarea>
 			</div>
 		</div>
 		
@@ -1041,7 +1041,7 @@
 			var $inputRefType = $("<input>");
 			var $inputRefSize = $("<input>");
 			var proType_refval = $(":input:radio[name=proType_ref]:checked").val();
-			var proSize_refval = $(":input:radio[name=proSize_ref]:checked").val();		
+			var proSize_refval = $(":input:radio[name=proSize_ref]:checked").val();					
 				
 			$inputRefType.attr({
 				type: 'hidden',
@@ -1059,12 +1059,21 @@
 			
 			$div2.append($inputRefType);
 			$div2.append($inputRefSize);	
-			$div.before($div2);
-				
-			$(":input:radio[name=proType_ref]").prop('checked', false);
-			$(":input:radio[name=proSize_ref]").prop('checked', false);
+			$div.before($div2);			
 			
+			$(":input:radio[name=proType_ref]").prop('checked', false);
+			$(":input:radio[name=proSize_ref]").prop('checked', false);				
+			
+			$(function(){
+				var i = 0;
+				$(".refDetailInfo").eq(i).html(proType_refval + ", " + proSize_refval);
 				
+				$(document).on("click", "#updateRef", function(event){
+					i = i + 1;
+					$(".refDetailInfo").eq(i).html(proType_refval + ", " + proSize_refval);
+				})	
+			});	
+			
 			$("#pop_ref").modal("hide");		
 		});
 		
@@ -1098,6 +1107,15 @@
 			$(":input:radio[name=proType_wash]").prop('checked', false);
 			$(":input:radio[name=proSize_wash]").prop('checked', false);
 			
+			$(function(){
+				var i = 0;
+				$(".washDetailInfo").eq(i).html(proType_washval + ", " + proSize_washval);
+				
+				$(document).on("click", "#updateWash", function(event){
+					i = i + 1;
+					$(".washDetailInfo").eq(i).html(proType_washval + ", " + proSize_washval);
+				})	
+			});				
 				
 			$("#pop_wash").modal("hide");
 			
@@ -1123,7 +1141,16 @@
 				
 			$(":input:radio[name=proSize_tv]").prop('checked', false);
 			
+			$(function(){
+				var i = 0;
+				$(".tvDetailInfo").eq(i).html(proSize_tvval);
 				
+				$(document).on("click", "#updateTv", function(event){
+					i = i + 1;
+					$(".tvDetailInfo").eq(i).html(proSize_tvval);
+				})	
+			});		
+			
 			$("#pop_tv").modal("hide");			
 		});
 		
@@ -1157,6 +1184,15 @@
 			$(":input:radio[name=proType_air]").prop('checked', false);
 			$(":input:radio[name=proUni_air]").prop('checked', false);
 			
+			$(function(){
+				var i = 0;
+				$(".airDetailInfo").eq(i).html(proType_airval + ", " + proUni_airval);
+				
+				$(document).on("click", "#updateAir", function(event){
+					i = i + 1;
+					$(".airDetailInfo").eq(i).html(proType_airval + ", " + proUni_airval);
+				})	
+			});	
 				
 			$("#pop_air").modal("hide");
 			
@@ -1192,6 +1228,15 @@
 			$(":input:radio[name=proSize_water]").prop('checked', false);
 			$(":input:radio[name=proUni_water]").prop('checked', false);
 			
+			$(function(){
+				var i = 0;
+				$(".waterDetailInfo").eq(i).html(proSize_waterval + ", " + proUni_waterval);
+				
+				$(document).on("click", "#updateWater", function(event){
+					i = i + 1;
+					$(".waterDetailInfo").eq(i).html(proSize_waterval + ", " + proUni_waterval);
+				})	
+			});	
 				
 			$("#pop_water").modal("hide");
 			
@@ -1217,6 +1262,15 @@
 				
 			$(":input:radio[name=proType_pc]").prop('checked', false);
 			
+			$(function(){
+				var i = 0;
+				$(".pcDetailInfo").eq(i).html(proType_pcval);
+				
+				$(document).on("click", "#updatePc", function(event){
+					i = i + 1;
+					$(".pcDetailInfo").eq(i).html(proType_pcval);
+				})	
+			});	
 				
 			$("#pop_pc").modal("hide");
 			
@@ -1242,6 +1296,15 @@
 				
 			$(":input:radio[name=proType_oven]").prop('checked', false);
 			
+			$(function(){
+				var i = 0;
+				$(".ovenDetailInfo").eq(i).html(proType_ovenval);
+				
+				$(document).on("click", "#updateOven", function(event){
+					i = i + 1;
+					$(".ovenDetailInfo").eq(i).html(proType_ovenval);
+				})	
+			});	
 				
 			$("#pop_oven").modal("hide");
 			
@@ -1277,6 +1340,15 @@
 			$(":input:radio[name=proType_bed]").prop('checked', false);
 			$(":input:radio[name=proSize_bed]").prop('checked', false);
 			
+			$(function(){
+				var i = 0;
+				$(".bedDetailInfo").eq(i).html(proType_bedval + ", " + proSize_bedval);
+				
+				$(document).on("click", "#updateBed", function(event){
+					i = i + 1;
+					$(".bedDetailInfo").eq(i).html(proType_bedval + ", " + proSize_bedval);
+				})	
+			});	
 				
 			$("#pop_bed").modal("hide");
 			
@@ -1302,6 +1374,15 @@
 				
 			$(":input:radio[name=proType_chair]").prop('checked', false);
 			
+			$(function(){
+				var i = 0;
+				$(".chairDetailInfo").eq(i).html(proType_chairval);
+				
+				$(document).on("click", "#updateChair", function(event){
+					i = i + 1;
+					$(".chairDetailInfo").eq(i).html(proType_chairval);
+				})	
+			});	
 				
 			$("#pop_chair").modal("hide");
 			
@@ -1357,6 +1438,15 @@
 			$(":input:radio[name=proMat_table]").prop('checked', false);
 			$(":input:radio[name=proWidth_table]").prop('checked', false);
 			
+			$(function(){
+				var i = 0;
+				$(".tableDetailInfo").eq(i).html(proType_tableval + ", " + proSize_tableval + ", " + proMat_tableval + ", " + proWidth_tableval);
+				
+				$(document).on("click", "#updateTable", function(event){
+					i = i + 1;
+					$(".tableDetailInfo").eq(i).html(proType_tableval + ", " + proSize_tableval + ", " + proMat_tableval + ", " + proWidth_tableval);
+				})	
+			});	
 				
 			$("#pop_table").modal("hide");
 			
@@ -1392,6 +1482,15 @@
 			$(":input:radio[name=proWidth_bc]").prop('checked', false);
 			$(":input:radio[name=proHeight_bc]").prop('checked', false);
 			
+			$(function(){
+				var i = 0;
+				$(".bcDetailInfo").eq(i).html(proWidth_bcval + ", " + proHeight_bcval);
+				
+				$(document).on("click", "#updateBc", function(event){
+					i = i + 1;
+					$(".bctableDetailInfo").eq(i).html(proWidth_bcval + ", " + proHeight_bcval);
+				})	
+			});	
 				
 			$("#pop_bookcase").modal("hide");
 			
@@ -1437,6 +1536,15 @@
 			$(":input:radio[name=proUni_clo]").prop('checked', false);
 			$(":input:radio[name=proWidth_clo]").prop('checked', false);
 			
+			$(function(){
+				var i = 0;
+				$(".cloDetailInfo").eq(i).html(proType_cloval + ", " + proUni_cloval + ", " + proWidth_cloval);
+				
+				$(document).on("click", "#updateClo", function(event){
+					i = i + 1;
+					$(".cloDetailInfo").eq(i).html(proType_cloval + ", " + proUni_cloval + ", " + proWidth_cloval);
+				})	
+			});	
 				
 			$("#pop_closet").modal("hide");
 			
@@ -1482,6 +1590,15 @@
 			$(":input:radio[name=proWidth_sc]").prop('checked', false);
 			$(":input:radio[name=proHeight_sc]").prop('checked', false);
 			
+			$(function(){
+				var i = 0;
+				$(".scDetailInfo").eq(i).html(proGck_scval + ", " + proWidth_scval + ", " + proHeight_scval);
+				
+				$(document).on("click", "#updateSc", function(event){
+					i = i + 1;
+					$(".scDetailInfo").eq(i).html(proGck_scval + ", " + proWidth_scval + ", " + proHeight_scval);
+				})	
+			});	
 				
 			$("#pop_showcase").modal("hide");
 			
@@ -1507,6 +1624,15 @@
 				
 			$(":input:radio[name=proSize_sofa]").prop('checked', false);
 			
+			$(function(){
+				var i = 0;
+				$(".sofaDetailInfo").eq(i).html(proSize_sofaval);
+				
+				$(document).on("click", "#updateSofa", function(event){
+					i = i + 1;
+					$(".sofaDetailInfo").eq(i).html(proSize_sofaval);
+				})	
+			});	
 				
 			$("#pop_sofa").modal("hide");
 			
@@ -1542,6 +1668,15 @@
 			$(":input:radio[name=proType_hang]").prop('checked', false);
 			$(":input:radio[name=proWidth_hang]").prop('checked', false);
 			
+			$(function(){
+				var i = 0;
+				$(".hangDetailInfo").eq(i).html(proType_hangval + ", " + proWidth_hangval);
+				
+				$(document).on("click", "#updateHang", function(event){
+					i = i + 1;
+					$(".hangDetailInfo").eq(i).html(proType_hangval + ", " + proWidth_hangval);
+				})	
+			});	
 				
 			$("#pop_hanger").modal("hide");
 			
@@ -1577,6 +1712,15 @@
 			$(":input:radio[name=proType_mir]").prop('checked', false);
 			$(":input:radio[name=proSize_mir]").prop('checked', false);
 			
+			$(function(){
+				var i = 0;
+				$(".mirDetailInfo").eq(i).html(proType_mirval + ", " + proSize_mirval);
+				
+				$(document).on("click", "#updateMir", function(event){
+					i = i + 1;
+					$(".mirDetailInfo").eq(i).html(proType_mirval + ", " + proSize_mirval);
+				})	
+			});	
 				
 			$("#pop_mirror").modal("hide");
 			
@@ -1612,6 +1756,15 @@
 			$(":input:radio[name=proType_make]").prop('checked', false);
 			$(":input:radio[name=proMat_make]").prop('checked', false);
 			
+			$(function(){
+				var i = 0;
+				$(".makeDetailInfo").eq(i).html(proType_makeval + ", " + proMat_makeval);
+				
+				$(document).on("click", "#updateMake", function(event){
+					i = i + 1;
+					$(".makeDetailInfo").eq(i).html(proType_makeval + ", " + proMat_makeval);
+				})	
+			});	
 				
 			$("#pop_makeup").modal("hide");
 			
@@ -1637,6 +1790,15 @@
 				
 			$(":input:radio[name=proType_piano]").prop('checked', false);
 			
+			$(function(){
+				var i = 0;
+				$(".pianoDetailInfo").eq(i).html(proType_pianoval);
+				
+				$(document).on("click", "#updatePiano", function(event){
+					i = i + 1;
+					$(".pianoDetailInfo").eq(i).html(proType_pianoval);
+				})	
+			});	
 				
 			$("#pop_piano").modal("hide");
 			

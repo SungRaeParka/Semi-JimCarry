@@ -76,6 +76,9 @@ public class zUpdatePopAllServlet extends HttpServlet {
 		
 		String[] pianoTyperr = request.getParameterValues("proType_Piano2"); 
 		
+		String memo = request.getParameter("memo");
+		System.out.println(memo);
+		
 		String refNo = new ProductService().selectRefNo(reqNo);
 		
 		String washNo = new ProductService().selectWashNo(reqNo);
@@ -110,14 +113,14 @@ public class zUpdatePopAllServlet extends HttpServlet {
 		
 		String makeNo = new ProductService().selectMakeNo(reqNo);
 		
-		String pianoNo = new ProductService().selectPianoNo(reqNo);
+		String pianoNo = new ProductService().selectPianoNo(reqNo);		
 		
 		//각각 물품 번호, reqNo, 물품별 상세선택 내역 넘겨서 물품마다 업데이트
 		
 		int result = new ProductService().updateAll(reqNo, refTyperr, refSizerr, washTyperr, washSizerr, tvSizerr, airTyperr, airUnirr, waterSizerr, waterUnirr, pcTyperr, ovenTyperr, bedTyperr, bedSizerr,
 													chairTyperr, tableTyperr, tableSizerr, tableMatrr, tableWidthrr, bcWidthrr, bcHeightrr, cloTyperr, cloUnirr, cloWidthrr, scGckrr, scWidthrr, scHeightrr,
 													sofaSizerr, hangTyperr, hangWidthrr, mirTyperr, mirSizerr, makeTyperr, makeMatrr, pianoTyperr, refNo, washNo, tvNo, airNo, waterNo, pcNo, ovenNo, bedNo,
-													chairNo, tableNo, bcNo, cloNo, scNo, sofaNo, hangNo, mirNo, makeNo, pianoNo);
+													chairNo, tableNo, bcNo, cloNo, scNo, sofaNo, hangNo, mirNo, makeNo, pianoNo, memo);
 		
 		
 		String page = "";

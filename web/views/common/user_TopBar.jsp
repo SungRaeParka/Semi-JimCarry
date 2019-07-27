@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
 <title>Insert title here</title>
 </head>
 <body>
@@ -29,14 +29,15 @@
 	<script>
 		function goBoard(){
 			location.href="/semi/selectList.bo";
-		}
+		};
+		
 		function logout(){
 			alert("로그아웃 하시겠습니까?");
 		};
 
 		function myJimcarry(){
 			location.href="/semi/myJcarrylist.jc";
-		}
+		};
 
 	</script>
 </body>

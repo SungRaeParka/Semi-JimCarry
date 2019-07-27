@@ -57,13 +57,13 @@ public class InsertRequestServlet extends HttpServlet {
 		
 		System.out.println("insertrequest 수행 후 Request r :::" + r);
 		
-		if(boxCount > 0) {
+		/*if(boxCount > 0) {
 			int result2 = new ProductService().insertBoxCount(r);			
 		}
 		
 		if(bookCount > 0) {
 			int result3 = new ProductService().insertBookCount(r);
-		}
+		}*/
 		
 		String reqNo = new ProductService().selectReqNo();
 		r.setReqNo(reqNo);

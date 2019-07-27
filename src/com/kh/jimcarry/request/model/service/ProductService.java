@@ -29,7 +29,7 @@ public class ProductService {
 		return result;
 	}	
 	
-	public int insertBoxCount(Product r) {
+	/*public int insertBoxCount(Product r) {
 		Connection con = getConnection();
 		
 		int result = new ProductDao().insertBoxCount(con, r);
@@ -59,7 +59,7 @@ public class ProductService {
 		close(con);
 		
 		return result;
-	}
+	}*/
 
 	public String selectReqNo() {		
 		Connection con = getConnection();
@@ -270,14 +270,14 @@ public class ProductService {
 			String[] mirTyperr, String[] mirSizerr, String[] makeTyperr, String[] makeMatrr, String[] pianoTyperr,
 			String refNo, String washNo, String tvNo, String airNo, String waterNo, String pcNo, String ovenNo,
 			String bedNo, String chairNo, String tableNo, String bcNo, String cloNo, String scNo, String sofaNo,
-			String hangNo, String mirNo, String makeNo, String pianoNo) {
+			String hangNo, String mirNo, String makeNo, String pianoNo, String memo) {
 		
 		Connection con = getConnection();
 		
 		int result = new ProductDao().updateAll(con, reqNo, refTyperr, refSizerr, washTyperr, washSizerr, tvSizerr, airTyperr, airUnirr, waterSizerr, waterUnirr, pcTyperr, ovenTyperr, bedTyperr, bedSizerr,
 													chairTyperr, tableTyperr, tableSizerr, tableMatrr, tableWidthrr, bcWidthrr, bcHeightrr, cloTyperr, cloUnirr, cloWidthrr, scGckrr, scWidthrr, scHeightrr,
 													sofaSizerr, hangTyperr, hangWidthrr, mirTyperr, mirSizerr, makeTyperr, makeMatrr, pianoTyperr, refNo, washNo, tvNo, airNo, waterNo, pcNo, ovenNo, bedNo,
-													chairNo, tableNo, bcNo, cloNo, scNo, sofaNo, hangNo, mirNo, makeNo, pianoNo);
+													chairNo, tableNo, bcNo, cloNo, scNo, sofaNo, hangNo, mirNo, makeNo, pianoNo, memo);
 		
 		if(result > 0) {
 			commit(con);
@@ -290,53 +290,7 @@ public class ProductService {
 		return result;
 	}
 
-	/*public int updateRef(String reqNo, String refNo, String[] refTyperr, String[] refSizerr) {
-		Connection con = getConnection();
-		
-		int result = new ProductDao().updateRef(con, reqNo, refNo, refTyperr, refSizerr);
-		
-		if(result > 0) {
-			commit(con);
-		}else {
-			rollback(con);
-		}
-		
-		close(con);
-		
-		return result;
-	}
 
-	public int updateWash(String reqNo, String washNo, String[] washTyperr, String[] washSizerr) {
-		Connection con = getConnection();
-		
-		int result2 = new ProductDao().updateWash(con, reqNo, washNo, washTyperr, washSizerr);
-		
-		if(result2 > 0) {
-			commit(con);
-		}else {
-			rollback(con);
-		}
-		
-		close(con);
-		
-		return result2;
-	}
-
-	public int updateTv(String reqNo, String tvNo, String[] tvSizerr) {
-		Connection con = getConnection();
-		
-		int result3 = new ProductDao().updateTv(con, reqNo, tvNo, tvSizerr);
-		
-		if(result3 > 0) {
-			commit(con);
-		}else {
-			rollback(con);
-		}
-		
-		close(con);
-		
-		return result3;
-	}*/
 
 	
 
