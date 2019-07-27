@@ -42,11 +42,12 @@ public class BoardService {
 		int listCount = new BoardDao().getListCount(con);
 		close(con);
 
+
 		return listCount;
 	}
 
 	//게시판 상세보기
-		public HashMap<String, Object> selectBoardMap(int num) {
+		public HashMap<String, Object> selectBoardMap(String num) {
 			Connection con = getConnection();
 
 			HashMap<String, Object> hmap = null;
@@ -60,7 +61,7 @@ public class BoardService {
 				rollback(con);
 			}
 			close(con);
-
+			System.out.println("상세보기  서비스 : " + hmap );
 			return hmap;
 		}
 
