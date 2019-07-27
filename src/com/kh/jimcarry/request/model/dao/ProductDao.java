@@ -238,7 +238,7 @@ public class ProductDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String refNo = "";
-		
+
 		String query = prop.getProperty("selectDetailProNo");	
 
 		try {
@@ -260,7 +260,7 @@ public class ProductDao {
 			close(pstmt);
 			close(rset);
 		}
-		
+
 		return refNo;
 	}
 
@@ -268,7 +268,7 @@ public class ProductDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String washNo = "";
-		
+
 		String query = prop.getProperty("selectDetailProNo");	
 
 		try {
@@ -290,7 +290,7 @@ public class ProductDao {
 			close(pstmt);
 			close(rset);
 		}
-		
+
 		return washNo;
 	}
 
@@ -298,7 +298,7 @@ public class ProductDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String tvNo = "";
-		
+
 		String query = prop.getProperty("selectDetailProNo");	
 
 		try {
@@ -320,7 +320,7 @@ public class ProductDao {
 			close(pstmt);
 			close(rset);
 		}
-		
+
 		return tvNo;
 	}
 
@@ -328,7 +328,7 @@ public class ProductDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String airNo = "";
-		
+
 		String query = prop.getProperty("selectDetailProNo");	
 
 		try {
@@ -350,7 +350,7 @@ public class ProductDao {
 			close(pstmt);
 			close(rset);
 		}
-		
+
 		return airNo;
 	}
 
@@ -358,7 +358,7 @@ public class ProductDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String waterNo = "";
-		
+
 		String query = prop.getProperty("selectDetailProNo");	
 
 		try {
@@ -380,7 +380,7 @@ public class ProductDao {
 			close(pstmt);
 			close(rset);
 		}
-		
+
 		return waterNo;
 	}
 
@@ -388,7 +388,7 @@ public class ProductDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String pcNo = "";
-		
+
 		String query = prop.getProperty("selectDetailProNo");	
 
 		try {
@@ -410,7 +410,7 @@ public class ProductDao {
 			close(pstmt);
 			close(rset);
 		}
-		
+
 		return pcNo;
 	}
 
@@ -418,7 +418,7 @@ public class ProductDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String ovenNo = "";
-		
+
 		String query = prop.getProperty("selectDetailProNo");	
 
 		try {
@@ -440,7 +440,7 @@ public class ProductDao {
 			close(pstmt);
 			close(rset);
 		}
-		
+
 		return ovenNo;
 	}
 
@@ -448,7 +448,7 @@ public class ProductDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String bedNo = "";
-		
+
 		String query = prop.getProperty("selectDetailProNo");	
 
 		try {
@@ -470,7 +470,7 @@ public class ProductDao {
 			close(pstmt);
 			close(rset);
 		}
-		
+
 		return bedNo;
 	}
 
@@ -478,7 +478,7 @@ public class ProductDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String chairNo = "";
-		
+
 		String query = prop.getProperty("selectDetailProNo");	
 
 		try {
@@ -500,7 +500,7 @@ public class ProductDao {
 			close(pstmt);
 			close(rset);
 		}
-		
+
 		return chairNo;
 	}
 
@@ -508,7 +508,7 @@ public class ProductDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String tableNo = "";
-		
+
 		String query = prop.getProperty("selectDetailProNo");	
 
 		try {
@@ -530,7 +530,7 @@ public class ProductDao {
 			close(pstmt);
 			close(rset);
 		}
-		
+
 		return tableNo;
 	}
 
@@ -538,7 +538,7 @@ public class ProductDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String bcNo = "";
-		
+
 		String query = prop.getProperty("selectDetailProNo");	
 
 		try {
@@ -560,7 +560,7 @@ public class ProductDao {
 			close(pstmt);
 			close(rset);
 		}
-		
+
 		return bcNo;
 	}
 
@@ -568,7 +568,7 @@ public class ProductDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String cloNo = "";
-		
+
 		String query = prop.getProperty("selectDetailProNo");	
 
 		try {
@@ -590,7 +590,7 @@ public class ProductDao {
 			close(pstmt);
 			close(rset);
 		}
-		
+
 		return cloNo;
 	}
 
@@ -598,7 +598,7 @@ public class ProductDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String scNo = "";
-		
+
 		String query = prop.getProperty("selectDetailProNo");	
 
 		try {
@@ -620,7 +620,7 @@ public class ProductDao {
 			close(pstmt);
 			close(rset);
 		}
-		
+
 		return scNo;
 	}
 
@@ -628,7 +628,7 @@ public class ProductDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String sofaNo = "";
-		
+
 		String query = prop.getProperty("selectDetailProNo");	
 
 		try {
@@ -650,7 +650,7 @@ public class ProductDao {
 			close(pstmt);
 			close(rset);
 		}
-		
+
 		return sofaNo;
 	}
 
@@ -658,7 +658,7 @@ public class ProductDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String hangNo = "";
-		
+
 		String query = prop.getProperty("selectDetailProNo");	
 
 		try {
@@ -680,7 +680,7 @@ public class ProductDao {
 			close(pstmt);
 			close(rset);
 		}
-		
+
 		return hangNo;
 	}
 
@@ -688,7 +688,7 @@ public class ProductDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String mirNo = "";
-		
+
 		String query = prop.getProperty("selectDetailProNo");	
 
 		try {
@@ -710,7 +710,7 @@ public class ProductDao {
 			close(pstmt);
 			close(rset);
 		}
-		
+
 		return mirNo;
 	}
 
@@ -718,7 +718,7 @@ public class ProductDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String makeNo = "";
-		
+
 		String query = prop.getProperty("selectDetailProNo");	
 
 		try {
@@ -740,7 +740,7 @@ public class ProductDao {
 			close(pstmt);
 			close(rset);
 		}
-		
+
 		return makeNo;
 	}
 
@@ -748,7 +748,7 @@ public class ProductDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String pianoNo = "";
-		
+
 		String query = prop.getProperty("selectDetailProNo");	
 
 		try {
@@ -770,11 +770,11 @@ public class ProductDao {
 			close(pstmt);
 			close(rset);
 		}
-		
+
 		return pianoNo;
 	}
 
-	public int updateAll(Connection con, String reqNo, String[] refTyperr, String[] refSizerr, String[] washTyperr,
+	public int updateAll(Connection con, String reqNo, String[] proNamerr, String[] refTyperr, String[] refSizerr, String[] washTyperr,
 			String[] washSizerr, String[] tvSizerr, String[] airTyperr, String[] airUnirr, String[] waterSizerr,
 			String[] waterUnirr, String[] pcTyperr, String[] ovenTyperr, String[] bedTyperr, String[] bedSizerr,
 			String[] chairTyperr, String[] tableTyperr, String[] tableSizerr, String[] tableMatrr,
@@ -784,10 +784,10 @@ public class ProductDao {
 			String[] makeMatrr, String[] pianoTyperr, String refNo, String washNo, String tvNo, String airNo,
 			String waterNo, String pcNo, String ovenNo, String bedNo, String chairNo, String tableNo, String bcNo,
 			String cloNo, String scNo, String sofaNo, String hangNo, String mirNo, String makeNo, String pianoNo, String memo) {
-		
+
 		PreparedStatement pstmt = null;
 		int result = 0;
-		
+
 		String[] refNorr = refNo.split(",");
 		String[] washNorr = washNo.split(",");
 		String[] tvNorr = tvNo.split(",");
@@ -806,434 +806,435 @@ public class ProductDao {
 		String[] mirNorr = mirNo.split(",");
 		String[] makeNorr = makeNo.split(",");
 		String[] pianoNorr = pianoNo.split(",");
-		
-		if(refNo.length() > 0) {
-			String query = prop.getProperty("updateRef");
-			
-			for(int i = 0; i < refNorr.length; i++) {
-				try {
-					pstmt = con.prepareStatement(query);
-					
-					pstmt.setString(1, memo);
-					pstmt.setString(2, refTyperr[i]);
-					pstmt.setString(3, refSizerr[i]);
-					pstmt.setString(4, "R"+reqNo);
-					pstmt.setString(5, "냉장고");
-					pstmt.setString(6, refNorr[i]);
-					
-					result = pstmt.executeUpdate();
-					
-				} catch (SQLException e) {
-					e.printStackTrace();
-				} finally {
-					close(pstmt);
+
+		for(int j = 0; j < proNamerr.length; j++) {
+			if(proNamerr[j].equals("냉장고")) {
+				String query = prop.getProperty("updateRef");
+
+				for(int i = 0; i < refNorr.length; i++) {
+					try {
+						pstmt = con.prepareStatement(query);
+
+						pstmt.setString(1, memo);
+						pstmt.setString(2, refTyperr[i]);
+						pstmt.setString(3, refSizerr[i]);
+						pstmt.setString(4, "R"+reqNo);
+						pstmt.setString(5, "냉장고");
+						pstmt.setString(6, refNorr[i]);
+
+						result = pstmt.executeUpdate();
+
+					} catch (SQLException e) {
+						e.printStackTrace();
+					} finally {
+						close(pstmt);
+					}
+				}	
+			}else if(proNamerr[j].equals("세탁기")) {
+				String query = prop.getProperty("updateWash");
+
+				for(int i = 0; i < washNorr.length; i++) {
+					try {
+						pstmt = con.prepareStatement(query);
+
+						pstmt.setString(1, memo);
+						pstmt.setString(2, washTyperr[i]);
+						pstmt.setString(3, washSizerr[i]);
+						pstmt.setString(4, "R"+reqNo);
+						pstmt.setString(5, "세탁기");
+						pstmt.setString(6, washNorr[i]);
+
+						result = pstmt.executeUpdate();
+
+					} catch (SQLException e) {
+						e.printStackTrace();
+					} finally {
+						close(pstmt);
+					}
 				}
-			}	
-		}else if(washNo.length() > 0) {
-			String query = prop.getProperty("updateWash");
-			
-			for(int i = 0; i < washNorr.length; i++) {
-				try {
-					pstmt = con.prepareStatement(query);
-					
-					pstmt.setString(1, memo);
-					pstmt.setString(2, washTyperr[i]);
-					pstmt.setString(3, washSizerr[i]);
-					pstmt.setString(4, "R"+reqNo);
-					pstmt.setString(5, "세탁기");
-					pstmt.setString(6, washNorr[i]);
-					
-					result = pstmt.executeUpdate();
-					
-				} catch (SQLException e) {
-					e.printStackTrace();
-				} finally {
-					close(pstmt);
+			}else if(proNamerr[j].equals("TV/모니터")) {
+				String query = prop.getProperty("updateTv");
+
+				for(int i = 0; i < tvNorr.length; i++) {
+					try {
+						pstmt = con.prepareStatement(query);
+
+						pstmt.setString(1, memo);
+						pstmt.setString(2, tvSizerr[i]);
+						pstmt.setString(3, "R"+reqNo);
+						pstmt.setString(4, tvNorr[i]);
+						pstmt.setString(5, "TV/모니터");					
+
+						result = pstmt.executeUpdate();
+
+					} catch (SQLException e) {
+						e.printStackTrace();
+					} finally {
+						close(pstmt);
+					}
 				}
-			}
-		}else if(tvNo.length() > 0) {
-			String query = prop.getProperty("updateTv");
-			
-			for(int i = 0; i < tvNorr.length; i++) {
-				try {
-					pstmt = con.prepareStatement(query);
-					
-					pstmt.setString(1, memo);
-					pstmt.setString(2, tvSizerr[i]);
-					pstmt.setString(3, "R"+reqNo);
-					pstmt.setString(4, tvNorr[i]);
-					pstmt.setString(5, "TV/모니터");					
-					
-					result = pstmt.executeUpdate();
-					
-				} catch (SQLException e) {
-					e.printStackTrace();
-				} finally {
-					close(pstmt);
+			}else if(proNamerr[j].equals("에어컨")) {
+				String query = prop.getProperty("updateAir");
+
+				for(int i = 0; i < airNorr.length; i++) {				
+					try {
+						pstmt = con.prepareStatement(query);
+
+						pstmt.setString(1, memo);
+						pstmt.setString(2, airTyperr[i]);
+						pstmt.setString(3, airUnirr[i]);
+						pstmt.setString(4, "R"+reqNo);
+						pstmt.setString(5, airNorr[i]);
+						pstmt.setString(6, "에어컨");
+
+						result = pstmt.executeUpdate();
+
+					} catch (SQLException e) {
+						e.printStackTrace();
+					} finally {
+						close(pstmt);
+					}
+
 				}
-			}
-		}else if(airNo.length() > 0) {
-			String query = prop.getProperty("updateAir");
-			
-			for(int i = 0; i < airNorr.length; i++) {				
-				try {
-					pstmt = con.prepareStatement(query);
-					
-					pstmt.setString(1, memo);
-					pstmt.setString(2, airTyperr[i]);
-					pstmt.setString(3, airUnirr[i]);
-					pstmt.setString(4, "R"+reqNo);
-					pstmt.setString(5, airNorr[i]);
-					pstmt.setString(6, "에어컨");
-					
-					result = pstmt.executeUpdate();
-					
-				} catch (SQLException e) {
-					e.printStackTrace();
-				} finally {
-					close(pstmt);
+			}else if(proNamerr[j].equals("정수기")) {
+				String query = prop.getProperty("updateWater");
+
+				for(int i = 0; i < waterNorr.length; i++) {
+
+					try {
+						pstmt = con.prepareStatement(query);
+
+						pstmt.setString(1, memo);
+						pstmt.setString(2, waterSizerr[i]);
+						pstmt.setString(3, waterUnirr[i]);
+						pstmt.setString(4, "R"+reqNo);
+						pstmt.setString(5, waterNorr[i]);
+						pstmt.setString(6, "정수기");
+
+						result = pstmt.executeUpdate();
+
+					} catch (SQLException e) {
+						e.printStackTrace();
+					} finally {
+						close(pstmt);
+					}
+
 				}
-				
-			}
-		}else if(waterNo.length() > 0) {
-			String query = prop.getProperty("updateWater");
-			
-			for(int i = 0; i < waterNorr.length; i++) {
-				
-				try {
-					pstmt = con.prepareStatement(query);
-					
-					pstmt.setString(1, memo);
-					pstmt.setString(2, waterSizerr[i]);
-					pstmt.setString(3, waterUnirr[i]);
-					pstmt.setString(4, "R"+reqNo);
-					pstmt.setString(5, waterNorr[i]);
-					pstmt.setString(6, "정수기");
-					
-					result = pstmt.executeUpdate();
-					
-				} catch (SQLException e) {
-					e.printStackTrace();
-				} finally {
-					close(pstmt);
+			}else if(proNamerr[j].equals("PC/노트북")) {
+				String query = prop.getProperty("updatePc");
+
+				for(int i = 0; i < pcNorr.length; i++) {
+
+					try {
+						pstmt = con.prepareStatement(query);
+
+						pstmt.setString(1, memo);
+						pstmt.setString(2, pcTyperr[i]);
+						pstmt.setString(3, "R"+reqNo);
+						pstmt.setString(4, pcNorr[i]);
+						pstmt.setString(5, "PC/노트북");
+
+						result = pstmt.executeUpdate();
+
+					} catch (SQLException e) {
+						e.printStackTrace();
+					} finally {
+						close(pstmt);
+					}
+
 				}
-				
-			}
-		}else if(pcNo.length() > 0) {
-			String query = prop.getProperty("updatePc");
-			
-			for(int i = 0; i < pcNorr.length; i++) {
-				
-				try {
-					pstmt = con.prepareStatement(query);
-					
-					pstmt.setString(1, memo);
-					pstmt.setString(2, pcTyperr[i]);
-					pstmt.setString(3, "R"+reqNo);
-					pstmt.setString(4, pcNorr[i]);
-					pstmt.setString(5, "PC/노트북");
-					
-					result = pstmt.executeUpdate();
-					
-				} catch (SQLException e) {
-					e.printStackTrace();
-				} finally {
-					close(pstmt);
+			}else if(proNamerr[j].equals("전자레인지")) {
+				String query = prop.getProperty("updateOven");
+
+				for(int i = 0; i < ovenNorr.length; i++) {
+
+					try {
+						pstmt = con.prepareStatement(query);
+
+						pstmt.setString(1, memo);
+						pstmt.setString(2, ovenTyperr[i]);
+						pstmt.setString(3, "R"+reqNo);
+						pstmt.setString(4, ovenNorr[i]);
+						pstmt.setString(5, "전자레인지");
+
+						result = pstmt.executeUpdate();
+
+					} catch (SQLException e) {
+						e.printStackTrace();
+					} finally {
+						close(pstmt);
+					}
+
 				}
-				
-			}
-		}else if(ovenNo.length() > 0) {
-			String query = prop.getProperty("updateOven");
-			
-			for(int i = 0; i < ovenNorr.length; i++) {
-				
-				try {
-					pstmt = con.prepareStatement(query);
-					
-					pstmt.setString(1, memo);
-					pstmt.setString(2, ovenTyperr[i]);
-					pstmt.setString(3, "R"+reqNo);
-					pstmt.setString(4, ovenNorr[i]);
-					pstmt.setString(5, "전자레인지");
-					
-					result = pstmt.executeUpdate();
-					
-				} catch (SQLException e) {
-					e.printStackTrace();
-				} finally {
-					close(pstmt);
+			}else if(proNamerr[j].equals("침대")) {
+				String query = prop.getProperty("updateBed");
+
+				for(int i = 0; i < bedNorr.length; i++) {
+
+					try {
+						pstmt = con.prepareStatement(query);
+
+						pstmt.setString(1, memo);
+						pstmt.setString(2, bedTyperr[i]);
+						pstmt.setString(3, bedSizerr[i]);
+						pstmt.setString(4, "R"+reqNo);
+						pstmt.setString(5, bedNorr[i]);
+						pstmt.setString(6, "침대");
+
+						result = pstmt.executeUpdate();
+
+					} catch (SQLException e) {
+						e.printStackTrace();
+					} finally {
+						close(pstmt);
+					}
+
 				}
-				
-			}
-		}else if(bedNo.length() > 0) {
-			String query = prop.getProperty("updateBed");
-			
-			for(int i = 0; i < bedNorr.length; i++) {
-				
-				try {
-					pstmt = con.prepareStatement(query);
-					
-					pstmt.setString(1, memo);
-					pstmt.setString(2, bedTyperr[i]);
-					pstmt.setString(3, bedSizerr[i]);
-					pstmt.setString(4, "R"+reqNo);
-					pstmt.setString(5, bedNorr[i]);
-					pstmt.setString(6, "침대");
-					
-					result = pstmt.executeUpdate();
-					
-				} catch (SQLException e) {
-					e.printStackTrace();
-				} finally {
-					close(pstmt);
+			}else if(proNamerr[j].equals("의자")) {
+				String query = prop.getProperty("updateChair");
+
+				for(int i = 0; i < chairNorr.length; i++) {
+
+					try {
+						pstmt = con.prepareStatement(query);
+
+						pstmt.setString(1, memo);
+						pstmt.setString(2, chairTyperr[i]);
+						pstmt.setString(3, "R"+reqNo);
+						pstmt.setString(4, chairNorr[i]);
+						pstmt.setString(5, "의자");
+
+						result = pstmt.executeUpdate();
+
+					} catch (SQLException e) {
+						e.printStackTrace();
+					} finally {
+						close(pstmt);
+					}
+
 				}
-				
-			}
-		}else if(chairNo.length() > 0) {
-			String query = prop.getProperty("updateChair");
-			
-			for(int i = 0; i < chairNorr.length; i++) {
-				
-				try {
-					pstmt = con.prepareStatement(query);
-					
-					pstmt.setString(1, memo);
-					pstmt.setString(2, chairTyperr[i]);
-					pstmt.setString(3, "R"+reqNo);
-					pstmt.setString(4, chairNorr[i]);
-					pstmt.setString(5, "의자");
-					
-					result = pstmt.executeUpdate();
-					
-				} catch (SQLException e) {
-					e.printStackTrace();
-				} finally {
-					close(pstmt);
+			}else if(proNamerr[j].equals("책상/테이블")) {
+				String query = prop.getProperty("updateTable");
+
+				for(int i = 0; i < tableNorr.length; i++) {
+
+					try {
+						pstmt = con.prepareStatement(query);
+
+						pstmt.setString(1, memo);
+						pstmt.setString(2, tableTyperr[i]);
+						pstmt.setString(3, tableSizerr[i]);
+						pstmt.setString(4, tableMatrr[i]);
+						pstmt.setString(5, tableWidthrr[i]);
+						pstmt.setString(6, "R"+reqNo);
+						pstmt.setString(7, tableNorr[i]);
+						pstmt.setString(8, "책상/테이블");
+
+						result = pstmt.executeUpdate();
+
+					} catch (SQLException e) {
+						e.printStackTrace();
+					} finally {
+						close(pstmt);
+					}
+
 				}
-				
-			}
-		}else if(tableNo.length() > 0) {
-			String query = prop.getProperty("updateTable");
-			
-			for(int i = 0; i < tableNorr.length; i++) {
-				
-				try {
-					pstmt = con.prepareStatement(query);
-					
-					pstmt.setString(1, memo);
-					pstmt.setString(2, tableTyperr[i]);
-					pstmt.setString(3, tableSizerr[i]);
-					pstmt.setString(4, tableMatrr[i]);
-					pstmt.setString(5, tableWidthrr[i]);
-					pstmt.setString(6, "R"+reqNo);
-					pstmt.setString(7, tableNorr[i]);
-					pstmt.setString(8, "책상/테이블");
-					
-					result = pstmt.executeUpdate();
-					
-				} catch (SQLException e) {
-					e.printStackTrace();
-				} finally {
-					close(pstmt);
+			}else if(proNamerr[j].equals("책장")) {
+				String query = prop.getProperty("updateBc");
+
+				for(int i = 0; i < bcNorr.length; i++) {
+
+					try {
+						pstmt = con.prepareStatement(query);
+
+						pstmt.setString(1, memo);
+						pstmt.setString(2, bcWidthrr[i]);
+						pstmt.setString(3, bcHeightrr[i]);
+						pstmt.setString(4, "R"+reqNo);
+						pstmt.setString(5, bcNorr[i]);
+						pstmt.setString(6, "책장");
+
+						result = pstmt.executeUpdate();
+
+					} catch (SQLException e) {
+						e.printStackTrace();
+					} finally {
+						close(pstmt);
+					}
+
 				}
-				
-			}
-		}else if(bcNo.length() > 0) {
-			String query = prop.getProperty("updateBc");
-			
-			for(int i = 0; i < bcNorr.length; i++) {
-				
-				try {
-					pstmt = con.prepareStatement(query);
-					
-					pstmt.setString(1, memo);
-					pstmt.setString(2, bcWidthrr[i]);
-					pstmt.setString(3, bcHeightrr[i]);
-					pstmt.setString(4, "R"+reqNo);
-					pstmt.setString(5, bcNorr[i]);
-					pstmt.setString(6, "책장");
-					
-					result = pstmt.executeUpdate();
-					
-				} catch (SQLException e) {
-					e.printStackTrace();
-				} finally {
-					close(pstmt);
+			}else if(proNamerr[j].equals("옷장")) {
+				String query = prop.getProperty("updateClo");
+
+				for(int i = 0; i < cloNorr.length; i++) {
+
+					try {
+						pstmt = con.prepareStatement(query);
+
+						pstmt.setString(1, memo);
+						pstmt.setString(2, cloTyperr[i]);
+						pstmt.setString(3, cloUnirr[i]);
+						pstmt.setString(4, cloWidthrr[i]);
+						pstmt.setString(5, "R"+reqNo);
+						pstmt.setString(6, cloNorr[i]);
+						pstmt.setString(7, "옷장");
+
+						result = pstmt.executeUpdate();
+
+					} catch (SQLException e) {
+						e.printStackTrace();
+					} finally {
+						close(pstmt);
+					}
+
 				}
-				
-			}
-		}else if(cloNo.length() > 0) {
-			String query = prop.getProperty("updateClo");
-			
-			for(int i = 0; i < cloNorr.length; i++) {
-				
-				try {
-					pstmt = con.prepareStatement(query);
-					
-					pstmt.setString(1, memo);
-					pstmt.setString(2, cloTyperr[i]);
-					pstmt.setString(3, cloUnirr[i]);
-					pstmt.setString(4, cloWidthrr[i]);
-					pstmt.setString(5, "R"+reqNo);
-					pstmt.setString(6, cloNorr[i]);
-					pstmt.setString(7, "옷장");
-					
-					result = pstmt.executeUpdate();
-					
-				} catch (SQLException e) {
-					e.printStackTrace();
-				} finally {
-					close(pstmt);
+			}else if(proNamerr[j].equals("진열장")) {
+				String query = prop.getProperty("updateSc");
+
+				for(int i = 0; i < scNorr.length; i++) {
+
+					try {
+						pstmt = con.prepareStatement(query);
+
+						pstmt.setString(1, memo);
+						pstmt.setString(2, scWidthrr[i]);
+						pstmt.setString(3, scHeightrr[i]);
+						pstmt.setString(4, scGckrr[i]);
+						pstmt.setString(5, "R"+reqNo);
+						pstmt.setString(6, scNorr[i]);
+						pstmt.setString(7, "진열장");
+
+						result = pstmt.executeUpdate();
+
+					} catch (SQLException e) {
+						e.printStackTrace();
+					} finally {
+						close(pstmt);
+					}
+
 				}
-				
-			}
-		}else if(scNo.length() > 0) {
-			String query = prop.getProperty("updateSc");
-			
-			for(int i = 0; i < scNorr.length; i++) {
-				
-				try {
-					pstmt = con.prepareStatement(query);
-					
-					pstmt.setString(1, memo);
-					pstmt.setString(2, scWidthrr[i]);
-					pstmt.setString(3, scHeightrr[i]);
-					pstmt.setString(4, scGckrr[i]);
-					pstmt.setString(5, "R"+reqNo);
-					pstmt.setString(6, scNorr[i]);
-					pstmt.setString(7, "진열장");
-					
-					result = pstmt.executeUpdate();
-					
-				} catch (SQLException e) {
-					e.printStackTrace();
-				} finally {
-					close(pstmt);
+			}else if(proNamerr[j].equals("쇼파")) {
+				String query = prop.getProperty("updateSofa");
+
+				for(int i = 0; i < sofaNorr.length; i++) {
+
+					try {
+						pstmt = con.prepareStatement(query);
+
+						pstmt.setString(1, memo);
+						pstmt.setString(2, sofaSizerr[i]);
+						pstmt.setString(3, "R"+reqNo);
+						pstmt.setString(4, sofaNorr[i]);
+						pstmt.setString(5, "쇼파");
+
+						result = pstmt.executeUpdate();
+
+					} catch (SQLException e) {
+						e.printStackTrace();
+					} finally {
+						close(pstmt);
+					}
+
 				}
-				
-			}
-		}else if(sofaNo.length() > 0) {
-			String query = prop.getProperty("updateSofa");
-			
-			for(int i = 0; i < sofaNorr.length; i++) {
-				
-				try {
-					pstmt = con.prepareStatement(query);
-					
-					pstmt.setString(1, memo);
-					pstmt.setString(2, sofaSizerr[i]);
-					pstmt.setString(3, "R"+reqNo);
-					pstmt.setString(4, sofaNorr[i]);
-					pstmt.setString(5, "쇼파");
-					
-					result = pstmt.executeUpdate();
-					
-				} catch (SQLException e) {
-					e.printStackTrace();
-				} finally {
-					close(pstmt);
+			}else if(proNamerr[j].equals("행거")) {
+				String query = prop.getProperty("updateHang");
+
+				for(int i = 0; i < hangNorr.length; i++) {
+
+					try {
+						pstmt = con.prepareStatement(query);
+
+						pstmt.setString(1, memo);
+						pstmt.setString(2, hangTyperr[i]);
+						pstmt.setString(3, hangWidthrr[i]);
+						pstmt.setString(4, "R"+reqNo);
+						pstmt.setString(5, hangNorr[i]);
+						pstmt.setString(6, "행거");
+
+						result = pstmt.executeUpdate();
+
+					} catch (SQLException e) {
+						e.printStackTrace();
+					} finally {
+						close(pstmt);
+					}
+
 				}
-				
-			}
-		}else if(hangNo.length() > 0) {
-			String query = prop.getProperty("updateHang");
-			
-			for(int i = 0; i < hangNorr.length; i++) {
-				
-				try {
-					pstmt = con.prepareStatement(query);
-					
-					pstmt.setString(1, memo);
-					pstmt.setString(2, hangTyperr[i]);
-					pstmt.setString(3, hangWidthrr[i]);
-					pstmt.setString(4, "R"+reqNo);
-					pstmt.setString(5, hangNorr[i]);
-					pstmt.setString(6, "행거");
-					
-					result = pstmt.executeUpdate();
-					
-				} catch (SQLException e) {
-					e.printStackTrace();
-				} finally {
-					close(pstmt);
+			}else if(proNamerr[j].equals("거울")) {
+				String query = prop.getProperty("updateMir");
+
+				for(int i = 0; i < mirNorr.length; i++) {
+
+					try {
+						pstmt = con.prepareStatement(query);
+
+						pstmt.setString(1, memo);
+						pstmt.setString(2, mirTyperr[i]);
+						pstmt.setString(3, mirSizerr[i]);
+						pstmt.setString(4, "R"+reqNo);
+						pstmt.setString(5, mirNorr[i]);
+						pstmt.setString(6, "거울");
+
+						result = pstmt.executeUpdate();
+
+					} catch (SQLException e) {
+						e.printStackTrace();
+					} finally {
+						close(pstmt);
+					}
+
 				}
-				
-			}
-		}else if(mirNo.length() > 0) {
-			String query = prop.getProperty("updateMir");
-			
-			for(int i = 0; i < mirNorr.length; i++) {
-				
-				try {
-					pstmt = con.prepareStatement(query);
-					
-					pstmt.setString(1, memo);
-					pstmt.setString(2, mirTyperr[i]);
-					pstmt.setString(3, mirSizerr[i]);
-					pstmt.setString(4, "R"+reqNo);
-					pstmt.setString(5, mirNorr[i]);
-					pstmt.setString(6, "거울");
-					
-					result = pstmt.executeUpdate();
-					
-				} catch (SQLException e) {
-					e.printStackTrace();
-				} finally {
-					close(pstmt);
+			}else if(proNamerr[j].equals("화장대")) {
+				String query = prop.getProperty("updateMake");
+
+				for(int i = 0; i < makeNorr.length; i++) {
+
+					try {
+						pstmt = con.prepareStatement(query);
+
+						pstmt.setString(1, memo);
+						pstmt.setString(2, makeTyperr[i]);
+						pstmt.setString(3, makeMatrr[i]);
+						pstmt.setString(4, "R"+reqNo);
+						pstmt.setString(5, makeNorr[i]);
+						pstmt.setString(6, "화장대");
+
+						result = pstmt.executeUpdate();
+
+					} catch (SQLException e) {
+						e.printStackTrace();
+					} finally {
+						close(pstmt);
+					}
+
 				}
-				
-			}
-		}else if(makeNo.length() > 0) {
-			String query = prop.getProperty("updateMake");
-			
-			for(int i = 0; i < makeNorr.length; i++) {
-				
-				try {
-					pstmt = con.prepareStatement(query);
-					
-					pstmt.setString(1, memo);
-					pstmt.setString(2, makeTyperr[i]);
-					pstmt.setString(3, makeMatrr[i]);
-					pstmt.setString(4, "R"+reqNo);
-					pstmt.setString(5, makeNorr[i]);
-					pstmt.setString(6, "화장대");
-					
-					result = pstmt.executeUpdate();
-					
-				} catch (SQLException e) {
-					e.printStackTrace();
-				} finally {
-					close(pstmt);
+			}else if(proNamerr[j].equals("피아노")) {
+				String query = prop.getProperty("updatePiano");
+
+				for(int i = 0; i < pianoNorr.length; i++) {
+
+					try {
+						pstmt = con.prepareStatement(query);
+
+						pstmt.setString(1, memo);
+						pstmt.setString(2, pianoTyperr[i]);
+						pstmt.setString(3, "R"+reqNo);
+						pstmt.setString(4, pianoNorr[i]);
+						pstmt.setString(5, "피아노");
+
+						result = pstmt.executeUpdate();
+
+					} catch (SQLException e) {
+						e.printStackTrace();
+					} finally {
+						close(pstmt);
+					}				
 				}
-				
-			}
-		}else if(pianoNo.length() > 0) {
-			String query = prop.getProperty("updatePiano");
-			
-			for(int i = 0; i < pianoNorr.length; i++) {
-				
-				try {
-					pstmt = con.prepareStatement(query);
-					
-					pstmt.setString(1, memo);
-					pstmt.setString(2, pianoTyperr[i]);
-					pstmt.setString(3, "R"+reqNo);
-					pstmt.setString(4, pianoNorr[i]);
-					pstmt.setString(5, "피아노");
-					
-					result = pstmt.executeUpdate();
-					
-				} catch (SQLException e) {
-					e.printStackTrace();
-				} finally {
-					close(pstmt);
-				}				
 			}
 		}
-		
-		
-		
-		
+
+
+
 		return result;
 	}
 }	

@@ -18,18 +18,22 @@
     max-height: 50px;
   }
   #att{
-  padding-top:20px;
-  padding-left:170px;
-  color:gray;
+  	padding-top:20px;
+  	padding-left:170px;
+  	color:gray;
   }
   
-  #input{
-  padding-top:22px;
-  padding-right:20px;
+  .selectInfo{ 
+  	cursor: pointer;
+  	font-size: 20px;
+  	display: block;
+  	float: right;
+  	padding-right: 200px;
+  	padding-top: 15px;
   }
   
   .container{
-  padding-left:330px;
+  	padding-left:330px;
   }
   
  
@@ -65,46 +69,93 @@
 		<hr>
 		
 		<div style="padding-left: 50px; padding-top: 10px; padding-bottom: 50px;">
-			<img src="/semi/images/pointer.PNG" style="float:left" id="imgs">
-			<h3 style="float: left">출발지 정보</h3>
-			<h5 id="input" align="right" style="padding-right: 150px;"><a href="#">상세정보입력</a></h5>
+			<div style="float: left">		
+				<img src="/semi/images/pointer.PNG" id="imgs">				
+			</div>
+			<div>
+				<span style="font-size: 30px; font-weight: bold">출발지 정보</span>
+				<span>출발지를 선택하세요.</span>	
+			</div>
+			<div style="padding-top: 10px; float: left;">
+				<span>경기도 성남시</span>
+			</div>
+			<div>
+				<span class="selectInfo" id="startPlace" onclick="selectStartPlace()">상세정보입력</span>
+			</div>
 		</div>
 		
 		<hr>
 
 		<div style="padding-left: 50px; padding-top: 10px; padding-bottom: 50px;">
-			<img src="/semi/images/pointer.PNG" style="float:left" id="imgs">
-			<h3 style="float: left">도착지 정보</h3>
-			<h5 id="input" align="right" style="padding-right: 150px;"><a href="#">상세정보입력</a></h5>
+			<div style="float: left">		
+				<img src="/semi/images/pointer.PNG" id="imgs">				
+			</div>
+			<div>
+				<span style="font-size: 30px; font-weight: bold">도착지 정보</span>	
+				<span>도착지를 선택하세요.</span>	
+			</div>
+			<div style="padding-top: 10px; float: left;">
+				<span>경기도 성남시</span>
+			</div>
+			<div>
+				<span class="selectInfo" id="arrivePlace" onclick="selectArrivePlace()">상세정보입력</span>
+			</div>
 		</div>
 		
 		<hr>
 
 		<div style="padding-left: 50px; padding-top: 10px; padding-bottom: 50px;">
-			<img src="/semi/images/cal.PNG" style="float: left" id="imgs">
-			<h3 style="float: left">날짜 선택</h3>
-			<h5 id="input" align="right" style="padding-right: 150px;"><a href="#">상세정보입력</a></h5>
+			<div style="float: left">		
+				<img src="/semi/images/cal.PNG" id="imgs">				
+			</div>
+			<div>
+				<span style="font-size: 30px; font-weight: bold">날짜,시간 선택</span>	
+				<span>이용하실 날짜와 시간을 선택하세요.</span>	
+			</div>
+			<div style="padding-top: 10px; float: left;">
+				<span>2018년 1월 1일</span>
+			</div>
+			<div>
+				<span class="selectInfo" id="selectDate" onclick="selectDate()">상세정보입력</span>
+			</div>
 		</div>
 		
 		<hr>
 
 		<div style="padding-left: 50px; padding-top: 10px; padding-bottom: 50px;">
-			<img src="/semi/images/imgatt.PNG" style="float: left" id="imgs">
-			<h3 style="float: left">사진 첨부</h3>
-			<p id="att">상세한 짐 사진을 올려주세요</p>
-			<div id="input" align="right" style="padding-right: 150px;"><button>파일첨부</button></div>
+			<div style="float: left">		
+				<img src="/semi/images/imgatt.PNG" id="imgs">				
+			</div>
+			<div>
+				<span style="font-size: 30px; font-weight: bold">사진 첨부</span>
+				<span>상세한 짐 사진을 올려주세요.</span>	
+			</div>
+			<div style="padding-top: 10px; float: left;">
+				<span>2018년 1월 1일</span>
+			</div>
+			<div>
+				<span class="selectInfo" id="selectDate" onclick="selectDate()">상세정보입력</span>
+			</div>
 		</div>
 		
 		<hr>
 
 		<div style="padding-left: 50px; padding-top: 10px; padding-bottom: 50px;">
-			<h3>견적 입찰 기간</h3>
-			<input type="radio" id="date1" name="date"> 
-			<label for="date1">1일</label>&emsp;&emsp; 
-			<input type="radio" id="date2" name="date"> 
-			<label for="date2">2일</label> &emsp;&emsp; 
-			<input type="radio" id="date3" name="date"> 
-			<label for="date3">3일</label>
+			<div style="float: left">		
+				<img src="/semi/images/imgatt.PNG" id="imgs">				
+			</div>
+			<div>
+				<span style="font-size: 30px; font-weight: bold">견적 입찰 기간</span>
+				<span>견적을 받을 일수를 선택하세요.</span>	
+			</div>
+			<div>
+				<input type="radio" id="date1" name="date"> 
+				<label for="date1">1일</label>&emsp;&emsp; 
+				<input type="radio" id="date2" name="date"> 
+				<label for="date2">2일</label> &emsp;&emsp; 
+				<input type="radio" id="date3" name="date"> 
+				<label for="date3">3일</label>
+			</div>
 		</div>
 		
 		<hr>
@@ -118,7 +169,41 @@
 			</a>
 		</div>				
 	</div>
+	
+	<script>	 
+		function selectStartPlace(){
+			var url = "/semi/views/popup/pop_StartPlace.jsp";
+			var winWidth = 400;
+			var winHeight = 530;
+			var popupW = (screen.availWidth - winWidth) / 2;
+			var popupH = (screen.availHeight - winHeight) / 2;			
+			var popOption = "status=no, width=" + winWidth + ", height=" + winHeight + ", top=" + popupH + ", left=" + popupW;			
+			
+			window.open(url,"",popOption);
+		}
 		
+		function selectArrivePlace(){
+			var url = "/semi/views/popup/pop_ArrivePlace.jsp";
+			var winWidth = 400;
+			var winHeight = 530;
+			var popupW = (screen.availWidth - winWidth) / 2;
+			var popupH = (screen.availHeight - winHeight) / 2;			
+			var popOption = "status=no, width=" + winWidth + ", height=" + winHeight + ", top=" + popupH + ", left=" + popupW;			
+			
+			window.open(url,"",popOption);
+		}
+		
+		function selectDate(){
+			var url = "/semi/views/popup/pop_ReservationDate.jsp";
+			var winWidth = 400;
+			var winHeight = 200;
+			var popupW = (screen.availWidth - winWidth) / 2;
+			var popupH = (screen.availHeight - winHeight) / 2;			
+			var popOption = "status=no, width=" + winWidth + ", height=" + winHeight + ", top=" + popupH + ", left=" + popupW;			
+			
+			window.open(url,"",popOption);
+		}
+	</script>	
 		
 		
 </body>
