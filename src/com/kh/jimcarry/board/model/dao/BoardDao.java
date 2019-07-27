@@ -324,6 +324,34 @@ public class BoardDao {
 		System.out.println("insertAttachment" + result);
 		return result;
 	}
+	//검색 기능 메소드
+	public ArrayList<Board> searchList(Connection con, int currentPage, int limit, String searchCondition,
+			String word) {
+		PreparedStatement pstmt = null;
+		ArrayList<Board> list = null;
+		Board b = null;
+		String query = prop.getProperty("selectListWithPageing");
+
+		String search= "%" + word + "%";
+		try {
+			if(searchCondition.equals("title")) {
+				pstmt = con.prepareStatement(query);
+				pstmt
+
+			}
+
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+
+
+
+
+
+		return null;
+	}
 
 
 }

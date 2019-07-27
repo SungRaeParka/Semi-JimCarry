@@ -93,6 +93,11 @@ a.btn_02 {
 	float: right;
 }
 
+.searchArea {
+		width: 650px;
+		margin: 0 auto;
+	}
+
 
 </style>
 
@@ -201,16 +206,24 @@ a.btn_02 {
 		</div> -->
 
 
-		<div>
-			<select id='search'>
-				<option value='A'>제목</option>
-				<option value='T'>작성자</option>
-				<option value='C'>내용</option>
-			</select> <input id='txtKeyWord' /> <input type='button' value='검색' />
-		</div>
+
+
 	</div>
 
+	<%-- 검색영역 --%>
+		<div class="searchArea" align="center">
+	<form action="<%=request.getContextPath()%>/search.bo" method="post">
+			<select name="searchCondition" id="searchCondition">
+				<option value="title">제목</option>
+				<option value="writer">작성자</option>
+				<option value="content">내용</option>
+			</select>
 
+			<input type="search" name="word" placeholder="특수문자는 사용할수 없습니다."/>
+			<button type="submit">검색하기</button>
+
+	</form>
+		</div>
 	<script>
 	$(function(){
 		$("#listArea td").mouseenter(function(){
