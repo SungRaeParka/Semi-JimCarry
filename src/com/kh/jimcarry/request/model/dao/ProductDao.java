@@ -54,8 +54,8 @@ public class ProductDao {
 					try {
 						pstmt = con.prepareStatement(query);
 
-						pstmt.setString(1, namerr[i]);
-						pstmt.setString(2, kindrr[i]);
+						pstmt.setString(1, kindrr[i]);
+						pstmt.setString(2, namerr[i]);
 
 						result = pstmt.executeUpdate();	
 
@@ -70,8 +70,42 @@ public class ProductDao {
 					try {
 						pstmt = con.prepareStatement(query);
 
-						pstmt.setString(1, namerr[i]);
-						pstmt.setString(2, kindrr[i]);
+						pstmt.setString(1, kindrr[i]);
+						pstmt.setString(2, namerr[i]);
+
+						result = pstmt.executeUpdate();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					} finally {
+						close(pstmt);
+					}
+				}
+			}else if(kindrr[i].equals("기타")) {
+				if(namerr[i].equals("상자")) {
+					String query = prop.getProperty("insertBox");
+
+					try {
+						pstmt = con.prepareStatement(query);
+
+						pstmt.setString(1, "기타");
+						pstmt.setString(2, "상자");
+						pstmt.setInt(3, r.getBoxCount());
+
+						result = pstmt.executeUpdate();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					} finally {
+						close(pstmt);
+					}
+				}else if(namerr[i].equals("책")) {
+					String query = prop.getProperty("insertBook");
+
+					try {
+						pstmt = con.prepareStatement(query);
+
+						pstmt.setString(1, "기타");
+						pstmt.setString(2, "책");
+						pstmt.setInt(3, r.getBookCount());
 
 						result = pstmt.executeUpdate();
 					} catch (SQLException e) {
@@ -95,8 +129,8 @@ public class ProductDao {
 		try {
 			pstmt = con.prepareStatement(query);
 
-			pstmt.setString(1, "상자");
-			pstmt.setString(2, "기타");
+			pstmt.setString(1, "기타");
+			pstmt.setString(2, "상자");
 			pstmt.setInt(3, r.getBoxCount());
 
 			result = pstmt.executeUpdate();
@@ -119,8 +153,8 @@ public class ProductDao {
 		try {
 			pstmt = con.prepareStatement(query);
 
-			pstmt.setString(1, "책");
-			pstmt.setString(2, "기타");
+			pstmt.setString(1, "기타");
+			pstmt.setString(2, "책");
 			pstmt.setInt(3, r.getBookCount());
 
 			result = pstmt.executeUpdate();
@@ -749,7 +783,7 @@ public class ProductDao {
 			String[] hangTyperr, String[] hangWidthrr, String[] mirTyperr, String[] mirSizerr, String[] makeTyperr,
 			String[] makeMatrr, String[] pianoTyperr, String refNo, String washNo, String tvNo, String airNo,
 			String waterNo, String pcNo, String ovenNo, String bedNo, String chairNo, String tableNo, String bcNo,
-			String cloNo, String scNo, String sofaNo, String hangNo, String mirNo, String makeNo, String pianoNo) {
+			String cloNo, String scNo, String sofaNo, String hangNo, String mirNo, String makeNo, String pianoNo, String memo) {
 		
 		PreparedStatement pstmt = null;
 		int result = 0;
@@ -780,11 +814,12 @@ public class ProductDao {
 				try {
 					pstmt = con.prepareStatement(query);
 					
-					pstmt.setString(1, refTyperr[i]);
-					pstmt.setString(2, refSizerr[i]);
-					pstmt.setString(3, "R"+reqNo);
-					pstmt.setString(4, "냉장고");
-					pstmt.setString(5, refNorr[i]);
+					pstmt.setString(1, memo);
+					pstmt.setString(2, refTyperr[i]);
+					pstmt.setString(3, refSizerr[i]);
+					pstmt.setString(4, "R"+reqNo);
+					pstmt.setString(5, "냉장고");
+					pstmt.setString(6, refNorr[i]);
 					
 					result = pstmt.executeUpdate();
 					
@@ -801,11 +836,12 @@ public class ProductDao {
 				try {
 					pstmt = con.prepareStatement(query);
 					
-					pstmt.setString(1, washTyperr[i]);
-					pstmt.setString(2, washSizerr[i]);
-					pstmt.setString(3, "R"+reqNo);
-					pstmt.setString(4, "세탁기");
-					pstmt.setString(5, washNorr[i]);
+					pstmt.setString(1, memo);
+					pstmt.setString(2, washTyperr[i]);
+					pstmt.setString(3, washSizerr[i]);
+					pstmt.setString(4, "R"+reqNo);
+					pstmt.setString(5, "세탁기");
+					pstmt.setString(6, washNorr[i]);
 					
 					result = pstmt.executeUpdate();
 					
@@ -822,10 +858,11 @@ public class ProductDao {
 				try {
 					pstmt = con.prepareStatement(query);
 					
-					pstmt.setString(1, tvSizerr[i]);
-					pstmt.setString(2, "R"+reqNo);
-					pstmt.setString(3, tvNorr[i]);
-					pstmt.setString(4, "TV/모니터");					
+					pstmt.setString(1, memo);
+					pstmt.setString(2, tvSizerr[i]);
+					pstmt.setString(3, "R"+reqNo);
+					pstmt.setString(4, tvNorr[i]);
+					pstmt.setString(5, "TV/모니터");					
 					
 					result = pstmt.executeUpdate();
 					
@@ -842,11 +879,12 @@ public class ProductDao {
 				try {
 					pstmt = con.prepareStatement(query);
 					
-					pstmt.setString(1, airTyperr[i]);
-					pstmt.setString(2, airUnirr[i]);
-					pstmt.setString(3, "R"+reqNo);
-					pstmt.setString(4, airNorr[i]);
-					pstmt.setString(5, "에어컨");
+					pstmt.setString(1, memo);
+					pstmt.setString(2, airTyperr[i]);
+					pstmt.setString(3, airUnirr[i]);
+					pstmt.setString(4, "R"+reqNo);
+					pstmt.setString(5, airNorr[i]);
+					pstmt.setString(6, "에어컨");
 					
 					result = pstmt.executeUpdate();
 					
@@ -865,11 +903,12 @@ public class ProductDao {
 				try {
 					pstmt = con.prepareStatement(query);
 					
-					pstmt.setString(1, waterSizerr[i]);
-					pstmt.setString(2, waterUnirr[i]);
-					pstmt.setString(3, "R"+reqNo);
-					pstmt.setString(4, waterNorr[i]);
-					pstmt.setString(5, "정수기");
+					pstmt.setString(1, memo);
+					pstmt.setString(2, waterSizerr[i]);
+					pstmt.setString(3, waterUnirr[i]);
+					pstmt.setString(4, "R"+reqNo);
+					pstmt.setString(5, waterNorr[i]);
+					pstmt.setString(6, "정수기");
 					
 					result = pstmt.executeUpdate();
 					
@@ -888,10 +927,11 @@ public class ProductDao {
 				try {
 					pstmt = con.prepareStatement(query);
 					
-					pstmt.setString(1, pcTyperr[i]);
-					pstmt.setString(2, "R"+reqNo);
-					pstmt.setString(3, pcNorr[i]);
-					pstmt.setString(4, "PC/노트북");
+					pstmt.setString(1, memo);
+					pstmt.setString(2, pcTyperr[i]);
+					pstmt.setString(3, "R"+reqNo);
+					pstmt.setString(4, pcNorr[i]);
+					pstmt.setString(5, "PC/노트북");
 					
 					result = pstmt.executeUpdate();
 					
@@ -910,10 +950,11 @@ public class ProductDao {
 				try {
 					pstmt = con.prepareStatement(query);
 					
-					pstmt.setString(1, ovenTyperr[i]);
-					pstmt.setString(2, "R"+reqNo);
-					pstmt.setString(3, ovenNorr[i]);
-					pstmt.setString(4, "전자레인지");
+					pstmt.setString(1, memo);
+					pstmt.setString(2, ovenTyperr[i]);
+					pstmt.setString(3, "R"+reqNo);
+					pstmt.setString(4, ovenNorr[i]);
+					pstmt.setString(5, "전자레인지");
 					
 					result = pstmt.executeUpdate();
 					
@@ -932,11 +973,12 @@ public class ProductDao {
 				try {
 					pstmt = con.prepareStatement(query);
 					
-					pstmt.setString(1, bedTyperr[i]);
-					pstmt.setString(2, bedSizerr[i]);
-					pstmt.setString(3, "R"+reqNo);
-					pstmt.setString(4, bedNorr[i]);
-					pstmt.setString(5, "침대");
+					pstmt.setString(1, memo);
+					pstmt.setString(2, bedTyperr[i]);
+					pstmt.setString(3, bedSizerr[i]);
+					pstmt.setString(4, "R"+reqNo);
+					pstmt.setString(5, bedNorr[i]);
+					pstmt.setString(6, "침대");
 					
 					result = pstmt.executeUpdate();
 					
@@ -955,10 +997,11 @@ public class ProductDao {
 				try {
 					pstmt = con.prepareStatement(query);
 					
-					pstmt.setString(1, chairTyperr[i]);
-					pstmt.setString(2, "R"+reqNo);
-					pstmt.setString(3, chairNorr[i]);
-					pstmt.setString(4, "의자");
+					pstmt.setString(1, memo);
+					pstmt.setString(2, chairTyperr[i]);
+					pstmt.setString(3, "R"+reqNo);
+					pstmt.setString(4, chairNorr[i]);
+					pstmt.setString(5, "의자");
 					
 					result = pstmt.executeUpdate();
 					
@@ -977,13 +1020,14 @@ public class ProductDao {
 				try {
 					pstmt = con.prepareStatement(query);
 					
-					pstmt.setString(1, tableTyperr[i]);
-					pstmt.setString(2, tableSizerr[i]);
-					pstmt.setString(3, tableMatrr[i]);
-					pstmt.setString(4, tableWidthrr[i]);
-					pstmt.setString(5, "R"+reqNo);
-					pstmt.setString(6, tableNorr[i]);
-					pstmt.setString(7, "책상/테이블");
+					pstmt.setString(1, memo);
+					pstmt.setString(2, tableTyperr[i]);
+					pstmt.setString(3, tableSizerr[i]);
+					pstmt.setString(4, tableMatrr[i]);
+					pstmt.setString(5, tableWidthrr[i]);
+					pstmt.setString(6, "R"+reqNo);
+					pstmt.setString(7, tableNorr[i]);
+					pstmt.setString(8, "책상/테이블");
 					
 					result = pstmt.executeUpdate();
 					
@@ -1002,11 +1046,12 @@ public class ProductDao {
 				try {
 					pstmt = con.prepareStatement(query);
 					
-					pstmt.setString(1, bcWidthrr[i]);
-					pstmt.setString(2, bcHeightrr[i]);
-					pstmt.setString(3, "R"+reqNo);
-					pstmt.setString(4, bcNorr[i]);
-					pstmt.setString(5, "책장");
+					pstmt.setString(1, memo);
+					pstmt.setString(2, bcWidthrr[i]);
+					pstmt.setString(3, bcHeightrr[i]);
+					pstmt.setString(4, "R"+reqNo);
+					pstmt.setString(5, bcNorr[i]);
+					pstmt.setString(6, "책장");
 					
 					result = pstmt.executeUpdate();
 					
@@ -1025,12 +1070,13 @@ public class ProductDao {
 				try {
 					pstmt = con.prepareStatement(query);
 					
-					pstmt.setString(1, cloTyperr[i]);
-					pstmt.setString(2, cloUnirr[i]);
-					pstmt.setString(3, cloWidthrr[i]);
-					pstmt.setString(4, "R"+reqNo);
-					pstmt.setString(5, cloNorr[i]);
-					pstmt.setString(6, "옷장");
+					pstmt.setString(1, memo);
+					pstmt.setString(2, cloTyperr[i]);
+					pstmt.setString(3, cloUnirr[i]);
+					pstmt.setString(4, cloWidthrr[i]);
+					pstmt.setString(5, "R"+reqNo);
+					pstmt.setString(6, cloNorr[i]);
+					pstmt.setString(7, "옷장");
 					
 					result = pstmt.executeUpdate();
 					
@@ -1049,12 +1095,13 @@ public class ProductDao {
 				try {
 					pstmt = con.prepareStatement(query);
 					
-					pstmt.setString(1, scWidthrr[i]);
-					pstmt.setString(2, scHeightrr[i]);
-					pstmt.setString(3, scGckrr[i]);
-					pstmt.setString(4, "R"+reqNo);
-					pstmt.setString(5, scNorr[i]);
-					pstmt.setString(6, "진열장");
+					pstmt.setString(1, memo);
+					pstmt.setString(2, scWidthrr[i]);
+					pstmt.setString(3, scHeightrr[i]);
+					pstmt.setString(4, scGckrr[i]);
+					pstmt.setString(5, "R"+reqNo);
+					pstmt.setString(6, scNorr[i]);
+					pstmt.setString(7, "진열장");
 					
 					result = pstmt.executeUpdate();
 					
@@ -1073,10 +1120,11 @@ public class ProductDao {
 				try {
 					pstmt = con.prepareStatement(query);
 					
-					pstmt.setString(1, sofaSizerr[i]);
-					pstmt.setString(2, "R"+reqNo);
-					pstmt.setString(3, sofaNorr[i]);
-					pstmt.setString(4, "쇼파");
+					pstmt.setString(1, memo);
+					pstmt.setString(2, sofaSizerr[i]);
+					pstmt.setString(3, "R"+reqNo);
+					pstmt.setString(4, sofaNorr[i]);
+					pstmt.setString(5, "쇼파");
 					
 					result = pstmt.executeUpdate();
 					
@@ -1095,11 +1143,12 @@ public class ProductDao {
 				try {
 					pstmt = con.prepareStatement(query);
 					
-					pstmt.setString(1, hangTyperr[i]);
-					pstmt.setString(2, hangWidthrr[i]);
-					pstmt.setString(3, "R"+reqNo);
-					pstmt.setString(4, hangNorr[i]);
-					pstmt.setString(5, "행거");
+					pstmt.setString(1, memo);
+					pstmt.setString(2, hangTyperr[i]);
+					pstmt.setString(3, hangWidthrr[i]);
+					pstmt.setString(4, "R"+reqNo);
+					pstmt.setString(5, hangNorr[i]);
+					pstmt.setString(6, "행거");
 					
 					result = pstmt.executeUpdate();
 					
@@ -1118,11 +1167,12 @@ public class ProductDao {
 				try {
 					pstmt = con.prepareStatement(query);
 					
-					pstmt.setString(1, mirTyperr[i]);
-					pstmt.setString(2, mirSizerr[i]);
-					pstmt.setString(3, "R"+reqNo);
-					pstmt.setString(4, mirNorr[i]);
-					pstmt.setString(5, "거울");
+					pstmt.setString(1, memo);
+					pstmt.setString(2, mirTyperr[i]);
+					pstmt.setString(3, mirSizerr[i]);
+					pstmt.setString(4, "R"+reqNo);
+					pstmt.setString(5, mirNorr[i]);
+					pstmt.setString(6, "거울");
 					
 					result = pstmt.executeUpdate();
 					
@@ -1141,11 +1191,12 @@ public class ProductDao {
 				try {
 					pstmt = con.prepareStatement(query);
 					
-					pstmt.setString(1, makeTyperr[i]);
-					pstmt.setString(2, makeMatrr[i]);
-					pstmt.setString(3, "R"+reqNo);
-					pstmt.setString(4, makeNorr[i]);
-					pstmt.setString(5, "화장대");
+					pstmt.setString(1, memo);
+					pstmt.setString(2, makeTyperr[i]);
+					pstmt.setString(3, makeMatrr[i]);
+					pstmt.setString(4, "R"+reqNo);
+					pstmt.setString(5, makeNorr[i]);
+					pstmt.setString(6, "화장대");
 					
 					result = pstmt.executeUpdate();
 					
@@ -1164,10 +1215,11 @@ public class ProductDao {
 				try {
 					pstmt = con.prepareStatement(query);
 					
-					pstmt.setString(1, pianoTyperr[i]);
-					pstmt.setString(2, "R"+reqNo);
-					pstmt.setString(3, pianoNorr[i]);
-					pstmt.setString(4, "피아노");
+					pstmt.setString(1, memo);
+					pstmt.setString(2, pianoTyperr[i]);
+					pstmt.setString(3, "R"+reqNo);
+					pstmt.setString(4, pianoNorr[i]);
+					pstmt.setString(5, "피아노");
 					
 					result = pstmt.executeUpdate();
 					
@@ -1184,94 +1236,6 @@ public class ProductDao {
 		
 		return result;
 	}
-
-	/*public int updateRef(Connection con, String reqNo, String refNo, String[] refTyperr, String[] refSizerr) {
-		PreparedStatement pstmt = null;
-		int result = 0;
-		String[] refNorr = refNo.split(",");
-		
-		String query = prop.getProperty("updateRef");
-		
-		for(int i = 0; i < refNorr.length; i++) {
-			try {
-				pstmt = con.prepareStatement(query);
-				
-				pstmt.setString(1, refTyperr[i]);
-				pstmt.setString(2, refSizerr[i]);
-				pstmt.setString(3, "R"+reqNo);
-				pstmt.setString(4, "냉장고");
-				pstmt.setString(5, refNorr[i]);
-				
-				result = pstmt.executeUpdate();
-				
-			} catch (SQLException e) {
-				e.printStackTrace();
-			} finally {
-				close(pstmt);
-			}
-		}	
-		
-		return result;
-	}
-
-	public int updateWash(Connection con, String reqNo, String washNo, String[] washTyperr, String[] washSizerr) {
-		PreparedStatement pstmt = null;
-		int result2 = 0;
-		String[] washNorr = washNo.split(",");
-		
-		String query = prop.getProperty("updateWash");
-		
-		for(int i = 0; i < washNorr.length; i++) {
-			try {
-				pstmt = con.prepareStatement(query);
-				
-				pstmt.setString(1, washTyperr[i]);
-				pstmt.setString(2, washSizerr[i]);
-				pstmt.setString(3, "R"+reqNo);
-				pstmt.setString(4, "세탁기");
-				pstmt.setString(5, washNorr[i]);
-				
-				result2 = pstmt.executeUpdate();
-				
-			} catch (SQLException e) {
-				e.printStackTrace();
-			} finally {
-				close(pstmt);
-			}
-		}	
-		
-		return result2;
-	}
-
-	public int updateTv(Connection con, String reqNo, String tvNo, String[] tvSizerr) {
-		PreparedStatement pstmt = null;
-		int result3 = 0;
-		String[] tvNorr = tvNo.split(",");
-		
-		String query = prop.getProperty("updateTv");
-		
-		for(int i = 0; i < tvNorr.length; i++) {
-			try {
-				pstmt = con.prepareStatement(query);
-				
-				pstmt.setString(1, tvSizerr[i]);
-				pstmt.setString(2, "R"+reqNo);
-				pstmt.setString(3, "TV/모니터");
-				pstmt.setString(4, tvNorr[i]);
-				
-				result3 = pstmt.executeUpdate();
-				
-			} catch (SQLException e) {
-				e.printStackTrace();
-			} finally {
-				close(pstmt);
-			}
-		}	
-		
-		return result3;
-	}
-	*/
-	
 }	
 
 
