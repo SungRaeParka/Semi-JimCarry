@@ -234,7 +234,9 @@
 			<div id="date" class="text">
 				<h3>
 					예약일 :
-					<%=req.getReservationDate()%></h3>
+					<%=req.getReservationDate()%>&nbsp;
+					<%=ampm %><%=moveTimeH %>시
+				</h3>
 			</div>
 			<div id="reqprice">
 				<h4>
@@ -288,8 +290,11 @@
 
 			<div id="date" class="text">
 				<h3>
+					<h3>
 					예약일 :
-					<%=req.getReservationDate()%></h3>
+					<%=req.getReservationDate()%>&nbsp;
+					<%=ampm %><%=moveTimeH %>시
+				</h3>
 			</div>
 			<div id="reqprice">
 				<h4>
@@ -337,7 +342,9 @@
 			<div id="date" class="text">
 				<h3>
 					예약일 :
-					<%=req.getReservationDate()%></h3>
+					<%=req.getReservationDate()%>&nbsp;
+					<%=ampm %><%=moveTimeH %>시
+				</h3>
 			</div>
 			<div id="reqprice">
 				<h4>

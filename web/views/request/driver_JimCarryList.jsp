@@ -119,71 +119,71 @@ html, body {
 		<hr>
 
 		<%
-			Request req = new Request();
+		Request req = new Request();
+
+		Date finishDay = new Date(); 
+		Date nowDay = new Date(); 
+		Date moveDay = new Date();
+		int moveTimeH; 
+		String ampm;  
 		
-			Date finishDay = new Date();
-			Date nowDay = new Date();
-			Date moveDay = new Date();
-			int moveTimeH;
-			String ampm;
-			
-			long finishTime;
-			long nowTime;
-			long moveTime;
-			
-			long timeRemain;
-			long timeReH;
-			long timeReM;
-			
-			
+		long nowTime;  //오늘 날,시간 getTime
+		long finishTime;  //견적매칭 종료일 getTime
+		long moveTime;  //짐옮기는날 getTime
+		
+		
+		long timeRemain;//남은시간
+		long timeReH; //남은시간_시간
+		long timeReM; //남은시간_분
+		
 
-			for (int i = 0; i < list.size(); i++) {
-				req = list.get(i);
-				
-				finishDay = req.getReqFinish();
-				moveDay = req.getReservationDate();
-				moveTimeH = req.getReservationTime();
-				
-				System.out.println("finishDay: "+req.getReqFinish());
-				System.out.println("moveDay: "+req.getReservationDate());
-				System.out.println("moveTimeH: "+req.getReservationTime());
-				
-				if(moveTimeH<12){
-					ampm="오전";
-				}else if(moveTimeH==12){
-					ampm="오후";
-				}else{
-					ampm="오후";					
-					moveTimeH -=12;
-				}
-				
-				
-				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm");
-				
-				nowDay = dateFormat.parse(dateFormat.format(nowDay));
-				nowTime = nowDay.getTime();
-				System.out.println(nowDay);
-				System.out.println(nowTime);
-				//오늘 날,시간 getTime
-				
-				finishTime = finishDay.getTime();
-				System.out.println(finishDay);
-				System.out.println(finishTime);
-				//견적매칭 종료일 getTime
-				
-				moveTime = moveDay.getTime();
-				System.out.println(moveDay);
-				System.out.println(moveTime);
-				//짐옮기는날 getTime
-				
-				
-				timeRemain = finishTime+86400000-nowTime;
-				timeReH = (timeRemain/60000)/60;
-				timeReM = (timeRemain/60000)%60;
-				
+		for (int i = 0; i < list.size(); i++) {
+			req = list.get(i);
+			
+			finishDay = req.getReqFinish();  //견적매칭 종료일
+			moveDay = req.getReservationDate(); //예약일(짐옮기는 날)
+			moveTimeH = req.getReservationTime(); //예약일 짐옮기는 시간
+			
+			//plusTimeS = moveTimeH*3600000;  //이용시간getTime -> 버튼 바뀌는 시점 설정 위해
+			//하루 : 86400000 1시간 : 3600000
+			
+			
+			if(moveTimeH<12){
+				ampm="오전";
+			}else if(moveTimeH==12){
+				ampm="오후";
+			}else{
+				ampm="오후";					
+				moveTimeH -=12;
+			}
+			
+			
+			
+			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+			
+			nowDay = dateFormat.parse(dateFormat.format(nowDay));
+			nowTime = nowDay.getTime();
+			System.out.println(nowDay);
+			System.out.println(nowTime);
+			//오늘 날,시간 getTime
 
-				if (req.getConditionDo().equals("매칭대기")) {
-		%>
+			finishTime = finishDay.getTime();
+			System.out.println(finishDay);
+			System.out.println(finishTime);
+			//견적매칭 종료일 getTime
+			
+			moveTime = moveDay.getTime();
+			System.out.println(moveDay);
+			System.out.println(moveTime);
+			//짐옮기는날 getTime
+			
+			
+			timeRemain = finishTime+86400000-nowTime;
+			timeReH = (timeRemain/60000)/60;
+			timeReM = (timeRemain/60000)%60;
+			
+			if (req.getConditionDo().equals("매칭대기")) {
+	%>
 		<div>
 			<img src="/semi/images/mc1.png" class="imgs" style="float: left">
 
@@ -198,13 +198,13 @@ html, body {
 					→
 					<%=req.getArrivalPoint()%></h1>
 			</div>
+			
 			<div id="reqInfo">
 				<h4>
-					<input type="hidden" value="<%=req.getReqNo() %>">
-					<a id="reqInfoBtn">견적확인 →</a>
+					<a href="#">상세 짐보기→</a>
 				</h4>
 			</div>
-
+			
 			<div id="date" class="text">
 				<h3>
 					예약일 :
@@ -212,15 +212,17 @@ html, body {
 					<%=ampm %><%=moveTimeH %>시
 				</h3>
 			</div>
-			<div id="reqpri">
+			
+			<div id="reqprice">
 				<h4>
-					<a href="/semi/views/request/req_ReqList.jsp">입찰내역 확인 →</a>
-				</h4>
+					이용요금 :
+					<%=req.getOrderPrice()%></h4>
 			</div>
-
+			
+			
 			<div id="count" class="text">
 				<h3>
-					받은 견적 수 :
+					입찰 견적 수 :
 					<%=req.getReqCount()%></h3>
 			</div>
 			<div id="time" align="right">
@@ -237,26 +239,254 @@ html, body {
 		<%
 			} else if (req.getConditionDo().equals("매칭취소")) {
 		%>
+		
+		<div>
+			<img src="/semi/images/mc1.png" class="imgs" style="float: left">
 
+			<div id="reqno">
+				<p>
+					견적번호 :
+					<%=req.getReqNo()%></p>
+			</div>
+
+			<div id="title" class="text">
+				<h1><%=req.getStartPoint()%>
+					→
+					<%=req.getArrivalPoint()%></h1>
+			</div>
+			
+
+			<div id="date" class="text">
+				<h3>
+					예약일 :
+					<%=req.getReservationDate()%>&nbsp;
+					<%=ampm %><%=moveTimeH %>시
+				</h3>
+			</div>
+			
+			<div id="reqprice">
+				<h3>
+					<a href="#">상세 짐 보기→</a>
+				</h3>
+			</div>
+
+			<div id="count" class="text">
+				<h3>
+					입찰 견적 수 :
+					<%=req.getReqCount()%></h3>
+			</div>
+			<div id="time" align="right">
+				<h3>입찰 취소된 내역 입니다.</h3>
+			</div>
+			<hr>
+		</div>
+		
+		
 		<%
 			} else if (req.getConditionDo().equals("매칭완료")) {
 		%>
+		<div>
+			<img src="/semi/images/mc2.png" class="imgs" style="float: left">
+
+			<div id="reqno">
+				<p>
+					견적번호 :
+					<%=req.getReqNo()%></p>
+			</div>
+
+			<div id="title" class="text">
+				<h1><%=req.getStartPoint()%>
+					→
+					<%=req.getArrivalPoint()%></h1>
+			</div>
+
+
+			<div id="date" class="text">
+				<h3>
+					예약일 :
+					<%=req.getReservationDate()%>&nbsp;
+					<%=ampm %><%=moveTimeH %>시
+				</h3>
+			</div>
+			<div id="reqprice">
+				<h3>
+					이용요금 :
+					<%=req.getOrderPrice()%></h3>
+			</div>
+
+			<div id="count" class="text">
+				<h3>
+					고객명 :
+					<%=req.getUserName()%>
+				</h3>
+			</div>
+			<div id="reqcencle" align="right">
+
+				<h3>
+					<a href="#">상세 짐보기→</a>
+				</h3>
+
+			</div>
+
+			<hr>
+		</div>
+
+
+
+
 
 		<%
 			} else if (req.getConditionDo().equals("이용대기")) {
 		%>
+		<div>
+			<img src="/semi/images/mc3.png" class="imgs" style="float: left">
+
+			<div id="reqno">
+				<p>
+					견적번호 :
+					<%=req.getReqNo()%></p>
+			</div>
+
+			<div id="title" class="text">
+				<h1><%=req.getStartPoint()%>
+					→
+					<%=req.getArrivalPoint()%></h1>
+			</div>
+
+
+			<div id="date" class="text">
+				<h3>
+					예약일 :
+					<%=req.getReservationDate()%>&nbsp;
+					<%=ampm %><%=moveTimeH %>시
+				</h3>
+			</div>
+			<div id="reqprice">
+				<h3>
+					이용요금 :
+					<%=req.getOrderPrice()%></h3>
+			</div>
+
+			<div id="count" class="text">
+				<h3>
+					고객명 :
+					<%=req.getUserName()%>
+				</h3>
+			</div>
+			<div id="reqcencle" align="right">
+
+				<h3>
+					<a href="#">상세 짐보기→</a>
+				</h3>
+
+			</div>
+
+			<hr>
+		</div>
+
 
 		<%
 			} else if (req.getConditionDo().equals("이용완료")) {
 		%>
+		<div>
+			<img src="/semi/images/mc4.png" class="imgs" style="float: left">
+
+			<div id="reqno">
+				<p>
+					견적번호 :
+					<%=req.getReqNo()%></p>
+			</div>
+
+			<div id="title" class="text">
+				<h1><%=req.getStartPoint()%>
+					→
+					<%=req.getArrivalPoint()%></h1>
+			</div>
+
+
+			<div id="date" class="text">
+				<h3>
+					완료일 :
+					<%=req.getReservationDate()%>&nbsp;
+					<%=ampm %><%=moveTimeH %>시
+				</h3>
+			</div>
+			<div id="reqprice">
+				<h3>
+					이용요금 :
+					<%=req.getOrderPrice()%></h3>
+			</div>
+
+			<div id="count" class="text">
+				<h3>
+					고객명 :
+					<%=req.getUserName()%>
+				</h3>
+			</div>
+			<div id="reqcencle" align="right">
+
+				<h3>
+					<a href="#">정산신청→</a>
+				</h3>
+
+			</div>
+
+			<hr>
+		</div>
+		
 
 		<%
 			} else if (req.getConditionDo().equals("정산대기")) {
 		%>
+		<div>
+			<img src="/semi/images/mc5.png" class="imgs" style="float: left">
+
+			<div id="reqno">
+				<p>
+					견적번호 :
+					<%=req.getReqNo()%></p>
+			</div>
+
+			<div id="title" class="text">
+				<h1><%=req.getStartPoint()%>
+					→
+					<%=req.getArrivalPoint()%></h1>
+			</div>
+
+
+			<div id="date" class="text">
+				<h3>
+					완료일 :
+					<%=req.getReservationDate()%>&nbsp;
+					<%=ampm %><%=moveTimeH %>시
+				</h3>
+			</div>
+			<div id="reqprice">
+				<h3>
+					이용요금 :
+					<%=req.getOrderPrice()%></h3>
+			</div>
+
+			<div id="count" class="text">
+				<h3>
+					고객명 :
+					<%=req.getUserName()%>
+				</h3>
+			</div>
+			<div id="reqcencle" align="right">
+
+				<h3>정산 신청이 완료 되었습니다.</h3>
+
+			</div>
+
+			<hr>
+		</div>
+		
 
 		<%
 			} else {
 		%>
+		
 
 		<%
 			}
@@ -264,6 +494,65 @@ html, body {
 			}
 		%>
 
+		<br> <br> <br> <br>
+		
+		<%-- 페이징처리 --%>
+		<div class="pagingArea" align="center">
+			<button
+				onclick="location.href='<%=request.getContextPath()%>/myJcarrylist.jc?currentPage=1'">
+				<<</button>
+
+			<%
+				if (currentPage <= 1) {
+			%>
+			<button disabled><</button>
+			<%
+				} else {
+			%>
+			<button
+				onclick="location.href='<%=request.getContextPath()%>/myJcarrylist.jc?currentPage=<%=currentPage - 1%>'">
+				<</button>
+			<%
+				}
+			%>
+
+
+			<%
+				for (int p = startPage; p <= endPage; p++) {
+					if (currentPage == p) {
+			%>
+			<button disabled><%=p%></button>
+			<%
+				} else {
+			%>
+			<button
+				onclick="location.href='<%=request.getContextPath()%>/myJcarrylist.jc?currentPage=<%=p%>'"><%=p%></button>
+			<%
+				}
+				}
+			%>
+
+			<%
+				if (currentPage >= maxPage) {
+			%>
+			<button disabled>></button>
+			<%
+				} else {
+			%>
+			<button
+				onclick="location.href='<%=request.getContextPath()%>/myJcarrylist.jc?currentPage=<%=currentPage + 1%>'">
+				></button>
+			<%} %>
+			<button
+				onclick="location.href='<%=request.getContextPath() %>/myJcarrylist.jc?currentPage=<%=maxPage %>'">
+				>></button>
+
+		</div>
+
+
+	</div>
+	
+	
 
 
 <%-- 
