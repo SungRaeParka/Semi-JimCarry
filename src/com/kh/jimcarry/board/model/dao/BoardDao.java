@@ -336,7 +336,7 @@ public class BoardDao {
 		try {
 			if(searchCondition.equals("title")) {
 				pstmt = con.prepareStatement(query);
-				pstmt
+				sw
 
 			}
 
