@@ -23,14 +23,17 @@ public class boardSelectOne extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int num = Integer.parseInt(request.getParameter("num"));
+		String num = request.getParameter("num");
+
+		System.out.println("num : " + num);
 
 		HashMap<String, Object> hmap = new BoardService().selectBoardMap(num);
 
 		Board b = (Board) hmap.get("board");
 
+		System.out.println("b : " + b);
 		ArrayList<Attachment> fileList = (ArrayList<Attachment>) hmap.get("attachment");
-
+		System.out.println("파일 리스트 : " + fileList);
 		String page = "";
 
 		if(hmap != null) {
@@ -38,7 +41,7 @@ public class boardSelectOne extends HttpServlet {
 			request.setAttribute("b", b);
 			request.setAttribute("fileList", fileList);
 		}else {
-			page = "views/common/errorpage.jsp";
+			page = "views/common/errorPage.jsp";
 			request.setAttribute("msg", "게시판 상세보기 실패!!!");
 		}
 

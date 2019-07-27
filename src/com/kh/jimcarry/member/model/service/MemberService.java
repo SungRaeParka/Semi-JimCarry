@@ -50,7 +50,7 @@ public class MemberService {
 		
 		return result;
 	}
-
+	//사용자 중복
 	public int userIdCheck(String userId) {
 		Connection con = getConnection();
 		
