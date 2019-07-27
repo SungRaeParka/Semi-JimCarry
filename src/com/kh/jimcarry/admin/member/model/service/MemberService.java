@@ -1,11 +1,15 @@
 package com.kh.jimcarry.admin.member.model.service;
 
-import static com.kh.jimcarry.common.JDBCTemplate.*;
+import static com.kh.jimcarry.common.JDBCTemplate.close;
+import static com.kh.jimcarry.common.JDBCTemplate.commit;
+import static com.kh.jimcarry.common.JDBCTemplate.getConnection;
+import static com.kh.jimcarry.common.JDBCTemplate.rollback;
 
 import java.sql.Connection;
 import java.util.ArrayList;
 
 import com.kh.jimcarry.admin.member.model.dao.MemberDao;
+import com.kh.jimcarry.admin.member.model.vo.BlackList;
 import com.kh.jimcarry.admin.member.model.vo.Declaration;
 import com.kh.jimcarry.member.model.vo.Member;
 
@@ -82,6 +86,37 @@ public class MemberService {
 //
 //		}
 		ArrayList<Member> list = new MemberDao().approveDriver(con);
+
+		close(con);
+
+		return list;
+	}
+
+	public ArrayList<BlackList> blackList() {
+			Connection con = getConnection();
+
+			ArrayList<BlackList> list = new MemberDao().BlackList(con);
+			close(con);
+			return list;
+
+	}
+
+	public ArrayList<BlackList> updateBlackListDriver(double resultD, String driverNo, String prompt) {
+		Connection con = getConnection();
+
+
+//		if (list != null) {
+			int result = new MemberDao().updateBlackListDriver(con,resultD,driverNo,prompt);
+
+			if(result > 0) {
+				commit(con);
+			}else {
+				rollback(con);
+			}
+//		}else {
+//
+//		}
+		ArrayList<BlackList> list = new MemberDao().BlackList(con);
 
 		close(con);
 

@@ -12,6 +12,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Properties;
 
+import com.kh.jimcarry.admin.member.model.vo.BlackList;
 import com.kh.jimcarry.admin.member.model.vo.Declaration;
 import com.kh.jimcarry.member.model.vo.Member;
 
@@ -212,6 +213,64 @@ public class MemberDao {
 		try {
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, resultD);
+			pstmt.setString(2, prompt);
+			pstmt.setString(3, driverNo);
+
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+
+		return result;
+	}
+
+	public ArrayList<BlackList> BlackList(Connection con) {
+		Statement stmt = null;
+		ResultSet rset = null;
+		ArrayList<BlackList> list = null;
+
+		String query = prop.getProperty("blackList");
+
+		try {
+			stmt = con.createStatement();
+			rset = stmt.executeQuery(query);
+
+			list = new ArrayList<BlackList>();
+
+			while(rset.next()) {
+				BlackList b = new BlackList();
+
+				b.setDriverNo(rset.getString("DRIVER_NO"));
+				b.setStopReason(rset.getString("STOP_REASON"));
+				b.setStopDate(rset.getDate("STOP_DATE"));
+				b.setActivationReason(rset.getString("ACTIVATION_REASON"));
+				b.setActivationDate(rset.getDate("ACTIVATION_DATE"));
+				b.setDeclNo(rset.getString("DECL_NO"));
+				b.setBlackNo(rset.getString("BLACK_NO"));
+				b.setStarRating(rset.getDouble("STAR_RATING"));
+
+				list.add(b);
+			}
+			System.out.println("BlackListDao list : " + list);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(stmt);
+			close(rset);
+		}
+		return list;
+	}
+	public int updateBlackListDriver(Connection con, double resultD, String driverNo, String prompt) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = prop.getProperty("updateBlackListDriver");
+
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setDouble(1, resultD);
 			pstmt.setString(2, prompt);
 			pstmt.setString(3, driverNo);
 
