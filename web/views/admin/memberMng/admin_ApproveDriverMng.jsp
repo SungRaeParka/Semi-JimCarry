@@ -252,7 +252,7 @@
 			<li><a href="/semi/selectAll.u">사용자</a></li>
 			<li><a href="/semi/selectAll.d">기사</a></li>
 			<li class="active"><a data-toggle="tab" href="#menu2">신청한 기사 관리</a></li>
-			<li><a href="/blackList.d">블랙리스트 관리</a></li>
+			<li><a href="/semi/blackList.d">블랙리스트 관리</a></li>
 			<li><a href="/semi/dclare.d">신고내역 관리</a></li>
 		</ul>
 
@@ -359,7 +359,7 @@
 												<input type="hidden" id="driverNoResult" name="driverNo">
 											</td>
 											<td class="content right_border">
-													<%=m.getSeqNo()%>
+												<%=m.getSeqNo()%>
 											</td>
 											<td class="content right_border">
 												<%=m.getEnrollDate()%>
@@ -509,134 +509,35 @@
 				//해당 작업 취소
 				// alert("해당작업 취소")
 				location.href = "/semi/approve.d";
-				}
-			};
+			}
+		};
 
-			function no(num) {
-				var result = window.prompt("거절 사유를 해당 기사님에게 남겨주세요.")
-				var prompt = document.getElementById("prompt");
-				var resultD = document.getElementById("noD").value;
-				$("#prompt").attr('value', result);
-				$("#resultD").attr('value', resultD);
-				console.log("resultD" + resultD);
-				console.log("result : " + result);
+		function no(num) {
+			var result = window.prompt("거절 사유를 해당 기사님에게 남겨주세요.")
+			var prompt = document.getElementById("prompt");
+			var resultD = document.getElementById("noD").value;
+			$("#prompt").attr('value', result);
+			$("#resultD").attr('value', resultD);
+			console.log("resultD" + resultD);
+			console.log("result : " + result);
 
-				var driverNo = $("#driverNo" + num).val();
+			var driverNo = $("#driverNo" + num).val();
 			$("#driverNoResult").attr('value', driverNo);
-			alert(driverNo);
-				if (result != null) {
-					//해당 기사에게 거절 사유 메시지 보내기
-					// alert("notNull");
-					$("#yesnoForm").attr("action", "<%= request.getContextPath()%>/updateApprove.d")
-					$("#yesnoForm").submit()
-				} else {
-					// alert("null");
-					//해당 작업 취소
-					location.href = "/semi/approve.d";
-				}
-			};
+			// alert(driverNo);
+			if (result != null) {
+				//해당 기사에게 거절 사유 메시지 보내기
+				// alert("notNull");
+				$("#yesnoForm").attr("action", "<%= request.getContextPath()%>/updateApprove.d")
+				$("#yesnoForm").submit()
+			} else {
+				// alert("null");
+				//해당 작업 취소
+				location.href = "/semi/approve.d";
+			}
+		};
 
-			function removeBL() {
-				var result = window.prompt("해당 기사님에게 블랙리스트 해제 사유를 남겨주세요.")
-				if (result == true) {
-					//해당 기사에게 블랙리스트 해제 사유 메시지 보내기
-					//DB 해당사유 컬럼에도 저장. 같은 기사가 서로 다른 사유로 오게 되면 따로 관리하여 계속 같은 기사 아이디로 새로 생긴다.
-				} else {
-					//해당 작업 취소
-				}
-			};
-
-
-
-//예전 함수
-// //신청 기사관리 탭의 상태 결정 버튼 2
-// function yes() {
-// 			var result = window.confirm("해당 기사님을 짐캐리 기사로 승인하시겠습니까?")
-// 			var yesD = $("#yesD").val();
-// 			var driverNo = $("#driverNo").val();
-// 			console.log("driverNo : " + driverNo);
-// 			alert('hi');
-// 			<%-- $("#yesD").attr("action", "<%= request.getContextPath()%>/UpdateApprove.d")
-// 			$("#yesD").submit(function(){
-// 				$(this).attr("action", "<%= request.getContextPath()%>/UpdateApprove.d")
-// 			}) --%>
-
-// 			 /* if (result == true) { */
-// 			// 	//해당 기사를 기사 db에 추가 후 기사에게 메시지 보내기
-// 			 	<%-- $("#yesD").attr("action", "<%= request.getContextPath()%>/UpdateApprove.d") --%>
-// 			/*  } else {
-// 			// 	//해당 작업 취소
-// 			 	console.log("해당작업취소")
-// 			// } */
-// 		};
-
-	<%-- 	<% -- //신청 기사관리 탭의 상태 결정 버튼 1
-				function yesD() {
-					var result = window.confirm("해당 기사님을 짐캐리 기사로 승인하시겠습니까?")
-
-					if (result == true) {
-						//해당 기사를 기사 db에 추가 후 기사에게 메시지 보내기
-						$("#yesD").attr("action", "<%= request.getContextPath()%>/UpdateApprove.d")
-					} else {
-						//해당 작업 취소
-						console.log("해당작업취소")
-					}
-				}; --%>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-						// 		alert("1");
-
-		// 	var str = ""
-		// 	var tdArr = new Array();	// 배열 선언
-		// 	var checkBtn = $(this);
-		// console.log("checkBtn : " + checkBtn);
-		// alert("1");
-		// 	// checkBtn.parent() : checkBtn의 부모는 <td>이다.
-		// 	// checkBtn.parent().parent() : <td>의 부모이므로 <tr>이다.
-		// 	var tr = checkBtn.parent().parent();
-		// 	var td = tr.children();
-		// 	console.log("tr: " + tr);
-		// 	console.log("td: " + td);
-		// 	console.log("클릭한 Row의 모든 데이터 : "+tr.text());
-		// 	alert("1");
-		// 	var no = td.eq(0).text();
-		// 	var userid = td.eq(1).text();
-		// 	var name = td.eq(2).text();
-		// 	var email = td.eq(3).text();
-		// 	console.log("no : "+no);
-		// 	console.log("userid : "+userid);
-		// 	console.log("name : "+name);
-		// 	console.log("email : "+email);
-		// 	alert("1");
-		// 	td.each(function(i){
-		// 		tdArr.push(td.eq(i).text());
-		// 	});
-
-		// 	console.log("배열에 담긴 값 : "+tdArr);
-		// 	alert("1");
-		// 	str +=	" * 클릭된 Row의 td값 = No. : <font color='red'>" + no + "</font>" +
-		// 			", 아이디 : <font color='red'>" + userid + "</font>" +
-		// 			", 이름 : <font color='red'>" + name + "</font>" +
-		// 			", 이메일 : <font color='red'>" + email + "</font>";
-
-		// 	$("#ex2_Result1").html(" * 클릭한 Row의 모든 데이터 = " + tr.text());
-		// 	$("#ex2_Result2").html(str);
 	</script>
 
 </body>
 
 </html>
-
-

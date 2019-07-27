@@ -87,11 +87,12 @@
 		<h1>내 짐캐리 리스트</h1>
 
 		<div id="filt" align="right">
-			<select name="national">
-				<option value="a">매칭대기</option>
-				<option value="b">매칭완료</option>
-				<option value="c">이용대기</option>
-				<option value="d">이용완료</option>
+			<select name="driver_filter">
+				<option value="전체보기" selected>전체보기</option>
+				<option value="매칭대기">매칭대기</option>
+				<option value="매칭완료">매칭완료</option>
+				<option value="매칭완료">매칭완료</option>
+				<option value="이용완료">이용완료</option>
 			</select>
 		</div>
 
