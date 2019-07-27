@@ -111,7 +111,7 @@ public class RequestDao {
 				list.add(req);
 				
 				System.out.println("리스트에 담김");
-				
+				System.out.println(list);
 			}
 			
 		} catch (SQLException e) {
