@@ -94,6 +94,19 @@ public class BoardService {
 		return result;
 	}
 
+	//게시판 검색 기능
+	public ArrayList<Board> searchList(int currentPage, int limit, String searchCondition, String word) {
+		Connection con = getConnection();
+
+		ArrayList<Board> list = new BoardDao().searchList(con,currentPage,limit, searchCondition, word);
+
+		System.out.println(list);
+		close(con);
+
+
+		return list;
+	}
+
 
 
 }

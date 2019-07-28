@@ -24,5 +24,24 @@ public class QandAService {
 		
 		return list1;
 	}
+	//상세보기용
+	public QandA selectOneQA(int num) {
+		// TODO Auto-generated method stub
+		Connection con = getConnection();
+		
+		QandA qa = new QandADao().selectOneQA(con, num);
+		
+		if(qa != null) {
+			int result = new QandADao().updateCountQA(con, num);
+			
+			if (result > 0) {
+				commit(con);
+			} else {
+				rollback(con);
+			}
+		}
+		
+		return qa;
+	}
 
 }

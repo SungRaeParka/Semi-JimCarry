@@ -158,6 +158,7 @@ public class RequestDao {
 				req.setArrivalPoint(rset.getString("ARRIVE_POINT"));
 				req.setReservationDate(rset.getDate("RESERVATION_DATE"));
 				req.setReservationTime(rset.getInt("RESERVATION_TIME"));
+				req.setReqFinish(rset.getDate("REQ_FINISH"));
 				req.setUserName(rset.getString("MEMBER_NAME"));
 				req.setReqCount(rset.getInt("COUNT"));
 				req.setOrderPrice(rset.getInt("ORDER_PRICE"));
