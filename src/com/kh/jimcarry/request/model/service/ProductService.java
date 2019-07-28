@@ -261,7 +261,7 @@ public class ProductService {
 		return pianoNo;
 	}
 
-	public int updateAll(String reqNo, String[] refTyperr, String[] refSizerr, String[] washTyperr, String[] washSizerr,
+	public int updateAll(String reqNo, String[] proNamerr, String[] refTyperr, String[] refSizerr, String[] washTyperr, String[] washSizerr,
 			String[] tvSizerr, String[] airTyperr, String[] airUnirr, String[] waterSizerr, String[] waterUnirr,
 			String[] pcTyperr, String[] ovenTyperr, String[] bedTyperr, String[] bedSizerr, String[] chairTyperr,
 			String[] tableTyperr, String[] tableSizerr, String[] tableMatrr, String[] tableWidthrr, String[] bcWidthrr,
@@ -274,7 +274,7 @@ public class ProductService {
 		
 		Connection con = getConnection();
 		
-		int result = new ProductDao().updateAll(con, reqNo, refTyperr, refSizerr, washTyperr, washSizerr, tvSizerr, airTyperr, airUnirr, waterSizerr, waterUnirr, pcTyperr, ovenTyperr, bedTyperr, bedSizerr,
+		int result = new ProductDao().updateAll(con, reqNo, proNamerr, refTyperr, refSizerr, washTyperr, washSizerr, tvSizerr, airTyperr, airUnirr, waterSizerr, waterUnirr, pcTyperr, ovenTyperr, bedTyperr, bedSizerr,
 													chairTyperr, tableTyperr, tableSizerr, tableMatrr, tableWidthrr, bcWidthrr, bcHeightrr, cloTyperr, cloUnirr, cloWidthrr, scGckrr, scWidthrr, scHeightrr,
 													sofaSizerr, hangTyperr, hangWidthrr, mirTyperr, mirSizerr, makeTyperr, makeMatrr, pianoTyperr, refNo, washNo, tvNo, airNo, waterNo, pcNo, ovenNo, bedNo,
 													chairNo, tableNo, bcNo, cloNo, scNo, sofaNo, hangNo, mirNo, makeNo, pianoNo, memo);
