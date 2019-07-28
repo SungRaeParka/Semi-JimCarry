@@ -10,6 +10,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Properties;
 
+import com.kh.jimcarry.serviceCenter.model.vo.Notice;
 import com.kh.jimcarry.serviceCenter.model.vo.OneQ;
 
 import static com.kh.jimcarry.common.JDBCTemplate.*;
@@ -19,7 +20,7 @@ public class OneQDao {
 	
 	public OneQDao() {
 		String fileName=
-				OneQ.class.getResource("/sql/Notice/OneQ-query.properties").getPath();
+				OneQDao.class.getResource("/sql/Notice/OneQ-query.properties").getPath();
 		
 		try {
 			prop.load(new FileReader(fileName));
@@ -49,6 +50,7 @@ public class OneQDao {
 			
 			one.setQuestionType(rset.getString("QUESTION_TYPE"));
 			one.setPostTitle(rset.getString("POST_TITLE"));
+			one.setPostContent(rset.getString("POST_CONTENT"));
 			one.setPostDate(rset.getDate("POST_DATE"));
 			
 			list2.add(one);
@@ -76,15 +78,55 @@ public class OneQDao {
 			pstmt=con.prepareStatement(query);
 			pstmt.setString(1, one.getQuestionType());
 			pstmt.setString(2, one.getPostTitle());
-			pstmt.setDate(3, one.getPostDate());
+			pstmt.setString(3, one.getPostContent());
+			pstmt.setDate(4, one.getPostDate());
 			
 			result = pstmt.executeUpdate();
+			
+			System.out.println("a :"+result);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			close(pstmt);
 		}
+		return result;
+	}
+
+	public OneQ selectQ(Connection con, int num) {
+		// TODO Auto-generated method stub
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		OneQ one =null;
+		
+		String query=prop.getProperty("selectOne");
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		return one;
+	}
+
+	public int updateCountQ(Connection con, int num) {
+		// TODO Auto-generated method stub
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = prop.getProperty("updateCount");
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		return result;
 	}
 

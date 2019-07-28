@@ -8,7 +8,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.kh.jimcarry.serviceCenter.model.service.NoticeService;
+import com.kh.jimcarry.serviceCenter.model.service.OneQService;
+import com.kh.jimcarry.serviceCenter.model.service.QandAService;
 import com.kh.jimcarry.serviceCenter.model.vo.Notice;
+import com.kh.jimcarry.serviceCenter.model.vo.OneQ;
+import com.kh.jimcarry.serviceCenter.model.vo.QandA;
 
 /**
  * Servlet implementation class NoticeSelectOneServlet
@@ -33,6 +37,8 @@ public class NoticeSelectOneServlet extends HttpServlet {
 		int num = Integer.parseInt(request.getParameter("num"));
 
 		Notice n = new NoticeService().selectOne(num);
+		QandA qa = new QandAService().selectOneQA(num);
+		OneQ one = new OneQService().selectOneQ(num);
 		
 		String page="";
 		
