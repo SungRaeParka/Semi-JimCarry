@@ -3,6 +3,7 @@ package com.kh.jimcarry.serviceCenter.model.dao;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -66,5 +67,43 @@ public class QandADao {
 		return list1;
 	}
 	//상세보기용
+	public QandA selectOneQA(Connection con, int num) {
+		// TODO Auto-generated method stub
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		QandA qa =null;
+		
+		String query = prop.getProperty("selectOneqa");
+		
+		try {
+			pstmt=con.prepareStatement(query);
+			
+			
+			
+			
+			
+			rset=pstmt.executeQuery();
+			
+			if(rset.next()) {
+				qa=new QandA();
+				
+				qa.setPostType(rset.getString("POST_TYPE"));
+				qa.setPostTitle(rset.getString("POST_TITLE"));
+				qa.setPostContent(rset.getString("POST_CONTENTS"));
+				qa.setQuestionType(rset.getString("QUESTION_TYPE"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(con);
+		}
+		return qa;
+	}
+	//조회수 증가
+	public int updateCountQA(Connection con, int num) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 
 }

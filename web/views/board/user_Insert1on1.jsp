@@ -40,7 +40,7 @@
 	<tr>
 		<th>제목</th>
 		<th>
-			<input type="text" placeholder="제목을 입력해주세요." >
+			<input type="text" placeholder="제목을 입력해주세요." valu >
 		</th>
 	</tr>
 	<tr>
@@ -52,15 +52,16 @@
 	<tr>
 		<th>첨부파일</th>
 		<th>
-			<input type="button" value="첨부파일" >
+			<input type="file" value="첨부파일" >
 		</th>
 	</tr>
 </table>
-</form>
+
 	<div align="center" style="margin-top: 10px;">
-		<a href="/semi/noticelist.no"><input type="button" value="문의하기"></a>
+		<button type="submit" value="문의하기"> 문의하기</button>&nbsp;
+		<button type="reset" value="취소하기"> 취소하기</button>
 	</div>
-	
+	</form>
 	
 </body>
 </html>
