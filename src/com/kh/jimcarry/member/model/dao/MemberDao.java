@@ -94,6 +94,63 @@ public class MemberDao {
 		return loginUser;
 	}
 
+	/*public int insertDriver(Connection con, Member m) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = prop.getProperty("insertDriver");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, m.getUserId());
+			pstmt.setString(2, m.getUserPwd());
+			pstmt.setString(3, m.getUserName());
+			pstmt.setString(4, m.getPhone());
+			pstmt.setString(5, m.getAgent());
+			pstmt.setString(6, m.getBusinessNo());
+			pstmt.setString(7, m.getBusinessAddress());
+			pstmt.setString(8, m.getCarType());
+			pstmt.setString(9, m.getCarNo());
+			pstmt.setString(10, m.getBankName());
+			pstmt.setString(11, m.getAccountNo());
+			pstmt.setString(12, m.getCarSize());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}*/
+
+	public int userIdCheck(Connection con, String userId) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String query = prop.getProperty("userIdCheck");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, userId);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				result = rset.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
 	public int insertDriver(Connection con, Member m) {
 		PreparedStatement pstmt = null;
 		int result = 0;
@@ -125,28 +182,60 @@ public class MemberDao {
 		return result;
 	}
 
-	public int userIdCheck(Connection con, String userId) {
-		int result = 0;
-		PreparedStatement pstmt = null;
+	public int selectCurrval(Connection con) {
+		Statement stmt = null;
 		ResultSet rset = null;
+		int seqNo = 0;
 		
-		String query = prop.getProperty("userIdCheck");
+		String query = prop.getProperty("selectCurrval");
 		
 		try {
-			pstmt = con.prepareStatement(query);
-			pstmt.setString(1, userId);
-			
-			rset = pstmt.executeQuery();
+			stmt = con.createStatement();
+			rset = stmt.executeQuery(query);
 			
 			if(rset.next()) {
-				result = rset.getInt(1);
+				seqNo = rset.getInt("currval");
 			}
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
+			close(stmt);
 			close(rset);
-			close(pstmt);
 		}
+		
+		return seqNo;
+	}
+
+	public int insertAttachment(Connection con, ArrayList<AttachmentMember> fileList) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = prop.getProperty("insertArrachment");
+		
+			try {
+				for(int i = 0; i < fileList.size(); i++) {
+					pstmt = con.prepareStatement(query);
+					pstmt.setString(1, fileList.get(i).getDriverNo());
+					pstmt.setString(2, fileList.get(i).getOriginName());
+					pstmt.setString(3, fileList.get(i).getChangeName());
+					pstmt.setString(4, fileList.get(i).getFilePath());
+					
+					int level = 0;
+					if(i == 0) {
+						level = 0;
+					}else {
+						level = 1;
+					}
+					pstmt.setInt(5, level);
+					
+					result += pstmt.executeUpdate();
+					
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close(pstmt);
+			}
 		
 		return result;
 	}

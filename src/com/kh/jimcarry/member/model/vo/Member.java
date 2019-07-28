@@ -22,13 +22,17 @@ public class Member implements java.io.Serializable{
 	private String blacklistCheck;
 	private String joinCheck;
 	private String refuseReason;
+	private String idPhoto;
+	private String certificate;
+	private String bankBook;
+	private String attestation;
 
 	public Member() {}
 
 	public Member(String seqNo, String userName, String userId, String userPwd, String phone, Date enrollDate,
 			String statusCheck, String udCheck, String agent, String businessNo, String businessAddress, String carType,
 			String carNo, String bankName, String accountNo, String carSize, String blacklistCheck, String joinCheck,
-			String refuseReason) {
+			String refuseReason, String idPhoto, String certificate, String bankBook, String attestation) {
 		super();
 		this.seqNo = seqNo;
 		this.userName = userName;
@@ -49,6 +53,10 @@ public class Member implements java.io.Serializable{
 		this.blacklistCheck = blacklistCheck;
 		this.joinCheck = joinCheck;
 		this.refuseReason = refuseReason;
+		this.idPhoto = idPhoto;
+		this.certificate = certificate;
+		this.bankBook = bankBook;
+		this.attestation = attestation;
 	}
 
 	public String getSeqNo() {
@@ -196,11 +204,43 @@ public class Member implements java.io.Serializable{
 	}
 
 	public String getRefuseReason() {
-		return refuseReason; 
+		return refuseReason;
 	}
 
 	public void setRefuseReason(String refuseReason) {
 		this.refuseReason = refuseReason;
+	}
+
+	public String getIdPhoto() {
+		return idPhoto;
+	}
+
+	public void setIdPhoto(String idPhoto) {
+		this.idPhoto = idPhoto;
+	}
+
+	public String getCertificate() {
+		return certificate;
+	}
+
+	public void setCertificate(String certificate) {
+		this.certificate = certificate;
+	}
+
+	public String getBankBook() {
+		return bankBook;
+	}
+
+	public void setBankBook(String bankBook) {
+		this.bankBook = bankBook;
+	}
+
+	public String getAttestation() {
+		return attestation;
+	}
+
+	public void setAttestation(String attestation) {
+		this.attestation = attestation;
 	}
 
 	@Override
@@ -210,8 +250,11 @@ public class Member implements java.io.Serializable{
 				+ udCheck + ", agent=" + agent + ", businessNo=" + businessNo + ", businessAddress=" + businessAddress
 				+ ", carType=" + carType + ", carNo=" + carNo + ", bankName=" + bankName + ", accountNo=" + accountNo
 				+ ", carSize=" + carSize + ", blacklistCheck=" + blacklistCheck + ", joinCheck=" + joinCheck
-				+ ", refuseReason=" + refuseReason + "]";
+				+ ", refuseReason=" + refuseReason + ", idPhoto=" + idPhoto + ", certificate=" + certificate
+				+ ", bankBook=" + bankBook + ", attestation=" + attestation + "]";
 	}
+
+	
 
 	
 
