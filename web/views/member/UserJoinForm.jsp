@@ -26,9 +26,17 @@
 		background:#5e5e5e;
 		color:#ffffff;
 	}
-	#conFirm, #check{
-		height:30px;
-		width:80px;
+	#conFirm, #passwordCheck {
+		border:3px solid #5e5e5e;
+		border-radius:10px;
+		text-align:center;
+		font-size:15px;
+		background:#5e5e5e;
+		color:#ffffff;
+	}
+	#check{
+		height:25px;
+		width:60px;
 		border:3px solid #5e5e5e;
 		border-radius:10px;
 		text-align:center;
@@ -43,7 +51,7 @@
 	<h1 align="center">사용자 회원가입</h1>
 	<br><br>
 		<div align="center">
-		<form action="<%=request.getContextPath() %>/insert.me" method="post">
+		<form action="<%=request.getContextPath()%>/insert.me" method="post">
 		<table>
 			<tr>
 				<td><label>이름</label></td>
@@ -56,11 +64,12 @@
 			</tr>
 			<tr>
 				<td><label>비밀번호</label></td>
-				<td><input type="password" name="password" placeholder="비밀번호 입력" id="password"></td>
+				<td><input type="password" name="password" id="password" placeholder="비밀번호 입력"></td>
 			</tr>
 			<tr>
 				<td><label>비밀번호 재확인</label></td>
-				<td><input type="password" name="password" placeholder="비밀번호 재입력" id="password"></td>
+				<td><input type="password" name="password1" id="password1" placeholder="비밀번호 재입력"></td>
+				<td><button id="passwordCheck" onclick="passwordCheck()">확인</button></td>
 			</tr>
 			<tr>
 				<td><label>휴대폰 번호</label></td>
@@ -78,9 +87,6 @@
 		</form>
 		</div>
 		<script>
-		function ok(){
-			$("form").submit();
-		};
 		$(function(){
 			$("#check").click(function(){
 				var userId = $("#userId").val();
@@ -104,6 +110,22 @@
 				});
 			});
 		});
+
+		/* $("#passwordCheck").click(function(){
+				
+			if($("#password").val() != ($("#password1").val())){
+			     alert("비밀번호를 확인하세요");
+			      $("#password").val("");
+			      $("#password1").val("");
+			      $("#password").focus();
+			      return false;
+			   }else{
+				   alert("확인완료");
+			   }
+			}); */
+		function ok(){
+			$("form").submit();
+		};
 		</script>
 	
 </body>
