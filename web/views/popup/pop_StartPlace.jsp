@@ -5,6 +5,7 @@
 <head>
 <meta charset=UTF-8>
 <title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body>
 	<form>
@@ -105,8 +106,8 @@
 		
 		<div>		
 			<div align="center">
-				<input type="submit" value="확인">
-				<input type="reset" value="취소">
+				<input type="button" value="확인" onclick="returnSPData()">
+				<input type="reset" value="취소" onclick="window.close()">
 			</div>
 		</div>
 	</form>
@@ -160,6 +161,33 @@
             }
         }).open();
     }
+    
+    function returnSPData(){
+    	
+    	var showStartPlace = $("#showStartPlace", opener.document);/* opener.document.getElementById("showStartPlace").html; */
+    	var showSPDetail = $("#showSPDetail", opener.document);
+    	
+    	var startPlaceVal = document.getElementById("start_address").value + " " + document.getElementById("start_detailAddress").value
+    	
+    	var homeType = $("input[name='home_type']:checked").val();
+    	var floor = $("input[name='floor']:checked").val();
+    	var elevator = $("input[name='elevator']:checked").val();
+    	var parking = $("input[name='parking']:checked").val();
+    	
+    	var SPDetail = "집 종류 : " + homeType + ", 층수 : " + floor + ", 엘리베이터 : " + elevator + ", 주차 여부 : " + parking; 
+    	
+    	
+    	showStartPlace.html(startPlaceVal);
+    	showSPDetail.html(SPDetail);
+    	
+    	var spInfo = $("#spInfo", opener.document);
+    	var spInfoAll = startPlaceVal + ", " + SPDetail;
+    	
+    	spInfo.val(spInfoAll);
+    	
+    	self.close();
+    }
+    
 </script>
 </body>
 </html>

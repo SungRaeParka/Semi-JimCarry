@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8" import="com.kh.jimcarry.request.model.vo.*, java.util.*"%>
+	
+<%
+	Product p = (Product) session.getAttribute("p");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +13,6 @@
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-
 <style>
   
   #imgs{
@@ -36,7 +39,14 @@
   	padding-left:330px;
   }
   
- 
+  #productImgArea1, #productImgArea2, #productImgArea3, #productImgArea4, #productImgArea5{
+  	display: table-cell;
+  	padding-left: 2px;
+  }
+  
+   #productImgArea1:hover, #productImgArea2:hover, #productImgArea3:hover, #productImgArea4:hover, #productImgArea5:hover{
+   	cursor: pointer;
+   }
   
 </style>
 
@@ -67,107 +77,138 @@
 		</div>		
 		
 		<hr>
+		<form action="<%=request.getContextPath() %>/insertreq.rq" method ="post" id="firstForm">
+			<div style="padding-left: 50px; padding-top: 10px; padding-bottom: 50px;">
+				<input type="hidden" id="reqNo" name="reqNo" value="<%=p.getReqNo()%>">
+				<input type="hidden" id="proNo" name="proNo" value="<%=p.getProNo()%>">
+				<input type="hidden" id="memberNo" name="memberNo" value="<%=loginUser.getSeqNo()%>">
+				<input type="hidden" id="memo" name="memo" value="<%=p.getMemo()%>">
+				<input type="hidden" id="spInfo" name="spInfo">
+				<div style="float: left">		
+					<img src="/semi/images/pointer.PNG" id="imgs">				
+				</div>
+				<div>
+					<span style="font-size: 30px; font-weight: bold">출발지 정보</span>
+					<span>출발지를 선택하세요.</span>	
+				</div>
+				<div style="padding-top: 10px; float: left;">
+					<span id="showStartPlace"></span><br>
+					<span id="showSPDetail"></span>
+				</div>
+				<div>
+					<span class="selectInfo" onclick="selectStartPlace()">상세정보입력</span>
+				</div>
+			</div>
+			
+			<hr>
+	
+			<div style="padding-left: 50px; padding-top: 10px; padding-bottom: 50px;">
+				<input type="hidden" id="apInfo" name="apInfo">
+				<div style="float: left">		
+					<img src="/semi/images/pointer.PNG" id="imgs">				
+				</div>
+				<div>
+					<span style="font-size: 30px; font-weight: bold">도착지 정보</span>	
+					<span>도착지를 선택하세요.</span>	
+				</div>
+				<div style="padding-top: 10px; float: left;">
+					<span id="showArrivePlace"></span><br>
+					<span id="showAPDetail"></span>
+				</div>
+				<div>
+					<span class="selectInfo" onclick="selectArrivePlace()">상세정보입력</span>
+				</div>
+			</div>
+			
+			<hr>
+	
+			<div style="padding-left: 50px; padding-top: 10px; padding-bottom: 50px;">
+				<input type="hidden" id="dateInfo" name="dateInfo">
+				<input type="hidden" id="timeInfo" name="timeInfo">
+				<div style="float: left">		
+					<img src="/semi/images/cal.PNG" id="imgs">				
+				</div>
+				<div>
+					<span style="font-size: 30px; font-weight: bold">날짜,시간 선택</span>	
+					<span>이용하실 날짜와 시간을 선택하세요.</span>	
+				</div>
+				<div style="padding-top: 10px; float: left;">
+					<span id="showSelectDate"></span>
+				</div>
+				<div>
+					<span class="selectInfo" onclick="selectDate()">상세정보입력</span>
+				</div>
+			</div>
+			
+			<hr>
+			
+			<div style="padding-left: 50px; padding-top: 10px; padding-bottom: 50px;">
+				<div style="float: left">		
+					<img src="/semi/images/imgatt.PNG" id="imgs">				
+				</div>
+				<div>
+					<span style="font-size: 30px; font-weight: bold">견적 입찰 기간</span>
+					<span>견적을 받을 일수를 선택하세요.</span>	
+				</div>
+				<div>
+					<input type="radio" id="date1" name="finishDate" value="1"> 
+					<label for="date1">1일</label>&emsp;&emsp; 
+					<input type="radio" id="date2" name="finishDate" value="2"> 
+					<label for="date2">2일</label> &emsp;&emsp; 
+					<input type="radio" id="date3" name="finishDate" value="3"> 
+					<label for="date3">3일</label>
+				</div>
+			</div>
+		</form>
 		
-		<div style="padding-left: 50px; padding-top: 10px; padding-bottom: 50px;">
-			<div style="float: left">		
-				<img src="/semi/images/pointer.PNG" id="imgs">				
+			<hr>
+						
+		<form id="insertPIMGForm" action="<%=request.getContextPath()%>/insertPIMG.rq" method="post" encType="multipart/form-data">	
+			<div style="padding-left: 50px; padding-top: 10px; padding-bottom: 50px;">
+				<div style="float: left">		
+					<img src="/semi/images/imgatt.PNG" id="imgs">				
+				</div>
+				<div>
+					<span style="font-size: 30px; font-weight: bold">사진 첨부</span>
+					<span>상세한 짐 사진을 올려주세요.</span>
+					<input style="margin-left: 120px;" type="button" id="insertPIMG" value="사진 업로드">
+				</div>
+				<div style="padding-top: 10px;">
+					<div id="productImgArea1">
+						<img id="productImg1" width="120" height="120">
+					</div>
+					<div id="productImgArea2">
+				  		<img id="productImg2" width="120" height="120">
+					</div>
+					<div id="productImgArea3">
+						<img id="productImg3" width="120" height="120">
+					</div>
+					<div id="productImgArea4">
+						<img id="productImg4" width="120" height="120">
+					</div>
+					<div id="productImgArea5">
+						<img id="productImg5" width="120" height="120">
+					</div>
+				</div>
+				<div id="fileArea">
+					<input type="file" id="thumbnailImg1" name="thumbnailImg1" onchange="loadImg(this, 1)">
+					<input type="file" id="thumbnailImg2" name="thumbnailImg2" onchange="loadImg(this, 2)">
+					<input type="file" id="thumbnailImg3" name="thumbnailImg3" onchange="loadImg(this, 3)">
+					<input type="file" id="thumbnailImg4" name="thumbnailImg4" onchange="loadImg(this, 4)">
+					<input type="file" id="thumbnailImg5" name="thumbnailImg5" onchange="loadImg(this, 5)">
+				</div>
 			</div>
-			<div>
-				<span style="font-size: 30px; font-weight: bold">출발지 정보</span>
-				<span>출발지를 선택하세요.</span>	
-			</div>
-			<div style="padding-top: 10px; float: left;">
-				<span>경기도 성남시</span>
-			</div>
-			<div>
-				<span class="selectInfo" id="startPlace" onclick="selectStartPlace()">상세정보입력</span>
-			</div>
-		</div>
+		</form>
+						
+			<hr>
+			
+			<div align="center" style="margin-bottom: 10px">
+				<a href="req_ProDetailSelect.jsp" style="text-decoration: none">
+					<span style="font-size: 30px">뒤로가기</span>	
+				</a>
+					<span style="font-size: 30px; cursor: pointer;" onclick="insertReq()">다음 단계로</span>	
+			</div>				
 		
-		<hr>
-
-		<div style="padding-left: 50px; padding-top: 10px; padding-bottom: 50px;">
-			<div style="float: left">		
-				<img src="/semi/images/pointer.PNG" id="imgs">				
-			</div>
-			<div>
-				<span style="font-size: 30px; font-weight: bold">도착지 정보</span>	
-				<span>도착지를 선택하세요.</span>	
-			</div>
-			<div style="padding-top: 10px; float: left;">
-				<span>경기도 성남시</span>
-			</div>
-			<div>
-				<span class="selectInfo" id="arrivePlace" onclick="selectArrivePlace()">상세정보입력</span>
-			</div>
-		</div>
-		
-		<hr>
-
-		<div style="padding-left: 50px; padding-top: 10px; padding-bottom: 50px;">
-			<div style="float: left">		
-				<img src="/semi/images/cal.PNG" id="imgs">				
-			</div>
-			<div>
-				<span style="font-size: 30px; font-weight: bold">날짜,시간 선택</span>	
-				<span>이용하실 날짜와 시간을 선택하세요.</span>	
-			</div>
-			<div style="padding-top: 10px; float: left;">
-				<span>2018년 1월 1일</span>
-			</div>
-			<div>
-				<span class="selectInfo" id="selectDate" onclick="selectDate()">상세정보입력</span>
-			</div>
-		</div>
-		
-		<hr>
-
-		<div style="padding-left: 50px; padding-top: 10px; padding-bottom: 50px;">
-			<div style="float: left">		
-				<img src="/semi/images/imgatt.PNG" id="imgs">				
-			</div>
-			<div>
-				<span style="font-size: 30px; font-weight: bold">사진 첨부</span>
-				<span>상세한 짐 사진을 올려주세요.</span>	
-			</div>
-			<div style="padding-top: 10px; float: left;">
-				<span>2018년 1월 1일</span>
-			</div>
-			<div>
-				<span class="selectInfo" id="selectDate" onclick="selectDate()">상세정보입력</span>
-			</div>
-		</div>
-		
-		<hr>
-
-		<div style="padding-left: 50px; padding-top: 10px; padding-bottom: 50px;">
-			<div style="float: left">		
-				<img src="/semi/images/imgatt.PNG" id="imgs">				
-			</div>
-			<div>
-				<span style="font-size: 30px; font-weight: bold">견적 입찰 기간</span>
-				<span>견적을 받을 일수를 선택하세요.</span>	
-			</div>
-			<div>
-				<input type="radio" id="date1" name="date"> 
-				<label for="date1">1일</label>&emsp;&emsp; 
-				<input type="radio" id="date2" name="date"> 
-				<label for="date2">2일</label> &emsp;&emsp; 
-				<input type="radio" id="date3" name="date"> 
-				<label for="date3">3일</label>
-			</div>
-		</div>
-		
-		<hr>
-		
-		<div align="center" style="margin-bottom: 10px">
-			<a href="req_ProDetailSelect.jsp" style="text-decoration: none">
-				<span style="font-size: 30px">뒤로가기</span>	
-			</a>
-			<a href="req_lastReq.jsp" style="text-decoration: none; padding-left: 40px;">
-				<span style="font-size: 30px">다음 단계로</span>	
-			</a>
-		</div>				
 	</div>
 	
 	<script>	 
@@ -202,6 +243,82 @@
 			var popOption = "status=no, width=" + winWidth + ", height=" + winHeight + ", top=" + popupH + ", left=" + popupW;			
 			
 			window.open(url,"",popOption);
+		}
+		
+		$(function(){
+			$("#fileArea").hide();
+			
+			$("#productImgArea1").click(function(){
+				$("#thumbnailImg1").click();
+			});
+			
+			$("#productImgArea2").click(function(){
+				$("#thumbnailImg2").click();
+			});
+			
+			$("#productImgArea3").click(function(){
+				$("#thumbnailImg3").click();				
+			});
+			
+			$("#productImgArea4").click(function(){
+				$("#thumbnailImg4").click();
+			});
+			
+			$("#productImgArea5").click(function(){
+				$("#thumbnailImg5").click();
+			});
+		});
+		
+		function loadImg(value, num){
+			if(value.files && value.files[0]){
+				var reader = new FileReader();
+				
+				reader.onload = function(e){
+					switch(num){
+						case 1: $("#productImg1").attr("src", e.target.result); break;
+						case 2: $("#productImg2").attr("src", e.target.result); break;
+						case 3: $("#productImg3").attr("src", e.target.result); break;
+						case 4: $("#productImg4").attr("src", e.target.result); break;
+						case 5: $("#productImg5").attr("src", e.target.result); break;
+					}
+				}				
+				reader.readAsDataURL(value.files[0]);
+			};
+		};
+		
+		/* $("#insertPIMG").click(function(event){
+			
+			event.preventDefault();
+			
+			var form = $("#insertPIMGForm")[0];
+			
+			var data = new FormData(form);
+			
+			$.ajax({
+				type: "post",
+				enctype: "multipart/form-data",
+				url: "insertPIMG.rq",
+				data: data,
+				processData: false,
+				contentType: false,
+				cache: false,
+				timeout: 600000,
+				success: function(data){
+					console.log("성공!");
+					form.submit();
+				},
+				error: function(){
+					console.log("실패!");
+				}
+			})	
+		});  */
+		
+		$("#insertPIMG").click(function(){			
+			$("#insertPIMGForm").submit();			
+		});
+		
+		function insertReq(){
+			$("#firstForm").submit();
 		}
 	</script>	
 		
