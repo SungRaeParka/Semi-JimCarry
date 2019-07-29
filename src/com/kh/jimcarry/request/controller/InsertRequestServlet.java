@@ -50,7 +50,7 @@ public class InsertRequestServlet extends HttpServlet {
 			e.printStackTrace();
 		}		
 		
-		r.setReservationDate(reservDate);
+		/*r.setReservationDate(reservDate);
 		System.out.println(r.getReservationDate());
 		r.setStartPoint(spInfo);
 		r.setArrivalPoint(apInfo);
@@ -72,7 +72,7 @@ public class InsertRequestServlet extends HttpServlet {
 			
 			request.setAttribute("msg", "견적 생성 실패!");
 			request.getRequestDispatcher(page).forward(request, response);
-		}
+		}*/
 		
 		
 	}
