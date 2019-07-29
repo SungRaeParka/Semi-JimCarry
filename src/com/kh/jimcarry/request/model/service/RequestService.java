@@ -24,7 +24,7 @@ public class RequestService {
 			}
 
 			
-			//리스트 전체조회
+			//리스트 전체조회_사용자
 			public ArrayList<Request> selectList(int currentPage, int limit, String logUserNo) {
 				Connection con = getConnection();
 				
@@ -81,15 +81,16 @@ public class RequestService {
 			}
 
 
-			public Request checkOrder(String no) {
+			//입찰내역 확인
+			public ArrayList<Request> checkOrder(String no) {
 				Connection con = getConnection();
-				Request ro = null;
+				ArrayList<Request> rolist = null;
 				
-				ro = new RequestDao().checkOrder(con,no);
+				rolist = new RequestDao().checkOrder(con,no);
 				
 				close(con);
 				
-				return ro;
+				return rolist;
 			}
 
 
@@ -124,6 +125,17 @@ public class RequestService {
 				close(con);
 				
 				return result;
+			}
+
+
+			public int minPriceCal(String no) {
+				Connection con = getConnection();
+				
+				int minPrice = new RequestDao().minPriceCal(con,no);
+				
+				close(con);
+				
+				return minPrice;
 			}
 			
 }

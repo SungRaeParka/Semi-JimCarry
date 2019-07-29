@@ -139,6 +139,7 @@ html, body {
 			finishDay = req.getReqFinish();  //견적매칭 종료일
 			moveDay = req.getReservationDate(); //예약일(짐옮기는 날)
 			
+			
 			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm");
 			
 			nowDay = dateFormat.parse(dateFormat.format(nowDay));

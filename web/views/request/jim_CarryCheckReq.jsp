@@ -55,7 +55,6 @@ ArrayList<Product> plist = (ArrayList<Product>)request.getAttribute("plist");
 		String moveDay = req.getReservationDate(); //예약일(짐옮기는 날)
 		  
 		
-			
 			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm");
 			
 			long startTime = startDay.getTime();
