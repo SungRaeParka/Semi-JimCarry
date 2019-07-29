@@ -51,7 +51,7 @@ public class OneQDao {
 			one.setQuestionType(rset.getString("QUESTION_TYPE"));
 			one.setPostTitle(rset.getString("POST_TITLE"));
 			one.setPostContent(rset.getString("POST_CONTENT"));
-			one.setPostDate(rset.getDate("POST_DATE"));
+			//one.setPostDate(rset.getDate("POST_DATE"));
 			
 			list2.add(one);
 			}
@@ -79,7 +79,7 @@ public class OneQDao {
 			pstmt.setString(1, one.getQuestionType());
 			pstmt.setString(2, one.getPostTitle());
 			pstmt.setString(3, one.getPostContent());
-			pstmt.setDate(4, one.getPostDate());
+			//pstmt.setDate(4, one.getPostDate());
 			
 			result = pstmt.executeUpdate();
 			

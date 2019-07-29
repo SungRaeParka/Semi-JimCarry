@@ -276,46 +276,10 @@ public class RequestDao {
       }
   
       return plist;
-} 
-
-	public int insertRequest(Connection con, Request r) {
-		PreparedStatement pstmt = null;
-		int result = 0;
-		long a = r.getReqFinish().getTime();
-		
-		String query = prop.getProperty("insertRequestInfo");
-		
-		java.sql.Date reqFinishSql = new java.sql.Date(a);
-		
-		System.out.println("dao  r.getReservationDate() ::" +  r.getReservationDate());
-		
-		try {
-			pstmt = con.prepareStatement(query);
-			
-
-			pstmt.setString(1, r.getReservationDate());
-			pstmt.setString(2, r.getStartPoint());
-			pstmt.setString(3, r.getArrivalPoint());
-			pstmt.setDate(4, reqFinishSql);
-			pstmt.setString(5, r.getUserNo());
-			pstmt.setString(6, r.getReqNo());
-			pstmt.setString(7, r.getProNo());
-			pstmt.setString(8, r.getMemo());
-			
-			result = pstmt.executeUpdate();
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(pstmt);
-		}	
-		return result;
 	}
 
 
-
-
-	public Request checkOrder(Connection con, String no) {
+	public ArrayList<Request> checkOrder(Connection con, String no) {
 
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;

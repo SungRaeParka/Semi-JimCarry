@@ -263,8 +263,8 @@ container{
       <tr>
       <th><%=one.getQuestionType() %></th>
       <th><%=one.getPostTitle() %></th>
-      <th><%=one.getPostDate() %></th>
-      <th><%=one.getAnswer() %></th>
+      <%-- <th><%=one.getPostDate() %></th>
+      <th><%=one.getAnswer() %></th> --%>
       
       <%} %>
     </tbody>

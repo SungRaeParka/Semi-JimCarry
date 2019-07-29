@@ -55,8 +55,8 @@ public class NoticeInsertServlet extends HttpServlet {
 		 OneQ one = new OneQ();
 		 one.setQuestionType(questionType);
 		 one.setPostTitle(postTitle);
-		 one.setPostDate(day);
-		 one.setAnswer(answer);
+		 //one.setPostDate(day);
+		// one.setAnswer(answer);
 		 
 		 System.out.println("insert 1:1" +one);
 	
