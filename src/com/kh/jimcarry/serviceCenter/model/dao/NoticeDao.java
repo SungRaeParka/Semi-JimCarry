@@ -49,6 +49,7 @@ public class NoticeDao {
 				n.setUserNo(rset.getString("USER_NO"));
 				n.setPostdate(rset.getDate("POST_DATE"));
 				n.setPostTitle(rset.getString("POST_TITLE"));
+				n.setPostContent(rset.getString("POST_CONTENTS"));
 				n.setPostType(rset.getString("POST_TYPE"));
 				n.setPostNo(rset.getInt("POST_NO"));
 				n.setbCount(rset.getInt("B_COUNT"));
@@ -86,9 +87,10 @@ public class NoticeDao {
 			n=new Notice();
 
 			n.setPostcode(rset.getString("POST_CODE"));
-			n.setUserNo(rset.getString("USER_NO"));
+			n.setUserNo(rset.getString("MEMBER_NO"));
 			n.setPostdate(rset.getDate("POST_DATE"));
 			n.setPostTitle(rset.getString("POST_TITLE"));
+			n.setPostContent(rset.getString("POST_CONTENTS"));
 			n.setPostType(rset.getString("POST_TYPE"));
 			n.setPostNo(rset.getInt("POST_NO"));
 			n.setbCount(rset.getInt("B_COUNT"));
@@ -134,6 +136,44 @@ public class NoticeDao {
 		
 		String query = prop.getProperty("selectListWithPaging");
 		
+		try {
+			pstmt=con.prepareStatement(query);
+			
+			System.out.println("query : "+query);
+			
+			int startRow = (currentPage - 1) * limit + 1;
+			int endRow=startRow + limit -1;
+			
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+			
+			rset=pstmt.executeQuery();
+			
+			list= new ArrayList<Notice>();
+			
+			while(rset.next()) {
+					Notice n=new Notice();
+
+					
+					n.setPostcode(rset.getString("POST_CODE"));
+					n.setUserNo(rset.getString("MEMBER_NO"));
+					n.setPostdate(rset.getDate("POST_DATE"));
+					n.setPostTitle(rset.getString("POST_TITLE"));
+					n.setPostContent(rset.getString("POST_CONTENTS"));
+					n.setPostType(rset.getString("POST_TYPE"));
+					n.setPostNo(rset.getInt("POST_NO"));
+					n.setbCount(rset.getInt("B_COUNT"));
+					
+					list.add(n);
+					
+			}	
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
 		return list;
 	}
 

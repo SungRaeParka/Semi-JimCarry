@@ -71,12 +71,9 @@ public class NoticeSelectListServlet extends HttpServlet {
 		PageInfo pi = 
 				new PageInfo(currentPage, listCount, limit, maxPage, startPage, endPage);
 		
-		
-		
 		ArrayList<Notice> list = new NoticeService().selectList(currentPage, limit);
 		ArrayList<QandA> list1=new QandAService().selectList(currentPage, limit);
 		ArrayList<OneQ> list2=new OneQService().selectList(currentPage, limit);
-		
 		
 		String page = "";
 		
@@ -85,6 +82,7 @@ public class NoticeSelectListServlet extends HttpServlet {
 			request.setAttribute("list", list);
 			request.setAttribute("list1", list1);
 			request.setAttribute("list2", list2);
+			request.setAttribute("pi", pi);
 		} else {
 			if (list ==null) {
 				page="views/common/errorPage.jsp";

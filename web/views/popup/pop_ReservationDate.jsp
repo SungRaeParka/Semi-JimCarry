@@ -59,14 +59,14 @@
         	var timeEx = $("#selectTime option:selected").val();
         	var timeInfo1 = " " + ampmEx + " " + timeEx + "시";     
         	
-        	showStartPlace.html(dateInfo + timeInfo);
+        	showStartPlace.html(dateInfo1 + timeInfo1);
         	
         	var dateInfo = $("#dateInfo", opener.document);
         	var timeInfo = $("#timeInfo", opener.document);
         	
-        	var dateFormat = dateInfo1 + timeInfo1;
+        	var dateInfo2 = dateExrr[2] + "-" + dateExrr[0] + "-" + dateExrr[1] + " " + timeEx + ":00:00";        	
         	
-        	dateInfo.val(dateFormat);
+        	dateInfo.val(dateInfo2);
         	timeInfo.val(timeEx);
         	
         	self.close();

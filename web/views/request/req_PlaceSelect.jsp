@@ -13,6 +13,30 @@
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+ <script>
+ 	$(function(){
+		$("#insertPIMG").click(function(event){			
+			
+			var form = $("#insertPIMGForm")[0];
+			
+			var data = new FormData(form);
+			
+			$.ajax({
+				type: "post",				
+				url: "<%=request.getContextPath()%>/insertPIMG.rq",
+				data: data,
+				processData: false,
+				contentType: false,				
+				success: function(data){
+					console.log("성공!");				
+				},
+				error: function(){
+					console.log("실패!");
+				}
+			});	
+		});
+ 	});
+ </script>
 <style>
   
   #imgs{
@@ -284,38 +308,12 @@
 				}				
 				reader.readAsDataURL(value.files[0]); 
 			};
-		};
+		};	
 		
-		/* $("#insertPIMG").click(function(event){
-			
-			event.preventDefault();
-			
-			var form = $("#insertPIMGForm")[0];
-			
-			var data = new FormData(form);
-			
-			$.ajax({
-				type: "post",
-				enctype: "multipart/form-data",
-				url: "insertPIMG.rq",
-				data: data,
-				processData: false,
-				contentType: false,
-				cache: false,
-				timeout: 600000,
-				success: function(data){
-					console.log("성공!");
-					form.submit();
-				},
-				error: function(){
-					console.log("실패!");
-				}
-			})	
-		});  */
 		
-		$("#insertPIMG").click(function(){			
+		/* $("#insertPIMG").click(function(){			
 			$("#insertPIMGForm").submit();			
-		});
+		}); */
 		
 		function insertReq(){
 			$("#firstForm").submit();

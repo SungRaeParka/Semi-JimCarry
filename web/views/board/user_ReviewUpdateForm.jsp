@@ -1,126 +1,203 @@
-<%@page import="com.kh.jimcarry.board.model.vo.Attachment"%>
-<%@page import="java.util.ArrayList"%>
-<%@page import="com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
-        import="java.util.*,com.kh.jimcarry.board.model.vo.*"
-        import="com.kh.jimcarry.member.model.vo.Member"%>
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8" import="com.kh.jimcarry.board.model.vo.*"
+						 import="java.util.Date"
+						 import="java.text.SimpleDateFormat"
+						 import="java.util.ArrayList"%>
+
+
+
 	<%
 		Board b = (Board) request.getAttribute("b");
 		ArrayList<Attachment> fileList = (ArrayList<Attachment>) request.getAttribute("fileList");
-		System.out.println("views  : "  + b );
 
 		Attachment photo1 = fileList.get(0);
 		Attachment photo2 = fileList.get(1);
+
+		System.out.println("photo1 : 넘어옴? " + photo1);
+
+		Date now = new Date();
+		String date1 = String.format("%tF",now);
+
+/*
+		SimpleDateFormat postDate = new SimpleDateFormat("yyyy-MM-dd");
+		Date date = postDate.parse(date1);
+ */
+
 	%>
+
+<!DOCTYPE html>
 <html>
 <head>
-<style>
-	.outer {
-		width: 800px;
-		height: 600px;
-		border: 1px solid red;
-		margin-left: auto;
-		margin-right: auto;
-		margin-top: auto;
-	}
-/* 	#imgArea td {
-		width: 200px;
-		height: 250px;
-		background: 3px solid red;
-
-	} */
-
-	.detailImg{
-		width: 320px;
-		height: 190px;
-		padding: 1px;
-	}
-
-#bContent{
-	cursor: default;
-}
-.btn1{
-	text-align: right;
-	padding: 2px;
-
-}
-
-</style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<meta charset="UTF-8"> 
+<style>
+.outer {
+	width: 800px;
+	height: 650px;
+	border: 1px solid red;
+	color: black;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: auto;
+}
+
+
+table {
+	border: 5px solid #eeeeee;
+	/* width: 100%; */
+}
+
+.insertform {
+	width: 500px;
+	height: 450px;
+	margin: 0 auto;
+}
+
+.btnArea {
+	color: white;
+	margin: 0 auto;
+	width: 200px;
+}
+</style>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#contentImg1').src(<%=photo1.getOriginName()%>)
+	});
+
+
+</script>
+
+
+<!-- <style>
+#div1 {
+	margin: 0 auto;
+	height: 700px;
+	width: 50%;
+}
+
+table {
+	margin: 0 auto;
+	width: 60%;
+}
+
+h2 {
+	text-align: center;
+}
+
+td {
+	border: 4px solid #eeeeee;
+	background-color: #dddddd;
+}
+
+.wo {
+	border: 1px solid skyblue;
+	background-color: rgba(0, 0, 0, 0);
+	color: skyblue;
+	padding: 5px;
+}
+
+.wo:hover {
+	color: white;
+	background-color: skyblue;
+}
+</style> -->
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-
 <body>
-	<%@include file="/views/common/user_TopBar.jsp" %>
+
+	<%@ include file="/views/common/main_TopBar.jsp"%>
+	<%@ include file="/views/common/user_TopBar.jsp" %>
+
+	<br>
+	<br>
+	<br>
+	<br>
+
+	<h2 align="center">짐캐리 사용후기</h2>
+
+	<br>
+	<br>
+
 
 	<div class="outer">
-		<h2 align="center">게시판 수정 폼</h2>
-		<div class="tableArea">
-			<form id="updateForm" method="post" enctype="multipart/form-data">
-			<table align="center" border="1">
-				<tr>
-					<td width="50px" height="40px" align="center">제목</td>
-					<td colspan="5>">
-						<input type="text" size="50" name="title" value="<%=b.getPostTitle()%>">
-						<input type="hidden" name="pagebno" value="<%=b.getPostCode()%>"/>
-					</td>
-				</tr>
-
-				<tr align="center">
-					<td width="50px" height="40px">작성자</td>
-					<td><label for=""><%=b.getWriter() %></label></td>
-					<td>조회수</td>
-					<td><label for=""><%=b.getbCount() %></label></td>
-					<td>작성일</td>
-					<td><label for=""><%=b.getPostDate() %></label></td>
-
-				</tr>
-
-				<tr>
-					<td>이미지</td>
-					<td colspan="3">
-						<div id="imgArea">
-							<img src="<%=request.getContextPath() %>/images_uploadFiles/<%=photo1.getChangeName() %>" id="photo1" class="detailImg" name="img1" />
-						</div>
-					</td>
-
-					<td colspan="2">
-						<div id="imgArea">
-							<img src="<%=request.getContextPath() %>/images_uploadFiles/<%=photo2.getChangeName() %>" id="photo2" class="detailImg" name="img2" />
-						</div>
-					</td>
-
-				</tr>
+		<form action="" method="post" enctype="multipart/form-data">
+			<div class="insertArea">
+				<table align="center" border=1>
 					<tr>
-						<td align="center">내용</td>
-						<td colspan="6"><textarea cols="69%" rows="6%"
-								maxlength="2048" name="bcontent" id="bContent"><%=b.getPostContents() %></textarea>
+						<td width="100px" height="50px"align="center" >제목</td>
+						<td colspan="4"><input type="text" size=40 name="btitle" value="<%=b.getPostTitle()%>">
+							<input type="hidden" name="pagebno" value="<%=b.getPostCode()%>"/>
+						</td>
+
+					</tr>
+					<tr align="center">
+						<td height="50x">작성자</td>
+						<td style="width: 150px"><label for="" ><%=loginUser.getUserId() %></label></td>
+						<td>작성일자</td>
+						<td><label for=""><%=date1%></label></td>
+					</tr>
+
+					<tr>
+						<td style="color: red; height: 50px;" align="center">이미지
+
+						</td>
+						<td colspan="3" style="color:red;">
+							<input type="file"  name=photo1 id="contentImgArea1" src="<%=request.getContextPath() %>/images_uploadFiles/<%=photo1.getChangeName() %>"  value="123">
+						</td>
+
+					</tr>
+
+
+				 	<tr>
+						<td height="100px" style="color: red; height: 50px;" align="center">이미지
+
+						</td>
+						<td colspan="3" style="color:red;">
+							<input type="file"  name=photo2 id="contentImgArea2" />
+						</td>
+
+					</tr>
+
+
+
+					<tr>
+						<th align="center" style="color: red">내용</th>
+						<td colspan="4"><textarea cols="40%" rows="10%"
+								maxlength="2048" placeholder="글 내용" name="bcontent"><%=b.getPostContents() %></textarea>
 
 						</td>
 
 					</tr>
-			</table>
-
-
-			<div style="border: 1px solid white; width: 760px; text-align: right;">
-
-			<button onclick="">취소</button>&nbsp;&nbsp;
-			<button onclick="complete();">수정완료</button>&nbsp;
+				</table>
+				<div class="btnArea">
+					<button type="reset">취소하기</button>
+					&nbsp; &nbsp;
+					<button type="submit">수정하기</button>
+				</div>
 
 			</div>
+
+
 		</form>
-		<script>
-			function complete(){
-				$("#updateForm").attr("action","<%=request.getContextPath()%>/update.bo");
-			}
 
-		</script>
-
-		</div>
 	</div>
 
+	<script>
+	function loadImg(value, num) {
+		if(value.files && value.files[0]) {
+			var reader = new FileReader();
+
+			reader.onload = function(e) {
+				switch(num){
+					case 1 : $("#contentImg1").attr("src", e.target.result); break;
+					case 2 : $("#contentImg2").attr("src", e.target.result); break;
+				}
+			}
+
+			reader.readAsDataURL(value.files[0]);
+		}
+	}
+	</script>
 
 
 </body>

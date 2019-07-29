@@ -94,7 +94,7 @@ public class RequestService {
 			}
 
 
-			/*public int insertRequest(Request r) {
+			public int insertRequest(Request r) {
 				Connection con = getConnection();
 				
 				int result = new RequestDao().insertRequest(con, r);
@@ -108,7 +108,7 @@ public class RequestService {
 				close(con);
 				
 				return result;
-			}*/
+			}
 
 
 			public int insertPIMG(ArrayList<RequestAttachment> fileList, String reqNo, String proNo) {
