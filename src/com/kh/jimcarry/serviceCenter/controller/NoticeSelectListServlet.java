@@ -2,6 +2,7 @@ package com.kh.jimcarry.serviceCenter.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.kh.jimcarry.board.model.service.BoardService;
+import com.kh.jimcarry.board.model.vo.PageInfo;
 import com.kh.jimcarry.serviceCenter.model.service.NoticeService;
 import com.kh.jimcarry.serviceCenter.model.service.OneQService;
 import com.kh.jimcarry.serviceCenter.model.service.QandAService;
@@ -36,9 +39,44 @@ public class NoticeSelectListServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		ArrayList<Notice> list = new NoticeService().selectList();
-		ArrayList<QandA> list1=new QandAService().selectList();
-		ArrayList<OneQ> list2=new OneQService().selectList();
+		
+		int currentPage;
+		int limit;
+		int maxPage;
+		int startPage;
+		int endPage;
+		
+		currentPage =1 ;
+		
+		if(request.getParameter("currentPage")!= null) {
+			currentPage = Integer.parseInt(request.getParameter("currentPage"));
+		}
+		
+		limit = 10;
+		
+		int listCount = new BoardService().getListCount();
+		
+		System.out.println("count : "+listCount);
+		
+		maxPage = (int)((double)listCount / limit + 0.9);
+		
+		startPage = (((int)((double) currentPage / limit + 0.9)) - 1) * 10 + 1;
+		
+		endPage = startPage + 10 - 1;
+		
+		if(maxPage < endPage) {
+			endPage= maxPage;
+		}
+		
+		PageInfo pi = 
+				new PageInfo(currentPage, listCount, limit, maxPage, startPage, endPage);
+		
+		
+		
+		ArrayList<Notice> list = new NoticeService().selectList(currentPage, limit);
+		ArrayList<QandA> list1=new QandAService().selectList(currentPage, limit);
+		ArrayList<OneQ> list2=new OneQService().selectList(currentPage, limit);
+		
 		
 		String page = "";
 		
