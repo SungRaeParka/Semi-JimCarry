@@ -73,7 +73,7 @@
 	<h1 align="center">기사 회원가입</h1>
 	<br><br>
 	<div class="main" align="center">
-		<form action="<%=request.getContextPath() %>/insertDriver.me" method="post">
+		<form action="<%=request.getContextPath()%>/insertDriver.me" method="post" encType="multipart/form-data">
 		<div class="main1">
 		<table class="table1">
 			<tr>
@@ -156,7 +156,7 @@
 			</tr>
 			<tr>
 				<td><label>차량등록증</label>
-				<td><input type="file" name="certificate" ></td>
+				<td><input type="file" name="certificate"></td>
 			</tr>
 			<tr>
 				<td><label>통장사본</label>
@@ -248,6 +248,7 @@
 			});
 		});
 	});
+
 	</script>
 	
 </body>

@@ -151,6 +151,7 @@ public class MemberDao {
 		return result;
 	}
 
+
 	public int insertDriver(Connection con, Member m) {
 		PreparedStatement pstmt = null;
 		int result = 0;
@@ -182,10 +183,11 @@ public class MemberDao {
 		return result;
 	}
 
-	public int selectCurrval(Connection con) {
+	public String selectCurrval(Connection con) {
 		Statement stmt = null;
 		ResultSet rset = null;
-		int seqNo = 0;
+		
+		String attachType = "";
 		
 		String query = prop.getProperty("selectCurrval");
 		
@@ -194,7 +196,7 @@ public class MemberDao {
 			rset = stmt.executeQuery(query);
 			
 			if(rset.next()) {
-				seqNo = rset.getInt("currval");
+				attachType = rset.getString("currval");
 			}
 			
 		} catch (SQLException e) {
@@ -204,7 +206,7 @@ public class MemberDao {
 			close(rset);
 		}
 		
-		return seqNo;
+		return attachType;
 	}
 
 	public int insertAttachment(Connection con, ArrayList<AttachmentMember> fileList) {
@@ -215,19 +217,14 @@ public class MemberDao {
 			try {
 				for(int i = 0; i < fileList.size(); i++) {
 					pstmt = con.prepareStatement(query);
-					pstmt.setString(1, fileList.get(i).getDriverNo());
-					pstmt.setString(2, fileList.get(i).getOriginName());
-					pstmt.setString(3, fileList.get(i).getChangeName());
-					pstmt.setString(4, fileList.get(i).getFilePath());
 					
-					int level = 0;
-					if(i == 0) {
-						level = 0;
-					}else {
-						level = 1;
-					}
-					pstmt.setInt(5, level);
 					
+					pstmt.setString(1, fileList.get(i).getOriginName());
+					pstmt.setString(2, fileList.get(i).getChangeName());
+					pstmt.setString(3, fileList.get(i).getFilePath());
+					pstmt.setInt(4, fileList.get(i).getFileLevel());
+					pstmt.setString(5, fileList.get(i).getAttachType());
+
 					result += pstmt.executeUpdate();
 					
 				}
@@ -236,7 +233,7 @@ public class MemberDao {
 			} finally {
 				close(pstmt);
 			}
-		
+		System.out.println("마지막~ : " + result);
 		return result;
 	}
 	

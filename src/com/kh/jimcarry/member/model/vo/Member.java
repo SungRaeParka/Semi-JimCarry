@@ -26,6 +26,7 @@ public class Member implements java.io.Serializable{
 	private String certificate;
 	private String bankBook;
 	private String attestation;
+	private String attachType;
 
 	public Member() {}
 
