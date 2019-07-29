@@ -1,5 +1,10 @@
 package com.kh.jimcarry.request.model.service;
 
+import static com.kh.jimcarry.common.JDBCTemplate.close;
+import static com.kh.jimcarry.common.JDBCTemplate.commit;
+import static com.kh.jimcarry.common.JDBCTemplate.getConnection;
+import static com.kh.jimcarry.common.JDBCTemplate.rollback;
+
 import java.sql.Connection;
 import java.util.ArrayList;
 
@@ -7,8 +12,6 @@ import com.kh.jimcarry.request.model.dao.RequestDao;
 import com.kh.jimcarry.request.model.vo.Product;
 import com.kh.jimcarry.request.model.vo.Request;
 import com.kh.jimcarry.request.model.vo.RequestAttachment;
-
-import static com.kh.jimcarry.common.JDBCTemplate.*;
 
 public class RequestService {
 			//전체게시물 수 조회_사용자
