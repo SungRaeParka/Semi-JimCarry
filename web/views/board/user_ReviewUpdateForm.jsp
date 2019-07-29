@@ -9,7 +9,6 @@
 		Board b = (Board) request.getAttribute("b");
 		ArrayList<Attachment> fileList = (ArrayList<Attachment>) request.getAttribute("fileList");
 		System.out.println("views  : "  + b );
-		Member loginUser = (Member) session.getAttribute("loginUser");
 
 		Attachment photo1 = fileList.get(0);
 		Attachment photo2 = fileList.get(1);
