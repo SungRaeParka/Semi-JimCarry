@@ -93,6 +93,7 @@
 				<option value="매칭완료">매칭완료</option>
 				<option value="매칭완료">매칭완료</option>
 				<option value="이용완료">이용완료</option>
+				<option value="이용취소">이용취소</option>
 			</select>
 		</div>
 
@@ -101,19 +102,12 @@
 		<%
 			Request req = new Request();
 
-			Date startDay = new Date(); //견적매칭 시작일
 			Date finishDay = new Date(); //견적매칭 종료일
 			Date nowDay = new Date(); //현재날짜
-			Date moveDay = new Date(); //예약일(짐옮기는 날)
-			int moveTimeH;  //예약일 짐옮기는 시간
-			String ampm;  //오전오후 출력용
-			long plusTimeS;  //이용날 + 이용시간 -> 버튼 바뀌는 시점 설정 위해
+			String moveDay;
 			
-			long startTime; //견적매칭 시작일 getTime
 			long nowTime;  //오늘 날,시간 getTime
 			long finishTime;  //견적매칭 종료일 getTime
-			long moveTime;  //짐옮기는날 getTime
-			
 			
 			long timeRemain;//남은시간
 			long timeReH; //남은시간_시간
@@ -123,42 +117,21 @@
 			for (int i = 0; i < list.size(); i++) {
 				req = list.get(i);
 				
-				startDay = req.getReqStart();  //견적매칭 시작일
 				finishDay = req.getReqFinish();  //견적매칭 종료일
 				moveDay = req.getReservationDate(); //예약일(짐옮기는 날)
-				moveTimeH = req.getReservationTime(); //예약일 짐옮기는 시간
-				
-				//plusTimeS = moveTimeH*3600000;  //이용시간getTime -> 버튼 바뀌는 시점 설정 위해
-				//하루 : 86400000 1시간 : 3600000
-				
-				
-				if(moveTimeH<12){
-					ampm="오전";
-				}else if(moveTimeH==12){
-					ampm="오후";
-				}else{
-					ampm="오후";					
-					moveTimeH -=12;
-				}
-				
-				
 				
 				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm");
-				
-				startTime = startDay.getTime();
-				//견적매칭 시작일 getTime
 				
 				nowDay = dateFormat.parse(dateFormat.format(nowDay));
 				nowTime = nowDay.getTime();
 				//오늘 날,시간 getTime
+				
+				
 
 				finishTime = finishDay.getTime();
 				//견적매칭 종료일 getTime
 				
-				moveTime = moveDay.getTime();
-				//짐옮기는날 getTime
-				
-				
+				//입찰종료까지 남은시간 계산
 				timeRemain = finishTime+86400000-nowTime;
 				timeReH = (timeRemain/60000)/60;
 				timeReM = (timeRemain/60000)%60;
@@ -189,13 +162,13 @@
 			<div id="date" class="text">
 				<h3>
 					예약일 :
-					<%=req.getReservationDate()%>&nbsp;
-					<%=ampm %><%=moveTimeH %>시
+					<%=req.getReservationDate()%>
 				</h3>
 			</div>
 			<div id="reqpri">
 				<h4>
-					<a href="/semi/views/request/req_ReqList.jsp">입찰내역 확인 →</a>
+					<input type="hidden" value="<%=req.getReqNo() %>">
+					<a id="orderInfoBtn">입찰내역 확인 →</a>
 				</h4>
 			</div>
 
@@ -234,8 +207,7 @@
 			<div id="date" class="text">
 				<h3>
 					예약일 :
-					<%=req.getReservationDate()%>&nbsp;
-					<%=ampm %><%=moveTimeH %>시
+					<%=req.getReservationDate()%>
 				</h3>
 			</div>
 			<div id="reqprice">
@@ -266,11 +238,7 @@
 		<%
 			} else if (req.getConditionReq().equals("이용대기")) {
 				
-				System.out.println(nowTime);
-				System.out.println(moveTime+moveTimeH*3600000);
-				
-				
-				if(nowTime < moveTime+moveTimeH*3600000){
+				if(nowTime < nowTime /* moveTime+moveTimeH*3600000 */){
 		%>			
 					<div>
 			<img src="/semi/images/mc3.png" class="imgs" style="float: left">
@@ -292,8 +260,7 @@
 				<h3>
 					<h3>
 					예약일 :
-					<%=req.getReservationDate()%>&nbsp;
-					<%=ampm %><%=moveTimeH %>시
+					<%=req.getReservationDate()%>
 				</h3>
 			</div>
 			<div id="reqprice">
@@ -342,8 +309,7 @@
 			<div id="date" class="text">
 				<h3>
 					예약일 :
-					<%=req.getReservationDate()%>&nbsp;
-					<%=ampm %><%=moveTimeH %>시
+					<%=req.getReservationDate()%>
 				</h3>
 			</div>
 			<div id="reqprice">
@@ -481,6 +447,15 @@
 			var no = $(this).parent().children("input").val();
 			
 			location.href="<%=request.getContextPath()%>/checkReq.jc?no=" + no;
+		});
+	});
+	
+	
+	$(function(){
+		$("#orderInfoBtn").click(function(){
+			var no = $(this).parent().children("input").val();
+			
+			location.href="<%=request.getContextPath()%>/checkOrder.jc?no=" + no;
 		});
 	});
 	
