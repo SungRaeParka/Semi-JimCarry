@@ -14,7 +14,7 @@ public class RequestService {
 			public int getListCount(String logUserNo) {
 				Connection con = getConnection();
 				
-				int listCount = new RequestDao().getListCount(con,logUserNo);
+				int listCount = new RequestDao().getListCount(con,logUserNo); 
 				
 				close(con);
 				

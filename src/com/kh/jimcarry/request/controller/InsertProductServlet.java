@@ -18,7 +18,7 @@ public class InsertProductServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String[] proNamerr = request.getParameterValues("proName");
-		String[] proKindrr = request.getParameterValues("proKind");
+		String[] proKindrr = request.getParameterValues("proKind"); 
 		String proName = "";
 		String proKind = "";
 		int bookCount = Integer.parseInt(request.getParameter("proTdcount19a"));

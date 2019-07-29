@@ -296,7 +296,7 @@ public class ProductService {
 		String reqNo = new ProductDao().selectReqNo(con);
 		
 		close(con);
-				
+				 
 		return reqNo;
 	}
 

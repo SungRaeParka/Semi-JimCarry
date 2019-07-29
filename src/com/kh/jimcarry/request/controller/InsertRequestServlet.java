@@ -23,7 +23,7 @@ public class InsertRequestServlet extends HttpServlet {
 		
 		Request r = new Request();
 		
-		String reservDate = request.getParameter("dateInfo");	
+		String reservDate = request.getParameter("dateInfo");	 
 		System.out.println(reservDate);
 		String spInfo = request.getParameter("spInfo");
 		String apInfo = request.getParameter("apInfo");

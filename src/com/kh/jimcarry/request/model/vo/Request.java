@@ -108,7 +108,7 @@ public class Request implements Serializable{
 	}
 
 	public void setUserNo(String userNo) {
-		this.userNo = userNo;
+		this.userNo = userNo; 
 	}
 
 	public String getReqNo() {

@@ -37,7 +37,7 @@ public class ProductDao {
 		String[] namerr = r.getProName().split(", ");
 		String[] kindrr = r.getProKind().split(", ");
 
-		String box = "";
+		String box = ""; 
 		String books = "";
 		String etc = "";
 

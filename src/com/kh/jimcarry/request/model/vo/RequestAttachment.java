@@ -1,6 +1,6 @@
 package com.kh.jimcarry.request.model.vo;
 
-import java.sql.Date;
+import java.sql.Date; 
 
 public class RequestAttachment {
 	private String reqNo;

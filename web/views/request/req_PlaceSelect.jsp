@@ -282,7 +282,7 @@
 						case 5: $("#productImg5").attr("src", e.target.result); break;
 					}
 				}				
-				reader.readAsDataURL(value.files[0]);
+				reader.readAsDataURL(value.files[0]); 
 			};
 		};
 		

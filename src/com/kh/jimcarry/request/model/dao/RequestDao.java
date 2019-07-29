@@ -243,7 +243,7 @@ public class RequestDao {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		
-		String query = prop.getProperty("insertPIMG");
+		String query = prop.getProperty("insertPIMG");  
 		
 			try {
 				for(int i = 0; i < fileList.size(); i++) {
