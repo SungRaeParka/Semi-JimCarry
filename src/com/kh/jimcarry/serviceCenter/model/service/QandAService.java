@@ -43,5 +43,9 @@ public class QandAService {
 		
 		return qa;
 	}
+	public ArrayList<QandA> selectList(int currentPage, int limit) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

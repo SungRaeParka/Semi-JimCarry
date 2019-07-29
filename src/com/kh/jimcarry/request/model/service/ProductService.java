@@ -270,14 +270,14 @@ public class ProductService {
 			String[] mirTyperr, String[] mirSizerr, String[] makeTyperr, String[] makeMatrr, String[] pianoTyperr,
 			String refNo, String washNo, String tvNo, String airNo, String waterNo, String pcNo, String ovenNo,
 			String bedNo, String chairNo, String tableNo, String bcNo, String cloNo, String scNo, String sofaNo,
-			String hangNo, String mirNo, String makeNo, String pianoNo, String memo) {
+			String hangNo, String mirNo, String makeNo, String pianoNo) {
 		
 		Connection con = getConnection();
 		
 		int result = new ProductDao().updateAll(con, reqNo, proNamerr, refTyperr, refSizerr, washTyperr, washSizerr, tvSizerr, airTyperr, airUnirr, waterSizerr, waterUnirr, pcTyperr, ovenTyperr, bedTyperr, bedSizerr,
 													chairTyperr, tableTyperr, tableSizerr, tableMatrr, tableWidthrr, bcWidthrr, bcHeightrr, cloTyperr, cloUnirr, cloWidthrr, scGckrr, scWidthrr, scHeightrr,
 													sofaSizerr, hangTyperr, hangWidthrr, mirTyperr, mirSizerr, makeTyperr, makeMatrr, pianoTyperr, refNo, washNo, tvNo, airNo, waterNo, pcNo, ovenNo, bedNo,
-													chairNo, tableNo, bcNo, cloNo, scNo, sofaNo, hangNo, mirNo, makeNo, pianoNo, memo);
+													chairNo, tableNo, bcNo, cloNo, scNo, sofaNo, hangNo, mirNo, makeNo, pianoNo);
 		
 		if(result > 0) {
 			commit(con);
@@ -289,6 +289,17 @@ public class ProductService {
 		
 		return result;
 	}
+
+	public String SelectPimgReqno() {
+		Connection con = getConnection();
+		
+		String reqNo = new ProductDao().selectReqNo(con);
+		
+		close(con);
+				 
+		return reqNo;
+	}
+
 
 
 

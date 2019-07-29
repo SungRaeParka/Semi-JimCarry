@@ -65,7 +65,7 @@ public class NoticeInsertServlet extends HttpServlet {
 		 String page="";
 	
 		 if (result > 0) {
-			response.sendRedirect("/jimcarry/notice.no");
+			response.sendRedirect("/jimcarry/selectList.no");
 		} else {
 			page="view/common/errorPage.jsp";
 			request.setAttribute("msg", "1:1문의 등록 실패");

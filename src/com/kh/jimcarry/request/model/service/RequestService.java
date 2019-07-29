@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import com.kh.jimcarry.request.model.dao.RequestDao;
 import com.kh.jimcarry.request.model.vo.Product;
 import com.kh.jimcarry.request.model.vo.Request;
+import com.kh.jimcarry.request.model.vo.RequestAttachment;
 
 import static com.kh.jimcarry.common.JDBCTemplate.*;
 
@@ -14,7 +15,7 @@ public class RequestService {
 			public int getListCount(String logUserNo) {
 				Connection con = getConnection();
 				
-				int listCount = new RequestDao().getListCount(con,logUserNo);
+				int listCount = new RequestDao().getListCount(con,logUserNo); 
 				
 				close(con);
 				
@@ -67,6 +68,7 @@ public class RequestService {
 			}
 
 
+
 			//짐정보 리스트
 			public ArrayList<Product> selectPlist(String no) {
 				Connection con = getConnection();
@@ -90,5 +92,38 @@ public class RequestService {
 				return ro;
 			}
 
+
+			public int insertRequest(Request r) {
+				Connection con = getConnection();
+				
+				int result = new RequestDao().insertRequest(con, r);
+				
+				if(result > 0) {
+					commit(con);
+				}else {
+					rollback(con);
+				}
+				
+				close(con);
+				
+				return result;
+			}
+
+
+			public int insertPIMG(ArrayList<RequestAttachment> fileList, String reqNo, String proNo) {
+				Connection con = getConnection();	
+				
+				int result = new RequestDao().insertPIMG(con, fileList, reqNo, proNo);			
+				
+				if(result > 0) {
+					commit(con);
+				}else {
+					rollback(con);
+				}
+				
+				close(con);
+				
+				return result;
+			}
 			
 }

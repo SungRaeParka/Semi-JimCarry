@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import com.kh.jimcarry.serviceCenter.model.vo.Notice;
+
 import static com.kh.jimcarry.common.JDBCTemplate.close;
 
 public class NoticeDao {
@@ -123,6 +124,17 @@ public class NoticeDao {
 		}
 		
 		return result;
+	}
+	public ArrayList<Notice> selectList(Connection con, int currentPage, int limit) {
+		// TODO Auto-generated method stub
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<Notice> list = null;
+		
+		String query = prop.getProperty("selectListWithPaging");
+		
+		return list;
 	}
 
 }

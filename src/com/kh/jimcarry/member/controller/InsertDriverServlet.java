@@ -38,65 +38,76 @@ public class InsertDriverServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String userId = request.getParameter("userId");
-		System.out.println(userId);
-		
 		if(ServletFileUpload.isMultipartContent(request)) {
+			//전송 파일 용량 제한 : 10Mbyte로 제한
 			int maxSize = 1024 * 1024 * 10;
 			
+			//웹서버 컨테이너 경로 추출
 			String root = request.getSession().getServletContext().getRealPath("/");
-			System.out.println(root);
+
+	         System.out.println(root);
+	         //파일 저장 경로(web/thumbnail_uploadFiles)
+	         String savePath = root + "images_uploadFiles/";
 			
-			String savePath = root + "images_uploadFiles";
+			MultipartRequest multiRequest =
+					new MultipartRequest(request, savePath, maxSize,
+								"UTF-8", new MyFileRenamePolicy());
 			
-			MultipartRequest multiRequest = new MultipartRequest(request, savePath, maxSize, "UTF-8", new MyFileRenamePolicy());
-			
-			//저장된 파일
+			//변경된 파일
 			ArrayList<String> saveFiles = new ArrayList<String>();
-			//원본
+			//원본 파일
 			ArrayList<String> originFiles = new ArrayList<String>();
 			
+			//파일이 전송된 이름을 반환한다
 			Enumeration<String> files = multiRequest.getFileNames();
 			
 			while(files.hasMoreElements()) {
 				String name = files.nextElement();
+				
 				System.out.println("name : " + name);
 				
 				saveFiles.add(multiRequest.getFilesystemName(name));
 				originFiles.add(multiRequest.getOriginalFileName(name));
-				System.out.println("saveFiles : " + multiRequest.getFilesystemName(name));
-				System.out.println("originFiles : " + multiRequest.getOriginalFileName(name));		
+				
+				//넘어온 파일은 역순으로 꺼내옴
+				System.out.println("fileSystem name : " + multiRequest.getFilesystemName(name));
+				System.out.println("originFile name : " + multiRequest.getOriginalFileName(name));
+				
+				
 			}
-			String multiIdPhoto = multiRequest.getParameter("idPhoto");
-			String multiCrtificate = multiRequest.getParameter("certificate");
-			String multiBankBook = multiRequest.getParameter("bankBook");
-			String multiAttestation = multiRequest.getParameter("attestation");
-			String seqNo = ((Member)(request.getSession().getAttribute("loginUser"))).getSeqNo();
-			String userName = request.getParameter("userName");
-			String userPwd = request.getParameter("password");
-			String tel1 = request.getParameter("tel1");
-			String tel2 = request.getParameter("tel2");
-			String tel3 = request.getParameter("tel3");
+			String userId = multiRequest.getParameter("userId");
+			String userName = multiRequest.getParameter("userName");
+			String userPwd = multiRequest.getParameter("password");
+			String tel1 = multiRequest.getParameter("tel1");
+			String tel2 = multiRequest.getParameter("tel2");
+			String tel3 = multiRequest.getParameter("tel3");
 			String phone = tel1 + "-" + tel2 + "-" + tel3;
-			String agent = request.getParameter("agent");
-			String businessNo = request.getParameter("businessNumber");
-			String address1 = request.getParameter("address1");
-			String address2 = request.getParameter("address2");
-			String address3 = request.getParameter("address3");
+			String agent = multiRequest.getParameter("agent");
+			String businessNo = multiRequest.getParameter("businessNumber");
+			String address1 = multiRequest.getParameter("address1");
+			String address2 = multiRequest.getParameter("address2");
+			String address3 = multiRequest.getParameter("address3");
 			String businessAddress = address1 + address2 + address3;
-			String carType = request.getParameter("carType");
-			String carSize = request.getParameter("carSize");
-			String bankName = request.getParameter("bankName");
-			String accountNo = request.getParameter("accountNo");
-			String carNo = request.getParameter("carNo");
-			System.out.println(userName);
-			
-			
+			String carType = multiRequest.getParameter("carType");
+			String carSize = multiRequest.getParameter("carSize");
+			String bankName = multiRequest.getParameter("bankName");
+			String accountNo = multiRequest.getParameter("accountNo");
+			String carNo = multiRequest.getParameter("carNo");
+			String idPhoto = multiRequest.getParameter("idPhoto");
+			String certificate = multiRequest.getParameter("certificate");
+			String bankBook = multiRequest.getParameter("bankBook");
+			String attestation = multiRequest.getParameter("attestation");
+			String attachType = "기사회원가입 제출이미지";
+			int fileLevel = 1;
+			String status = "N";
+			System.out.println("아이디 넘어오냐? : " + userId);
+			System.out.println("이건? : " + userName);
+			System.out.println("1 : " + idPhoto);
+			System.out.println("2 : " + certificate);
+			System.out.println("3 : " + bankBook);
+			System.out.println("4 : " + attestation);
+		
 			Member m = new Member();
-			m.setIdPhoto(multiIdPhoto);
-			m.setCertificate(multiCrtificate);
-			m.setBankBook(multiBankBook);
-			m.setAttestation(multiAttestation);
 			m.setUserId(userId);
 			m.setUserPwd(userPwd);
 			m.setUserName(userName);
@@ -108,34 +119,39 @@ public class InsertDriverServlet extends HttpServlet {
 			m.setCarSize(carSize);
 			m.setCarNo(carNo);
 			m.setBankName(bankName);
-			m.setAccountNo(accountNo);			
-			/*ArrayList<AttachmentMember> fileList = new ArrayList<AttachmentMember>();
+			m.setAccountNo(accountNo);
+			m.setIdPhoto(idPhoto);
+			m.setCertificate(certificate);
+			m.setBankBook(bankBook);
+			m.setAttestation(attestation);
+			
+			System.out.println("회원정보 : " + m);
+			
+			ArrayList<AttachmentMember> fileList = new ArrayList<AttachmentMember>();
 			for(int i = originFiles.size() -1; i >= 0; i--) {
 				AttachmentMember am = new AttachmentMember();
 				am.setFilePath(savePath);
 				am.setOriginName(originFiles.get(i));
 				am.setChangeName(saveFiles.get(i));
+				am.setFileLevel(fileLevel);
+				am.setStatus(status);
+				am.setAttachType(attachType);
 				
 				fileList.add(am);
-				System.out.println(am);
 			}
-			System.out.println("controller Member : " + m);
-			System.out.println("controller attachmentMember list : " + fileList);*/
+			System.out.println(" member 나오냐? : " + m);
+			System.out.println("attachment list 나오냐? : " + fileList);
 			
-			/*int result = new MemberService().insertDriver(m, fileList);
+			int result = new MemberService().insertDriver(m, fileList);
 			
 			String page = "";
 			if(result > 0) {
 				page = "views/member/MemberLoginForm.jsp";
 				response.sendRedirect(page);
-			}else {
-				for(int i = 0; i < saveFiles.size(); i++) {
-					File failedFile = new File(savePath + saveFiles.get(i));
-					failedFile.delete();
-				}
-				
-			}*/
-		
+			}
+			page = "views/common/errorPage.jsp";
+			request.setAttribute("msg", "회원 가입실패!");
+			request.getRequestDispatcher(page).forward(request, response);
 		}
 		
 	}

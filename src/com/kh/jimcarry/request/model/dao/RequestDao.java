@@ -5,6 +5,7 @@ import static com.kh.jimcarry.common.JDBCTemplate.close;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,6 +14,7 @@ import java.util.Properties;
 
 import com.kh.jimcarry.request.model.vo.Product;
 import com.kh.jimcarry.request.model.vo.Request;
+import com.kh.jimcarry.request.model.vo.RequestAttachment;
 
 public class RequestDao {
 	
@@ -234,11 +236,11 @@ public class RequestDao {
 		ArrayList<Product> plist = null;
 		
 		String query = prop.getProperty("selectPlist");
-		
-		try {
+  
+    try {
 			pstmt = con.prepareStatement(query);
-			
-			pstmt.setString(1, no);
+      
+      pstmt.setString(1, no);
 			
 			rset = pstmt.executeQuery();
 			
@@ -265,21 +267,49 @@ public class RequestDao {
 				plist.add(p);
 			}
 			System.out.println(plist.get(0));
-			
-			
-			
-			
-		} catch (SQLException e) {
+      
+      } catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally {
-			close(rset);
+	  	}finally {
+			  close(rset);
+      }
+  
+      return plist;
+}
+  
+	public int insertRequest(Connection con, Request r) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		long a = r.getReqFinish().getTime();
+		
+		String query = prop.getProperty("insertRequestInfo");
+		
+		java.sql.Date reqFinishSql = new java.sql.Date(a);
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			
+
+			pstmt.setString(1, r.getReservationDate());
+			pstmt.setString(2, r.getStartPoint());
+			pstmt.setString(3, r.getArrivalPoint());
+			pstmt.setDate(4, reqFinishSql);
+			pstmt.setString(5, r.getUserNo());
+			pstmt.setString(6, r.getReqNo());
+			pstmt.setString(7, r.getProNo());
+			pstmt.setString(8, r.getMemo());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
 			close(pstmt);
-		}
-		
-		
-		return plist;
+		}	
+		return result;
 	}
+
 
 
 
@@ -315,6 +345,41 @@ public class RequestDao {
 		
 		
 		return ro;
+
+	public int insertPIMG(Connection con, ArrayList<RequestAttachment> fileList, String reqNo, String proNo) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = prop.getProperty("insertPIMG");  
+		
+			try {
+				for(int i = 0; i < fileList.size(); i++) {
+					pstmt = con.prepareStatement(query);
+					
+					pstmt.setString(1, fileList.get(i).getOriginName());
+					pstmt.setString(2, fileList.get(i).getChangeName());
+					pstmt.setString(3, fileList.get(i).getFilePath());
+					
+					int level = 0;
+					
+					pstmt.setInt(4, level);
+					
+					level++;
+					
+					pstmt.setString(5, "견적물품사진");
+					pstmt.setString(6, reqNo);
+					//pstmt.setString(7, "");
+					
+					result += pstmt.executeUpdate();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close(pstmt);
+			}
+		
+		return result;
+
 	}
 
 

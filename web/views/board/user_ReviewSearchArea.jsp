@@ -105,7 +105,7 @@ a.btn_02 {
 </head>
 <body>
 
-	<%@ include file="/views/common/user_TopBar.jsp"%>
+	<%@ include file="/views/common/main_TopBar.jsp"%>
 	<br>
 	<br>
 	<br>
@@ -135,7 +135,7 @@ a.btn_02 {
 				<col width="10%" />
 			</colgroup>
 
-			<thead class="thead">
+		<thead class="thead">
 
 
 				<tr>
@@ -145,7 +145,7 @@ a.btn_02 {
 					<th scope="col">일자</th>
 					<th scope="col">조회수</th>
 				</tr>
-			</thead>
+		</thead>
 
 
 			<% for(Board b : list) { %>
@@ -162,38 +162,7 @@ a.btn_02 {
 		</table>
 		</div>
 
-		<%-- 페이징처리 --%>
-		<div class="panginArea" align="center">
-			<button onclick="location.href'<%=request.getContextPath()%>/selectList.bo?currentPage=1'"><<</button>
-		<% if(currentPage <= 1) { %>
-					<button disabled><<</button>
-					<% }else { %>
-					<button onclick="location.href='<%=request.getContextPath() %>/selectList.bo?currentPage=<%=currentPage -1%>'"><</button>
-				 <% } %>
-
-			<% for(int p = startPage; p <= endPage; p++){
-				if(currentPage == p){
-			%>
-					<button disabled style="color:red;"><%= p %></button>
-			<% } else { %>
-					<button onclick="location.href='<%=request.getContextPath()%>/selectList.bo?currentPage=<%=p%>'"><%= p %></button>
-			<%
-				}
-			   }
-			%>
-
-				 <% if(currentPage >= maxPage) { %>
-
-				  <% }else {%>
-				  	<button onclick="location.href='<%=request.getContextPath() %>/selectList.bo?currentPage=<%=currentPage +1%>'">></button>
-
-				  <% } %>
-			<button onclick="location.href='<%=request.getContextPath()%>/selectList.bo?currentPage=<%=maxPage%>'">>></button>
-		</div>
-
-
-<%--
-		<%-- 페이징처리 검색
+		<%-- 페이징처리 검색 --%>
 		<div class="panginArea" align="center">
 			<button onclick="location.href'<%=request.getContextPath()%>/search.bo?currentPage=1'"><<</button>
 		<% if(currentPage <= 1) { %>
@@ -221,24 +190,6 @@ a.btn_02 {
 				  <% } %>
 			<button onclick="location.href='<%=request.getContextPath()%>/search.bo?currentPage=<%=maxPage%>'">>></button>
 		</div>
- --%>
-
-
-
-		<!-- <div class="con">
-			<ul class="pagination">
-				<li><a href="#">1</a></li>
-				<li class="active"><a href="#">2</a></li>
-				<li><a href="#">3</a></li>
-				<li><a href="#">4</a></li>
-				<li><a href="#">5</a></li>
-				<li><a href="#">다음</a></li>
-				<li><a href="#">맨끝</a></li>
-			</ul>
-		</div> -->
-
-
-
 
 	</div>
 

@@ -58,5 +58,9 @@ public class OneQService {
 		
 		return one;
 	}
+	public ArrayList<OneQ> selectList(int currentPage, int limit) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }
