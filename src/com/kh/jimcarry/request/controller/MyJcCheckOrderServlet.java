@@ -1,6 +1,7 @@
 package com.kh.jimcarry.request.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -27,13 +28,19 @@ public class MyJcCheckOrderServlet extends HttpServlet {
 		String no = request.getParameter("no");
 		System.out.println(no);
 		
-		Request ro = new RequestService().checkOrder(no);
+		ArrayList<Request> rolist = new RequestService().checkOrder(no);
+		
+		int minPrice = new RequestService().minPriceCal(no);
+		
+		System.out.println(minPrice);
 		
 		String page="";
 		
-		if(ro != null) {
+		if(rolist != null) {
 			page = "views/request/req_ReqList.jsp";
-			request.setAttribute("ro", ro);
+			request.setAttribute("rolist", rolist);
+			request.setAttribute("no", no);
+			request.setAttribute("minPrice", minPrice);
 		}else {
 			page = "views/common/errorPage.jsp";
 			request.setAttribute("msg", "입찰내역 확인 실패");

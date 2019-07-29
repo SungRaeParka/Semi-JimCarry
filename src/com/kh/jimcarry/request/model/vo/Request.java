@@ -228,7 +228,4 @@ public class Request implements Serializable{
 				+ orderDate + ", matchDate=" + matchDate + ", conditionDo=" + conditionDo + ", userName=" + userName
 				+ ", driverName=" + driverName + ", grade=" + grade + ", review=" + review + "]";
 	}
-
-	
-
 }

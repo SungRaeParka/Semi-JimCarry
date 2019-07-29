@@ -73,7 +73,7 @@ public class RequestDao {
 
 
 
-	//페이징처리후 게시물 조회
+	//페이징처리후 게시물 조회_사용자
 	public ArrayList<Request> selectList(Connection con, int currentPage, int limit, String logUserNo) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -190,7 +190,7 @@ public class RequestDao {
 
 
 
-
+	//견적서 확인
 	public Request checkReq(Connection con, String no) {
 		PreparedStatement pstmt= null;
 		ResultSet rset = null;
@@ -229,7 +229,7 @@ public class RequestDao {
 	}
 
 
-
+	//짐리스트
 	public ArrayList<Product> selectPlist(Connection con, String no) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -276,8 +276,8 @@ public class RequestDao {
       }
   
       return plist;
-}
-  
+} 
+
 	public int insertRequest(Connection con, Request r) {
 		PreparedStatement pstmt = null;
 		int result = 0;
@@ -316,9 +316,10 @@ public class RequestDao {
 
 
 	public Request checkOrder(Connection con, String no) {
+
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		Request ro = null;
+		ArrayList<Request> rolist = null;
 		
 		String query = prop.getProperty("checkOrder");
 		
@@ -328,14 +329,21 @@ public class RequestDao {
 			
 			rset = pstmt.executeQuery();
 			
+			rolist = new ArrayList<Request>();
+			
 			while(rset.next()) {
+				Request ro = new Request();
+				
 				ro.setReqNo(rset.getString("REQ_NO"));
 				ro.setOrderPrice(rset.getInt("ORDER_PRICE"));
 				ro.setDriverName(rset.getString("MEMBER_NAME"));
 				ro.setGrade(rset.getString("GRADE"));
 				ro.setReview(rset.getString("REVIEW"));
+				ro.setReqFinish(rset.getDate(""));
+				
+				rolist.add(ro);
+				System.out.println(ro);
 			}
-			System.out.println(ro);
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -346,8 +354,46 @@ public class RequestDao {
 		}
 		
 		
-		return ro;
+		return rolist;
 	}
+	
+	
+	public int insertRequest(Connection con, Request r) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		long a = r.getReqFinish().getTime();
+		
+		String query = prop.getProperty("insertRequestInfo");
+		
+		java.sql.Date reqFinishSql = new java.sql.Date(a);
+		
+		System.out.println("dao  r.getReservationDate() ::" +  r.getReservationDate());
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			
+
+			pstmt.setString(1, r.getReservationDate());
+			pstmt.setString(2, r.getStartPoint());
+			pstmt.setString(3, r.getArrivalPoint());
+			pstmt.setDate(4, reqFinishSql);
+			pstmt.setString(5, r.getUserNo());
+			pstmt.setString(6, r.getReqNo());
+			pstmt.setString(7, r.getProNo());
+			pstmt.setString(8, r.getMemo());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}	
+		return result;
+	}
+
+
+
 
 	public int insertPIMG(Connection con, ArrayList<RequestAttachment> fileList, String reqNo, String proNo) {
 		PreparedStatement pstmt = null;
@@ -383,6 +429,39 @@ public class RequestDao {
 		
 		return result;
 
+	}
+
+
+
+	public int minPriceCal(Connection con, String no) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int minPrice = 0;
+		
+		String query = prop.getProperty("minPriCal");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, no);
+			
+			rset = pstmt.executeQuery();
+			
+			Request r = new Request();
+			r.setOrderPrice(rset.getInt("ORDER_PRICE"));
+			
+			minPrice = rset.getInt("ORDER_PRICE");
+			
+			System.out.println(minPrice);
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return minPrice;
 	}
 
 

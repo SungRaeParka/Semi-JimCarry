@@ -1,5 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"
+	import="java.util.*, java.text.SimpleDateFormat, com.kh.jimcarry.request.model.vo.*"%>
+
+<%
+	ArrayList<Request> rolist = (ArrayList<Request>) request.getAttribute("rolist");
+	String reqno = (String)request.getAttribute("no");
+%>
+
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,40 +35,41 @@
 	max-width: 130px;
 	max-height: 130px;
 }
-#drivername{
-	padding-top:5px;
-	padding-left:130px;
+
+#drivername {
+	padding-top: 5px;
+	padding-left: 130px;
 }
 
 #rev {
-	margin-top:20px;
-	padding-left:130px;
+	margin-top: 20px;
+	padding-left: 130px;
 }
 
 #price {
-	margin-top:-20px;
-}
-.container{
-	padding-right:100px;
-	margin-top:-30px;
+	margin-top: -20px;
 }
 
-html, body{
-	height:100%;
+.container {
+	padding-right: 100px;
+	margin-top: -30px;
+}
+
+html, body {
+	height: 100%;
 	margin: 0;
-	padding: 0;		
-}	
-	
+	padding: 0;
+}
+
 #main {
 	min-height: 100%;
 }
-
-
 </style>
 
 </head>
 <body>
-	<%@ include file="/views/common/user_TopBar.jsp" %>
+	<%@ include file="/views/common/user_TopBar.jsp"%>
+
 
 	<div id="outer main">
 
@@ -70,7 +81,9 @@ html, body{
 		<div style="text-align: center">
 			<h4>현재 최저가</h4>
 			<h2>145000원</h2>
-			<p style="color: gray;">견적 번호 : A1001</p>
+			<p style="color: gray;">
+				견적 번호 :
+				<%=reqno%></p>
 			<h5>남은 입찰 기간 : time</h5>
 			<h5>
 				<a href="#">내 짐캐리 리스트 확인 하기</a>
@@ -78,21 +91,31 @@ html, body{
 			<hr>
 		</div>
 
+
+		<%
+			for (int i = 0; i < rolist.size(); i++) {
+
+			}
+		%>
+
+
+
+
 		<div>
-			<img src="../../images/driver.png" style="float:left" id="driverImg">
+			<img src="../../images/driver.png" style="float: left" id="driverImg">
 			<div id="drivername">
 				<h3>복권석 기사님</h3>
 			</div>
-			
-			<div id="price" style="float:right">
+
+			<div id="price" style="float: right">
 				<h3>가격 : 145000원</h3>
 			</div>
-			
+
 			<div id="rev">
 				<h4>평점 : 4.2</h4>
-				<h4>리뷰  :13건 </h4>
+				<h4>리뷰 :13건</h4>
 			</div>
-			
+
 
 			<div class="container" align="right">
 				<button type="button" class="btn">선택하기</button>
@@ -100,13 +123,7 @@ html, body{
 			<hr>
 		</div>
 
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
+		<br> <br> <br> <br> <br> <br> <br>
 		<br>
 
 
