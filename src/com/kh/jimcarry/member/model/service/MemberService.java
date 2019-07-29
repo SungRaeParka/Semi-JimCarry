@@ -68,10 +68,10 @@ public class MemberService {
 		int result1 = new MemberDao().insertDriver(con, m);
 		
 		if(result1 > 0) {
-			String seqNo = new MemberDao().selectCurrval(con) + "";
-			System.out.println(seqNo);
+			String driverNo = new MemberDao().selectCurrval(con);
+			System.out.println(driverNo);
 			for(int i = 0; i < fileList.size(); i++) {
-				fileList.get(i).setDriverNo(seqNo);
+				fileList.get(i).setDriverNo(driverNo);
 			}
 		}
 		int result2 = new MemberDao().insertAttachment(con, fileList);
@@ -82,9 +82,12 @@ public class MemberService {
 		}else {
 			rollback(con);
 		}
+		close(con);
 		
 		return result;
 	}
+
+	
 	
 }
 
