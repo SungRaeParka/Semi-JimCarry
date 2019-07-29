@@ -10,7 +10,7 @@
 		ArrayList<Attachment> fileList = (ArrayList<Attachment>) request.getAttribute("fileList");
 		System.out.println("views  : "  + b );
 
-		Attachment photo1 = fileList.get(0);
+		Attachment photo1 = fileList.get(0); 
 		Attachment photo2 = fileList.get(1);
 	%>
 <html>
