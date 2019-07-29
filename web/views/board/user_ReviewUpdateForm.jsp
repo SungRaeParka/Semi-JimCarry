@@ -30,7 +30,6 @@
 		height: 250px;
 		background: 3px solid red;
 
-
 	} */
 
 	.detailImg{
@@ -56,15 +55,17 @@
 
 <body>
 	<%@include file="/views/common/user_TopBar.jsp" %>
-	<%if(loginUser != null){ %>
+
 	<div class="outer">
-		<h2 align="center">게시판 상세 보기</h2>
+		<h2 align="center">게시판 수정 폼</h2>
 		<div class="tableArea">
+			<form id="updateForm" method="post" enctype="multipart/form-data">
 			<table align="center" border="1">
 				<tr>
 					<td width="50px" height="40px" align="center">제목</td>
 					<td colspan="5>">
-						<label for=""><%=b.getPostTitle() %></label>
+						<input type="text" size="50" name="title" value="<%=b.getPostTitle()%>">
+						<input type="hidden" name="pagebno" value="<%=b.getPostCode()%>"/>
 					</td>
 				</tr>
 
@@ -82,25 +83,21 @@
 					<td>이미지</td>
 					<td colspan="3">
 						<div id="imgArea">
-							<img src="<%=request.getContextPath() %>/images_uploadFiles/<%=photo1.getChangeName() %>" id="photo1" class="detailImg" />
+							<img src="<%=request.getContextPath() %>/images_uploadFiles/<%=photo1.getChangeName() %>" id="photo1" class="detailImg" name="img1" />
 						</div>
 					</td>
 
 					<td colspan="2">
 						<div id="imgArea">
-							<img src="<%=request.getContextPath() %>/images_uploadFiles/<%=photo2.getChangeName() %>" id="photo2" class="detailImg" />
+							<img src="<%=request.getContextPath() %>/images_uploadFiles/<%=photo2.getChangeName() %>" id="photo2" class="detailImg" name="img2" />
 						</div>
 					</td>
-
-
-
-
 
 				</tr>
 					<tr>
 						<td align="center">내용</td>
 						<td colspan="6"><textarea cols="69%" rows="6%"
-								maxlength="2048" name="bcontent" readonly="readonly" id="bContent"><%=b.getPostContents() %></textarea>
+								maxlength="2048" name="bcontent" id="bContent"><%=b.getPostContents() %></textarea>
 
 						</td>
 
@@ -109,18 +106,22 @@
 
 
 			<div style="border: 1px solid white; width: 760px; text-align: right;">
-			<button onclose="">삭제</button>&nbsp;&nbsp;
-			<button onclick="location.href='<%=request.getContextPath()%>/selectBoard.bo?num=<%=b.getPostCode()%>'">수정하기</button>&nbsp;
-			</div>
 
+			<button onclick="">취소</button>&nbsp;&nbsp;
+			<button onclick="complete();">수정완료</button>&nbsp;
+
+			</div>
+		</form>
+		<script>
+			function complete(){
+				$("#updateForm").attr("action","<%=request.getContextPath()%>/update.bo");
+			}
+
+		</script>
 
 		</div>
 	</div>
-	<% } else {
-		request.setAttribute("msg", "로그인을 하셔야 볼 수 있습니다.");
-		request.getRequestDispatcher("../common/errorPage.jsp").forward(request, response);
-	}
-	%>
+
 
 
 </body>

@@ -39,7 +39,7 @@ public class boardInsertServlet extends HttpServlet {
 			//파일 저장 경로(web/thumbnail_uploadFiles)
 			String savePath = root + "images_uploadFiles/";
 
-
+			System.out.println("root" + root);
 			//FileRenamePolicy 상속 후 오버라이딩
 			MultipartRequest multiRequest =
 					new MultipartRequest(request, savePath, maxSize,
