@@ -5,7 +5,8 @@
 <head>
 <meta charset=UTF-8>
 <title>Insert title here</title>
-</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head> 
 <body>
 	<form>
 		<div align="center">
@@ -105,8 +106,8 @@
 		
 		<div>		
 			<div align="center">
-				<input type="submit" value="확인">
-				<input type="reset" value="취소">
+				<input type="button" value="확인" onclick="returnAPData()">
+				<input type="reset" value="취소" onclick="window.close()">
 			</div>
 		</div>
 	</form>
@@ -159,6 +160,31 @@
                 document.getElementById("start_detailAddress").focus();
             }
         }).open();
+    }
+    
+	function returnAPData(){
+    	
+    	var showArrivePlace = $("#showArrivePlace", opener.document);/* opener.document.getElementById("showStartPlace").html; */
+    	var showAPDetail = $("#showAPDetail", opener.document);
+    	
+    	var ArrivePlaceVal = document.getElementById("start_address").value + " " + document.getElementById("start_detailAddress").value
+    	
+    	var homeType = $("input[name='home_type']:checked").val();
+    	var floor = $("input[name='floor']:checked").val();
+    	var elevator = $("input[name='elevator']:checked").val();
+    	var parking = $("input[name='parking']:checked").val();
+    	
+    	var APDetail = "집 종류 : " + homeType + ", 층수 : " + floor + ", 엘리베이터 : " + elevator + ", 주차 여부 : " + parking; 
+    	    	
+    	showArrivePlace.html(ArrivePlaceVal);
+    	showAPDetail.html(APDetail);
+    	
+    	var apInfo = $("#apInfo", opener.document);
+    	var apInfoAll = ArrivePlaceVal + ", " + APDetail;
+    	
+    	apInfo.val(apInfoAll);
+    	
+    	self.close();
     }
 </script>
 </body>

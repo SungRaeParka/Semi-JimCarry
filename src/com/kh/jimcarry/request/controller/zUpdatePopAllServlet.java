@@ -7,13 +7,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.kh.jimcarry.request.model.service.ProductService;
 import com.kh.jimcarry.request.model.vo.Product;
 
 @WebServlet("/updateAll.pr")
 public class zUpdatePopAllServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L; 
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String reqNo = request.getParameter("reqNo");
@@ -77,7 +78,6 @@ public class zUpdatePopAllServlet extends HttpServlet {
 		String[] pianoTyperr = request.getParameterValues("proType_Piano2"); 
 		
 		String memo = request.getParameter("memo");
-		System.out.println(memo);
 		
 		String refNo = new ProductService().selectRefNo(reqNo);
 		
@@ -120,7 +120,13 @@ public class zUpdatePopAllServlet extends HttpServlet {
 		int result = new ProductService().updateAll(reqNo, proNamerr, refTyperr, refSizerr, washTyperr, washSizerr, tvSizerr, airTyperr, airUnirr, waterSizerr, waterUnirr, pcTyperr, ovenTyperr, bedTyperr, bedSizerr,
 													chairTyperr, tableTyperr, tableSizerr, tableMatrr, tableWidthrr, bcWidthrr, bcHeightrr, cloTyperr, cloUnirr, cloWidthrr, scGckrr, scWidthrr, scHeightrr,
 													sofaSizerr, hangTyperr, hangWidthrr, mirTyperr, mirSizerr, makeTyperr, makeMatrr, pianoTyperr, refNo, washNo, tvNo, airNo, waterNo, pcNo, ovenNo, bedNo,
-													chairNo, tableNo, bcNo, cloNo, scNo, sofaNo, hangNo, mirNo, makeNo, pianoNo, memo);
+													chairNo, tableNo, bcNo, cloNo, scNo, sofaNo, hangNo, mirNo, makeNo, pianoNo);
+		
+		Product p = new Product();
+		
+		p.setReqNo(reqNo);
+		p.setProNo(proNo);
+		p.setMemo(memo);
 		
 		
 		String page = "";
@@ -128,13 +134,19 @@ public class zUpdatePopAllServlet extends HttpServlet {
 		if(result > 0 ) {
 			page = "views/request/req_PlaceSelect.jsp";
 			
+			HttpSession session = request.getSession();
+			
+			session.setAttribute("p", p);
+			
+			response.sendRedirect(page);
+			
 		}else {
 			page = "views/common/errorPage.jsp";
 			
 			request.setAttribute("msg", "물품 정보 수정 실패!");
+			request.getRequestDispatcher(page).forward(request, response);
 		}
 		
-		request.getRequestDispatcher(page).forward(request, response);
 		
 		
 	}

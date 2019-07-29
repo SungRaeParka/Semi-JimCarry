@@ -7,7 +7,7 @@
 	String[] proName = r.getProName().split(", ");	
 	
 	int bookCount = r.getBookCount();
-	int boxCount = r.getBoxCount();
+	int boxCount = r.getBoxCount(); 
 	
 %>    
 

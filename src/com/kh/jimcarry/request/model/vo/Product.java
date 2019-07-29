@@ -15,12 +15,13 @@ public class Product implements java.io.Serializable{
 	private String proKind;
 	private int bookCount;
 	private int boxCount;
+	private String memo;
 	
 	public Product() {}
 
 	public Product(String reqNo, String proNo, String proName, String proType, String proSize, String proMaterial,
 			String proWidth, String proHeight, String glassCheck, String uniquness, String proKind, int bookCount,
-			int boxCount) {
+			int boxCount, String memo) {
 		super();
 		this.reqNo = reqNo;
 		this.proNo = proNo;
@@ -35,6 +36,7 @@ public class Product implements java.io.Serializable{
 		this.proKind = proKind;
 		this.bookCount = bookCount;
 		this.boxCount = boxCount;
+		this.memo = memo;
 	}
 
 	public String getReqNo() {
@@ -141,13 +143,23 @@ public class Product implements java.io.Serializable{
 		this.boxCount = boxCount;
 	}
 
+	public String getMemo() {
+		return memo;
+	}
+
+	public void setMemo(String memo) {
+		this.memo = memo;
+	}
+
 	@Override
 	public String toString() {
-		return "Request [reqNo=" + reqNo + ", proNo=" + proNo + ", proName=" + proName + ", proType=" + proType
+		return "Product [reqNo=" + reqNo + ", proNo=" + proNo + ", proName=" + proName + ", proType=" + proType
 				+ ", proSize=" + proSize + ", proMaterial=" + proMaterial + ", proWidth=" + proWidth + ", proHeight="
 				+ proHeight + ", glassCheck=" + glassCheck + ", uniquness=" + uniquness + ", proKind=" + proKind
-				+ ", bookCount=" + bookCount + ", boxCount=" + boxCount + "]";
+				+ ", bookCount=" + bookCount + ", boxCount=" + boxCount + ", memo=" + memo + "]";
 	}
+
+	
 
 	
 
