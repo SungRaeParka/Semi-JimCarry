@@ -97,15 +97,11 @@ public class InsertDriverServlet extends HttpServlet {
 			String certificate = multiRequest.getParameter("certificate");
 			String bankBook = multiRequest.getParameter("bankBook");
 			String attestation = multiRequest.getParameter("attestation");
-			String attachType = "기사회원가입 제출이미지";
+			String attachType = "";
 			int fileLevel = 1;
 			String status = "N";
 			System.out.println("아이디 넘어오냐? : " + userId);
 			System.out.println("이건? : " + userName);
-			System.out.println("1 : " + idPhoto);
-			System.out.println("2 : " + certificate);
-			System.out.println("3 : " + bankBook);
-			System.out.println("4 : " + attestation);
 		
 			Member m = new Member();
 			m.setUserId(userId);
@@ -130,12 +126,39 @@ public class InsertDriverServlet extends HttpServlet {
 			ArrayList<AttachmentMember> fileList = new ArrayList<AttachmentMember>();
 			for(int i = originFiles.size() -1; i >= 0; i--) {
 				AttachmentMember am = new AttachmentMember();
-				am.setFilePath(savePath);
-				am.setOriginName(originFiles.get(i));
-				am.setChangeName(saveFiles.get(i));
-				am.setFileLevel(fileLevel);
-				am.setStatus(status);
-				am.setAttachType(attachType);
+				if(i == 0) {
+					am.setFilePath(savePath);
+					am.setOriginName(originFiles.get(i));
+					am.setChangeName(saveFiles.get(i));
+					am.setFileLevel(fileLevel);
+					am.setStatus(status);
+					attachType = "차량등록증";
+					am.setAttachType(attachType);
+				}else if(i == 1){
+					am.setFilePath(savePath);
+					am.setOriginName(originFiles.get(i));
+					am.setChangeName(saveFiles.get(i));
+					am.setFileLevel(fileLevel);
+					am.setStatus(status);
+					attachType = "통장사본";
+					am.setAttachType(attachType);
+				}else if(i == 2){
+					am.setFilePath(savePath);
+					am.setOriginName(originFiles.get(i));
+					am.setChangeName(saveFiles.get(i));
+					am.setFileLevel(fileLevel);
+					am.setStatus(status);
+					attachType = "사업자등록증";
+					am.setAttachType(attachType);
+				}else if(i == 3){
+					am.setFilePath(savePath);
+					am.setOriginName(originFiles.get(i));
+					am.setChangeName(saveFiles.get(i));
+					am.setFileLevel(fileLevel);
+					am.setStatus(status);
+					attachType = "본인사진";
+					am.setAttachType(attachType);
+				}
 				
 				fileList.add(am);
 			}
@@ -148,10 +171,11 @@ public class InsertDriverServlet extends HttpServlet {
 			if(result > 0) {
 				page = "views/member/MemberLoginForm.jsp";
 				response.sendRedirect(page);
-			}
+			}else {
 			page = "views/common/errorPage.jsp";
 			request.setAttribute("msg", "회원 가입실패!");
 			request.getRequestDispatcher(page).forward(request, response);
+			}
 		}
 		
 	}
