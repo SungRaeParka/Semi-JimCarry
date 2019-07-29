@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.util.ArrayList;
 
 import com.kh.jimcarry.request.model.dao.RequestDao;
+import com.kh.jimcarry.request.model.vo.Product;
 import com.kh.jimcarry.request.model.vo.Request;
 import com.kh.jimcarry.request.model.vo.RequestAttachment;
 
@@ -53,15 +54,42 @@ public class RequestService {
 			}
 
 
+			//최종견적서 상세보기
 			public Request checkReq(String no) {
 				Connection con = getConnection();
 				Request r = null;
 				
 				r = new RequestDao().checkReq(con,no);
 				
+				close(con);
 				
 				
 				return r;
+			}
+
+
+
+			//짐정보 리스트
+			public ArrayList<Product> selectPlist(String no) {
+				Connection con = getConnection();
+				
+				ArrayList<Product> plist = new RequestDao().selectPlist(con,no);
+				
+				close(con);
+				
+				return plist;
+			}
+
+
+			public Request checkOrder(String no) {
+				Connection con = getConnection();
+				Request ro = null;
+				
+				ro = new RequestDao().checkOrder(con,no);
+				
+				close(con);
+				
+				return ro;
 			}
 
 
@@ -97,8 +125,5 @@ public class RequestService {
 				
 				return result;
 			}
-
-
-
 			
 }

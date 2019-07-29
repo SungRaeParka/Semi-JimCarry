@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
 
+import com.kh.jimcarry.request.model.vo.Product;
 import com.kh.jimcarry.request.model.vo.Request;
 import com.kh.jimcarry.request.model.vo.RequestAttachment;
 
@@ -197,13 +198,86 @@ public class RequestDao {
 		
 		String query = prop.getProperty("checkReq");
 		
+		try {
+			pstmt = con.prepareStatement(query);
+			
+			pstmt.setString(1, no);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				r.setReservationDate(rset.getString("RESERVATION_DATE"));
+				r.setStartPoint(rset.getString("START_POINT"));
+				r.setArrivalPoint(rset.getString("ARRIVE_POINT"));
+				r.setReqStart(rset.getDate("REQ_START"));
+				r.setReqFinish(rset.getDate("REQ_FINISH"));
+				
+			}
+			System.out.println(r);
 		
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
 		
 		return r;
 	}
 
 
 
+	public ArrayList<Product> selectPlist(Connection con, String no) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<Product> plist = null;
+		
+		String query = prop.getProperty("selectPlist");
+  
+    try {
+			pstmt = con.prepareStatement(query);
+      
+      pstmt.setString(1, no);
+			
+			rset = pstmt.executeQuery();
+			
+			plist = new ArrayList<Product>();
+			
+			while(rset.next()) {
+				Product p = new Product();
+				
+				p.setReqNo(rset.getString("REQ_NO"));
+				p.setProNo(rset.getString("PRODUCT_NO"));
+				p.setProName(rset.getString("PRODUCT_NAME"));
+				p.setProType(rset.getString("PRODUCT_TYPE"));
+				p.setProSize(rset.getString("PRODUCT_SIZE"));
+				p.setProMaterial(rset.getString("MATERIAL"));
+				p.setProWidth(rset.getString("WIDTH"));
+				p.setProHeight(rset.getString("HEIGHT"));
+				p.setGlassCheck(rset.getString("GLASS_CHECK"));
+				p.setUniquness(rset.getString("UNIQUNESS"));
+				p.setProKind(rset.getString("PRODUCT_KIND"));
+				p.setBookCount(rset.getInt("BOOK_COUNT"));
+				p.setBoxCount(rset.getInt("BOX_COUNT"));
+				
+				
+				plist.add(p);
+			}
+			System.out.println(plist.get(0));
+      
+      } catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+	  	}finally {
+			  close(rset);
+      }
+  
+      return plist;
+}
+  
 	public int insertRequest(Connection con, Request r) {
 		PreparedStatement pstmt = null;
 		int result = 0;
@@ -216,6 +290,7 @@ public class RequestDao {
 		try {
 			pstmt = con.prepareStatement(query);
 			
+
 			pstmt.setString(1, r.getReservationDate());
 			pstmt.setString(2, r.getStartPoint());
 			pstmt.setString(3, r.getArrivalPoint());
@@ -231,13 +306,45 @@ public class RequestDao {
 			e.printStackTrace();
 		} finally {
 			close(pstmt);
-		}
-		
-		
+		}	
 		return result;
 	}
 
 
+
+
+	public Request checkOrder(Connection con, String no) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Request ro = null;
+		
+		String query = prop.getProperty("checkOrder");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, no);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				ro.setReqNo(rset.getString("REQ_NO"));
+				ro.setOrderPrice(rset.getInt("ORDER_PRICE"));
+				ro.setDriverName(rset.getString("MEMBER_NAME"));
+				ro.setGrade(rset.getString("GRADE"));
+				ro.setReview(rset.getString("REVIEW"));
+			}
+			System.out.println(ro);
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		
+		return ro;
 
 	public int insertPIMG(Connection con, ArrayList<RequestAttachment> fileList, String reqNo, String proNo) {
 		PreparedStatement pstmt = null;
@@ -272,6 +379,7 @@ public class RequestDao {
 			}
 		
 		return result;
+
 	}
 
 

@@ -123,14 +123,10 @@ html, body {
 
 		Date finishDay = new Date(); 
 		Date nowDay = new Date(); 
-		Date moveDay = new Date();
-		int moveTimeH; 
-		String ampm;  
+		String moveDay;
 		
-		long nowTime;  //오늘 날,시간 getTime
-		long finishTime;  //견적매칭 종료일 getTime
-		long moveTime;  //짐옮기는날 getTime
-		
+		long nowTime;  
+		long finishTime; 
 		
 		long timeRemain;//남은시간
 		long timeReH; //남은시간_시간
@@ -142,42 +138,14 @@ html, body {
 			
 			finishDay = req.getReqFinish();  //견적매칭 종료일
 			moveDay = req.getReservationDate(); //예약일(짐옮기는 날)
-			moveTimeH = req.getReservationTime(); //예약일 짐옮기는 시간
-			
-			//plusTimeS = moveTimeH*3600000;  //이용시간getTime -> 버튼 바뀌는 시점 설정 위해
-			//하루 : 86400000 1시간 : 3600000
-			
-			
-			if(moveTimeH<12){
-				ampm="오전";
-			}else if(moveTimeH==12){
-				ampm="오후";
-			}else{
-				ampm="오후";					
-				moveTimeH -=12;
-			}
-			
-			
 			
 			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm");
 			
 			nowDay = dateFormat.parse(dateFormat.format(nowDay));
 			nowTime = nowDay.getTime();
-			System.out.println(nowDay);
-			System.out.println(nowTime);
-			//오늘 날,시간 getTime
-
+		
 			finishTime = finishDay.getTime();
-			System.out.println(finishDay);
-			System.out.println(finishTime);
-			//견적매칭 종료일 getTime
-			
-			moveTime = moveDay.getTime();
-			System.out.println(moveDay);
-			System.out.println(moveTime);
-			//짐옮기는날 getTime
-			
-			
+				
 			timeRemain = finishTime+86400000-nowTime;
 			timeReH = (timeRemain/60000)/60;
 			timeReM = (timeRemain/60000)%60;
@@ -208,8 +176,7 @@ html, body {
 			<div id="date" class="text">
 				<h3>
 					예약일 :
-					<%=req.getReservationDate()%>&nbsp;
-					<%=ampm %><%=moveTimeH %>시
+					<%=req.getReservationDate()%>
 				</h3>
 			</div>
 			
@@ -259,8 +226,7 @@ html, body {
 			<div id="date" class="text">
 				<h3>
 					예약일 :
-					<%=req.getReservationDate()%>&nbsp;
-					<%=ampm %><%=moveTimeH %>시
+					<%=req.getReservationDate()%>
 				</h3>
 			</div>
 			
@@ -304,8 +270,7 @@ html, body {
 			<div id="date" class="text">
 				<h3>
 					예약일 :
-					<%=req.getReservationDate()%>&nbsp;
-					<%=ampm %><%=moveTimeH %>시
+					<%=req.getReservationDate()%>
 				</h3>
 			</div>
 			<div id="reqprice">
@@ -357,8 +322,7 @@ html, body {
 			<div id="date" class="text">
 				<h3>
 					예약일 :
-					<%=req.getReservationDate()%>&nbsp;
-					<%=ampm %><%=moveTimeH %>시
+					<%=req.getReservationDate()%>
 				</h3>
 			</div>
 			<div id="reqprice">
@@ -407,8 +371,7 @@ html, body {
 			<div id="date" class="text">
 				<h3>
 					완료일 :
-					<%=req.getReservationDate()%>&nbsp;
-					<%=ampm %><%=moveTimeH %>시
+					<%=req.getReservationDate()%>
 				</h3>
 			</div>
 			<div id="reqprice">
@@ -457,8 +420,7 @@ html, body {
 			<div id="date" class="text">
 				<h3>
 					완료일 :
-					<%=req.getReservationDate()%>&nbsp;
-					<%=ampm %><%=moveTimeH %>시
+					<%=req.getReservationDate()%>
 				</h3>
 			</div>
 			<div id="reqprice">
