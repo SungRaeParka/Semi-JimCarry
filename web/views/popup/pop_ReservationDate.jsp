@@ -64,11 +64,31 @@
         	var dateInfo = $("#dateInfo", opener.document);
         	var timeInfo = $("#timeInfo", opener.document);
         	
-        	var dateInfo2 = dateExrr[2] + "-" + dateExrr[0] + "-" + dateExrr[1] + " " + timeEx + ":00:00";        	
+        	var dateInfo2 = dateExrr[2] + "-" + dateExrr[0] + "-" + dateExrr[1] + " " + timeEx + ":00";        	
         	
         	dateInfo.val(dateInfo2);
         	timeInfo.val(timeEx);
         	
+        	var now = new Date();
+        	
+        	var year = now.getFullYear();
+        	var month = now.getMonth() + 1;
+        	var day = now.getDate();        	 
+
+        	var todayDate = new Date(year, month-1, day);
+        	var selectDate = new Date(dateExrr[2], dateExrr[0]-1, dateExrr[1]);
+        	var diff = selectDate - todayDate;
+        	
+        	var currDay = diff / (24 * 60 * 60 * 1000);
+        	
+			if(currDay == 0){
+				alert("이용 당일은 예약 할 수 없습니다.");
+			}else if(currDay <= 2){
+				alert("예약 2일 전 ~ 이용 전 날 예약 취소시 50%의 수수료가 부과됩니다. 예약하시겠습니까?");
+			}else if(currDay <= 7){
+				alert("예약 7일 전 ~ 3일 전 예약 취소시 10%의 수수료가 부과됩니다. 예약하시겠습니까?");
+			}
+			
         	self.close();
         } 
     </script>

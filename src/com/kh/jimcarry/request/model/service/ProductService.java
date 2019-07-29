@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 import com.kh.jimcarry.request.model.dao.ProductDao;
 import com.kh.jimcarry.request.model.vo.Product;
+import com.kh.jimcarry.request.model.vo.ShowRP;
 
 public class ProductService {	
 
@@ -299,6 +300,7 @@ public class ProductService {
 				 
 		return reqNo;
 	}
+
 
 
 
