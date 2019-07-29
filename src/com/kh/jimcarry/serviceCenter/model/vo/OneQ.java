@@ -3,33 +3,72 @@ package com.kh.jimcarry.serviceCenter.model.vo;
 import java.sql.Date;
 
 public class OneQ {
-	private String questionType;
+	private String postCond;
+	private String userNo;
+	private String  postNo;
+	private Date postdate;
 	private String postTitle;
 	private String postContent;
-	private Date postDate;
-	private String answer;
+	private String attachments;
+	private String postType;
+	private String questionType;
 	
 	
 	public OneQ() {}
 
 
-	public OneQ(String questionType, String postTitle, String postContent, Date postDate, String answer) {
+	public OneQ(String postCond, String userNo, String postNo, Date postdate, String postTitle, String postContent,
+			String attachments, String postType, String questionType) {
 		super();
-		this.questionType = questionType;
+		this.postCond = postCond;
+		this.userNo = userNo;
+		this.postNo = postNo;
+		this.postdate = postdate;
 		this.postTitle = postTitle;
 		this.postContent = postContent;
-		this.postDate = postDate;
-		this.answer = answer;
-	}
-
-
-	public String getQuestionType() {
-		return questionType;
-	}
-
-
-	public void setQuestionType(String questionType) {
+		this.attachments = attachments;
+		this.postType = postType;
 		this.questionType = questionType;
+	}
+
+
+	public String getPostCond() {
+		return postCond;
+	}
+
+
+	public void setPostCond(String postCond) {
+		this.postCond = postCond;
+	}
+
+
+	public String getUserNo() {
+		return userNo;
+	}
+
+
+	public void setUserNo(String userNo) {
+		this.userNo = userNo;
+	}
+
+
+	public String getPostNo() {
+		return postNo;
+	}
+
+
+	public void setPostNo(String postNo) {
+		this.postNo = postNo;
+	}
+
+
+	public Date getPostdate() {
+		return postdate;
+	}
+
+
+	public void setPostdate(Date postdate) {
+		this.postdate = postdate;
 	}
 
 
@@ -53,34 +92,44 @@ public class OneQ {
 	}
 
 
-	public Date getPostDate() {
-		return postDate;
+	public String getAttachments() {
+		return attachments;
 	}
 
 
-	public void setPostDate(Date postDate) {
-		this.postDate = postDate;
+	public void setAttachments(String attachments) {
+		this.attachments = attachments;
 	}
 
 
-	public String getAnswer() {
-		return answer;
+	public String getPostType() {
+		return postType;
 	}
 
 
-	public void setAnswer(String answer) {
-		this.answer = answer;
+	public void setPostType(String postType) {
+		this.postType = postType;
+	}
+
+
+	public String getQuestionType() {
+		return questionType;
+	}
+
+
+	public void setQuestionType(String questionType) {
+		this.questionType = questionType;
 	}
 
 
 	@Override
 	public String toString() {
-		return "OneQ [questionType=" + questionType + ", postTitle=" + postTitle + ", postContent=" + postContent
-				+ ", postDate=" + postDate + ", answer=" + answer + "]";
+		return "OneQ [postCond=" + postCond + ", userNo=" + userNo + ", postNo=" + postNo + ", postdate=" + postdate
+				+ ", postTitle=" + postTitle + ", postContent=" + postContent + ", attachments=" + attachments
+				+ ", postType=" + postType + ", questionType=" + questionType + "]";
 	}
 
-	
-	
+
 	
 }
 	
