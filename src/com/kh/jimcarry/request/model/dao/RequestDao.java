@@ -101,7 +101,7 @@ public class RequestDao {
 				req.setReqNo(rset.getString("REQ_NO"));
 				req.setStartPoint(rset.getString("START_POINT"));
 				req.setArrivalPoint(rset.getString("ARRIVE_POINT"));
-				req.setReservationDate(rset.getDate("RESERVATION_DATE"));
+				req.setReservationDate(rset.getString("RESERVATION_DATE"));
 				req.setReqStart(rset.getDate("REQ_START"));
 				req.setReqFinish(rset.getDate("REQ_FINISH"));
 				req.setReqCount(rset.getInt("COUNT"));
@@ -158,7 +158,7 @@ public class RequestDao {
 				req.setReqNo(rset.getString("REQ_NO"));
 				req.setStartPoint(rset.getString("START_POINT"));
 				req.setArrivalPoint(rset.getString("ARRIVE_POINT"));
-				req.setReservationDate(rset.getDate("RESERVATION_DATE"));
+				req.setReservationDate(rset.getString("RESERVATION_DATE"));
 				req.setReqFinish(rset.getDate("REQ_FINISH"));
 				req.setUserName(rset.getString("MEMBER_NAME"));
 				req.setReqCount(rset.getInt("COUNT"));
@@ -206,7 +206,7 @@ public class RequestDao {
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
-				r.setReservationDate(rset.getDate("RESERVATION_DATE"));
+				r.setReservationDate(rset.getString("RESERVATION_DATE"));
 				r.setStartPoint(rset.getString("START_POINT"));
 				r.setArrivalPoint(rset.getString("ARRIVE_POINT"));
 				r.setReqStart(rset.getDate("REQ_START"));
@@ -278,7 +278,7 @@ public class RequestDao {
       return plist;
 }
   
-	/*public int insertRequest(Connection con, Request r) {
+	public int insertRequest(Connection con, Request r) {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		long a = r.getReqFinish().getTime();
@@ -287,11 +287,13 @@ public class RequestDao {
 		
 		java.sql.Date reqFinishSql = new java.sql.Date(a);
 		
+		System.out.println("dao  r.getReservationDate() ::" +  r.getReservationDate());
+		
 		try {
 			pstmt = con.prepareStatement(query);
 			
 
-			pstmt.setDate(1, r.getReservationDate());
+			pstmt.setString(1, r.getReservationDate());
 			pstmt.setString(2, r.getStartPoint());
 			pstmt.setString(3, r.getArrivalPoint());
 			pstmt.setDate(4, reqFinishSql);
@@ -308,7 +310,7 @@ public class RequestDao {
 			close(pstmt);
 		}	
 		return result;
-	}*/
+	}
 
 
 

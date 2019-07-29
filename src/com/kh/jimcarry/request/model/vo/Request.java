@@ -5,7 +5,7 @@ import java.util.Date;
 
 public class Request implements Serializable{
 	
-	private Date reservationDate;
+	private String reservationDate;
 	private String startPoint;
 	private String arrivalPoint;
 	private Date reqStart;
@@ -32,7 +32,7 @@ public class Request implements Serializable{
 	
 	public Request() {}
 
-	public Request(Date reservationDate, String startPoint, String arrivalPoint, Date reqStart, Date reqFinish,
+	public Request(String reservationDate, String startPoint, String arrivalPoint, Date reqStart, Date reqFinish,
 			String userNo, String reqNo, String proNo, int reqCount, String conditionReq, String memo, String driverNo,
 			int orderPrice, Date orderDate, Date matchDate, String conditionDo, String userName, String driverName,
 			String grade, String review) {
@@ -59,11 +59,11 @@ public class Request implements Serializable{
 		this.review = review;
 	}
 
-	public Date getReservationDate() {
+	public String getReservationDate() {
 		return reservationDate;
 	}
 
-	public void setReservationDate(Date reservationDate) {
+	public void setReservationDate(String reservationDate) {
 		this.reservationDate = reservationDate;
 	}
 
@@ -227,8 +227,8 @@ public class Request implements Serializable{
 				+ ", memo=" + memo + ", driverNo=" + driverNo + ", orderPrice=" + orderPrice + ", orderDate="
 				+ orderDate + ", matchDate=" + matchDate + ", conditionDo=" + conditionDo + ", userName=" + userName
 				+ ", driverName=" + driverName + ", grade=" + grade + ", review=" + review + "]";
-	}	
-	
+	}
+
 	
 
 }

@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.kh.jimcarry.request.model.service.RequestService;
+import com.kh.jimcarry.request.model.vo.Product;
 import com.kh.jimcarry.request.model.vo.Request;
 
 @WebServlet("/insertreq.rq")
@@ -24,7 +25,6 @@ public class InsertRequestServlet extends HttpServlet {
 		Request r = new Request();
 		
 		String reservDate = request.getParameter("dateInfo");	 
-		System.out.println(reservDate);
 		String spInfo = request.getParameter("spInfo");
 		String apInfo = request.getParameter("apInfo");
 		String memberNo = request.getParameter("memberNo");
@@ -34,7 +34,9 @@ public class InsertRequestServlet extends HttpServlet {
 		
 		int finishDate = Integer.parseInt(request.getParameter("finishDate"));
 		
-		SimpleDateFormat sdf = new SimpleDateFormat("yy/MM/dd");	
+		SimpleDateFormat sdf = new SimpleDateFormat("yy/MM/dd");		
+		
+		System.out.println("서블릿 reservDate :: " + reservDate);
 		
 		Calendar now = Calendar.getInstance();
 		now.setTime(new Date());
@@ -50,8 +52,8 @@ public class InsertRequestServlet extends HttpServlet {
 			e.printStackTrace();
 		}		
 		
-		/*r.setReservationDate(reservDate);
-		System.out.println(r.getReservationDate());
+		r.setReservationDate(reservDate);
+		System.out.println("서블릿 r.getReservatedate :: " + r.getReservationDate());
 		r.setStartPoint(spInfo);
 		r.setArrivalPoint(apInfo);
 		r.setUserNo(memberNo);
@@ -59,7 +61,7 @@ public class InsertRequestServlet extends HttpServlet {
 		r.setProNo(proNo);
 		r.setMemo(memo);		
 		
-		int result = new RequestService().insertRequest(r);
+		int result = new RequestService().insertRequest(r);	
 		
 		String page = "";
 		
@@ -72,7 +74,7 @@ public class InsertRequestServlet extends HttpServlet {
 			
 			request.setAttribute("msg", "견적 생성 실패!");
 			request.getRequestDispatcher(page).forward(request, response);
-		}*/
+		}
 		
 		
 	}
