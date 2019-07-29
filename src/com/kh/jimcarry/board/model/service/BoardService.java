@@ -98,14 +98,17 @@ public class BoardService {
 	public ArrayList<Board> searchList(int currentPage, int limit, String searchCondition, String word) {
 		Connection con = getConnection();
 
-		ArrayList<Board> list = new BoardDao().searchList(con,currentPage,limit, searchCondition, word);
+		ArrayList<Board> list = new BoardDao().searchList(con,searchCondition, word);
 
+
+		ArrayList<Board> listPage = new BoardDao().searchPage(con,currentPage,limit);
 		System.out.println(list);
 		close(con);
 
 
 		return list;
 	}
+
 
 
 

@@ -14,7 +14,6 @@ import java.util.Properties;
 import com.kh.jimcarry.board.model.vo.Attachment;
 import com.kh.jimcarry.board.model.vo.Board;
 
-
 import static com.kh.jimcarry.common.JDBCTemplate.*;
 
 public class BoardDao {
@@ -125,7 +124,7 @@ public class BoardDao {
 		return list;
 	}
 
-	//게시물 카운터
+	// 게시물 카운터
 	public int getListCount(Connection con) {
 		Statement stmt = null;
 		int listCount = 0;
@@ -138,24 +137,22 @@ public class BoardDao {
 
 			rset = stmt.executeQuery(query);
 
-			if(rset.next()) {
+			if (rset.next()) {
 				listCount = rset.getInt(1);
 			}
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally {
+		} finally {
 			close(stmt);
 			close(rset);
 		}
 
-
 		return listCount;
 	}
 
-
-	//조회수 카운터
+	// 조회수 카운터
 	public int updateCount(Connection con, String num) {
 		PreparedStatement pstmt = null;
 
@@ -164,21 +161,21 @@ public class BoardDao {
 		String query = prop.getProperty("updateCount");
 		try {
 			pstmt = con.prepareStatement(query);
-			pstmt.setString(1,num);
+			pstmt.setString(1, num);
 			pstmt.setString(2, num);
 
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally {
+		} finally {
 			close(pstmt);
 		}
 
 		return result;
 	}
 
-	//게시판 상세보기
+	// 게시판 상세보기
 	public HashMap<String, Object> selectBoardMap(Connection con, String num) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -196,7 +193,7 @@ public class BoardDao {
 
 			list = new ArrayList<Attachment>();
 
-			while(rset.next()) {
+			while (rset.next()) {
 				b = new Board();
 				b.setPostCode(rset.getString("POST_CODE"));
 				b.setPostNo(rset.getInt("POST_NO"));
@@ -223,15 +220,13 @@ public class BoardDao {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally {
+		} finally {
 			close(rset);
 			close(pstmt);
 		}
 		System.out.println("상세보기DB : " + hmap);
 		return hmap;
 	}
-
-
 
 	// 게시판 삽입용메소드
 	public int insertBoardContent(Connection con, Board b) {
@@ -324,34 +319,115 @@ public class BoardDao {
 		System.out.println("insertAttachment" + result);
 		return result;
 	}
-	//검색 기능 메소드
-	public ArrayList<Board> searchList(Connection con, int currentPage, int limit, String searchCondition,
+
+	// 검색 기능 메소드
+	public ArrayList<Board> searchList(Connection con, String searchCondition,
 			String word) {
 		PreparedStatement pstmt = null;
+		ResultSet rset = null;
 		ArrayList<Board> list = null;
 		Board b = null;
-		String query = prop.getProperty("selectListWithPageing");
+		String search = "%" + word + "%";
 
-		String search= "%" + word + "%";
 		try {
-			if(searchCondition.equals("title")) {
-				pstmt = con.prepareStatement(query);
-				
+
+			// 제목으로 검색
+			if (searchCondition.equals("title")) {
+				String queryTitle = prop.getProperty("searchTitle");
+				pstmt = con.prepareStatement(queryTitle);
+				pstmt.setString(1, search);
+
+				// 작정자로 검색
+			} else if (searchCondition.equals("writer")) {
+				String queryWriter = prop.getProperty("searchWriter");
+				pstmt = con.prepareStatement(queryWriter);
+				pstmt.setString(1, search);
+				// 내용으로 검색
+			} else if (searchCondition.equals("content")) {
+				String queryContent = prop.getProperty("searchContent");
+				pstmt = con.prepareStatement(queryContent);
+				pstmt.setString(1, search);
+			}else {
 
 			}
 
+			rset = pstmt.executeQuery();
+
+			list = new ArrayList<Board>();
+
+			while (rset.next()) {
+				b = new Board();
+
+				b.setPostNo(rset.getInt("POST_NO"));
+				b.setPostTitle(rset.getString("POST_TITLE"));
+				b.setPostCode(rset.getString("POST_CODE"));
+				b.setPostContents(rset.getString("POST_DATE"));
+				b.setbCount(rset.getInt("B_COUNT"));
+				b.setWriter(rset.getString("MEMBER_ID"));
+
+				list.add(b);
+			}
 
 		} catch (SQLException e) {
 
 			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
 		}
 
-
-
-
-
-		return null;
+		return list;
 	}
+	//검색 페이징
+	public ArrayList<Board> searchPage(Connection con, int currentPage, int limit) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<Board> list = null;
+		Board b = null;
+		String query = prop.getProperty("selectListWithPageing");
 
+		try {
+			pstmt = con.prepareStatement(query);
+
+			int startRow = (currentPage - 1) * limit + 1;
+			int endRow = startRow + limit - 1;
+
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+
+			rset = pstmt.executeQuery();
+
+			list = new ArrayList<Board>();
+
+			while (rset.next()) {
+				b = new Board();
+
+				b.setPostCode(rset.getString("POST_CODE"));
+				b.setUserNo(rset.getString("MEMBER_NO"));
+				b.setPostDate(rset.getDate("POST_DATE"));
+				b.setPostTitle(rset.getString("POST_TITLE"));
+				b.setWriter(rset.getString("MEMBER_ID"));
+				b.setPostContents(rset.getString("POST_CONTENTS"));
+				b.setAttachments(rset.getString("ATTACHMENTS"));
+				b.setDelDate(rset.getDate("DEL_DATE"));
+				b.setPostType(rset.getString("POST_TYPE"));
+				b.setQuestionType(rset.getString("QUESTION_TYPE"));
+				b.setPostNo(rset.getInt("POST_NO"));
+				b.setbCount(rset.getInt("B_COUNT"));
+
+				list.add(b);
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+
+		}
+
+		return list;
+	}
 
 }
