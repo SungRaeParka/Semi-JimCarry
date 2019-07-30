@@ -26,7 +26,7 @@
 		background:#5e5e5e;
 		color:#ffffff;
 	}
-	#conFirm, #passwordCheck {
+	#conFirm, #passwordCheck, #checkNobtn {
 		border:3px solid #5e5e5e;
 		border-radius:10px;
 		text-align:center;
@@ -36,7 +36,7 @@
 	}
 	#check{
 		height:25px;
-		width:60px;
+		width:70px;
 		border:3px solid #5e5e5e;
 		border-radius:10px;
 		text-align:center;
@@ -69,7 +69,6 @@
 			<tr>
 				<td><label>비밀번호 재확인</label></td>
 				<td><input type="password" name="password1" id="password1" placeholder="비밀번호 재입력"></td>
-				<td><button id="passwordCheck" onclick="passwordCheck()">확인</button></td>
 			</tr>
 			<tr>
 				<td><label>휴대폰 번호</label></td>
@@ -78,6 +77,11 @@
 					<input type="text" maxlength="4" name="tel2" placeholder="0000" id="tel"> -
 					<input type="text" maxlength="4" name="tel3" placeholder="0000" id="tel"></td>
 					<td><button id="conFirm" onclick="Confirm();">인증</button></td>			
+			</tr>
+			<tr>
+				<td></td>
+				<td><input type="text" name="checkNo" id="checkNo" placeholder="인증번호 입력"></td>
+				<td><button id="checkNobtn" onclick="checkNobtn();">확인</button></td>
 			</tr>
 			<tr>
 				<td></td>
@@ -110,6 +114,7 @@
 				});
 			});
 		});
+		
 
 		/* $("#passwordCheck").click(function(){
 				
