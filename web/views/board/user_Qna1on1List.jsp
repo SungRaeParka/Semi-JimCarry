@@ -5,6 +5,13 @@
     ArrayList<Notice> list=(ArrayList<Notice>) request.getAttribute("list"); 
     ArrayList<QandA> list1=(ArrayList<QandA>)request.getAttribute("list1");
     ArrayList<OneQ> list2=(ArrayList<OneQ>)request.getAttribute("list2");
+    
+    PageInfo pi = (PageInfo) request.getAttribute("pi");
+    int listCount = pi.getListCount();
+    int currentPage = pi.getCurrentPage();
+    int maxPage=pi.getMaxPage();
+    int startPage = pi.getStartPage();
+    int endPage = pi.getEndPage();
     %>
 <!DOCTYPE html>
 <html>
@@ -31,7 +38,7 @@ container{
 <div class="container">
 <br><br><br>
   <h2>공지사항</h2>
-  <table class="table table-hover">
+  <table class="table table-hover" id="listArea">
     <thead>
       <tr>
       	<th>번호</th>
@@ -74,7 +81,35 @@ container{
 	</tr> -->
     </tbody>
   </table>
+
+<!-- ㅠㅔ이징 처리 -->
+<div class="pagingArea" align="center">
+	<button onclick="location.href='<%=request.getContextPath() %>//noticelist.no?currentPage=1'">처음으로</button>
+	
+	<%if(currentPage <= 1) {%>
+	<button disabled>처음으로/button>
+	<%}else { %>
+	<button onclick="location.href='<%=request.getContextPath() %>/noticelist.no?currentPage=<%=currentPage - 1 %>'">끝으로</button>
+	<%} %>
+	
+	<%for(int p=startPage; p<=endPage;p++){
+		if(currentPage == p){%>
+		<button disabled><%=p %></button>
+	<% }else {%>
+		<button onclick="location.href='<%=request.getContextPath()%>/noticelist.no?currentPage=<%=p%>'"><%=p%></button>
+	<%}} %>
+	
+	<%if(currentPage >= maxPage){ %>
+	<button disabled>></button>
+	<%}else { %>
+	<button onckick="location.href='<%=request.getContextPath() %>/noticelist.no?currentPage=<%=currentPage + 1 %>'">></button>
+	<%} %>
+	
+	<button onclick="location.href='<%=request.getContextPath() %>/noticelist.no?currentPage=<%=maxPage %>'">끝으로</button>
 </div>
+
+</div>
+
 <br><br><br>
 <div class="container">
   <h1>Q&A</h1>
@@ -240,6 +275,32 @@ container{
 	</div>
 
 </div>
+
+<!-- ㅠㅔ이징 처리 -->
+<div class="pagingArea" align="center">
+	<button onclick="location.href='<%=request.getContextPath() %>//noticelist.no?currentPage=1'">처음으로</button>
+	
+	<%if(currentPage <= 1) {%>
+	<button disabled>처음으로/button>
+	<%}else { %>
+	<button onclick="location.href='<%=request.getContextPath() %>/noticelist.no?currentPage=<%=currentPage - 1 %>'">끝으로</button>
+	<%} %>
+	
+	<%for(int p=startPage; p<=endPage;p++){
+		if(currentPage == p){%>
+		<button disabled><%=p %></button>
+	<% }else {%>
+		<button onclick="location.href='<%=request.getContextPath()%>/noticelist.no?currentPage=<%=p%>'"><%=p%></button>
+	<%}} %>
+	
+	<%if(currentPage >= maxPage){ %>
+	<button disabled>></button>
+	<%}else { %>
+	<button onckick="location.href='<%=request.getContextPath() %>/noticelist.no?currentPage=<%=currentPage + 1 %>'">></button>
+	<%} %>
+	
+	<button onclick="location.href='<%=request.getContextPath() %>/noticelist.no?currentPage=<%=maxPage %>'">끝으로</button>
+</div>
 </div>
 
 <br><br><br>
@@ -249,7 +310,7 @@ container{
   <p style="float:left">내가 문의한 내용 보기</p>  
   <a href="/semi/views/board/user_Insert1on1.jsp"><button  style="float:right;">문의하기</button></a>     
   <br><br><br>   
-  <table class="table">
+  <table class="table" id="listArea">
     <thead>
       <tr>
         <th>문의내역</th> 
@@ -263,13 +324,52 @@ container{
       <tr>
       <th><%=one.getQuestionType() %></th>
       <th><%=one.getPostTitle() %></th>
-      <%-- <th><%=one.getPostDate() %></th>
-      <th><%=one.getAnswer() %></th> --%>
+      <th><%=one.getPostDate() %></th>
+      <%-- <th><%=one.getAnswer() %></th>  --%>
       
-      <%} %>
+      <% } %>
     </tbody>
   </table>
+  <!-- ㅠㅔ이징 처리 -->
+<div class="pagingArea" align="center">
+	<button onclick="location.href='<%=request.getContextPath() %>//noticelist.no?currentPage=1'">처음으로</button>
+	
+	<%if(currentPage <= 1) {%>
+	<button disabled>처음으로/button>
+	<%}else { %>
+	<button onclick="location.href='<%=request.getContextPath() %>/noticelist.no?currentPage=<%=currentPage - 1 %>'">끝으로</button>
+	<%} %>
+	
+	<%for(int p=startPage; p<=endPage;p++){
+		if(currentPage == p){%>
+		<button disabled><%=p %></button>
+	<% }else {%>
+		<button onclick="location.href='<%=request.getContextPath()%>/noticelist.no?currentPage=<%=p%>'"><%=p%></button>
+	<%}} %>
+	
+	<%if(currentPage >= maxPage){ %>
+	<button disabled>></button>
+	<%}else { %>
+	<button onckick="location.href='<%=request.getContextPath() %>/noticelist.no?currentPage=<%=currentPage + 1 %>'">></button>
+	<%} %>
+	
+	<button onclick="location.href='<%=request.getContextPath() %>/noticelist.no?currentPage=<%=maxPage %>'">끝으로</button>
 </div>
+</div>
+
+<script>
+		$(function(){
+			$("#listArea th").mouseenter(function(){
+				$(this).parent().css({"background":"darkgray", "cursor":"pointer"});
+			}).mouseout(function(){
+				$(this).parent().css({"background":"black"});
+			}).click(function(){
+				var num = $(this).parent().children("input").val();
+				
+				location.href="<%=request.getContextPath()%>/selectOne.no?num=" + num;
+			});
+		});
+	</script>
 
 </body>
 </html>

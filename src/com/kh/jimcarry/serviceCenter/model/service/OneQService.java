@@ -3,8 +3,10 @@ package com.kh.jimcarry.serviceCenter.model.service;
 import java.sql.Connection;
 import java.util.ArrayList;
 
+import com.kh.jimcarry.serviceCenter.model.dao.NoticeDao;
 import com.kh.jimcarry.serviceCenter.model.dao.OneQDao;
 import com.kh.jimcarry.serviceCenter.model.dao.QandADao;
+import com.kh.jimcarry.serviceCenter.model.vo.Notice;
 import com.kh.jimcarry.serviceCenter.model.vo.OneQ;
 import com.kh.jimcarry.serviceCenter.model.vo.QandA;
 
@@ -60,7 +62,13 @@ public class OneQService {
 	}
 	public ArrayList<OneQ> selectList(int currentPage, int limit) {
 		// TODO Auto-generated method stub
-		return null;
+		Connection con = getConnection();
+		
+		ArrayList<OneQ> list2 = new OneQDao().selectList(con, currentPage, limit);
+		
+		close(con);
+		
+		return list2;
 	}
 
 }

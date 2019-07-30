@@ -154,7 +154,6 @@ public class NoticeDao {
 			while(rset.next()) {
 					Notice n=new Notice();
 
-					
 					n.setPostcode(rset.getString("POST_CODE"));
 					n.setUserNo(rset.getString("MEMBER_NO"));
 					n.setPostdate(rset.getDate("POST_DATE"));
