@@ -1,10 +1,9 @@
 package com.kh.jimcarry.serviceCenter.model.service;
 
-import static com.kh.jimcarry.common.JDBCTemplate.getConnection;
-
 import java.sql.Connection;
 import java.util.ArrayList;
 
+import com.kh.jimcarry.serviceCenter.model.dao.NoticeDao;
 import com.kh.jimcarry.serviceCenter.model.dao.QandADao;
 import com.kh.jimcarry.serviceCenter.model.vo.Notice;
 import com.kh.jimcarry.serviceCenter.model.vo.QandA;
@@ -45,7 +44,14 @@ public class QandAService {
 	}
 	public ArrayList<QandA> selectList(int currentPage, int limit) {
 		// TODO Auto-generated method stub
-		return null;
+		
+		Connection con = getConnection();
+		
+		ArrayList<QandA> list1 = new QandADao().selectList(con, currentPage, limit);
+		
+		close(con);
+		
+		return list1;
 	}
 
 }

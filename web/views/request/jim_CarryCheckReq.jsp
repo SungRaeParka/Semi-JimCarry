@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"
 	import="java.util.*, java.text.SimpleDateFormat, com.kh.jimcarry.request.model.vo.*"%>
-	
-<% 
-Request req = (Request)request.getAttribute("r");
-ArrayList<Product> plist = (ArrayList<Product>)request.getAttribute("plist");
-%>	
+<%
+	ShowRP requestInfo = (ShowRP) session.getAttribute("requestInfo");
+	ArrayList<HashMap<String, Object>> requestImg = (ArrayList<HashMap<String, Object>>) session.getAttribute("requestImg");
+	ArrayList<HashMap<String, Object>> productInfo = (ArrayList<HashMap<String, Object>>)session.getAttribute("productInfo");
+%>
+
 	
 
 <!DOCTYPE html>
@@ -32,6 +33,7 @@ ArrayList<Product> plist = (ArrayList<Product>)request.getAttribute("plist");
 	height: auto;
 	max-width: 100px;
 	max-height: 100px;
+	border: 1px solid black;
 }
 
 .container {
@@ -45,108 +47,103 @@ ArrayList<Product> plist = (ArrayList<Product>)request.getAttribute("plist");
 
 	<div id="outer">
 
-		<br> <br> <br> <br>
-		
-		
-		<%
-		Date startDay = req.getReqStart(); //견적매칭 시작일
-		Date finishDay = req.getReqFinish(); //견적매칭 종료일
-		Date nowDay = new Date(); //현재날짜
-		String moveDay = req.getReservationDate(); //예약일(짐옮기는 날)
-		  
-		
-			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm");
-			
-			long startTime = startDay.getTime();
-			//견적매칭 시작일 getTime
-			
-			nowDay = dateFormat.parse(dateFormat.format(nowDay));
-			long nowTime = nowDay.getTime();
-			//오늘 날,시간 getTime
-
-			long finishTime = finishDay.getTime();
-			//견적매칭 종료일 getTime
-			
-			
-			
-			long timeRemain = finishTime+86400000-nowTime;
-			long timeReH = (timeRemain/60000)/60;
-			long timeReM = (timeRemain/60000)%60;
-			
-			long dayCount =  (finishTime-startTime)/86400000;
-			
-			
-		%>
+		<br> <br> <br> <br>	
+	
 
 		<h1 align="center">최종 견적서</h1>
 		<hr>
 		<div>
 			<h3>예정일</h3>
-			<p><%=req.getReservationDate() %>
-			</p>
+			<p><%=requestInfo.getReservDate() %></p>
 		</div>
+		
 		<hr>
 
 		<div>
 			<h3>출발지</h3>
-			<p><%=req.getStartPoint() %></p>
+			<p><%=requestInfo.getStartPoint() %></p>
 		</div>
+
 		<hr>
 
 		<div>
 			<h3>도착지</h3>
-			<p><%=req.getArrivalPoint() %></p>
+			<p><%=requestInfo.getArrivePoint() %></p>
 		</div>
+		
 		<hr>
 		
-		
-		<%
-		Product p = new Product();
-		
-		for(int i=0 ; i<plist.size() ; i++){
-			p = plist.get(i);
-		%>
-			
-			
-			
-		<%	
-		}
-		%>
-
-		<!-- <div>
+		<div>
 			<h3>짐 정보</h3>
-			<p>
-				가구 : 어쩌고 저쩌고<br> 짐박스 : 몇개
-			</p>
+			<%for(int i = 0; i < productInfo.size(); i++) {
+				HashMap<String, Object> hmap = productInfo.get(i);%>
+				
+				<%if(hmap.get("proName").equals("냉장고")){ %>
+				<p><%=hmap.get("proKind")%>, <%=hmap.get("proName")%>, <%=hmap.get("proType")%>, <%=hmap.get("proSize")%></p>
+				<%}else if(hmap.get("proName").equals("세탁기")) {%>
+				<p><%=hmap.get("proKind")%>, <%=hmap.get("proName")%>, <%=hmap.get("proType")%>, <%=hmap.get("proSize")%></p>
+				<%}else if(hmap.get("proName").equals("TV/모니터")) {%>
+				<p><%=hmap.get("proKind")%>, <%=hmap.get("proName")%>, <%=hmap.get("proSize")%></p>
+				<%}else if(hmap.get("proName").equals("에어컨")) {%>
+				<p><%=hmap.get("proKind")%>, <%=hmap.get("proName")%>, <%=hmap.get("proType")%>, <%=hmap.get("proUni")%></p>
+				<%}else if(hmap.get("proName").equals("정수기")) {%>
+				<p><%=hmap.get("proKind")%>, <%=hmap.get("proName")%>, <%=hmap.get("proSize")%>, <%=hmap.get("proUni")%></p>
+				<%}else if(hmap.get("proName").equals("PC/데스크탑")) {%>
+				<p><%=hmap.get("proKind")%>, <%=hmap.get("proName")%>, <%=hmap.get("proType")%></p>
+				<%}else if(hmap.get("proName").equals("전자레인지")) {%>
+				<p><%=hmap.get("proKind")%>, <%=hmap.get("proName")%>, <%=hmap.get("proType")%></p>
+				<%}else if(hmap.get("proName").equals("침대")) {%>
+				<p><%=hmap.get("proKind")%>, <%=hmap.get("proName")%>, <%=hmap.get("proType")%>, <%=hmap.get("proSize")%></p>
+				<%}else if(hmap.get("proName").equals("의자")) {%>
+				<p><%=hmap.get("proKind")%>, <%=hmap.get("proName")%>, <%=hmap.get("proType")%></p>
+				<%}else if(hmap.get("proName").equals("책상/테이블")) {%>
+				<p><%=hmap.get("proKind")%>, <%=hmap.get("proName")%>, <%=hmap.get("proType")%>, <%=hmap.get("proSize")%>, <%=hmap.get("proMat")%>, <%=hmap.get("proWidth")%></p>
+				<%}else if(hmap.get("proName").equals("책장")) {%>
+				<p><%=hmap.get("proKind")%>, <%=hmap.get("proName")%>, <%=hmap.get("proWidth")%>, <%=hmap.get("proHeight")%></p>
+				<%}else if(hmap.get("proName").equals("옷장")) {%>
+				<p><%=hmap.get("proKind")%>, <%=hmap.get("proName")%>, <%=hmap.get("proType")%>, <%=hmap.get("proUni")%>, <%=hmap.get("proWidth")%></p>
+				<%}else if(hmap.get("proName").equals("진열장")) {%>
+				<p><%=hmap.get("proKind")%>, <%=hmap.get("proName")%>, <%=hmap.get("proWidth")%>, <%=hmap.get("proHeight")%>, <%=hmap.get("proGck")%></p>
+				<%}else if(hmap.get("proName").equals("쇼파")) {%>
+				<p><%=hmap.get("proKind")%>, <%=hmap.get("proName")%>, <%=hmap.get("proSize")%></p>
+				<%}else if(hmap.get("proName").equals("행거")) {%>
+				<p><%=hmap.get("proKind")%>, <%=hmap.get("proName")%>, <%=hmap.get("proType")%>, <%=hmap.get("proWidth")%></p>
+				<%}else if(hmap.get("proName").equals("거울")) {%>
+				<p><%=hmap.get("proKind")%>, <%=hmap.get("proName")%>, <%=hmap.get("proType")%>, <%=hmap.get("proSize")%></p>
+				<%}else if(hmap.get("proName").equals("화장대")) {%>
+				<p><%=hmap.get("proKind")%>, <%=hmap.get("proName")%>, <%=hmap.get("proType")%>, <%=hmap.get("proMat")%></p>
+				<%}else if(hmap.get("proName").equals("피아노")) {%>				
+				<p><%=hmap.get("proKind")%>, <%=hmap.get("proName")%>, <%=hmap.get("proType")%></p>
+				<%} %>
+			<%} %>
 		</div>
+		
 		<hr>
 
 		<div>
 			<h3>사진 정보</h3>
-			<img src="/semi/images/box.png" id="imgs">
-
+			<%for(int i = 0; i < requestImg.size(); i++){
+				HashMap<String, Object>hmap = requestImg.get(i);	
+			%>	
+			<img src="/semi/images_uploadFiles/<%=hmap.get("changeName") %>" id="imgs">
+			<%} %>
 		</div>
-		<hr>
-
-		<div>
-			<h3>짐 정보</h3>
-			<p>
-				가구 : 어쩌고 저쩌고<br> 짐박스 : 몇개
-			</p>
-		</div>
-		<hr>
- -->
+				
+		<hr>	
+		
 		<div>
 			<h3>메모</h3>
-			<p>앞에 메모란에 입력한 내용</p>
+			<p><%=requestInfo.getMemo() %></p>
 
 		</div>
+		
 		<hr>
 
 		<div>
 			<h3>입찰 받을 기간</h3>
-			<p><%=req.getReqStart() %> ~ <%=req.getReqFinish() %> (총<%= dayCount %>일)</p>
+			<p><%=requestInfo.getReqStart()%> ~ <%=requestInfo.getReqFinish() %></p>
 		</div>
+		
 		<hr>
 
 		<br> <br>

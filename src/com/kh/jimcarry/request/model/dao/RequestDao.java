@@ -5,10 +5,10 @@ import static com.kh.jimcarry.common.JDBCTemplate.close;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Properties;
@@ -16,6 +16,7 @@ import java.util.Properties;
 import com.kh.jimcarry.request.model.vo.Product;
 import com.kh.jimcarry.request.model.vo.Request;
 import com.kh.jimcarry.request.model.vo.RequestAttachment;
+import com.kh.jimcarry.request.model.vo.ShowRP;
 
 public class RequestDao {
 
@@ -179,13 +180,8 @@ public class RequestDao {
 			close(pstmt);
 			close(rset);
 		}
-
-
-
 		return list;
-
-
-	}
+  }
 	
 		//입찰내역 리스트
 		public HashMap<String, Request> selectOrderList(Connection con, String logUserNo) {
@@ -230,101 +226,8 @@ public class RequestDao {
 			
 			
 			return orderMap;
-		}
-
-
-	//최종견적서 상세보기
-	public Request checkReq(Connection con, String no) {
-		PreparedStatement pstmt= null;
-		ResultSet rset = null;
-		Request r = null;
-
-		String query = prop.getProperty("checkReq");
-
-		try {
-			pstmt = con.prepareStatement(query);
-
-			pstmt.setString(1, no);
-
-			rset = pstmt.executeQuery();
-
-			while(rset.next()) {
-				r.setReservationDate(rset.getString("RESERVATION_DATE"));
-				r.setStartPoint(rset.getString("START_POINT"));
-				r.setArrivalPoint(rset.getString("ARRIVE_POINT"));
-				r.setReqStart(rset.getDate("REQ_START"));
-				r.setReqFinish(rset.getDate("REQ_FINISH"));
-
-			}
-			System.out.println(r);
-
-
-
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}finally {
-			close(rset);
-			close(pstmt);
-		}
-
-		return r;
-	}
-
-	
-	
-
-
-
-	//짐리스트
-	public ArrayList<Product> selectPlist(Connection con, String no) {
-		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		ArrayList<Product> plist = null;
-
-		String query = prop.getProperty("selectPlist");
-
-		try {
-			pstmt = con.prepareStatement(query);
-
-			pstmt.setString(1, no);
-
-			rset = pstmt.executeQuery();
-
-			plist = new ArrayList<Product>();
-
-			while(rset.next()) {
-				Product p = new Product();
-
-				p.setReqNo(rset.getString("REQ_NO"));
-				p.setProNo(rset.getString("PRODUCT_NO"));
-				p.setProName(rset.getString("PRODUCT_NAME"));
-				p.setProType(rset.getString("PRODUCT_TYPE"));
-				p.setProSize(rset.getString("PRODUCT_SIZE"));
-				p.setProMaterial(rset.getString("MATERIAL"));
-				p.setProWidth(rset.getString("WIDTH"));
-				p.setProHeight(rset.getString("HEIGHT"));
-				p.setGlassCheck(rset.getString("GLASS_CHECK"));
-				p.setUniquness(rset.getString("UNIQUNESS"));
-				p.setProKind(rset.getString("PRODUCT_KIND"));
-				p.setBookCount(rset.getInt("BOOK_COUNT"));
-				p.setBoxCount(rset.getInt("BOX_COUNT"));
-
-
-				plist.add(p);
-			}
-			System.out.println(plist.get(0));
-
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}finally {
-			close(rset);
-		}
-
-		return plist;
-	}
-
+		}		
+	}	
 
 	//입찰내역확인
 	public ArrayList<Request> checkOrder(Connection con, String no) {
@@ -391,9 +294,7 @@ public class RequestDao {
 				minPrice = r.getOrderPrice();
 				System.out.println(minPrice);
 			}
-
-
-
+      
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -427,7 +328,7 @@ public class RequestDao {
 			pstmt.setString(3, r.getArrivalPoint());
 			pstmt.setDate(4, reqFinishSql);
 			pstmt.setString(5, r.getUserNo());
-			pstmt.setString(6, r.getReqNo());
+			pstmt.setString(6, "R" + r.getReqNo());
 			pstmt.setString(7, r.getProNo());
 			pstmt.setString(8, r.getMemo());
 
@@ -448,8 +349,8 @@ public class RequestDao {
 		PreparedStatement pstmt = null;
 		int result = 0;
 
-		String query = prop.getProperty("insertPIMG");  
-
+		String query = prop.getProperty("insertPIMG"); 
+    
 		try {
 			for(int i = 0; i < fileList.size(); i++) {
 				pstmt = con.prepareStatement(query);
@@ -479,13 +380,404 @@ public class RequestDao {
 		return result;
 
 	}
-
-
-
-
-
-
-
-
-
 }
+
+	public ShowRP selectRequestInfo(Connection con, String reqNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ShowRP requestInfo = null;
+		
+		String query = prop.getProperty("requestInfo");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			
+			pstmt.setString(1, "R"+reqNo);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				requestInfo = new ShowRP();
+				
+				requestInfo.setReqNo(rset.getString("REQ_NO"));
+				requestInfo.setReservDate(rset.getString("RESERVATION_DATE"));
+				requestInfo.setStartPoint(rset.getString("START_POINT"));
+				requestInfo.setArrivePoint(rset.getString("ARRIVE_POINT"));
+				requestInfo.setReqStart(rset.getDate("REQ_START"));
+				requestInfo.setReqFinish(rset.getDate("REQ_FINISH"));
+				requestInfo.setMemo(rset.getString("MEMO"));			
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return requestInfo;
+	}
+
+
+
+	public ArrayList<HashMap<String, Object>> selectRequestImg(Connection con, String reqNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<HashMap<String, Object>> requestImg = null;
+		HashMap<String, Object> hmap = null;
+		
+		String query = prop.getProperty("selectRequestImg");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			
+			pstmt.setString(1, "R"+reqNo);
+			
+			rset = pstmt.executeQuery();
+			
+			requestImg = new ArrayList<HashMap<String, Object>>();
+			
+			while(rset.next()) {
+				
+				hmap = new HashMap<String, Object>();
+				
+				hmap.put("reqNo", rset.getString("REQ_NO"));
+				hmap.put("filePath", rset.getString("FILE_PATH"));
+				hmap.put("changeName", rset.getString("CHANGE_NAME"));
+				
+				requestImg.add(hmap);
+				
+				System.out.println("requestImg :::" + requestImg);
+				
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return requestImg;
+	}
+
+
+
+	public ArrayList<HashMap<String, Object>> selectProductInFo(Connection con, String reqNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<HashMap<String, Object>> ProductInfo = null;
+		HashMap<String, Object> hmap = null;
+		
+		String query = prop.getProperty("selectProductInfo");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			
+			pstmt.setString(1, "R" + reqNo);
+			
+			rset = pstmt.executeQuery();
+			
+			ProductInfo = new ArrayList<HashMap<String, Object>>();
+			
+			while(rset.next()) {
+				hmap = new HashMap<String, Object>();
+				
+				hmap.put("proKind", rset.getString("PRODUCT_KIND"));
+				hmap.put("proName", rset.getString("PRODUCT_NAME"));				
+				
+				System.out.println("hmap.get(proName) ::: " + hmap.get("proName"));
+				
+				if(rset.getString("PRODUCT_NAME").equals("냉장고")) {
+					
+					hmap.put("proType", rset.getString("PRODUCT_TYPE"));
+					hmap.put("proSize", rset.getString("PRODUCT_SIZE"));
+				}else if(rset.getString("PRODUCT_NAME").equals("세탁기")) {
+					
+					hmap.put("proType", rset.getString("PRODUCT_TYPE"));
+					hmap.put("proSize", rset.getString("PRODUCT_SIZE"));
+				}else if(rset.getString("PRODUCT_NAME").equals("TV/모니터")) {
+					
+					hmap.put("proSize", rset.getString("PRODUCT_SIZE"));
+				}else if(rset.getString("PRODUCT_NAME").equals("에어컨")) {
+					
+					hmap.put("proType", rset.getString("PRODUCT_TYPE"));
+					hmap.put("proUni", rset.getString("UNIQUNESS"));
+				}else if(rset.getString("PRODUCT_NAME").equals("정수기")){
+					
+					hmap.put("proSize", rset.getString("PRODUCT_SIZE"));
+					hmap.put("proUni", rset.getString("UNIQUNESS"));
+				}else if(rset.getString("PRODUCT_NAME").equals("PC/노트북")) {
+					
+					hmap.put("proType", rset.getString("PRODUCT_TYPE"));
+				}else if(rset.getString("PRODUCT_NAME").equals("전자레인지")) {
+					
+					hmap.put("proType", rset.getString("PRODUCT_TYPE"));
+				}else if(rset.getString("PRODUCT_NAME").equals("침대")) {
+					
+					hmap.put("proType", rset.getString("PRODUCT_TYPE"));
+					hmap.put("proSize", rset.getString("PRODUCT_SIZE"));
+				}else if(rset.getString("PRODUCT_NAME").equals("의자")) {
+					
+					hmap.put("proType", rset.getString("PRODUCT_TYPE"));
+					
+				}else if(rset.getString("PRODUCT_NAME").equals("책상/테이블")) {
+					
+					hmap.put("proType", rset.getString("PRODUCT_TYPE"));
+					hmap.put("proSize", rset.getString("PRODUCT_SIZE"));
+					hmap.put("proMat", rset.getString("MATERIAL"));
+					hmap.put("proWidth", rset.getString("WIDTH"));
+					
+				}else if(rset.getString("PRODUCT_NAME").equals("책장")) {
+					
+					hmap.put("proWidth", rset.getString("WIDTH"));
+					hmap.put("proHeight", rset.getString("HEIGHT"));
+					
+				}else if(rset.getString("PRODUCT_NAME").equals("옷장")) {
+					
+					hmap.put("proType", rset.getString("PRODUCT_TYPE"));
+					hmap.put("proUni", rset.getString("UNIQUNESS"));
+					hmap.put("proWidth", rset.getString("WIDTH"));
+				
+				}else if(rset.getString("PRODUCT_NAME").equals("진열장")) {
+					
+					hmap.put("proWidth", rset.getString("WIDTH"));
+					hmap.put("proHeight", rset.getString("HEIGHT"));
+					hmap.put("proGck", rset.getString("GLASS_CHECK"));
+				
+				}else if(rset.getString("PRODUCT_NAME").equals("쇼파")) {
+					
+					hmap.put("proSize", rset.getString("PRODUCT_SIZE"));
+					
+				}else if(rset.getString("PRODUCT_NAME").equals("행거")) {
+					
+					hmap.put("proType", rset.getString("PRODUCT_TYPE"));
+					hmap.put("proWidth", rset.getString("WIDTH"));
+					
+				}else if(rset.getString("PRODUCT_NAME").equals("거울")) {
+					
+					hmap.put("proType", rset.getString("PRODUCT_TYPE"));
+					hmap.put("proSize", rset.getString("PRODUCT_SIZE"));
+					
+				}else if(rset.getString("PRODUCT_NAME").equals("화장대")) {
+					
+					hmap.put("proType", rset.getString("PRODUCT_TYPE"));
+					hmap.put("proMat", rset.getString("MATERIAL"));
+					
+				}else if(rset.getString("PRODUCT_NAME").equals("피아노")) {
+					
+					hmap.put("proType", rset.getString("PRODUCT_TYPE"));
+					
+				}
+				
+				ProductInfo.add(hmap);				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return ProductInfo;
+	}
+
+
+
+	public ShowRP selectRequestInfo2(Connection con, String reqNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ShowRP requestInfo = null;
+		
+		String query = prop.getProperty("requestInfo");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			
+			pstmt.setString(1, reqNo);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				requestInfo = new ShowRP();
+				
+				requestInfo.setReqNo(rset.getString("REQ_NO"));
+				requestInfo.setReservDate(rset.getString("RESERVATION_DATE"));
+				requestInfo.setStartPoint(rset.getString("START_POINT"));
+				requestInfo.setArrivePoint(rset.getString("ARRIVE_POINT"));
+				requestInfo.setReqStart(rset.getDate("REQ_START"));
+				requestInfo.setReqFinish(rset.getDate("REQ_FINISH"));
+				requestInfo.setMemo(rset.getString("MEMO"));			
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return requestInfo;
+	}
+	
+	public ArrayList<HashMap<String, Object>> selectRequestImg2(Connection con, String reqNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<HashMap<String, Object>> requestImg = null;
+		HashMap<String, Object> hmap = null;
+		
+		String query = prop.getProperty("selectRequestImg");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			
+			pstmt.setString(1, reqNo);
+			
+			rset = pstmt.executeQuery();
+			
+			requestImg = new ArrayList<HashMap<String, Object>>();
+			
+			while(rset.next()) {
+				
+				hmap = new HashMap<String, Object>();
+				
+				hmap.put("reqNo", rset.getString("REQ_NO"));
+				hmap.put("filePath", rset.getString("FILE_PATH"));
+				hmap.put("changeName", rset.getString("CHANGE_NAME"));
+				
+				requestImg.add(hmap);
+				
+				System.out.println("requestImg :::" + requestImg);
+				
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return requestImg;
+	}
+	
+	public ArrayList<HashMap<String, Object>> selectProductInFo2(Connection con, String reqNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<HashMap<String, Object>> ProductInfo = null;
+		HashMap<String, Object> hmap = null;
+		
+		String query = prop.getProperty("selectProductInfo");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			
+			pstmt.setString(1, "R" + reqNo);
+			
+			rset = pstmt.executeQuery();
+			
+			ProductInfo = new ArrayList<HashMap<String, Object>>();
+			
+			while(rset.next()) {
+				hmap = new HashMap<String, Object>();
+				
+				hmap.put("proKind", rset.getString("PRODUCT_KIND"));
+				hmap.put("proName", rset.getString("PRODUCT_NAME"));				
+				
+				System.out.println("hmap.get(proName) ::: " + hmap.get("proName"));
+				
+				if(rset.getString("PRODUCT_NAME").equals("냉장고")) {
+					
+					hmap.put("proType", rset.getString("PRODUCT_TYPE"));
+					hmap.put("proSize", rset.getString("PRODUCT_SIZE"));
+				}else if(rset.getString("PRODUCT_NAME").equals("세탁기")) {
+					
+					hmap.put("proType", rset.getString("PRODUCT_TYPE"));
+					hmap.put("proSize", rset.getString("PRODUCT_SIZE"));
+				}else if(rset.getString("PRODUCT_NAME").equals("TV/모니터")) {
+					
+					hmap.put("proSize", rset.getString("PRODUCT_SIZE"));
+				}else if(rset.getString("PRODUCT_NAME").equals("에어컨")) {
+					
+					hmap.put("proType", rset.getString("PRODUCT_TYPE"));
+					hmap.put("proUni", rset.getString("UNIQUNESS"));
+				}else if(rset.getString("PRODUCT_NAME").equals("정수기")){
+					
+					hmap.put("proSize", rset.getString("PRODUCT_SIZE"));
+					hmap.put("proUni", rset.getString("UNIQUNESS"));
+				}else if(rset.getString("PRODUCT_NAME").equals("PC/노트북")) {
+					
+					hmap.put("proType", rset.getString("PRODUCT_TYPE"));
+				}else if(rset.getString("PRODUCT_NAME").equals("전자레인지")) {
+					
+					hmap.put("proType", rset.getString("PRODUCT_TYPE"));
+				}else if(rset.getString("PRODUCT_NAME").equals("침대")) {
+					
+					hmap.put("proType", rset.getString("PRODUCT_TYPE"));
+					hmap.put("proSize", rset.getString("PRODUCT_SIZE"));
+				}else if(rset.getString("PRODUCT_NAME").equals("의자")) {
+					
+					hmap.put("proType", rset.getString("PRODUCT_TYPE"));
+					
+				}else if(rset.getString("PRODUCT_NAME").equals("책상/테이블")) {
+					
+					hmap.put("proType", rset.getString("PRODUCT_TYPE"));
+					hmap.put("proSize", rset.getString("PRODUCT_SIZE"));
+					hmap.put("proMat", rset.getString("MATERIAL"));
+					hmap.put("proWidth", rset.getString("WIDTH"));
+					
+				}else if(rset.getString("PRODUCT_NAME").equals("책장")) {
+					
+					hmap.put("proWidth", rset.getString("WIDTH"));
+					hmap.put("proHeight", rset.getString("HEIGHT"));
+					
+				}else if(rset.getString("PRODUCT_NAME").equals("옷장")) {
+					
+					hmap.put("proType", rset.getString("PRODUCT_TYPE"));
+					hmap.put("proUni", rset.getString("UNIQUNESS"));
+					hmap.put("proWidth", rset.getString("WIDTH"));
+				
+				}else if(rset.getString("PRODUCT_NAME").equals("진열장")) {
+					
+					hmap.put("proWidth", rset.getString("WIDTH"));
+					hmap.put("proHeight", rset.getString("HEIGHT"));
+					hmap.put("proGck", rset.getString("GLASS_CHECK"));
+				
+				}else if(rset.getString("PRODUCT_NAME").equals("쇼파")) {
+					
+					hmap.put("proSize", rset.getString("PRODUCT_SIZE"));
+					
+				}else if(rset.getString("PRODUCT_NAME").equals("행거")) {
+					
+					hmap.put("proType", rset.getString("PRODUCT_TYPE"));
+					hmap.put("proWidth", rset.getString("WIDTH"));
+					
+				}else if(rset.getString("PRODUCT_NAME").equals("거울")) {
+					
+					hmap.put("proType", rset.getString("PRODUCT_TYPE"));
+					hmap.put("proSize", rset.getString("PRODUCT_SIZE"));
+					
+				}else if(rset.getString("PRODUCT_NAME").equals("화장대")) {
+					
+					hmap.put("proType", rset.getString("PRODUCT_TYPE"));
+					hmap.put("proMat", rset.getString("MATERIAL"));
+					
+				}else if(rset.getString("PRODUCT_NAME").equals("피아노")) {
+					
+					hmap.put("proType", rset.getString("PRODUCT_TYPE"));
+					
+				}
+				
+				ProductInfo.add(hmap);				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return ProductInfo;
+	}
+
+}	

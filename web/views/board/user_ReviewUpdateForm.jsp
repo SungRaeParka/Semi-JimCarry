@@ -1,19 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" import="com.kh.jimcarry.board.model.vo.*"
-						 import="java.util.Date"
-						 import="java.text.SimpleDateFormat"
-						 import="java.util.ArrayList"%>
+	import="java.util.Date" import="java.text.SimpleDateFormat"
+	import="java.util.ArrayList"%>
 
 
 
-	<%
+<%
 		Board b = (Board) request.getAttribute("b");
 		ArrayList<Attachment> fileList = (ArrayList<Attachment>) request.getAttribute("fileList");
 
 		Attachment photo1 = fileList.get(0);
 		Attachment photo2 = fileList.get(1);
-
-		System.out.println("photo1 : 넘어옴? " + photo1);
+		System.out.println(photo1.getChangeName());
 
 		Date now = new Date();
 		String date1 = String.format("%tF",now);
@@ -28,7 +26,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <style>
 .outer {
 	width: 800px;
@@ -39,7 +38,6 @@
 	margin-right: auto;
 	margin-top: auto;
 }
-
 
 table {
 	border: 5px solid #eeeeee;
@@ -58,13 +56,13 @@ table {
 	width: 200px;
 }
 </style>
-<script type="text/javascript">
+<%-- <script type="text/javascript">
 	$(document).ready(function(){
 		$('#contentImg1').src(<%=photo1.getOriginName()%>)
 	});
 
 
-</script>
+</script> --%>
 
 
 <!-- <style>
@@ -100,13 +98,42 @@ td {
 	background-color: skyblue;
 }
 </style> -->
+<style>
+/* label{
+	display: inline-block;
+	padding: .5em, .75em;
+	color: #fff;
+	font-size: inherit;
+	line-height: normal;
+	vertical-align: middle;
+	background-color: #5cb85c;
+	cursor: pointer;
+	border: 1px solid #4ace4c;
+	border-radius: .25em;
+	-webkit-transition: background-color 0.2s;
+	-moz-transition: background-color 0.2s;
+	-ms-transition: background-color 0.2s;
+	-o-transition: background-color 0.2s;
+	transition: background-color 0.2s;
+} */
+/* input[type="file"]{
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	border: 0;
+	}  */
+</style>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 
 	<%@ include file="/views/common/main_TopBar.jsp"%>
-	<%@ include file="/views/common/user_TopBar.jsp" %>
+	<%@ include file="/views/common/user_TopBar.jsp"%>
 
 	<br>
 	<br>
@@ -120,43 +147,54 @@ td {
 
 
 	<div class="outer">
-		<form action="" method="post" enctype="multipart/form-data">
+		<form action="<%=request.getContextPath()%>/update.bo" method="post" enctype="multipart/form-data">
 			<div class="insertArea">
 				<table align="center" border=1>
 					<tr>
-						<td width="100px" height="50px"align="center" >제목</td>
-						<td colspan="4"><input type="text" size=40 name="btitle" value="<%=b.getPostTitle()%>">
-							<input type="hidden" name="pagebno" value="<%=b.getPostCode()%>"/>
-						</td>
+						<td width="100px" height="50px" align="center">제목</td>
+						<td colspan="4"><input type="text" size=40 name="btitle"
+							value="<%=b.getPostTitle()%>"> <input type="hidden"
+							name="pagebno" value="<%=b.getPostCode()%>" /></td>
 
 					</tr>
 					<tr align="center">
 						<td height="50x">작성자</td>
-						<td style="width: 150px"><label for="" ><%=loginUser.getUserId() %></label></td>
+						<td style="width: 150px"><label for=""><%=loginUser.getUserId() %></label></td>
 						<td>작성일자</td>
 						<td><label for=""><%=date1%></label></td>
 					</tr>
 
 					<tr>
-						<td style="color: red; height: 50px;" align="center">이미지
+						<td style="color: red; height: 50px;" align="center">기존 이미지</td>
 
-						</td>
-						<td colspan="3" style="color:red;">
-							<input type="file"  name=photo1 id="contentImgArea1" src="<%=request.getContextPath() %>/images_uploadFiles/<%=photo1.getChangeName() %>"  value="123">
+						<td colspan="3" style="color: red; text-align: center;">
+
+						<img  src="<%=request.getContextPath()%>/images_uploadFiles/<%=photo1.getChangeName()%>">
+							<input type="hidden" name="img1" value="<%=photo1.getOriginName() %>">
+						<img  src="<%=request.getContextPath()%>/images_uploadFiles/<%=photo2.getChangeName()%>">
+							<input type="hidden" name="img2" value="<%=photo2.getOriginName() %>">
+
 						</td>
 
 					</tr>
 
 
-				 	<tr>
-						<td height="100px" style="color: red; height: 50px;" align="center">이미지
+					<tr>
+						<td height="100px" style="color: red; height: 50px;"
+							align="center" rowspan="2">이미지</td>
 
-						</td>
-						<td colspan="3" style="color:red;">
-							<input type="file"  name=photo2 id="contentImgArea2" />
-						</td>
+
+						<td colspan="3"><input type="file" name=photo1 id="contentImgArea1"></td>
+
 
 					</tr>
+						<tr>
+						<td colspan="3">
+							<input type="file" name=photo2 id="contentImgArea2" />
+						</td>
+
+						</tr>
+
 
 
 
@@ -189,8 +227,8 @@ td {
 
 			reader.onload = function(e) {
 				switch(num){
-					case 1 : $("#contentImg1").attr("src", e.target.result); break;
-					case 2 : $("#contentImg2").attr("src", e.target.result); break;
+					case 1 : $("#contentImgArea1").attr("src", e.target.result); break;
+					case 2 : $("#contentImgArea2").attr("src", e.target.result); break;
 				}
 			}
 

@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"
 	import="java.util.*, java.text.SimpleDateFormat, com.kh.jimcarry.request.model.vo.*"%>
+<%
+	ShowRP requestInfo = (ShowRP) session.getAttribute("requestInfo");
+	ArrayList<HashMap<String, Object>> requestImg = (ArrayList<HashMap<String, Object>>) session.getAttribute("requestImg");
+	ArrayList<HashMap<String, Object>> productInfo = (ArrayList<HashMap<String, Object>>)session.getAttribute("productInfo");
+%>
 
 	
 
@@ -28,6 +33,7 @@
 	height: auto;
 	max-width: 100px;
 	max-height: 100px;
+	border: 1px solid black;
 }
 
 .container {
@@ -48,45 +54,86 @@
 		<hr>
 		<div>
 			<h3>예정일</h3>
-			<p>예정일임</p>
+			<p><%=requestInfo.getReservDate() %></p>
 		</div>
 		
 		<hr>
 
 		<div>
 			<h3>출발지</h3>
-			<p>출발지임</p>
+			<p><%=requestInfo.getStartPoint() %></p>
 		</div>
 
 		<hr>
 
 		<div>
 			<h3>도착지</h3>
-			<p>도착지임</p>
+			<p><%=requestInfo.getArrivePoint() %></p>
 		</div>
 		
 		<hr>
 		
 		<div>
 			<h3>짐 정보</h3>
-			<p>
-				가구 : 어쩌고 저쩌고<br> 짐박스 : 몇개
-			</p>
+			<%for(int i = 0; i < productInfo.size(); i++) {
+				HashMap<String, Object> hmap = productInfo.get(i);%>
+				
+				<%if(hmap.get("proName").equals("냉장고")){ %>
+				<p><%=hmap.get("proKind")%>, <%=hmap.get("proName")%>, <%=hmap.get("proType")%>, <%=hmap.get("proSize")%></p>
+				<%}else if(hmap.get("proName").equals("세탁기")) {%>
+				<p><%=hmap.get("proKind")%>, <%=hmap.get("proName")%>, <%=hmap.get("proType")%>, <%=hmap.get("proSize")%></p>
+				<%}else if(hmap.get("proName").equals("TV/모니터")) {%>
+				<p><%=hmap.get("proKind")%>, <%=hmap.get("proName")%>, <%=hmap.get("proSize")%></p>
+				<%}else if(hmap.get("proName").equals("에어컨")) {%>
+				<p><%=hmap.get("proKind")%>, <%=hmap.get("proName")%>, <%=hmap.get("proType")%>, <%=hmap.get("proUni")%></p>
+				<%}else if(hmap.get("proName").equals("정수기")) {%>
+				<p><%=hmap.get("proKind")%>, <%=hmap.get("proName")%>, <%=hmap.get("proSize")%>, <%=hmap.get("proUni")%></p>
+				<%}else if(hmap.get("proName").equals("PC/데스크탑")) {%>
+				<p><%=hmap.get("proKind")%>, <%=hmap.get("proName")%>, <%=hmap.get("proType")%></p>
+				<%}else if(hmap.get("proName").equals("전자레인지")) {%>
+				<p><%=hmap.get("proKind")%>, <%=hmap.get("proName")%>, <%=hmap.get("proType")%></p>
+				<%}else if(hmap.get("proName").equals("침대")) {%>
+				<p><%=hmap.get("proKind")%>, <%=hmap.get("proName")%>, <%=hmap.get("proType")%>, <%=hmap.get("proSize")%></p>
+				<%}else if(hmap.get("proName").equals("의자")) {%>
+				<p><%=hmap.get("proKind")%>, <%=hmap.get("proName")%>, <%=hmap.get("proType")%></p>
+				<%}else if(hmap.get("proName").equals("책상/테이블")) {%>
+				<p><%=hmap.get("proKind")%>, <%=hmap.get("proName")%>, <%=hmap.get("proType")%>, <%=hmap.get("proSize")%>, <%=hmap.get("proMat")%>, <%=hmap.get("proWidth")%></p>
+				<%}else if(hmap.get("proName").equals("책장")) {%>
+				<p><%=hmap.get("proKind")%>, <%=hmap.get("proName")%>, <%=hmap.get("proWidth")%>, <%=hmap.get("proHeight")%></p>
+				<%}else if(hmap.get("proName").equals("옷장")) {%>
+				<p><%=hmap.get("proKind")%>, <%=hmap.get("proName")%>, <%=hmap.get("proType")%>, <%=hmap.get("proUni")%>, <%=hmap.get("proWidth")%></p>
+				<%}else if(hmap.get("proName").equals("진열장")) {%>
+				<p><%=hmap.get("proKind")%>, <%=hmap.get("proName")%>, <%=hmap.get("proWidth")%>, <%=hmap.get("proHeight")%>, <%=hmap.get("proGck")%></p>
+				<%}else if(hmap.get("proName").equals("쇼파")) {%>
+				<p><%=hmap.get("proKind")%>, <%=hmap.get("proName")%>, <%=hmap.get("proSize")%></p>
+				<%}else if(hmap.get("proName").equals("행거")) {%>
+				<p><%=hmap.get("proKind")%>, <%=hmap.get("proName")%>, <%=hmap.get("proType")%>, <%=hmap.get("proWidth")%></p>
+				<%}else if(hmap.get("proName").equals("거울")) {%>
+				<p><%=hmap.get("proKind")%>, <%=hmap.get("proName")%>, <%=hmap.get("proType")%>, <%=hmap.get("proSize")%></p>
+				<%}else if(hmap.get("proName").equals("화장대")) {%>
+				<p><%=hmap.get("proKind")%>, <%=hmap.get("proName")%>, <%=hmap.get("proType")%>, <%=hmap.get("proMat")%></p>
+				<%}else if(hmap.get("proName").equals("피아노")) {%>				
+				<p><%=hmap.get("proKind")%>, <%=hmap.get("proName")%>, <%=hmap.get("proType")%></p>
+				<%} %>
+			<%} %>
 		</div>
 		
 		<hr>
 
 		<div>
 			<h3>사진 정보</h3>
-			<img src="/semi/images/box.png" id="imgs">
-
+			<%for(int i = 0; i < requestImg.size(); i++){
+				HashMap<String, Object>hmap = requestImg.get(i);	
+			%>	
+			<img src="/semi/images_uploadFiles/<%=hmap.get("changeName") %>" id="imgs">
+			<%} %>
 		</div>
 				
 		<hr>	
 		
 		<div>
 			<h3>메모</h3>
-			<p>앞에 메모란에 입력한 내용</p>
+			<p><%=requestInfo.getMemo() %></p>
 
 		</div>
 		
@@ -94,6 +141,7 @@
 
 		<div>
 			<h3>입찰 받을 기간</h3>
+			<p><%=requestInfo.getReqStart()%> ~ <%=requestInfo.getReqFinish() %></p>
 		</div>
 		
 		<hr>
@@ -101,7 +149,7 @@
 		<br> <br>
 
 		<div align="center" style="margin-bottom: 10px">
-			<a href="/semi/myJcarrylist.jc" style="text-decoration: none; padding-left: 40px;">
+			<a href="/semi/checkOrder.jc" style="text-decoration: none; padding-left: 40px;">
 				<span style="font-size: 30px">확인</span>	
 			</a>
 		</div>

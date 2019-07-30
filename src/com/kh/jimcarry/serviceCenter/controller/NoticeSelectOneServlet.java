@@ -40,7 +40,7 @@ public class NoticeSelectOneServlet extends HttpServlet {
 		QandA qa = new QandAService().selectOneQA(num);
 		OneQ one = new OneQService().selectOneQ(num);
 		
-		String page="";
+		String page=null;
 		
 		if(n !=null) {
 			//나중에 페이지 바꾸기
