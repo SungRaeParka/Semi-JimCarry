@@ -3,9 +3,7 @@ package com.kh.jimcarry.serviceCenter.model.service;
 import java.sql.Connection;
 import java.util.ArrayList;
 
-import com.kh.jimcarry.serviceCenter.model.dao.NoticeDao;
 import com.kh.jimcarry.serviceCenter.model.dao.QandADao;
-import com.kh.jimcarry.serviceCenter.model.vo.Notice;
 import com.kh.jimcarry.serviceCenter.model.vo.QandA;
 
 import static com.kh.jimcarry.common.JDBCTemplate.*;
@@ -42,6 +40,17 @@ public class QandAService {
 		
 		return qa;
 	}
+	public int getListCount() {
+		// TODO Auto-generated method stub
+		Connection con = getConnection();
+		
+		int listCount = new QandADao().getListCount(con);
+		
+		close(con);
+		
+		return listCount;
+	}
+	
 	public ArrayList<QandA> selectList(int currentPage, int limit) {
 		// TODO Auto-generated method stub
 		

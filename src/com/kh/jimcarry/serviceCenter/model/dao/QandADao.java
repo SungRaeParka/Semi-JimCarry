@@ -10,7 +10,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Properties;
 
-import com.kh.jimcarry.serviceCenter.model.vo.Notice;
 import com.kh.jimcarry.serviceCenter.model.vo.QandA;
 
 import static com.kh.jimcarry.common.JDBCTemplate.*;
@@ -123,6 +122,33 @@ public class QandADao {
 		
 		return result;
 	}
+	public int getListCount(Connection con) {
+		// TODO Auto-generated method stub
+		Statement stmt = null;
+		int listCount1 = 0;
+		ResultSet rset = null;
+		
+		String query = prop.getProperty("selectListCount");
+		try {
+			stmt =con.createStatement();
+			
+			((PreparedStatement) stmt).setString(1,"Q&A");
+			
+			rset = stmt.executeQuery(query);
+			
+			if (rset.next()) {
+				listCount1=rset.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(stmt);
+			close(rset);
+		}
+		return listCount1;
+	}
 	public ArrayList<QandA> selectList(Connection con, int currentPage, int limit) {
 		// TODO Auto-generated method stub
 		
@@ -140,8 +166,9 @@ public class QandADao {
 			int startRow = (currentPage - 1) * limit + 1;
 			int endRow=startRow + limit -1;
 			
-			pstmt.setInt(1, startRow);
-			pstmt.setInt(2, endRow);
+			pstmt.setString(1, "Q&A");
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
 			
 			rset=pstmt.executeQuery();
 			

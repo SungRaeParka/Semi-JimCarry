@@ -3,12 +3,9 @@ package com.kh.jimcarry.serviceCenter.model.service;
 import java.sql.Connection;
 import java.util.ArrayList;
 
-import com.kh.jimcarry.serviceCenter.model.dao.NoticeDao;
 import com.kh.jimcarry.serviceCenter.model.dao.OneQDao;
 import com.kh.jimcarry.serviceCenter.model.dao.QandADao;
-import com.kh.jimcarry.serviceCenter.model.vo.Notice;
 import com.kh.jimcarry.serviceCenter.model.vo.OneQ;
-import com.kh.jimcarry.serviceCenter.model.vo.QandA;
 
 import static com.kh.jimcarry.common.JDBCTemplate.*;
 
@@ -69,6 +66,10 @@ public class OneQService {
 		close(con);
 		
 		return list2;
+	}
+	public int getListCount() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }
