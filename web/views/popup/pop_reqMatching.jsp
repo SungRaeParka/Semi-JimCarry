@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%
+String driverName = (String)request.getAttribute("driverName");
+String price = (String)request.getAttribute("price");
+String drivergrade = (String)request.getAttribute("drivergrade");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,11 +22,11 @@
 	
 	<form>
 		<div align="center">
-			<span style="font-size: 20px; font-weight: bold">기사명 : 박성래 </span><br>
-			<span style="font-size: 20px; font-weight: bold">평점 : 5.0 </span><br>
+			<span style="font-size: 20px; font-weight: bold">기사명 : <%=driverName %> </span><br>
+			<span style="font-size: 20px; font-weight: bold">평점 : <%=drivergrade %></span><br>
 			<br>
 			<br>
-			<span style="font-size: 20px; font-weight: bold">가격 : 140,000원</span><br>			
+			<span style="font-size: 20px; font-weight: bold">가격 : <%=price %></span><br>			
 		</div>
 		
 		<hr>
