@@ -2,6 +2,7 @@ package com.kh.jimcarry.request.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -40,7 +41,6 @@ public class MyJimcarryListServlet extends HttpServlet {
 		
 		if(request.getParameter("currentPage") !=null) {
 			currentPage = Integer.parseInt(request.getParameter("currentPage"));
-			
 		}
 		
 		
@@ -51,7 +51,7 @@ public class MyJimcarryListServlet extends HttpServlet {
 		Member loginUser = (Member)session.getAttribute("loginUser");
 		String logUserNo = loginUser.getSeqNo();
 		
-		//전체목록갯수 리턴
+		//전체목록 갯수 리턴
 		int listCount = new RequestService().getListCount(logUserNo);
 		
 		System.out.println("listcount : "+listCount);
@@ -67,20 +67,26 @@ public class MyJimcarryListServlet extends HttpServlet {
 		
 		PageInfo pi = new PageInfo(currentPage,listCount,limit,maxPage,startPage,endPage);
 		
+		//리스트 조회(견적리스트)
+		ArrayList<Request> jimList = new RequestService().selectList(currentPage,limit,logUserNo);
+		System.out.println("견적리스트 조회"+jimList.get(0));
 		
-		ArrayList<Request> list = new RequestService().selectList(currentPage,limit,logUserNo);
-	
+		//오더리스트 조회
+		HashMap<String,Request> orderMap = new RequestService().selectOrderList(logUserNo);
+		
+		
 		
 		String page="";
 		
-		if(list != null) {
+		if(jimList != null) {
+			System.out.println("페이지이동");
 			page = "views/request/jim_CarryList.jsp";
-			request.setAttribute("list", list);
+			request.setAttribute("jimList", jimList);
 			request.setAttribute("pi", pi);
-			
+			request.setAttribute("orderMap", orderMap);
 		}else {
 			page="views/common/errorPage.jsp";
-			request.setAttribute("msg", "짐캐리 리스트 없어");
+			request.setAttribute("msg", "짐캐리 리스트 조회실패");
 		}
 		request.getRequestDispatcher(page).forward(request, response);
 		

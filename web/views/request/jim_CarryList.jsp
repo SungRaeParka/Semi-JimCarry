@@ -3,7 +3,8 @@
 	import="java.util.*,java.text.SimpleDateFormat, com.kh.jimcarry.request.model.vo.*"%>
 
 <%
-	ArrayList<Request> list = (ArrayList<Request>) request.getAttribute("list");
+	ArrayList<Request> jimList = (ArrayList<Request>) request.getAttribute("jimList");
+	HashMap<String,Request> orderMap = (HashMap<String,Request>)request.getAttribute("orderMap");
 	PageInfo pi = (PageInfo) request.getAttribute("pi");
 	int listCount = pi.getListCount();
 	int currentPage = pi.getCurrentPage();
@@ -101,6 +102,7 @@
 
 		<%
 			Request req = new Request();
+			Request reqOrder;
 
 			Date finishDay = new Date(); //견적매칭 종료일
 			Date nowDay = new Date(); //현재날짜
@@ -114,8 +116,8 @@
 			long timeReM; //남은시간_분
 			
 
-			for (int i = 0; i < list.size(); i++) {
-				req = list.get(i);
+			for (int i = 0; i < jimList.size(); i++) {
+				req = jimList.get(i);
 				
 				finishDay = req.getReqFinish();  //견적매칭 종료일
 				moveDay = req.getReservationDate(); //예약일(짐옮기는 날)
@@ -187,6 +189,7 @@
 
 		<%
 			} else if (req.getConditionReq().equals("매칭완료")) {
+				reqOrder = orderMap.get(req.getReqNo());
 		%>
 		<div>
 			<img src="/semi/images/mc2.png" class="imgs" style="float: left">
@@ -219,9 +222,9 @@
 			<div id="count" class="text">
 				<h3>
 					기사명 :
-					<%=req.getDriverName()%>
+					<%= reqOrder.getDriverName() %>
 					&nbsp;&nbsp;평점 :
-					<%=req.getGrade()%></h3>
+					<%=reqOrder.getGrade()%></h3>
 			</div>
 			<div id="reqcencle" align="right">
 
@@ -237,6 +240,7 @@
 
 		<%
 			} else if (req.getConditionReq().equals("이용대기")) {
+				reqOrder = orderMap.get(req.getReqNo());
 				
 				if(nowTime < nowTime /* moveTime+moveTimeH*3600000 */){
 		%>			
@@ -272,9 +276,9 @@
 			<div id="count" class="text">
 				<h3>
 					기사명 :
-					<%=req.getDriverName()%>
+					<%= reqOrder.getDriverName() %>
 					&nbsp;&nbsp;평점 :
-					<%=req.getGrade()%></h3>
+					<%=reqOrder.getGrade()%></h3>
 			</div>
 			<div id="reqcencle" align="right">
 
@@ -321,9 +325,9 @@
 			<div id="count" class="text">
 				<h3>
 					기사명 :
-					<%=req.getDriverName()%>
+					<%= reqOrder.getDriverName() %>
 					&nbsp;&nbsp;평점 :
-					<%=req.getGrade()%></h3>
+					<%=reqOrder.getGrade()%></h3>
 			</div>
 			<div id="reqcencle" align="right">
 
@@ -343,6 +347,7 @@
 		
 		<%
 			} else if (req.getConditionReq().equals("이용완료")) {
+				reqOrder = orderMap.get(req.getReqNo());
 		%>
 
 		<div>
@@ -365,7 +370,11 @@
 			</div>
 
 			<div id="count" class="text">
-				<h3>기사명 : <%=req.getDriverName() %> &nbsp;&nbsp;평점 : <%=req.getGrade() %></h3>
+				<h3>
+					기사명 :
+					<%= reqOrder.getDriverName() %>
+					&nbsp;&nbsp;평점 :
+					<%=reqOrder.getGrade()%></h3>
 			</div>
 			
 			<div id="done" align="right">

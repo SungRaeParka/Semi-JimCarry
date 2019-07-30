@@ -7,6 +7,7 @@ import static com.kh.jimcarry.common.JDBCTemplate.rollback;
 
 import java.sql.Connection;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import com.kh.jimcarry.request.model.dao.RequestDao;
 import com.kh.jimcarry.request.model.vo.Product;
@@ -14,7 +15,7 @@ import com.kh.jimcarry.request.model.vo.Request;
 import com.kh.jimcarry.request.model.vo.RequestAttachment;
 
 public class RequestService {
-			//전체게시물 수 조회_사용자
+			//전체게시물 수 조회_사용자,기사님
 			public int getListCount(String logUserNo) {
 				Connection con = getConnection();
 				
@@ -27,7 +28,7 @@ public class RequestService {
 			}
 
 			
-			//리스트 전체조회_사용자
+			//짐캐리리스트 전체조회_사용자
 			public ArrayList<Request> selectList(int currentPage, int limit, String logUserNo) {
 				Connection con = getConnection();
 				
@@ -41,9 +42,7 @@ public class RequestService {
 			}
 
 
-			
-
-			//리스트 전체조회_기사님
+			//짐캐리리스트 전체조회_기사님
 			public ArrayList<Request> selectDriverList(int currentPage, int limit, String logUserNo) {
 				Connection con = getConnection();
 				
@@ -54,6 +53,18 @@ public class RequestService {
 				return list;
 				
 				
+			}
+			
+			
+			//입찰내역 리스트
+			public HashMap<String, Request> selectOrderList(String logUserNo) {
+				Connection con = getConnection();
+				
+				HashMap<String, Request> orderMap = new RequestDao().selectOrderList(con,logUserNo);
+				
+				close(con);
+				
+				return orderMap;
 			}
 
 
@@ -95,6 +106,19 @@ public class RequestService {
 				
 				return rolist;
 			}
+			
+			
+			
+			//가격 최저가 가져오기
+			public int minPriceCal(String no) {
+				Connection con = getConnection();
+				
+				int minPrice = new RequestDao().minPriceCal(con,no);
+				
+				close(con);
+				
+				return minPrice;
+			}
 
 
 			public int insertRequest(Request r) {
@@ -112,6 +136,9 @@ public class RequestService {
 				
 				return result;
 			}
+			
+		
+			
 
 
 			public int insertPIMG(ArrayList<RequestAttachment> fileList, String reqNo, String proNo) {
@@ -131,14 +158,8 @@ public class RequestService {
 			}
 
 
-			public int minPriceCal(String no) {
-				Connection con = getConnection();
-				
-				int minPrice = new RequestDao().minPriceCal(con,no);
-				
-				close(con);
-				
-				return minPrice;
-			}
+			
+
+
 			
 }
