@@ -108,6 +108,25 @@ public class BoardService {
 
 		return list;
 	}
+    //게시판 업데이트요 수정
+	public int updateBoard(Board b, ArrayList<Attachment> fileList) {
+		Connection con = getConnection();
+		int result = 0;
+
+		int result1 = new BoardDao().updateBoard(con,b);
+
+		int result2 = new BoardDao().updateAttachmen(con, fileList);
+
+		if(result1 > 0 && result2 > 0) {
+			commit(con);
+			result = 1;
+
+		}else {
+			rollback(con);
+		}
+			close(con);
+		return result;
+	}
 
 
 

@@ -13,6 +13,9 @@ import java.util.Properties;
 
 import com.kh.jimcarry.board.model.vo.Attachment;
 import com.kh.jimcarry.board.model.vo.Board;
+import com.sun.xml.internal.messaging.saaj.util.FinalArrayList;
+
+import oracle.net.aso.f;
 
 import static com.kh.jimcarry.common.JDBCTemplate.*;
 
@@ -428,6 +431,51 @@ public class BoardDao {
 		}
 
 		return list;
+	}
+
+	//게시글 업데이트
+	public int updateBoard(Connection con, Board b) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+
+		String query = prop.getProperty("updateBoard");
+
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, b.getPostTitle());
+			pstmt.setString(2, b.getPostContents());
+			pstmt.setString(3, b.getPostCode());
+
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	//게시 사진 업데이트
+	public int updateAttachmen(Connection con, ArrayList<Attachment> fileList) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+
+		String query = prop.getProperty("updateAttachmen");
+
+		try {
+			for(int i = 0; i < fileList.size(); i++) {
+				pstmt = con.prepareStatement(query);
+				pstmt.setString(1, fileList.get(i).getOriginName());
+				pstmt.setString(2, fileList.get(i).getChangeName());
+				pstmt.setString(3, fileList.get(i).getPostCode());
+			}
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
 	}
 
 }
