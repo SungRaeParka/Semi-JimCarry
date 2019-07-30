@@ -16,7 +16,7 @@ import com.kh.jimcarry.request.model.vo.RequestAttachment;
 import com.kh.jimcarry.request.model.vo.ShowRP;
 
 public class RequestService {
-			//전체게시물 수 조회_사용자
+			//전체게시물 수 조회_사용자,기사님
 			public int getListCount(String logUserNo) {
 				Connection con = getConnection();
 				
@@ -29,7 +29,7 @@ public class RequestService {
 			}
 
 			
-			//리스트 전체조회_사용자
+			//짐캐리리스트 전체조회_사용자
 			public ArrayList<Request> selectList(int currentPage, int limit, String logUserNo) {
 				Connection con = getConnection();
 				
@@ -43,9 +43,7 @@ public class RequestService {
 			}
 
 
-			
-
-			//리스트 전체조회_기사님
+			//짐캐리리스트 전체조회_기사님
 			public ArrayList<Request> selectDriverList(int currentPage, int limit, String logUserNo) {
 				Connection con = getConnection();
 				
@@ -56,6 +54,18 @@ public class RequestService {
 				return list;
 				
 				
+			}
+			
+			
+			//입찰내역 리스트
+			public HashMap<String, Request> selectOrderList(String logUserNo) {
+				Connection con = getConnection();
+				
+				HashMap<String, Request> orderMap = new RequestDao().selectOrderList(con,logUserNo);
+				
+				close(con);
+				
+				return orderMap;
 			}
 
 			//입찰내역 확인
@@ -68,6 +78,19 @@ public class RequestService {
 				close(con);
 				
 				return rolist;
+			}
+			
+			
+			
+			//가격 최저가 가져오기
+			public int minPriceCal(String no) {
+				Connection con = getConnection();
+				
+				int minPrice = new RequestDao().minPriceCal(con,no);
+				
+				close(con);
+				
+				return minPrice;
 			}
 
 
@@ -86,6 +109,9 @@ public class RequestService {
 				
 				return result;
 			}
+			
+		
+			
 
 
 			public int insertPIMG(ArrayList<RequestAttachment> fileList, String reqNo, String proNo) {
@@ -103,19 +129,7 @@ public class RequestService {
 				
 				return result;
 			}
-
-
-			public int minPriceCal(String no) {
-				Connection con = getConnection();
-				
-				int minPrice = new RequestDao().minPriceCal(con,no);
-				
-				close(con);
-				
-				return minPrice;
-			}
-
-
+  
 			public ShowRP selectRequestInfo(String reqNo) {
 				Connection con = getConnection();
 				
@@ -158,6 +172,7 @@ public class RequestService {
 				
 				return requestInfo;
 			}
+
 			
 			public ArrayList<HashMap<String, Object>> selectRequestImg2(String reqNo) {
 				Connection con = getConnection();

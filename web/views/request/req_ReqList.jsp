@@ -5,6 +5,7 @@
 <%
 	ArrayList<Request> rolist = (ArrayList<Request>) request.getAttribute("rolist");
 	String reqno = (String)request.getAttribute("no");
+	int minPrice = (int)request.getAttribute("minPrice");
 %>
 
 
@@ -74,57 +75,103 @@ html, body {
 	<div id="outer main">
 
 		<br> <br> <br> <br>
+		
+		
+		<%
+		Request ro = new Request();
+		ro = rolist.get(0);
+		
+		Date finishDay = ro.getReqFinish(); //견적매칭 종료일
+		Date nowDay = new Date(); //현재날짜
+		String moveDay = ro.getReservationDate(); //예약일(짐옮기는 날)
+		  
+		
+			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+			
+			nowDay = dateFormat.parse(dateFormat.format(nowDay));
+			long nowTime = nowDay.getTime();
+			//오늘 날,시간 getTime
+
+			long finishTime = finishDay.getTime();
+			//견적매칭 종료일 getTime
+			
+			
+			
+			long timeRemain = finishTime+86400000-nowTime;
+			long timeReH = (timeRemain/60000)/60;
+			long timeReM = (timeRemain/60000)%60;
+			
+		%>
 
 		<h1 style="text-align: center">견적 입찰 내역</h1>
 		<hr>
 
 		<div style="text-align: center">
 			<h4>현재 최저가</h4>
-			<h2>145000원</h2>
+			<h2><%=minPrice %>원</h2>
 			<p style="color: gray;">
 				견적 번호 :
 				<%=reqno%></p>
-			<h5>남은 입찰 기간 : time</h5>
+			<h5>남은 입찰 기간 : <%=timeReH %> 시간 &nbsp; <%=timeReM %> 분</h5>
 			<h5>
-				<a href="#">내 짐캐리 리스트 확인 하기</a>
+				<a onclick="myJimcarry();">내 짐캐리 리스트 확인 하기</a>
 			</h5>
 			<hr>
 		</div>
-
-
+		
+		<script>
+		function myJimcarry(){
+			location.href="/semi/myJcarrylist.jc";
+		};
+		
+		</script>
+		
 		<%
+		
 			for (int i = 0; i < rolist.size(); i++) {
-
-			}
+				ro = rolist.get(i);
 		%>
-
-
-
-
+		
 		<div>
 			<img src="../../images/driver.png" style="float: left" id="driverImg">
 			<div id="drivername">
-				<h3>복권석 기사님</h3>
+				<h3><%=ro.getDriverName() %></h3>
 			</div>
 
 			<div id="price" style="float: right">
-				<h3>가격 : 145000원</h3>
+				<h3>가격 : <%=ro.getOrderPrice() %>원</h3>
 			</div>
 
 			<div id="rev">
-				<h4>평점 : 4.2</h4>
-				<h4>리뷰 :13건</h4>
+				<h4>평점 : <%=ro.getGrade() %></h4>
+				<h4>리뷰 :<%=ro.getReview() %></h4>
 			</div>
 
 
 			<div class="container" align="right">
-				<button type="button" class="btn">선택하기</button>
+				<button type="button" class="btn" onclick="selectReqOrder();">선택하기</button>
 			</div>
 			<hr>
 		</div>
+		
+		<% 
+			}
+		%>
 
 		<br> <br> <br> <br> <br> <br> <br>
-		<br>
+		<script>
+		function selectReqOrder(){
+			var url = "/semi/views/popup/pop_reqMatching.jsp";
+			var winWidth = 400;
+			var winHeight = 530;
+			var popupW = (screen.availWidth - winWidth) / 2;
+			var popupH = (screen.availHeight - winHeight) / 2;			
+			var popOption = "status=no, width=" + winWidth + ", height=" + winHeight + ", top=" + popupH + ", left=" + popupW;			
+			
+			window.open(url,"",popOption);
+		}
+		
+		</script>
 
 
 	</div>

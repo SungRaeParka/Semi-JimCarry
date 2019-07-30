@@ -26,12 +26,17 @@ public class MyJcCheckOrderServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String no = request.getParameter("no");
-		System.out.println(no);
+		System.out.println("서블릿으로 온 넘버"+no);
 		
+		System.out.println("rolist 가지고오기");
 		ArrayList<Request> rolist = new RequestService().checkOrder(no);
+		System.out.println("rolist 가지고옴");
+		System.out.println(rolist.get(0));
 		
+		
+		System.out.println("최저가 가져오기");
 		int minPrice = new RequestService().minPriceCal(no);
-		
+		System.out.println("최저가 가져옴");
 		System.out.println(minPrice);
 		
 		String page="";
@@ -45,6 +50,8 @@ public class MyJcCheckOrderServlet extends HttpServlet {
 			page = "views/common/errorPage.jsp";
 			request.setAttribute("msg", "입찰내역 확인 실패");
 		}
+		
+		request.getRequestDispatcher(page).forward(request, response);
 		
 		
 		

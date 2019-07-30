@@ -19,29 +19,29 @@ import com.kh.jimcarry.request.model.vo.RequestAttachment;
 import com.kh.jimcarry.request.model.vo.ShowRP;
 
 public class RequestDao {
-	
+
 	private Properties prop = new Properties();
-	
+
 	public RequestDao(){
 		String fileName = RequestDao.class.getResource("/sql/request/request-query.properties").getPath();
-		
+
 		try {
 			prop.load(new FileReader(fileName));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-	}
-	
-	
 
-	//게시물 수 조회
+	}
+
+
+
+	//게시물 수 조회_사용자,기사
 	public int getListCount(Connection con,String logUserNo) {
 		PreparedStatement pstmt = null;
 		int listCount = 0;
 		ResultSet rset = null;
-		
+
 		String query;
 		if(logUserNo.charAt(0)=='U') {
 			query = prop.getProperty("selectListCount");
@@ -49,19 +49,19 @@ public class RequestDao {
 			query = prop.getProperty("selectDriverListCount");
 		}
 		System.out.println(query);
-		
-		
+
+
 		try {
 			pstmt = con.prepareStatement(query);
-			
+
 			pstmt.setString(1, logUserNo);
-			
+
 			rset = pstmt.executeQuery();
-			
+
 			if(rset.next()) {
 				listCount = rset.getInt(1);
 			}
-			
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -69,7 +69,7 @@ public class RequestDao {
 			close(rset);
 			close(pstmt);
 		}
-		
+
 		return listCount;
 	}
 
@@ -82,21 +82,23 @@ public class RequestDao {
 		ArrayList<Request> list = null;
 		
 		String query = prop.getProperty("selectList");
-		
+		System.out.println(query);
+
 		try {
-			pstmt = con.prepareStatement(query);
 			
+			pstmt = con.prepareStatement(query);
+
 			int startRow = (currentPage-1)*limit + 1;
 			int endRow = startRow + limit -1;
-			
+
 			pstmt.setString(1, logUserNo);
 			pstmt.setInt(2, startRow);
 			pstmt.setInt(3, endRow);
-			
+
 			rset = pstmt.executeQuery();
-			
+
 			list = new ArrayList<Request>();
-			
+
 			while(rset.next()) {
 				Request req = new Request();
 				
@@ -104,20 +106,17 @@ public class RequestDao {
 				req.setStartPoint(rset.getString("START_POINT"));
 				req.setArrivalPoint(rset.getString("ARRIVE_POINT"));
 				req.setReservationDate(rset.getString("RESERVATION_DATE"));
-				req.setReqStart(rset.getDate("REQ_START"));
-				req.setReqFinish(rset.getDate("REQ_FINISH"));
 				req.setReqCount(rset.getInt("COUNT"));
-				req.setOrderPrice(rset.getInt("ORDER_PRICE"));
-				req.setDriverName(rset.getString("MEMBER_NAME"));
-				req.setGrade(rset.getString("GRADE"));
+				req.setReqFinish(rset.getDate("REQ_START"));
+				req.setReqFinish(rset.getDate("REQ_FINISH"));
 				req.setConditionReq(rset.getString("CONDITION_REQ"));
 				
 				list.add(req);
-				
+
 				System.out.println("리스트에 담김");
-				System.out.println(list);
+				System.out.println(list.get(0));
 			}
-			
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -125,8 +124,8 @@ public class RequestDao {
 			close(pstmt);
 			close(rset);
 		}
-		
-		
+
+
 		return list;
 	}
 
@@ -137,26 +136,26 @@ public class RequestDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		ArrayList<Request> list = null;
-		
+
 		String query = prop.getProperty("selectDriverList");
-		
+
 		try {
 			pstmt = con.prepareStatement(query);
-			
+
 			int startRow = (currentPage-1)*limit + 1;
 			int endRow = startRow + limit -1;
-			
+
 			pstmt.setString(1, logUserNo);
 			pstmt.setInt(2, startRow);
 			pstmt.setInt(3, endRow);
-			
+
 			rset = pstmt.executeQuery();
-			
+
 			list = new ArrayList<Request>();
-			
+
 			while(rset.next()) {
 				Request req = new Request();
-				
+
 				req.setReqNo(rset.getString("REQ_NO"));
 				req.setStartPoint(rset.getString("START_POINT"));
 				req.setArrivalPoint(rset.getString("ARRIVE_POINT"));
@@ -166,15 +165,14 @@ public class RequestDao {
 				req.setReqCount(rset.getInt("COUNT"));
 				req.setOrderPrice(rset.getInt("ORDER_PRICE"));
 				req.setConditionDo(rset.getString("CONDITION_DO"));
-				
+
 				list.add(req);
-				
+
 				System.out.println("리스트에 담김");
-				
 			}
-			
-			
-			
+
+
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -182,44 +180,86 @@ public class RequestDao {
 			close(pstmt);
 			close(rset);
 		}
-		
-		
-		
 		return list;
-		
-		
+  }
+	
+		//입찰내역 리스트
+		public HashMap<String, Request> selectOrderList(Connection con, String logUserNo) {
+			PreparedStatement pstmt = null;
+			ResultSet rset = null;
+			HashMap<String, Request> orderMap = null;
+			
+			String query = prop.getProperty("selectorder");
+			System.out.println(query);
+			
+			try {
+				pstmt = con.prepareStatement(query);
+				
+				pstmt.setString(1, logUserNo);
+				pstmt.setString(2, "매칭대기");
+				pstmt.setString(3, "매칭대기");
+				
+				rset = pstmt.executeQuery();
+				
+				orderMap = new HashMap<String, Request>();
+				
+				while(rset.next()) {
+					Request or = new Request();
+					
+					or.setReqNo(rset.getString("REQ_NO"));
+					or.setOrderPrice(rset.getInt("ORDER_PRICE"));
+					or.setDriverName(rset.getString("MEMBER_NAME"));
+					or.setGrade(rset.getString("GRADE"));
+					
+					System.out.println(or.getReqNo());
+					orderMap.put(or.getReqNo(),or);
+					System.out.println(orderMap.get(or.getReqNo()));
+				}
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				close(rset);
+				close(pstmt);
+			}
+			
+			
+			return orderMap;
+		}		
 	}	
 
+	//입찰내역확인
 	public ArrayList<Request> checkOrder(Connection con, String no) {
 
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		ArrayList<Request> rolist = null;
-		
+
 		String query = prop.getProperty("checkOrder");
-		
+
 		try {
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, no);
-			
+
 			rset = pstmt.executeQuery();
-			
+
 			rolist = new ArrayList<Request>();
-			
+
 			while(rset.next()) {
 				Request ro = new Request();
-				
+
 				ro.setReqNo(rset.getString("REQ_NO"));
 				ro.setOrderPrice(rset.getInt("ORDER_PRICE"));
 				ro.setDriverName(rset.getString("MEMBER_NAME"));
 				ro.setGrade(rset.getString("GRADE"));
 				ro.setReview(rset.getString("REVIEW"));
-				ro.setReqFinish(rset.getDate(""));
-				
+				ro.setReqFinish(rset.getDate("REQ_FINISH"));
+
 				rolist.add(ro);
-				System.out.println(ro);
+				System.out.println("Dao ro"+ro);
 			}
-			
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -227,26 +267,61 @@ public class RequestDao {
 			close(rset);
 			close(pstmt);
 		}
-		
-		
+
+
 		return rolist;
 	}
-	
-	
+
+
+	//최저가 가져오기
+	public int minPriceCal(Connection con, String no) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int minPrice = 0;
+
+		String query = prop.getProperty("minPriCal");
+
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, no);
+
+			rset = pstmt.executeQuery();
+
+			while(rset.next()) {
+				Request r = new Request();
+				r.setOrderPrice(rset.getInt("MIN(ORDER_PRICE)"));
+
+				minPrice = r.getOrderPrice();
+				System.out.println(minPrice);
+			}
+      
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+
+		return minPrice;
+	}
+
+
+
 	public int insertRequest(Connection con, Request r) {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		long a = r.getReqFinish().getTime();
-		
+
 		String query = prop.getProperty("insertRequestInfo");
-		
+
 		java.sql.Date reqFinishSql = new java.sql.Date(a);
-		
+
 		System.out.println("dao  r.getReservationDate() ::" +  r.getReservationDate());
-		
+
 		try {
 			pstmt = con.prepareStatement(query);
-			
+
 
 			pstmt.setString(1, r.getReservationDate());
 			pstmt.setString(2, r.getStartPoint());
@@ -256,9 +331,9 @@ public class RequestDao {
 			pstmt.setString(6, "R" + r.getReqNo());
 			pstmt.setString(7, r.getProNo());
 			pstmt.setString(8, r.getMemo());
-			
+
 			result = pstmt.executeUpdate();
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -273,73 +348,39 @@ public class RequestDao {
 	public int insertPIMG(Connection con, ArrayList<RequestAttachment> fileList, String reqNo, String proNo) {
 		PreparedStatement pstmt = null;
 		int result = 0;
-		
-		String query = prop.getProperty("insertPIMG");  
-		
-			try {
-				for(int i = 0; i < fileList.size(); i++) {
-					pstmt = con.prepareStatement(query);
-					
-					pstmt.setString(1, fileList.get(i).getOriginName());
-					pstmt.setString(2, fileList.get(i).getChangeName());
-					pstmt.setString(3, fileList.get(i).getFilePath());
-					
-					int level = 0;
-					
-					pstmt.setInt(4, level);
-					
-					level++;
-					
-					pstmt.setString(5, "견적물품사진");
-					pstmt.setString(6, "R" + reqNo);
-					//pstmt.setString(7, "");
-					
-					result += pstmt.executeUpdate();
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			} finally {
-				close(pstmt);
+
+		String query = prop.getProperty("insertPIMG"); 
+    
+		try {
+			for(int i = 0; i < fileList.size(); i++) {
+				pstmt = con.prepareStatement(query);
+
+				pstmt.setString(1, fileList.get(i).getOriginName());
+				pstmt.setString(2, fileList.get(i).getChangeName());
+				pstmt.setString(3, fileList.get(i).getFilePath());
+
+				int level = 0;
+
+				pstmt.setInt(4, level);
+
+				level++;
+
+				pstmt.setString(5, "견적물품사진");
+				pstmt.setString(6, reqNo);
+				//pstmt.setString(7, "");
+
+				result += pstmt.executeUpdate();
 			}
-		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+
 		return result;
 
 	}
-
-
-
-	public int minPriceCal(Connection con, String no) {
-		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		int minPrice = 0;
-		
-		String query = prop.getProperty("minPriCal");
-		
-		try {
-			pstmt = con.prepareStatement(query);
-			pstmt.setString(1, no);
-			
-			rset = pstmt.executeQuery();
-			
-			Request r = new Request();
-			r.setOrderPrice(rset.getInt("ORDER_PRICE"));
-			
-			minPrice = rset.getInt("ORDER_PRICE");
-			
-			System.out.println(minPrice);
-			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}finally {
-			close(rset);
-			close(pstmt);
-		}
-		
-		return minPrice;
-	}
-
-
+}
 
 	public ShowRP selectRequestInfo(Connection con, String reqNo) {
 		PreparedStatement pstmt = null;
