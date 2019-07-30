@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.kh.jimcarry.member.model.service.MemberService;
+import com.kh.jimcarry.member.model.vo.Member;
+
 /**
  * Servlet implementation class UpdateMemberServlet
  */
@@ -26,8 +29,18 @@ public class UpdateMemberServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		String userPwd = request.getParameter("userPwd");
+		String tel1 = request.getParameter("tel1");
+		String tel2 = request.getParameter("tel2");
+		String tel3 = request.getParameter("tel3");
+		String phone = tel1 + tel2 + tel3;
+		
+		Member m = new Member();
+		m.setUserPwd(userPwd);
+		m.setPhone(phone);
+		System.out.println(m);
+		
+	//	int result = new MemberService().updateMember(m);
 	}
 
 	/**

@@ -24,7 +24,7 @@
 				<a href="/semi/views/board/driverPromotion/driver_PromotionList.jsp"	class="w3-bar-item w3-button" style="text-decoration:none">기사홍보</a>
 				<a class="w3-bar-item w3-button" style="text-decoration:none" onclick="myJimcarry();">내 짐 캐리 리스트</a>
 				<a href="/semi/noticelist.no" class="w3-bar-item w3-button" style="text-decoration:none">고객센터</a>
-				<a href="#" class="w3-bar-item w3-button" style="text-decoration:none">마이페이지</a>
+				<a href="/semi/views/member/UserMyPage.jsp" class="w3-bar-item w3-button" style="text-decoration:none">마이페이지</a>
 				<a class="w3-bar-item w3-button" style="text-decoration:none" onclick="logout();">로그아웃</a>
 			</div>
 		</div>
