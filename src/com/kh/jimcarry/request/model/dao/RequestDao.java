@@ -227,7 +227,7 @@ public class RequestDao {
 			
 			return orderMap;
 		}		
-	}	
+		
 
 	//입찰내역확인
 	public ArrayList<Request> checkOrder(Connection con, String no) {
@@ -380,7 +380,7 @@ public class RequestDao {
 		return result;
 
 	}
-}
+
 
 	public ShowRP selectRequestInfo(Connection con, String reqNo) {
 		PreparedStatement pstmt = null;
