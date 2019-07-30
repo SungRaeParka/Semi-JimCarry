@@ -131,7 +131,10 @@ html, body {
 			for (int i = 0; i < rolist.size(); i++) {
 				ro = rolist.get(i);
 		%>
-		
+		<form id="reqMatch">
+		<input type="hidden" id="driverName" name="driverName" value="<%=ro.getDriverName()%>">
+		<input type="hidden"  id="price" name="price" value="<%=ro.getOrderPrice() %>">
+		<input type="hidden" id="drivergrade"  name="drivergrade" value="<%=ro.getGrade() %>">
 		<div>
 			<img src="../../images/driver.png" style="float: left" id="driverImg">
 			<div id="drivername">
@@ -153,6 +156,7 @@ html, body {
 			</div>
 			<hr>
 		</div>
+		</form>
 		
 		<% 
 			}
@@ -163,12 +167,28 @@ html, body {
 		function selectReqOrder(){
 			var url = "/semi/views/popup/pop_reqMatching.jsp";
 			var winWidth = 400;
-			var winHeight = 530;
+			var winHeight = 350;
 			var popupW = (screen.availWidth - winWidth) / 2;
 			var popupH = (screen.availHeight - winHeight) / 2;			
 			var popOption = "status=no, width=" + winWidth + ", height=" + winHeight + ", top=" + popupH + ", left=" + popupW;			
 			
-			window.open(url,"",popOption);
+			window.name = "parentForm";
+			
+			openWin = window.open(url,"childForm",popOption);
+			
+			openWin.document.getElementById("driverName").value = document.getElementById("driverName").value;
+			openWin.document.getElementById("driverPriver").value = document.getElementById("driverPrice").value;
+			openWin.document.getElementById("grade").value = document.getElementById("grade").value;
+			
+			
+			
+			
+			/* var formdata = document.reqMatch;
+			formdata.target = reqMatch;
+			formdata.action = "/semi/views/popup/pop_reqMatching.jsp";
+			
+			formdata.submit; */
+			
 		}
 		
 		</script>
