@@ -70,8 +70,9 @@ public class InsertRequestServlet extends HttpServlet {
 		
 		ShowRP requestInfo = new RequestService().selectRequestInfo(reqNo);
 		ArrayList<HashMap<String, Object>> requestImg = new RequestService().selectRequestImg(reqNo);
+		System.out.println("requestImg::::"+requestImg);
 		ArrayList<HashMap<String, Object>> productInfo = new RequestService().selectProductInfo(reqNo);
-		
+		System.out.println("productInfo::::"+productInfo);
 		System.out.println("서블릿 requestImg:::" + requestImg);
 		System.out.println("서블릿 ProductInfo ::: " + productInfo);
 		

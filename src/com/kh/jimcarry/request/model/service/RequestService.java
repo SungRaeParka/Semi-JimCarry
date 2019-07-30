@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.kh.jimcarry.request.model.dao.RequestDao;
-import com.kh.jimcarry.request.model.vo.Product;
 import com.kh.jimcarry.request.model.vo.Request;
 import com.kh.jimcarry.request.model.vo.RequestAttachment;
 import com.kh.jimcarry.request.model.vo.ShowRP;
@@ -193,4 +192,29 @@ public class RequestService {
 				
 				return requestInfo;
 			}
+
+
+			public ArrayList<HashMap<String, Object>> selectreqNoList() {
+				Connection con = getConnection();
+				
+				ArrayList<HashMap<String, Object>> reqNoList = new RequestDao().selectreqNoList(con);
+				
+				close(con);
+				
+				return reqNoList;
+			}
+
+
+			public ArrayList<HashMap<String, Object>> selectReqList(ArrayList<HashMap<String, Object>> reqNoList) {
+				Connection con = getConnection();
+				
+				ArrayList<HashMap<String, Object>> reqList = new RequestDao().selectReqList(con, reqNoList);
+				
+				close(con);
+				
+				return reqList;
+			}
+
+
+			
 }

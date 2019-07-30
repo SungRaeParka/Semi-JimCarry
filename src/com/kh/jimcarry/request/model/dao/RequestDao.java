@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Properties;
 
+import org.eclipse.jdt.internal.compiler.lookup.PolymorphicMethodBinding;
+
 import com.kh.jimcarry.request.model.vo.Product;
 import com.kh.jimcarry.request.model.vo.Request;
 import com.kh.jimcarry.request.model.vo.RequestAttachment;
@@ -80,12 +82,12 @@ public class RequestDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		ArrayList<Request> list = null;
-		
+
 		String query = prop.getProperty("selectList");
 		System.out.println(query);
 
 		try {
-			
+
 			pstmt = con.prepareStatement(query);
 
 			int startRow = (currentPage-1)*limit + 1;
@@ -101,7 +103,7 @@ public class RequestDao {
 
 			while(rset.next()) {
 				Request req = new Request();
-				
+
 				req.setReqNo(rset.getString("REQ_NO"));
 				req.setStartPoint(rset.getString("START_POINT"));
 				req.setArrivalPoint(rset.getString("ARRIVE_POINT"));
@@ -110,7 +112,7 @@ public class RequestDao {
 				req.setReqFinish(rset.getDate("REQ_START"));
 				req.setReqFinish(rset.getDate("REQ_FINISH"));
 				req.setConditionReq(rset.getString("CONDITION_REQ"));
-				
+
 				list.add(req);
 
 				System.out.println("리스트에 담김");
@@ -181,53 +183,53 @@ public class RequestDao {
 			close(rset);
 		}
 		return list;
-  }
-	
-		//입찰내역 리스트
-		public HashMap<String, Request> selectOrderList(Connection con, String logUserNo) {
-			PreparedStatement pstmt = null;
-			ResultSet rset = null;
-			HashMap<String, Request> orderMap = null;
-			
-			String query = prop.getProperty("selectorder");
-			System.out.println(query);
-			
-			try {
-				pstmt = con.prepareStatement(query);
-				
-				pstmt.setString(1, logUserNo);
-				pstmt.setString(2, "매칭대기");
-				pstmt.setString(3, "매칭대기");
-				
-				rset = pstmt.executeQuery();
-				
-				orderMap = new HashMap<String, Request>();
-				
-				while(rset.next()) {
-					Request or = new Request();
-					
-					or.setReqNo(rset.getString("REQ_NO"));
-					or.setOrderPrice(rset.getInt("ORDER_PRICE"));
-					or.setDriverName(rset.getString("MEMBER_NAME"));
-					or.setGrade(rset.getString("GRADE"));
-					
-					System.out.println(or.getReqNo());
-					orderMap.put(or.getReqNo(),or);
-					System.out.println(orderMap.get(or.getReqNo()));
-				}
-				
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}finally {
-				close(rset);
-				close(pstmt);
+	}
+
+	//입찰내역 리스트
+	public HashMap<String, Request> selectOrderList(Connection con, String logUserNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		HashMap<String, Request> orderMap = null;
+
+		String query = prop.getProperty("selectorder");
+		System.out.println(query);
+
+		try {
+			pstmt = con.prepareStatement(query);
+
+			pstmt.setString(1, logUserNo);
+			pstmt.setString(2, "매칭대기");
+			pstmt.setString(3, "매칭대기");
+
+			rset = pstmt.executeQuery();
+
+			orderMap = new HashMap<String, Request>();
+
+			while(rset.next()) {
+				Request or = new Request();
+
+				or.setReqNo(rset.getString("REQ_NO"));
+				or.setOrderPrice(rset.getInt("ORDER_PRICE"));
+				or.setDriverName(rset.getString("MEMBER_NAME"));
+				or.setGrade(rset.getString("GRADE"));
+
+				System.out.println(or.getReqNo());
+				orderMap.put(or.getReqNo(),or);
+				System.out.println(orderMap.get(or.getReqNo()));
 			}
-			
-			
-			return orderMap;
-		}		
-		
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+
+
+		return orderMap;
+	}		
+
 
 	//입찰내역확인
 	public ArrayList<Request> checkOrder(Connection con, String no) {
@@ -294,7 +296,7 @@ public class RequestDao {
 				minPrice = r.getOrderPrice();
 				System.out.println(minPrice);
 			}
-      
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -350,7 +352,7 @@ public class RequestDao {
 		int result = 0;
 
 		String query = prop.getProperty("insertPIMG"); 
-    
+
 		try {
 			for(int i = 0; i < fileList.size(); i++) {
 				pstmt = con.prepareStatement(query);
@@ -366,7 +368,7 @@ public class RequestDao {
 				level++;
 
 				pstmt.setString(5, "견적물품사진");
-				pstmt.setString(6, reqNo);
+				pstmt.setString(6, "R"+reqNo);
 				//pstmt.setString(7, "");
 
 				result += pstmt.executeUpdate();
@@ -386,19 +388,19 @@ public class RequestDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		ShowRP requestInfo = null;
-		
+
 		String query = prop.getProperty("requestInfo");
-		
+
 		try {
 			pstmt = con.prepareStatement(query);
-			
+
 			pstmt.setString(1, "R"+reqNo);
-			
+
 			rset = pstmt.executeQuery();
-			
+
 			if(rset.next()) {
 				requestInfo = new ShowRP();
-				
+
 				requestInfo.setReqNo(rset.getString("REQ_NO"));
 				requestInfo.setReservDate(rset.getString("RESERVATION_DATE"));
 				requestInfo.setStartPoint(rset.getString("START_POINT"));
@@ -406,7 +408,7 @@ public class RequestDao {
 				requestInfo.setReqStart(rset.getDate("REQ_START"));
 				requestInfo.setReqFinish(rset.getDate("REQ_FINISH"));
 				requestInfo.setMemo(rset.getString("MEMO"));			
-				
+
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -414,7 +416,7 @@ public class RequestDao {
 			close(rset);
 			close(pstmt);
 		}
-		
+
 		return requestInfo;
 	}
 
@@ -424,40 +426,40 @@ public class RequestDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		ArrayList<HashMap<String, Object>> requestImg = null;
-		HashMap<String, Object> hmap = null;
-		
+		HashMap<String, Object> hmap = null;	
+
 		String query = prop.getProperty("selectRequestImg");
-		
+
 		try {
 			pstmt = con.prepareStatement(query);
-			
+
 			pstmt.setString(1, "R"+reqNo);
-			
+
 			rset = pstmt.executeQuery();
-			
+
 			requestImg = new ArrayList<HashMap<String, Object>>();
-			
+
 			while(rset.next()) {
-				
+
 				hmap = new HashMap<String, Object>();
-				
+
 				hmap.put("reqNo", rset.getString("REQ_NO"));
 				hmap.put("filePath", rset.getString("FILE_PATH"));
 				hmap.put("changeName", rset.getString("CHANGE_NAME"));
-				
+
 				requestImg.add(hmap);
-				
+
 				System.out.println("requestImg :::" + requestImg);
-				
+
 			}
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close(rset);
 			close(pstmt);
 		}
-		
+
 		return requestImg;
 	}
 
@@ -468,108 +470,108 @@ public class RequestDao {
 		ResultSet rset = null;
 		ArrayList<HashMap<String, Object>> ProductInfo = null;
 		HashMap<String, Object> hmap = null;
-		
+
 		String query = prop.getProperty("selectProductInfo");
-		
+
 		try {
 			pstmt = con.prepareStatement(query);
-			
+
 			pstmt.setString(1, "R" + reqNo);
-			
+
 			rset = pstmt.executeQuery();
-			
+
 			ProductInfo = new ArrayList<HashMap<String, Object>>();
-			
+
 			while(rset.next()) {
 				hmap = new HashMap<String, Object>();
-				
+
 				hmap.put("proKind", rset.getString("PRODUCT_KIND"));
 				hmap.put("proName", rset.getString("PRODUCT_NAME"));				
-				
+
 				System.out.println("hmap.get(proName) ::: " + hmap.get("proName"));
-				
+
 				if(rset.getString("PRODUCT_NAME").equals("냉장고")) {
-					
+
 					hmap.put("proType", rset.getString("PRODUCT_TYPE"));
 					hmap.put("proSize", rset.getString("PRODUCT_SIZE"));
 				}else if(rset.getString("PRODUCT_NAME").equals("세탁기")) {
-					
+
 					hmap.put("proType", rset.getString("PRODUCT_TYPE"));
 					hmap.put("proSize", rset.getString("PRODUCT_SIZE"));
 				}else if(rset.getString("PRODUCT_NAME").equals("TV/모니터")) {
-					
+
 					hmap.put("proSize", rset.getString("PRODUCT_SIZE"));
 				}else if(rset.getString("PRODUCT_NAME").equals("에어컨")) {
-					
+
 					hmap.put("proType", rset.getString("PRODUCT_TYPE"));
 					hmap.put("proUni", rset.getString("UNIQUNESS"));
 				}else if(rset.getString("PRODUCT_NAME").equals("정수기")){
-					
+
 					hmap.put("proSize", rset.getString("PRODUCT_SIZE"));
 					hmap.put("proUni", rset.getString("UNIQUNESS"));
 				}else if(rset.getString("PRODUCT_NAME").equals("PC/노트북")) {
-					
+
 					hmap.put("proType", rset.getString("PRODUCT_TYPE"));
 				}else if(rset.getString("PRODUCT_NAME").equals("전자레인지")) {
-					
+
 					hmap.put("proType", rset.getString("PRODUCT_TYPE"));
 				}else if(rset.getString("PRODUCT_NAME").equals("침대")) {
-					
+
 					hmap.put("proType", rset.getString("PRODUCT_TYPE"));
 					hmap.put("proSize", rset.getString("PRODUCT_SIZE"));
 				}else if(rset.getString("PRODUCT_NAME").equals("의자")) {
-					
+
 					hmap.put("proType", rset.getString("PRODUCT_TYPE"));
-					
+
 				}else if(rset.getString("PRODUCT_NAME").equals("책상/테이블")) {
-					
+
 					hmap.put("proType", rset.getString("PRODUCT_TYPE"));
 					hmap.put("proSize", rset.getString("PRODUCT_SIZE"));
 					hmap.put("proMat", rset.getString("MATERIAL"));
 					hmap.put("proWidth", rset.getString("WIDTH"));
-					
+
 				}else if(rset.getString("PRODUCT_NAME").equals("책장")) {
-					
+
 					hmap.put("proWidth", rset.getString("WIDTH"));
 					hmap.put("proHeight", rset.getString("HEIGHT"));
-					
+
 				}else if(rset.getString("PRODUCT_NAME").equals("옷장")) {
-					
+
 					hmap.put("proType", rset.getString("PRODUCT_TYPE"));
 					hmap.put("proUni", rset.getString("UNIQUNESS"));
 					hmap.put("proWidth", rset.getString("WIDTH"));
-				
+
 				}else if(rset.getString("PRODUCT_NAME").equals("진열장")) {
-					
+
 					hmap.put("proWidth", rset.getString("WIDTH"));
 					hmap.put("proHeight", rset.getString("HEIGHT"));
 					hmap.put("proGck", rset.getString("GLASS_CHECK"));
-				
+
 				}else if(rset.getString("PRODUCT_NAME").equals("쇼파")) {
-					
+
 					hmap.put("proSize", rset.getString("PRODUCT_SIZE"));
-					
+
 				}else if(rset.getString("PRODUCT_NAME").equals("행거")) {
-					
+
 					hmap.put("proType", rset.getString("PRODUCT_TYPE"));
 					hmap.put("proWidth", rset.getString("WIDTH"));
-					
+
 				}else if(rset.getString("PRODUCT_NAME").equals("거울")) {
-					
+
 					hmap.put("proType", rset.getString("PRODUCT_TYPE"));
 					hmap.put("proSize", rset.getString("PRODUCT_SIZE"));
-					
+
 				}else if(rset.getString("PRODUCT_NAME").equals("화장대")) {
-					
+
 					hmap.put("proType", rset.getString("PRODUCT_TYPE"));
 					hmap.put("proMat", rset.getString("MATERIAL"));
-					
+
 				}else if(rset.getString("PRODUCT_NAME").equals("피아노")) {
-					
+
 					hmap.put("proType", rset.getString("PRODUCT_TYPE"));
-					
+
 				}
-				
+
 				ProductInfo.add(hmap);				
 			}
 		} catch (SQLException e) {
@@ -578,7 +580,7 @@ public class RequestDao {
 			close(rset);
 			close(pstmt);
 		}
-		
+
 		return ProductInfo;
 	}
 
@@ -588,19 +590,19 @@ public class RequestDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		ShowRP requestInfo = null;
-		
+
 		String query = prop.getProperty("requestInfo");
-		
+
 		try {
 			pstmt = con.prepareStatement(query);
-			
+
 			pstmt.setString(1, reqNo);
-			
+
 			rset = pstmt.executeQuery();
-			
+
 			if(rset.next()) {
 				requestInfo = new ShowRP();
-				
+
 				requestInfo.setReqNo(rset.getString("REQ_NO"));
 				requestInfo.setReservDate(rset.getString("RESERVATION_DATE"));
 				requestInfo.setStartPoint(rset.getString("START_POINT"));
@@ -608,7 +610,7 @@ public class RequestDao {
 				requestInfo.setReqStart(rset.getDate("REQ_START"));
 				requestInfo.setReqFinish(rset.getDate("REQ_FINISH"));
 				requestInfo.setMemo(rset.getString("MEMO"));			
-				
+
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -616,158 +618,158 @@ public class RequestDao {
 			close(rset);
 			close(pstmt);
 		}
-		
+
 		return requestInfo;
 	}
-	
+
 	public ArrayList<HashMap<String, Object>> selectRequestImg2(Connection con, String reqNo) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		ArrayList<HashMap<String, Object>> requestImg = null;
 		HashMap<String, Object> hmap = null;
-		
+
 		String query = prop.getProperty("selectRequestImg");
-		
+
 		try {
 			pstmt = con.prepareStatement(query);
 			
 			pstmt.setString(1, reqNo);
-			
+
 			rset = pstmt.executeQuery();
-			
+
 			requestImg = new ArrayList<HashMap<String, Object>>();
-			
+
 			while(rset.next()) {
-				
+
 				hmap = new HashMap<String, Object>();
-				
+
 				hmap.put("reqNo", rset.getString("REQ_NO"));
 				hmap.put("filePath", rset.getString("FILE_PATH"));
 				hmap.put("changeName", rset.getString("CHANGE_NAME"));
-				
+
 				requestImg.add(hmap);
-				
+
 				System.out.println("requestImg :::" + requestImg);
-				
+
 			}
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close(rset);
 			close(pstmt);
 		}
-		
+
 		return requestImg;
 	}
-	
+
 	public ArrayList<HashMap<String, Object>> selectProductInFo2(Connection con, String reqNo) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		ArrayList<HashMap<String, Object>> ProductInfo = null;
 		HashMap<String, Object> hmap = null;
-		
+
 		String query = prop.getProperty("selectProductInfo");
-		
+
 		try {
 			pstmt = con.prepareStatement(query);
-			
+
 			pstmt.setString(1, "R" + reqNo);
-			
+
 			rset = pstmt.executeQuery();
-			
+
 			ProductInfo = new ArrayList<HashMap<String, Object>>();
-			
+
 			while(rset.next()) {
 				hmap = new HashMap<String, Object>();
-				
+
 				hmap.put("proKind", rset.getString("PRODUCT_KIND"));
 				hmap.put("proName", rset.getString("PRODUCT_NAME"));				
-				
+
 				System.out.println("hmap.get(proName) ::: " + hmap.get("proName"));
-				
+
 				if(rset.getString("PRODUCT_NAME").equals("냉장고")) {
-					
+
 					hmap.put("proType", rset.getString("PRODUCT_TYPE"));
 					hmap.put("proSize", rset.getString("PRODUCT_SIZE"));
 				}else if(rset.getString("PRODUCT_NAME").equals("세탁기")) {
-					
+
 					hmap.put("proType", rset.getString("PRODUCT_TYPE"));
 					hmap.put("proSize", rset.getString("PRODUCT_SIZE"));
 				}else if(rset.getString("PRODUCT_NAME").equals("TV/모니터")) {
-					
+
 					hmap.put("proSize", rset.getString("PRODUCT_SIZE"));
 				}else if(rset.getString("PRODUCT_NAME").equals("에어컨")) {
-					
+
 					hmap.put("proType", rset.getString("PRODUCT_TYPE"));
 					hmap.put("proUni", rset.getString("UNIQUNESS"));
 				}else if(rset.getString("PRODUCT_NAME").equals("정수기")){
-					
+
 					hmap.put("proSize", rset.getString("PRODUCT_SIZE"));
 					hmap.put("proUni", rset.getString("UNIQUNESS"));
 				}else if(rset.getString("PRODUCT_NAME").equals("PC/노트북")) {
-					
+
 					hmap.put("proType", rset.getString("PRODUCT_TYPE"));
 				}else if(rset.getString("PRODUCT_NAME").equals("전자레인지")) {
-					
+
 					hmap.put("proType", rset.getString("PRODUCT_TYPE"));
 				}else if(rset.getString("PRODUCT_NAME").equals("침대")) {
-					
+
 					hmap.put("proType", rset.getString("PRODUCT_TYPE"));
 					hmap.put("proSize", rset.getString("PRODUCT_SIZE"));
 				}else if(rset.getString("PRODUCT_NAME").equals("의자")) {
-					
+
 					hmap.put("proType", rset.getString("PRODUCT_TYPE"));
-					
+
 				}else if(rset.getString("PRODUCT_NAME").equals("책상/테이블")) {
-					
+
 					hmap.put("proType", rset.getString("PRODUCT_TYPE"));
 					hmap.put("proSize", rset.getString("PRODUCT_SIZE"));
 					hmap.put("proMat", rset.getString("MATERIAL"));
 					hmap.put("proWidth", rset.getString("WIDTH"));
-					
+
 				}else if(rset.getString("PRODUCT_NAME").equals("책장")) {
-					
+
 					hmap.put("proWidth", rset.getString("WIDTH"));
 					hmap.put("proHeight", rset.getString("HEIGHT"));
-					
+
 				}else if(rset.getString("PRODUCT_NAME").equals("옷장")) {
-					
+
 					hmap.put("proType", rset.getString("PRODUCT_TYPE"));
 					hmap.put("proUni", rset.getString("UNIQUNESS"));
 					hmap.put("proWidth", rset.getString("WIDTH"));
-				
+
 				}else if(rset.getString("PRODUCT_NAME").equals("진열장")) {
-					
+
 					hmap.put("proWidth", rset.getString("WIDTH"));
 					hmap.put("proHeight", rset.getString("HEIGHT"));
 					hmap.put("proGck", rset.getString("GLASS_CHECK"));
-				
+
 				}else if(rset.getString("PRODUCT_NAME").equals("쇼파")) {
-					
+
 					hmap.put("proSize", rset.getString("PRODUCT_SIZE"));
-					
+
 				}else if(rset.getString("PRODUCT_NAME").equals("행거")) {
-					
+
 					hmap.put("proType", rset.getString("PRODUCT_TYPE"));
 					hmap.put("proWidth", rset.getString("WIDTH"));
-					
+
 				}else if(rset.getString("PRODUCT_NAME").equals("거울")) {
-					
+
 					hmap.put("proType", rset.getString("PRODUCT_TYPE"));
 					hmap.put("proSize", rset.getString("PRODUCT_SIZE"));
-					
+
 				}else if(rset.getString("PRODUCT_NAME").equals("화장대")) {
-					
+
 					hmap.put("proType", rset.getString("PRODUCT_TYPE"));
 					hmap.put("proMat", rset.getString("MATERIAL"));
-					
+
 				}else if(rset.getString("PRODUCT_NAME").equals("피아노")) {
-					
+
 					hmap.put("proType", rset.getString("PRODUCT_TYPE"));
-					
+
 				}
-				
+
 				ProductInfo.add(hmap);				
 			}
 		} catch (SQLException e) {
@@ -776,8 +778,252 @@ public class RequestDao {
 			close(rset);
 			close(pstmt);
 		}
-		
+
 		return ProductInfo;
 	}
+
+
+
+	public ArrayList<HashMap<String, Object>> selectreqNoList(Connection con) {
+		Statement stmt = null;
+		ResultSet rset = null;
+		ArrayList<HashMap<String, Object>> reqNoList = null;
+		HashMap<String, Object> hmap = null;
+
+		String query = prop.getProperty("selectreqNoList");
+
+		try {
+			stmt = con.createStatement();
+
+			rset = stmt.executeQuery(query);
+
+			reqNoList = new ArrayList<HashMap<String, Object>>();
+			while(rset.next()) {
+				hmap = new HashMap<String, Object>();
+
+				hmap.put("reqNo", rset.getString("REQ_NO"));
+
+				reqNoList.add(hmap);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(stmt);
+		}
+
+		return reqNoList;
+	}
+
+
+
+	public ArrayList<HashMap<String, Object>> selectReqList(Connection con, ArrayList<HashMap<String, Object>> reqNoList) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<HashMap<String, Object>> reqList = null;
+		HashMap<String, Object> hmap = null;
+		String reqStart = "";
+		String reqArrive = "";
+
+		String query = prop.getProperty("selectReqList");
+		
+		reqList = new ArrayList<HashMap<String, Object>>();
+
+		for(int i = 0; i < reqNoList.size(); i++) {
+			HashMap<String, Object> reqNoHmap = reqNoList.get(i);			
+
+			try {
+				pstmt = con.prepareStatement(query);
+
+
+				pstmt.setString(1, (String)reqNoHmap.get("reqNo"));
+				pstmt.setString(2, "매칭대기");
+
+				rset = pstmt.executeQuery();
+
+				while(rset.next()) {					
+					hmap = new HashMap<String, Object>();
+					
+					hmap.put("memberNo", rset.getString("MEMBER_NO"));
+					hmap.put("memberName", rset.getString("MEMBER_NAME"));
+					hmap.put("reservDate", rset.getString("RESERVATION_DATE"));
+					
+					if(rset.getString("START_POINT").contains("강남구")) {
+						reqStart = "서울시 강남구";
+						hmap.put("reqStart", reqStart);
+					}else if(rset.getString("START_POINT").contains("강동구")) {
+						reqStart = "서울시 강동구";
+						hmap.put("reqStart", reqStart);
+					}else if(rset.getString("START_POINT").contains("강북구")) {
+						reqStart = "서울시 강북구";
+						hmap.put("reqStart", reqStart);
+					}else if(rset.getString("START_POINT").contains("강서구")) {
+						reqStart = "서울시 강서구";
+						hmap.put("reqStart", reqStart);
+					}else if(rset.getString("START_POINT").contains("관악구")) {
+						reqStart = "서울시 관악구";
+						hmap.put("reqStart", reqStart);
+					}else if(rset.getString("START_POINT").contains("광진구")) {
+						reqStart = "서울시 광진구";
+						hmap.put("reqStart", reqStart);
+					}else if(rset.getString("START_POINT").contains("구로구")) {
+						reqStart = "서울시 구로구";
+						hmap.put("reqStart", reqStart);
+					}else if(rset.getString("START_POINT").contains("금천구")) {
+						reqStart = "서울시 금천구";
+						hmap.put("reqStart", reqStart);
+					}else if(rset.getString("START_POINT").contains("노원구")) {
+						reqStart = "서울시 노원구";
+						hmap.put("reqStart", reqStart);
+					}else if(rset.getString("START_POINT").contains("도봉구")) {
+						reqStart = "서울시 도봉구";
+						hmap.put("reqStart", reqStart);
+					}else if(rset.getString("START_POINT").contains("동대문구")) {
+						reqStart = "서울시 동대문구";
+						hmap.put("reqStart", reqStart);
+					}else if(rset.getString("START_POINT").contains("동작구")) {
+						reqStart = "서울시 동작구";
+						hmap.put("reqStart", reqStart);
+					}else if(rset.getString("START_POINT").contains("마포구")) {
+						reqStart = "서울시 마포구";
+						hmap.put("reqStart", reqStart);
+					}else if(rset.getString("START_POINT").contains("서대문구")) {
+						reqStart = "서울시 서대문구";
+						hmap.put("reqStart", reqStart);
+					}else if(rset.getString("START_POINT").contains("서초구")) {
+						reqStart = "서울시 서초구";
+						hmap.put("reqStart", reqStart);
+					}else if(rset.getString("START_POINT").contains("성동구")) {
+						reqStart = "서울시 성동구";
+						hmap.put("reqStart", reqStart);
+					}else if(rset.getString("START_POINT").contains("성북구")) {
+						reqStart = "서울시 성북구";
+						hmap.put("reqStart", reqStart);
+					}else if(rset.getString("START_POINT").contains("송파구")) {
+						reqStart = "서울시 송파구";
+						hmap.put("reqStart", reqStart);
+					}else if(rset.getString("START_POINT").contains("강동구")) {
+						reqStart = "서울시 강동구";
+						hmap.put("reqStart", reqStart);
+					}else if(rset.getString("START_POINT").contains("양천구")) {
+						reqStart = "서울시 양천구";
+						hmap.put("reqStart", reqStart);
+					}else if(rset.getString("START_POINT").contains("영등포구")) {
+						reqStart = "서울시 영등포구";
+						hmap.put("reqStart", reqStart);
+					}else if(rset.getString("START_POINT").contains("용산구")) {
+						reqStart = "서울시 용산구";
+						hmap.put("reqStart", reqStart);
+					}else if(rset.getString("START_POINT").contains("은평구")) {
+						reqStart = "서울시 은평구";
+						hmap.put("reqStart", reqStart);
+					}else if(rset.getString("START_POINT").contains("종로구")) {
+						reqStart = "서울시 종로구";
+						hmap.put("reqStart", reqStart);
+					}else if(rset.getString("START_POINT").contains("중구")) {
+						reqStart = "서울시 중구";
+						hmap.put("reqStart", reqStart);
+					}else if(rset.getString("START_POINT").contains("중랑구")) {
+						reqStart = "서울시 중랑구";
+						hmap.put("reqStart", reqStart);
+					}
+					
+					if(rset.getString("ARRIVE_POINT").contains("강남구")) {
+						reqArrive = "서울시 강남구";
+						hmap.put("reqArrive", reqArrive);
+					}else if(rset.getString("ARRIVE_POINT").contains("강동구")) {
+						reqArrive = "서울시 강동구";
+						hmap.put("reqArrive", reqArrive);
+					}else if(rset.getString("ARRIVE_POINT").contains("강북구")) {
+						reqArrive = "서울시 강북구";
+						hmap.put("reqArrive", reqArrive);
+					}else if(rset.getString("ARRIVE_POINT").contains("강서구")) {
+						reqArrive = "서울시 강서구";
+						hmap.put("reqArrive", reqArrive);
+					}else if(rset.getString("ARRIVE_POINT").contains("관악구")) {
+						reqArrive = "서울시 관악구";
+						hmap.put("reqArrive", reqArrive);
+					}else if(rset.getString("ARRIVE_POINT").contains("광진구")) {
+						reqArrive = "서울시 광진구";
+						hmap.put("reqArrive", reqArrive);
+					}else if(rset.getString("ARRIVE_POINT").contains("구로구")) {
+						reqArrive = "서울시 구로구";
+						hmap.put("reqArrive", reqArrive);
+					}else if(rset.getString("ARRIVE_POINT").contains("금천구")) {
+						reqArrive = "서울시 금천구";
+						hmap.put("reqArrive", reqArrive);
+					}else if(rset.getString("ARRIVE_POINT").contains("노원구")) {
+						reqArrive = "서울시 노원구";
+						hmap.put("reqArrive", reqArrive);
+					}else if(rset.getString("ARRIVE_POINT").contains("도봉구")) {
+						reqArrive = "서울시 도봉구";
+						hmap.put("reqArrive", reqArrive);
+					}else if(rset.getString("ARRIVE_POINT").contains("동대문구")) {
+						reqArrive = "서울시 동대문구";
+						hmap.put("reqArrive", reqArrive);
+					}else if(rset.getString("ARRIVE_POINT").contains("동작구")) {
+						reqArrive = "서울시 동작구";
+						hmap.put("reqArrive", reqArrive);
+					}else if(rset.getString("ARRIVE_POINT").contains("마포구")) {
+						reqArrive = "서울시 마포구";
+						hmap.put("reqArrive", reqArrive);
+					}else if(rset.getString("ARRIVE_POINT").contains("서대문구")) {
+						reqArrive = "서울시 서대문구";
+						hmap.put("reqArrive", reqArrive);
+					}else if(rset.getString("ARRIVE_POINT").contains("서초구")) {
+						reqArrive = "서울시 서초구";
+						hmap.put("reqArrive", reqArrive);
+					}else if(rset.getString("ARRIVE_POINT").contains("성동구")) {
+						reqArrive = "서울시 성동구";
+						hmap.put("reqArrive", reqArrive);
+					}else if(rset.getString("ARRIVE_POINT").contains("성북구")) {
+						reqArrive = "서울시 성북구";
+						hmap.put("reqArrive", reqArrive);
+					}else if(rset.getString("ARRIVE_POINT").contains("송파구")) {
+						reqArrive = "서울시 송파구";
+						hmap.put("reqArrive", reqArrive);
+					}else if(rset.getString("ARRIVE_POINT").contains("강동구")) {
+						reqArrive = "서울시 강동구";
+						hmap.put("reqArrive", reqArrive);
+					}else if(rset.getString("ARRIVE_POINT").contains("양천구")) {
+						reqArrive = "서울시 양천구";
+						hmap.put("reqArrive", reqArrive);
+					}else if(rset.getString("ARRIVE_POINT").contains("영등포구")) {
+						reqArrive = "서울시 영등포구";
+						hmap.put("reqArrive", reqArrive);
+					}else if(rset.getString("ARRIVE_POINT").contains("용산구")) {
+						reqArrive = "서울시 용산구";
+						hmap.put("reqArrive", reqArrive);
+					}else if(rset.getString("ARRIVE_POINT").contains("은평구")) {
+						reqArrive = "서울시 은평구";
+						hmap.put("reqArrive", reqArrive);
+					}else if(rset.getString("ARRIVE_POINT").contains("종로구")) {
+						reqArrive = "서울시 종로구";
+						hmap.put("reqArrive", reqArrive);
+					}else if(rset.getString("ARRIVE_POINT").contains("중구")) {
+						reqArrive = "서울시 중구";
+						hmap.put("reqArrive", reqArrive);
+					}else if(rset.getString("ARRIVE_POINT").contains("중랑구")) {
+						reqArrive = "서울시 중랑구";
+						hmap.put("reqArrive", reqArrive);
+					}	
+					
+					hmap.put("reqCount", rset.getString("COUNT"));
+					
+					reqList.add(hmap);						
+				}				
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close(rset);
+				close(pstmt);
+			}
+
+		}
+		return reqList;					
+	}
+
+
+
 
 }	
