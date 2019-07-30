@@ -127,6 +127,39 @@ public class NoticeDao {
 		
 		return result;
 	}
+	
+	//게시물 수 조회용
+		public int getListCount(Connection con) {
+			// TODO Auto-generated method stub
+			PreparedStatement pstmt = null;
+			int listCount = 0;
+			ResultSet rset = null;
+			
+			String query = prop.getProperty("selectListCount");
+			
+			try {
+				pstmt =con.prepareStatement(query);
+				
+				pstmt.setString(1,"공지사항");
+				
+				
+				if (rset.next()) {
+					listCount=rset.getInt(1);
+				}
+				
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				close(pstmt);
+				close(rset);
+			}
+			
+			
+			return listCount;
+		}
+		
 	public ArrayList<Notice> selectList(Connection con, int currentPage, int limit) {
 		// TODO Auto-generated method stub
 		
@@ -144,8 +177,9 @@ public class NoticeDao {
 			int startRow = (currentPage - 1) * limit + 1;
 			int endRow=startRow + limit -1;
 			
-			pstmt.setInt(1, startRow);
-			pstmt.setInt(2, endRow);
+			pstmt.setString(1, "공지사항");
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
 			
 			rset=pstmt.executeQuery();
 			
@@ -175,5 +209,6 @@ public class NoticeDao {
 		}
 		return list;
 	}
+	
 
 }

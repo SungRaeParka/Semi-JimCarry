@@ -5,8 +5,7 @@ import java.util.ArrayList;
 
 import com.kh.jimcarry.serviceCenter.model.dao.NoticeDao;
 import com.kh.jimcarry.serviceCenter.model.vo.Notice;
-import com.kh.jimcarry.board.model.dao.BoardDao;
-import com.kh.jimcarry.board.model.vo.Board;
+
 
 import static com.kh.jimcarry.common.JDBCTemplate.*;
 import static com.kh.jimcarry.common.JDBCTemplate.close;
@@ -47,6 +46,17 @@ public class NoticeService {
 		
 		return n;
 	}
+	//게시글 수 조회
+	public int getListCount() {
+		// TODO Auto-generated method stub
+		Connection con = getConnection();
+		
+		int listCount = new NoticeDao().getListCount(con);
+		
+		close(con);
+		
+		return listCount;
+	}
 	//페이징 처리후
 	public ArrayList<Notice> selectList(int currentPage, int limit) {
 		// TODO Auto-generated method stub
@@ -58,6 +68,7 @@ public class NoticeService {
 		
 		return list;
 	}
+
 	
 
 }
