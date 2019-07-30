@@ -10,7 +10,7 @@
 		ArrayList<Attachment> fileList = (ArrayList<Attachment>) request.getAttribute("fileList");
 		System.out.println("views  : "  + b );
 
-		Attachment photo1 = fileList.get(0); 
+		Attachment photo1 = fileList.get(0);
 		Attachment photo2 = fileList.get(1);
 	%>
 <html>
@@ -91,10 +91,6 @@
 						</div>
 					</td>
 
-
-
-
-
 				</tr>
 					<tr>
 						<td align="center">내용</td>
@@ -108,8 +104,10 @@
 
 
 			<div style="border: 1px solid white; width: 760px; text-align: right;">
+			<% if(loginUser.getUserId().equals(b.getWriter())) { %>
 			<button onclose="">삭제</button>&nbsp;&nbsp;
 			<button onclick="location.href='<%=request.getContextPath()%>/selectBoard.bo?num=<%=b.getPostCode()%>'">수정하기</button>&nbsp;
+				<% } %>
 			</div>
 
 
