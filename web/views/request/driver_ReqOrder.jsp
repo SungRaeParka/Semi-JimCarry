@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="java.util.*"%>
+    
+<%
+	ArrayList<HashMap<String, Object>> reqNoList = (ArrayList<HashMap<String, Object>>) request.getAttribute("reqNoList");
+	ArrayList<HashMap<String, Object>> reqList = (ArrayList<HashMap<String, Object>>) request.getAttribute("reqList");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,7 +39,8 @@
 					<td>
 						<span>출발지 검색 : </span>
 						<select id="start_point" name="start_point">
-							<option value="서울시 강남구" selected>서울시 강남구</option>
+							<option selected>출발지를 선택하세요.</option>
+							<option value="서울시 강남구" >서울시 강남구</option>
 							<option value="서울시 강동구" >서울시 강동구</option>
 							<option value="서울시 강북구" >서울시 강북구</option>
 							<option value="서울시 강서구" >서울시 강서구</option>
@@ -64,7 +70,8 @@
 					<td>
 						<span>도착지 검색 : </span>
 						<select id="arrive_point" name="arrive_point">
-							<option value="서울시 강남구" selected>서울시 강남구</option>
+							<option selected>도착지를 선택하세요.</option>
+							<option value="서울시 강남구" >서울시 강남구</option>
 							<option value="서울시 강동구" >서울시 강동구</option>
 							<option value="서울시 강북구" >서울시 강북구</option>
 							<option value="서울시 강서구" >서울시 강서구</option>
@@ -96,32 +103,38 @@
 					</td>
 				</tr>
 			</table>
-		</div>
+		</div>			
 		
 		<hr>
-		
-		<div style="display: table">
+		<%for(int i = 0; i < reqNoList.size(); i++) {
+			HashMap<String, Object> hmap = reqList.get(i);
+			HashMap<String, Object> hmap2 = reqNoList.get(i);
+		%>
+		<div style="display: inline-block">
 			<div style="float: left">
-				<img src="../../images/main_4.png" style="width: 120px; height: 120px; margin-left: 50px; margin-top: 30px; margin-bottom: 30px;">
+				<img src="/semi/images/mc1.png" style="width: 120px; height: 120px; margin-left: 50px; margin-top: 20px; margin-bottom: 30px;">
 			</div>
-			<div style="float: left; padding-left: 20px; padding-top: 30px;">
-				<span style="font-size: 40px; font-weight: bold; ">출발지</span>
+			<div style="float: left; padding-left: 20px; padding-top: 10px;">
+				<span style="font-size: 40px; font-weight: bold; "><%=hmap.get("reqStart")%></span>
 				<span style="font-size: 40px; font-weight: bold; ">→</span>
-				<span style="font-size: 40px; font-weight: bold; ">도착지</span>
+				<span style="font-size: 40px; font-weight: bold; "><%=hmap.get("reqArrive")%></span>				
 				<br>
-				<span style="font-size: 20px;">고객명 : 박성래</span>
+				<span style="font-size: 20px;">예약일 : <%=hmap.get("reservDate")%></span>
 				<br>
-				<span style="font-size: 20px;">받은 견적수 : 5건</span>
-			</div>	
-			<div style="float: left; padding-left: 230px; padding-top: 100px;">
-				<a href="driver_CheckReq.jsp" style="text-decoration: none;">
-					<span style="font-size: 30px">상세 견적 보기</span>
-				</a>
+				<span style="font-size: 20px;">고객명 : <%=hmap.get("memberName")%></span>
+				<br>
+				<span style="font-size: 20px;">받은 견적수 : <%=hmap.get("reqCount")%>건</span>
+			</div>
+			<div style="float: right; font-size: 20px; padding-right: 30px">
+				<span><%=hmap2.get("reqNo")%></span>
+			</div>
+			<div style="float: right; padding-right: 100px;">
+				<span style="font-size: 30px">상세 견적 보기</span>
 			</div>		
 		</div>
-		
 		<hr>
-		
+		<%} %>
+			
 		
 		
 		

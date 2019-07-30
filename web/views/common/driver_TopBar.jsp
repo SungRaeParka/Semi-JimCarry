@@ -15,9 +15,9 @@
 	<!-- 상단 고정바 -->
 	<div class="w3-top">
 		<div class="w3-bar w3-white w3-wide w3-padding w3-card">
-			<a href="/semi/views/mainPage.jsp" class="w3-bar-item w3-button" style="text-decoration:none"><b>짐 캐리</b></a>
+			<a href="/semi/views/driver_MainPage.jsp" class="w3-bar-item w3-button" style="text-decoration:none"><b>짐 캐리</b></a>
 			<div class="w3-right w3-hide-small">
-				<a href="/semi/views/request/driver_ReqOrder.jsp" class="w3-bar-item w3-button" style="text-decoration:none">견적매칭</a> 
+				<a onclick="goDriverOrder();"class="w3-bar-item w3-button" style="text-decoration:none">견적매칭</a> 
 				<a href="#" class="w3-bar-item w3-button" style="text-decoration:none">사용후기</a>
 				<a href="#"	class="w3-bar-item w3-button" style="text-decoration:none">기사홍보</a>
 				<a class="w3-bar-item w3-button" style="text-decoration:none" onclick="myJimcarry();">내 짐 캐리 리스트</a> 
@@ -35,7 +35,11 @@
 		
 		function myJimcarry(){
 			location.href="/semi/driverJcarrylist.jc";
-		}
+		};
+		
+		function goDriverOrder(){
+			location.href="<%=request.getContextPath()%>/driverOrder.rq";
+		};
 		 
 		
 	</script>	
