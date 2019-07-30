@@ -38,7 +38,7 @@ public class InsertMemberServlet extends HttpServlet {
 		String tel1 = request.getParameter("tel1");
 		String tel2 = request.getParameter("tel2");
 		String tel3 = request.getParameter("tel3");
-		String phone = tel1 + "-" + tel2 + "-" + tel3;
+		String phone = tel1 + tel2 + tel3;
 		
 		System.out.println(userId);
 		System.out.println(userPwd);
