@@ -12,6 +12,7 @@ import java.util.Properties;
 
 import com.kh.jimcarry.serviceCenter.model.vo.Notice;
 import com.kh.jimcarry.serviceCenter.model.vo.OneQ;
+import com.kh.jimcarry.serviceCenter.model.vo.QandA;
 
 import static com.kh.jimcarry.common.JDBCTemplate.*;
 
@@ -128,6 +129,55 @@ public class OneQDao {
 		
 		
 		return result;
+	}
+
+	public ArrayList<OneQ> selectList(Connection con, int currentPage, int limit) {
+		// TODO Auto-generated method stub
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<OneQ> list2 = null;
+		
+		String query = prop.getProperty("selectListWithPaging");
+		
+		try {
+			pstmt=con.prepareStatement(query);
+			
+			System.out.println("query : "+query);
+			
+			int startRow = (currentPage - 1) * limit + 1;
+			int endRow=startRow + limit -1;
+			
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+			
+			rset=pstmt.executeQuery();
+			
+			list2= new ArrayList<OneQ>();
+			
+			while(rset.next()) {
+					OneQ one = new OneQ();
+
+					one.setPostcode(rset.getString("POST_CODE"));
+					one.setUserNo(rset.getString("MEMBER_NO"));
+					one.setPostDate(rset.getDate("POST_DATE"));
+					one.setPostTitle(rset.getString("POST_TITLE"));
+					one.setPostContent(rset.getString("POST_CONTENTS"));
+					one.setPostType(rset.getString("POST_TYPE"));
+					one.setQuestionType(rset.getString("QUESTION_TYPE"));
+					one.setPostNo(rset.getInt("POST_NO"));
+					one.setBCount(rset.getInt("B_COUNT"));
+					
+					list2.add(one);
+					
+			}	
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list2;
 	}
 
 }

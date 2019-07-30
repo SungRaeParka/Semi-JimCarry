@@ -3,43 +3,48 @@ package com.kh.jimcarry.serviceCenter.model.vo;
 import java.sql.Date;
 
 public class OneQ {
-	private String postCond;
+	private String postcode;
 	private String userNo;
-	private String  postNo;
-	private Date postdate;
+	private Date postDate;
 	private String postTitle;
 	private String postContent;
-	private String attachments;
 	private String postType;
 	private String questionType;
+	private int postNo;
+	private int BCount;
+	
 	
 	
 	public OneQ() {}
 
 
-	public OneQ(String postCond, String userNo, String postNo, Date postdate, String postTitle, String postContent,
-			String attachments, String postType, String questionType) {
+
+	public OneQ(String postcode, String userNo, Date postDate, String postTitle, String postContent, String postType,
+			String questionType, int postNo, int bCount) {
 		super();
-		this.postCond = postCond;
+		this.postcode = postcode;
 		this.userNo = userNo;
-		this.postNo = postNo;
-		this.postdate = postdate;
+		this.postDate = postDate;
 		this.postTitle = postTitle;
 		this.postContent = postContent;
-		this.attachments = attachments;
 		this.postType = postType;
 		this.questionType = questionType;
+		this.postNo = postNo;
+		BCount = bCount;
 	}
 
 
-	public String getPostCond() {
-		return postCond;
+
+	public String getPostcode() {
+		return postcode;
 	}
 
 
-	public void setPostCond(String postCond) {
-		this.postCond = postCond;
+
+	public void setPostcode(String postcode) {
+		this.postcode = postcode;
 	}
+
 
 
 	public String getUserNo() {
@@ -47,29 +52,23 @@ public class OneQ {
 	}
 
 
+
 	public void setUserNo(String userNo) {
 		this.userNo = userNo;
 	}
 
 
-	public String getPostNo() {
-		return postNo;
+
+	public Date getPostDate() {
+		return postDate;
 	}
 
 
-	public void setPostNo(String postNo) {
-		this.postNo = postNo;
+
+	public void setPostDate(Date postDate) {
+		this.postDate = postDate;
 	}
 
-
-	public Date getPostdate() {
-		return postdate;
-	}
-
-
-	public void setPostdate(Date postdate) {
-		this.postdate = postdate;
-	}
 
 
 	public String getPostTitle() {
@@ -77,9 +76,11 @@ public class OneQ {
 	}
 
 
+
 	public void setPostTitle(String postTitle) {
 		this.postTitle = postTitle;
 	}
+
 
 
 	public String getPostContent() {
@@ -87,19 +88,11 @@ public class OneQ {
 	}
 
 
+
 	public void setPostContent(String postContent) {
 		this.postContent = postContent;
 	}
 
-
-	public String getAttachments() {
-		return attachments;
-	}
-
-
-	public void setAttachments(String attachments) {
-		this.attachments = attachments;
-	}
 
 
 	public String getPostType() {
@@ -107,9 +100,11 @@ public class OneQ {
 	}
 
 
+
 	public void setPostType(String postType) {
 		this.postType = postType;
 	}
+
 
 
 	public String getQuestionType() {
@@ -117,18 +112,46 @@ public class OneQ {
 	}
 
 
+
 	public void setQuestionType(String questionType) {
 		this.questionType = questionType;
 	}
 
 
-	@Override
-	public String toString() {
-		return "OneQ [postCond=" + postCond + ", userNo=" + userNo + ", postNo=" + postNo + ", postdate=" + postdate
-				+ ", postTitle=" + postTitle + ", postContent=" + postContent + ", attachments=" + attachments
-				+ ", postType=" + postType + ", questionType=" + questionType + "]";
+
+	public int getPostNo() {
+		return postNo;
 	}
 
+
+
+	public void setPostNo(int postNo) {
+		this.postNo = postNo;
+	}
+
+
+
+	public int getBCount() {
+		return BCount;
+	}
+
+
+
+	public void setBCount(int bCount) {
+		BCount = bCount;
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "OneQ [postcode=" + postcode + ", userNo=" + userNo + ", postDate=" + postDate + ", postTitle="
+				+ postTitle + ", postContent=" + postContent + ", postType=" + postType + ", questionType="
+				+ questionType + ", postNo=" + postNo + ", BCount=" + BCount + "]";
+	}
+
+
+	
 
 	
 }

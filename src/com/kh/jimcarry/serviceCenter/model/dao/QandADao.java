@@ -103,7 +103,74 @@ public class QandADao {
 	//조회수 증가
 	public int updateCountQA(Connection con, int num) {
 		// TODO Auto-generated method stub
-		return 0;
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = prop.getProperty("updateCount");
+		
+		try {
+			pstmt=con.prepareStatement(query);
+			pstmt.setInt(1, num);
+			pstmt.setInt(2, num);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+	public ArrayList<QandA> selectList(Connection con, int currentPage, int limit) {
+		// TODO Auto-generated method stub
+		
+		PreparedStatement pstmt=null;
+		ResultSet rset = null;
+		ArrayList<QandA> list1= null;
+		
+		String query =prop.getProperty("selectListWithPaging");
+		
+		try {
+			pstmt=con.prepareStatement(query);
+			
+			System.out.println("query : "+query);
+			
+			int startRow = (currentPage - 1) * limit + 1;
+			int endRow=startRow + limit -1;
+			
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+			
+			rset=pstmt.executeQuery();
+			
+			list1= new ArrayList<QandA>();
+			
+			while(rset.next()) {
+					QandA qa = new QandA();
+
+					qa.setPostcode(rset.getString("POST_CODE"));
+					qa.setUserNo(rset.getString("MEMBER_NO"));
+					qa.setPostDate(rset.getDate("POST_DATE"));
+					qa.setPostTitle(rset.getString("POST_TITLE"));
+					qa.setPostContent(rset.getString("POST_CONTENTS"));
+					qa.setPostType(rset.getString("POST_TYPE"));
+					qa.setQuestionType(rset.getString("QUESTION_TYPE"));
+					qa.setPostNo(rset.getInt("POST_NO"));
+					qa.setBCount(rset.getInt("B_COUNT"));
+					
+					list1.add(qa);
+					
+			}	
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list1;
 	}
 
 }
