@@ -76,6 +76,7 @@ public class MemberDao {
 				loginUser.setSeqNo(rset.getString("MEMBER_NO"));
 				loginUser.setUserId(rset.getString("MEMBER_ID"));
 				loginUser.setUserPwd(rset.getString("MEMBER_PWD"));
+				loginUser.setUserName(rset.getString("MEMBER_NAME"));
 				loginUser.setPhone(rset.getString("PHONE"));
 				loginUser.setEnrollDate(rset.getDate("ENROLL_DATE"));
 				loginUser.setStatusCheck(rset.getString("STATUS_CHECK"));

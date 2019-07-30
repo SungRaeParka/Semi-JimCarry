@@ -26,7 +26,7 @@
 		background:#5e5e5e;
 		color:#ffffff;
 	}
-	#conFirm, #passwordCheck, #checkNobtn {
+	#conFirm, #passwordCheck, #checkNobtn, #pwdCheck {
 		border:3px solid #5e5e5e;
 		border-radius:10px;
 		text-align:center;
@@ -69,6 +69,7 @@
 			<tr>
 				<td><label>비밀번호 재확인</label></td>
 				<td><input type="password" name="password1" id="password1" placeholder="비밀번호 재입력"></td>
+		<!--  	<td><button id="pwdCheck" onclick="pwdCheck();">확인</button><td> -->
 			</tr>
 			<tr>
 				<td><label>휴대폰 번호</label></td>
@@ -114,9 +115,7 @@
 				});
 			});
 		});
-		
-
-		/* $("#passwordCheck").click(function(){
+		 $("#passwordCheck").click(function(){
 				
 			if($("#password").val() != ($("#password1").val())){
 			     alert("비밀번호를 확인하세요");
@@ -127,10 +126,11 @@
 			   }else{
 				   alert("확인완료");
 			   }
-			}); */
+		});
 		function ok(){
 			$("form").submit();
 		};
+		
 		</script>
 	
 </body>

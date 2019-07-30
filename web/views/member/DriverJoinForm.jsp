@@ -91,7 +91,7 @@
 			</tr>
 			<tr>
 				<td><label>비밀번호 재확인</label>
-				<td><input type="password" name="password" id="box" placeholder="비밀번호 재입력"></td>
+				<td><input type="password" name="password1" id="box" placeholder="비밀번호 재입력"></td>
 			</tr>
 			<tr>
 				<td><label>휴대폰 번호</label></td>
@@ -248,7 +248,7 @@
 			});
 		});
 	});
-
+	
 	</script>
 	
 </body>
