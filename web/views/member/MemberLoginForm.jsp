@@ -53,7 +53,7 @@
 	<div align="center">
 		<h1>짐캐리</h1>
 	</div>
-	<form action="<%= request.getContextPath()%>/login.me" method="post" id="loginForm">
+	<form action="<%=request.getContextPath()%>/login.me" method="post" id="loginForm">
 	<div align="center">
 		<input type="text" name="userId" id="userId" placeholder="아이디">
 	</div>
@@ -68,7 +68,7 @@
 		<a href="/semi/views/member/MemberJoinMenuForm.jsp">회원가입</a>
 	</div>
 	<div align="center">
-		<a href="views/mainPage.jsp"><button id="login">로그인</button></a><br>
+		<a><button id="login">로그인</button></a><br>
 		<a href="#"><img src="../../images/logo.PNG" id="logo"></a>
 	</div>
 	</form>

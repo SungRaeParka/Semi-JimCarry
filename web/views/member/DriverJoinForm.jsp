@@ -248,6 +248,19 @@
 			});
 		});
 	});
+	$("#checkPwdbtn").click(function() {
+		// if문으로 비밀번호가 틀리면 출력
+		var pwd = $('#password').val();
+        var pwd1 = $('#password1').val();
+        if(pwd != pwd1){	
+			window.confirm("비밀번호가 틀립니다. 다시입력하세요");
+			$("#password1").val("").focus();	            	
+        }else{
+			$(".showMemberInfo").hide();
+			$(".updateMemberInfo").show();
+			$(".checkPwd").hide();
+        }
+	});
 	
 	</script>
 	

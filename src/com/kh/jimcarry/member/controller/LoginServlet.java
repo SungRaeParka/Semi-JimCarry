@@ -40,7 +40,7 @@ public class LoginServlet extends HttpServlet {
 		
 		
 		Member loginUser = new MemberService().loginCheck(userId, userPwd);
-		
+		String page = "";
 		
 		if(loginUser != null) {
 			if(loginUser.getUserId().contains("admin")) {

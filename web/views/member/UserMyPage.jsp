@@ -46,6 +46,10 @@
 	#checkPwdbtn {
 		margin-left: 80px;
 	}
+	#tel1 {
+		height:30px;
+		width:210px;
+	}
 	#tel {
 		height:30px;
 		width:57px;
@@ -80,7 +84,7 @@
 
   			<div class="tab-content">
     			<div id="home" class="tab-pane fade in active" style="border: 1px solid black">
-    				<form action="" method="post">
+  			<form action="<%=request.getContextPath()%>/update.me" method="post">
     				<table align="center">
     					<tr class="showMemberInfo">
     						<td><label>아이디 : </label></td>
@@ -93,9 +97,8 @@
     					<tr class="showMemberInfo">
 							<td><label>휴대폰 번호 :</label>&nbsp;&nbsp;</td>
 							<td>
-							<input type="text" maxlength="3" name="tel1" value="<%=loginUser.getPhone() %>" id="tel" readonly> -
-							<input type="text" maxlength="4" name="tel2" value="0000" id="tel" readonly> -
-							<input type="text" maxlength="4" name="tel3" value="0000" id="tel" readonly></td>		
+							<input type="text" maxlength="3" name="tel1" value="<%=loginUser.getPhone() %>" id="tel1" readonly>
+							</td>		
 						</tr>
     					<tr class="showMemberInfo">
     						<td colspan="2"><input type="button" value="회원정보 변경" id="updatebtn"></td>    						
@@ -103,7 +106,6 @@
     					<tr class="showMemberInfo">
     						<td colspan="2"><input type="button" value="회원 탈퇴" id="deletebtn"></td>
     					</tr>
-
     					<h3 align="center" class="checkPwd">비밀번호 확인</h3>  					
     					<tr class="checkPwd">
     						<td><label>아이디 : </label></td>
@@ -133,13 +135,13 @@
     					<tr class="updateMemberInfo">
 							<td><label>휴대폰 번호 :</label>&nbsp;&nbsp;</td>
 							<td>
-							<input type="text" maxlength="3" name="tel1" value="010" id="tel"> -
-							<input type="text" maxlength="4" name="tel2" value="0000" id="tel"> -
-							<input type="text" maxlength="4" name="tel3" value="0000" id="tel"></td>
+							<input type="text" maxlength="3" name="tel4" value="010" id="tel"> -
+							<input type="text" maxlength="4" name="tel5" value="0000" id="tel"> -
+							<input type="text" maxlength="4" name="tel6" value="0000" id="tel"></td>
 							<td><button id="btn" onclick="Confirm();">인증</button></td>			
 						</tr>   					
     					<tr class="updateMemberInfo">
-    						<td colspan="2"><input type="button" value="수정 완료" id="updateMemberbtn" onclick="location.href='<%=request.getContextPath() %>/update.me'"></td>    						
+    						<td colspan="2"><input type="button" value="수정 완료" id="updateMemberbtn" onclick="updateOk();"></td>    						
     					</tr>
     				</table>
     				</form>
@@ -228,7 +230,7 @@
 	            }
 			});
 			
-			/* $("#updateMemberbtn").click(function() {
+			/*  $("#updateMemberbtn").click(function() {
 				window.confirm("회원정보가 수정되었습니다.");
 				$(".showMemberInfo").show();
 				$(".updateMemberInfo").hide();
@@ -240,6 +242,9 @@
 				location.href = "../main/mainPage.jsp";
 			});
 		});
+		function updateOk(){
+			$("form").submit();
+		}
 		function check(){
 			window.alert("환불신청!");
 		}
