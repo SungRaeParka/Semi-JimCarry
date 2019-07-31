@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<% %>
+    pageEncoding="UTF-8" import="java.util.*, com.kh.jimcarry.admin.accounting.model.vo.*, java.text.DecimalFormat"%><%
+	ArrayList<AccountingPeriod> list = (ArrayList<AccountingPeriod>) request.getAttribute("list");
+    String periodSort = list.get(0).getPeriodSort();
+    DecimalFormat df = new DecimalFormat("###,###,###,###");
+%>
 <!DOCTYPE html>
 <html>
 
@@ -12,7 +15,6 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 	<title>Insert title here</title>
-	<script src="../../js/admin.js"></script>
 	<style>
 		table,
 		th {
@@ -55,135 +57,65 @@
 
 		<ul class="nav nav-tabs">
 			<li class="active"><a data-toggle="tab" href="#home">기간</a></li>
-			<li><a data-toggle="tab" href="#menu1">맴버</a></li>
-			<li><a data-toggle="tab" href="#menu2">환불관리</a></li>
+			<li><a href="/semi/views/admin/accounting/admin_AccountMember.jsp">맴버</a></li>
+			<li><a href="/semi/views/admin/accounting/admin_AccountRefund.jsp">환불관리</a></li>
 		</ul>
 
 		<div class="tab-content">
 			<div id="home" class="tab-pane fade in active">
 				<br>
+				<form id="periodForm">
 				<select id="period" name="period">
-					<option value="week" selected> 주 </option>
-					<option value="month"> 월 </option>
-					<option value="quarter">분기</option>
-					<option value="year">년도</option>
+					<option value="일" selected> 일 </option>
+					<option value="월"> 월 </option>
+					<option value="년도">년도</option>
 				</select>
+				</form>
 				<br>
 				<div class="moneyT">
 					<%-- <%if(){ %> --%>
-					<table class="moneyWeek" border="1px">
+					<table class="moneyDay" id="moneyDay" border="1px">
 						<tr>
-							<th> 주 </th>
+							<th> <%= periodSort %> </th>
 							<th>총매출</th>
-							<th>환불금액</th>
+							<th>이용건수</th>
 							<th>순수익</th>
+							<!-- <th>환불금액</th> -->
 						</tr>
+						<% for(AccountingPeriod ap : list){ %>
 						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
+							<td><%=ap.getAccountDate() %></td>
+							<td><%=df.format(ap.getTotalPayAmount()) %></td>
+							<td><%=ap.getTotalCount() %></td>
+							<td><%=df.format(ap.getTotalFeesIncome()) %></td>
+							<%-- <td><%=ap.getTotalRefundFee() %></td> --%>
 						</tr>
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
+						<% } %>
 					</table>
-					<table class="moneyMonth" border="1px">
-						<tr>
-							<th> 월 </th>
-							<th>총매출</th>
-							<th>환불금액</th>
-							<th>순수익</th>
-						</tr>
-						<tr>
-							<th></th>
-							<th></th>
-							<th></th>
-							<th></th>
-						</tr>
-						<tr>
-							<th></th>
-							<th></th>
-							<th></th>
-							<th></th>
-						</tr>
-					</table>
-					<%--  <%}else if() {%> --%>
-					<table class="moneyQuarter" border="1px">
-						<tr>
-							<th>분기</th>
-							<th>총매출</th>
-							<th>환불금액</th>
-							<th>순수익</th>
-						</tr>
-						<tr>
-							<th></th>
-							<th></th>
-							<th></th>
-							<th></th>
-						</tr>
-						<tr>
-							<th></th>
-							<th></th>
-							<th></th>
-							<th></th>
-						</tr>
-					</table>
-					<%-- 	<%}else{ %> --%>
-					<table class="moneyYear" border="1px">
-						<tr>
-							<th>년도</th>
-							<th>총매출</th>
-							<th>환불금액</th>
-							<th>순수익</th>
-						</tr>
-						<tr>
-							<th></th>
-							<th></th>
-							<th></th>
-							<th></th>
-						</tr>
-						<tr>
-							<th></th>
-							<th></th>
-							<th></th>
-							<th></th>
-						</tr>
-					</table>
-					<%--   <%} %> --%>
+
 				</div>
 			</div>
 			<script>
 				//관리자>정산관리>기간
 				$(function () {
-					$('.moneyMonth, .moneyQuarter, .moneyYear').hide();
-					$('#period option:selected').show();
+					var state = $('#period option:selected').val();
+					if(state==null){
+						$('#period option:selected').show();
+
+					}
 				});
 
 				$('#period').change(function () {
 					var state = $('#period option:selected').val();
-					if (state == 'week') {
-						$('.moneyWeek').show();
-					} else {
-						$('.moneyWeek').hide();
-					}
-					if (state == 'month') {
-						$('.moneyMonth').show();
-					} else {
-						$('.moneyMonth').hide();
-					}
-					if (state == 'quarter') {
-						$('.moneyQuarter').show();
-					} else {
-						$('.moneyQuarter').hide();
-					}
-					if (state == 'year') {
-						$('.moneyYear').show();
-					} else {
-						$('.moneyYear').hide();
+					if (state == '일') {
+						$("#periodForm").attr("action", "<%=request.getContextPath()%>/accounting.pr");
+						$("#periodForm").submit();
+					} else if (state == '월') {
+						$("#periodForm").attr("action", "<%=request.getContextPath()%>/accounting.pr");
+						$("#periodForm").submit();
+					} else if (state == '년도') {
+						$("#periodForm").attr("action", "<%=request.getContextPath()%>/accounting.pr");
+						$("#periodForm").submit();
 					}
 				});
 			</script>
