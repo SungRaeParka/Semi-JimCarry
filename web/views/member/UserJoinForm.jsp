@@ -86,7 +86,7 @@
 			</tr>
 			<tr>
 				<td></td>
-				<td><button id="join" onclick="ok();">가입하기</button></td>
+				<td><button id="join">가입하기</button></td>
 			</tr>
 		</table>
 		</form>
@@ -115,21 +115,16 @@
 				});
 			});
 		});
-		 $("#passwordCheck").click(function(){
-				
-			if($("#password").val() != ($("#password1").val())){
-			     alert("비밀번호를 확인하세요");
-			      $("#password").val("");
-			      $("#password1").val("");
-			      $("#password").focus();
-			      return false;
-			   }else{
-				   alert("확인완료");
-			   }
+		$("#join").click(function() {
+			// if문으로 비밀번호가 틀리면 출력
+			var pwd = $("#password").val();
+	        var pwd1 = $("#password1").val();
+	        if(pwd != pwd1){	
+				window.confirm("비밀번호가 틀립니다. 다시입력하세요");	            	
+	        }else{
+	        	$("form").submit();
+	        }
 		});
-		function ok(){
-			$("form").submit();
-		};
 		
 		</script>
 	

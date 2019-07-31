@@ -95,37 +95,6 @@ public class MemberDao {
 		return loginUser;
 	}
 
-	/*public int insertDriver(Connection con, Member m) {
-		PreparedStatement pstmt = null;
-		int result = 0;
-		
-		String query = prop.getProperty("insertDriver");
-		
-		try {
-			pstmt = con.prepareStatement(query);
-			pstmt.setString(1, m.getUserId());
-			pstmt.setString(2, m.getUserPwd());
-			pstmt.setString(3, m.getUserName());
-			pstmt.setString(4, m.getPhone());
-			pstmt.setString(5, m.getAgent());
-			pstmt.setString(6, m.getBusinessNo());
-			pstmt.setString(7, m.getBusinessAddress());
-			pstmt.setString(8, m.getCarType());
-			pstmt.setString(9, m.getCarNo());
-			pstmt.setString(10, m.getBankName());
-			pstmt.setString(11, m.getAccountNo());
-			pstmt.setString(12, m.getCarSize());
-			
-			result = pstmt.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(pstmt);
-		}
-		
-		return result;
-	}*/
-
 	public int userIdCheck(Connection con, String userId) {
 		int result = 0;
 		PreparedStatement pstmt = null;
@@ -235,6 +204,29 @@ public class MemberDao {
 				close(pstmt);
 			}
 		System.out.println("마지막~ : " + result);
+		return result;
+	}
+
+	public int updateMember(Connection con, Member m) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String query = prop.getProperty("updateMember");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, m.getUserPwd());
+			pstmt.setString(2, m.getPhone());
+			pstmt.setString(3, m.getUserId());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
 		return result;
 	}
 	

@@ -29,18 +29,33 @@ public class UpdateMemberServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String userPwd = request.getParameter("userPwd");
-		String tel1 = request.getParameter("tel1");
-		String tel2 = request.getParameter("tel2");
-		String tel3 = request.getParameter("tel3");
-		String phone = tel1 + tel2 + tel3;
+		String userId = request.getParameter("userId");
+		String userPwd = request.getParameter("password");
+		String tel4 = request.getParameter("tel4");
+		String tel5 = request.getParameter("tel5");
+		String tel6 = request.getParameter("tel6");
+		String phone = tel4 + tel5 + tel6;
+		System.out.println(userPwd);
+		System.out.println(phone);
 		
 		Member m = new Member();
+		m.setUserId(userId);
 		m.setUserPwd(userPwd);
 		m.setPhone(phone);
 		System.out.println(m);
 		
-	//	int result = new MemberService().updateMember(m);
+		int result = new MemberService().updateMember(m);
+		
+		String page = "";
+		
+		if(result > 0) {
+			page = "views/member/UserMyPage.jsp";
+			response.sendRedirect(page);
+		}else {
+			page = "views/common/errorPage.jsp";
+			request.setAttribute("msg", "회원정보 수정 실패");
+			request.getRequestDispatcher(page).forward(request, response);
+		}
 	}
 
 	/**
