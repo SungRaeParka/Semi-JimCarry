@@ -10,6 +10,10 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%@ include file="/views/common/user_TopBar.jsp"%>
+
+<br><br><br><br><br>
+
 	<h1 align="center"><%= msg %></h1>
 </body>
 </html>

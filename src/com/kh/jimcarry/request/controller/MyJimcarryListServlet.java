@@ -44,9 +44,6 @@ public class MyJimcarryListServlet extends HttpServlet {
 		}
 		
 		
-		limit=5;
-		
-		
 		HttpSession session = request.getSession();
 		Member loginUser = (Member)session.getAttribute("loginUser");
 		String logUserNo = loginUser.getSeqNo();
@@ -55,6 +52,18 @@ public class MyJimcarryListServlet extends HttpServlet {
 		int listCount = new RequestService().getListCount(logUserNo);
 		
 		System.out.println("listcount : "+listCount);
+		
+		
+		String page="";
+		
+		if(listCount==0) {
+			page="views/common/errorPage.jsp";
+			request.setAttribute("msg", "짐캐리 리스트가 없어요!");
+			request.getRequestDispatcher(page).forward(request, response);
+		}
+		
+		
+		limit=5;
 		
 		maxPage = (int)((double)listCount/limit+0.95);
 		
@@ -76,10 +85,9 @@ public class MyJimcarryListServlet extends HttpServlet {
 		
 		
 		
-		String page="";
+		
 		
 		if(jimList != null) {
-			System.out.println("페이지이동");
 			page = "views/request/jim_CarryList.jsp";
 			request.setAttribute("jimList", jimList);
 			request.setAttribute("pi", pi);
