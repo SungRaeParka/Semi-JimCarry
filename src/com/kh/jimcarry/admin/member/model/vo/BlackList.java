@@ -2,7 +2,7 @@ package com.kh.jimcarry.admin.member.model.vo;
 
 import java.sql.Date;
 
-public class BlackList {
+public class BlackList implements java.io.Serializable{
 	private String driverNo;
 	private String stopReason;
 	private Date stopDate;

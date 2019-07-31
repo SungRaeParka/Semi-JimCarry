@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="com.kh.jimcarry.member.model.vo.*"%>
 <%
-	Member loginUser = (Member) session.getAttribute("loginUser"); 
+	Member loginUser = (Member) session.getAttribute("loginUser");
 %>
 <!DOCTYPE html>
 <html>
@@ -18,7 +18,7 @@
 			<a href="#" class="w3-bar-item w3-button"><b>짐 캐리</b></a>
 			<div class="w3-right w3-hide-small">
 				<a href="/semi/selectAll.u" class="w3-bar-item w3-button">회원관리</a>
-				<a href="/semi/views/admin/admin_Account.jsp" class="w3-bar-item w3-button">정산관리</a>
+				<a href="/semi/views/admin/accounting/admin_AccountPeriod.jsp" class="w3-bar-item w3-button">정산관리</a>
 				<a href="/semi/views/admin/admin_Statistics.jsp"	class="w3-bar-item w3-button">통계</a>
 				<a href="/semi/views/admin/customerCenter/admin_CCNoList.jsp" class="w3-bar-item w3-button">고객센터관리</a>
 				<a href="/semi/views/admin/admin_Board.jsp" class="w3-bar-item w3-button">게시판관리</a>

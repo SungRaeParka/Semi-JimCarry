@@ -12,7 +12,6 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 	<title>Insert title here</title>
-	<script src="../../js/admin.js"></script>
 	<style>
 		table,
 		th {
@@ -54,9 +53,9 @@
 		<br />
 
 		<ul class="nav nav-tabs">
-			<li class="active"><a data-toggle="tab" href="#home">기간</a></li>
-			<li><a data-toggle="tab" href="#menu1">맴버</a></li>
-			<li><a data-toggle="tab" href="#menu2">환불관리</a></li>
+			<li><a href="/semi/views/admin/accounting/admin_AccountPeriod.jsp">기간</a></li>
+			<li class="active"><a data-toggle="tab" href="#menu1">맴버</a></li>
+			<li><a href="/semi/views/admin/accounting/admin_AccountRefund.jsp">환불관리</a></li>
 		</ul>
 
 		<div class="tab-content">
@@ -97,7 +96,7 @@
 				</div>
 			</div>
 			<script>
-				//관리자>정산관리>사용자 
+				//관리자>정산관리>사용자
 				$('#member').change(function () {
 					var state = $('#member option:selected').val();
 					var UorD = $('.UorD[text="사용자"').parent();

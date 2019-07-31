@@ -1,4 +1,4 @@
-package com.kh.jimcarry.admin.member.controller;
+package com.kh.jimcarry.admin.accounting.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -9,20 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.jimcarry.admin.member.model.service.MemberService;
-import com.kh.jimcarry.member.model.vo.Member;
+import com.kh.jimcarry.admin.accounting.model.service.AccountingService;
+import com.kh.jimcarry.admin.accounting.model.vo.AccountingPeriod;
 
 /**
- * Servlet implementation class SelectAllUser
+ * Servlet implementation class AccountingPeriodServlet
  */
-@WebServlet("/selectAll.u")
-public class SelectAllUser extends HttpServlet {
+@WebServlet("/accounting.pr")
+public class AccountingPeriodServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SelectAllUser() {
+    public AccountingPeriodServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,18 +31,20 @@ public class SelectAllUser extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<Member> list = new MemberService().selectAll();
+		String period = request.getParameter("period");
+		System.out.println("period : " + period);
+
+		ArrayList<AccountingPeriod> list = new AccountingService().period(period);
 
 		String page ="";
-
 		if(list != null) {
-			page = "views/admin/memberMng/admin_UserMng.jsp";
+			page = "views/admin/accounting/admin_AccountPeriod.jsp";
 			request.setAttribute("list", list);
 		}else {
 			page = "views/common/errorPage.jsp";
 			request.setAttribute("msg", "목록 조회 실패!");
 		}
-		System.out.println("SelectAllUser.svl list : " + list);
+		System.out.println("list in servlet : " + list);
 
 		request.getRequestDispatcher(page).forward(request, response);
 
