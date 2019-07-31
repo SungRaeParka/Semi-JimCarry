@@ -244,7 +244,7 @@ a.btn_02 {
 
 	<%-- 검색영역 --%>
 		<div class="searchArea" align="center">
-	<form action="<%=request.getContextPath()%>/search.bo" method="post">
+	<form action="<%=request.getContextPath()%>/search.bo" method="get">
 			<select name="searchCondition" id="searchCondition">
 				<option value="title">제목</option>
 				<option value="writer">작성자</option>

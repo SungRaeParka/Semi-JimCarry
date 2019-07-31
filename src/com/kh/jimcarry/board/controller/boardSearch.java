@@ -27,13 +27,17 @@ public class boardSearch extends HttpServlet {
 		int maxPage;
 		int startPage;
 		int endPage;
+	//	String word;
 
-
+		String word = request.getParameter("word");
 		//게시판은 1페이지부터 시작함 그래서 1로 초기값
 		currentPage = 1;
 
-		if(request.getParameter("currentPage") != null) {
+		if(request.getParameter("currentPage") != null ) {
 			currentPage = Integer.parseInt(request.getParameter("currentPage"));
+			/*if(request.getParameter("word") != null) {
+				word = request.getParameter("word");
+			}*/
 		}
 
 		//한 페이지에 보여질 목록 갯수
@@ -56,18 +60,17 @@ public class boardSearch extends HttpServlet {
 
 		}
 
-		PageInfo pi = new PageInfo(currentPage, listCount, limit, maxPage, startPage, endPage);
+		PageInfo pi = new PageInfo(currentPage, listCount, limit, maxPage, startPage, endPage/*, word*/);
 
 		String searchCondition = request.getParameter("searchCondition");
-		String word = request.getParameter("word");
 
 		ArrayList<Board> list = new BoardService().searchList(currentPage,limit, searchCondition, word);
-		System.out.println("검색 text 값 :  "  + word);
+		//System.out.println("검색 text 값 :  "  + word);
 		System.out.println("검색 리스트 ::::::::" + list);
 		String page = "";
 
 		if(list !=null) {
-			page = "views/board/user_ReviewList.jsp";
+			page = "views/board/user_ReviewSearchArea.jsp";
 			request.setAttribute("list", list);
 			request.setAttribute("pi", pi);
 		}else {

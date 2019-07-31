@@ -7,13 +7,13 @@ public class PageInfo implements java.io.Serializable {
 	private int maxPage;
 	private int startPage;
 	private int endPage;
+	//private String word;
 
 	public PageInfo() {
 
 	}
 
-
-	public PageInfo(int currentPage, int listCount, int limit, int maxPage, int startPage, int endPage) {
+	public PageInfo(int currentPage, int listCount, int limit, int maxPage, int startPage, int endPage/*, String word*/) {
 		super();
 		this.currentPage = currentPage;
 		this.listCount = listCount;
@@ -21,6 +21,7 @@ public class PageInfo implements java.io.Serializable {
 		this.maxPage = maxPage;
 		this.startPage = startPage;
 		this.endPage = endPage;
+		//this.word = word;
 	}
 
 	public int getCurrentPage() {
@@ -71,11 +72,21 @@ public class PageInfo implements java.io.Serializable {
 		this.endPage = endPage;
 	}
 
+	/*public String getWord() {
+		return word;
+	}
+
+	public void setWord(String word) {
+		this.word = word;
+	}*/
+
 	@Override
 	public String toString() {
 		return "PageInfo [currentPage=" + currentPage + ", listCount=" + listCount + ", limit=" + limit + ", maxPage="
-				+ maxPage + ", startPage=" + startPage + ", endPage=" + endPage + "]";
+				+ maxPage + ", startPage=" + startPage + ", endPage=" + endPage/* + ", word=" + word + "]"*/;
 	}
+
+
 
 
 }

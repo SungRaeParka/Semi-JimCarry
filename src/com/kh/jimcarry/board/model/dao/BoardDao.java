@@ -2,6 +2,7 @@ package com.kh.jimcarry.board.model.dao;
 
 import java.io.FileReader;
 import java.io.IOException;
+import java.security.KeyStore.ProtectionParameter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,9 +14,11 @@ import java.util.Properties;
 
 import com.kh.jimcarry.board.model.vo.Attachment;
 import com.kh.jimcarry.board.model.vo.Board;
+import com.kh.jimcarry.board.model.vo.Comments;
 import com.sun.xml.internal.messaging.saaj.util.FinalArrayList;
 
 import oracle.net.aso.f;
+import sun.print.PSStreamPrinterFactory;
 
 import static com.kh.jimcarry.common.JDBCTemplate.*;
 
@@ -112,6 +115,8 @@ public class BoardDao {
 				b.setQuestionType(rset.getString("QUESTION_TYPE"));
 				b.setPostNo(rset.getInt("POST_NO"));
 				b.setbCount(rset.getInt("B_COUNT"));
+
+
 
 				list.add(b);
 			}
@@ -364,7 +369,8 @@ public class BoardDao {
 				b.setPostNo(rset.getInt("POST_NO"));
 				b.setPostTitle(rset.getString("POST_TITLE"));
 				b.setPostCode(rset.getString("POST_CODE"));
-				b.setPostContents(rset.getString("POST_DATE"));
+				b.setPostContents(rset.getString("POST_CONTENTS"));
+				b.setPostDate(rset.getDate("POST_DATE"));
 				b.setbCount(rset.getInt("B_COUNT"));
 				b.setWriter(rset.getString("MEMBER_ID"));
 
@@ -476,6 +482,56 @@ public class BoardDao {
 			close(pstmt);
 		}
 		return result;
+	}
+
+	//게시판 삭제 메소드
+	public int deleteBoard(Connection con, String num) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+
+		String query = prop.getProperty("deleteBoard");
+
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, num);
+
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+
+
+		return result;
+	}
+	//댓글 생성
+	public int insertReply(Connection con, Comments c) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+
+		String query = prop.getProperty("insertReply");
+
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, c.getPostCode());
+			pstmt.setString(2, c.getUserNo());
+			pstmt.setDate(3, c.getCommentDate());
+			pstmt.setString(4, c.getCommentContents());
+
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return 0;
+	}
+	//댓글 조회
+	public ArrayList<Comments> selectReplyList(Connection con, String commentCode) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

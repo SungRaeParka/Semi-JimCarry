@@ -14,6 +14,7 @@
 		int startPage = pi.getStartPage();
 		int endPage = pi.getEndPage();
 
+
 		System.out.println("listCount : " + listCount);
 		System.out.println("currentPage : " + currentPage);
 		System.out.println("maxPage : " + maxPage);
@@ -181,7 +182,6 @@ a.btn_02 {
 				}
 			   }
 			%>
-
 				 <% if(currentPage >= maxPage) { %>
 
 				  <% }else {%>
@@ -190,12 +190,11 @@ a.btn_02 {
 				  <% } %>
 			<button onclick="location.href='<%=request.getContextPath()%>/search.bo?currentPage=<%=maxPage%>'">>></button>
 		</div>
-
 	</div>
 
 	<%-- 검색영역 --%>
 		<div class="searchArea" align="center">
-	<form action="<%=request.getContextPath()%>/search.bo" method="post">
+	<form action="<%=request.getContextPath()%>/search.bo" method="get">
 			<select name="searchCondition" id="searchCondition">
 				<option value="title">제목</option>
 				<option value="writer">작성자</option>

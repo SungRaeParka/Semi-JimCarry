@@ -12,6 +12,10 @@
 
 		Attachment photo1 = fileList.get(0);
 		Attachment photo2 = fileList.get(1);
+
+
+
+
 	%>
 <html>
 <head>
@@ -103,16 +107,73 @@
 			</table>
 
 
+
 			<div style="border: 1px solid white; width: 760px; text-align: right;">
 			<% if(loginUser.getUserId().equals(b.getWriter())) { %>
-			<button onclose="">삭제</button>&nbsp;&nbsp;
+			<button onclick="del();" id="belbtn">삭제</button>&nbsp;&nbsp;
 			<button onclick="location.href='<%=request.getContextPath()%>/selectBoard.bo?num=<%=b.getPostCode()%>'">수정하기</button>&nbsp;
 				<% } %>
 			</div>
+			<script>
+				function del(){
 
+					var tt = confirm("삭제를 하시겠습니까?");
+					if(tt == true){
+
+						location.href="<%=request.getContextPath()%>/Delete.bo?num=<%=b.getPostCode()%>";
+
+					}else {
+						return;
+					}
+
+				}
+
+
+			</script>
 
 		</div>
 	</div>
+
+	<div class="replyArea">
+		<div class="replyWriteArea">
+			<table align="center" border="1">
+				<tr>
+					<td>댓글 작성</td>
+					<td><textarea rows="3" cols="80" id="replyContent"></textarea></td>
+					<td><button id="addReply">댓글 등록</button></td>
+				</tr>
+			</table>
+		</div>
+		<div>
+			<table id="replySelectTable" border="1" align="center">
+				<tbody></tbody>
+			</table>
+		</div>
+	</div>
+	<script>
+	$(function(){
+		$("#addReply").click(function(){
+			var writer ="<%=loginUser.getUserId()%>";
+			var bcode = "<%=b.getPostCode()%>";
+			var content = $("#replyContent").val();
+
+			$.ajax({
+				url:"/semi/insertReply.bo",
+				data:{writer:writer, bcode:bcode, content:content},
+				type:"post",
+				success:function(data){
+					console.log(data);
+				},
+				error:function(){
+					console.log("실패!!!");
+				}
+			});
+		});
+	});
+
+	</script>
+
+
 	<% } else {
 		request.setAttribute("msg", "로그인을 하셔야 볼 수 있습니다.");
 		request.getRequestDispatcher("../common/errorPage.jsp").forward(request, response);
