@@ -149,13 +149,15 @@
 		<br> <br>
 
 		<div align="center" style="margin-bottom: 10px">
-			<a href="/semi/checkOrder.jc" style="text-decoration: none; padding-left: 40px;">
-				<span style="font-size: 30px">확인</span>	
-			</a>
+				<span style="font-size: 30px; cursor: pointer;" onclick="goReqList()">확인</span>	
 		</div>
 	</div>
 
-
+	<script>
+		function goReqList(){
+			location.href = "<%=request.getContextPath()%>/myJcarrylist.jc";
+		}
+	</script>
 
 
 
