@@ -13,6 +13,9 @@
 		Attachment photo2 = fileList.get(1);
 		System.out.println(photo1.getChangeName());
 
+		System.out.println("포토 1 : " + photo1);
+		System.out.println("포토 2 : " + photo2);
+
 		Date now = new Date();
 		String date1 = String.format("%tF",now);
 

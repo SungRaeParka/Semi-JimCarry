@@ -57,19 +57,21 @@ public class boardUpdateServlet extends HttpServlet {
 			String multiTitle = multiRequest.getParameter("btitle");
 			String multiiContent = multiRequest.getParameter("bcontent");
 			String num = multiRequest.getParameter("pagebno");
-			String img1 = multiRequest.getParameter("img1");
-			String img2 = multiRequest.getParameter("img2");
+			//String img1 = multiRequest.getParameter("img1");
+		//x	String img2 = multiRequest.getParameter("img2");
 			String photo1 = multiRequest.getParameter("photo1");
 			String photo2 = multiRequest.getParameter("photo2");
 
 			System.out.println("multiTitle : " + multiTitle);
 			System.out.println("multiiContent" + multiiContent);
 			System.out.println("pagebno : " + num);
+			System.out.println("photo1 : "  + photo1);
+			System.out.println("photo2 : "  + photo2);
 
 			// 기본값 파일
 			ArrayList<String> imgstr = new ArrayList<String>();
-			imgstr.add(img1);
-			imgstr.add(img2);
+			//imgstr.add(img1);
+			//imgstr.add(img2);
 
 			Board b = new Board();
 			b.setPostTitle(multiTitle);
@@ -79,7 +81,7 @@ public class boardUpdateServlet extends HttpServlet {
 			System.out.println("updateservlet : " + b);
 
 			Attachment at = new Attachment();
-			ArrayList<Attachment> fileList = new ArrayList<Attachment>();
+
 			System.out.println("Attachment : " + at);
 
 			// 파일이 전송된 이름을 반환한다.
@@ -88,15 +90,15 @@ public class boardUpdateServlet extends HttpServlet {
 			while (files.hasMoreElements()) {
 
 				// 파일 리턴
-				String name = files.nextElement();
 
+				String name = files.nextElement();
 				if (name == null) {
 
-					for (int i = imgstr.size() - 1; i >= 0; i--) {
+					/*for (int i = imgstr.size() - 1; i >= 0; i--) {
 
 						at.setOriginName(imgstr.get(i));
 						fileList.add(at);
-					}
+					}*/
 
 				} else if (name != null && photo1 != null && photo2 == null) {
 
@@ -105,16 +107,10 @@ public class boardUpdateServlet extends HttpServlet {
 					// 원본 파일저장할떄
 					originFiles.add(multiRequest.getOriginalFileName(name));
 
-					for (int i = originFiles.size() - 1; i >= 0; i--) {
-						at.setFilePath(savePath);
-						at.setOriginName(originFiles.get(i));
-						at.setChangeName(saveFiles.get(i));
-						fileList.add(at);
+						/*File failedFile = new File(savePath + imgstr.get(0));
+						failedFile.delete();*/
 
-						File failedFile = new File(savePath + imgstr.get(0));
-						failedFile.delete();
 
-					}
 				} else if (name != null && photo1 == null && photo2 != null) {
 
 					// 저장된 이름 가져올떄
@@ -122,15 +118,11 @@ public class boardUpdateServlet extends HttpServlet {
 					// 원본 파일저장할떄
 					originFiles.add(multiRequest.getOriginalFileName(name));
 
-					for (int i = originFiles.size() - 1; i >= 0; i--) {
-						at.setFilePath(savePath);
-						at.setOriginName(originFiles.get(i));
-						at.setChangeName(saveFiles.get(i));
-						fileList.add(at);
 
+/*
 						File failedFile = new File(savePath + imgstr.get(1));
-						failedFile.delete();
-					}
+						failedFile.delete();*/
+
 
 
 				}
@@ -139,6 +131,14 @@ public class boardUpdateServlet extends HttpServlet {
 				System.out.println("filesSystem name : " + multiRequest.getFilesystemName(name));
 				System.out.println("OriginalFile name : " + multiRequest.getOriginalFileName(name));
 
+				ArrayList<Attachment> fileList = new ArrayList<Attachment>();
+				for (int i = originFiles.size() - 1; i >= 0; i--) {
+					at.setFilePath(savePath);
+					at.setOriginName(originFiles.get(i));
+					at.setChangeName(saveFiles.get(i));
+					fileList.add(at);
+				}
+				System.out.println("서블릿 : update  : fileList : " + fileList);
 				int result = new BoardService().updateBoard(b, fileList);
 
 
@@ -152,10 +152,10 @@ public class boardUpdateServlet extends HttpServlet {
 					page = "views/common/errorPage.jsp";
 					request.setAttribute("msg", "게시판 상세보기 실패!!!");
 					// 실패시 저장된 사진 삭제
-					for (int i = 0; i < saveFiles.size(); i++) {
+					/*for (int i = 0; i < saveFiles.size(); i++) {
 						File failedFile = new File(savePath + saveFiles.get(i));
 						failedFile.delete();
-					}
+					}*/
 				}
 			}
 		}

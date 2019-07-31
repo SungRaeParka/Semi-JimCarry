@@ -9,6 +9,9 @@ import javax.swing.plaf.synth.SynthSpinnerUI;
 import com.kh.jimcarry.board.model.dao.BoardDao;
 import com.kh.jimcarry.board.model.vo.Attachment;
 import com.kh.jimcarry.board.model.vo.Board;
+import com.kh.jimcarry.board.model.vo.Comments;
+
+import sun.awt.RepaintArea;
 
 import static com.kh.jimcarry.common.JDBCTemplate.*;
 
@@ -30,8 +33,8 @@ public class BoardService {
 
 		ArrayList<Board> list = new BoardDao().selectList(con,currentPage,limit);
 
-		System.out.println(list);
 		close(con);
+
 		return list;
 	}
 
@@ -114,9 +117,10 @@ public class BoardService {
 		int result = 0;
 
 		int result1 = new BoardDao().updateBoard(con,b);
+		System.out.println("update 서비스  보더 : " + b);
 
 		int result2 = new BoardDao().updateAttachmen(con, fileList);
-
+		System.out.println("update 서비스 사진 : " + fileList);
 		if(result1 > 0 && result2 > 0) {
 			commit(con);
 			result = 1;
@@ -125,7 +129,39 @@ public class BoardService {
 			rollback(con);
 		}
 			close(con);
+
+			return result;
+	}
+	//게시판 삭제
+	public int deleteBoard(String num) {
+		Connection con = getConnection();
+
+
+		int result = new BoardDao().deleteBoard(con,num);
+		if(result > 0) {
+			commit(con);
+		}else {
+			rollback(con);
+		}
+		close(con);
 		return result;
+	}
+	//댓글 작성
+	public ArrayList<Comments> insertReply(Comments c) {
+		Connection con = getConnection();
+
+		ArrayList<Comments> replyList = null;
+
+		int result = new BoardDao().insertReply(con, c);
+
+		if(result > 0) {
+			commit(con);
+			replyList = new BoardDao().selectReplyList(con, c.getCommentCode());
+		}else {
+			rollback(con);
+		}
+		close(con);
+		return replyList;
 	}
 
 
