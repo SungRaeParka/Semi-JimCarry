@@ -154,9 +154,10 @@ public class BoardService {
 
 		int result = new BoardDao().insertReply(con, c);
 
+
 		if(result > 0) {
 			commit(con);
-			replyList = new BoardDao().selectReplyList(con, c.getCommentCode());
+			replyList = new BoardDao().selectReplyList(con, c.getPostCode());
 		}else {
 			rollback(con);
 		}
