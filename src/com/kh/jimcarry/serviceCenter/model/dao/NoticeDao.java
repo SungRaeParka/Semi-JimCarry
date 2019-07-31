@@ -118,6 +118,8 @@ public class NoticeDao {
 			pstmt.setInt(2, num);
 			
 			result = pstmt.executeUpdate();
+			
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -142,6 +144,11 @@ public class NoticeDao {
 				
 				pstmt.setString(1,"공지사항");
 				
+				
+				
+				rset=pstmt.executeQuery();
+				
+				System.out.println("들어감?? : "+rset);
 				
 				if (rset.next()) {
 					listCount=rset.getInt(1);

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import com.kh.jimcarry.serviceCenter.model.dao.OneQDao;
 import com.kh.jimcarry.serviceCenter.model.dao.QandADao;
+import com.kh.jimcarry.serviceCenter.model.vo.Attachment;
 import com.kh.jimcarry.serviceCenter.model.vo.OneQ;
 
 import static com.kh.jimcarry.common.JDBCTemplate.*;
@@ -17,6 +18,7 @@ public class OneQService {
 		
 		Connection con = getConnection();
 		
+		
 		ArrayList<OneQ> list2 = new OneQDao().selectList(con);
 		
 		close(con);
@@ -24,19 +26,33 @@ public class OneQService {
 		return list2;
 	}
 	//1:1문의 작성용
-	public int insertOneQ(OneQ one) {
+	public int insertOneQ(OneQ one, ArrayList<Attachment> fileList) {
 		// TODO Auto-generated method stub
 		Connection con = getConnection();
+		int result =0 ;
+		int dao=new OneQDao().insertOneQ(con, one);
 		
-		int result  = new OneQDao().insertOneQ(con, one);
-		
-		if (result > 0) {
+		if(dao > 0) {
+			String postCode = new OneQDao().selectCurrval(con);
+			
+			for (int i = 0; i < fileList.size(); i++) {
+				fileList.get(i).setPostCode(postCode);
+			}
+		}
+		int dao1 = new OneQDao().insertAttachment(con,fileList);
+		if (dao > 0&& dao1 > 0 ) {
 			commit(con);
+			result = 1;
 		} else {
 			rollback(con);
 		}
+		
+		close(con);
+		
 		return result;
 	}
+	
+	
 
 	public OneQ selectOneQ(int num) {
 		// TODO Auto-generated method stub
@@ -57,19 +73,26 @@ public class OneQService {
 		
 		return one;
 	}
-	public ArrayList<OneQ> selectList(int currentPage, int limit) {
+	public int getListCount() {
 		// TODO Auto-generated method stub
 		Connection con = getConnection();
 		
-		ArrayList<OneQ> list2 = new OneQDao().selectList(con, currentPage, limit);
+		int listCount2 = new OneQDao().getListCount(con);
+		
+		close(con);
+		
+		return listCount2;
+	}
+	public ArrayList<OneQ> selectList(int currentPage2, int limit2) {
+		// TODO Auto-generated method stub
+		Connection con = getConnection();
+		
+		ArrayList<OneQ> list2 = new OneQDao().selectList(con, currentPage2, limit2);
 		
 		close(con);
 		
 		return list2;
 	}
-	public int getListCount() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+
 
 }

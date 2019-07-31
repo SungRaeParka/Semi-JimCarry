@@ -10,6 +10,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Properties;
 
+import com.kh.jimcarry.serviceCenter.model.vo.Attachment;
 import com.kh.jimcarry.serviceCenter.model.vo.Notice;
 import com.kh.jimcarry.serviceCenter.model.vo.OneQ;
 import com.kh.jimcarry.serviceCenter.model.vo.QandA;
@@ -131,7 +132,38 @@ public class OneQDao {
 		return result;
 	}
 
-	public ArrayList<OneQ> selectList(Connection con, int currentPage, int limit) {
+	public int getListCount(Connection con) {
+		// TODO Auto-generated method stub
+		PreparedStatement pstmt = null;
+		int listCount2 = 0;
+		ResultSet rset = null;
+		
+		String query = prop.getProperty("selectListCount");
+		try {
+			pstmt =con.prepareStatement(query);
+			
+			pstmt.setString(1,"질의응답");
+			
+			rset=pstmt.executeQuery();
+			
+			System.out.println("들어감?? : "+rset);
+			
+			if (rset.next()) {
+				listCount2=rset.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+			close(rset);
+		}
+		return listCount2;
+
+	}
+	
+	public ArrayList<OneQ> selectList(Connection con, int currentPage2, int limit2) {
 		// TODO Auto-generated method stub
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -144,8 +176,8 @@ public class OneQDao {
 			
 			System.out.println("query : "+query);
 			
-			int startRow = (currentPage - 1) * limit + 1;
-			int endRow=startRow + limit -1;
+			int startRow = (currentPage2 - 1) * limit2 + 1;
+			int endRow=startRow + limit2 -1;
 			
 			pstmt.setInt(1, startRow);
 			pstmt.setInt(2, endRow);
@@ -179,5 +211,69 @@ public class OneQDao {
 		}
 		return list2;
 	}
+//시퀀스값 가져오는 메소드
+	public String selectCurrval(Connection con) {
+		// TODO Auto-generated method stub
+		Statement stmt = null;
+		ResultSet rset = null;
+		
+		String postCode = "";
+		
+		String query = prop.getProperty("selectCurrval");
+		
+		try {
+			stmt=con.createStatement();
+			rset=stmt.executeQuery(query);
+			if (rset.next()) {
+				postCode=rset.getString("CURRVAL");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(stmt);
+			close(rset);
+		}
+		
+		
+		return postCode;
+	}
+	//첨부파일 insert
+	public int insertAttachment(Connection con, ArrayList<Attachment> fileList) {
+		// TODO Auto-generated method stub
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = prop.getProperty("insertAttachment");
+		
+		for (int i = 0; i < fileList.size(); i++) {
+			try {
+				pstmt=con.prepareStatement(query);
+				
+				pstmt.setString(1, fileList.get(i).getOriginName());
+				pstmt.setString(2, fileList.get(i).getChangeName());
+				pstmt.setString(3, fileList.get(i).getFilePath());
+				
+				int level = 0;
+				if (i == 0) {
+					level = 0;
+				} else {
+					level = 1;
+				}
+				pstmt.setInt(4, level);
+				pstmt.setString(5, fileList.get(i).getAttachType());
+				
+				result += pstmt.executeUpdate();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				close(pstmt);
+			}
+		}
+		return result;
+	}
+
+	
 
 }

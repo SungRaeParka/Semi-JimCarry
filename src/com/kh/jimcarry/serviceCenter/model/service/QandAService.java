@@ -44,19 +44,19 @@ public class QandAService {
 		// TODO Auto-generated method stub
 		Connection con = getConnection();
 		
-		int listCount = new QandADao().getListCount(con);
+		int listCount1 = new QandADao().getListCount(con);
 		
 		close(con);
 		
-		return listCount;
+		return listCount1;
 	}
 	
-	public ArrayList<QandA> selectList(int currentPage, int limit) {
+	public ArrayList<QandA> selectList(int currentPage1, int limit1) {
 		// TODO Auto-generated method stub
 		
 		Connection con = getConnection();
 		
-		ArrayList<QandA> list1 = new QandADao().selectList(con, currentPage, limit);
+		ArrayList<QandA> list1 = new QandADao().selectList(con, currentPage1, limit1);
 		
 		close(con);
 		

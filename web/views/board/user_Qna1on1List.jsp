@@ -12,6 +12,16 @@
     int maxPage=pi.getMaxPage();
     int startPage = pi.getStartPage();
     int endPage = pi.getEndPage();
+    int listCount1 = pi.getListCount();
+    int currentPage1 = pi.getCurrentPage1();
+    int maxPage1=pi.getMaxPage1();
+    int startPage1 = pi.getStartPage1();
+    int endPage1 = pi.getEndPage1();
+    int listCount2 = pi.getListCount2();
+    int currentPage2 = pi.getCurrentPage2();
+    int maxPage2=pi.getMaxPage2();
+    int startPage2 = pi.getStartPage2();
+    int endPage2 = pi.getEndPage2();
     %>
 <!DOCTYPE html>
 <html>
@@ -38,7 +48,7 @@ container{
 <div class="container">
 <br><br><br>
   <h2>공지사항</h2>
-  <table class="table table-hover" id="listArea">
+  <table class="table table-hover" >
     <thead>
       <tr>
       	<th>번호</th>
@@ -48,7 +58,7 @@ container{
         <th>조회수</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody id="listArea">
     <%for(Notice n : list) {%>
       <tr>
       <td><%=n.getPostcode() %></td>
@@ -87,7 +97,7 @@ container{
 	<button onclick="location.href='<%=request.getContextPath() %>/noticelist.no?currentPage=1'">처음으로</button>
 	
 	<%if(currentPage <= 1) {%>
-	<button disabled>처음으로</button>
+	<button disabled>이전</button>
 	<%}else { %>
 	<button onclick="location.href='<%=request.getContextPath() %>/noticelist.no?currentPage=<%=currentPage - 1 %>'">이전</button>
 	<%} %>
@@ -100,7 +110,7 @@ container{
 	<%}} %>
 	
 	<%if(currentPage >= maxPage){ %>
-	<button disabled>></button>
+	<button disabled>다음</button>
 	<%}else { %>
 	<button onckick="location.href='<%=request.getContextPath() %>/noticelist.no?currentPage=<%=currentPage + 1 %>'">다음</button>
 	<%} %>
@@ -278,28 +288,28 @@ container{
 
 <!-- ㅠㅔ이징 처리 -->
 <div class="pagingArea" align="center">
-	<button onclick="location.href='<%=request.getContextPath() %>//noticelist.no?currentPage=1'">처음으로</button>
+	<button onclick="location.href='<%=request.getContextPath() %>//noticelist.no?currentPage1=1'">처음으로</button>
 	
-	<%if(currentPage <= 1) {%>
-	<button disabled>처음으로/button>
+	<%if(currentPage1 <= 1) {%>
+	<button disabled>이전</button>
 	<%}else { %>
-	<button onclick="location.href='<%=request.getContextPath() %>/noticelist.no?currentPage=<%=currentPage - 1 %>'">끝으로</button>
+	<button onclick="location.href='<%=request.getContextPath() %>/noticelist.no?currentPage1=<%=currentPage1 - 1 %>'">이전</button>
 	<%} %>
 	
-	<%for(int p=startPage; p<=endPage;p++){
-		if(currentPage == p){%>
+	<%for(int p=startPage1; p<=endPage1;p++){
+		if(currentPage1 == p){%>
 		<button disabled><%=p %></button>
 	<% }else {%>
-		<button onclick="location.href='<%=request.getContextPath()%>/noticelist.no?currentPage=<%=p%>'"><%=p%></button>
+		<button onclick="location.href='<%=request.getContextPath()%>/noticelist.no?currentPage1=<%=p%>'"><%=p%></button>
 	<%}} %>
 	
-	<%if(currentPage >= maxPage){ %>
-	<button disabled>></button>
+	<%if(currentPage1 >= maxPage1){ %>
+	<button disabled>다음</button>
 	<%}else { %>
-	<button onckick="location.href='<%=request.getContextPath() %>/noticelist.no?currentPage=<%=currentPage + 1 %>'">></button>
+	<button onckick="location.href='<%=request.getContextPath() %>/noticelist.no?currentPage1=<%=currentPage1 + 1 %>'">다음</button>
 	<%} %>
 	
-	<button onclick="location.href='<%=request.getContextPath() %>/noticelist.no?currentPage=<%=maxPage %>'">끝으로</button>
+	<button onclick="location.href='<%=request.getContextPath() %>/noticelist.no?currentPage1=<%=maxPage1 %>'">끝으로</button>
 </div>
 </div>
 
@@ -310,7 +320,7 @@ container{
   <p style="float:left">내가 문의한 내용 보기</p>  
   <a href="/semi/views/board/user_Insert1on1.jsp"><button  style="float:right;">문의하기</button></a>     
   <br><br><br>   
-  <table class="table" id="listArea">
+  <table class="table" >
     <thead>
       <tr>
         <th>문의내역</th> 
@@ -319,7 +329,7 @@ container{
         <th>답변
       </tr>
     </thead>
-    <tbody>
+    <tbody id="listArea">
      <%for(OneQ one : list2) {%>
       <tr>
       <th><%=one.getQuestionType() %></th>
@@ -332,28 +342,28 @@ container{
   </table>
   <!-- ㅠㅔ이징 처리 -->
 <div class="pagingArea" align="center">
-	<button onclick="location.href='<%=request.getContextPath() %>//noticelist.no?currentPage=1'">처음으로</button>
+	<button onclick="location.href='<%=request.getContextPath() %>/noticelist.no?currentPage2=1'">처음으로</button>
 	
 	<%if(currentPage <= 1) {%>
-	<button disabled>처음으로/button>
+	<button disabled>이전</button>
 	<%}else { %>
-	<button onclick="location.href='<%=request.getContextPath() %>/noticelist.no?currentPage=<%=currentPage - 1 %>'">끝으로</button>
+	<button onclick="location.href='<%=request.getContextPath() %>/noticelist.no?currentPage2=<%=currentPage2 - 1 %>'">끝으로</button>
 	<%} %>
 	
-	<%for(int p=startPage; p<=endPage;p++){
-		if(currentPage == p){%>
+	<%for(int p=startPage2; p<=endPage2;p++){
+		if(currentPage2 == p){%>
 		<button disabled><%=p %></button>
 	<% }else {%>
-		<button onclick="location.href='<%=request.getContextPath()%>/noticelist.no?currentPage=<%=p%>'"><%=p%></button>
+		<button onclick="location.href='<%=request.getContextPath()%>/noticelist.no?currentPage2=<%=p%>'"><%=p%></button>
 	<%}} %>
 	
-	<%if(currentPage >= maxPage){ %>
-	<button disabled>></button>
+	<%if(currentPage2 >= maxPage2){ %>
+	<button disabled>다음</button>
 	<%}else { %>
-	<button onckick="location.href='<%=request.getContextPath() %>/noticelist.no?currentPage=<%=currentPage + 1 %>'">></button>
+	<button onckick="location.href='<%=request.getContextPath() %>/noticelist.no?currentPage2=<%=currentPage2 + 1 %>'">다음</button>
 	<%} %>
 	
-	<button onclick="location.href='<%=request.getContextPath() %>/noticelist.no?currentPage=<%=maxPage %>'">끝으로</button>
+	<button onclick="location.href='<%=request.getContextPath() %>/noticelist.no?currentPage2=<%=maxPage2 %>'">끝으로</button>
 </div>
 </div>
 

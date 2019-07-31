@@ -127,8 +127,12 @@ public class NoticeSelectListServlet extends HttpServlet {
 			}
 		}
 		
+		
+		
 		request.getRequestDispatcher(page).forward(request, response);
 	}
+	
+	
 	
 	
 
