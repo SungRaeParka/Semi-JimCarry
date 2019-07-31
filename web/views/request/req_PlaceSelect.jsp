@@ -260,7 +260,7 @@
 		
 		function selectDate(){
 			var url = "/semi/views/popup/pop_ReservationDate.jsp";
-			var winWidth = 400;
+			var winWidth = 550;
 			var winHeight = 200;
 			var popupW = (screen.availWidth - winWidth) / 2;
 			var popupH = (screen.availHeight - winHeight) / 2;			

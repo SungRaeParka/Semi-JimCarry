@@ -31,7 +31,7 @@ public class MyJcCheckOrderServlet extends HttpServlet {
 		System.out.println("rolist 가지고오기");
 		ArrayList<Request> rolist = new RequestService().checkOrder(no);
 		System.out.println("rolist 가지고옴");
-		System.out.println(rolist.get(0));
+		System.out.println("rolist :: " + rolist);
 		
 		
 		System.out.println("최저가 가져오기");

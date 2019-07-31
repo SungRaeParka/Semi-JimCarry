@@ -14,7 +14,7 @@ import com.kh.jimcarry.request.model.vo.Request;
 import com.kh.jimcarry.request.model.vo.RequestAttachment;
 import com.kh.jimcarry.request.model.vo.ShowRP;
 
-public class RequestService {
+public class RequestService { 
 			//전체게시물 수 조회_사용자,기사님
 			public int getListCount(String logUserNo) {
 				Connection con = getConnection();
@@ -197,11 +197,11 @@ public class RequestService {
 			public ArrayList<HashMap<String, Object>> selectreqNoList() {
 				Connection con = getConnection();
 				
-				ArrayList<HashMap<String, Object>> reqNoList = new RequestDao().selectreqNoList(con);
+				ArrayList<HashMap<String, Object>> tempReqNoList = new RequestDao().selectreqNoList(con);
 				
 				close(con);
 				
-				return reqNoList;
+				return tempReqNoList;
 			}
 
 
@@ -214,6 +214,41 @@ public class RequestService {
 				
 				return reqList;
 			}
+
+
+			public ShowRP selectRequestInfo3(String reqNo) {
+				Connection con = getConnection();
+				
+				ShowRP requestInfo = new RequestDao().selectRequestInfo3(con, reqNo);
+				
+				close(con);
+				
+				return requestInfo;
+			}
+
+
+			public ArrayList<HashMap<String, Object>> selectRequestImg3(String reqNo) {
+				Connection con = getConnection();
+				
+				ArrayList<HashMap<String, Object>> requestImg = new RequestDao().selectRequestImg3(con, reqNo);
+				
+				close(con);
+				
+				return requestImg;
+			}
+
+
+			public ArrayList<HashMap<String, Object>> selectProductInfo3(String reqNo) {
+				Connection con = getConnection();
+				
+				ArrayList<HashMap<String, Object>> requestInfo = new RequestDao().selectProductInFo3(con, reqNo);
+				
+				close(con);
+				
+				return requestInfo;
+			}
+
+
 
 
 			
