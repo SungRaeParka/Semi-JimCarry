@@ -41,17 +41,26 @@ public class DriverJimcarryListServlet extends HttpServlet {
 			currentPage = Integer.parseInt(request.getParameter("currentPage"));	
 		}
 		
-		limit=5;
-		
 		
 		HttpSession session = request.getSession();
 		Member loginUser = (Member)session.getAttribute("loginUser");
 		String logUserNo = loginUser.getSeqNo();
 		
-		
 		int listCount = new RequestService().getListCount(logUserNo);
 		
 		System.out.println("driverlistCount: "+ listCount);
+		
+		
+		String page="";
+		
+		if(listCount==0) {
+			page="views/common/errorPage.jsp";
+			request.setAttribute("msg", "짐캐리 리스트가 없어요!");
+			request.getRequestDispatcher(page).forward(request, response);
+		}
+		
+		
+		limit=5;
 		
 		maxPage = (int)((double)listCount/limit+0.95);
 		
@@ -67,7 +76,7 @@ public class DriverJimcarryListServlet extends HttpServlet {
 		ArrayList<Request> list = new RequestService().selectDriverList(currentPage,limit,logUserNo);
 		
 		
-		String page="";
+		
 		
 		if(list != null) {
 			page = "views/request/driver_JimCarryList.jsp";
@@ -75,7 +84,7 @@ public class DriverJimcarryListServlet extends HttpServlet {
 			request.setAttribute("pi", pi);
 		}else {
 			page="views/common/errorPage.jsp";
-			request.setAttribute("msg", "기사 짐캐리 리스트 없어");
+			request.setAttribute("msg", "기사 짐캐리 리스트 조회 실패");
 		}
 		request.getRequestDispatcher(page).forward(request, response);
 	}
