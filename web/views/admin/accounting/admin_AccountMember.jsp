@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<% %>
+    pageEncoding="UTF-8" import="java.util.*, com.kh.jimcarry.admin.accounting.model.vo.*, java.text.DecimalFormat"%>
+<%
+	ArrayList<AccountingMember> list = (ArrayList<AccountingMember>) request.getAttribute("list");
+	String userDriver = list.get(0).getUserDriver();
+	DecimalFormat df = new DecimalFormat("###,###,###,###");
+%>
 <!DOCTYPE html>
 <html>
 
@@ -61,57 +65,62 @@
 		<div class="tab-content">
 			<div id="home" class="tab-pane fade"></div>
 			<div id="menu1" class="tab-pane fade in active">
-				<select id="member" name="member">
-					<option value="allM" selected>전체</option>
-					<option value="user">사용자</option>
-					<option value="driver">기사</option>
+				<form id="memberForm">
+				<select id="memberSelect" name="memberSelect">
+					<option id="user" value="사용자">사용자</option>
+					<option id="driver" value="기사">기사</option>
 				</select>
+				</form>
 				<div class="memberT">
 					<table border="1px">
 						<tr>
 							<th>회원명</th>
-							<th>회원구분</th>
-							<th>이용일자</th>
-							<th>이용금액</th>
+							<th>회원번호</th>
+							<th>아이디</th>
+							<th>결제이력번호</th>
+							<th>예약(이용)일자</th>
+							<th>결제금액</th>
+							<th>결제일</th>
+							<th>환불상태</th>
 							<th>정산금액</th>
-							<th>정산일</th>
 						</tr>
+						<% for(AccountingMember am : list){ %>
 						<tr>
-							<td>문호석</td>
-							<td class="UorD">사용자</td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
+								<th><%=am.getMemberName() %></th>
+								<th><%=am.getMemberNo() %></th>
+								<th><%=am.getMemberId() %></th>
+								<th><%=am.getPayNo() %></th>
+								<th><%=am.getReservationDate() %></th>
+								<th><%=am.getPayAmount() %></th>
+								<th><%=am.getPayDate() %></th>
+								<th><%=am.getRefundReq() %></th>
+								<th><%=am.getDriverPay() %></th>
 						</tr>
-						<tr>
-							<td>박성래</td>
-							<td class="UorD">기사</td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
+						<% } %>
 					</table>
 				</div>
 			</div>
 			<script>
-				//관리자>정산관리>사용자
-				$('#member').change(function () {
-					var state = $('#member option:selected').val();
-					var UorD = $('.UorD[text="사용자"').parent();
-					console.log("UorD : " + UorD);
-					// if (state == 'allM') {
-					// 	$('.memberT').show();
-					// } else {
-					// if (state == 'user') {
-					// 	$(.parent().show();
-					// 	$('.UorD[text="기사"]').parent().hide();
-					// } else {
-					// 	$('.UorD[text="기사"').parent().show();
-					// 	$('.UorD[text="사용자"').parent().hide();
-					// }
-					// }
+				//관리자>정산관리>멤버
+				$(function () {
+				var userDriver = "<%= userDriver %>";
+				console.log("userDriver : " + userDriver);
+				if(userDriver==null || userDriver=="사용자"){
+					$('#user').attr("selected", "selected");
+				}else if(userDriver=="기사"){
+					$('#driver').attr("selected", "selected");
+				}
+			});
+
+			$('#refund').change(function () {
+				var state = $('#memberSelect option:selected').val();
+				if (state == '사용자') {
+					$("#memberForm").attr("action", "<%=request.getContextPath()%>/accounting.mm");
+					$("#memberForm").submit();
+				} else if (state == '기사') {
+					$("#memberForm").attr("action", "<%=request.getContextPath()%>/accounting.mm");
+					$("#memberForm").submit();
+				}
 				});
 			</script>
 			<div id="menu2" class="tab-pane fade"></div>
