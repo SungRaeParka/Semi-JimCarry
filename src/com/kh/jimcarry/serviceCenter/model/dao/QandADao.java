@@ -124,17 +124,19 @@ public class QandADao {
 	}
 	public int getListCount(Connection con) {
 		// TODO Auto-generated method stub
-		Statement stmt = null;
+		PreparedStatement pstmt = null;
 		int listCount1 = 0;
 		ResultSet rset = null;
 		
 		String query = prop.getProperty("selectListCount");
 		try {
-			stmt =con.createStatement();
+			pstmt =con.prepareStatement(query);
 			
-			((PreparedStatement) stmt).setString(1,"Q&A");
+			pstmt.setString(1,"문의");
 			
-			rset = stmt.executeQuery(query);
+			rset=pstmt.executeQuery();
+			
+			System.out.println("들어감?? : "+rset);
 			
 			if (rset.next()) {
 				listCount1=rset.getInt(1);
@@ -144,12 +146,12 @@ public class QandADao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
-			close(stmt);
+			close(pstmt);
 			close(rset);
 		}
 		return listCount1;
 	}
-	public ArrayList<QandA> selectList(Connection con, int currentPage, int limit) {
+	public ArrayList<QandA> selectList(Connection con, int currentPage1, int limit1) {
 		// TODO Auto-generated method stub
 		
 		PreparedStatement pstmt=null;
@@ -163,12 +165,13 @@ public class QandADao {
 			
 			System.out.println("query : "+query);
 			
-			int startRow = (currentPage - 1) * limit + 1;
-			int endRow=startRow + limit -1;
+			int startRow = (currentPage1 - 1) * limit1 + 1;
+			int endRow=startRow + limit1 -1;
 			
-			pstmt.setString(1, "Q&A");
-			pstmt.setInt(2, startRow);
-			pstmt.setInt(3, endRow);
+			pstmt.setString(1,"문의");
+			pstmt.setString(2,"결제/진행");
+			pstmt.setInt(3, startRow);
+			pstmt.setInt(4, endRow);
 			
 			rset=pstmt.executeQuery();
 			

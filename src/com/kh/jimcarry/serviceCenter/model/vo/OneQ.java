@@ -8,6 +8,7 @@ public class OneQ {
 	private Date postDate;
 	private String postTitle;
 	private String postContent;
+	private String attachment;
 	private String postType;
 	private String questionType;
 	private int postNo;
@@ -19,14 +20,15 @@ public class OneQ {
 
 
 
-	public OneQ(String postcode, String userNo, Date postDate, String postTitle, String postContent, String postType,
-			String questionType, int postNo, int bCount) {
+	public OneQ(String postcode, String userNo, Date postDate, String postTitle, String postContent, String attachment,
+			String postType, String questionType, int postNo, int bCount) {
 		super();
 		this.postcode = postcode;
 		this.userNo = userNo;
 		this.postDate = postDate;
 		this.postTitle = postTitle;
 		this.postContent = postContent;
+		this.attachment=attachment;
 		this.postType = postType;
 		this.questionType = questionType;
 		this.postNo = postNo;
@@ -85,6 +87,18 @@ public class OneQ {
 
 	public String getPostContent() {
 		return postContent;
+	}
+
+	
+
+	public String getAttachment() {
+		return attachment;
+	}
+
+
+
+	public void setAttachment(String attachment) {
+		this.attachment = attachment;
 	}
 
 
@@ -146,9 +160,13 @@ public class OneQ {
 	@Override
 	public String toString() {
 		return "OneQ [postcode=" + postcode + ", userNo=" + userNo + ", postDate=" + postDate + ", postTitle="
-				+ postTitle + ", postContent=" + postContent + ", postType=" + postType + ", questionType="
-				+ questionType + ", postNo=" + postNo + ", BCount=" + BCount + "]";
+				+ postTitle + ", postContent=" + postContent + ", attachment=" + attachment + ", postType=" + postType
+				+ ", questionType=" + questionType + ", postNo=" + postNo + ", BCount=" + BCount + "]";
 	}
+
+
+
+	
 
 
 	

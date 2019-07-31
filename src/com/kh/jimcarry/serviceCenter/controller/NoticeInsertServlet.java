@@ -1,7 +1,10 @@
 package com.kh.jimcarry.serviceCenter.controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.GregorianCalendar;
 
 import javax.servlet.ServletException;
@@ -10,8 +13,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.kh.jimcarry.common.MyFileRenamePolicy;
+import com.kh.jimcarry.member.model.vo.Member;
 import com.kh.jimcarry.serviceCenter.model.service.OneQService;
+import com.kh.jimcarry.serviceCenter.model.vo.Attachment;
 import com.kh.jimcarry.serviceCenter.model.vo.OneQ;
+import com.oreilly.servlet.MultipartRequest;
 
 /**
  * Servlet implementation class NoticieInsertServlet
@@ -33,8 +40,74 @@ public class NoticeInsertServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		 String questionType=request.getParameter("questType");
-		 String postTitle=request.getParameter("postTitle");
+		
+		int maxSize = 1024*1024*10;
+		
+		String root = request.getSession().getServletContext().getRealPath("/");
+		
+		System.out.println("root : "+root);
+		
+		String savePath = root + "images_uploadFiles/";
+		
+		MultipartRequest multiRequest = 
+				new MultipartRequest(request, savePath, maxSize,
+						"UTF-8", new MyFileRenamePolicy());
+		
+		
+		ArrayList<String> saveFiles = new ArrayList<String>();
+		
+		ArrayList<String> originFiles = new ArrayList<String>();
+		
+		Enumeration<String> files=multiRequest.getFileNames();
+		
+		while (files.hasMoreElements()) {
+			String name = files.nextElement();
+			
+			saveFiles.add(multiRequest.getParameter(name));
+			originFiles.add(multiRequest.getOriginalFileName(name));
+			
+		}
+		//String answer = multiRequest.getparametier("answer");
+		String postTitle = multiRequest.getParameter("postTitle");
+		String postContent=multiRequest.getParameter("postContent");
+		String userNo=((Member) (request.getSession().getAttribute("loginUser"))).getSeqNo();
+		
+		OneQ one = new OneQ();
+		//one.setanswer(answer);
+		one.setPostTitle(postTitle);
+		one.setPostContent(postContent);
+		one.setUserNo(userNo);
+		String question="1:1문의";
+		one.setQuestionType(question);
+		
+		ArrayList<Attachment> fileList = new ArrayList<Attachment>();
+		
+		for (int i = originFiles.size() - 1; i >= 0; i--) {
+			Attachment tm = new Attachment();
+			tm.setFilePath(savePath);
+			tm.setOriginName(originFiles.get(i));
+			tm.setChangeName(saveFiles.get(i));
+			tm.setAttachType(question);
+			
+			fileList.add(tm);
+		}
+		
+		int result = new OneQService().insertOneQ(one,fileList);
+		
+		 if (result > 0) {
+				response.sendRedirect(request.getContextPath() + "/jimcarry/selectList.no");
+			} else {
+				
+				for (int i = 0; i < saveFiles.size(); i++) {
+					File failed = new File(savePath + saveFiles.get(i));
+					failed.delete();
+				}
+				request.setAttribute("msg", "1:1문의 등록 실패");
+				request.getRequestDispatcher("view/common/errorPage.jsp").forward(request, response);
+			}
+		
+/*		 String ques*ionType=request.getParameter("questType");
+		 String postTitle=request.getParameter("postTitle")*;
 		 String postContent=request.getParameter("postContent");
 		 String date=request.getParameter("date");
 		 String answer=request.getParameter("answer");
@@ -70,7 +143,7 @@ public class NoticeInsertServlet extends HttpServlet {
 			page="view/common/errorPage.jsp";
 			request.setAttribute("msg", "1:1문의 등록 실패");
 			request.getRequestDispatcher(page).forward(request, response);
-		}
+		}*/
 	
 	}
 
