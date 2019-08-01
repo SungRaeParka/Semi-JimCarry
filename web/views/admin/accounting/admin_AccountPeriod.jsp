@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.*, com.kh.jimcarry.admin.accounting.model.vo.*, java.text.DecimalFormat"%><%
+    pageEncoding="UTF-8" import="java.util.*, com.kh.jimcarry.admin.accounting.model.vo.*, java.text.DecimalFormat"%>
+<%
 	ArrayList<AccountingPeriod> list = (ArrayList<AccountingPeriod>) request.getAttribute("list");
     String periodSort = list.get(0).getPeriodSort();
     DecimalFormat df = new DecimalFormat("###,###,###,###");
@@ -24,7 +25,6 @@
 			align: center;
 			text-align: center;
 		}
-
 		table th,
 		table td {
 			text-align: center
@@ -56,7 +56,7 @@
 		<br />
 
 		<ul class="nav nav-tabs">
-			<li class="active"><a data-toggle="tab" href="#home">기간</a></li>
+			<li class="active"><a  href="/semi/accounting.pr">기간</a></li>
 			<li><a href="/semi/views/admin/accounting/admin_AccountMember.jsp">맴버</a></li>
 			<li><a href="/semi/views/admin/accounting/admin_AccountRefund.jsp">환불관리</a></li>
 		</ul>
@@ -66,12 +66,12 @@
 				<br>
 				<form id="periodForm">
 				<select id="period" name="period">
-					<option value="일" selected> 일 </option>
-					<option value="월"> 월 </option>
-					<option value="년도">년도</option>
+					<option id="daySelect" value="일"> 일 </option>
+					<option id="monthSelect" value="월"> 월 </option>
+					<option id="yearSelect" value="년도">년도</option>
 				</select>
 				</form>
-				<br>
+				<br><br>
 				<div class="moneyT">
 					<%-- <%if(){ %> --%>
 					<table class="moneyDay" id="moneyDay" border="1px">
@@ -98,10 +98,14 @@
 			<script>
 				//관리자>정산관리>기간
 				$(function () {
-					var state = $('#period option:selected').val();
-					if(state==null){
-						$('#period option:selected').show();
-
+					var periodResult = "<%= periodSort %>";
+					console.log("periodSort : " + periodResult);
+					if(periodResult==null || periodResult=="일"){
+						$('#daySelect').attr("selected", "selected");
+					}else if(periodResult=="월"){
+						$('#monthSelect').attr("selected", "selected");
+					}else if(periodResult=="년도"){
+						$('#yearSelect').attr("selected", "selected");
 					}
 				});
 
