@@ -138,8 +138,8 @@
 			<tr>
 				<td><label>차량번호</label>
 				<td>
-				<input type="text" name="carNo" id="ca" placeholder="00가">
-				<input type="text" name="carNo" id="ca" placeholder="9999">
+				<input type="text" name="carNo1" id="ca" placeholder="00가">
+				<input type="text" name="carNo2" id="ca" placeholder="9999">
 				</td>
 			</tr>
 			<tr>

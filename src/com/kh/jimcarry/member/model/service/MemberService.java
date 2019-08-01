@@ -101,6 +101,17 @@ public class MemberService {
 		
 		return result;
 	}
+
+	public Member driverLoginCheck(String userId, String userPwd) {
+		Connection con = getConnection();
+		
+		Member loginDriver = new MemberDao().driverLoginCheck(con, userId, userPwd);
+		
+		close(con);
+		
+		return loginDriver;
+	}
+
 	
 }
 

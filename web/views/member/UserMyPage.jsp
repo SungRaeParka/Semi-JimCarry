@@ -97,7 +97,9 @@
     					<tr class="showMemberInfo">
 							<td><label>휴대폰 번호 :</label>&nbsp;&nbsp;</td>
 							<td>
-							<input type="text" maxlength="3" name="tel1" value="<%=loginUser.getPhone() %>" id="tel1" readonly>
+							<input type="text" maxlength="3" name="tel1" id="tel" value="<%=loginUser.getPhone().substring(0, 3) %>"> -
+							<input type="text" maxlength="4" name="tel2" id="tel" value="<%=loginUser.getPhone().substring(4, 8) %>"> -
+							<input type="text" maxlength="4" name="tel3" id="tel" value="<%=loginUser.getPhone().substring(9, 13) %>">
 							</td>		
 						</tr>
     					<tr class="showMemberInfo">
