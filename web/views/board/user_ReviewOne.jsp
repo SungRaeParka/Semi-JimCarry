@@ -112,7 +112,7 @@
 			<% if(loginUser.getUserId().equals(b.getWriter())) { %>
 			<button onclick="del();" id="belbtn">삭제</button>&nbsp;&nbsp;
 			<button onclick="location.href='<%=request.getContextPath()%>/selectBoard.bo?num=<%=b.getPostCode()%>'">수정하기</button>&nbsp;
-				<% } %>
+			<% } %>
 			</div>
 			<script>
 				function del(){

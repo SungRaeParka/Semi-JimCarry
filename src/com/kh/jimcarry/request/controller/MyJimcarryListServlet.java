@@ -51,7 +51,7 @@ public class MyJimcarryListServlet extends HttpServlet {
 		//전체목록 갯수 리턴
 		int listCount = new RequestService().getListCount(logUserNo);
 		
-		System.out.println("listcount : "+listCount);
+		System.out.println("가가가listcount : "+listCount);
 		
 		
 		String page="";
@@ -80,12 +80,15 @@ public class MyJimcarryListServlet extends HttpServlet {
 		ArrayList<Request> jimList = new RequestService().selectList(currentPage,limit,logUserNo);
 		System.out.println("견적리스트 조회"+jimList.get(0));
 		
+		
 		//오더리스트 조회
-		HashMap<String,Request> orderMap = new RequestService().selectOrderList(logUserNo);
+		HashMap<String,Request> orderMap = new RequestService().selectOrderList(logUserNo);	
 		
-		
-		
-		
+		/*for(int i = 0; i < jimList.size(); i++) {
+			if(!jimList.get(i).equals("매칭대기")) {
+				orderMap = new RequestService().selectOrderList(logUserNo);				
+			}
+		}*/	
 		
 		if(jimList != null) {
 			page = "views/request/jim_CarryList.jsp";
