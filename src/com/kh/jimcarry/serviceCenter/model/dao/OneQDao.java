@@ -50,6 +50,7 @@ public class OneQDao {
 				
 			OneQ one = new OneQ();	
 			
+			one.setMemberNo(rset.getString("MEMBER_NO"));
 			one.setQuestionType(rset.getString("QUESTION_TYPE"));
 			one.setPostTitle(rset.getString("POST_TITLE"));
 			one.setPostContent(rset.getString("POST_CONTENT"));
@@ -78,10 +79,15 @@ public class OneQDao {
 		
 		try {
 			pstmt=con.prepareStatement(query);
-			pstmt.setString(1, one.getQuestionType());
+			
+			pstmt.setString(1, one.getMemberNo());
 			pstmt.setString(2, one.getPostTitle());
 			pstmt.setString(3, one.getPostContent());
-			//pstmt.setDate(4, one.getPostDate());
+			pstmt.setString(4, one.getAttachment());
+			pstmt.setString(5, one.getPostType());
+			pstmt.setString(6, one.getQuestionType());
+			
+			System.out.println(one.getMemberNo());
 			
 			result = pstmt.executeUpdate();
 			
@@ -190,7 +196,7 @@ public class OneQDao {
 					OneQ one = new OneQ();
 
 					one.setPostcode(rset.getString("POST_CODE"));
-					one.setUserNo(rset.getString("MEMBER_NO"));
+					one.setMemberNo(rset.getString("MEMBER_NO"));
 					one.setPostDate(rset.getDate("POST_DATE"));
 					one.setPostTitle(rset.getString("POST_TITLE"));
 					one.setPostContent(rset.getString("POST_CONTENTS"));
@@ -198,6 +204,7 @@ public class OneQDao {
 					one.setQuestionType(rset.getString("QUESTION_TYPE"));
 					one.setPostNo(rset.getInt("POST_NO"));
 					one.setBCount(rset.getInt("B_COUNT"));
+					one.setAnswerCheck(rset.getString("ANSWER_CHECK"));
 					
 					list2.add(one);
 					

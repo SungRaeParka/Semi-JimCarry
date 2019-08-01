@@ -41,6 +41,9 @@ public class NoticeInsertServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
+		/*String memberNo = request.getParameter("name");
+		System.out.println(memberNo);*/
+		
 		int maxSize = 1024*1024*10;
 		
 		String root = request.getSession().getServletContext().getRealPath("/");
@@ -50,8 +53,7 @@ public class NoticeInsertServlet extends HttpServlet {
 		String savePath = root + "images_uploadFiles/";
 		
 		MultipartRequest multiRequest = 
-				new MultipartRequest(request, savePath, maxSize,
-						"UTF-8", new MyFileRenamePolicy());
+				new MultipartRequest(request, savePath, maxSize,"UTF-8", new MyFileRenamePolicy());
 		
 		
 		ArrayList<String> saveFiles = new ArrayList<String>();
@@ -67,17 +69,22 @@ public class NoticeInsertServlet extends HttpServlet {
 			originFiles.add(multiRequest.getOriginalFileName(name));
 			
 		}
-		//String answer = multiRequest.getparametier("answer");
+		String answer = multiRequest.getParameter("answerCheck");
+		String member=multiRequest.getParameter("name");
+		System.out.println("유저넘버 ::: " + member);
 		String postTitle = multiRequest.getParameter("postTitle");
+		System.out.println("제목 ::::" + postTitle);
 		String postContent=multiRequest.getParameter("postContent");
-		String userNo=((Member) (request.getSession().getAttribute("loginUser"))).getSeqNo();
+		String question=multiRequest.getParameter("questionCheck");
+		
+		
 		
 		OneQ one = new OneQ();
-		//one.setanswer(answer);
+		one.setMemberNo(member);
+		one.setAnswerCheck(answer);
 		one.setPostTitle(postTitle);
 		one.setPostContent(postContent);
-		one.setUserNo(userNo);
-		String question="1:1문의";
+		question="1:1문의";
 		one.setQuestionType(question);
 		
 		ArrayList<Attachment> fileList = new ArrayList<Attachment>();
@@ -103,7 +110,7 @@ public class NoticeInsertServlet extends HttpServlet {
 					failed.delete();
 				}
 				request.setAttribute("msg", "1:1문의 등록 실패");
-				request.getRequestDispatcher("view/common/errorPage.jsp").forward(request, response);
+				request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
 			}
 		
 /*		 String ques*ionType=request.getParameter("questType");
