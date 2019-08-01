@@ -217,16 +217,19 @@ public class MemberDao {
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, m.getUserPwd());
 			pstmt.setString(2, m.getPhone());
-			pstmt.setString(3, m.getUserId());
+			pstmt.setString(3, m.getSeqNo());
 			
+			System.out.println("pstmt : "+pstmt);
 			result = pstmt.executeUpdate();
+			
+			System.out.println(result);
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close(pstmt);
 		}
-		
+		System.out.println( "member result : "+result);
 		return result;
 	}
 
@@ -279,7 +282,92 @@ public class MemberDao {
 		return loginDriver;
 	}
 
-	
+	public int updateDriver(Connection con, Member m) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = prop.getProperty("updateDriver");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, m.getAgent());
+			pstmt.setString(2, m.getBusinessNo());
+			pstmt.setString(3, m.getBusinessAddress());
+			pstmt.setString(4, m.getCarType());
+			pstmt.setString(5, m.getCarNo());
+			pstmt.setString(6, m.getSeqNo());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public int updateAttachment(Connection con, ArrayList<AttachmentMember> fileList) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = prop.getProperty("updateArrachment");
+		
+		System.out.println("ffff : "+fileList);
+			try {
+				for(int i = 0; i < fileList.size(); i++) {
+					pstmt = con.prepareStatement(query);
+					
+					pstmt.setString(1, fileList.get(i).getOriginName());
+					pstmt.setString(2, fileList.get(i).getChangeName());
+					pstmt.setString(3, fileList.get(i).getFilePath());
+					pstmt.setString(4, fileList.get(i).getDriverNo());
+					pstmt.setString(5, fileList.get(i).getAttachNo());
+
+					result += pstmt.executeUpdate();
+					
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close(pstmt);
+			}
+		System.out.println("마지막~ : " + result);
+		return result;
+	}
+
+	public AttachmentMember attachnoSelect(Connection con, Member m, ArrayList<AttachmentMember> fileList) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		AttachmentMember attachNo = null;
+		
+		String query = prop.getProperty("attachnoSelect");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			
+			pstmt.setString(1, m.getSeqNo());
+			
+			rset = pstmt.executeQuery();
+			
+			
+			if(rset.next()) {
+				
+				attachNo = new AttachmentMember();
+				attachNo.getAttachNo();
+					
+			}
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+		}
+		
+		
+		return attachNo;
+	}
 }
 
 

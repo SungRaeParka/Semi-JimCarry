@@ -125,6 +125,7 @@
     					<tr class="updateMemberInfo">
     						<td><label>아이디 : </label></td>
     						<td><input type="text" name="userId" value="<%=loginUser.getUserId() %>" readonly></td>
+    						<td><input type="hidden" name="seqNo" value="<%=loginUser.getSeqNo() %>" readonly></td>
     					</tr>
     					<tr class="updateMemberInfo">
     						<td><label>비밀번호 : </label>&nbsp;&nbsp;</td>
@@ -159,7 +160,6 @@
    					    <td>예약일자</td>
    					    <td>견적금액</td>
    					    <td>매칭상태</td>
-   					    <td>환불</td>
     				</tr>
     				</thead>
     				<tbody>
@@ -170,7 +170,7 @@
         				<td></td>
         				<td></td>
         				<td>매칭대기</td>
-        				<td><button id="btn" onclick="check();">환불</button></td>
+        				<td></td>
       				</tr>
       				<tr>
         				<td>2</td>

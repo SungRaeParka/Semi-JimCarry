@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="com.kh.jimcarry.member.model.vo.Member"%>
+    pageEncoding="UTF-8" import="java.util.*, com.kh.jimcarry.member.model.vo.*, java.text.DecimalFormat, com.kh.jimcarry.admin.accounting.model.vo.*"%>
 <%
 	Member loginDriver = (Member) session.getAttribute("loginDriver");
+	ArrayList<AccountingMember> list = (ArrayList<AccountingMember>) request.getAttribute("list");
 %>
 <!DOCTYPE html>
 <html>
@@ -98,7 +99,7 @@
 
   			<div class="tab-content">
     			<div id="home" class="tab-pane fade in active" style="border: 1px solid black">
-    				<form action="" method="post">
+    				<form action="<%=request.getContextPath()%>/updateDriver.me" method="post" encType="multipart/form-data">
     				<table align="center">
     					<tr class="showMemberInfo">
     						<td><label>아이디 : </label></td>
@@ -116,7 +117,7 @@
 							<input type="text" maxlength="4" name="tel3" id="tel" value="<%=loginDriver.getPhone().substring(9, 13) %>" readonly>
 							</td>
 						</tr>
-						<tr class="updateMemberInfo">
+						<tr class="showMemberInfo">
 							<td><label>대표자</label>
 							<td><input type="text" name="agent" id="box" readonly value="<%=loginDriver.getAgent() %>"></td>	
 						</tr>
@@ -160,6 +161,7 @@
     					<tr class="checkPwd">
     						<td><label>아이디 : </label></td>
     						<td><input type="text" name="userId" value="<%=loginDriver.getUserId() %>" readonly></td>
+    						<td><input type="hidden" name="seqNo" value="<%=loginDriver.getSeqNo() %>" readonly></td>
     					</tr>
     					<tr class="checkPwd">
     						<td><label>비밀번호 :</label>&nbsp;&nbsp;</td>
@@ -219,8 +221,8 @@
 						<tr class="updateMemberInfo">
 							<td><label>차량번호 :</label>
 							<td>
-							<input type="text" name="carNumber" id="ca" value="<%=loginDriver.getCarNo().substring(0, 3) %>">
-							<input type="text" name="carNumber" id="ca" value="<%=loginDriver.getCarNo().substring(4, 8) %>">
+							<input type="text" name="carNumber1" id="ca" value="<%=loginDriver.getCarNo().substring(0, 3) %>">
+							<input type="text" name="carNumber2" id="ca" value="<%=loginDriver.getCarNo().substring(4, 8) %>">
 						</td>
 						</tr>
 						<tr class="updateMemberInfo">
@@ -240,7 +242,7 @@
 							<td><input type="file" name="attestation" value="<%=loginDriver.getAttestation() %>"></td>
 						</tr>   					
     					<tr class="updateMemberInfo">
-    						<td colspan="2"><input type="button" value="수정 완료" id="updateMemberbtn"></td>    						
+    						<td colspan="2"><input type="button" value="수정 완료" id="updateMemberbtn" onclick="updateOk();"></td>    						
     					</tr>
     				</table>
     				</form>
@@ -260,15 +262,17 @@
     				</tr>
     				</thead>
     				<tbody>
+    				<%-- <% for(AccountingMember am : list){ %>
       				<tr>
-        				<td>1</td>
-        				<td>서무권</td>
-        				<td></td>
-        				<td></td>
-        				<td>70,000</td>
-        				<td>67,000</td>
+        				<td><%=am.getPayNo() %></td>
+        				<td><%=am.getMemberName() %></td>
+        				<td><%=am.getPayDate() %></td>
+        				<td><%=am.getReservationDate() %></td>
+        				<td><%=am.getPayAmount() %></td>
+        				<td><%=am.getDriverPay() %></td>
         				<td>매칭신청</td>
       				</tr>
+      				<% } %> --%>
       				<tr>
         				<td>2</td>
         				<td>메시</td>
@@ -394,12 +398,12 @@
 	            }
 			});
 			
-			$("#updateMemberbtn").click(function() {
+			/* $("#updateMemberbtn").click(function() {
 				window.confirm("회원정보가 수정되었습니다.");
 				$(".showMemberInfo").show();
 				$(".updateMemberInfo").hide();
 				$(".checkPwd").hide();
-			});
+			}); */
 			
 			$("#deletebtn").click(function(){
 				window.confirm("회원을 탈퇴하시겠습니까?");
@@ -408,6 +412,9 @@
 			
 			
 		});
+		function updateOk(){
+			$("form").submit();
+		}
 	</script>
 
 </body>

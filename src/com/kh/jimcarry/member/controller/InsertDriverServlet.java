@@ -94,7 +94,7 @@ public class InsertDriverServlet extends HttpServlet {
 			String accountNo = multiRequest.getParameter("accountNo");
 			String carNo1 = multiRequest.getParameter("carNo1");
 			String carNo2 = multiRequest.getParameter("carNo2");
-			String carNo = carNo1 + "/" + carNo2;
+			String carNo = carNo1 + " " + carNo2;
 			String idPhoto = multiRequest.getParameter("idPhoto");
 			String certificate = multiRequest.getParameter("certificate");
 			String bankBook = multiRequest.getParameter("bankBook");
@@ -174,7 +174,7 @@ public class InsertDriverServlet extends HttpServlet {
 				page = "views/member/MemberLoginForm.jsp";
 				response.sendRedirect(page);
 			}else {
-			page = "views/common/errorPage.jsp";
+			page = "views/common/driver_errorPage.jsp";
 			request.setAttribute("msg", "회원 가입실패!");
 			request.getRequestDispatcher(page).forward(request, response);
 			}
