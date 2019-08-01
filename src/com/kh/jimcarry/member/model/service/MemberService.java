@@ -89,7 +89,6 @@ public class MemberService {
 
 	public int updateMember(Member m) {
 		Connection con = getConnection();
-		int result1 = 0;
 		int result = new MemberDao().updateMember(con, m);
 		
 		if(result > 0) {
@@ -110,6 +109,33 @@ public class MemberService {
 		close(con);
 		
 		return loginDriver;
+	}
+
+	public int updateDriver(Member m, ArrayList<AttachmentMember> fileList) {
+		Connection con = getConnection();
+		int result = 0;
+		
+		int result1 = new MemberDao().updateMember(con, m);
+		System.out.println(result1);
+		if(result1 > 0) {
+			int result2 = new MemberDao().updateDriver(con, m);
+			if(result2 > 0) {
+				System.out.println("r2 : " +result2);
+			}
+			AttachmentMember result3 = new MemberDao().attachnoSelect(con,  m, fileList);
+			System.out.println( " res:" + result3);
+			int result4 = new MemberDao().updateAttachment(con, fileList);
+			System.out.println("r3 :" +result4);
+			if(result1 > 0 && result2 > 0 && result4 > 0) {
+				commit(con);
+				result = 1;
+			}else {
+				rollback(con);
+			}
+			close(con);
+		}
+		System.out.println(result);
+		return result;
 	}
 
 	
