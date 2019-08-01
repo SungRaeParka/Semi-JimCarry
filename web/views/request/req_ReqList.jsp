@@ -4,7 +4,7 @@
 
 <%
 	ArrayList<Request> rolist = (ArrayList<Request>) request.getAttribute("rolist");
-	String reqno = (String) request.getAttribute("no");
+	String reqNo = (String) request.getAttribute("no");
 	int minPrice = (int) request.getAttribute("minPrice");
 %>
 
@@ -108,7 +108,7 @@ html, body {
 			</h2>
 			<p style="color: gray;">
 				견적 번호 :
-				<%=reqno%></p>
+				<%=reqNo%></p>
 			<h5>
 				남은 입찰 기간 :
 				<%=timeReH%>
@@ -128,11 +128,14 @@ html, body {
 			};
 		</script>
 
+		
+
+		<form action="<%=request.getContextPath()%>/makePayment.py?roNo=">
 		<%
 			for (int i = 0; i < rolist.size(); i++) {
 				ro = rolist.get(i);
+				
 		%>
-
 		<div>
 			<img src="/semi/images/mc1.png" style="float: left" id="driverImg">
 			<div id="drivername">
@@ -156,10 +159,14 @@ html, body {
 
 
 			<div class="container" align="right">
-				<button type="button" class="btn" onclick="selectReqOrder();">선택하기</button>
+				<button type="button" class="btn" id="selectReqOrder">선택하기</button>
+				<input type="hidden" name="tempRo" id="tempRo" value="<%=ro.getDriverNo()%>">
 			</div>
 			<hr>
 		</div>
+		<input type="hidden" name="roNo" id="roNo">
+		<input type="hidden" name="reqNo" id="reqNo" value="<%=reqNo%>">
+		</form>
 
 
 		<%
@@ -169,8 +176,23 @@ html, body {
 		<br> <br> <br> <br> <br> <br> <br>
 
 		<script>
-			function selectReqOrder() {
-				alert("결제창으로 이동 합니다.");
+		$(function(){
+			$("#selectReqOrder").click(function(){
+				
+				var roVal = $(this).next().val();
+				
+				$("#roNo").val(roVal);
+				
+				$("form").submit();
+			});
+		});
+		
+		
+		
+		
+			<%-- function selectReqOrder() {
+				
+				 alert("결제창으로 이동 합니다.");
 
 				var IMP = window.IMP;
 				IMP.init('imp21035261');
@@ -181,7 +203,7 @@ html, body {
 					merchant_uid : '<%=%>' + new Date().getTime(), //고유주문번호(결제이력번호)
 					name : '주문명 : 결제테스트', //상품명 or 주문명 (견적번호)
 					amount : 100000, //결제금액
-					buyer_name : '구매자이름' //결제자명
+					buyer_name : '구매자이름' //결제자명(사용자이름)
 
 				//m_redirect_url:'' //결제완료후 갈 페이지
 
@@ -218,9 +240,10 @@ html, body {
 						// 결제 실패 시 로직,
 					}
 					alert(msg);
-				});
+				}); 
 
-			}
+			} --%>
+		
 		</script>
 
 
