@@ -168,7 +168,7 @@ public class QandADao {
 			int startRow = (currentPage1 - 1) * limit1 + 1;
 			int endRow=startRow + limit1 -1;
 			
-			pstmt.setString(1,"문의");
+			pstmt.setString(1,"Q&A");
 			pstmt.setString(2,"결제/진행");
 			pstmt.setInt(3, startRow);
 			pstmt.setInt(4, endRow);

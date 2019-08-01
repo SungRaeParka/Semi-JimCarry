@@ -22,29 +22,31 @@ public class PageInfo implements java.io.Serializable{
 	private int endPage2;
 	
 	public PageInfo() {}
+	
+	
+
+	public PageInfo(int currentPage, int listCount, int limit, int maxPage, int startPage, int endPage) {
+		super();
+		this.currentPage = currentPage;
+		this.listCount = listCount;
+		this.limit = limit;
+		this.maxPage = maxPage;
+		this.startPage = startPage;
+		this.endPage = endPage;
+	}
+
+
 
 	public PageInfo(int currentPage, int currentPage1, int currentPage2, int listCount, int listCount1, int listCount2,
 			int limit, int limit1, int limit2, int maxPage, int maxPage1, int maxPage2, int startPage, int startPage1,
 			int startPage2, int endPage, int endPage1, int endPage2) {
 		super();
 		this.currentPage = currentPage;
-		this.currentPage1 = currentPage1;
-		this.currentPage2 = currentPage2;
 		this.listCount = listCount;
-		this.listCount1 = listCount1;
-		this.listCount2 = listCount2;
 		this.limit = limit;
-		this.limit1 = limit1;
-		this.limit2 = limit2;
 		this.maxPage = maxPage;
-		this.maxPage1 = maxPage1;
-		this.maxPage2 = maxPage2;
 		this.startPage = startPage;
-		this.startPage1 = startPage1;
-		this.startPage2 = startPage2;
 		this.endPage = endPage;
-		this.endPage1 = endPage1;
-		this.endPage2 = endPage2;
 	}
 
 	public int getCurrentPage() {

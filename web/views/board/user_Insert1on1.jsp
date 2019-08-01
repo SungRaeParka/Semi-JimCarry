@@ -32,6 +32,7 @@
 	<tr>
 		<th>문의유형</th>
 		<th>
+			<input type="hidden" name="postType" value="유형">
 			<input type="hidden" name="answerCheck">
 			<input type="radio" id="check" name="questionCheck" value="견적관련">견적관련
 			<input type="radio" id="check" name="questionCheck" value="운송관련">운송관련
@@ -55,7 +56,7 @@
 	<tr>
 		<th>첨부파일</th>
 		<th>
-			<input type="file" value="첨부파일" name= >
+			<input type="file" value="첨부파일" name="attachment"  >
 		</th>
 	</tr>
 </table>

@@ -97,14 +97,17 @@ public class NoticeSelectListServlet extends HttpServlet {
 			endPage2= maxPage2;
 		}
 		
-		
 		PageInfo pi = 
-				new PageInfo(currentPage, currentPage1, currentPage2, listCount, listCount1, listCount2,
-				limit, limit1, limit2, maxPage, maxPage1, maxPage2, startPage, startPage1,startPage2, endPage, endPage1, endPage2);
+				new PageInfo(currentPage, listCount, limit, maxPage, startPage, endPage);
+		PageInfo pi1 = 
+				new PageInfo(currentPage1, listCount1, limit1, maxPage1, startPage1, endPage1);
+		PageInfo pi2=
+				new PageInfo(currentPage2, listCount2, limit2, maxPage2, startPage2, endPage2);
+		
 		
 		ArrayList<Notice> list = new NoticeService().selectList(currentPage, limit);
-		ArrayList<QandA> list1=new QandAService().selectList(currentPage1, limit1);
-		ArrayList<OneQ> list2=new OneQService().selectList(currentPage2, limit2);
+		ArrayList<QandA> list1=new QandAService().selectList(currentPage, limit);
+		ArrayList<OneQ> list2=new OneQService().selectList(currentPage, limit);
 		
 		String page = "";
 		
@@ -114,11 +117,13 @@ public class NoticeSelectListServlet extends HttpServlet {
 			request.setAttribute("list1", list1);
 			request.setAttribute("list2", list2);
 			request.setAttribute("pi", pi);
+			request.setAttribute("pi1", pi1);
+			request.setAttribute("pi2", pi2);
 		} else {
 			if (list ==null) {
 				page="views/common/errorPage.jsp";
 				request.setAttribute("msg", "공지사항 조회 실패!");
-			} else if(list1 == null) { 
+				} else if(list1 == null) { 
 				page="views/common/errorPage.jsp";
 				request.setAttribute("msg", "Q&A 조회 실패!");
 			}else {

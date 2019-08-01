@@ -32,14 +32,10 @@ public class OneQService {
 		int result =0 ;
 		int dao=new OneQDao().insertOneQ(con, one);
 		
-		if(dao > 0) {
-			String postCode = new OneQDao().selectCurrval(con);
-			
-			for (int i = 0; i < fileList.size(); i++) {
-				fileList.get(i).setPostCode(postCode);
-			}
-		}
 		int dao1 = new OneQDao().insertAttachment(con,fileList);
+		
+		System.out.println(dao);
+		System.out.println(dao1);
 		if (dao > 0&& dao1 > 0 ) {
 			commit(con);
 			result = 1;

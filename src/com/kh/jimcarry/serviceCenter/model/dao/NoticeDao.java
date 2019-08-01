@@ -57,6 +57,8 @@ public class NoticeDao {
 				list.add(n);
 					
 			}
+			
+			System.out.println(rset.getString("USER_NO"));
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -166,7 +168,7 @@ public class NoticeDao {
 			
 			return listCount;
 		}
-		
+		//페이징처리후 조회
 	public ArrayList<Notice> selectList(Connection con, int currentPage, int limit) {
 		// TODO Auto-generated method stub
 		
@@ -181,6 +183,7 @@ public class NoticeDao {
 			
 			System.out.println("query : "+query);
 			
+			//조회를 시작할 행 번호와 마지막 행 번호 계산
 			int startRow = (currentPage - 1) * limit + 1;
 			int endRow=startRow + limit -1;
 			
@@ -195,18 +198,20 @@ public class NoticeDao {
 			while(rset.next()) {
 					Notice n=new Notice();
 
-					n.setPostcode(rset.getString("POST_CODE"));
+					n.setPostNo(rset.getInt("POST_NO"));
 					n.setUserNo(rset.getString("MEMBER_NO"));
 					n.setPostdate(rset.getDate("POST_DATE"));
 					n.setPostTitle(rset.getString("POST_TITLE"));
 					n.setPostContent(rset.getString("POST_CONTENTS"));
 					n.setPostType(rset.getString("POST_TYPE"));
-					n.setPostNo(rset.getInt("POST_NO"));
 					n.setbCount(rset.getInt("B_COUNT"));
+					
+					
 					
 					list.add(n);
 					
 			}	
+			System.out.println("list : "+list);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
