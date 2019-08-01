@@ -517,21 +517,64 @@ public class BoardDao {
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, c.getPostCode());
 			pstmt.setString(2, c.getUserNo());
-			pstmt.setDate(3, c.getCommentDate());
-			pstmt.setString(4, c.getCommentContents());
+			pstmt.setString(3, c.getCommentCode());
+
+			result = pstmt.executeUpdate();
 
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			close(pstmt);
 		}
 
-		return 0;
+		return result;
 	}
 	//댓글 조회
-	public ArrayList<Comments> selectReplyList(Connection con, String commentCode) {
-		// TODO Auto-generated method stub
-		return null;
+
+	public ArrayList<Comments> selectReplyList(Connection con, String postCode) {
+
+			PreparedStatement pstmt = null;
+			ResultSet rset = null;
+			ArrayList<Comments> list = null;
+
+			String query = prop.getProperty("selectReplyList");
+
+			try {
+				pstmt = con.prepareStatement(query);
+				pstmt.setString(1, postCode);
+
+				rset = pstmt.executeQuery();
+
+				list = new ArrayList<Comments>();
+
+			while(rset.next()) {
+				Comments c = new Comments();
+
+				c.setCommentCode(rset.getString("COMMENT_CODE"));
+				c.setPostCode(rset.getString("POST_CODE"));
+				c.setUserNo(rset.getString("USER_NO"));
+				c.setCommentDate(rset.getDate("COMMENT_DATE"));
+				c.setCommentContents(rset.getString("COMMENT_CONTENTS"));
+				c.setWriter(rset.getString("MEMBER_ID"));
+
+				list.add(c);
+			}
+
+
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				close(pstmt);
+				close(rset);
+			}
+			System.out.println("댓글 조회 : " + list);
+			return list;
+
+
 	}
+
 
 }

@@ -153,16 +153,33 @@
 	<script>
 	$(function(){
 		$("#addReply").click(function(){
-			var writer ="<%=loginUser.getUserId()%>";
+			var writer ="<%=loginUser.getSeqNo()%>";
 			var bcode = "<%=b.getPostCode()%>";
 			var content = $("#replyContent").val();
 
 			$.ajax({
-				url:"/semi/insertReply.bo",
+				url:"/semi//insertReply.bo",
 				data:{writer:writer, bcode:bcode, content:content},
 				type:"post",
 				success:function(data){
-					console.log(data);
+					//console.log(data);
+
+					var $replySelectTable = $("#replySelectTable tbody");
+					$replySelectTable.html("");
+
+				for(var key in data) {
+					var $tr = $("<tr>");
+					var $writeTd = $("<td>").text(data[key].writer).css("width","100px");
+					var $contentTd = $("<td>").text(data[key].commentContents).css("width","400px");
+					var $dateTd = $("<td>").text(data[key].commentDate).css("width","200px");
+
+					//console.log($writeTd)
+
+					$tr.append($writeTd);
+					$tr.append($contentTd);
+					$tr.append($dateTd);
+					$replySelectTable.append($tr);
+				}
 				},
 				error:function(){
 					console.log("실패!!!");
