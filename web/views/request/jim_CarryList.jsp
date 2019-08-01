@@ -110,6 +110,7 @@
 			
 			long nowTime;  //오늘 날,시간 getTime
 			long finishTime;  //견적매칭 종료일 getTime
+			long moveTime;   //짐옮기는날
 			
 			long timeRemain;//남은시간
 			long timeReH; //남은시간_시간
@@ -122,21 +123,35 @@
 				finishDay = req.getReqFinish();  //견적매칭 종료일
 				moveDay = req.getReservationDate(); //예약일(짐옮기는 날)
 				
-				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 				
 				nowDay = dateFormat.parse(dateFormat.format(nowDay));
 				nowTime = nowDay.getTime();
+				System.out.println(nowDay);
+				System.out.println(nowTime);
 				//오늘 날,시간 getTime
 				
+				Date moveDay2 = dateFormat.parse(moveDay);
+				moveDay2 = dateFormat.parse(dateFormat.format(moveDay2));
+				moveTime = moveDay2.getTime();
+				System.out.println(moveDay2);
+				System.out.println(moveTime);
+				//짐옮기는날 getTime
 				
-
+				finishDay = dateFormat.parse(dateFormat.format(finishDay));
 				finishTime = finishDay.getTime();
+				System.out.println(finishDay);
+				System.out.println(finishTime);
 				//견적매칭 종료일 getTime
 				
 				//입찰종료까지 남은시간 계산
 				timeRemain = finishTime+86400000-nowTime;
 				timeReH = (timeRemain/60000)/60;
 				timeReM = (timeRemain/60000)%60;
+				
+				
+				
+				
 				
 				if (req.getConditionReq().equals("매칭대기")) {
 		%>
@@ -243,7 +258,7 @@
 			} else if (req.getConditionReq().equals("이용대기")) {
 				reqOrder = orderMap.get(req.getReqNo());
 				
-				if(nowTime < nowTime /* moveTime+moveTimeH*3600000 */){
+				if(nowTime < moveTime){
 		%>			
 		<div class="usingWait">
 			<img src="/semi/images/mc3.png" class="imgs" style="float: left">
@@ -333,7 +348,7 @@
 			<div id="reqcencle" align="right">
 
 				<h3>
-					<a href="#">완료하기→</a>
+					<span id="doneBtn" style="cursor: pointer">완료하기 →</span>
 				</h3>
 
 			</div>
@@ -489,7 +504,7 @@
 	
 	
 	<script>
-	$(function(){
+	$(function(){//견적상세보기
 		$(".reqInfoBtn").click(function(){
 			var no = $(this).next().val();
 			
@@ -503,13 +518,31 @@
 
 	
 	
-	$(function(){
+	$(function(){//입찰내역보기
 		$("#orderInfoBtn").click(function(){
 			var no = $(this).parent().children("input").val();
 			
 			location.href="<%=request.getContextPath()%>/checkOrder.jc?no=" + no;
 		});
 	});
+	
+	
+	$(function(){//완료버튼
+		$("#doneBtn").click(function(){
+			var url = "/semi/views/popup/pop_reqSuccess.jsp";
+			var name = "donePopup";
+			var option = "with=300, height=350, top=30, left=50";
+			
+			/* var reqNo= 
+			var userNo=
+			var driverNo= */
+			
+			window.open(url,name,option);
+		})
+	})
+	
+	
+	
 	
 	$(function(){
 		$("#driver_filter").change(function(){

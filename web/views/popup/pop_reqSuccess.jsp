@@ -23,29 +23,65 @@
 			
 			
 			<label>기사 평점 : </label>
+			
 			<select id="driverGrade" name="driverGrade">
-				<option value="★★★★★" selected>★★★★★</option>
-				<option value="★★★★">★★★★</option>
-				<option value="★★★">★★★</option>
-				<option value="★★">★★</option>
-				<option value="★">★</option>
+				<option value="5" selected>★★★★★</option>
+				<option value="4">★★★★</option>
+				<option value="3">★★★</option>
+				<option value="2">★★</option>
+				<option value="1">★</option>
 			</select>
 			
 			<br>
 			<br>
 			<br>
 			
-			<textarea placeholder="이용하신 기사의 리뷰를 작성해주세요." style="width: 300px; height: 150px;"></textarea>
+			<textarea id="review" placeholder="이용하신 기사의 리뷰를 작성해주세요." style="width: 300px; height: 150px;"></textarea>
 			
 						
 		</div>
 		
 		<hr>
 		<div align="center">
-			<a href="/semi/views/request/jim_CarryList.jsp"><input type="button" value="이용완료"></a>
-			<input type="button" value="취소">
+			<input type="button" id="done" value="이용완료">
+			<input type="button" id="cancel" value="취소">
 		</div>
 	</form>
+	
+	<script>
+	$(function(){
+		$("#done").click(function(){
+			var grade = $("#driverGrade option:selected").val();
+			var review = $("#review").val();
+			
+			$.ajax({
+				url:"reqCompleted.jc",
+				type:'get',
+				data:{
+					grade:"grade",
+					review:"review"
+				},
+				sucess:function(data){
+					alert("접속완료");
+				},
+				error:function(data){
+					alert("접속실패");
+				}
+			})
+			
+			
+		})
+	})
+	
+	
+	
+	$(function(){
+		$("#cancel").click(function(){
+			window.close();
+		})
+	})
+	
+	</script>
 	
 	
 </body>

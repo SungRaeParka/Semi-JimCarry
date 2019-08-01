@@ -32,6 +32,16 @@ public class MyJcCheckOrderServlet extends HttpServlet {
 		ArrayList<Request> rolist = new RequestService().checkOrder(no);
 		System.out.println("rolist 가지고옴");
 		System.out.println("rolist :: " + rolist);
+		System.out.println("rolist size :: " + rolist.size());
+		
+		
+		String page="";
+		
+		if(rolist.size()==0) {
+			page = "views/common/errorPage.jsp";
+			request.setAttribute("msg", "입찰내역이 아직 없습니다.");
+			request.getRequestDispatcher(page).forward(request, response);
+		}
 		
 		
 		System.out.println("최저가 가져오기");
@@ -39,7 +49,7 @@ public class MyJcCheckOrderServlet extends HttpServlet {
 		System.out.println("최저가 가져옴");
 		System.out.println(minPrice);
 		
-		String page="";
+		
 		
 		if(rolist != null) {
 			page = "views/request/req_ReqList.jsp";
