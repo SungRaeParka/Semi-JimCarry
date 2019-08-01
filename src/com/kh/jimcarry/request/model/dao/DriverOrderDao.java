@@ -1,12 +1,14 @@
 package com.kh.jimcarry.request.model.dao;
 
+import static com.kh.jimcarry.common.JDBCTemplate.close;
+
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
-import static com.kh.jimcarry.common.JDBCTemplate.*;
 
 public class DriverOrderDao {
 	private Properties prop = new Properties();
@@ -43,6 +45,54 @@ public class DriverOrderDao {
 		}
 		
 		return result;
+	}
+	
+	public int selectReqCount(Connection con, String priceReqNo) {		
+		int reqCount = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;		
+		
+		String query = prop.getProperty("selectReqCount");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			
+			pstmt.setString(1, priceReqNo);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				reqCount = rset.getInt("COUNT");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return reqCount;
+	}
+	
+	public int updateReqCount(Connection con, String priceReqNo, int reqCount) {
+		int result2 = 0;
+		PreparedStatement pstmt = null;
+		
+		String query = prop.getProperty("updateReqCount");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			
+			pstmt.setInt(1, reqCount+1);
+			pstmt.setString(2, priceReqNo);
+			
+			result2 = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result2;
 	}
 	
 }

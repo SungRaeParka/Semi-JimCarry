@@ -12,17 +12,25 @@ public class DriverOrderService {
 
 	public int insertDriverOrder(int price, String priceReqNo, String driverNo) {
 		Connection con = getConnection();
+		
 		int result = new DriverOrderDao().insertDriverOrder(con, price, priceReqNo, driverNo);
+		
+		int result2 = 0;
 		
 		if(result > 0) {
 			commit(con);
+			 int reqCount = new DriverOrderDao().selectReqCount(con, priceReqNo);
+			 result2= new DriverOrderDao().updateReqCount(con, priceReqNo, reqCount);
+			if(result2 > 0) {
+				
+			}
 		}else {
 			rollback(con);
 		}
 		
 		close(con);
 		
-		return result;
+		return result2;
 	}
 	
 }
