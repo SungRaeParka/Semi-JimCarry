@@ -13,6 +13,8 @@
 		int maxPage = pi.getMaxPage();
 		int startPage = pi.getStartPage();
 		int endPage = pi.getEndPage();
+		String word = (String) request.getAttribute("word");
+
 
 
 		System.out.println("listCount : " + listCount);
@@ -165,11 +167,11 @@ a.btn_02 {
 
 		<%-- 페이징처리 검색 --%>
 		<div class="panginArea" align="center">
-			<button onclick="location.href'<%=request.getContextPath()%>/search.bo?currentPage=1'"><<</button>
+			<button onclick="location.href'<%=request.getContextPath()%>/search.bo?currentPage=1&searchCondition=title&word=<%=word %>'"><<</button>
 		<% if(currentPage <= 1) { %>
 					<button disabled><<</button>
 					<% }else { %>
-					<button onclick="location.href='<%=request.getContextPath() %>/search.bo?currentPage=<%=currentPage -1%>'"><</button>
+					<button onclick="location.href='<%=request.getContextPath() %>/search.bo?currentPage=<%=currentPage -1%>&searchCondition=title&word=<%=word %>'"><</button>
 				 <% } %>
 
 			<% for(int p = startPage; p <= endPage; p++){
@@ -177,7 +179,7 @@ a.btn_02 {
 			%>
 					<button disabled style="color:red;"><%= p %></button>
 			<% } else { %>
-					<button onclick="location.href='<%=request.getContextPath()%>/search.bo?currentPage=<%=p%>'"><%= p %></button>
+					<button onclick="location.href='<%=request.getContextPath()%>/search.bo?currentPage=<%=p%>&searchCondition=title&word=<%=word %>'"><%= p %></button>
 			<%
 				}
 			   }
@@ -185,10 +187,10 @@ a.btn_02 {
 				 <% if(currentPage >= maxPage) { %>
 
 				  <% }else {%>
-				  	<button onclick="location.href='<%=request.getContextPath() %>/search.bo?currentPage=<%=currentPage +1%>'">></button>
+				  	<button onclick="location.href='<%=request.getContextPath() %>/search.bo?currentPage=<%=currentPage +1%>&searchCondition=title&word=<%=word %>'">></button>
 
 				  <% } %>
-			<button onclick="location.href='<%=request.getContextPath()%>/search.bo?currentPage=<%=maxPage%>'">>></button>
+			<button onclick="location.href='<%=request.getContextPath()%>/search.bo?currentPage=<%=maxPage%>&searchCondition=title&word=<%=word %>'">>></button>
 		</div>
 	</div>
 
@@ -198,10 +200,12 @@ a.btn_02 {
 			<select name="searchCondition" id="searchCondition">
 				<option value="title">제목</option>
 				<option value="writer">작성자</option>
-				<option value="content">내용</option>
 			</select>
+			<script>
 
-			<input type="search" name="word" placeholder="특수문자는 사용할수 없습니다."/>
+			</script>
+
+			<input type="search" name="word" value="" placeholder="특수문자는 사용할수 없습니다."/>
 			<button type="submit">검색하기</button>
 
 	</form>

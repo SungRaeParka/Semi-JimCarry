@@ -104,8 +104,7 @@ public class BoardService {
 		ArrayList<Board> list = new BoardDao().searchList(con,searchCondition, word);
 
 
-		ArrayList<Board> listPage = new BoardDao().searchPage(con,currentPage,limit);
-		System.out.println(list);
+
 		close(con);
 
 
@@ -163,6 +162,38 @@ public class BoardService {
 		}
 		close(con);
 		return replyList;
+	}
+
+	//댓글 전체조회
+	public ArrayList<Comments> selectReply(Comments c) {
+		Connection con = getConnection();
+
+		ArrayList<Comments> replyList = new BoardDao().selectReplyList(con, c);
+
+		close(con);
+
+		return replyList;
+	}
+
+	//검색 갯수 카운터
+	public int getListCountsearch(String word,String searchCondition) {
+		Connection con = getConnection();
+
+		int listCount = new BoardDao().getListCountsearch(con, word, searchCondition);
+		close(con);
+
+		return listCount;
+	}
+	//검색 페이징
+	public ArrayList<Board> searchList(int currentPage, int limit) {
+		Connection con = getConnection();
+
+
+		ArrayList<Board> listPage = new BoardDao().searchPage(con,currentPage,limit);
+		close(con);
+
+
+		return listPage;
 	}
 
 

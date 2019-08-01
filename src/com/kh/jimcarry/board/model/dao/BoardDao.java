@@ -329,6 +329,7 @@ public class BoardDao {
 	}
 
 	// 검색 기능 메소드
+
 	public ArrayList<Board> searchList(Connection con, String searchCondition,
 			String word) {
 		PreparedStatement pstmt = null;
@@ -387,13 +388,14 @@ public class BoardDao {
 
 		return list;
 	}
+
 	//검색 페이징
 	public ArrayList<Board> searchPage(Connection con, int currentPage, int limit) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		ArrayList<Board> list = null;
 		Board b = null;
-		String query = prop.getProperty("selectListWithPageing");
+		String query = prop.getProperty("selectListWithPageing2");
 
 		try {
 			pstmt = con.prepareStatement(query);
@@ -575,6 +577,90 @@ public class BoardDao {
 
 
 	}
+
+    //댓글 전체조회
+	public ArrayList<Comments> selectReplyList(Connection con, Comments c) {
+		PreparedStatement pstmt= null;
+		ResultSet rset = null;
+		ArrayList<Comments> list = null;
+
+		String query = prop.getProperty("selectReplyAll");
+
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, c.getPostCode());
+
+			rset = pstmt.executeQuery();
+
+			list = new ArrayList<Comments>();
+
+
+			while(rset.next()) {
+				c = new Comments();
+
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return null;
+	}
+
+
+	public int getListCountsearch(Connection con, String word, String searchCondition) {
+		PreparedStatement pstmt = null;
+		int listCount = 0;
+		ResultSet rset = null;
+		Board b = null;
+		String search = "%" + word + "%";
+
+
+			try {
+				String query = prop.getProperty("selectListCountTitle");
+				b =  new Board();
+				if(searchCondition.equals("title")) {
+				pstmt = con.prepareStatement(query);
+				pstmt.setString(1, search);
+				rset = pstmt.executeQuery();
+
+				if(rset.next()) {
+					listCount = rset.getInt(1);
+					System.out.println("selectListCountTitle : :::::: " + listCount );
+				}
+
+
+
+				}else if(searchCondition.equals("writer")){
+					b =  new Board();
+					String  user = prop.getProperty("selectListCountTitleUser");
+					pstmt = con.prepareStatement(query);
+					pstmt.setString(1, search);
+
+					rset = pstmt.executeQuery();
+					if(rset.next()) {
+						listCount = rset.getInt(1);
+
+						System.out.println("selectListCountTitleUser : :::::: " + listCount );
+					}
+				}
+
+
+
+
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				close(rset);
+				close(pstmt);
+			}
+
+		System.out.println("================================ : : " +  listCount);
+		return listCount;
+	}
+
+
 
 
 }

@@ -59,6 +59,7 @@ public class boardSelectServlet extends HttpServlet {
 		PageInfo pi = new PageInfo(currentPage, listCount, limit, maxPage, startPage, endPage);
 
 		ArrayList<Board> list = new BoardService().selectList(currentPage,limit);
+
 		System.out.println("list  : " + list );
 		String page = "";
 
@@ -67,7 +68,7 @@ public class boardSelectServlet extends HttpServlet {
 				request.setAttribute("list", list);
 				request.setAttribute("pi", pi);
 			}else {
-				page = "views/common/errorPage.jsp";
+				page = "views/common/Review_errorPage.jsp";
 				request.setAttribute("msg", "게시판 조회 실패!");
 			}
 			request.getRequestDispatcher(page).forward(request, response);

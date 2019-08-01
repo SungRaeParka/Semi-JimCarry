@@ -66,7 +66,7 @@
 			<table align="center" border="1">
 				<tr>
 					<td width="50px" height="40px" align="center">제목</td>
-					<td colspan="5>">
+					<td colspan="5">
 						<label for=""><%=b.getPostTitle() %></label>
 					</td>
 				</tr>
@@ -152,13 +152,52 @@
 	</div>
 	<script>
 	$(function(){
+		$(document).ready(function(){
+			var bcode = "<%=b.getPostCode()%>";
+
+			$.ajax({
+				url:"/semi/selectReply.bo",
+				data:{bcode:bcode},
+				type:"get",
+				success:function(data){
+					var $replySelectTable = $("#replySelectTable tbody");
+					$replySelectTable.html("");
+
+				for(var key in data) {
+					var $tr = $("<tr>");
+					var $writeTd = $("<td>").text(data[key].writer).css("width","100px");
+					var $contentTd = $("<td>").text(data[key].commentContents).css("width","400px");
+					var $dateTd = $("<td>").text(data[key].commentDate).css("width","200px");
+					var $btn1Td =  $("<td><button id='addUsers' class='btn2' onclick='addUsers();'>삭제</button></td>");
+					var $btn2Td =  $("<td><button id='addUsers' class='btn2' onclick='addUsers();'>수정</button></td>");
+
+
+
+					//console.log($writeTd)
+
+					$tr.append($writeTd);
+					$tr.append($contentTd);
+					$tr.append($dateTd);
+					$tr.append($btn1Td);
+					$tr.append($btn2Td);
+
+					$replySelectTable.append($tr);
+
+					}
+				},
+				error:function(){
+					console.log("실패!!!");
+				}
+			});
+		});
+
 		$("#addReply").click(function(){
 			var writer ="<%=loginUser.getSeqNo()%>";
 			var bcode = "<%=b.getPostCode()%>";
 			var content = $("#replyContent").val();
-
+			var reply = document.getElementById("replyContent");
 			$.ajax({
-				url:"/semi//insertReply.bo",
+				url:"/semi/insertReply.bo",
 				data:{writer:writer, bcode:bcode, content:content},
 				type:"post",
 				success:function(data){
@@ -172,14 +211,23 @@
 					var $writeTd = $("<td>").text(data[key].writer).css("width","100px");
 					var $contentTd = $("<td>").text(data[key].commentContents).css("width","400px");
 					var $dateTd = $("<td>").text(data[key].commentDate).css("width","200px");
+					var $btn1Td =  $("<td><button id='addUsers' class='btn2' onclick='addUsers();'>삭제</button></td>");
+					var $btn2Td =  $("<td><button id='addUsers' class='btn2' onclick='addUsers();'>수정</button></td>");
+
+
 
 					//console.log($writeTd)
 
 					$tr.append($writeTd);
 					$tr.append($contentTd);
 					$tr.append($dateTd);
+					$tr.append($btn1Td);
+					$tr.append($btn2Td);
+
 					$replySelectTable.append($tr);
+
 				}
+				reply.value = "";
 				},
 				error:function(){
 					console.log("실패!!!");
@@ -187,6 +235,7 @@
 			});
 		});
 	});
+
 
 	</script>
 

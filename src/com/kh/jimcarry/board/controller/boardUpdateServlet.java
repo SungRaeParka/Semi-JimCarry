@@ -149,7 +149,7 @@ public class boardUpdateServlet extends HttpServlet {
 					request.setAttribute("b", b);
 					request.setAttribute("fileList", fileList);
 				} else {
-					page = "views/common/errorPage.jsp";
+					page = "views/common/Review_errorPage.jsp";
 					request.setAttribute("msg", "게시판 상세보기 실패!!!");
 					// 실패시 저장된 사진 삭제
 					/*for (int i = 0; i < saveFiles.size(); i++) {
