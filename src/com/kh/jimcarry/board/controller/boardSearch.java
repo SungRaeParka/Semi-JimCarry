@@ -29,7 +29,9 @@ public class boardSearch extends HttpServlet {
 		int endPage;
 	//	String word;
 
+
 		String word = request.getParameter("word");
+		String searchCondition = request.getParameter("searchCondition");
 		//게시판은 1페이지부터 시작함 그래서 1로 초기값
 		currentPage = 1;
 
@@ -43,11 +45,14 @@ public class boardSearch extends HttpServlet {
 		//한 페이지에 보여질 목록 갯수
 		limit = 10;
 
-		int listCount = new BoardService().getListCount();
+			int listCount = new BoardService().getListCountsearch(word,searchCondition);
+			System.out.println("word :: :::  " + word);
+			System.out.println("searchCondition :: :::  " + searchCondition);
 
 
+		System.out.println("searchCondition : ::::::::::::::::: " + searchCondition);
 		System.out.println();
-		System.out.println("listCount 페이지 갯수는?? :  " + listCount);
+		System.out.println("listCount 페이지 갯수는??  제목으로 검색   :::::::::::::::::::::: :  " + listCount);
 
 		maxPage = (int)((double)listCount / limit + 0.9);
 
@@ -62,19 +67,26 @@ public class boardSearch extends HttpServlet {
 
 		PageInfo pi = new PageInfo(currentPage, listCount, limit, maxPage, startPage, endPage/*, word*/);
 
-		String searchCondition = request.getParameter("searchCondition");
 
 		ArrayList<Board> list = new BoardService().searchList(currentPage,limit, searchCondition, word);
+
+		ArrayList<Board> listPage = new BoardService().searchList(currentPage,limit);
+
+
 		//System.out.println("검색 text 값 :  "  + word);
 		System.out.println("검색 리스트 ::::::::" + list);
+		System.out.println("word ddddddddddddddddddddd : "   + word);
+		System.out.println("searchCondition searchCondition : "   + searchCondition);
 		String page = "";
 
 		if(list !=null) {
 			page = "views/board/user_ReviewSearchArea.jsp";
 			request.setAttribute("list", list);
 			request.setAttribute("pi", pi);
+			request.setAttribute("word", word);
+			request.setAttribute("listPage", listPage);
 		}else {
-			page = "views/common/errorPage.jsp";
+			page = "views/common/Review_errorPage.jsp";
 			request.setAttribute("msg", "게시판 검색실패!");
 		}
 		request.getRequestDispatcher(page).forward(request, response);

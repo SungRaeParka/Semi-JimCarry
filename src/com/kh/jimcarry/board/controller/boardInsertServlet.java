@@ -122,7 +122,7 @@ public class boardInsertServlet extends HttpServlet {
 						failedFile.delete();
 					}
 					request.setAttribute("msg", "게시판  등록 실패");
-					request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+					request.getRequestDispatcher("views/common/Review_errorPage.jsp").forward(request, response);
 				}
 
 		}

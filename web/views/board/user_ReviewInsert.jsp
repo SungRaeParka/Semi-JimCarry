@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+c<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" import="com.kh.jimcarry.member.model.vo.Member,com.kh.jimcarry.board.model.vo.*"
 						 import="java.util.Date"
 						 import="java.text.SimpleDateFormat" %>

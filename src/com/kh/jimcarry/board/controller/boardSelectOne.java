@@ -41,7 +41,7 @@ public class boardSelectOne extends HttpServlet {
 			request.setAttribute("b", b);
 			request.setAttribute("fileList", fileList);
 		}else {
-			page = "views/common/errorPage.jsp";
+			page = "views/common/Review_errorPage.jsp";
 			request.setAttribute("msg", "게시판 상세보기 실패!!!");
 		}
 

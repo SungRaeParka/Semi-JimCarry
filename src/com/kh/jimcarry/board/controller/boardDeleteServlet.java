@@ -30,7 +30,7 @@ public class boardDeleteServlet extends HttpServlet {
 			//response.sendRedirect("/semi/selectList.bo");
 
 		}else {
-			page = "views/common/errorPage.jsp";
+			page = "views/common/Review_errorPage.jsp";
 			request.setAttribute("msg", "삭제 실패");
 		}
 		request.getRequestDispatcher(page).forward(request, response);
@@ -38,7 +38,7 @@ public class boardDeleteServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		doGet(request, response);
 	}
 
