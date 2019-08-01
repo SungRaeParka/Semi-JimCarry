@@ -250,7 +250,7 @@ public class MemberDao {
 				b.setActivationDate(rset.getDate("ACTIVATION_DATE"));
 				b.setDeclNo(rset.getString("DECL_NO"));
 				b.setBlackNo(rset.getString("BLACK_NO"));
-				b.setStarRating(rset.getDouble("STAR_RATING"));
+				b.setGradeAvg(rset.getDouble("GRADE_AVG"));
 
 				list.add(b);
 			}

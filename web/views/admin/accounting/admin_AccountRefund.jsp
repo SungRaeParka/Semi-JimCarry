@@ -60,11 +60,9 @@ select {
 		<br />
 
 		<ul class="nav nav-tabs">
-			<li><a
-				href="/semi/views/admin/accounting/admin_AccountPeriod.jsp">기간</a></li>
-			<li><a
-				href="/semi/views/admin/accounting/admin_AccountMember.jsp">맴버</a></li>
-			<li class="active"><a data-toggle="tab" href="#menu2">환불관리</a></li>
+				<li><a  href="/semi/accounting.pr">기간</a></li>
+				<li><a  href="/semi/accounting.mm">맴버</a></li>
+				<li class="active"><a  href="/semi/accounting.rf">환불관리</a></li>
 		</ul>
 
 		<div class="tab-content">

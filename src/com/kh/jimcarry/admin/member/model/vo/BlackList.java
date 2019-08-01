@@ -10,12 +10,12 @@ public class BlackList implements java.io.Serializable{
 	private Date activationDate;
 	private String declNo;
 	private String blackNo;
-	private double starRating;
+	private double gradeAvg;
 
 	public BlackList() {}
 
 	public BlackList(String driverNo, String stopReason, Date stopDate, String activationReason, Date activationDate,
-			String declNo, String blackNo, double starRating) {
+			String declNo, String blackNo, double gradeAvg) {
 		super();
 		this.driverNo = driverNo;
 		this.stopReason = stopReason;
@@ -24,7 +24,7 @@ public class BlackList implements java.io.Serializable{
 		this.activationDate = activationDate;
 		this.declNo = declNo;
 		this.blackNo = blackNo;
-		this.starRating = starRating;
+		this.gradeAvg = gradeAvg;
 	}
 
 	public String getDriverNo() {
@@ -83,20 +83,28 @@ public class BlackList implements java.io.Serializable{
 		this.blackNo = blackNo;
 	}
 
-	public double getStarRating() {
-		return starRating;
+	public double getGradeAvg() {
+		return gradeAvg;
 	}
 
-	public void setStarRating(double starRating) {
-		this.starRating = starRating;
+	public void setGradeAvg(double gradeAvg) {
+		this.gradeAvg = gradeAvg;
 	}
 
 	@Override
 	public String toString() {
 		return "BlackList [driverNo=" + driverNo + ", stopReason=" + stopReason + ", stopDate=" + stopDate
 				+ ", activationReason=" + activationReason + ", activationDate=" + activationDate + ", declNo=" + declNo
-				+ ", blackNo=" + blackNo + ", starRating=" + starRating + "]";
+				+ ", blackNo=" + blackNo + ", gradeAvg=" + gradeAvg + "]";
 	}
+
+
+
+
+
+
+
+
 
 
 

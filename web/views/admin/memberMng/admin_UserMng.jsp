@@ -250,7 +250,7 @@
 		<br />
 
 		<ul class="nav nav-tabs">
-			<li class="active"><a data-toggle="tab" href="#user">사용자</a></li>
+			<li class="active"><a href="/semi/selectAll.u">사용자</a></li>
 			<li><a href="/semi/selectAll.d">기사</a></li>
 			<li><a href="/semi/approve.d">신청한 기사 관리</a></li>
 			<li><a href="/semi/blackList.d">블랙리스트 관리</a></li>

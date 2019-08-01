@@ -57,8 +57,8 @@
 
 		<ul class="nav nav-tabs">
 			<li class="active"><a  href="/semi/accounting.pr">기간</a></li>
-			<li><a href="/semi/views/admin/accounting/admin_AccountMember.jsp">맴버</a></li>
-			<li><a href="/semi/views/admin/accounting/admin_AccountRefund.jsp">환불관리</a></li>
+			<li><a  href="/semi/accounting.mm">맴버</a></li>
+			<li><a  href="/semi/accounting.rf">환불관리</a></li>
 		</ul>
 
 		<div class="tab-content">

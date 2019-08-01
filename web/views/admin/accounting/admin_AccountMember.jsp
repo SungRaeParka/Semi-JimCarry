@@ -57,20 +57,22 @@
 		<br />
 
 		<ul class="nav nav-tabs">
-			<li><a href="/semi/views/admin/accounting/admin_AccountPeriod.jsp">기간</a></li>
-			<li class="active"><a data-toggle="tab" href="#menu1">맴버</a></li>
-			<li><a href="/semi/views/admin/accounting/admin_AccountRefund.jsp">환불관리</a></li>
+			<li><a  href="/semi/accounting.pr">기간</a></li>
+			<li class="active"><a  href="/semi/accounting.mm">맴버</a></li>
+			<li><a  href="/semi/accounting.rf">환불관리</a></li>
 		</ul>
 
 		<div class="tab-content">
 			<div id="home" class="tab-pane fade"></div>
 			<div id="menu1" class="tab-pane fade in active">
+		<br>
 				<form id="memberForm">
 				<select id="memberSelect" name="memberSelect">
 					<option id="user" value="사용자">사용자</option>
 					<option id="driver" value="기사">기사</option>
 				</select>
 				</form>
+				<br><br>
 				<div class="memberT">
 					<table border="1px">
 						<tr>
@@ -79,22 +81,31 @@
 							<th>아이디</th>
 							<th>결제이력번호</th>
 							<th>예약(이용)일자</th>
-							<th>결제금액</th>
+							<th>
+							<%if(userDriver=="사용자"){%>
+								결제금액
+							<%}else{ %>
+								정산금액
+							<%} %>
+							</th>
 							<th>결제일</th>
 							<th>환불상태</th>
-							<th>정산금액</th>
 						</tr>
 						<% for(AccountingMember am : list){ %>
 						<tr>
-								<th><%=am.getMemberName() %></th>
-								<th><%=am.getMemberNo() %></th>
-								<th><%=am.getMemberId() %></th>
-								<th><%=am.getPayNo() %></th>
-								<th><%=am.getReservationDate() %></th>
-								<th><%=am.getPayAmount() %></th>
-								<th><%=am.getPayDate() %></th>
-								<th><%=am.getRefundReq() %></th>
-								<th><%=am.getDriverPay() %></th>
+								<td><%=am.getMemberName() %></td>
+								<td><%=am.getMemberNo() %></td>
+								<td><%=am.getMemberId() %></td>
+								<td><%=am.getPayNo() %></td>
+								<td><%=am.getReservationDate() %></td>
+								<td><%if(userDriver=="사용자"){%>
+									<%=am.getPayAmount() %>
+									<%}else{ %>
+									<%=am.getDriverPay() %>
+									<%} %>
+								</td>
+								<td><%=am.getPayDate() %></td>
+								<td><%=am.getRefundReq() %></td>
 						</tr>
 						<% } %>
 					</table>
@@ -112,7 +123,7 @@
 				}
 			});
 
-			$('#refund').change(function () {
+			$('#memberSelect').change(function () {
 				var state = $('#memberSelect option:selected').val();
 				if (state == '사용자') {
 					$("#memberForm").attr("action", "<%=request.getContextPath()%>/accounting.mm");
