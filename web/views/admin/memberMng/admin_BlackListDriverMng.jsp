@@ -254,7 +254,7 @@
 			<li><a href="/semi/selectAll.u">사용자</a></li>
 			<li><a href="/semi/selectAll.d">기사</a></li>
 			<li><a href="/semi/approve.d">신청한 기사 관리</a></li>
-			<li class="active"><a data-toggle="tab" href="#menu3">블랙리스트 관리</a></li>
+			<li class="active"><a href="/semi/blackList.d">블랙리스트 관리</a></li>
 			<li><a href="/semi/dclare.d">신고내역 관리</a></li>
 		</ul>
 
@@ -287,7 +287,7 @@
 										<td class="title">상태</td>
 										<td class="title">블랙리스트번호</td>
 										<td class="title">기사번호</td>
-										<td class="title">별점</td>
+										<td class="title">평점</td>
 										<td class="title">정지사유</td>
 										<td class="title">정지일</td>
 										<td class="title">해제사유</td>
@@ -322,7 +322,7 @@
 											</td>
 											<td class="content right_border"><%= b.getBlackNo()%></td>
 											<td class="content right_border"><%= b.getDriverNo() %></td>
-											<td class="content right_border"><%= b.getStarRating()%></td>
+											<td class="content right_border"><%= b.getGradeAvg()%></td>
 											<td class="content right_border"><%= b.getStopReason()%></td>
 											<td class="content right_border"><%= b.getStopDate()%></td>
 											<td class="content right_border"><%= b.getActivationReason()%></td>

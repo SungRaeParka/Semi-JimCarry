@@ -50,7 +50,7 @@ public class UpdateBlackListDriverServlet extends HttpServlet {
 //					request.setAttribute("list", list);
 					response.sendRedirect(page);
 				}else {
-					page = "views/common/erroPage.jsp";
+					page = "views/common/errorPage.jsp";
 					request.setAttribute("msg", "목록 조회 실패!");
 					request.getRequestDispatcher(page).forward(request, response);
 				}

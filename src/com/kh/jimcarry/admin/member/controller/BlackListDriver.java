@@ -39,7 +39,7 @@ public class BlackListDriver extends HttpServlet {
 			page = "views/admin/memberMng/admin_BlackListDriverMng.jsp";
 			request.setAttribute("list", list);
 		}else {
-			page = "views/common/erroPage.jsp";
+			page = "views/common/errorPage.jsp";
 			request.setAttribute("msg", "목록 조회 실패!");
 		}
 		System.out.println("SelectBlackList.svl list : " + list);

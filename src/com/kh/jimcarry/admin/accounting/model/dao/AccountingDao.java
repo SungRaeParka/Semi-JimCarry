@@ -197,7 +197,7 @@ public class AccountingDao {
 				am.setMemberNo(rset.getString("MEMBER_NO"));
 				am.setMemberId(rset.getString("MEMBER_ID"));
 				am.setPayNo(rset.getString("PAY_NO"));
-				am.setReservationDate(rset.getDate("RESERVATION_DATE"));
+				am.setReservationDate(rset.getString("RESERVATION_DATE"));
 				am.setPayAmount(rset.getInt("PAY_AMOUNT"));
 				am.setPayDate(rset.getDate("PAY_DATE"));
 				am.setRefundReq(rset.getString("REFUND_REQ"));

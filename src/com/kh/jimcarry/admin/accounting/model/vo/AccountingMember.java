@@ -7,7 +7,7 @@ public class AccountingMember implements java.io.Serializable{
 	private String memberNo;
 	private String memberId;
 	private String payNo;
-	private Date reservationDate;
+	private String reservationDate;
 	private int payAmount;
 	private Date payDate;
 	private String refundReq;
@@ -17,7 +17,7 @@ public class AccountingMember implements java.io.Serializable{
 
 	public AccountingMember() {}
 
-	public AccountingMember(String memberName, String memberNo, String memberId, String payNo, Date reservationDate,
+	public AccountingMember(String memberName, String memberNo, String memberId, String payNo, String reservationDate,
 			int payAmount, Date payDate, String refundReq, int driverPay, String userDriver) {
 		super();
 		this.memberName = memberName;
@@ -64,11 +64,11 @@ public class AccountingMember implements java.io.Serializable{
 		this.payNo = payNo;
 	}
 
-	public Date getReservationDate() {
+	public String getReservationDate() {
 		return reservationDate;
 	}
 
-	public void setReservationDate(Date reservationDate) {
+	public void setReservationDate(String reservationDate) {
 		this.reservationDate = reservationDate;
 	}
 
@@ -119,8 +119,6 @@ public class AccountingMember implements java.io.Serializable{
 				+ ", payDate=" + payDate + ", refundReq=" + refundReq + ", driverPay=" + driverPay + ", userDriver="
 				+ userDriver + "]";
 	}
-
-
 
 
 
