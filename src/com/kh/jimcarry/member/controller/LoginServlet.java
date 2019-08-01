@@ -62,7 +62,8 @@ public class LoginServlet extends HttpServlet {
 					response.sendRedirect("views/driver_MainPage.jsp");
 				}
 			}else {
-				request.setAttribute("msg", "로그인 실패 다시 입력해주세요~");
+				request.setAttribute("msg", "로그인 실패");
+      
 				request.getRequestDispatcher("views/common/login_errorPage.jsp").forward(request, response);				
 			}
 		}

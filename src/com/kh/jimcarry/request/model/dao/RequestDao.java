@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Properties;
 
+import org.apache.tomcat.util.collections.SynchronizedStack;
 import org.eclipse.jdt.internal.compiler.lookup.PolymorphicMethodBinding;
 
 import com.kh.jimcarry.request.model.vo.Product;
@@ -106,9 +107,9 @@ public class RequestDao {
 
 			while(rset.next()) {
 				Request req = new Request();
-
-				req.setReqNo(rset.getString("REQ_NO"));
 				
+				req.setReservationDate(rset.getString("RESERVATION_DATE"));
+								
 				if(rset.getString("START_POINT").contains("강남구")) {
 					reqStart = "서울시 강남구";
 					req.setStartPoint(reqStart);
@@ -269,12 +270,14 @@ public class RequestDao {
 					reqArrive = "서울시 중랑구";
 					req.setArrivalPoint(reqArrive);
 				}	
-				
-				req.setReservationDate(rset.getString("RESERVATION_DATE"));
-				req.setReqCount(rset.getInt("COUNT"));
-				req.setReqFinish(rset.getDate("REQ_START"));
+				req.setReqStart(rset.getDate("REQ_START"));
 				req.setReqFinish(rset.getDate("REQ_FINISH"));
+				//req.setUserNo(rset.getString("USER_NO"));
+				req.setReqNo(rset.getString("REQ_NO"));
+				//req.setProNo(rset.getString("PRODUCT_NO"));
 				req.setConditionReq(rset.getString("CONDITION_REQ"));
+				req.setReqCount(rset.getInt("COUNT"));
+				
 
 				list.add(req);
 
@@ -303,7 +306,8 @@ public class RequestDao {
 		ArrayList<Request> list = null;
 
 		String query = prop.getProperty("selectDriverList");
-
+		
+		System.out.println("기사 짐캐리 리스트 logUserNo :: " + logUserNo);
 		try {
 			pstmt = con.prepareStatement(query);
 
@@ -355,7 +359,8 @@ public class RequestDao {
 		HashMap<String, Request> orderMap = null;
 
 		String query = prop.getProperty("selectorder");
-		System.out.println(query);
+		System.out.println("입찰내역 리스트 쿼리 :: "+query);
+		System.out.println("입찰내역 logUserNo :: " + logUserNo);
 
 		try {
 			pstmt = con.prepareStatement(query);

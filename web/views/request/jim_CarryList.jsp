@@ -92,7 +92,7 @@
 				<option value="전체보기" selected>전체보기</option>
 				<option value="매칭대기">매칭대기</option>
 				<option value="매칭완료">매칭완료</option>
-				<option value="매칭완료">이용대기</option>
+				<option value="이용대기">이용대기</option>
 				<option value="이용완료">이용완료</option>
 				<option value="이용취소">이용취소</option>
 			</select>
@@ -385,11 +385,11 @@
 			<hr>
 		</div>
 		<%
-			} else if (req.getConditionReq().equals("이용완료")) {
+			} else if (req.getConditionReq().equals("이용취소")) {
 				reqOrder = orderMap.get(req.getReqNo());
 		%>
 		<div class="matchCancel">
-			<img src="/semi/images/mc4.png" class="imgs" style="float: left">
+			<img src="/semi/images/mc7.png" class="imgs" style="float: left">
 
 			<div id="reqno">
 				<p>견적번호 : <%=req.getReqNo() %></p>
@@ -524,12 +524,43 @@
 			var usingOk = $(".usingOk");
 			var matchCancel = $(".matchCancel");
 			
-			if(stats == "매칭대기"){
-				
-			}
-			
-			
-			
+			if(status == "전체보기"){
+				matchWait.show();
+				matchOk.show();
+				usingWait.show();
+				usingOk.show();
+				matchCancel.show();
+			}else if(status == "매칭대기"){
+				matchWait.show();
+				matchOk.hide();
+				usingWait.hide();
+				usingOk.hide();
+				matchCancel.hide();
+			}else if(status == "매칭완료"){
+				matchWait.hide();
+				matchOk.show();
+				usingWait.hide();
+				usingOk.hide();
+				matchCancel.hide();
+			}else if(status == "이용대기"){
+				matchWait.hide();
+				matchOk.hide();
+				usingWait.show();
+				usingOk.hide();
+				matchCancel.hide();
+			}else if(status == "이용완료"){
+				matchWait.hide();
+				matchOk.hide();
+				usingWait.hide();
+				usingOk.show();
+				matchCancel.hide();
+			}else if(status == "이용취소"){
+				matchWait.hide();
+				matchOk.hide();
+				usingWait.hide();
+				usingOk.hide();
+				matchCancel.show();
+			}			
 		});
 	});
 	

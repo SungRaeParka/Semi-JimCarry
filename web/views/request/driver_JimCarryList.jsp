@@ -104,8 +104,8 @@ html, body {
 		<h1>기사 짐캐리 리스트</h1>
 
 		<div id="filt" align="right">
-			<select name="driver_filter">
-				<option value="전체 보기" selected>전체 보기</option>
+			<select id="driver_filter" name="driver_filter">
+				<option value="전체보기" selected>전체보기</option>
 				<option value="매칭대기">매칭대기</option>
 				<option value="매칭완료">매칭완료</option>
 				<option value="이용대기">이용대기</option>
@@ -153,7 +153,7 @@ html, body {
 			
 			if (req.getConditionDo().equals("매칭대기")) {
 	%>
-		<div>
+		<div class="matchWait">
 			<img src="/semi/images/mc1.png" class="imgs" style="float: left">
 
 			<div id="reqno">
@@ -205,11 +205,11 @@ html, body {
 		
 
 		<%
-			} else if (req.getConditionDo().equals("매칭취소")) {
+			} else if (req.getConditionDo().equals("취소")) {
 		%>
 		
-		<div>
-			<img src="/semi/images/mc1.png" class="imgs" style="float: left">
+		<div class="matchCancel">
+			<img src="/semi/images/mc7.png" class="imgs" style="float: left">
 
 			<div id="reqno">
 				<p>
@@ -252,7 +252,7 @@ html, body {
 		<%
 			} else if (req.getConditionDo().equals("매칭완료")) {
 		%>
-		<div>
+		<div class="matchOk">
 			<img src="/semi/images/mc2.png" class="imgs" style="float: left">
 
 			<div id="reqno">
@@ -304,7 +304,7 @@ html, body {
 		<%
 			} else if (req.getConditionDo().equals("이용대기")) {
 		%>
-		<div>
+		<div class="usingWait">
 			<img src="/semi/images/mc3.png" class="imgs" style="float: left">
 
 			<div id="reqno">
@@ -353,7 +353,7 @@ html, body {
 		<%
 			} else if (req.getConditionDo().equals("이용완료")) {
 		%>
-		<div>
+		<div class="usingOk">
 			<img src="/semi/images/mc4.png" class="imgs" style="float: left">
 
 			<div id="reqno">
@@ -402,7 +402,7 @@ html, body {
 		<%
 			} else if (req.getConditionDo().equals("정산대기")) {
 		%>
-		<div>
+		<div class="calWait">
 			<img src="/semi/images/mc5.png" class="imgs" style="float: left">
 
 			<div id="reqno">
@@ -447,9 +447,50 @@ html, body {
 		
 
 		<%
-			} else {
+			} else if(req.getConditionDo().equals("정산완료")){
 		%>
-		
+		<div  class="calOk">
+			<img src="/semi/images/mc6.png" class="imgs" style="float: left">
+
+			<div id="reqno">
+				<p>
+					견적번호 :
+					<%=req.getReqNo()%></p>
+			</div>
+
+			<div id="title" class="text">
+				<h1><%=req.getStartPoint()%>
+					→
+					<%=req.getArrivalPoint()%></h1>
+			</div>
+
+
+			<div id="date" class="text">
+				<h3>
+					완료일 :
+					<%=req.getReservationDate()%>
+				</h3>
+			</div>
+			<div id="reqprice">
+				<h3>
+					이용요금 :
+					<%=req.getOrderPrice()%></h3>
+			</div>
+
+			<div id="count" class="text">
+				<h3>
+					고객명 :
+					<%=req.getUserName()%>
+				</h3>
+			</div>
+			<div id="reqcencle" align="right">
+
+				<h3>정산이 완료 되었습니다.</h3>
+
+			</div>
+
+			<hr>
+		</div>
 
 		<%
 			}
@@ -462,7 +503,7 @@ html, body {
 		<%-- 페이징처리 --%>
 		<div class="pagingArea" align="center">
 			<button
-				onclick="location.href='<%=request.getContextPath()%>/myJcarrylist.jc?currentPage=1'">
+				onclick="location.href='<%=request.getContextPath()%>/driverJcarrylist.jc?currentPage=1'">
 				<<</button>
 
 			<%
@@ -473,7 +514,7 @@ html, body {
 				} else {
 			%>
 			<button
-				onclick="location.href='<%=request.getContextPath()%>/myJcarrylist.jc?currentPage=<%=currentPage - 1%>'">
+				onclick="location.href='<%=request.getContextPath()%>/driverJcarrylist.jc?currentPage=<%=currentPage - 1%>'">
 				<</button>
 			<%
 				}
@@ -489,7 +530,7 @@ html, body {
 				} else {
 			%>
 			<button
-				onclick="location.href='<%=request.getContextPath()%>/myJcarrylist.jc?currentPage=<%=p%>'"><%=p%></button>
+				onclick="location.href='<%=request.getContextPath()%>/driverJcarrylist.jc?currentPage=<%=p%>'"><%=p%></button>
 			<%
 				}
 				}
@@ -503,140 +544,98 @@ html, body {
 				} else {
 			%>
 			<button
-				onclick="location.href='<%=request.getContextPath()%>/myJcarrylist.jc?currentPage=<%=currentPage + 1%>'">
+				onclick="location.href='<%=request.getContextPath()%>/driverJcarrylist.jc?currentPage=<%=currentPage + 1%>'">
 				></button>
 			<%} %>
 			<button
-				onclick="location.href='<%=request.getContextPath() %>/myJcarrylist.jc?currentPage=<%=maxPage %>'">
+				onclick="location.href='<%=request.getContextPath() %>/driverJcarrylist.jc?currentPage=<%=maxPage %>'">
 				>></button>
-
 		</div>
-
-
 	</div>
-	
-	
-
-
-<%-- 
-	<hr><hr><hr><hr>
-	<div style="display: table">
-			<div style="float: left">
-				<img src="/semi/images/mc1.png"
-					style="width: 120px; height: 120px; margin-left: 50px; margin-top: 30px; margin-bottom: 30px;">
-			</div>
-			<div style="float: left; padding-left: 20px; padding-top: 20px;">
-				<span style="font-size: 40px; font-weight: bold;"><%=req.getStartPoint() %></span> 
-				<span style="font-size: 40px; font-weight: bold;">→</span> 
-				<span style="font-size: 40px; font-weight: bold;"><%=req.getArrivalPoint() %></span> <br> <span
-					style="font-size: 20px;">고객명 : <%=req.getUserName() %></span> <br> <span
-					style="font-size: 20px;">받은 견적수 : <%=req.getReqCount() %></span> <br> <span
-					style="font-size: 20px;">입찰 요금 : <%=req.getOrderPrice() %></span>
-			</div>
-			<div style="float: left; padding-left: 230px; padding-top: 100px;">
-				<a href="#" style="text-decoration: none;"> <span
-					style="font-size: 30px">상세 견적 보기</span>
-				</a>
-			</div>
-			<div style="float: right;">
-				<span style="font-size: 30px">남은 시간 : <%=timeReH %>시간 &nbsp; <%=timeReM %> 분</span>
-			</div>
-		</div>
-
-		<hr>
+	<script>
+	$(function(){
+		$("#driver_filter").change(function(){
+			var status = $("#driver_filter").val();
+			
+			console.log(status);
+			
+			
+			var matchWait = $(".matchWait");
+			var matchOk = $(".matchOk");
+			var usingWait = $(".usingWait");
+			var usingOk = $(".usingOk");
+			var calWait = $(".calWait");
+			var calOk = $(".calOk");
+			var matchCancel = $(".matchCancel");
+			
+			if(status == "전체보기"){
+				matchWait.show();
+				matchOk.show();
+				usingWait.show();
+				usingOk.show();
+				calWait.show();
+				calOk.show();
+				matchCancel.show();
+			}else if(status == "매칭대기"){
+				matchWait.show();
+				matchOk.hide();
+				usingWait.hide();
+				usingOk.hide();
+				calWait.hide();
+				calOk.hide();
+				matchCancel.hide();
+			}else if(status == "매칭완료"){
+				matchWait.hide();
+				matchOk.show();
+				usingWait.hide();
+				usingOk.hide();
+				calWait.hide();
+				calOk.hide();
+				matchCancel.hide();
+			}else if(status == "이용대기"){
+				matchWait.hide();
+				matchOk.hide();
+				usingWait.show();
+				usingOk.hide();
+				calWait.hide();
+				calOk.hide();
+				matchCancel.hide();
+			}else if(status == "이용완료"){
+				matchWait.hide();
+				matchOk.hide();
+				usingWait.hide();
+				usingOk.show();
+				calWait.hide();
+				calOk.hide();
+				matchCancel.hide();
+			}else if(status == "매칭취소"){
+				matchWait.hide();
+				matchOk.hide();
+				usingWait.hide();
+				usingOk.hide();
+				calWait.hide();
+				calOk.hide();
+				matchCancel.show();
+			}else if(status == "정산완료"){
+				matchWait.hide();
+				matchOk.hide();
+				usingWait.hide();
+				usingOk.hide();
+				calWait.hide();
+				calOk.show();
+				matchCancel.hide();
+			}else if(status == "정산대기"){
+				matchWait.hide();
+				matchOk.hide();
+				usingWait.hide();
+				usingOk.hide();
+				calWait.show();
+				calOk.hide();
+				matchCancel.hide();
+			}									
+		});
+	});
+	</script>
 		
-	
-	
-		
-		<div style="display: table">
-			<div style="float: left">
-				<img src="../../images/main_4.png"
-					style="width: 120px; height: 120px; margin-left: 50px; margin-top: 30px; margin-bottom: 30px;">
-			</div>
-			<div style="float: left; padding-left: 20px; padding-top: 20px;">
-				<span style="font-size: 40px; font-weight: bold;">출발지</span> <span
-					style="font-size: 40px; font-weight: bold;">→</span> <span
-					style="font-size: 40px; font-weight: bold;">도착지</span> <br> <span
-					style="font-size: 20px;">고객명 : 박성래</span> <br> <span
-					style="font-size: 20px;">이용일 : 2019-07-02</span> <br> <span
-					style="font-size: 20px;">입찰 요금 : 140,000원</span>
-			</div>
-			<div style="float: left; padding-left: 230px; padding-top: 100px;">
-				<a href="#" style="text-decoration: none;"> <span
-					style="font-size: 30px">이용 완료 처리</span>
-				</a>
-			</div>
-		</div>
-
-		<hr>
-
-		<div style="display: table">
-			<div style="float: left">
-				<img src="../../images/main_4.png"
-					style="width: 120px; height: 120px; margin-left: 50px; margin-top: 30px; margin-bottom: 30px;">
-			</div>
-			<div style="float: left; padding-left: 20px; padding-top: 20px;">
-				<span style="font-size: 40px; font-weight: bold;">출발지</span> <span
-					style="font-size: 40px; font-weight: bold;">→</span> <span
-					style="font-size: 40px; font-weight: bold;">도착지</span> <br> <span
-					style="font-size: 20px;">고객명 : 박성래</span> <br> <span
-					style="font-size: 20px;">이용일 : 2019-07-02</span> <br> <span
-					style="font-size: 20px;">입찰 요금 : 140,000원</span>
-			</div>
-			<div style="float: left; padding-left: 200px; padding-top: 100px;">
-				<span style="font-size: 15px">고객이 완료 처리시 정산 신청이 가능합니다.</span>
-			</div>
-		</div>
-
-		<hr>
-
-		<div style="display: table">
-			<div style="float: left">
-				<img src="../../images/main_4.png"
-					style="width: 120px; height: 120px; margin-left: 50px; margin-top: 30px; margin-bottom: 30px;">
-			</div>
-			<div style="float: left; padding-left: 20px; padding-top: 20px;">
-				<span style="font-size: 40px; font-weight: bold;">출발지</span> <span
-					style="font-size: 40px; font-weight: bold;">→</span> <span
-					style="font-size: 40px; font-weight: bold;">도착지</span> <br> <span
-					style="font-size: 20px;">고객명 : 박성래</span> <br> <span
-					style="font-size: 20px;">이용일 : 2019-07-02</span> <br> <span
-					style="font-size: 20px;">입찰 요금 : 140,000원</span>
-			</div>
-			<div style="float: left; padding-left: 230px; padding-top: 100px;">
-				<a href="/semi/views/request/popup/pop_Driver_Calculate.jsp"
-					style="text-decoration: none;"> <span style="font-size: 30px">정산
-						신청</span>
-				</a>
-			</div>
-		</div>
-
-		<hr>
-
-		<div style="display: table">
-			<div style="float: left">
-				<img src="../../images/main_4.png"
-					style="width: 120px; height: 120px; margin-left: 50px; margin-top: 30px; margin-bottom: 30px;">
-			</div>
-			<div style="float: left; padding-left: 20px; padding-top: 20px;">
-				<span style="font-size: 40px; font-weight: bold;">출발지</span> <span
-					style="font-size: 40px; font-weight: bold;">→</span> <span
-					style="font-size: 40px; font-weight: bold;">도착지</span> <br> <span
-					style="font-size: 20px;">고객명 : 박성래</span> <br> <span
-					style="font-size: 20px;">이용일 : 2019-07-02</span> <br> <span
-					style="font-size: 20px;">입찰 요금 : 140,000원</span> <br> <span
-					style="font-size: 20px;">정산 요금 : 120,000원</span>
-			</div>
-			<div style="float: left; padding-left: 200px; padding-top: 100px;">
-				<span style="font-size: 15px">정산이 완료된 내역입니다.</span>
-			</div>
-		</div>
-
-		<hr>
-		 --%>
-		
-		
-		
-	</div>
 </body>
 </html>
