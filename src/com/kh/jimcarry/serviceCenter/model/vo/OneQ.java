@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class OneQ {
 	private String postcode;
-	private String userNo;
+	private String MemberNo;
 	private Date postDate;
 	private String postTitle;
 	private String postContent;
@@ -13,6 +13,7 @@ public class OneQ {
 	private String questionType;
 	private int postNo;
 	private int BCount;
+	private String answerCheck;
 	
 	
 	
@@ -20,11 +21,11 @@ public class OneQ {
 
 
 
-	public OneQ(String postcode, String userNo, Date postDate, String postTitle, String postContent, String attachment,
-			String postType, String questionType, int postNo, int bCount) {
+	public OneQ(String postcode, String memberNo, Date postDate, String postTitle, String postContent, String attachment,
+			String postType, String questionType, int postNo, int bCount, String answerCheck) {
 		super();
 		this.postcode = postcode;
-		this.userNo = userNo;
+		this.MemberNo = memberNo;
 		this.postDate = postDate;
 		this.postTitle = postTitle;
 		this.postContent = postContent;
@@ -32,7 +33,8 @@ public class OneQ {
 		this.postType = postType;
 		this.questionType = questionType;
 		this.postNo = postNo;
-		BCount = bCount;
+		this.BCount = bCount;
+		this.answerCheck=answerCheck;
 	}
 
 
@@ -49,14 +51,14 @@ public class OneQ {
 
 
 
-	public String getUserNo() {
-		return userNo;
+	public String getMemberNo() {
+		return MemberNo;
 	}
 
 
 
-	public void setUserNo(String userNo) {
-		this.userNo = userNo;
+	public void setMemberNo(String MemberNo) {
+		this.MemberNo = MemberNo;
 	}
 
 
@@ -157,11 +159,24 @@ public class OneQ {
 
 
 
+	public String getAnswerCheck() {
+		return answerCheck;
+	}
+
+
+
+	public void setAnswerCheck(String answerCheck) {
+		this.answerCheck = answerCheck;
+	}
+
+
+
 	@Override
 	public String toString() {
-		return "OneQ [postcode=" + postcode + ", userNo=" + userNo + ", postDate=" + postDate + ", postTitle="
+		return "OneQ [postcode=" + postcode + ", userNo=" + MemberNo + ", postDate=" + postDate + ", postTitle="
 				+ postTitle + ", postContent=" + postContent + ", attachment=" + attachment + ", postType=" + postType
-				+ ", questionType=" + questionType + ", postNo=" + postNo + ", BCount=" + BCount + "]";
+				+ ", questionType=" + questionType + ", postNo=" + postNo + ", BCount=" + BCount + ", answerCheck="
+				+ answerCheck + "]";
 	}
 
 

@@ -27,37 +27,42 @@
 	<%@ include file="/views/common/user_TopBar.jsp"%>
 
 <h1 align="center">1:1 문의</h1>
-<form action="<%=request.getContextPath() %>/notice.no" method="post">
+<form action="<%=request.getContextPath() %>/notice.no" method="post" enctype="multipart/form-data">
 <table>
-		<th>문의 유형</th>
+	<tr>
+		<th>문의유형</th>
 		<th>
-			<input type="radio" id="check" value="견적관련">견적관련
-			<input type="radio" id="check" value="운송관련">운송관련
-			<input type="radio" id="check" value="결제관련">결제관련
-			<input type="radio" id="check" value="취소관련">취소관련
-			<input type="radio" id="check" value="기타">기타
+			<input type="hidden" name="answerCheck">
+			<input type="radio" id="check" name="questionCheck" value="견적관련">견적관련
+			<input type="radio" id="check" name="questionCheck" value="운송관련">운송관련
+			<input type="radio" id="check" name="questionCheck" value="결제관련">결제관련
+			<input type="radio" id="check" name="questionCheck" value="취소관련">취소관련
+			<input type="radio" id="check" name="questionCheck" value="기타">기타
 		</th>
+	</tr>
 	<tr>
 		<th>제목</th>
 		<th>
-			<input type="text" placeholder="제목을 입력해주세요." valu >
+			<input type="text" placeholder="제목을 입력해주세요." name="postTitle">
 		</th>
 	</tr>
 	<tr>
 		<th>내용</th>
 		<th>
-			<textarea name="memo" rows="5" placeholder="내용을 입력해주세요." ></textarea>
+			<textarea name="postContent" rows="5" placeholder="내용을 입력해주세요." ></textarea>
 		</th>
 	</tr>
 	<tr>
 		<th>첨부파일</th>
 		<th>
-			<input type="file" value="첨부파일" >
+			<input type="file" value="첨부파일" name= >
 		</th>
 	</tr>
 </table>
 
 	<div align="center" style="margin-top: 10px;">
+	<input type="hidden" name="name" id="name" value="<%=loginUser.getSeqNo()%>"> 
+	
 		<button type="submit" value="문의하기"> 문의하기</button>&nbsp;
 		<button type="reset" value="취소하기"> 취소하기</button>
 	</div>
