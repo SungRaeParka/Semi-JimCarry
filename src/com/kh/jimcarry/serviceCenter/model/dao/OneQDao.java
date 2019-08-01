@@ -54,7 +54,7 @@ public class OneQDao {
 			one.setQuestionType(rset.getString("QUESTION_TYPE"));
 			one.setPostTitle(rset.getString("POST_TITLE"));
 			one.setPostContent(rset.getString("POST_CONTENT"));
-			//one.setPostDate(rset.getDate("POST_DATE"));
+			one.setAttachment(rset.getString("ATTACHMENT"));
 			
 			list2.add(one);
 			}
@@ -88,6 +88,8 @@ public class OneQDao {
 			pstmt.setString(6, one.getQuestionType());
 			
 			System.out.println(one.getMemberNo());
+			
+			System.out.println("유형 : "+one.getPostType());
 			
 			result = pstmt.executeUpdate();
 			
@@ -218,33 +220,7 @@ public class OneQDao {
 		}
 		return list2;
 	}
-//시퀀스값 가져오는 메소드
-	public String selectCurrval(Connection con) {
-		// TODO Auto-generated method stub
-		Statement stmt = null;
-		ResultSet rset = null;
-		
-		String postCode = "";
-		
-		String query = prop.getProperty("selectCurrval");
-		
-		try {
-			stmt=con.createStatement();
-			rset=stmt.executeQuery(query);
-			if (rset.next()) {
-				postCode=rset.getString("CURRVAL");
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}finally {
-			close(stmt);
-			close(rset);
-		}
-		
-		
-		return postCode;
-	}
+
 	//첨부파일 insert
 	public int insertAttachment(Connection con, ArrayList<Attachment> fileList) {
 		// TODO Auto-generated method stub
@@ -253,8 +229,8 @@ public class OneQDao {
 		
 		String query = prop.getProperty("insertAttachment");
 		
-		for (int i = 0; i < fileList.size(); i++) {
 			try {
+				for (int i = 0; i < fileList.size(); i++) {
 				pstmt=con.prepareStatement(query);
 				
 				pstmt.setString(1, fileList.get(i).getOriginName());
@@ -271,13 +247,16 @@ public class OneQDao {
 				pstmt.setString(5, fileList.get(i).getAttachType());
 				
 				result += pstmt.executeUpdate();
+				
+				System.out.println(result);
+				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}finally {
 				close(pstmt);
 			}
-		}
+		
 		return result;
 	}
 

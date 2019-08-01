@@ -3,8 +3,8 @@
     pageEncoding="UTF-8" import="java.util.*, com.kh.jimcarry.serviceCenter.model.vo.*"%>
     <%
     ArrayList<Notice> list=(ArrayList<Notice>) request.getAttribute("list"); 
-    ArrayList<QandA> list1=(ArrayList<QandA>)request.getAttribute("list1");
-    ArrayList<OneQ> list2=(ArrayList<OneQ>)request.getAttribute("list2");
+     ArrayList<QandA> list1=(ArrayList<QandA>)request.getAttribute("list1");
+    ArrayList<OneQ> list2=(ArrayList<OneQ>)request.getAttribute("list2"); 
     
     PageInfo pi = (PageInfo) request.getAttribute("pi");
     int listCount = pi.getListCount();
@@ -12,16 +12,18 @@
     int maxPage=pi.getMaxPage();
     int startPage = pi.getStartPage();
     int endPage = pi.getEndPage();
-    int listCount1 = pi.getListCount();
-    int currentPage1 = pi.getCurrentPage1();
-    int maxPage1=pi.getMaxPage1();
-    int startPage1 = pi.getStartPage1();
-    int endPage1 = pi.getEndPage1();
-    int listCount2 = pi.getListCount2();
-    int currentPage2 = pi.getCurrentPage2();
-    int maxPage2=pi.getMaxPage2();
-    int startPage2 = pi.getStartPage2();
-    int endPage2 = pi.getEndPage2();
+   PageInfo pi1 =(PageInfo) request.getAttribute("pi1");
+    int listCount1 = pi1.getListCount1();
+    int currentPage1 = pi1.getCurrentPage1();
+    int maxPage1=pi1.getMaxPage1();
+    int startPage1 = pi1.getStartPage1();
+    int endPage1 = pi1.getEndPage1();
+    PageInfo pi2=(PageInfo) request.getAttribute("pi2");
+    int listCount2 = pi2.getListCount2();
+    int currentPage2 = pi2.getCurrentPage2();
+    int maxPage2=pi2.getMaxPage2();
+    int startPage2 = pi2.getStartPage2();
+    int endPage2 = pi2.getEndPage2();  
     %>
 <!DOCTYPE html>
 <html>
@@ -59,17 +61,26 @@ container{
       </tr>
     </thead>
     <tbody id="listArea">
-    <%for(Notice n : list) {%>
+     <%for(Notice n : list) {%>
+     
       <tr>
-      <td><%=n.getPostcode() %></td>
+      <td><%=n.getPostNo() %></td>
       <td><%=n.getPostTitle() %></td>
       <td><%=n.getUserNo() %></td>
       <td><%=n.getPostdate() %></td>
       <td><%=n.getbCount() %></td>
+      </tr>
       
-      <%} %>
+      <%
+      System.out.println("번호"+n.getPostNo());
+      System.out.println("제목"+n.getPostTitle());
+      System.out.println("작성자"+n.getUserNo() );
+      System.out.println("날짜"+n.getPostdate());
+      System.out.println("조회수"+n.getbCount());
+    } %> 
       
-       <!--  <td>1</td>
+     <!--  <tr>
+         <td>1</td>
         <td>2</td>
         <td>3</td>
         <td>r</td>
@@ -81,8 +92,8 @@ container{
         <td>6</td>
         <td>t</td>
         <td>d</td>
-      </tr>
-      <tr>
+      </tr> -->
+     <!-- <tr>
         <td>7</td>
         <td>8</td>
         <td>9</td>
@@ -103,7 +114,8 @@ container{
 	<%} %>
 	
 	<%for(int p=startPage; p<=endPage;p++){
-		if(currentPage == p){%>
+		if(currentPage == p){
+		%>
 		<button disabled><%=p %></button>
 	<% }else {%>
 		<button onclick="location.href='<%=request.getContextPath()%>/noticelist.no?currentPage=<%=p%>'"><%=p%></button>
@@ -286,36 +298,12 @@ container{
 
 </div>
 
-<!-- ㅠㅔ이징 처리 -->
-<div class="pagingArea" align="center">
-	<button onclick="location.href='<%=request.getContextPath() %>//noticelist.no?currentPage1=1'">처음으로</button>
-	
-	<%if(currentPage1 <= 1) {%>
-	<button disabled>이전</button>
-	<%}else { %>
-	<button onclick="location.href='<%=request.getContextPath() %>/noticelist.no?currentPage1=<%=currentPage1 - 1 %>'">이전</button>
-	<%} %>
-	
-	<%for(int p=startPage1; p<=endPage1;p++){
-		if(currentPage1 == p){%>
-		<button disabled><%=p %></button>
-	<% }else {%>
-		<button onclick="location.href='<%=request.getContextPath()%>/noticelist.no?currentPage1=<%=p%>'"><%=p%></button>
-	<%}} %>
-	
-	<%if(currentPage1 >= maxPage1){ %>
-	<button disabled>다음</button>
-	<%}else { %>
-	<button onckick="location.href='<%=request.getContextPath() %>/noticelist.no?currentPage1=<%=currentPage1 + 1 %>'">다음</button>
-	<%} %>
-	
-	<button onclick="location.href='<%=request.getContextPath() %>/noticelist.no?currentPage1=<%=maxPage1 %>'">끝으로</button>
-</div>
-</div>
+ 
+</div> 
 
 <br><br><br>
 
-<div class="container">
+ <div class="container">
   <h2>1:1문의</h2>
   <p style="float:left">내가 문의한 내용 보기</p>  
   <a href="/semi/views/board/user_Insert1on1.jsp"><button  style="float:right;">문의하기</button></a>     
@@ -332,15 +320,16 @@ container{
     <tbody id="listArea">
      <%for(OneQ one : list2) {%>
       <tr>
+      <input type="hidden">
       <th><%=one.getQuestionType() %></th>
       <th><%=one.getPostTitle() %></th>
       <th><%=one.getPostDate() %></th>
-      <%-- <th><%=one.getAnswer() %></th>  --%>
+       <th><%=one.getAnswerCheck() %></th>  
       
       <% } %>
     </tbody>
   </table>
-  <!-- ㅠㅔ이징 처리 -->
+<!-- ㅠㅔ이징 처리 -->
 <div class="pagingArea" align="center">
 	<button onclick="location.href='<%=request.getContextPath() %>/noticelist.no?currentPage2=1'">처음으로</button>
 	
@@ -354,18 +343,18 @@ container{
 		if(currentPage2 == p){%>
 		<button disabled><%=p %></button>
 	<% }else {%>
-		<button onclick="location.href='<%=request.getContextPath()%>/noticelist.no?currentPage2=<%=p%>'"><%=p%></button>
+		<button onclick="location.href='<%=request.getContextPath()%>/noticelist.no2?currentPage2=<%=p%>'"><%=p%></button>
 	<%}} %>
 	
 	<%if(currentPage2 >= maxPage2){ %>
 	<button disabled>다음</button>
 	<%}else { %>
-	<button onckick="location.href='<%=request.getContextPath() %>/noticelist.no?currentPage2=<%=currentPage2 + 1 %>'">다음</button>
+	<button onckick="location.href='<%=request.getContextPath() %>/noticelist.no2?currentPage2=<%=currentPage2 + 1 %>'">다음</button>
 	<%} %>
 	
-	<button onclick="location.href='<%=request.getContextPath() %>/noticelist.no?currentPage2=<%=maxPage2 %>'">끝으로</button>
+	<button onclick="location.href='<%=request.getContextPath() %>/noticelist.no2?currentPage2=<%=maxPage2 %>'">끝으로</button>
 </div>
-</div>
+</div>  
 
 <script>
 		$(function(){

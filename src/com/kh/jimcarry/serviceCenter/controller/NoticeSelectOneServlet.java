@@ -40,11 +40,11 @@ public class NoticeSelectOneServlet extends HttpServlet {
 		QandA qa = new QandAService().selectOneQA(num);
 		OneQ one = new OneQService().selectOneQ(num);
 		
-		String page=null;
+		String page="";
 		
 		if(n !=null) {
 			//나중에 페이지 바꾸기
-			page="view/board/user_Insert1on1.jsp";
+			page="/notice.no";
 			request.setAttribute("n", n);
 		}else {
 			page="views/common/errorPage.jsp";

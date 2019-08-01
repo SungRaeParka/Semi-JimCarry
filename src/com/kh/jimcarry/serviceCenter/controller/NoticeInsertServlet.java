@@ -2,6 +2,7 @@ package com.kh.jimcarry.serviceCenter.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Enumeration;
@@ -43,6 +44,9 @@ public class NoticeInsertServlet extends HttpServlet {
 		
 		/*String memberNo = request.getParameter("name");
 		System.out.println(memberNo);*/
+		response.setContentType("text/html; charset=UTF-8");
+		
+		PrintWriter out = response.getWriter();
 		
 		int maxSize = 1024*1024*10;
 		
@@ -60,12 +64,14 @@ public class NoticeInsertServlet extends HttpServlet {
 		
 		ArrayList<String> originFiles = new ArrayList<String>();
 		
+		
+		
 		Enumeration<String> files=multiRequest.getFileNames();
 		
 		while (files.hasMoreElements()) {
 			String name = files.nextElement();
 			
-			saveFiles.add(multiRequest.getParameter(name));
+			saveFiles.add(multiRequest.getFilesystemName(name));
 			originFiles.add(multiRequest.getOriginalFileName(name));
 			
 		}
@@ -75,22 +81,29 @@ public class NoticeInsertServlet extends HttpServlet {
 		String postTitle = multiRequest.getParameter("postTitle");
 		System.out.println("제목 ::::" + postTitle);
 		String postContent=multiRequest.getParameter("postContent");
+		String postType=multiRequest.getParameter("postType");
 		String question=multiRequest.getParameter("questionCheck");
+		String attachment = multiRequest.getParameter("attachment");
 		
-		
-		
+		System.out.println("유형 : "+postType);
+		System.out.println("라디오버튼"+question);
 		OneQ one = new OneQ();
+		
 		one.setMemberNo(member);
 		one.setAnswerCheck(answer);
 		one.setPostTitle(postTitle);
 		one.setPostContent(postContent);
-		question="1:1문의";
+		postType="1:1문의";
+		one.setPostType(postType);
 		one.setQuestionType(question);
+		one.setAttachment(attachment);
+		
 		
 		ArrayList<Attachment> fileList = new ArrayList<Attachment>();
 		
 		for (int i = originFiles.size() - 1; i >= 0; i--) {
 			Attachment tm = new Attachment();
+			
 			tm.setFilePath(savePath);
 			tm.setOriginName(originFiles.get(i));
 			tm.setChangeName(saveFiles.get(i));
@@ -102,7 +115,7 @@ public class NoticeInsertServlet extends HttpServlet {
 		int result = new OneQService().insertOneQ(one,fileList);
 		
 		 if (result > 0) {
-				response.sendRedirect(request.getContextPath() + "/jimcarry/selectList.no");
+				response.sendRedirect(request.getContextPath() + "/noticelist.no");
 			} else {
 				
 				for (int i = 0; i < saveFiles.size(); i++) {
