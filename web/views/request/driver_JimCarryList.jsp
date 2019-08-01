@@ -127,6 +127,7 @@ html, body {
 		
 		long nowTime;  
 		long finishTime; 
+		long moveTime;
 		
 		long timeRemain;//남은시간
 		long timeReH; //남은시간_시간
@@ -139,12 +140,16 @@ html, body {
 			finishDay = req.getReqFinish();  //견적매칭 종료일
 			moveDay = req.getReservationDate(); //예약일(짐옮기는 날)
 			
-			
-			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 			
 			nowDay = dateFormat.parse(dateFormat.format(nowDay));
 			nowTime = nowDay.getTime();
+			
+			Date moveDay2 = dateFormat.parse(moveDay);
+			moveDay2 = dateFormat.parse(dateFormat.format(moveDay2));
+			moveTime = moveDay2.getTime();
 		
+			finishDay = dateFormat.parse(dateFormat.format(finishDay));
 			finishTime = finishDay.getTime();
 				
 			timeRemain = finishTime+86400000-nowTime;

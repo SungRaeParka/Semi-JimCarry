@@ -104,6 +104,57 @@ public class RequestService {
 			}
 
 
+			public int updateConditionReq(String reqNo) {
+				Connection con  = getConnection();
+				
+				int result = new RequestDao().updateConditionReq(con,reqNo);
+				
+				if(result>0) {
+					commit(con);
+				}else {
+					rollback(con);
+				}
+				close(con);
+				
+				return result;
+			}
+
+
+			public int updateConditionDo(String reqNo, String driverNo) {
+				Connection con = getConnection();
+				
+				int result = new RequestDao().updateConditionDo(con,reqNo,driverNo);
+				
+				if(result>0) {
+					commit(con);
+				}else {
+					rollback(con);	
+				}
+				close(con);
+				
+				return result;
+			}
+
+
+			public int updateConditionCancel(String reqNo, String driverNo) {
+				Connection con = getConnection();
+				
+				int result = new RequestDao().updateConditionCancel(con,reqNo,driverNo);
+				
+				if(result>=0) {
+					commit(con);
+				}else {
+					rollback(con);
+				}
+				close(con);
+				
+				return result;
+			}
+
+
+
+			
+
 			
 
 			public int insertRequest(Request r) {
@@ -260,7 +311,6 @@ public class RequestService {
 				
 				return requestInfo;
 			}
-
 
 
 

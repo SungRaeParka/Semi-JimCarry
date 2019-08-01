@@ -187,63 +187,6 @@ html, body {
 			});
 		});
 		
-		
-		
-		
-			<%-- function selectReqOrder() {
-				
-				 alert("결제창으로 이동 합니다.");
-
-				var IMP = window.IMP;
-				IMP.init('imp21035261');
-
-				IMP.request_pay({ // param //결제에 필요한 정보들
-					pg : 'html5_inicis',
-					pay_method : 'card',
-					merchant_uid : '<%=%>' + new Date().getTime(), //고유주문번호(결제이력번호)
-					name : '주문명 : 결제테스트', //상품명 or 주문명 (견적번호)
-					amount : 100000, //결제금액
-					buyer_name : '구매자이름' //결제자명(사용자이름)
-
-				//m_redirect_url:'' //결제완료후 갈 페이지
-
-				}, function(rsp) { // callback
-					if (rsp.success) {
-						jQuery.ajax({
-							url : "/insert.py",
-							type : 'POST',
-							dataType : 'json',
-							data : {
-								imp_uid : rsp.imp_uid
-								
-							//기타 필요한 데이터가 있으면 추가 전달
-							}
-						}).done(function(data) {
-							//[2] 서버에서 REST API로 결제정보확인 및 서비스루틴이 정상적인 경우
-							if (everythings_fine) {
-								var msg = '결제가 완료되었습니다.';
-								msg += '\n고유ID : ' + rsp.imp_uid;
-
-								alert(msg);
-							} else {
-
-								var msg = "아직 제대로 결제가 되지 않았습니다.";
-								alert(msg);
-								//[3] 아직 제대로 결제가 되지 않았습니다.
-								//[4] 결제된 금액이 요청한 금액과 달라 결제를 자동취소처리하였습니다.
-							}
-						});
-
-					} else {
-						var msg = '결제에 실패 하였습니다. ';
-						msg += '에러내용 : ' + rsp.error_msg;
-						// 결제 실패 시 로직,
-					}
-					alert(msg);
-				}); 
-
-			} --%>
-		
 		</script>
 
 
