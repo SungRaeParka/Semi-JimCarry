@@ -164,11 +164,11 @@
 				console.log(spoint);
 				console.log(apoint);
 				
-				var filterDiv = $(".filterdiv")
+				var filterDiv = $(".filterdiv");
 				
 				if((!(spoint == "출발지를 선택하세요.")) && (apoint == "전체보기" || apoint == "도착지를 선택하세요.")){
 					if(spoint == "전체보기"){
-						filterDiv.show();
+							filterDiv.show();
 					}else if(spoint == "서울시 강동구"){	
 						filterDiv.hide();					
 						filterDiv.has($(".startspan").filter(":contains('강동구')")).show();
@@ -241,9 +241,2480 @@
 					}else if(spoint == "서울시 중랑구"){	
 						filterDiv.hide();					
 						filterDiv.has($(".startspan").filter(":contains('중랑구')")).show();
+					}	
+				}else if(!(spoint == "출발지를 선택하세요.") && !(apoint == "도착지를 선택하세요.")){		
+					if(spoint == "전체보기" || apoint == "전체보기"){
+						filterDiv.show();
+						
+					}else if(spoint == "서울시 강남구" && apoint == "서울시 강남구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('강남구')")).show();							
+					}else if(spoint == "서울시 강남구" && apoint == "서울시 강동구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('강동구')")).show();
+					
+					}else if(spoint == "서울시 강남구" && apoint == "서울시 강북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('강북구')")).show();
+							
+					}else if(spoint == "서울시 강남구" && apoint == "서울시 강서구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('강서구')")).show();
+							
+					}else if(spoint == "서울시 강남구" && apoint == "서울시 관악구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('관악구')")).show();
+							
+					}else if(spoint == "서울시 강남구" && apoint == "서울시 광진구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('광진구')")).show();
+							
+					}else if(spoint == "서울시 강남구" && apoint == "서울시 구로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('구로구')")).show();
+							
+					}else if(spoint == "서울시 강남구" && apoint == "서울시 금천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('금천구')")).show();
+							
+					}else if(spoint == "서울시 강남구" && apoint == "서울시 노원구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('노원구')")).show();
+							
+					}else if(spoint == "서울시 강남구" && apoint == "서울시 도봉구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('도봉구')")).show();
+							
+					}else if(spoint == "서울시 강남구" && apoint == "서울시 동대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('동대문구')")).show();
+							
+					}else if(spoint == "서울시 강남구" && apoint == "서울시 동작구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('동작구')")).show();
+							
+					}else if(spoint == "서울시 강남구" && apoint == "서울시 마포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('마포구')")).show();
+							
+					}else if(spoint == "서울시 강남구" && apoint == "서울시 서대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('서대문구')")).show();
+							
+					}else if(spoint == "서울시 강남구" && apoint == "서울시 서초구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('서초구')")).show();
+							
+					}else if(spoint == "서울시 강남구" && apoint == "서울시 성동구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('성동구')")).show();
+							
+					}else if(spoint == "서울시 강남구" && apoint == "서울시 성북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('성북구')")).show();
+							
+					}else if(spoint == "서울시 강남구" && apoint == "서울시 송파구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('송파구')")).show();
+							
+					}else if(spoint == "서울시 강남구" && apoint == "서울시 양천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('양천구')")).show();
+							
+					}else if(spoint == "서울시 강남구" && apoint == "서울시 영등포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('영등포구')")).show();
+							
+					}else if(spoint == "서울시 강남구" && apoint == "서울시 용산구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('용산구')")).show();
+							
+					}else if(spoint == "서울시 강남구" && apoint == "서울시 은평구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('은평구')")).show();
+							
+					}else if(spoint == "서울시 강남구" && apoint == "서울시 종로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('종로구')")).show();
+							
+					}else if(spoint == "서울시 강남구" && apoint == "서울시 중구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('중구')")).show();
+							
+					}else if(spoint == "서울시 강남구" && apoint == "서울시 중랑구"){
+							filterDiv.hide();
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('중랑구')")).show();
+					}else if(spoint == "서울시 강동구" && apoint == "서울시 강남구"){
+						filterDiv.hide();							
+						filterDiv.has($(".startspan").filter(":contains('강동구')")).has($(".arrivespan").filter(":contains('강남구')")).show();
+					
+					}else if(spoint == "서울시 강동구" && apoint == "서울시 강동구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('강동구')")).has($(".arrivespan").filter(":contains('강동구')")).show();
+							
+					}else if(spoint == "서울시 강동구" && apoint == "서울시 강북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강동구')")).has($(".arrivespan").filter(":contains('강북구')")).show();
+							
+					}else if(spoint == "서울시 강동구" && apoint == "서울시 강서구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강동구')")).has($(".arrivespan").filter(":contains('강서구')")).show();
+							
+					}else if(spoint == "서울시 강동구" && apoint == "서울시 관악구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강동구')")).has($(".arrivespan").filter(":contains('관악구')")).show();
+							
+					}else if(spoint == "서울시 강동구" && apoint == "서울시 광진구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강동구')")).has($(".arrivespan").filter(":contains('광진구')")).show();
+							
+					}else if(spoint == "서울시 강동구" && apoint == "서울시 구로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강동구')")).has($(".arrivespan").filter(":contains('구로구')")).show();
+							
+					}else if(spoint == "서울시 강동구" && apoint == "서울시 금천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강동구')")).has($(".arrivespan").filter(":contains('금천구')")).show();
+							
+					}else if(spoint == "서울시 강동구" && apoint == "서울시 노원구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강동구')")).has($(".arrivespan").filter(":contains('노원구')")).show();
+							
+					}else if(spoint == "서울시 강동구" && apoint == "서울시 도봉구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강동구')")).has($(".arrivespan").filter(":contains('도봉구')")).show();
+							
+					}else if(spoint == "서울시 강동구" && apoint == "서울시 동대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강동구')")).has($(".arrivespan").filter(":contains('동대문구')")).show();
+							
+					}else if(spoint == "서울시 강동구" && apoint == "서울시 동작구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강동구')")).has($(".arrivespan").filter(":contains('동작구')")).show();
+							
+					}else if(spoint == "서울시 강동구" && apoint == "서울시 마포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강동구')")).has($(".arrivespan").filter(":contains('마포구')")).show();
+							
+					}else if(spoint == "서울시 강동구" && apoint == "서울시 서대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강동구')")).has($(".arrivespan").filter(":contains('서대문구')")).show();
+							
+					}else if(spoint == "서울시 강동구" && apoint == "서울시 서초구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강동구')")).has($(".arrivespan").filter(":contains('서초구')")).show();
+							
+					}else if(spoint == "서울시 강동구" && apoint == "서울시 성동구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강동구')")).has($(".arrivespan").filter(":contains('성동구')")).show();
+							
+					}else if(spoint == "서울시 강동구" && spoint == "서울시 마포구" && apoint == "서울시 성북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강동구')")).has($(".arrivespan").filter(":contains('성북구')")).show();
+							
+					}else if(spoint == "서울시 강동구" && apoint == "서울시 송파구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강동구')")).has($(".arrivespan").filter(":contains('송파구')")).show();
+							
+					}else if(spoint == "서울시 강동구" && apoint == "서울시 양천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강동구')")).has($(".arrivespan").filter(":contains('양천구')")).show();
+							
+					}else if(spoint == "서울시 강동구" && apoint == "서울시 영등포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강동구')")).has($(".arrivespan").filter(":contains('영등포구')")).show();
+							
+					}else if(spoint == "서울시 강동구" && apoint == "서울시 용산구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강동구')")).has($(".arrivespan").filter(":contains('용산구')")).show();
+							
+					}else if(spoint == "서울시 강동구" && apoint == "서울시 은평구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강동구')")).has($(".arrivespan").filter(":contains('은평구')")).show();
+							
+					}else if(spoint == "서울시 강동구" && apoint == "서울시 종로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강동구')")).has($(".arrivespan").filter(":contains('종로구')")).show();
+							
+					}else if(spoint == "서울시 강동구" && apoint == "서울시 중구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강동구')")).has($(".arrivespan").filter(":contains('중구')")).show();
+							
+					}else if(spoint == "서울시 강동구" && apoint == "서울시 중랑구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강동구')")).has($(".arrivespan").filter(":contains('중랑구')")).show();
+							
+					}else if(spoint == "서울시 강북구" && apoint == "서울시 강남구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('강남구')")).show();
+					
+					}else if(spoint == "서울시 강북구" && apoint == "서울시 강동구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('강동구')")).show();							
+					}else if(spoint == "서울시 강북구" && apoint == "서울시 강북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('강북구')")).show();
+							
+					}else if(spoint == "서울시 강북구" && apoint == "서울시 강서구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('강서구')")).show();
+							
+					}else if(spoint == "서울시 강북구" && apoint == "서울시 관악구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('관악구')")).show();
+							
+					}else if(spoint == "서울시 강북구" && apoint == "서울시 광진구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('광진구')")).show();
+							
+					}else if(spoint == "서울시 강북구" && apoint == "서울시 구로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('구로구')")).show();
+							
+					}else if(spoint == "서울시 강북구" && apoint == "서울시 금천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('금천구')")).show();
+							
+					}else if(spoint == "서울시 강북구" && apoint == "서울시 노원구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('노원구')")).show();
+							
+					}else if(spoint == "서울시 강북구" && apoint == "서울시 도봉구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('도봉구')")).show();
+							
+					}else if(spoint == "서울시 강북구" && apoint == "서울시 동대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('동대문구')")).show();
+							
+					}else if(spoint == "서울시 강북구" && apoint == "서울시 동작구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('동작구')")).show();
+							
+					}else if(spoint == "서울시 강북구" && apoint == "서울시 마포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('마포구')")).show();
+							
+					}else if(spoint == "서울시 강북구" && apoint == "서울시 서대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('서대문구')")).show();
+							
+					}else if(spoint == "서울시 강북구" && apoint == "서울시 서초구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('서초구')")).show();
+							
+					}else if(spoint == "서울시 강북구" && apoint == "서울시 성동구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('성동구')")).show();
+							
+					}else if(spoint == "서울시 강북구" && apoint == "서울시 성북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('성북구')")).show();
+							
+					}else if(spoint == "서울시 강북구" && apoint == "서울시 송파구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('송파구')")).show();
+							
+					}else if(spoint == "서울시 강북구" && apoint == "서울시 양천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('양천구')")).show();
+							
+					}else if(spoint == "서울시 강북구" && apoint == "서울시 영등포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('영등포구')")).show();
+							
+					}else if(spoint == "서울시 강북구" && apoint == "서울시 용산구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('용산구')")).show();
+							
+					}else if(spoint == "서울시 강북구" && apoint == "서울시 은평구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('은평구')")).show();
+							
+					}else if(spoint == "서울시 강북구" && apoint == "서울시 종로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('종로구')")).show();
+							
+					}else if(spoint == "서울시 강북구" && apoint == "서울시 중구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('중구')")).show();
+							
+					}else if(spoint == "서울시 강북구" && apoint == "서울시 중랑구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('중랑구')")).show();							
+					}else if(spoint == "서울시 강서구" && apoint == "서울시 강남구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('강서구')")).has($(".arrivespan").filter(":contains('강남구')")).show();
+					
+					}else if(spoint == "서울시 강서구" && apoint == "서울시 강동구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('강서구')")).has($(".arrivespan").filter(":contains('강동구')")).show();							
+					}else if(spoint == "서울시 강서구" && apoint == "서울시 강북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강서구')")).has($(".arrivespan").filter(":contains('강북구')")).show();
+							
+					}else if(spoint == "서울시 강서구" && apoint == "서울시 강서구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강서구')")).has($(".arrivespan").filter(":contains('강서구')")).show();
+							
+					}else if(spoint == "서울시 강서구" && apoint == "서울시 관악구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강서구')")).has($(".arrivespan").filter(":contains('관악구')")).show();
+							
+					}else if(spoint == "서울시 강서구" && apoint == "서울시 광진구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강서구')")).has($(".arrivespan").filter(":contains('광진구')")).show();
+							
+					}else if(spoint == "서울시 강서구" && apoint == "서울시 구로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강서구')")).has($(".arrivespan").filter(":contains('구로구')")).show();
+							
+					}else if(spoint == "서울시 강서구" && apoint == "서울시 금천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강서구')")).has($(".arrivespan").filter(":contains('금천구')")).show();
+							
+					}else if(spoint == "서울시 강서구" && apoint == "서울시 노원구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강서구')")).has($(".arrivespan").filter(":contains('노원구')")).show();
+							
+					}else if(spoint == "서울시 강서구" && apoint == "서울시 도봉구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강서구')")).has($(".arrivespan").filter(":contains('도봉구')")).show();
+							
+					}else if(spoint == "서울시 강서구" && apoint == "서울시 동대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강서구')")).has($(".arrivespan").filter(":contains('동대문구')")).show();
+							
+					}else if(spoint == "서울시 강서구" && apoint == "서울시 동작구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강서구')")).has($(".arrivespan").filter(":contains('동작구')")).show();
+							
+					}else if(spoint == "서울시 강서구" && apoint == "서울시 마포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강서구')")).has($(".arrivespan").filter(":contains('마포구')")).show();
+							
+					}else if(spoint == "서울시 강서구" && apoint == "서울시 서대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강서구')")).has($(".arrivespan").filter(":contains('서대문구')")).show();
+							
+					}else if(spoint == "서울시 강서구" && apoint == "서울시 서초구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강서구')")).has($(".arrivespan").filter(":contains('서초구')")).show();
+							
+					}else if(spoint == "서울시 강서구" && apoint == "서울시 성동구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강서구')")).has($(".arrivespan").filter(":contains('성동구')")).show();
+							
+					}else if(spoint == "서울시 강서구" && apoint == "서울시 성북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강서구')")).has($(".arrivespan").filter(":contains('성북구')")).show();
+							
+					}else if(spoint == "서울시 강서구" && apoint == "서울시 송파구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강서구')")).has($(".arrivespan").filter(":contains('송파구')")).show();
+							
+					}else if(spoint == "서울시 강서구" && apoint == "서울시 양천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강서구')")).has($(".arrivespan").filter(":contains('양천구')")).show();
+							
+					}else if(spoint == "서울시 강서구" && apoint == "서울시 영등포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강서구')")).has($(".arrivespan").filter(":contains('영등포구')")).show();
+							
+					}else if(spoint == "서울시 강서구" && apoint == "서울시 용산구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강서구')")).has($(".arrivespan").filter(":contains('용산구')")).show();
+							
+					}else if(spoint == "서울시 강서구" && apoint == "서울시 은평구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강서구')")).has($(".arrivespan").filter(":contains('은평구')")).show();
+							
+					}else if(spoint == "서울시 강서구" && apoint == "서울시 종로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강서구')")).has($(".arrivespan").filter(":contains('종로구')")).show();
+							
+					}else if(spoint == "서울시 강서구" && apoint == "서울시 중구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강서구')")).has($(".arrivespan").filter(":contains('중구')")).show();
+							
+					}else if(spoint == "서울시 강서구" && apoint == "서울시 중랑구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강서구')")).has($(".arrivespan").filter(":contains('중랑구')")).show();							
+				
+					}else if(spoint == "서울시 관악구" && apoint == "서울시 강남구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('관악구')")).has($(".arrivespan").filter(":contains('강남구')")).show();	
+					
+					}else if(spoint == "서울시 관악구" && apoint == "서울시 강동구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('관악구')")).has($(".arrivespan").filter(":contains('강동구')")).show();							
+					}else if(spoint == "서울시 관악구" && apoint == "서울시 강북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('관악구')")).has($(".arrivespan").filter(":contains('강북구')")).show();
+							
+					}else if(spoint == "서울시 관악구" && apoint == "서울시 강서구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('관악구')")).has($(".arrivespan").filter(":contains('강서구')")).show();
+							
+					}else if(spoint == "서울시 관악구" && apoint == "서울시 관악구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('관악구')")).has($(".arrivespan").filter(":contains('관악구')")).show();
+							
+					}else if(spoint == "서울시 관악구" && apoint == "서울시 광진구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('관악구')")).has($(".arrivespan").filter(":contains('광진구')")).show();
+							
+					}else if(spoint == "서울시 관악구" && apoint == "서울시 구로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('관악구')")).has($(".arrivespan").filter(":contains('구로구')")).show();
+							
+					}else if(spoint == "서울시 관악구" && apoint == "서울시 금천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('관악구')")).has($(".arrivespan").filter(":contains('금천구')")).show();
+							
+					}else if(spoint == "서울시 관악구" && apoint == "서울시 노원구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('관악구')")).has($(".arrivespan").filter(":contains('노원구')")).show();
+							
+					}else if(spoint == "서울시 관악구" && apoint == "서울시 도봉구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('관악구')")).has($(".arrivespan").filter(":contains('도봉구')")).show();
+							
+					}else if(spoint == "서울시 관악구" && apoint == "서울시 동대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('관악구')")).has($(".arrivespan").filter(":contains('동대문구')")).show();
+							
+					}else if(spoint == "서울시 관악구" && apoint == "서울시 동작구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('관악구')")).has($(".arrivespan").filter(":contains('동작구')")).show();
+							
+					}else if(spoint == "서울시 관악구" && apoint == "서울시 마포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('관악구')")).has($(".arrivespan").filter(":contains('마포구')")).show();
+							
+					}else if(spoint == "서울시 관악구" && apoint == "서울시 서대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('관악구')")).has($(".arrivespan").filter(":contains('서대문구')")).show();
+							
+					}else if(spoint == "서울시 관악구" && apoint == "서울시 서초구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('관악구')")).has($(".arrivespan").filter(":contains('서초구')")).show();
+							
+					}else if(spoint == "서울시 관악구" && apoint == "서울시 성동구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('관악구')")).has($(".arrivespan").filter(":contains('성동구')")).show();
+							
+					}else if(spoint == "서울시 관악구" && apoint == "서울시 성북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('관악구')")).has($(".arrivespan").filter(":contains('성북구')")).show();
+							
+					}else if(spoint == "서울시 관악구" && apoint == "서울시 송파구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('관악구')")).has($(".arrivespan").filter(":contains('송파구')")).show();
+							
+					}else if(spoint == "서울시 관악구" && apoint == "서울시 양천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('관악구')")).has($(".arrivespan").filter(":contains('양천구')")).show();
+							
+					}else if(spoint == "서울시 관악구" && apoint == "서울시 영등포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('관악구')")).has($(".arrivespan").filter(":contains('영등포구')")).show();
+							
+					}else if(spoint == "서울시 관악구" && apoint == "서울시 용산구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('관악구')")).has($(".arrivespan").filter(":contains('용산구')")).show();
+							
+					}else if(spoint == "서울시 관악구" && apoint == "서울시 은평구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('관악구')")).has($(".arrivespan").filter(":contains('은평구')")).show();
+							
+					}else if(spoint == "서울시 관악구" && apoint == "서울시 종로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('관악구')")).has($(".arrivespan").filter(":contains('종로구')")).show();
+							
+					}else if(spoint == "서울시 관악구" && apoint == "서울시 중구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('관악구')")).has($(".arrivespan").filter(":contains('중구')")).show();
+							
+					}else if(spoint == "서울시 관악구" && apoint == "서울시 중랑구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('관악구')")).has($(".arrivespan").filter(":contains('중랑구')")).show();							
+					}else if(spoint == "서울시 광진구" && apoint == "서울시 강남구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('광진구')")).has($(".arrivespan").filter(":contains('강남구')")).show();
+					
+					}else if(spoint == "서울시 광진구" && apoint == "서울시 강동구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('광진구')")).has($(".arrivespan").filter(":contains('강동구')")).show();							
+					}else if(spoint == "서울시 광진구" && apoint == "서울시 강북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('광진구')")).has($(".arrivespan").filter(":contains('강북구')")).show();
+							
+					}else if(spoint == "서울시 광진구" && apoint == "서울시 강서구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('광진구')")).has($(".arrivespan").filter(":contains('강서구')")).show();
+							
+					}else if(spoint == "서울시 광진구" && apoint == "서울시 관악구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('광진구')")).has($(".arrivespan").filter(":contains('관악구')")).show();
+							
+					}else if(spoint == "서울시 광진구" && apoint == "서울시 광진구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('광진구')")).has($(".arrivespan").filter(":contains('광진구')")).show();
+							
+					}else if(spoint == "서울시 광진구" && apoint == "서울시 구로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('광진구')")).has($(".arrivespan").filter(":contains('구로구')")).show();
+							
+					}else if(spoint == "서울시 광진구" && apoint == "서울시 금천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('광진구')")).has($(".arrivespan").filter(":contains('금천구')")).show();
+							
+					}else if(spoint == "서울시 광진구" && apoint == "서울시 노원구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('광진구')")).has($(".arrivespan").filter(":contains('노원구')")).show();
+							
+					}else if(spoint == "서울시 광진구" && apoint == "서울시 도봉구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('광진구')")).has($(".arrivespan").filter(":contains('도봉구')")).show();
+							
+					}else if(spoint == "서울시 광진구" && apoint == "서울시 동대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('광진구')")).has($(".arrivespan").filter(":contains('동대문구')")).show();
+							
+					}else if(spoint == "서울시 광진구" && apoint == "서울시 동작구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('광진구')")).has($(".arrivespan").filter(":contains('동작구')")).show();
+							
+					}else if(spoint == "서울시 광진구" && apoint == "서울시 마포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('광진구')")).has($(".arrivespan").filter(":contains('마포구')")).show();
+							
+					}else if(spoint == "서울시 광진구" && apoint == "서울시 서대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('광진구')")).has($(".arrivespan").filter(":contains('서대문구')")).show();
+							
+					}else if(spoint == "서울시 광진구" && apoint == "서울시 서초구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('광진구')")).has($(".arrivespan").filter(":contains('서초구')")).show();
+							
+					}else if(spoint == "서울시 광진구" && apoint == "서울시 성동구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('광진구')")).has($(".arrivespan").filter(":contains('성동구')")).show();
+							
+					}else if(spoint == "서울시 광진구" && apoint == "서울시 성북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('광진구')")).has($(".arrivespan").filter(":contains('성북구')")).show();
+							
+					}else if(spoint == "서울시 광진구" && apoint == "서울시 송파구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('광진구')")).has($(".arrivespan").filter(":contains('송파구')")).show();
+							
+					}else if(spoint == "서울시 광진구" && apoint == "서울시 양천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('광진구')")).has($(".arrivespan").filter(":contains('양천구')")).show();
+							
+					}else if(spoint == "서울시 광진구" && apoint == "서울시 영등포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('광진구')")).has($(".arrivespan").filter(":contains('영등포구')")).show();
+							
+					}else if(spoint == "서울시 광진구" && apoint == "서울시 용산구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('광진구')")).has($(".arrivespan").filter(":contains('용산구')")).show();
+							
+					}else if(spoint == "서울시 광진구" && apoint == "서울시 은평구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('광진구')")).has($(".arrivespan").filter(":contains('은평구')")).show();
+							
+					}else if(spoint == "서울시 광진구" && apoint == "서울시 종로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('광진구')")).has($(".arrivespan").filter(":contains('종로구')")).show();
+							
+					}else if(spoint == "서울시 광진구" && apoint == "서울시 중구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('광진구')")).has($(".arrivespan").filter(":contains('중구')")).show();
+							
+					}else if(spoint == "서울시 광진구" && apoint == "서울시 중랑구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('광진구')")).has($(".arrivespan").filter(":contains('중랑구')")).show();							
+					}else if(spoint == "서울시 구로구" && apoint == "서울시 강남구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('구로구')")).has($(".arrivespan").filter(":contains('강남구')")).show();
+					
+					}else if(spoint == "서울시 구로구" && apoint == "서울시 강동구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('구로구')")).has($(".arrivespan").filter(":contains('강동구')")).show();							
+					}else if(spoint == "서울시 구로구" && apoint == "서울시 강북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('구로구')")).has($(".arrivespan").filter(":contains('강북구')")).show();
+							
+					}else if(spoint == "서울시 구로구" && apoint == "서울시 강서구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('구로구')")).has($(".arrivespan").filter(":contains('강서구')")).show();
+							
+					}else if(spoint == "서울시 구로구" && apoint == "서울시 관악구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('구로구')")).has($(".arrivespan").filter(":contains('관악구')")).show();
+							
+					}else if(spoint == "서울시 구로구" && apoint == "서울시 광진구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('구로구')")).has($(".arrivespan").filter(":contains('광진구')")).show();
+							
+					}else if(spoint == "서울시 구로구" && apoint == "서울시 구로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('구로구')")).has($(".arrivespan").filter(":contains('구로구')")).show();
+							
+					}else if(spoint == "서울시 구로구" && apoint == "서울시 금천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('구로구')")).has($(".arrivespan").filter(":contains('금천구')")).show();
+							
+					}else if(spoint == "서울시 구로구" && apoint == "서울시 노원구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('구로구')")).has($(".arrivespan").filter(":contains('노원구')")).show();
+							
+					}else if(spoint == "서울시 구로구" && apoint == "서울시 도봉구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('구로구')")).has($(".arrivespan").filter(":contains('도봉구')")).show();
+							
+					}else if(spoint == "서울시 구로구" && apoint == "서울시 동대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('구로구')")).has($(".arrivespan").filter(":contains('동대문구')")).show();
+							
+					}else if(spoint == "서울시 구로구" && apoint == "서울시 동작구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('구로구')")).has($(".arrivespan").filter(":contains('동작구')")).show();
+							
+					}else if(spoint == "서울시 구로구" && apoint == "서울시 마포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('구로구')")).has($(".arrivespan").filter(":contains('마포구')")).show();
+							
+					}else if(spoint == "서울시 구로구" && apoint == "서울시 서대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('구로구')")).has($(".arrivespan").filter(":contains('서대문구')")).show();
+							
+					}else if(spoint == "서울시 구로구" && apoint == "서울시 서초구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('구로구')")).has($(".arrivespan").filter(":contains('서초구')")).show();
+							
+					}else if(spoint == "서울시 구로구" && apoint == "서울시 성동구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('구로구')")).has($(".arrivespan").filter(":contains('성동구')")).show();
+							
+					}else if(spoint == "서울시 구로구" && apoint == "서울시 성북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('구로구')")).has($(".arrivespan").filter(":contains('성북구')")).show();
+							
+					}else if(spoint == "서울시 구로구" && apoint == "서울시 송파구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('구로구')")).has($(".arrivespan").filter(":contains('송파구')")).show();
+							
+					}else if(spoint == "서울시 구로구" && apoint == "서울시 양천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('구로구')")).has($(".arrivespan").filter(":contains('양천구')")).show();
+							
+					}else if(spoint == "서울시 구로구" && apoint == "서울시 영등포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('구로구')")).has($(".arrivespan").filter(":contains('영등포구')")).show();
+							
+					}else if(spoint == "서울시 구로구" && apoint == "서울시 용산구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('구로구')")).has($(".arrivespan").filter(":contains('용산구')")).show();
+							
+					}else if(spoint == "서울시 구로구" && apoint == "서울시 은평구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('구로구')")).has($(".arrivespan").filter(":contains('은평구')")).show();
+							
+					}else if(spoint == "서울시 구로구" && apoint == "서울시 종로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('구로구')")).has($(".arrivespan").filter(":contains('종로구')")).show();
+							
+					}else if(spoint == "서울시 구로구" && apoint == "서울시 중구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('구로구')")).has($(".arrivespan").filter(":contains('중구')")).show();
+							
+					}else if(spoint == "서울시 구로구" && apoint == "서울시 중랑구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('구로구')")).has($(".arrivespan").filter(":contains('중랑구')")).show();							
+					}else if(spoint == "서울시 금천구" && apoint == "서울시 강남구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('금천구')")).has($(".arrivespan").filter(":contains('강남구')")).show();
+					
+					}else if(spoint == "서울시 금천구" && apoint == "서울시 강동구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('금천구')")).has($(".arrivespan").filter(":contains('강동구')")).show();							
+					}else if(spoint == "서울시 금천구" && apoint == "서울시 강북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('금천구')")).has($(".arrivespan").filter(":contains('강북구')")).show();
+							
+					}else if(spoint == "서울시 금천구" && apoint == "서울시 강서구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('금천구')")).has($(".arrivespan").filter(":contains('강서구')")).show();
+							
+					}else if(spoint == "서울시 금천구" && apoint == "서울시 관악구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('금천구')")).has($(".arrivespan").filter(":contains('관악구')")).show();
+							
+					}else if(spoint == "서울시 금천구" && apoint == "서울시 광진구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('금천구')")).has($(".arrivespan").filter(":contains('광진구')")).show();
+							
+					}else if(spoint == "서울시 금천구" && apoint == "서울시 구로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('금천구')")).has($(".arrivespan").filter(":contains('구로구')")).show();
+							
+					}else if(spoint == "서울시 금천구" && apoint == "서울시 금천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('금천구')")).has($(".arrivespan").filter(":contains('금천구')")).show();
+							
+					}else if(spoint == "서울시 금천구" && apoint == "서울시 노원구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('금천구')")).has($(".arrivespan").filter(":contains('노원구')")).show();
+							
+					}else if(spoint == "서울시 금천구" && apoint == "서울시 도봉구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('금천구')")).has($(".arrivespan").filter(":contains('도봉구')")).show();
+							
+					}else if(spoint == "서울시 금천구" && apoint == "서울시 동대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('금천구')")).has($(".arrivespan").filter(":contains('동대문구')")).show();
+						
+					}else if(spoint == "서울시 금천구" && apoint == "서울시 동작구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('금천구')")).has($(".arrivespan").filter(":contains('동작구')")).show();
+							
+					}else if(spoint == "서울시 금천구" && apoint == "서울시 마포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('금천구')")).has($(".arrivespan").filter(":contains('마포구')")).show();
+							
+					}else if(spoint == "서울시 금천구" && apoint == "서울시 서대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('금천구')")).has($(".arrivespan").filter(":contains('서대문구')")).show();
+							
+					}else if(spoint == "서울시 금천구" && apoint == "서울시 서초구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('금천구')")).has($(".arrivespan").filter(":contains('서초구')")).show();
+							
+					}else if(spoint == "서울시 금천구" && apoint == "서울시 성동구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('금천구')")).has($(".arrivespan").filter(":contains('성동구')")).show();
+							
+					}else if(spoint == "서울시 금천구" && apoint == "서울시 성북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('금천구')")).has($(".arrivespan").filter(":contains('성북구')")).show();
+							
+					}else if(spoint == "서울시 금천구" && apoint == "서울시 송파구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('금천구')")).has($(".arrivespan").filter(":contains('송파구')")).show();
+							
+					}else if(spoint == "서울시 금천구" && apoint == "서울시 양천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('금천구')")).has($(".arrivespan").filter(":contains('양천구')")).show();
+						
+					}else if(spoint == "서울시 금천구" && apoint == "서울시 영등포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('금천구')")).has($(".arrivespan").filter(":contains('영등포구')")).show();
+							
+					}else if(spoint == "서울시 금천구" && apoint == "서울시 용산구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('금천구')")).has($(".arrivespan").filter(":contains('용산구')")).show();
+							
+					}else if(spoint == "서울시 금천구" && apoint == "서울시 은평구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('금천구')")).has($(".arrivespan").filter(":contains('은평구')")).show();
+							
+					}else if(spoint == "서울시 금천구" && apoint == "서울시 종로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('금천구')")).has($(".arrivespan").filter(":contains('종로구')")).show();
+							
+					}else if(spoint == "서울시 금천구" && apoint == "서울시 중구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('금천구')")).has($(".arrivespan").filter(":contains('중구')")).show();
+							
+					}else if(spoint == "서울시 금천구" && apoint == "서울시 중랑구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('금천구')")).has($(".arrivespan").filter(":contains('중랑구')")).show();							
+					
+					}else if(spoint == "서울시 노원구" && apoint == "서울시 강남구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('노원구')")).has($(".arrivespan").filter(":contains('강남구')")).show();
+					
+					}else if(spoint == "서울시 노원구" && apoint == "서울시 강동구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('노원구')")).has($(".arrivespan").filter(":contains('강동구')")).show();							
+					}else if(spoint == "서울시 노원구" && apoint == "서울시 강북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('노원구')")).has($(".arrivespan").filter(":contains('강북구')")).show();
+							
+					}else if(spoint == "서울시 노원구" && apoint == "서울시 강서구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('노원구')")).has($(".arrivespan").filter(":contains('강서구')")).show();
+							
+					}else if(spoint == "서울시 노원구" && apoint == "서울시 관악구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('노원구')")).has($(".arrivespan").filter(":contains('관악구')")).show();
+							
+					}else if(spoint == "서울시 노원구" && apoint == "서울시 광진구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('노원구')")).has($(".arrivespan").filter(":contains('광진구')")).show();
+							
+					}else if(spoint == "서울시 노원구" && apoint == "서울시 구로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('노원구')")).has($(".arrivespan").filter(":contains('구로구')")).show();
+							
+					}else if(spoint == "서울시 노원구" && apoint == "서울시 금천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('노원구')")).has($(".arrivespan").filter(":contains('금천구')")).show();
+							
+					}else if(spoint == "서울시 노원구" && apoint == "서울시 노원구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('노원구')")).has($(".arrivespan").filter(":contains('노원구')")).show();
+							
+					}else if(spoint == "서울시 노원구" && apoint == "서울시 도봉구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('노원구')")).has($(".arrivespan").filter(":contains('도봉구')")).show();
+							
+					}else if(spoint == "서울시 노원구" && apoint == "서울시 동대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('노원구')")).has($(".arrivespan").filter(":contains('동대문구')")).show();
+							
+					}else if(spoint == "서울시 노원구" && apoint == "서울시 동작구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('노원구')")).has($(".arrivespan").filter(":contains('동작구')")).show();
+							
+					}else if(spoint == "서울시 노원구" && apoint == "서울시 마포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('노원구')")).has($(".arrivespan").filter(":contains('마포구')")).show();
+							
+					}else if(spoint == "서울시 노원구" && apoint == "서울시 서대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('노원구')")).has($(".arrivespan").filter(":contains('서대문구')")).show();
+							
+					}else if(spoint == "서울시 노원구" && apoint == "서울시 서초구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('노원구')")).has($(".arrivespan").filter(":contains('서초구')")).show();
+							
+					}else if(spoint == "서울시 노원구" && apoint == "서울시 성동구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('노원구')")).has($(".arrivespan").filter(":contains('성동구')")).show();
+							
+					}else if(spoint == "서울시 노원구" && apoint == "서울시 성북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('노원구')")).has($(".arrivespan").filter(":contains('성북구')")).show();
+							
+					}else if(spoint == "서울시 노원구" && apoint == "서울시 송파구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('노원구')")).has($(".arrivespan").filter(":contains('송파구')")).show();
+							
+					}else if(spoint == "서울시 노원구" && apoint == "서울시 양천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('노원구')")).has($(".arrivespan").filter(":contains('양천구')")).show();
+							
+					}else if(spoint == "서울시 노원구" && apoint == "서울시 영등포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('노원구')")).has($(".arrivespan").filter(":contains('영등포구')")).show();
+						
+					}else if(spoint == "서울시 노원구" && apoint == "서울시 용산구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('노원구')")).has($(".arrivespan").filter(":contains('용산구')")).show();
+							
+					}else if(spoint == "서울시 노원구" && apoint == "서울시 은평구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('노원구')")).has($(".arrivespan").filter(":contains('은평구')")).show();
+							
+					}else if(spoint == "서울시 노원구" && apoint == "서울시 종로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('노원구')")).has($(".arrivespan").filter(":contains('종로구')")).show();
+							
+					}else if(spoint == "서울시 노원구" && apoint == "서울시 중구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('노원구')")).has($(".arrivespan").filter(":contains('중구')")).show();
+							
+					}else if(spoint == "서울시 노원구" && apoint == "서울시 중랑구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('노원구')")).has($(".arrivespan").filter(":contains('중랑구')")).show();							
+					}else if(spoint == "서울시 도봉구" && apoint == "서울시 강남구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('도봉구')")).has($(".arrivespan").filter(":contains('강남구')")).show();
+					
+					}else if(spoint == "서울시 도봉구" && apoint == "서울시 강동구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('도봉구')")).has($(".arrivespan").filter(":contains('강동구')")).show();							
+					}else if(spoint == "서울시 도봉구" && apoint == "서울시 강북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('도봉구')")).has($(".arrivespan").filter(":contains('강북구')")).show();
+							
+					}else if(spoint == "서울시 도봉구" && apoint == "서울시 강서구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('도봉구')")).has($(".arrivespan").filter(":contains('강서구')")).show();
+							
+					}else if(spoint == "서울시 도봉구" && apoint == "서울시 관악구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('도봉구')")).has($(".arrivespan").filter(":contains('관악구')")).show();
+							
+					}else if(spoint == "서울시 도봉구" && apoint == "서울시 광진구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('도봉구')")).has($(".arrivespan").filter(":contains('광진구')")).show();
+							
+					}else if(spoint == "서울시 도봉구" && apoint == "서울시 구로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('도봉구')")).has($(".arrivespan").filter(":contains('구로구')")).show();
+							
+					}else if(spoint == "서울시 도봉구" && apoint == "서울시 금천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('도봉구')")).has($(".arrivespan").filter(":contains('금천구')")).show();
+							
+					}else if(spoint == "서울시 도봉구" && apoint == "서울시 노원구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('도봉구')")).has($(".arrivespan").filter(":contains('노원구')")).show();
+							
+					}else if(spoint == "서울시 도봉구" && apoint == "서울시 도봉구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('도봉구')")).has($(".arrivespan").filter(":contains('도봉구')")).show();
+							
+					}else if(spoint == "서울시 도봉구" && apoint == "서울시 동대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('도봉구')")).has($(".arrivespan").filter(":contains('동대문구')")).show();
+							
+					}else if(spoint == "서울시 도봉구" && apoint == "서울시 동작구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('도봉구')")).has($(".arrivespan").filter(":contains('동작구')")).show();
+							
+					}else if(spoint == "서울시 도봉구" && apoint == "서울시 마포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('도봉구')")).has($(".arrivespan").filter(":contains('마포구')")).show();
+							
+					}else if(spoint == "서울시 도봉구" && apoint == "서울시 서대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('도봉구')")).has($(".arrivespan").filter(":contains('서대문구')")).show();
+							
+					}else if(spoint == "서울시 도봉구" && apoint == "서울시 서초구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('도봉구')")).has($(".arrivespan").filter(":contains('서초구')")).show();
+							
+					}else if(spoint == "서울시 도봉구" && apoint == "서울시 성동구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('도봉구')")).has($(".arrivespan").filter(":contains('성동구')")).show();
+							
+					}else if(spoint == "서울시 도봉구" && apoint == "서울시 성북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('도봉구')")).has($(".arrivespan").filter(":contains('성북구')")).show();
+							
+					}else if(spoint == "서울시 도봉구" && apoint == "서울시 송파구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('도봉구')")).has($(".arrivespan").filter(":contains('송파구')")).show();
+							
+					}else if(spoint == "서울시 도봉구" && apoint == "서울시 양천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('도봉구')")).has($(".arrivespan").filter(":contains('양천구')")).show();
+							
+					}else if(spoint == "서울시 도봉구" && apoint == "서울시 영등포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('도봉구')")).has($(".arrivespan").filter(":contains('영등포구')")).show();
+							
+					}else if(spoint == "서울시 도봉구" && apoint == "서울시 용산구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('도봉구')")).has($(".arrivespan").filter(":contains('용산구')")).show();
+							
+					}else if(spoint == "서울시 도봉구" && apoint == "서울시 은평구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('도봉구')")).has($(".arrivespan").filter(":contains('은평구')")).show();
+							
+					}else if(spoint == "서울시 도봉구" && apoint == "서울시 종로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('도봉구')")).has($(".arrivespan").filter(":contains('종로구')")).show();
+							
+					}else if(spoint == "서울시 도봉구" && apoint == "서울시 중구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('도봉구')")).has($(".arrivespan").filter(":contains('중구')")).show();
+							
+					}else if(spoint == "서울시 도봉구" && apoint == "서울시 중랑구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('도봉구')")).has($(".arrivespan").filter(":contains('중랑구')")).show();							
+					}else if(spoint == "서울시 동대문구" && apoint == "서울시 강남구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('동대문구')")).has($(".arrivespan").filter(":contains('강남구')")).show();
+					
+					}else if(spoint == "서울시 동대문구" && apoint == "서울시 강동구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('동대문구')")).has($(".arrivespan").filter(":contains('강동구')")).show();							
+					}else if(spoint == "서울시 동대문구" && apoint == "서울시 강북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동대문구')")).has($(".arrivespan").filter(":contains('강북구')")).show();
+							
+					}else if(spoint == "서울시 동대문구" && apoint == "서울시 강서구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동대문구')")).has($(".arrivespan").filter(":contains('강서구')")).show();
+							
+					}else if(spoint == "서울시 동대문구" && apoint == "서울시 관악구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동대문구')")).has($(".arrivespan").filter(":contains('관악구')")).show();
+							
+					}else if(spoint == "서울시 동대문구" && apoint == "서울시 광진구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동대문구')")).has($(".arrivespan").filter(":contains('광진구')")).show();
+							
+					}else if(spoint == "서울시 동대문구" && apoint == "서울시 구로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동대문구')")).has($(".arrivespan").filter(":contains('구로구')")).show();
+							
+					}else if(spoint == "서울시 동대문구" && apoint == "서울시 금천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동대문구')")).has($(".arrivespan").filter(":contains('금천구')")).show();
+							
+					}else if(spoint == "서울시 동대문구" && apoint == "서울시 노원구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동대문구')")).has($(".arrivespan").filter(":contains('노원구')")).show();
+							
+					}else if(spoint == "서울시 동대문구" && apoint == "서울시 도봉구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동대문구')")).has($(".arrivespan").filter(":contains('도봉구')")).show();
+							
+					}else if(spoint == "서울시 동대문구" && apoint == "서울시 동대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동대문구')")).has($(".arrivespan").filter(":contains('동대문구')")).show();
+							
+					}else if(spoint == "서울시 동대문구" && apoint == "서울시 동작구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동대문구')")).has($(".arrivespan").filter(":contains('동작구')")).show();
+							
+					}else if(spoint == "서울시 동대문구" && apoint == "서울시 마포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동대문구')")).has($(".arrivespan").filter(":contains('마포구')")).show();
+							
+					}else if(spoint == "서울시 동대문구" && apoint == "서울시 서대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동대문구')")).has($(".arrivespan").filter(":contains('서대문구')")).show();
+							
+					}else if(spoint == "서울시 동대문구" && apoint == "서울시 서초구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동대문구')")).has($(".arrivespan").filter(":contains('서초구')")).show();
+							
+					}else if(spoint == "서울시 동대문구" && apoint == "서울시 성동구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동대문구')")).has($(".arrivespan").filter(":contains('성동구')")).show();
+							
+					}else if(spoint == "서울시 동대문구" && apoint == "서울시 성북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동대문구')")).has($(".arrivespan").filter(":contains('성북구')")).show();
+							
+					}else if(spoint == "서울시 동대문구" && apoint == "서울시 송파구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동대문구')")).has($(".arrivespan").filter(":contains('송파구')")).show();
+							
+					}else if(spoint == "서울시 동대문구" && apoint == "서울시 양천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동대문구')")).has($(".arrivespan").filter(":contains('양천구')")).show();
+							
+					}else if(spoint == "서울시 동대문구" && apoint == "서울시 영등포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동대문구')")).has($(".arrivespan").filter(":contains('영등포구')")).show();
+							
+					}else if(spoint == "서울시 동대문구" && apoint == "서울시 용산구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동대문구')")).has($(".arrivespan").filter(":contains('용산구')")).show();
+							
+					}else if(spoint == "서울시 동대문구" && apoint == "서울시 은평구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동대문구')")).has($(".arrivespan").filter(":contains('은평구')")).show();
+							
+					}else if(spoint == "서울시 동대문구" && apoint == "서울시 종로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동대문구')")).has($(".arrivespan").filter(":contains('종로구')")).show();
+							
+					}else if(spoint == "서울시 동대문구" && apoint == "서울시 중구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동대문구')")).has($(".arrivespan").filter(":contains('중구')")).show();
+							
+					}else if(spoint == "서울시 동대문구" && apoint == "서울시 중랑구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동대문구')")).has($(".arrivespan").filter(":contains('중랑구')")).show();							
+					}else if(spoint == "서울시 동작구" && apoint == "서울시 강남구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('동작구')")).has($(".arrivespan").filter(":contains('강남구')")).show();
+					
+					}else if(spoint == "서울시 동작구" && apoint == "서울시 강동구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('동작구')")).has($(".arrivespan").filter(":contains('강동구')")).show();							
+					}else if(spoint == "서울시 동작구" && apoint == "서울시 강북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동작구')")).has($(".arrivespan").filter(":contains('강북구')")).show();
+							
+					}else if(spoint == "서울시 동작구" && apoint == "서울시 강서구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동작구')")).has($(".arrivespan").filter(":contains('강서구')")).show();
+							
+					}else if(spoint == "서울시 동작구" && apoint == "서울시 관악구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동작구')")).has($(".arrivespan").filter(":contains('관악구')")).show();
+							
+					}else if(spoint == "서울시 동작구" && apoint == "서울시 광진구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동작구')")).has($(".arrivespan").filter(":contains('광진구')")).show();
+							
+					}else if(spoint == "서울시 동작구" && apoint == "서울시 구로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동작구')")).has($(".arrivespan").filter(":contains('구로구')")).show();
+							
+					}else if(spoint == "서울시 동작구" && apoint == "서울시 금천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동작구')")).has($(".arrivespan").filter(":contains('금천구')")).show();
+							
+					}else if(spoint == "서울시 동작구" && apoint == "서울시 노원구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동작구')")).has($(".arrivespan").filter(":contains('노원구')")).show();
+							
+					}else if(spoint == "서울시 동작구" && apoint == "서울시 도봉구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동작구')")).has($(".arrivespan").filter(":contains('도봉구')")).show();
+							
+					}else if(spoint == "서울시 동작구" && apoint == "서울시 동대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동작구')")).has($(".arrivespan").filter(":contains('동대문구')")).show();
+							
+					}else if(spoint == "서울시 동작구" && apoint == "서울시 동작구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동작구')")).has($(".arrivespan").filter(":contains('동작구')")).show();
+							
+					}else if(spoint == "서울시 동작구" && apoint == "서울시 마포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동작구')")).has($(".arrivespan").filter(":contains('마포구')")).show();
+							
+					}else if(spoint == "서울시 동작구" && apoint == "서울시 서대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동작구')")).has($(".arrivespan").filter(":contains('서대문구')")).show();
+							
+					}else if(spoint == "서울시 동작구" && apoint == "서울시 서초구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동작구')")).has($(".arrivespan").filter(":contains('서초구')")).show();
+							
+					}else if(spoint == "서울시 동작구" && apoint == "서울시 성동구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동작구')")).has($(".arrivespan").filter(":contains('성동구')")).show();
+							
+					}else if(spoint == "서울시 동작구" && apoint == "서울시 성북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동작구')")).has($(".arrivespan").filter(":contains('성북구')")).show();
+							
+					}else if(spoint == "서울시 동작구" && apoint == "서울시 송파구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동작구')")).has($(".arrivespan").filter(":contains('송파구')")).show();
+							
+					}else if(spoint == "서울시 동작구" && apoint == "서울시 양천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동작구')")).has($(".arrivespan").filter(":contains('양천구')")).show();
+							
+					}else if(spoint == "서울시 동작구" && apoint == "서울시 영등포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동작구')")).has($(".arrivespan").filter(":contains('영등포구')")).show();
+							
+					}else if(spoint == "서울시 동작구" && apoint == "서울시 용산구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동작구')")).has($(".arrivespan").filter(":contains('용산구')")).show();
+							
+					}else if(spoint == "서울시 동작구" && apoint == "서울시 은평구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동작구')")).has($(".arrivespan").filter(":contains('은평구')")).show();
+							
+					}else if(spoint == "서울시 동작구" && apoint == "서울시 종로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동작구')")).has($(".arrivespan").filter(":contains('종로구')")).show();
+							
+					}else if(spoint == "서울시 동작구" && apoint == "서울시 중구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동작구')")).has($(".arrivespan").filter(":contains('중구')")).show();
+							
+					}else if(spoint == "서울시 동작구" && apoint == "서울시 중랑구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동작구')")).has($(".arrivespan").filter(":contains('중랑구')")).show();							
+					}else if(spoint == "서울시 마포구" && apoint == "서울시 강남구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('마포구')")).has($(".arrivespan").filter(":contains('강남구')")).show();
+					
+					}else if(spoint == "서울시 마포구" && apoint == "서울시 강동구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('마포구')")).has($(".arrivespan").filter(":contains('강동구')")).show();							
+					}else if(spoint == "서울시 마포구" && apoint == "서울시 강북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('마포구')")).has($(".arrivespan").filter(":contains('강북구')")).show();
+							
+					}else if(spoint == "서울시 마포구" && apoint == "서울시 강서구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('마포구')")).has($(".arrivespan").filter(":contains('강서구')")).show();
+							
+					}else if(spoint == "서울시 마포구" && apoint == "서울시 관악구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('마포구')")).has($(".arrivespan").filter(":contains('관악구')")).show();
+							
+					}else if(spoint == "서울시 마포구" && apoint == "서울시 광진구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('마포구')")).has($(".arrivespan").filter(":contains('광진구')")).show();
+							
+					}else if(spoint == "서울시 마포구" && apoint == "서울시 구로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('마포구')")).has($(".arrivespan").filter(":contains('구로구')")).show();
+							
+					}else if(spoint == "서울시 마포구" && apoint == "서울시 금천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('마포구')")).has($(".arrivespan").filter(":contains('금천구')")).show();
+							
+					}else if(spoint == "서울시 마포구" && apoint == "서울시 노원구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('마포구')")).has($(".arrivespan").filter(":contains('노원구')")).show();
+							
+					}else if(spoint == "서울시 마포구" && apoint == "서울시 도봉구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('마포구')")).has($(".arrivespan").filter(":contains('도봉구')")).show();
+							
+					}else if(spoint == "서울시 마포구" && apoint == "서울시 동대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('마포구')")).has($(".arrivespan").filter(":contains('동대문구')")).show();
+							
+					}else if(spoint == "서울시 마포구" && apoint == "서울시 동작구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('마포구')")).has($(".arrivespan").filter(":contains('동작구')")).show();
+							
+					}else if(spoint == "서울시 마포구" && apoint == "서울시 마포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('마포구')")).has($(".arrivespan").filter(":contains('마포구')")).show();
+							
+					}else if(spoint == "서울시 마포구" && apoint == "서울시 서대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('마포구')")).has($(".arrivespan").filter(":contains('서대문구')")).show();
+							
+					}else if(spoint == "서울시 마포구" && apoint == "서울시 서초구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('마포구')")).has($(".arrivespan").filter(":contains('서초구')")).show();
+							
+					}else if(spoint == "서울시 마포구" && apoint == "서울시 성동구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('마포구')")).has($(".arrivespan").filter(":contains('성동구')")).show();
+							
+					}else if(spoint == "서울시 마포구" && apoint == "서울시 성북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('마포구')")).has($(".arrivespan").filter(":contains('성북구')")).show();
+							
+					}else if(spoint == "서울시 마포구" && apoint == "서울시 송파구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('마포구')")).has($(".arrivespan").filter(":contains('송파구')")).show();
+							
+					}else if(spoint == "서울시 마포구" && apoint == "서울시 양천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('마포구')")).has($(".arrivespan").filter(":contains('양천구')")).show();
+							
+					}else if(spoint == "서울시 마포구" && apoint == "서울시 영등포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('마포구')")).has($(".arrivespan").filter(":contains('영등포구')")).show();
+							
+					}else if(spoint == "서울시 마포구" && apoint == "서울시 용산구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('마포구')")).has($(".arrivespan").filter(":contains('용산구')")).show();
+							
+					}else if(spoint == "서울시 마포구" && apoint == "서울시 은평구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('마포구')")).has($(".arrivespan").filter(":contains('은평구')")).show();
+							
+					}else if(spoint == "서울시 마포구" && apoint == "서울시 종로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('마포구')")).has($(".arrivespan").filter(":contains('종로구')")).show();
+							
+					}else if(spoint == "서울시 마포구" && apoint == "서울시 중구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('마포구')")).has($(".arrivespan").filter(":contains('중구')")).show();
+							
+					}else if(spoint == "서울시 마포구" && apoint == "서울시 중랑구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('마포구')")).has($(".arrivespan").filter(":contains('중랑구')")).show();							
+						
+					}else if(spoint == "서울시 서대문구" && apoint == "서울시 강남구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('서대문구')")).has($(".arrivespan").filter(":contains('강남구')")).show();
+					
+					}else if(spoint == "서울시 서대문구" && apoint == "서울시 강동구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('서대문구')")).has($(".arrivespan").filter(":contains('강동구')")).show();							
+					}else if(spoint == "서울시 서대문구" && apoint == "서울시 강북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서대문구')")).has($(".arrivespan").filter(":contains('강북구')")).show();
+							
+					}else if(spoint == "서울시 서대문구" && apoint == "서울시 강서구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서대문구')")).has($(".arrivespan").filter(":contains('강서구')")).show();
+							
+					}else if(spoint == "서울시 서대문구" && apoint == "서울시 관악구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서대문구')")).has($(".arrivespan").filter(":contains('관악구')")).show();
+							
+					}else if(spoint == "서울시 서대문구" && apoint == "서울시 광진구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서대문구')")).has($(".arrivespan").filter(":contains('광진구')")).show();
+							
+					}else if(spoint == "서울시 서대문구" && apoint == "서울시 구로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서대문구')")).has($(".arrivespan").filter(":contains('구로구')")).show();
+							
+					}else if(spoint == "서울시 서대문구" && apoint == "서울시 금천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서대문구')")).has($(".arrivespan").filter(":contains('금천구')")).show();
+							
+					}else if(spoint == "서울시 서대문구" && apoint == "서울시 노원구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서대문구')")).has($(".arrivespan").filter(":contains('노원구')")).show();
+							
+					}else if(spoint == "서울시 서대문구" && apoint == "서울시 도봉구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서대문구')")).has($(".arrivespan").filter(":contains('도봉구')")).show();
+							
+					}else if(spoint == "서울시 서대문구" && apoint == "서울시 동대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서대문구')")).has($(".arrivespan").filter(":contains('동대문구')")).show();
+							
+					}else if(spoint == "서울시 서대문구" && apoint == "서울시 동작구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서대문구')")).has($(".arrivespan").filter(":contains('동작구')")).show();
+							
+					}else if(spoint == "서울시 서대문구" && apoint == "서울시 마포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서대문구')")).has($(".arrivespan").filter(":contains('마포구')")).show();
+							
+					}else if(spoint == "서울시 서대문구" && apoint == "서울시 서대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서대문구')")).has($(".arrivespan").filter(":contains('서대문구')")).show();
+							
+					}else if(spoint == "서울시 서대문구" && apoint == "서울시 서초구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서대문구')")).has($(".arrivespan").filter(":contains('서초구')")).show();
+							
+					}else if(spoint == "서울시 서대문구" && apoint == "서울시 성동구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서대문구')")).has($(".arrivespan").filter(":contains('성동구')")).show();
+							
+					}else if(spoint == "서울시 서대문구" && apoint == "서울시 성북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서대문구')")).has($(".arrivespan").filter(":contains('성북구')")).show();
+							
+					}else if(spoint == "서울시 서대문구" && apoint == "서울시 송파구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서대문구')")).has($(".arrivespan").filter(":contains('송파구')")).show();
+							
+					}else if(spoint == "서울시 서대문구" && apoint == "서울시 양천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서대문구')")).has($(".arrivespan").filter(":contains('양천구')")).show();
+							
+					}else if(spoint == "서울시 서대문구" && apoint == "서울시 영등포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서대문구')")).has($(".arrivespan").filter(":contains('영등포구')")).show();
+							
+					}else if(spoint == "서울시 서대문구" && apoint == "서울시 용산구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서대문구')")).has($(".arrivespan").filter(":contains('용산구')")).show();
+							
+					}else if(spoint == "서울시 서대문구" && apoint == "서울시 은평구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서대문구')")).has($(".arrivespan").filter(":contains('은평구')")).show();
+							
+					}else if(spoint == "서울시 서대문구" && apoint == "서울시 종로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서대문구')")).has($(".arrivespan").filter(":contains('종로구')")).show();
+							
+					}else if(spoint == "서울시 서대문구" && apoint == "서울시 중구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서대문구')")).has($(".arrivespan").filter(":contains('중구')")).show();
+							
+					}else if(spoint == "서울시 서대문구" && apoint == "서울시 중랑구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서대문구')")).has($(".arrivespan").filter(":contains('중랑구')")).show();							
+					
+					}else if(spoint == "서울시 서초구" && apoint == "서울시 강남구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('서초구')")).has($(".arrivespan").filter(":contains('강남구')")).show();
+			
+					}else if(spoint == "서울시 서초구" && apoint == "서울시 강동구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('서초구')")).has($(".arrivespan").filter(":contains('강동구')")).show();							
+					}else if(spoint == "서울시 서초구" && apoint == "서울시 강북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서초구')")).has($(".arrivespan").filter(":contains('강북구')")).show();
+							
+					}else if(spoint == "서울시 서초구" && apoint == "서울시 강서구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서초구')")).has($(".arrivespan").filter(":contains('강서구')")).show();
+							
+					}else if(spoint == "서울시 서초구" && apoint == "서울시 관악구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서초구')")).has($(".arrivespan").filter(":contains('관악구')")).show();
+							
+					}else if(spoint == "서울시 서초구" && apoint == "서울시 광진구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서초구')")).has($(".arrivespan").filter(":contains('광진구')")).show();
+							
+					}else if(spoint == "서울시 서초구" && apoint == "서울시 구로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서초구')")).has($(".arrivespan").filter(":contains('구로구')")).show();
+							
+					}else if(spoint == "서울시 서초구" && apoint == "서울시 금천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서초구')")).has($(".arrivespan").filter(":contains('금천구')")).show();
+							
+					}else if(spoint == "서울시 서초구" && apoint == "서울시 노원구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서초구')")).has($(".arrivespan").filter(":contains('노원구')")).show();
+							
+					}else if(spoint == "서울시 서초구" && apoint == "서울시 도봉구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서초구')")).has($(".arrivespan").filter(":contains('도봉구')")).show();
+							
+					}else if(spoint == "서울시 서초구" && apoint == "서울시 동대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서초구')")).has($(".arrivespan").filter(":contains('동대문구')")).show();
+							
+					}else if(spoint == "서울시 서초구" && apoint == "서울시 동작구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서초구')")).has($(".arrivespan").filter(":contains('동작구')")).show();
+							
+					}else if(spoint == "서울시 서초구" && apoint == "서울시 마포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서초구')")).has($(".arrivespan").filter(":contains('마포구')")).show();
+							
+					}else if(spoint == "서울시 서초구" && apoint == "서울시 서대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서초구')")).has($(".arrivespan").filter(":contains('서대문구')")).show();
+							
+					}else if(spoint == "서울시 서초구" && apoint == "서울시 서초구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서초구')")).has($(".arrivespan").filter(":contains('서초구')")).show();
+							
+					}else if(spoint == "서울시 서초구" && apoint == "서울시 성동구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서초구')")).has($(".arrivespan").filter(":contains('성동구')")).show();
+							
+					}else if(spoint == "서울시 서초구" && apoint == "서울시 성북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서초구')")).has($(".arrivespan").filter(":contains('성북구')")).show();
+							
+					}else if(spoint == "서울시 서초구" && apoint == "서울시 송파구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서초구')")).has($(".arrivespan").filter(":contains('송파구')")).show();
+							
+					}else if(spoint == "서울시 서초구" && apoint == "서울시 양천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서초구')")).has($(".arrivespan").filter(":contains('양천구')")).show();
+							
+					}else if(spoint == "서울시 서초구" && apoint == "서울시 영등포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서초구')")).has($(".arrivespan").filter(":contains('영등포구')")).show();
+							
+					}else if(spoint == "서울시 서초구" && apoint == "서울시 용산구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서초구')")).has($(".arrivespan").filter(":contains('용산구')")).show();
+							
+					}else if(spoint == "서울시 서초구" && apoint == "서울시 은평구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서초구')")).has($(".arrivespan").filter(":contains('은평구')")).show();
+							
+					}else if(spoint == "서울시 서초구" && apoint == "서울시 종로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서초구')")).has($(".arrivespan").filter(":contains('종로구')")).show();
+							
+					}else if(spoint == "서울시 서초구" && apoint == "서울시 중구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서초구')")).has($(".arrivespan").filter(":contains('중구')")).show();
+							
+					}else if(spoint == "서울시 서초구" && apoint == "서울시 중랑구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서초구')")).has($(".arrivespan").filter(":contains('중랑구')")).show();							
+					
+					}else if(spoint == "서울시 성동구" && apoint == "서울시 강남구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('성동구')")).has($(".arrivespan").filter(":contains('강남구')")).show();
+					
+					}else if(spoint == "서울시 성동구" && apoint == "서울시 강동구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('성동구')")).has($(".arrivespan").filter(":contains('강동구')")).show();							
+					}else if(spoint == "서울시 성동구" && apoint == "서울시 강북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성동구')")).has($(".arrivespan").filter(":contains('강북구')")).show();
+							
+					}else if(spoint == "서울시 성동구" && apoint == "서울시 강서구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성동구')")).has($(".arrivespan").filter(":contains('강서구')")).show();
+							
+					}else if(spoint == "서울시 성동구" && apoint == "서울시 관악구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성동구')")).has($(".arrivespan").filter(":contains('관악구')")).show();
+							
+					}else if(spoint == "서울시 성동구" && apoint == "서울시 광진구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성동구')")).has($(".arrivespan").filter(":contains('광진구')")).show();
+							
+					}else if(spoint == "서울시 성동구" && apoint == "서울시 구로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성동구')")).has($(".arrivespan").filter(":contains('구로구')")).show();
+							
+					}else if(spoint == "서울시 성동구" && apoint == "서울시 금천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성동구')")).has($(".arrivespan").filter(":contains('금천구')")).show();
+							
+					}else if(spoint == "서울시 성동구" && apoint == "서울시 노원구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성동구')")).has($(".arrivespan").filter(":contains('노원구')")).show();
+							
+					}else if(spoint == "서울시 성동구" && apoint == "서울시 도봉구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성동구')")).has($(".arrivespan").filter(":contains('도봉구')")).show();
+							
+					}else if(spoint == "서울시 성동구" && apoint == "서울시 동대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성동구')")).has($(".arrivespan").filter(":contains('동대문구')")).show();
+							
+					}else if(spoint == "서울시 성동구" && apoint == "서울시 동작구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성동구')")).has($(".arrivespan").filter(":contains('동작구')")).show();
+							
+					}else if(spoint == "서울시 성동구" && apoint == "서울시 마포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성동구')")).has($(".arrivespan").filter(":contains('마포구')")).show();
+							
+					}else if(spoint == "서울시 성동구" && apoint == "서울시 서대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성동구')")).has($(".arrivespan").filter(":contains('서대문구')")).show();
+							
+					}else if(spoint == "서울시 성동구" && apoint == "서울시 서초구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성동구')")).has($(".arrivespan").filter(":contains('서초구')")).show();
+							
+					}else if(spoint == "서울시 성동구" && apoint == "서울시 성동구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성동구')")).has($(".arrivespan").filter(":contains('성동구')")).show();
+							
+					}else if(spoint == "서울시 성동구" && apoint == "서울시 성북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성동구')")).has($(".arrivespan").filter(":contains('성북구')")).show();
+							
+					}else if(spoint == "서울시 성동구" && apoint == "서울시 송파구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성동구')")).has($(".arrivespan").filter(":contains('송파구')")).show();
+							
+					}else if(spoint == "서울시 성동구" && apoint == "서울시 양천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성동구')")).has($(".arrivespan").filter(":contains('양천구')")).show();
+							
+					}else if(spoint == "서울시 성동구" && apoint == "서울시 영등포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성동구')")).has($(".arrivespan").filter(":contains('영등포구')")).show();
+							
+					}else if(spoint == "서울시 성동구" && apoint == "서울시 용산구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성동구')")).has($(".arrivespan").filter(":contains('용산구')")).show();
+							
+					}else if(spoint == "서울시 성동구" && apoint == "서울시 은평구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성동구')")).has($(".arrivespan").filter(":contains('은평구')")).show();
+							
+					}else if(spoint == "서울시 성동구" && apoint == "서울시 종로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성동구')")).has($(".arrivespan").filter(":contains('종로구')")).show();
+							
+					}else if(spoint == "서울시 성동구" && apoint == "서울시 중구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성동구')")).has($(".arrivespan").filter(":contains('중구')")).show();
+							
+					}else if(spoint == "서울시 성동구" && apoint == "서울시 중랑구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성동구')")).has($(".arrivespan").filter(":contains('중랑구')")).show();							
+						
+					}else if(spoint == "서울시 성북구" && apoint == "서울시 강남구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('성북구')")).has($(".arrivespan").filter(":contains('강남구')")).show();
+					
+					}else if(spoint == "서울시 성북구" && apoint == "서울시 강동구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('성북구')")).has($(".arrivespan").filter(":contains('강동구')")).show();							
+					}else if(spoint == "서울시 성북구" && apoint == "서울시 강북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성북구')")).has($(".arrivespan").filter(":contains('강북구')")).show();
+							
+					}else if(spoint == "서울시 성북구" && apoint == "서울시 강서구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성북구')")).has($(".arrivespan").filter(":contains('강서구')")).show();
+							
+					}else if(spoint == "서울시 성북구" && apoint == "서울시 관악구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성북구')")).has($(".arrivespan").filter(":contains('관악구')")).show();
+							
+					}else if(spoint == "서울시 성북구" && apoint == "서울시 광진구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성북구')")).has($(".arrivespan").filter(":contains('광진구')")).show();
+							
+					}else if(spoint == "서울시 성북구" && apoint == "서울시 구로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성북구')")).has($(".arrivespan").filter(":contains('구로구')")).show();
+							
+					}else if(spoint == "서울시 성북구" && apoint == "서울시 금천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성북구')")).has($(".arrivespan").filter(":contains('금천구')")).show();
+							
+					}else if(spoint == "서울시 성북구" && apoint == "서울시 노원구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성북구')")).has($(".arrivespan").filter(":contains('노원구')")).show();
+							
+					}else if(spoint == "서울시 성북구" && apoint == "서울시 도봉구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성북구')")).has($(".arrivespan").filter(":contains('도봉구')")).show();
+							
+					}else if(spoint == "서울시 성북구" && apoint == "서울시 동대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성북구')")).has($(".arrivespan").filter(":contains('동대문구')")).show();
+							
+					}else if(spoint == "서울시 성북구" && apoint == "서울시 동작구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성북구')")).has($(".arrivespan").filter(":contains('동작구')")).show();
+							
+					}else if(spoint == "서울시 성북구" && apoint == "서울시 마포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성북구')")).has($(".arrivespan").filter(":contains('마포구')")).show();
+							
+					}else if(spoint == "서울시 성북구" && apoint == "서울시 서대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성북구')")).has($(".arrivespan").filter(":contains('서대문구')")).show();
+							
+					}else if(spoint == "서울시 성북구" && apoint == "서울시 서초구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성동구')")).has($(".arrivespan").filter(":contains('서초구')")).show();
+							
+					}else if(spoint == "서울시 성북구" && apoint == "서울시 성동구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성동구')")).has($(".arrivespan").filter(":contains('성동구')")).show();
+							
+					}else if(spoint == "서울시 성북구" && apoint == "서울시 성북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성동구')")).has($(".arrivespan").filter(":contains('성북구')")).show();
+							
+					}else if(spoint == "서울시 성북구" && apoint == "서울시 송파구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성동구')")).has($(".arrivespan").filter(":contains('송파구')")).show();
+							
+					}else if(spoint == "서울시 성북구" && apoint == "서울시 양천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성동구')")).has($(".arrivespan").filter(":contains('양천구')")).show();
+							
+					}else if(spoint == "서울시 성북구" && apoint == "서울시 영등포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성동구')")).has($(".arrivespan").filter(":contains('영등포구')")).show();
+							
+					}else if(spoint == "서울시 성북구" && apoint == "서울시 용산구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성동구')")).has($(".arrivespan").filter(":contains('용산구')")).show();
+							
+					}else if(spoint == "서울시 성북구" && apoint == "서울시 은평구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성동구')")).has($(".arrivespan").filter(":contains('은평구')")).show();
+							
+					}else if(spoint == "서울시 성북구" && apoint == "서울시 종로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성북구')")).has($(".arrivespan").filter(":contains('종로구')")).show();
+							
+					}else if(spoint == "서울시 성북구" && apoint == "서울시 중구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성북구')")).has($(".arrivespan").filter(":contains('중구')")).show();
+							
+					}else if(spoint == "서울시 성북구" && apoint == "서울시 중랑구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성북구')")).has($(".arrivespan").filter(":contains('중랑구')")).show();							
+						
+					}else if(spoint == "서울시 송파구" && apoint == "서울시 강남구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('송파구')")).has($(".arrivespan").filter(":contains('강남구')")).show();
+					
+					}else if(spoint == "서울시 송파구" && apoint == "서울시 강동구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('송파구')")).has($(".arrivespan").filter(":contains('강동구')")).show();							
+					}else if(spoint == "서울시 송파구" && apoint == "서울시 강북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('송파구')")).has($(".arrivespan").filter(":contains('강북구')")).show();
+							
+					}else if(spoint == "서울시 송파구" && apoint == "서울시 강서구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('송파구')")).has($(".arrivespan").filter(":contains('강서구')")).show();
+							
+					}else if(spoint == "서울시 송파구" && apoint == "서울시 관악구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('송파구')")).has($(".arrivespan").filter(":contains('관악구')")).show();
+							
+					}else if(spoint == "서울시 송파구" && apoint == "서울시 광진구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('송파구')")).has($(".arrivespan").filter(":contains('광진구')")).show();
+							
+					}else if(spoint == "서울시 송파구" && apoint == "서울시 구로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('송파구')")).has($(".arrivespan").filter(":contains('구로구')")).show();
+							
+					}else if(spoint == "서울시 송파구" && apoint == "서울시 금천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('송파구')")).has($(".arrivespan").filter(":contains('금천구')")).show();
+							
+					}else if(spoint == "서울시 송파구" && apoint == "서울시 노원구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('송파구')")).has($(".arrivespan").filter(":contains('노원구')")).show();
+							
+					}else if(spoint == "서울시 송파구" && apoint == "서울시 도봉구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('송파구')")).has($(".arrivespan").filter(":contains('도봉구')")).show();
+							
+					}else if(spoint == "서울시 송파구" && apoint == "서울시 동대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('송파구')")).has($(".arrivespan").filter(":contains('동대문구')")).show();
+							
+					}else if(spoint == "서울시 송파구" && apoint == "서울시 동작구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('송파구')")).has($(".arrivespan").filter(":contains('동작구')")).show();
+							
+					}else if(spoint == "서울시 송파구" && apoint == "서울시 마포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('송파구')")).has($(".arrivespan").filter(":contains('마포구')")).show();
+							
+					}else if(spoint == "서울시 송파구" && apoint == "서울시 서대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('송파구')")).has($(".arrivespan").filter(":contains('서대문구')")).show();
+							
+					}else if(spoint == "서울시 송파구" && apoint == "서울시 서초구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('송파구')")).has($(".arrivespan").filter(":contains('서초구')")).show();
+							
+					}else if(spoint == "서울시 송파구" && apoint == "서울시 성동구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('송파구')")).has($(".arrivespan").filter(":contains('성동구')")).show();
+							
+					}else if(spoint == "서울시 송파구" && apoint == "서울시 성북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('송파구')")).has($(".arrivespan").filter(":contains('성북구')")).show();
+							
+					}else if(spoint == "서울시 송파구" && apoint == "서울시 송파구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('송파구')")).has($(".arrivespan").filter(":contains('송파구')")).show();
+							
+					}else if(spoint == "서울시 송파구" && apoint == "서울시 양천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('송파구')")).has($(".arrivespan").filter(":contains('양천구')")).show();
+							
+					}else if(spoint == "서울시 송파구" && apoint == "서울시 영등포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('송파구')")).has($(".arrivespan").filter(":contains('영등포구')")).show();
+							
+					}else if(spoint == "서울시 송파구" && apoint == "서울시 용산구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('송파구')")).has($(".arrivespan").filter(":contains('용산구')")).show();
+							
+					}else if(spoint == "서울시 송파구" && apoint == "서울시 은평구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('송파구')")).has($(".arrivespan").filter(":contains('은평구')")).show();
+							
+					}else if(spoint == "서울시 송파구" && apoint == "서울시 종로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('송파구')")).has($(".arrivespan").filter(":contains('종로구')")).show();
+							
+					}else if(spoint == "서울시 송파구" && apoint == "서울시 중구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('송파구')")).has($(".arrivespan").filter(":contains('중구')")).show();
+							
+					}else if(spoint == "서울시 송파구" && apoint == "서울시 중랑구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('송파구')")).has($(".arrivespan").filter(":contains('중랑구')")).show();							
+						
+					}else if(spoint == "서울시 양천구" && apoint == "서울시 강남구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('양천구')")).has($(".arrivespan").filter(":contains('강남구')")).show();
+					
+					}else if(spoint == "서울시 양천구" && apoint == "서울시 강동구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('양천구')")).has($(".arrivespan").filter(":contains('강동구')")).show();							
+					}else if(spoint == "서울시 양천구" && apoint == "서울시 강북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('양천구')")).has($(".arrivespan").filter(":contains('강북구')")).show();
+							
+					}else if(apoint == "서울시 강서구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('양천구')")).has($(".arrivespan").filter(":contains('강서구')")).show();
+							
+					}else if(spoint == "서울시 양천구" && apoint == "서울시 관악구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('양천구')")).has($(".arrivespan").filter(":contains('관악구')")).show();
+							
+					}else if(spoint == "서울시 양천구" && apoint == "서울시 광진구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('양천구')")).has($(".arrivespan").filter(":contains('광진구')")).show();
+							
+					}else if(spoint == "서울시 양천구" && apoint == "서울시 구로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('양천구')")).has($(".arrivespan").filter(":contains('구로구')")).show();
+							
+					}else if(spoint == "서울시 양천구" && apoint == "서울시 금천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('양천구')")).has($(".arrivespan").filter(":contains('금천구')")).show();
+							
+					}else if(spoint == "서울시 양천구" && apoint == "서울시 노원구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('양천구')")).has($(".arrivespan").filter(":contains('노원구')")).show();
+							
+					}else if(spoint == "서울시 양천구" && apoint == "서울시 도봉구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('양천구')")).has($(".arrivespan").filter(":contains('도봉구')")).show();
+							
+					}else if(spoint == "서울시 양천구" && apoint == "서울시 동대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('양천구')")).has($(".arrivespan").filter(":contains('동대문구')")).show();
+							
+					}else if(spoint == "서울시 양천구" && apoint == "서울시 동작구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('양천구')")).has($(".arrivespan").filter(":contains('동작구')")).show();
+							
+					}else if(spoint == "서울시 양천구" && apoint == "서울시 마포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('양천구')")).has($(".arrivespan").filter(":contains('마포구')")).show();
+							
+					}else if(spoint == "서울시 양천구" && apoint == "서울시 서대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('양천구')")).has($(".arrivespan").filter(":contains('서대문구')")).show();
+							
+					}else if(spoint == "서울시 양천구" && apoint == "서울시 서초구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('양천구')")).has($(".arrivespan").filter(":contains('서초구')")).show();
+							
+					}else if(spoint == "서울시 양천구" && apoint == "서울시 성동구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('양천구')")).has($(".arrivespan").filter(":contains('성동구')")).show();
+							
+					}else if(spoint == "서울시 양천구" && apoint == "서울시 성북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('양천구')")).has($(".arrivespan").filter(":contains('성북구')")).show();
+							
+					}else if(spoint == "서울시 양천구" && apoint == "서울시 송파구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('양천구')")).has($(".arrivespan").filter(":contains('송파구')")).show();
+							
+					}else if(spoint == "서울시 양천구" && apoint == "서울시 양천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('양천구')")).has($(".arrivespan").filter(":contains('양천구')")).show();
+							
+					}else if(spoint == "서울시 양천구" && apoint == "서울시 영등포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('양천구')")).has($(".arrivespan").filter(":contains('영등포구')")).show();
+							
+					}else if(spoint == "서울시 양천구" && apoint == "서울시 용산구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('양천구')")).has($(".arrivespan").filter(":contains('용산구')")).show();
+							
+					}else if(spoint == "서울시 양천구" && apoint == "서울시 은평구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('양천구')")).has($(".arrivespan").filter(":contains('은평구')")).show();
+							
+					}else if(spoint == "서울시 양천구" && apoint == "서울시 종로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('양천구')")).has($(".arrivespan").filter(":contains('종로구')")).show();
+							
+					}else if(spoint == "서울시 양천구" && apoint == "서울시 중구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('양천구')")).has($(".arrivespan").filter(":contains('중구')")).show();
+							
+					}else if(spoint == "서울시 양천구" && apoint == "서울시 중랑구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('양천구')")).has($(".arrivespan").filter(":contains('중랑구')")).show();							
+						
+					}else if(spoint == "서울시 영등포구" && apoint == "서울시 강남구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('영등포구')")).has($(".arrivespan").filter(":contains('강남구')")).show();
+					
+					}else if(spoint == "서울시 영등포구" && apoint == "서울시 강동구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('영등포구')")).has($(".arrivespan").filter(":contains('강동구')")).show();							
+					}else if(spoint == "서울시 영등포구" && apoint == "서울시 강북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('영등포구')")).has($(".arrivespan").filter(":contains('강북구')")).show();
+							
+					}else if(spoint == "서울시 영등포구" && apoint == "서울시 강서구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('영등포구')")).has($(".arrivespan").filter(":contains('강서구')")).show();
+							
+					}else if(spoint == "서울시 영등포구" && apoint == "서울시 관악구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('영등포구')")).has($(".arrivespan").filter(":contains('관악구')")).show();
+							
+					}else if(spoint == "서울시 영등포구" && apoint == "서울시 광진구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('영등포구')")).has($(".arrivespan").filter(":contains('광진구')")).show();
+							
+					}else if(spoint == "서울시 영등포구" && apoint == "서울시 구로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('영등포구')")).has($(".arrivespan").filter(":contains('구로구')")).show();
+							
+					}else if(spoint == "서울시 영등포구" && apoint == "서울시 금천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('영등포구')")).has($(".arrivespan").filter(":contains('금천구')")).show();
+							
+					}else if(spoint == "서울시 영등포구" && apoint == "서울시 노원구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('영등포구')")).has($(".arrivespan").filter(":contains('노원구')")).show();
+							
+					}else if(spoint == "서울시 영등포구" && apoint == "서울시 도봉구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('영등포구')")).has($(".arrivespan").filter(":contains('도봉구')")).show();
+							
+					}else if(spoint == "서울시 영등포구" && apoint == "서울시 동대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('영등포구')")).has($(".arrivespan").filter(":contains('동대문구')")).show();
+							
+					}else if(spoint == "서울시 영등포구" && apoint == "서울시 동작구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('영등포구')")).has($(".arrivespan").filter(":contains('동작구')")).show();
+							
+					}else if(spoint == "서울시 영등포구" && apoint == "서울시 마포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('영등포구')")).has($(".arrivespan").filter(":contains('마포구')")).show();
+							
+					}else if(spoint == "서울시 영등포구" && apoint == "서울시 서대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('영등포구')")).has($(".arrivespan").filter(":contains('서대문구')")).show();
+							
+					}else if(spoint == "서울시 영등포구" && apoint == "서울시 서초구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('영등포구')")).has($(".arrivespan").filter(":contains('서초구')")).show();
+							
+					}else if(spoint == "서울시 영등포구" && apoint == "서울시 성동구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('영등포구')")).has($(".arrivespan").filter(":contains('성동구')")).show();
+							
+					}else if(spoint == "서울시 영등포구" && apoint == "서울시 성북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('영등포구')")).has($(".arrivespan").filter(":contains('성북구')")).show();
+							
+					}else if(spoint == "서울시 영등포구" && apoint == "서울시 송파구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('영등포구')")).has($(".arrivespan").filter(":contains('송파구')")).show();
+							
+					}else if(spoint == "서울시 영등포구" && apoint == "서울시 양천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('영등포구')")).has($(".arrivespan").filter(":contains('양천구')")).show();
+							
+					}else if(spoint == "서울시 영등포구" && apoint == "서울시 영등포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('영등포구')")).has($(".arrivespan").filter(":contains('영등포구')")).show();
+							
+					}else if(spoint == "서울시 영등포구" && apoint == "서울시 용산구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('영등포구')")).has($(".arrivespan").filter(":contains('용산구')")).show();
+							
+					}else if(spoint == "서울시 영등포구" && apoint == "서울시 은평구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('영등포구')")).has($(".arrivespan").filter(":contains('은평구')")).show();
+							
+					}else if(spoint == "서울시 영등포구" && apoint == "서울시 종로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('영등포구')")).has($(".arrivespan").filter(":contains('종로구')")).show();
+							
+					}else if(spoint == "서울시 영등포구" && apoint == "서울시 중구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('영등포구')")).has($(".arrivespan").filter(":contains('중구')")).show();
+							
+					}else if(spoint == "서울시 영등포구" && apoint == "서울시 중랑구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('영등포구')")).has($(".arrivespan").filter(":contains('중랑구')")).show();							
+						
+					}else if(spoint == "서울시 용산구" && apoint == "서울시 강남구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('용산구')")).has($(".arrivespan").filter(":contains('강남구')")).show();	
+					
+					}else if(spoint == "서울시 용산구" && apoint == "서울시 강동구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('용산구')")).has($(".arrivespan").filter(":contains('강동구')")).show();							
+					}else if(spoint == "서울시 용산구" && apoint == "서울시 강북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('용산구')")).has($(".arrivespan").filter(":contains('강북구')")).show();
+							
+					}else if(spoint == "서울시 용산구" && apoint == "서울시 강서구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('용산구')")).has($(".arrivespan").filter(":contains('강서구')")).show();
+							
+					}else if(spoint == "서울시 용산구" && apoint == "서울시 관악구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('용산구')")).has($(".arrivespan").filter(":contains('관악구')")).show();
+							
+					}else if(spoint == "서울시 용산구" && apoint == "서울시 광진구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('용산구')")).has($(".arrivespan").filter(":contains('광진구')")).show();
+							
+					}else if(spoint == "서울시 용산구" && apoint == "서울시 구로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('용산구')")).has($(".arrivespan").filter(":contains('구로구')")).show();
+							
+					}else if(spoint == "서울시 용산구" && apoint == "서울시 금천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('용산구')")).has($(".arrivespan").filter(":contains('금천구')")).show();
+							
+					}else if(spoint == "서울시 용산구" && apoint == "서울시 노원구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('용산구')")).has($(".arrivespan").filter(":contains('노원구')")).show();
+							
+					}else if(spoint == "서울시 용산구" && apoint == "서울시 도봉구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('용산구')")).has($(".arrivespan").filter(":contains('도봉구')")).show();
+							
+					}else if(spoint == "서울시 용산구" && apoint == "서울시 동대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('용산구')")).has($(".arrivespan").filter(":contains('동대문구')")).show();
+							
+					}else if(spoint == "서울시 용산구" && apoint == "서울시 동작구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('용산구')")).has($(".arrivespan").filter(":contains('동작구')")).show();
+							
+					}else if(spoint == "서울시 용산구" && apoint == "서울시 마포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('용산구')")).has($(".arrivespan").filter(":contains('마포구')")).show();
+							
+					}else if(spoint == "서울시 용산구" && apoint == "서울시 서대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('용산구')")).has($(".arrivespan").filter(":contains('서대문구')")).show();
+							
+					}else if(spoint == "서울시 용산구" && apoint == "서울시 서초구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('용산구')")).has($(".arrivespan").filter(":contains('서초구')")).show();
+							
+					}else if(spoint == "서울시 용산구" && apoint == "서울시 성동구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('용산구')")).has($(".arrivespan").filter(":contains('성동구')")).show();
+							
+					}else if(spoint == "서울시 용산구" && apoint == "서울시 성북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('용산구')")).has($(".arrivespan").filter(":contains('성북구')")).show();
+							
+					}else if(spoint == "서울시 용산구" && apoint == "서울시 송파구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('용산구')")).has($(".arrivespan").filter(":contains('송파구')")).show();
+							
+					}else if(spoint == "서울시 용산구" && apoint == "서울시 양천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('용산구')")).has($(".arrivespan").filter(":contains('양천구')")).show();
+							
+					}else if(spoint == "서울시 용산구" && apoint == "서울시 영등포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('용산구')")).has($(".arrivespan").filter(":contains('영등포구')")).show();
+							
+					}else if(spoint == "서울시 용산구" && apoint == "서울시 용산구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('용산구')")).has($(".arrivespan").filter(":contains('용산구')")).show();
+							
+					}else if(spoint == "서울시 용산구" && apoint == "서울시 은평구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('용산구')")).has($(".arrivespan").filter(":contains('은평구')")).show();
+							
+					}else if(spoint == "서울시 용산구" && apoint == "서울시 종로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('용산구')")).has($(".arrivespan").filter(":contains('종로구')")).show();
+							
+					}else if(spoint == "서울시 용산구" && apoint == "서울시 중구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('용산구')")).has($(".arrivespan").filter(":contains('중구')")).show();
+							
+					}else if(spoint == "서울시 용산구" && apoint == "서울시 중랑구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('용산구')")).has($(".arrivespan").filter(":contains('중랑구')")).show();							
+						
+					}else if(spoint == "서울시 은평구" && apoint == "서울시 강남구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('은평구')")).has($(".arrivespan").filter(":contains('강남구')")).show();
+					
+					}else if(spoint == "서울시 은평구" && apoint == "서울시 강동구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('은평구')")).has($(".arrivespan").filter(":contains('강동구')")).show();							
+					}else if(spoint == "서울시 은평구" && apoint == "서울시 강북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('은평구')")).has($(".arrivespan").filter(":contains('강북구')")).show();
+							
+					}else if(spoint == "서울시 은평구" && apoint == "서울시 강서구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('은평구')")).has($(".arrivespan").filter(":contains('강서구')")).show();
+							
+					}else if(spoint == "서울시 은평구" && apoint == "서울시 관악구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('은평구')")).has($(".arrivespan").filter(":contains('관악구')")).show();
+							
+					}else if(spoint == "서울시 은평구" && apoint == "서울시 광진구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('은평구')")).has($(".arrivespan").filter(":contains('광진구')")).show();
+							
+					}else if(spoint == "서울시 은평구" && apoint == "서울시 구로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('은평구')")).has($(".arrivespan").filter(":contains('구로구')")).show();
+							
+					}else if(spoint == "서울시 은평구" && apoint == "서울시 금천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('은평구')")).has($(".arrivespan").filter(":contains('금천구')")).show();
+							
+					}else if(spoint == "서울시 은평구" && apoint == "서울시 노원구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('은평구')")).has($(".arrivespan").filter(":contains('노원구')")).show();
+							
+					}else if(spoint == "서울시 은평구" && apoint == "서울시 도봉구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('은평구')")).has($(".arrivespan").filter(":contains('도봉구')")).show();
+							
+					}else if(spoint == "서울시 은평구" && apoint == "서울시 동대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('은평구')")).has($(".arrivespan").filter(":contains('동대문구')")).show();
+							
+					}else if(spoint == "서울시 은평구" && apoint == "서울시 동작구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('은평구')")).has($(".arrivespan").filter(":contains('동작구')")).show();
+							
+					}else if(spoint == "서울시 은평구" && apoint == "서울시 마포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('은평구')")).has($(".arrivespan").filter(":contains('마포구')")).show();
+							
+					}else if(spoint == "서울시 은평구" && apoint == "서울시 서대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('은평구')")).has($(".arrivespan").filter(":contains('서대문구')")).show();
+							
+					}else if(spoint == "서울시 은평구" && apoint == "서울시 서초구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('은평구')")).has($(".arrivespan").filter(":contains('서초구')")).show();
+							
+					}else if(spoint == "서울시 은평구" && apoint == "서울시 성동구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('은평구')")).has($(".arrivespan").filter(":contains('성동구')")).show();
+							
+					}else if(spoint == "서울시 은평구" && apoint == "서울시 성북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('은평구')")).has($(".arrivespan").filter(":contains('성북구')")).show();
+							
+					}else if(spoint == "서울시 은평구" && apoint == "서울시 송파구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('은평구')")).has($(".arrivespan").filter(":contains('송파구')")).show();
+							
+					}else if(spoint == "서울시 은평구" && apoint == "서울시 양천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('은평구')")).has($(".arrivespan").filter(":contains('양천구')")).show();
+							
+					}else if(spoint == "서울시 은평구" && apoint == "서울시 영등포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('은평구')")).has($(".arrivespan").filter(":contains('영등포구')")).show();
+							
+					}else if(spoint == "서울시 은평구" && apoint == "서울시 용산구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('은평구')")).has($(".arrivespan").filter(":contains('용산구')")).show();
+							
+					}else if(spoint == "서울시 은평구" && apoint == "서울시 은평구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('은평구')")).has($(".arrivespan").filter(":contains('은평구')")).show();
+							
+					}else if(spoint == "서울시 은평구" && apoint == "서울시 종로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('은평구')")).has($(".arrivespan").filter(":contains('종로구')")).show();
+							
+					}else if(spoint == "서울시 은평구" && apoint == "서울시 중구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('은평구')")).has($(".arrivespan").filter(":contains('중구')")).show();
+							
+					}else if(spoint == "서울시 은평구" && apoint == "서울시 중랑구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('은평구')")).has($(".arrivespan").filter(":contains('중랑구')")).show();							
+						
+					}else if(spoint == "서울시 종로구" && apoint == "서울시 강남구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('종로구')")).has($(".arrivespan").filter(":contains('강남구')")).show();
+					
+					}else if(spoint == "서울시 종로구" && apoint == "서울시 강동구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('종로구')")).has($(".arrivespan").filter(":contains('강동구')")).show();							
+					}else if(spoint == "서울시 종로구" && apoint == "서울시 강북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('종로구')")).has($(".arrivespan").filter(":contains('강북구')")).show();
+							
+					}else if(spoint == "서울시 종로구" && apoint == "서울시 강서구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('종로구')")).has($(".arrivespan").filter(":contains('강서구')")).show();
+							
+					}else if(spoint == "서울시 종로구" && apoint == "서울시 관악구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('종로구')")).has($(".arrivespan").filter(":contains('관악구')")).show();
+							
+					}else if(spoint == "서울시 종로구" && apoint == "서울시 광진구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('종로구')")).has($(".arrivespan").filter(":contains('광진구')")).show();
+							
+					}else if(spoint == "서울시 종로구" && apoint == "서울시 구로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('종로구')")).has($(".arrivespan").filter(":contains('구로구')")).show();
+							
+					}else if(spoint == "서울시 종로구" && apoint == "서울시 금천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('종로구')")).has($(".arrivespan").filter(":contains('금천구')")).show();
+							
+					}else if(spoint == "서울시 종로구" && apoint == "서울시 노원구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('종로구')")).has($(".arrivespan").filter(":contains('노원구')")).show();
+							
+					}else if(spoint == "서울시 종로구" && apoint == "서울시 도봉구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('종로구')")).has($(".arrivespan").filter(":contains('도봉구')")).show();
+							
+					}else if(spoint == "서울시 종로구" && apoint == "서울시 동대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('종로구')")).has($(".arrivespan").filter(":contains('동대문구')")).show();
+							
+					}else if(spoint == "서울시 종로구" && apoint == "서울시 동작구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('종로구')")).has($(".arrivespan").filter(":contains('동작구')")).show();
+							
+					}else if(spoint == "서울시 종로구" && apoint == "서울시 마포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('종로구')")).has($(".arrivespan").filter(":contains('마포구')")).show();
+							
+					}else if(spoint == "서울시 종로구" && apoint == "서울시 서대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('종로구')")).has($(".arrivespan").filter(":contains('서대문구')")).show();
+							
+					}else if(spoint == "서울시 종로구" && apoint == "서울시 서초구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('종로구')")).has($(".arrivespan").filter(":contains('서초구')")).show();
+							
+					}else if(spoint == "서울시 종로구" && apoint == "서울시 성동구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('종로구')")).has($(".arrivespan").filter(":contains('성동구')")).show();
+							
+					}else if(spoint == "서울시 종로구" && apoint == "서울시 성북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('종로구')")).has($(".arrivespan").filter(":contains('성북구')")).show();
+							
+					}else if(spoint == "서울시 종로구" && apoint == "서울시 송파구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('종로구')")).has($(".arrivespan").filter(":contains('송파구')")).show();
+							
+					}else if(spoint == "서울시 종로구" && apoint == "서울시 양천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('종로구')")).has($(".arrivespan").filter(":contains('양천구')")).show();
+							
+					}else if(spoint == "서울시 종로구" && apoint == "서울시 영등포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('종로구')")).has($(".arrivespan").filter(":contains('영등포구')")).show();
+							
+					}else if(spoint == "서울시 종로구" && apoint == "서울시 용산구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('종로구')")).has($(".arrivespan").filter(":contains('용산구')")).show();
+							
+					}else if(spoint == "서울시 종로구" && apoint == "서울시 은평구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('종로구')")).has($(".arrivespan").filter(":contains('은평구')")).show();
+							
+					}else if(spoint == "서울시 종로구" && apoint == "서울시 종로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('종로구')")).has($(".arrivespan").filter(":contains('종로구')")).show();
+							
+					}else if(spoint == "서울시 종로구" && apoint == "서울시 중구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('종로구')")).has($(".arrivespan").filter(":contains('중구')")).show();
+							
+					}else if(spoint == "서울시 종로구" && apoint == "서울시 중랑구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('종로구')")).has($(".arrivespan").filter(":contains('중랑구')")).show();							
+						
+					}else if(spoint == "서울시 중구" && apoint == "서울시 강남구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('중구')")).has($(".arrivespan").filter(":contains('강남구')")).show();
+					
+					}else if(spoint == "서울시 중구" && apoint == "서울시 강동구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('중구')")).has($(".arrivespan").filter(":contains('강동구')")).show();							
+					}else if(spoint == "서울시 중구" && apoint == "서울시 강북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중구')")).has($(".arrivespan").filter(":contains('강북구')")).show();
+							
+					}else if(spoint == "서울시 중구" && apoint == "서울시 강서구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중구')")).has($(".arrivespan").filter(":contains('강서구')")).show();
+							
+					}else if(spoint == "서울시 중구" && apoint == "서울시 관악구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중구')")).has($(".arrivespan").filter(":contains('관악구')")).show();
+							
+					}else if(spoint == "서울시 중구" && apoint == "서울시 광진구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중구')")).has($(".arrivespan").filter(":contains('광진구')")).show();
+							
+					}else if(spoint == "서울시 중구" && apoint == "서울시 구로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중구')")).has($(".arrivespan").filter(":contains('구로구')")).show();
+							
+					}else if(spoint == "서울시 중구" && apoint == "서울시 금천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중구')")).has($(".arrivespan").filter(":contains('금천구')")).show();
+							
+					}else if(spoint == "서울시 중구" && apoint == "서울시 노원구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중구')")).has($(".arrivespan").filter(":contains('노원구')")).show();
+							
+					}else if(spoint == "서울시 중구" && apoint == "서울시 도봉구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중구')")).has($(".arrivespan").filter(":contains('도봉구')")).show();
+							
+					}else if(spoint == "서울시 중구" && apoint == "서울시 동대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중구')")).has($(".arrivespan").filter(":contains('동대문구')")).show();
+							
+					}else if(spoint == "서울시 중구" && apoint == "서울시 동작구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중구')")).has($(".arrivespan").filter(":contains('동작구')")).show();
+							
+					}else if(spoint == "서울시 중구" && apoint == "서울시 마포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중구')")).has($(".arrivespan").filter(":contains('마포구')")).show();
+							
+					}else if(spoint == "서울시 중구" && apoint == "서울시 서대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중구')")).has($(".arrivespan").filter(":contains('서대문구')")).show();
+							
+					}else if(spoint == "서울시 중구" && apoint == "서울시 서초구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중구')")).has($(".arrivespan").filter(":contains('서초구')")).show();
+							
+					}else if(spoint == "서울시 중구" && apoint == "서울시 성동구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중구')")).has($(".arrivespan").filter(":contains('성동구')")).show();
+							
+					}else if(spoint == "서울시 중구" && apoint == "서울시 성북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중구')")).has($(".arrivespan").filter(":contains('성북구')")).show();
+							
+					}else if(spoint == "서울시 중구" && apoint == "서울시 송파구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중구')")).has($(".arrivespan").filter(":contains('송파구')")).show();
+							
+					}else if(spoint == "서울시 중구" && apoint == "서울시 양천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중구')")).has($(".arrivespan").filter(":contains('양천구')")).show();
+							
+					}else if(spoint == "서울시 중구" && apoint == "서울시 영등포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중구')")).has($(".arrivespan").filter(":contains('영등포구')")).show();
+							
+					}else if(spoint == "서울시 중구" && apoint == "서울시 용산구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중구')")).has($(".arrivespan").filter(":contains('용산구')")).show();
+							
+					}else if(spoint == "서울시 중구" && apoint == "서울시 은평구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중구')")).has($(".arrivespan").filter(":contains('은평구')")).show();
+							
+					}else if(spoint == "서울시 중구" && apoint == "서울시 종로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중구')")).has($(".arrivespan").filter(":contains('종로구')")).show();
+							
+					}else if(spoint == "서울시 중구" && apoint == "서울시 중구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중구')")).has($(".arrivespan").filter(":contains('중구')")).show();
+							
+					}else if(spoint == "서울시 중구" && apoint == "서울시 중랑구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중구')")).has($(".arrivespan").filter(":contains('중랑구')")).show();							
+						
+					}else if(spoint == "서울시 중랑구" && apoint == "서울시 강남구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('중랑구')")).has($(".arrivespan").filter(":contains('강남구')")).show();	
+					
+					}else if(spoint == "서울시 중랑구" && apoint == "서울시 강동구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('중랑구')")).has($(".arrivespan").filter(":contains('강동구')")).show();							
+					}else if(spoint == "서울시 중랑구" && apoint == "서울시 강북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중랑구')")).has($(".arrivespan").filter(":contains('강북구')")).show();
+							
+					}else if(spoint == "서울시 중랑구" && apoint == "서울시 강서구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중랑구')")).has($(".arrivespan").filter(":contains('강서구')")).show();
+							
+					}else if(spoint == "서울시 중랑구" && apoint == "서울시 관악구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중랑구')")).has($(".arrivespan").filter(":contains('관악구')")).show();
+							
+					}else if(spoint == "서울시 중랑구" && apoint == "서울시 광진구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중랑구')")).has($(".arrivespan").filter(":contains('광진구')")).show();
+							
+					}else if(spoint == "서울시 중랑구" && apoint == "서울시 구로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중랑구')")).has($(".arrivespan").filter(":contains('구로구')")).show();
+							
+					}else if(spoint == "서울시 중랑구" && apoint == "서울시 금천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중랑구')")).has($(".arrivespan").filter(":contains('금천구')")).show();
+							
+					}else if(spoint == "서울시 중랑구" && apoint == "서울시 노원구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중랑구')")).has($(".arrivespan").filter(":contains('노원구')")).show();
+							
+					}else if(spoint == "서울시 중랑구" && apoint == "서울시 도봉구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중랑구')")).has($(".arrivespan").filter(":contains('도봉구')")).show();
+							
+					}else if(spoint == "서울시 중랑구" && apoint == "서울시 동대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중랑구')")).has($(".arrivespan").filter(":contains('동대문구')")).show();
+							
+					}else if(spoint == "서울시 중랑구" && apoint == "서울시 동작구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중랑구')")).has($(".arrivespan").filter(":contains('동작구')")).show();
+							
+					}else if(spoint == "서울시 중랑구" && apoint == "서울시 마포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중랑구')")).has($(".arrivespan").filter(":contains('마포구')")).show();
+							
+					}else if(spoint == "서울시 중랑구" && apoint == "서울시 서대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중랑구')")).has($(".arrivespan").filter(":contains('서대문구')")).show();
+							
+					}else if(spoint == "서울시 중랑구" && apoint == "서울시 서초구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중랑구')")).has($(".arrivespan").filter(":contains('서초구')")).show();
+							
+					}else if(spoint == "서울시 중랑구" && apoint == "서울시 성동구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중랑구')")).has($(".arrivespan").filter(":contains('성동구')")).show();
+							
+					}else if(spoint == "서울시 중랑구" && apoint == "서울시 성북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중랑구')")).has($(".arrivespan").filter(":contains('성북구')")).show();
+							
+					}else if(spoint == "서울시 중랑구" && apoint == "서울시 송파구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중랑구')")).has($(".arrivespan").filter(":contains('송파구')")).show();
+							
+					}else if(spoint == "서울시 중랑구" && apoint == "서울시 양천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중랑구')")).has($(".arrivespan").filter(":contains('양천구')")).show();
+							
+					}else if(spoint == "서울시 중랑구" && apoint == "서울시 영등포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중랑구')")).has($(".arrivespan").filter(":contains('영등포구')")).show();
+							
+					}else if(spoint == "서울시 중랑구" && apoint == "서울시 용산구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중랑구')")).has($(".arrivespan").filter(":contains('용산구')")).show();
+							
+					}else if(spoint == "서울시 중랑구" && apoint == "서울시 은평구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중랑구')")).has($(".arrivespan").filter(":contains('은평구')")).show();
+							
+					}else if(spoint == "서울시 중랑구" && apoint == "서울시 종로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중랑구')")).has($(".arrivespan").filter(":contains('종로구')")).show();
+							
+					}else if(spoint == "서울시 중랑구" && apoint == "서울시 중구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중랑구')")).has($(".arrivespan").filter(":contains('중구')")).show();
+							
+					}else if(spoint == "서울시 중랑구" && apoint == "서울시 중랑구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중랑구')")).has($(".arrivespan").filter(":contains('중랑구')")).show();							
 					}
 				}
-			});
+			});	
 			
 			$("#arrive_point").change(function(){
 				var spoint = $("#start_point").val();
@@ -252,9 +2723,9 @@
 				console.log(spoint);
 				console.log(apoint);
 				
-				var filterDiv = $(".filterdiv")
+				var filterDiv = $(".filterdiv");
 				
-				if((spoint == "전체보기" || spoint == "출발지를 선택하세요.") && !(apoint == "도착지를 선택하세요.")){
+				if((spoint == "전체보기" || spoint == "출발지를 선택하세요.") && !(apoint == "도착지를 선택하세요.")){					
 					if(apoint == "전체보기"){
 						filterDiv.show();
 					}else if(apoint == "서울시 강동구"){	
@@ -330,10 +2801,2479 @@
 						filterDiv.hide();					
 						filterDiv.has($(".arrivespan").filter(":contains('중랑구')")).show();
 					}
+				}else if(!(spoint == "출발지를 선택하세요.") && !(apoint == "도착지를 선택하세요.")){		
+					if(spoint == "전체보기" || apoint == "전체보기"){
+						filterDiv.show();
+						
+					}else if(spoint == "서울시 강남구" && apoint == "서울시 강남구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('강남구')")).show();							
+					}else if(spoint == "서울시 강남구" && apoint == "서울시 강동구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('강동구')")).show();
+					
+					}else if(spoint == "서울시 강남구" && apoint == "서울시 강북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('강북구')")).show();
+							
+					}else if(spoint == "서울시 강남구" && apoint == "서울시 강서구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('강서구')")).show();
+							
+					}else if(spoint == "서울시 강남구" && apoint == "서울시 관악구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('관악구')")).show();
+							
+					}else if(spoint == "서울시 강남구" && apoint == "서울시 광진구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('광진구')")).show();
+							
+					}else if(spoint == "서울시 강남구" && apoint == "서울시 구로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('구로구')")).show();
+							
+					}else if(spoint == "서울시 강남구" && apoint == "서울시 금천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('금천구')")).show();
+							
+					}else if(spoint == "서울시 강남구" && apoint == "서울시 노원구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('노원구')")).show();
+							
+					}else if(spoint == "서울시 강남구" && apoint == "서울시 도봉구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('도봉구')")).show();
+							
+					}else if(spoint == "서울시 강남구" && apoint == "서울시 동대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('동대문구')")).show();
+							
+					}else if(spoint == "서울시 강남구" && apoint == "서울시 동작구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('동작구')")).show();
+							
+					}else if(spoint == "서울시 강남구" && apoint == "서울시 마포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('마포구')")).show();
+							
+					}else if(spoint == "서울시 강남구" && apoint == "서울시 서대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('서대문구')")).show();
+							
+					}else if(spoint == "서울시 강남구" && apoint == "서울시 서초구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('서초구')")).show();
+							
+					}else if(spoint == "서울시 강남구" && apoint == "서울시 성동구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('성동구')")).show();
+							
+					}else if(spoint == "서울시 강남구" && apoint == "서울시 성북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('성북구')")).show();
+							
+					}else if(spoint == "서울시 강남구" && apoint == "서울시 송파구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('송파구')")).show();
+							
+					}else if(spoint == "서울시 강남구" && apoint == "서울시 양천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('양천구')")).show();
+							
+					}else if(spoint == "서울시 강남구" && apoint == "서울시 영등포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('영등포구')")).show();
+							
+					}else if(spoint == "서울시 강남구" && apoint == "서울시 용산구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('용산구')")).show();
+							
+					}else if(spoint == "서울시 강남구" && apoint == "서울시 은평구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('은평구')")).show();
+							
+					}else if(spoint == "서울시 강남구" && apoint == "서울시 종로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('종로구')")).show();
+							
+					}else if(spoint == "서울시 강남구" && apoint == "서울시 중구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('중구')")).show();
+							
+					}else if(spoint == "서울시 강남구" && apoint == "서울시 중랑구"){
+							filterDiv.hide();
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('중랑구')")).show();
+					}else if(spoint == "서울시 강동구" && apoint == "서울시 강남구"){
+						filterDiv.hide();							
+						filterDiv.has($(".startspan").filter(":contains('강동구')")).has($(".arrivespan").filter(":contains('강남구')")).show();
+					
+					}else if(spoint == "서울시 강동구" && apoint == "서울시 강동구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('강동구')")).has($(".arrivespan").filter(":contains('강동구')")).show();
+							
+					}else if(spoint == "서울시 강동구" && apoint == "서울시 강북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강동구')")).has($(".arrivespan").filter(":contains('강북구')")).show();
+							
+					}else if(spoint == "서울시 강동구" && apoint == "서울시 강서구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강동구')")).has($(".arrivespan").filter(":contains('강서구')")).show();
+							
+					}else if(spoint == "서울시 강동구" && apoint == "서울시 관악구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강동구')")).has($(".arrivespan").filter(":contains('관악구')")).show();
+							
+					}else if(spoint == "서울시 강동구" && apoint == "서울시 광진구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강동구')")).has($(".arrivespan").filter(":contains('광진구')")).show();
+							
+					}else if(spoint == "서울시 강동구" && apoint == "서울시 구로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강동구')")).has($(".arrivespan").filter(":contains('구로구')")).show();
+							
+					}else if(spoint == "서울시 강동구" && apoint == "서울시 금천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강동구')")).has($(".arrivespan").filter(":contains('금천구')")).show();
+							
+					}else if(spoint == "서울시 강동구" && apoint == "서울시 노원구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강동구')")).has($(".arrivespan").filter(":contains('노원구')")).show();
+							
+					}else if(spoint == "서울시 강동구" && apoint == "서울시 도봉구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강동구')")).has($(".arrivespan").filter(":contains('도봉구')")).show();
+							
+					}else if(spoint == "서울시 강동구" && apoint == "서울시 동대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강동구')")).has($(".arrivespan").filter(":contains('동대문구')")).show();
+							
+					}else if(spoint == "서울시 강동구" && apoint == "서울시 동작구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강동구')")).has($(".arrivespan").filter(":contains('동작구')")).show();
+							
+					}else if(spoint == "서울시 강동구" && apoint == "서울시 마포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강동구')")).has($(".arrivespan").filter(":contains('마포구')")).show();
+							
+					}else if(spoint == "서울시 강동구" && apoint == "서울시 서대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강동구')")).has($(".arrivespan").filter(":contains('서대문구')")).show();
+							
+					}else if(spoint == "서울시 강동구" && apoint == "서울시 서초구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강동구')")).has($(".arrivespan").filter(":contains('서초구')")).show();
+							
+					}else if(spoint == "서울시 강동구" && apoint == "서울시 성동구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강동구')")).has($(".arrivespan").filter(":contains('성동구')")).show();
+							
+					}else if(spoint == "서울시 강동구" && spoint == "서울시 마포구" && apoint == "서울시 성북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강동구')")).has($(".arrivespan").filter(":contains('성북구')")).show();
+							
+					}else if(spoint == "서울시 강동구" && apoint == "서울시 송파구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강동구')")).has($(".arrivespan").filter(":contains('송파구')")).show();
+							
+					}else if(spoint == "서울시 강동구" && apoint == "서울시 양천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강동구')")).has($(".arrivespan").filter(":contains('양천구')")).show();
+							
+					}else if(spoint == "서울시 강동구" && apoint == "서울시 영등포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강동구')")).has($(".arrivespan").filter(":contains('영등포구')")).show();
+							
+					}else if(spoint == "서울시 강동구" && apoint == "서울시 용산구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강동구')")).has($(".arrivespan").filter(":contains('용산구')")).show();
+							
+					}else if(spoint == "서울시 강동구" && apoint == "서울시 은평구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강동구')")).has($(".arrivespan").filter(":contains('은평구')")).show();
+							
+					}else if(spoint == "서울시 강동구" && apoint == "서울시 종로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강동구')")).has($(".arrivespan").filter(":contains('종로구')")).show();
+							
+					}else if(spoint == "서울시 강동구" && apoint == "서울시 중구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강동구')")).has($(".arrivespan").filter(":contains('중구')")).show();
+							
+					}else if(spoint == "서울시 강동구" && apoint == "서울시 중랑구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강동구')")).has($(".arrivespan").filter(":contains('중랑구')")).show();
+							
+					}else if(spoint == "서울시 강북구" && apoint == "서울시 강남구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('강남구')")).show();
+					
+					}else if(spoint == "서울시 강북구" && apoint == "서울시 강동구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('강동구')")).show();							
+					}else if(spoint == "서울시 강북구" && apoint == "서울시 강북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('강북구')")).show();
+							
+					}else if(spoint == "서울시 강북구" && apoint == "서울시 강서구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('강서구')")).show();
+							
+					}else if(spoint == "서울시 강북구" && apoint == "서울시 관악구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('관악구')")).show();
+							
+					}else if(spoint == "서울시 강북구" && apoint == "서울시 광진구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('광진구')")).show();
+							
+					}else if(spoint == "서울시 강북구" && apoint == "서울시 구로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('구로구')")).show();
+							
+					}else if(spoint == "서울시 강북구" && apoint == "서울시 금천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('금천구')")).show();
+							
+					}else if(spoint == "서울시 강북구" && apoint == "서울시 노원구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('노원구')")).show();
+							
+					}else if(spoint == "서울시 강북구" && apoint == "서울시 도봉구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('도봉구')")).show();
+							
+					}else if(spoint == "서울시 강북구" && apoint == "서울시 동대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('동대문구')")).show();
+							
+					}else if(spoint == "서울시 강북구" && apoint == "서울시 동작구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('동작구')")).show();
+							
+					}else if(spoint == "서울시 강북구" && apoint == "서울시 마포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('마포구')")).show();
+							
+					}else if(spoint == "서울시 강북구" && apoint == "서울시 서대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('서대문구')")).show();
+							
+					}else if(spoint == "서울시 강북구" && apoint == "서울시 서초구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('서초구')")).show();
+							
+					}else if(spoint == "서울시 강북구" && apoint == "서울시 성동구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('성동구')")).show();
+							
+					}else if(spoint == "서울시 강북구" && apoint == "서울시 성북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('성북구')")).show();
+							
+					}else if(spoint == "서울시 강북구" && apoint == "서울시 송파구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('송파구')")).show();
+							
+					}else if(spoint == "서울시 강북구" && apoint == "서울시 양천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('양천구')")).show();
+							
+					}else if(spoint == "서울시 강북구" && apoint == "서울시 영등포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('영등포구')")).show();
+							
+					}else if(spoint == "서울시 강북구" && apoint == "서울시 용산구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('용산구')")).show();
+							
+					}else if(spoint == "서울시 강북구" && apoint == "서울시 은평구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('은평구')")).show();
+							
+					}else if(spoint == "서울시 강북구" && apoint == "서울시 종로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('종로구')")).show();
+							
+					}else if(spoint == "서울시 강북구" && apoint == "서울시 중구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('중구')")).show();
+							
+					}else if(spoint == "서울시 강북구" && apoint == "서울시 중랑구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강북구')")).has($(".arrivespan").filter(":contains('중랑구')")).show();							
+					}else if(spoint == "서울시 강서구" && apoint == "서울시 강남구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('강서구')")).has($(".arrivespan").filter(":contains('강남구')")).show();
+					
+					}else if(spoint == "서울시 강서구" && apoint == "서울시 강동구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('강서구')")).has($(".arrivespan").filter(":contains('강동구')")).show();							
+					}else if(spoint == "서울시 강서구" && apoint == "서울시 강북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강서구')")).has($(".arrivespan").filter(":contains('강북구')")).show();
+							
+					}else if(spoint == "서울시 강서구" && apoint == "서울시 강서구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강서구')")).has($(".arrivespan").filter(":contains('강서구')")).show();
+							
+					}else if(spoint == "서울시 강서구" && apoint == "서울시 관악구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강서구')")).has($(".arrivespan").filter(":contains('관악구')")).show();
+							
+					}else if(spoint == "서울시 강서구" && apoint == "서울시 광진구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강서구')")).has($(".arrivespan").filter(":contains('광진구')")).show();
+							
+					}else if(spoint == "서울시 강서구" && apoint == "서울시 구로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강서구')")).has($(".arrivespan").filter(":contains('구로구')")).show();
+							
+					}else if(spoint == "서울시 강서구" && apoint == "서울시 금천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강서구')")).has($(".arrivespan").filter(":contains('금천구')")).show();
+							
+					}else if(spoint == "서울시 강서구" && apoint == "서울시 노원구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강서구')")).has($(".arrivespan").filter(":contains('노원구')")).show();
+							
+					}else if(spoint == "서울시 강서구" && apoint == "서울시 도봉구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강서구')")).has($(".arrivespan").filter(":contains('도봉구')")).show();
+							
+					}else if(spoint == "서울시 강서구" && apoint == "서울시 동대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강서구')")).has($(".arrivespan").filter(":contains('동대문구')")).show();
+							
+					}else if(spoint == "서울시 강서구" && apoint == "서울시 동작구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강서구')")).has($(".arrivespan").filter(":contains('동작구')")).show();
+							
+					}else if(spoint == "서울시 강서구" && apoint == "서울시 마포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강서구')")).has($(".arrivespan").filter(":contains('마포구')")).show();
+							
+					}else if(spoint == "서울시 강서구" && apoint == "서울시 서대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강서구')")).has($(".arrivespan").filter(":contains('서대문구')")).show();
+							
+					}else if(spoint == "서울시 강서구" && apoint == "서울시 서초구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강서구')")).has($(".arrivespan").filter(":contains('서초구')")).show();
+							
+					}else if(spoint == "서울시 강서구" && apoint == "서울시 성동구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강서구')")).has($(".arrivespan").filter(":contains('성동구')")).show();
+							
+					}else if(spoint == "서울시 강서구" && apoint == "서울시 성북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강서구')")).has($(".arrivespan").filter(":contains('성북구')")).show();
+							
+					}else if(spoint == "서울시 강서구" && apoint == "서울시 송파구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강서구')")).has($(".arrivespan").filter(":contains('송파구')")).show();
+							
+					}else if(spoint == "서울시 강서구" && apoint == "서울시 양천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강서구')")).has($(".arrivespan").filter(":contains('양천구')")).show();
+							
+					}else if(spoint == "서울시 강서구" && apoint == "서울시 영등포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강서구')")).has($(".arrivespan").filter(":contains('영등포구')")).show();
+							
+					}else if(spoint == "서울시 강서구" && apoint == "서울시 용산구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강서구')")).has($(".arrivespan").filter(":contains('용산구')")).show();
+							
+					}else if(spoint == "서울시 강서구" && apoint == "서울시 은평구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강서구')")).has($(".arrivespan").filter(":contains('은평구')")).show();
+							
+					}else if(spoint == "서울시 강서구" && apoint == "서울시 종로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강서구')")).has($(".arrivespan").filter(":contains('종로구')")).show();
+							
+					}else if(spoint == "서울시 강서구" && apoint == "서울시 중구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강서구')")).has($(".arrivespan").filter(":contains('중구')")).show();
+							
+					}else if(spoint == "서울시 강서구" && apoint == "서울시 중랑구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('강서구')")).has($(".arrivespan").filter(":contains('중랑구')")).show();							
+				
+					}else if(spoint == "서울시 관악구" && apoint == "서울시 강남구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('관악구')")).has($(".arrivespan").filter(":contains('강남구')")).show();	
+					
+					}else if(spoint == "서울시 관악구" && apoint == "서울시 강동구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('관악구')")).has($(".arrivespan").filter(":contains('강동구')")).show();							
+					}else if(spoint == "서울시 관악구" && apoint == "서울시 강북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('관악구')")).has($(".arrivespan").filter(":contains('강북구')")).show();
+							
+					}else if(spoint == "서울시 관악구" && apoint == "서울시 강서구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('관악구')")).has($(".arrivespan").filter(":contains('강서구')")).show();
+							
+					}else if(spoint == "서울시 관악구" && apoint == "서울시 관악구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('관악구')")).has($(".arrivespan").filter(":contains('관악구')")).show();
+							
+					}else if(spoint == "서울시 관악구" && apoint == "서울시 광진구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('관악구')")).has($(".arrivespan").filter(":contains('광진구')")).show();
+							
+					}else if(spoint == "서울시 관악구" && apoint == "서울시 구로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('관악구')")).has($(".arrivespan").filter(":contains('구로구')")).show();
+							
+					}else if(spoint == "서울시 관악구" && apoint == "서울시 금천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('관악구')")).has($(".arrivespan").filter(":contains('금천구')")).show();
+							
+					}else if(spoint == "서울시 관악구" && apoint == "서울시 노원구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('관악구')")).has($(".arrivespan").filter(":contains('노원구')")).show();
+							
+					}else if(spoint == "서울시 관악구" && apoint == "서울시 도봉구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('관악구')")).has($(".arrivespan").filter(":contains('도봉구')")).show();
+							
+					}else if(spoint == "서울시 관악구" && apoint == "서울시 동대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('관악구')")).has($(".arrivespan").filter(":contains('동대문구')")).show();
+							
+					}else if(spoint == "서울시 관악구" && apoint == "서울시 동작구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('관악구')")).has($(".arrivespan").filter(":contains('동작구')")).show();
+							
+					}else if(spoint == "서울시 관악구" && apoint == "서울시 마포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('관악구')")).has($(".arrivespan").filter(":contains('마포구')")).show();
+							
+					}else if(spoint == "서울시 관악구" && apoint == "서울시 서대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('관악구')")).has($(".arrivespan").filter(":contains('서대문구')")).show();
+							
+					}else if(spoint == "서울시 관악구" && apoint == "서울시 서초구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('관악구')")).has($(".arrivespan").filter(":contains('서초구')")).show();
+							
+					}else if(spoint == "서울시 관악구" && apoint == "서울시 성동구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('관악구')")).has($(".arrivespan").filter(":contains('성동구')")).show();
+							
+					}else if(spoint == "서울시 관악구" && apoint == "서울시 성북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('관악구')")).has($(".arrivespan").filter(":contains('성북구')")).show();
+							
+					}else if(spoint == "서울시 관악구" && apoint == "서울시 송파구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('관악구')")).has($(".arrivespan").filter(":contains('송파구')")).show();
+							
+					}else if(spoint == "서울시 관악구" && apoint == "서울시 양천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('관악구')")).has($(".arrivespan").filter(":contains('양천구')")).show();
+							
+					}else if(spoint == "서울시 관악구" && apoint == "서울시 영등포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('관악구')")).has($(".arrivespan").filter(":contains('영등포구')")).show();
+							
+					}else if(spoint == "서울시 관악구" && apoint == "서울시 용산구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('관악구')")).has($(".arrivespan").filter(":contains('용산구')")).show();
+							
+					}else if(spoint == "서울시 관악구" && apoint == "서울시 은평구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('관악구')")).has($(".arrivespan").filter(":contains('은평구')")).show();
+							
+					}else if(spoint == "서울시 관악구" && apoint == "서울시 종로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('관악구')")).has($(".arrivespan").filter(":contains('종로구')")).show();
+							
+					}else if(spoint == "서울시 관악구" && apoint == "서울시 중구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('관악구')")).has($(".arrivespan").filter(":contains('중구')")).show();
+							
+					}else if(spoint == "서울시 관악구" && apoint == "서울시 중랑구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('관악구')")).has($(".arrivespan").filter(":contains('중랑구')")).show();							
+					}else if(spoint == "서울시 광진구" && apoint == "서울시 강남구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('광진구')")).has($(".arrivespan").filter(":contains('강남구')")).show();
+					
+					}else if(spoint == "서울시 광진구" && apoint == "서울시 강동구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('광진구')")).has($(".arrivespan").filter(":contains('강동구')")).show();							
+					}else if(spoint == "서울시 광진구" && apoint == "서울시 강북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('광진구')")).has($(".arrivespan").filter(":contains('강북구')")).show();
+							
+					}else if(spoint == "서울시 광진구" && apoint == "서울시 강서구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('광진구')")).has($(".arrivespan").filter(":contains('강서구')")).show();
+							
+					}else if(spoint == "서울시 광진구" && apoint == "서울시 관악구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('광진구')")).has($(".arrivespan").filter(":contains('관악구')")).show();
+							
+					}else if(spoint == "서울시 광진구" && apoint == "서울시 광진구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('광진구')")).has($(".arrivespan").filter(":contains('광진구')")).show();
+							
+					}else if(spoint == "서울시 광진구" && apoint == "서울시 구로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('광진구')")).has($(".arrivespan").filter(":contains('구로구')")).show();
+							
+					}else if(spoint == "서울시 광진구" && apoint == "서울시 금천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('광진구')")).has($(".arrivespan").filter(":contains('금천구')")).show();
+							
+					}else if(spoint == "서울시 광진구" && apoint == "서울시 노원구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('광진구')")).has($(".arrivespan").filter(":contains('노원구')")).show();
+							
+					}else if(spoint == "서울시 광진구" && apoint == "서울시 도봉구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('광진구')")).has($(".arrivespan").filter(":contains('도봉구')")).show();
+							
+					}else if(spoint == "서울시 광진구" && apoint == "서울시 동대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('광진구')")).has($(".arrivespan").filter(":contains('동대문구')")).show();
+							
+					}else if(spoint == "서울시 광진구" && apoint == "서울시 동작구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('광진구')")).has($(".arrivespan").filter(":contains('동작구')")).show();
+							
+					}else if(spoint == "서울시 광진구" && apoint == "서울시 마포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('광진구')")).has($(".arrivespan").filter(":contains('마포구')")).show();
+							
+					}else if(spoint == "서울시 광진구" && apoint == "서울시 서대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('광진구')")).has($(".arrivespan").filter(":contains('서대문구')")).show();
+							
+					}else if(spoint == "서울시 광진구" && apoint == "서울시 서초구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('광진구')")).has($(".arrivespan").filter(":contains('서초구')")).show();
+							
+					}else if(spoint == "서울시 광진구" && apoint == "서울시 성동구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('광진구')")).has($(".arrivespan").filter(":contains('성동구')")).show();
+							
+					}else if(spoint == "서울시 광진구" && apoint == "서울시 성북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('광진구')")).has($(".arrivespan").filter(":contains('성북구')")).show();
+							
+					}else if(spoint == "서울시 광진구" && apoint == "서울시 송파구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('광진구')")).has($(".arrivespan").filter(":contains('송파구')")).show();
+							
+					}else if(spoint == "서울시 광진구" && apoint == "서울시 양천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('광진구')")).has($(".arrivespan").filter(":contains('양천구')")).show();
+							
+					}else if(spoint == "서울시 광진구" && apoint == "서울시 영등포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('광진구')")).has($(".arrivespan").filter(":contains('영등포구')")).show();
+							
+					}else if(spoint == "서울시 광진구" && apoint == "서울시 용산구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('광진구')")).has($(".arrivespan").filter(":contains('용산구')")).show();
+							
+					}else if(spoint == "서울시 광진구" && apoint == "서울시 은평구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('광진구')")).has($(".arrivespan").filter(":contains('은평구')")).show();
+							
+					}else if(spoint == "서울시 광진구" && apoint == "서울시 종로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('광진구')")).has($(".arrivespan").filter(":contains('종로구')")).show();
+							
+					}else if(spoint == "서울시 광진구" && apoint == "서울시 중구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('광진구')")).has($(".arrivespan").filter(":contains('중구')")).show();
+							
+					}else if(spoint == "서울시 광진구" && apoint == "서울시 중랑구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('광진구')")).has($(".arrivespan").filter(":contains('중랑구')")).show();							
+					}else if(spoint == "서울시 구로구" && apoint == "서울시 강남구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('구로구')")).has($(".arrivespan").filter(":contains('강남구')")).show();
+					
+					}else if(spoint == "서울시 구로구" && apoint == "서울시 강동구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('구로구')")).has($(".arrivespan").filter(":contains('강동구')")).show();							
+					}else if(spoint == "서울시 구로구" && apoint == "서울시 강북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('구로구')")).has($(".arrivespan").filter(":contains('강북구')")).show();
+							
+					}else if(spoint == "서울시 구로구" && apoint == "서울시 강서구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('구로구')")).has($(".arrivespan").filter(":contains('강서구')")).show();
+							
+					}else if(spoint == "서울시 구로구" && apoint == "서울시 관악구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('구로구')")).has($(".arrivespan").filter(":contains('관악구')")).show();
+							
+					}else if(spoint == "서울시 구로구" && apoint == "서울시 광진구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('구로구')")).has($(".arrivespan").filter(":contains('광진구')")).show();
+							
+					}else if(spoint == "서울시 구로구" && apoint == "서울시 구로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('구로구')")).has($(".arrivespan").filter(":contains('구로구')")).show();
+							
+					}else if(spoint == "서울시 구로구" && apoint == "서울시 금천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('구로구')")).has($(".arrivespan").filter(":contains('금천구')")).show();
+							
+					}else if(spoint == "서울시 구로구" && apoint == "서울시 노원구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('구로구')")).has($(".arrivespan").filter(":contains('노원구')")).show();
+							
+					}else if(spoint == "서울시 구로구" && apoint == "서울시 도봉구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('구로구')")).has($(".arrivespan").filter(":contains('도봉구')")).show();
+							
+					}else if(spoint == "서울시 구로구" && apoint == "서울시 동대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('구로구')")).has($(".arrivespan").filter(":contains('동대문구')")).show();
+							
+					}else if(spoint == "서울시 구로구" && apoint == "서울시 동작구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('구로구')")).has($(".arrivespan").filter(":contains('동작구')")).show();
+							
+					}else if(spoint == "서울시 구로구" && apoint == "서울시 마포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('구로구')")).has($(".arrivespan").filter(":contains('마포구')")).show();
+							
+					}else if(spoint == "서울시 구로구" && apoint == "서울시 서대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('구로구')")).has($(".arrivespan").filter(":contains('서대문구')")).show();
+							
+					}else if(spoint == "서울시 구로구" && apoint == "서울시 서초구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('구로구')")).has($(".arrivespan").filter(":contains('서초구')")).show();
+							
+					}else if(spoint == "서울시 구로구" && apoint == "서울시 성동구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('구로구')")).has($(".arrivespan").filter(":contains('성동구')")).show();
+							
+					}else if(spoint == "서울시 구로구" && apoint == "서울시 성북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('구로구')")).has($(".arrivespan").filter(":contains('성북구')")).show();
+							
+					}else if(spoint == "서울시 구로구" && apoint == "서울시 송파구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('구로구')")).has($(".arrivespan").filter(":contains('송파구')")).show();
+							
+					}else if(spoint == "서울시 구로구" && apoint == "서울시 양천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('구로구')")).has($(".arrivespan").filter(":contains('양천구')")).show();
+							
+					}else if(spoint == "서울시 구로구" && apoint == "서울시 영등포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('구로구')")).has($(".arrivespan").filter(":contains('영등포구')")).show();
+							
+					}else if(spoint == "서울시 구로구" && apoint == "서울시 용산구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('구로구')")).has($(".arrivespan").filter(":contains('용산구')")).show();
+							
+					}else if(spoint == "서울시 구로구" && apoint == "서울시 은평구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('구로구')")).has($(".arrivespan").filter(":contains('은평구')")).show();
+							
+					}else if(spoint == "서울시 구로구" && apoint == "서울시 종로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('구로구')")).has($(".arrivespan").filter(":contains('종로구')")).show();
+							
+					}else if(spoint == "서울시 구로구" && apoint == "서울시 중구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('구로구')")).has($(".arrivespan").filter(":contains('중구')")).show();
+							
+					}else if(spoint == "서울시 구로구" && apoint == "서울시 중랑구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('구로구')")).has($(".arrivespan").filter(":contains('중랑구')")).show();							
+					}else if(spoint == "서울시 금천구" && apoint == "서울시 강남구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('금천구')")).has($(".arrivespan").filter(":contains('강남구')")).show();
+					
+					}else if(spoint == "서울시 금천구" && apoint == "서울시 강동구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('금천구')")).has($(".arrivespan").filter(":contains('강동구')")).show();							
+					}else if(spoint == "서울시 금천구" && apoint == "서울시 강북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('금천구')")).has($(".arrivespan").filter(":contains('강북구')")).show();
+							
+					}else if(spoint == "서울시 금천구" && apoint == "서울시 강서구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('금천구')")).has($(".arrivespan").filter(":contains('강서구')")).show();
+							
+					}else if(spoint == "서울시 금천구" && apoint == "서울시 관악구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('금천구')")).has($(".arrivespan").filter(":contains('관악구')")).show();
+							
+					}else if(spoint == "서울시 금천구" && apoint == "서울시 광진구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('금천구')")).has($(".arrivespan").filter(":contains('광진구')")).show();
+							
+					}else if(spoint == "서울시 금천구" && apoint == "서울시 구로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('금천구')")).has($(".arrivespan").filter(":contains('구로구')")).show();
+							
+					}else if(spoint == "서울시 금천구" && apoint == "서울시 금천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('금천구')")).has($(".arrivespan").filter(":contains('금천구')")).show();
+							
+					}else if(spoint == "서울시 금천구" && apoint == "서울시 노원구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('금천구')")).has($(".arrivespan").filter(":contains('노원구')")).show();
+							
+					}else if(spoint == "서울시 금천구" && apoint == "서울시 도봉구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('금천구')")).has($(".arrivespan").filter(":contains('도봉구')")).show();
+							
+					}else if(spoint == "서울시 금천구" && apoint == "서울시 동대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('금천구')")).has($(".arrivespan").filter(":contains('동대문구')")).show();
+						
+					}else if(spoint == "서울시 금천구" && apoint == "서울시 동작구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('금천구')")).has($(".arrivespan").filter(":contains('동작구')")).show();
+							
+					}else if(spoint == "서울시 금천구" && apoint == "서울시 마포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('금천구')")).has($(".arrivespan").filter(":contains('마포구')")).show();
+							
+					}else if(spoint == "서울시 금천구" && apoint == "서울시 서대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('금천구')")).has($(".arrivespan").filter(":contains('서대문구')")).show();
+							
+					}else if(spoint == "서울시 금천구" && apoint == "서울시 서초구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('금천구')")).has($(".arrivespan").filter(":contains('서초구')")).show();
+							
+					}else if(spoint == "서울시 금천구" && apoint == "서울시 성동구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('금천구')")).has($(".arrivespan").filter(":contains('성동구')")).show();
+							
+					}else if(spoint == "서울시 금천구" && apoint == "서울시 성북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('금천구')")).has($(".arrivespan").filter(":contains('성북구')")).show();
+							
+					}else if(spoint == "서울시 금천구" && apoint == "서울시 송파구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('금천구')")).has($(".arrivespan").filter(":contains('송파구')")).show();
+							
+					}else if(spoint == "서울시 금천구" && apoint == "서울시 양천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('금천구')")).has($(".arrivespan").filter(":contains('양천구')")).show();
+						
+					}else if(spoint == "서울시 금천구" && apoint == "서울시 영등포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('금천구')")).has($(".arrivespan").filter(":contains('영등포구')")).show();
+							
+					}else if(spoint == "서울시 금천구" && apoint == "서울시 용산구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('금천구')")).has($(".arrivespan").filter(":contains('용산구')")).show();
+							
+					}else if(spoint == "서울시 금천구" && apoint == "서울시 은평구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('금천구')")).has($(".arrivespan").filter(":contains('은평구')")).show();
+							
+					}else if(spoint == "서울시 금천구" && apoint == "서울시 종로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('금천구')")).has($(".arrivespan").filter(":contains('종로구')")).show();
+							
+					}else if(spoint == "서울시 금천구" && apoint == "서울시 중구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('금천구')")).has($(".arrivespan").filter(":contains('중구')")).show();
+							
+					}else if(spoint == "서울시 금천구" && apoint == "서울시 중랑구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('금천구')")).has($(".arrivespan").filter(":contains('중랑구')")).show();							
+					
+					}else if(spoint == "서울시 노원구" && apoint == "서울시 강남구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('노원구')")).has($(".arrivespan").filter(":contains('강남구')")).show();
+					
+					}else if(spoint == "서울시 노원구" && apoint == "서울시 강동구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('노원구')")).has($(".arrivespan").filter(":contains('강동구')")).show();							
+					}else if(spoint == "서울시 노원구" && apoint == "서울시 강북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('노원구')")).has($(".arrivespan").filter(":contains('강북구')")).show();
+							
+					}else if(spoint == "서울시 노원구" && apoint == "서울시 강서구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('노원구')")).has($(".arrivespan").filter(":contains('강서구')")).show();
+							
+					}else if(spoint == "서울시 노원구" && apoint == "서울시 관악구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('노원구')")).has($(".arrivespan").filter(":contains('관악구')")).show();
+							
+					}else if(spoint == "서울시 노원구" && apoint == "서울시 광진구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('노원구')")).has($(".arrivespan").filter(":contains('광진구')")).show();
+							
+					}else if(spoint == "서울시 노원구" && apoint == "서울시 구로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('노원구')")).has($(".arrivespan").filter(":contains('구로구')")).show();
+							
+					}else if(spoint == "서울시 노원구" && apoint == "서울시 금천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('노원구')")).has($(".arrivespan").filter(":contains('금천구')")).show();
+							
+					}else if(spoint == "서울시 노원구" && apoint == "서울시 노원구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('노원구')")).has($(".arrivespan").filter(":contains('노원구')")).show();
+							
+					}else if(spoint == "서울시 노원구" && apoint == "서울시 도봉구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('노원구')")).has($(".arrivespan").filter(":contains('도봉구')")).show();
+							
+					}else if(spoint == "서울시 노원구" && apoint == "서울시 동대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('노원구')")).has($(".arrivespan").filter(":contains('동대문구')")).show();
+							
+					}else if(spoint == "서울시 노원구" && apoint == "서울시 동작구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('노원구')")).has($(".arrivespan").filter(":contains('동작구')")).show();
+							
+					}else if(spoint == "서울시 노원구" && apoint == "서울시 마포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('노원구')")).has($(".arrivespan").filter(":contains('마포구')")).show();
+							
+					}else if(spoint == "서울시 노원구" && apoint == "서울시 서대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('노원구')")).has($(".arrivespan").filter(":contains('서대문구')")).show();
+							
+					}else if(spoint == "서울시 노원구" && apoint == "서울시 서초구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('노원구')")).has($(".arrivespan").filter(":contains('서초구')")).show();
+							
+					}else if(spoint == "서울시 노원구" && apoint == "서울시 성동구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('노원구')")).has($(".arrivespan").filter(":contains('성동구')")).show();
+							
+					}else if(spoint == "서울시 노원구" && apoint == "서울시 성북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('노원구')")).has($(".arrivespan").filter(":contains('성북구')")).show();
+							
+					}else if(spoint == "서울시 노원구" && apoint == "서울시 송파구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('노원구')")).has($(".arrivespan").filter(":contains('송파구')")).show();
+							
+					}else if(spoint == "서울시 노원구" && apoint == "서울시 양천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('노원구')")).has($(".arrivespan").filter(":contains('양천구')")).show();
+							
+					}else if(spoint == "서울시 노원구" && apoint == "서울시 영등포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('노원구')")).has($(".arrivespan").filter(":contains('영등포구')")).show();
+						
+					}else if(spoint == "서울시 노원구" && apoint == "서울시 용산구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('노원구')")).has($(".arrivespan").filter(":contains('용산구')")).show();
+							
+					}else if(spoint == "서울시 노원구" && apoint == "서울시 은평구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('노원구')")).has($(".arrivespan").filter(":contains('은평구')")).show();
+							
+					}else if(spoint == "서울시 노원구" && apoint == "서울시 종로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('노원구')")).has($(".arrivespan").filter(":contains('종로구')")).show();
+							
+					}else if(spoint == "서울시 노원구" && apoint == "서울시 중구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('노원구')")).has($(".arrivespan").filter(":contains('중구')")).show();
+							
+					}else if(spoint == "서울시 노원구" && apoint == "서울시 중랑구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('노원구')")).has($(".arrivespan").filter(":contains('중랑구')")).show();							
+					}else if(spoint == "서울시 도봉구" && apoint == "서울시 강남구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('도봉구')")).has($(".arrivespan").filter(":contains('강남구')")).show();
+					
+					}else if(spoint == "서울시 도봉구" && apoint == "서울시 강동구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('도봉구')")).has($(".arrivespan").filter(":contains('강동구')")).show();							
+					}else if(spoint == "서울시 도봉구" && apoint == "서울시 강북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('도봉구')")).has($(".arrivespan").filter(":contains('강북구')")).show();
+							
+					}else if(spoint == "서울시 도봉구" && apoint == "서울시 강서구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('도봉구')")).has($(".arrivespan").filter(":contains('강서구')")).show();
+							
+					}else if(spoint == "서울시 도봉구" && apoint == "서울시 관악구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('도봉구')")).has($(".arrivespan").filter(":contains('관악구')")).show();
+							
+					}else if(spoint == "서울시 도봉구" && apoint == "서울시 광진구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('도봉구')")).has($(".arrivespan").filter(":contains('광진구')")).show();
+							
+					}else if(spoint == "서울시 도봉구" && apoint == "서울시 구로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('도봉구')")).has($(".arrivespan").filter(":contains('구로구')")).show();
+							
+					}else if(spoint == "서울시 도봉구" && apoint == "서울시 금천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('도봉구')")).has($(".arrivespan").filter(":contains('금천구')")).show();
+							
+					}else if(spoint == "서울시 도봉구" && apoint == "서울시 노원구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('도봉구')")).has($(".arrivespan").filter(":contains('노원구')")).show();
+							
+					}else if(spoint == "서울시 도봉구" && apoint == "서울시 도봉구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('도봉구')")).has($(".arrivespan").filter(":contains('도봉구')")).show();
+							
+					}else if(spoint == "서울시 도봉구" && apoint == "서울시 동대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('도봉구')")).has($(".arrivespan").filter(":contains('동대문구')")).show();
+							
+					}else if(spoint == "서울시 도봉구" && apoint == "서울시 동작구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('도봉구')")).has($(".arrivespan").filter(":contains('동작구')")).show();
+							
+					}else if(spoint == "서울시 도봉구" && apoint == "서울시 마포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('도봉구')")).has($(".arrivespan").filter(":contains('마포구')")).show();
+							
+					}else if(spoint == "서울시 도봉구" && apoint == "서울시 서대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('도봉구')")).has($(".arrivespan").filter(":contains('서대문구')")).show();
+							
+					}else if(spoint == "서울시 도봉구" && apoint == "서울시 서초구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('도봉구')")).has($(".arrivespan").filter(":contains('서초구')")).show();
+							
+					}else if(spoint == "서울시 도봉구" && apoint == "서울시 성동구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('도봉구')")).has($(".arrivespan").filter(":contains('성동구')")).show();
+							
+					}else if(spoint == "서울시 도봉구" && apoint == "서울시 성북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('도봉구')")).has($(".arrivespan").filter(":contains('성북구')")).show();
+							
+					}else if(spoint == "서울시 도봉구" && apoint == "서울시 송파구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('도봉구')")).has($(".arrivespan").filter(":contains('송파구')")).show();
+							
+					}else if(spoint == "서울시 도봉구" && apoint == "서울시 양천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('도봉구')")).has($(".arrivespan").filter(":contains('양천구')")).show();
+							
+					}else if(spoint == "서울시 도봉구" && apoint == "서울시 영등포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('도봉구')")).has($(".arrivespan").filter(":contains('영등포구')")).show();
+							
+					}else if(spoint == "서울시 도봉구" && apoint == "서울시 용산구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('도봉구')")).has($(".arrivespan").filter(":contains('용산구')")).show();
+							
+					}else if(spoint == "서울시 도봉구" && apoint == "서울시 은평구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('도봉구')")).has($(".arrivespan").filter(":contains('은평구')")).show();
+							
+					}else if(spoint == "서울시 도봉구" && apoint == "서울시 종로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('도봉구')")).has($(".arrivespan").filter(":contains('종로구')")).show();
+							
+					}else if(spoint == "서울시 도봉구" && apoint == "서울시 중구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('도봉구')")).has($(".arrivespan").filter(":contains('중구')")).show();
+							
+					}else if(spoint == "서울시 도봉구" && apoint == "서울시 중랑구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('도봉구')")).has($(".arrivespan").filter(":contains('중랑구')")).show();							
+					}else if(spoint == "서울시 동대문구" && apoint == "서울시 강남구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('동대문구')")).has($(".arrivespan").filter(":contains('강남구')")).show();
+					
+					}else if(spoint == "서울시 동대문구" && apoint == "서울시 강동구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('동대문구')")).has($(".arrivespan").filter(":contains('강동구')")).show();							
+					}else if(spoint == "서울시 동대문구" && apoint == "서울시 강북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동대문구')")).has($(".arrivespan").filter(":contains('강북구')")).show();
+							
+					}else if(spoint == "서울시 동대문구" && apoint == "서울시 강서구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동대문구')")).has($(".arrivespan").filter(":contains('강서구')")).show();
+							
+					}else if(spoint == "서울시 동대문구" && apoint == "서울시 관악구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동대문구')")).has($(".arrivespan").filter(":contains('관악구')")).show();
+							
+					}else if(spoint == "서울시 동대문구" && apoint == "서울시 광진구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동대문구')")).has($(".arrivespan").filter(":contains('광진구')")).show();
+							
+					}else if(spoint == "서울시 동대문구" && apoint == "서울시 구로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동대문구')")).has($(".arrivespan").filter(":contains('구로구')")).show();
+							
+					}else if(spoint == "서울시 동대문구" && apoint == "서울시 금천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동대문구')")).has($(".arrivespan").filter(":contains('금천구')")).show();
+							
+					}else if(spoint == "서울시 동대문구" && apoint == "서울시 노원구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동대문구')")).has($(".arrivespan").filter(":contains('노원구')")).show();
+							
+					}else if(spoint == "서울시 동대문구" && apoint == "서울시 도봉구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동대문구')")).has($(".arrivespan").filter(":contains('도봉구')")).show();
+							
+					}else if(spoint == "서울시 동대문구" && apoint == "서울시 동대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동대문구')")).has($(".arrivespan").filter(":contains('동대문구')")).show();
+							
+					}else if(spoint == "서울시 동대문구" && apoint == "서울시 동작구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동대문구')")).has($(".arrivespan").filter(":contains('동작구')")).show();
+							
+					}else if(spoint == "서울시 동대문구" && apoint == "서울시 마포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동대문구')")).has($(".arrivespan").filter(":contains('마포구')")).show();
+							
+					}else if(spoint == "서울시 동대문구" && apoint == "서울시 서대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동대문구')")).has($(".arrivespan").filter(":contains('서대문구')")).show();
+							
+					}else if(spoint == "서울시 동대문구" && apoint == "서울시 서초구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동대문구')")).has($(".arrivespan").filter(":contains('서초구')")).show();
+							
+					}else if(spoint == "서울시 동대문구" && apoint == "서울시 성동구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동대문구')")).has($(".arrivespan").filter(":contains('성동구')")).show();
+							
+					}else if(spoint == "서울시 동대문구" && apoint == "서울시 성북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동대문구')")).has($(".arrivespan").filter(":contains('성북구')")).show();
+							
+					}else if(spoint == "서울시 동대문구" && apoint == "서울시 송파구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동대문구')")).has($(".arrivespan").filter(":contains('송파구')")).show();
+							
+					}else if(spoint == "서울시 동대문구" && apoint == "서울시 양천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동대문구')")).has($(".arrivespan").filter(":contains('양천구')")).show();
+							
+					}else if(spoint == "서울시 동대문구" && apoint == "서울시 영등포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동대문구')")).has($(".arrivespan").filter(":contains('영등포구')")).show();
+							
+					}else if(spoint == "서울시 동대문구" && apoint == "서울시 용산구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동대문구')")).has($(".arrivespan").filter(":contains('용산구')")).show();
+							
+					}else if(spoint == "서울시 동대문구" && apoint == "서울시 은평구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동대문구')")).has($(".arrivespan").filter(":contains('은평구')")).show();
+							
+					}else if(spoint == "서울시 동대문구" && apoint == "서울시 종로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동대문구')")).has($(".arrivespan").filter(":contains('종로구')")).show();
+							
+					}else if(spoint == "서울시 동대문구" && apoint == "서울시 중구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동대문구')")).has($(".arrivespan").filter(":contains('중구')")).show();
+							
+					}else if(spoint == "서울시 동대문구" && apoint == "서울시 중랑구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동대문구')")).has($(".arrivespan").filter(":contains('중랑구')")).show();							
+					}else if(spoint == "서울시 동작구" && apoint == "서울시 강남구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('동작구')")).has($(".arrivespan").filter(":contains('강남구')")).show();
+					
+					}else if(spoint == "서울시 동작구" && apoint == "서울시 강동구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('동작구')")).has($(".arrivespan").filter(":contains('강동구')")).show();							
+					}else if(spoint == "서울시 동작구" && apoint == "서울시 강북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동작구')")).has($(".arrivespan").filter(":contains('강북구')")).show();
+							
+					}else if(spoint == "서울시 동작구" && apoint == "서울시 강서구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동작구')")).has($(".arrivespan").filter(":contains('강서구')")).show();
+							
+					}else if(spoint == "서울시 동작구" && apoint == "서울시 관악구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동작구')")).has($(".arrivespan").filter(":contains('관악구')")).show();
+							
+					}else if(spoint == "서울시 동작구" && apoint == "서울시 광진구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동작구')")).has($(".arrivespan").filter(":contains('광진구')")).show();
+							
+					}else if(spoint == "서울시 동작구" && apoint == "서울시 구로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동작구')")).has($(".arrivespan").filter(":contains('구로구')")).show();
+							
+					}else if(spoint == "서울시 동작구" && apoint == "서울시 금천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동작구')")).has($(".arrivespan").filter(":contains('금천구')")).show();
+							
+					}else if(spoint == "서울시 동작구" && apoint == "서울시 노원구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동작구')")).has($(".arrivespan").filter(":contains('노원구')")).show();
+							
+					}else if(spoint == "서울시 동작구" && apoint == "서울시 도봉구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동작구')")).has($(".arrivespan").filter(":contains('도봉구')")).show();
+							
+					}else if(spoint == "서울시 동작구" && apoint == "서울시 동대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동작구')")).has($(".arrivespan").filter(":contains('동대문구')")).show();
+							
+					}else if(spoint == "서울시 동작구" && apoint == "서울시 동작구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동작구')")).has($(".arrivespan").filter(":contains('동작구')")).show();
+							
+					}else if(spoint == "서울시 동작구" && apoint == "서울시 마포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동작구')")).has($(".arrivespan").filter(":contains('마포구')")).show();
+							
+					}else if(spoint == "서울시 동작구" && apoint == "서울시 서대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동작구')")).has($(".arrivespan").filter(":contains('서대문구')")).show();
+							
+					}else if(spoint == "서울시 동작구" && apoint == "서울시 서초구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동작구')")).has($(".arrivespan").filter(":contains('서초구')")).show();
+							
+					}else if(spoint == "서울시 동작구" && apoint == "서울시 성동구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동작구')")).has($(".arrivespan").filter(":contains('성동구')")).show();
+							
+					}else if(spoint == "서울시 동작구" && apoint == "서울시 성북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동작구')")).has($(".arrivespan").filter(":contains('성북구')")).show();
+							
+					}else if(spoint == "서울시 동작구" && apoint == "서울시 송파구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동작구')")).has($(".arrivespan").filter(":contains('송파구')")).show();
+							
+					}else if(spoint == "서울시 동작구" && apoint == "서울시 양천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동작구')")).has($(".arrivespan").filter(":contains('양천구')")).show();
+							
+					}else if(spoint == "서울시 동작구" && apoint == "서울시 영등포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동작구')")).has($(".arrivespan").filter(":contains('영등포구')")).show();
+							
+					}else if(spoint == "서울시 동작구" && apoint == "서울시 용산구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동작구')")).has($(".arrivespan").filter(":contains('용산구')")).show();
+							
+					}else if(spoint == "서울시 동작구" && apoint == "서울시 은평구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동작구')")).has($(".arrivespan").filter(":contains('은평구')")).show();
+							
+					}else if(spoint == "서울시 동작구" && apoint == "서울시 종로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동작구')")).has($(".arrivespan").filter(":contains('종로구')")).show();
+							
+					}else if(spoint == "서울시 동작구" && apoint == "서울시 중구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동작구')")).has($(".arrivespan").filter(":contains('중구')")).show();
+							
+					}else if(spoint == "서울시 동작구" && apoint == "서울시 중랑구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('동작구')")).has($(".arrivespan").filter(":contains('중랑구')")).show();							
+					}else if(spoint == "서울시 마포구" && apoint == "서울시 강남구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('마포구')")).has($(".arrivespan").filter(":contains('강남구')")).show();
+					
+					}else if(spoint == "서울시 마포구" && apoint == "서울시 강동구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('마포구')")).has($(".arrivespan").filter(":contains('강동구')")).show();							
+					}else if(spoint == "서울시 마포구" && apoint == "서울시 강북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('마포구')")).has($(".arrivespan").filter(":contains('강북구')")).show();
+							
+					}else if(spoint == "서울시 마포구" && apoint == "서울시 강서구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('마포구')")).has($(".arrivespan").filter(":contains('강서구')")).show();
+							
+					}else if(spoint == "서울시 마포구" && apoint == "서울시 관악구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('마포구')")).has($(".arrivespan").filter(":contains('관악구')")).show();
+							
+					}else if(spoint == "서울시 마포구" && apoint == "서울시 광진구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('마포구')")).has($(".arrivespan").filter(":contains('광진구')")).show();
+							
+					}else if(spoint == "서울시 마포구" && apoint == "서울시 구로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('마포구')")).has($(".arrivespan").filter(":contains('구로구')")).show();
+							
+					}else if(spoint == "서울시 마포구" && apoint == "서울시 금천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('마포구')")).has($(".arrivespan").filter(":contains('금천구')")).show();
+							
+					}else if(spoint == "서울시 마포구" && apoint == "서울시 노원구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('마포구')")).has($(".arrivespan").filter(":contains('노원구')")).show();
+							
+					}else if(spoint == "서울시 마포구" && apoint == "서울시 도봉구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('마포구')")).has($(".arrivespan").filter(":contains('도봉구')")).show();
+							
+					}else if(spoint == "서울시 마포구" && apoint == "서울시 동대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('마포구')")).has($(".arrivespan").filter(":contains('동대문구')")).show();
+							
+					}else if(spoint == "서울시 마포구" && apoint == "서울시 동작구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('마포구')")).has($(".arrivespan").filter(":contains('동작구')")).show();
+							
+					}else if(spoint == "서울시 마포구" && apoint == "서울시 마포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('마포구')")).has($(".arrivespan").filter(":contains('마포구')")).show();
+							
+					}else if(spoint == "서울시 마포구" && apoint == "서울시 서대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('마포구')")).has($(".arrivespan").filter(":contains('서대문구')")).show();
+							
+					}else if(spoint == "서울시 마포구" && apoint == "서울시 서초구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('마포구')")).has($(".arrivespan").filter(":contains('서초구')")).show();
+							
+					}else if(spoint == "서울시 마포구" && apoint == "서울시 성동구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('마포구')")).has($(".arrivespan").filter(":contains('성동구')")).show();
+							
+					}else if(spoint == "서울시 마포구" && apoint == "서울시 성북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('마포구')")).has($(".arrivespan").filter(":contains('성북구')")).show();
+							
+					}else if(spoint == "서울시 마포구" && apoint == "서울시 송파구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('마포구')")).has($(".arrivespan").filter(":contains('송파구')")).show();
+							
+					}else if(spoint == "서울시 마포구" && apoint == "서울시 양천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('마포구')")).has($(".arrivespan").filter(":contains('양천구')")).show();
+							
+					}else if(spoint == "서울시 마포구" && apoint == "서울시 영등포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('마포구')")).has($(".arrivespan").filter(":contains('영등포구')")).show();
+							
+					}else if(spoint == "서울시 마포구" && apoint == "서울시 용산구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('마포구')")).has($(".arrivespan").filter(":contains('용산구')")).show();
+							
+					}else if(spoint == "서울시 마포구" && apoint == "서울시 은평구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('마포구')")).has($(".arrivespan").filter(":contains('은평구')")).show();
+							
+					}else if(spoint == "서울시 마포구" && apoint == "서울시 종로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('마포구')")).has($(".arrivespan").filter(":contains('종로구')")).show();
+							
+					}else if(spoint == "서울시 마포구" && apoint == "서울시 중구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('마포구')")).has($(".arrivespan").filter(":contains('중구')")).show();
+							
+					}else if(spoint == "서울시 마포구" && apoint == "서울시 중랑구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('마포구')")).has($(".arrivespan").filter(":contains('중랑구')")).show();							
+						
+					}else if(spoint == "서울시 서대문구" && apoint == "서울시 강남구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('서대문구')")).has($(".arrivespan").filter(":contains('강남구')")).show();
+					
+					}else if(spoint == "서울시 서대문구" && apoint == "서울시 강동구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('서대문구')")).has($(".arrivespan").filter(":contains('강동구')")).show();							
+					}else if(spoint == "서울시 서대문구" && apoint == "서울시 강북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서대문구')")).has($(".arrivespan").filter(":contains('강북구')")).show();
+							
+					}else if(spoint == "서울시 서대문구" && apoint == "서울시 강서구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서대문구')")).has($(".arrivespan").filter(":contains('강서구')")).show();
+							
+					}else if(spoint == "서울시 서대문구" && apoint == "서울시 관악구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서대문구')")).has($(".arrivespan").filter(":contains('관악구')")).show();
+							
+					}else if(spoint == "서울시 서대문구" && apoint == "서울시 광진구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서대문구')")).has($(".arrivespan").filter(":contains('광진구')")).show();
+							
+					}else if(spoint == "서울시 서대문구" && apoint == "서울시 구로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서대문구')")).has($(".arrivespan").filter(":contains('구로구')")).show();
+							
+					}else if(spoint == "서울시 서대문구" && apoint == "서울시 금천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서대문구')")).has($(".arrivespan").filter(":contains('금천구')")).show();
+							
+					}else if(spoint == "서울시 서대문구" && apoint == "서울시 노원구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서대문구')")).has($(".arrivespan").filter(":contains('노원구')")).show();
+							
+					}else if(spoint == "서울시 서대문구" && apoint == "서울시 도봉구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서대문구')")).has($(".arrivespan").filter(":contains('도봉구')")).show();
+							
+					}else if(spoint == "서울시 서대문구" && apoint == "서울시 동대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서대문구')")).has($(".arrivespan").filter(":contains('동대문구')")).show();
+							
+					}else if(spoint == "서울시 서대문구" && apoint == "서울시 동작구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서대문구')")).has($(".arrivespan").filter(":contains('동작구')")).show();
+							
+					}else if(spoint == "서울시 서대문구" && apoint == "서울시 마포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서대문구')")).has($(".arrivespan").filter(":contains('마포구')")).show();
+							
+					}else if(spoint == "서울시 서대문구" && apoint == "서울시 서대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서대문구')")).has($(".arrivespan").filter(":contains('서대문구')")).show();
+							
+					}else if(spoint == "서울시 서대문구" && apoint == "서울시 서초구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서대문구')")).has($(".arrivespan").filter(":contains('서초구')")).show();
+							
+					}else if(spoint == "서울시 서대문구" && apoint == "서울시 성동구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서대문구')")).has($(".arrivespan").filter(":contains('성동구')")).show();
+							
+					}else if(spoint == "서울시 서대문구" && apoint == "서울시 성북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서대문구')")).has($(".arrivespan").filter(":contains('성북구')")).show();
+							
+					}else if(spoint == "서울시 서대문구" && apoint == "서울시 송파구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서대문구')")).has($(".arrivespan").filter(":contains('송파구')")).show();
+							
+					}else if(spoint == "서울시 서대문구" && apoint == "서울시 양천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서대문구')")).has($(".arrivespan").filter(":contains('양천구')")).show();
+							
+					}else if(spoint == "서울시 서대문구" && apoint == "서울시 영등포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서대문구')")).has($(".arrivespan").filter(":contains('영등포구')")).show();
+							
+					}else if(spoint == "서울시 서대문구" && apoint == "서울시 용산구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서대문구')")).has($(".arrivespan").filter(":contains('용산구')")).show();
+							
+					}else if(spoint == "서울시 서대문구" && apoint == "서울시 은평구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서대문구')")).has($(".arrivespan").filter(":contains('은평구')")).show();
+							
+					}else if(spoint == "서울시 서대문구" && apoint == "서울시 종로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서대문구')")).has($(".arrivespan").filter(":contains('종로구')")).show();
+							
+					}else if(spoint == "서울시 서대문구" && apoint == "서울시 중구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서대문구')")).has($(".arrivespan").filter(":contains('중구')")).show();
+							
+					}else if(spoint == "서울시 서대문구" && apoint == "서울시 중랑구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서대문구')")).has($(".arrivespan").filter(":contains('중랑구')")).show();							
+					
+					}else if(spoint == "서울시 서초구" && apoint == "서울시 강남구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('서초구')")).has($(".arrivespan").filter(":contains('강남구')")).show();
+			
+					}else if(spoint == "서울시 서초구" && apoint == "서울시 강동구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('서초구')")).has($(".arrivespan").filter(":contains('강동구')")).show();							
+					}else if(spoint == "서울시 서초구" && apoint == "서울시 강북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서초구')")).has($(".arrivespan").filter(":contains('강북구')")).show();
+							
+					}else if(spoint == "서울시 서초구" && apoint == "서울시 강서구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서초구')")).has($(".arrivespan").filter(":contains('강서구')")).show();
+							
+					}else if(spoint == "서울시 서초구" && apoint == "서울시 관악구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서초구')")).has($(".arrivespan").filter(":contains('관악구')")).show();
+							
+					}else if(spoint == "서울시 서초구" && apoint == "서울시 광진구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서초구')")).has($(".arrivespan").filter(":contains('광진구')")).show();
+							
+					}else if(spoint == "서울시 서초구" && apoint == "서울시 구로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서초구')")).has($(".arrivespan").filter(":contains('구로구')")).show();
+							
+					}else if(spoint == "서울시 서초구" && apoint == "서울시 금천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서초구')")).has($(".arrivespan").filter(":contains('금천구')")).show();
+							
+					}else if(spoint == "서울시 서초구" && apoint == "서울시 노원구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서초구')")).has($(".arrivespan").filter(":contains('노원구')")).show();
+							
+					}else if(spoint == "서울시 서초구" && apoint == "서울시 도봉구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서초구')")).has($(".arrivespan").filter(":contains('도봉구')")).show();
+							
+					}else if(spoint == "서울시 서초구" && apoint == "서울시 동대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서초구')")).has($(".arrivespan").filter(":contains('동대문구')")).show();
+							
+					}else if(spoint == "서울시 서초구" && apoint == "서울시 동작구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서초구')")).has($(".arrivespan").filter(":contains('동작구')")).show();
+							
+					}else if(spoint == "서울시 서초구" && apoint == "서울시 마포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서초구')")).has($(".arrivespan").filter(":contains('마포구')")).show();
+							
+					}else if(spoint == "서울시 서초구" && apoint == "서울시 서대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서초구')")).has($(".arrivespan").filter(":contains('서대문구')")).show();
+							
+					}else if(spoint == "서울시 서초구" && apoint == "서울시 서초구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서초구')")).has($(".arrivespan").filter(":contains('서초구')")).show();
+							
+					}else if(spoint == "서울시 서초구" && apoint == "서울시 성동구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서초구')")).has($(".arrivespan").filter(":contains('성동구')")).show();
+							
+					}else if(spoint == "서울시 서초구" && apoint == "서울시 성북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서초구')")).has($(".arrivespan").filter(":contains('성북구')")).show();
+							
+					}else if(spoint == "서울시 서초구" && apoint == "서울시 송파구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서초구')")).has($(".arrivespan").filter(":contains('송파구')")).show();
+							
+					}else if(spoint == "서울시 서초구" && apoint == "서울시 양천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서초구')")).has($(".arrivespan").filter(":contains('양천구')")).show();
+							
+					}else if(spoint == "서울시 서초구" && apoint == "서울시 영등포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서초구')")).has($(".arrivespan").filter(":contains('영등포구')")).show();
+							
+					}else if(spoint == "서울시 서초구" && apoint == "서울시 용산구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서초구')")).has($(".arrivespan").filter(":contains('용산구')")).show();
+							
+					}else if(spoint == "서울시 서초구" && apoint == "서울시 은평구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서초구')")).has($(".arrivespan").filter(":contains('은평구')")).show();
+							
+					}else if(spoint == "서울시 서초구" && apoint == "서울시 종로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서초구')")).has($(".arrivespan").filter(":contains('종로구')")).show();
+							
+					}else if(spoint == "서울시 서초구" && apoint == "서울시 중구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서초구')")).has($(".arrivespan").filter(":contains('중구')")).show();
+							
+					}else if(spoint == "서울시 서초구" && apoint == "서울시 중랑구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('서초구')")).has($(".arrivespan").filter(":contains('중랑구')")).show();							
+					
+					}else if(spoint == "서울시 성동구" && apoint == "서울시 강남구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('성동구')")).has($(".arrivespan").filter(":contains('강남구')")).show();
+					
+					}else if(spoint == "서울시 성동구" && apoint == "서울시 강동구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('성동구')")).has($(".arrivespan").filter(":contains('강동구')")).show();							
+					}else if(spoint == "서울시 성동구" && apoint == "서울시 강북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성동구')")).has($(".arrivespan").filter(":contains('강북구')")).show();
+							
+					}else if(spoint == "서울시 성동구" && apoint == "서울시 강서구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성동구')")).has($(".arrivespan").filter(":contains('강서구')")).show();
+							
+					}else if(spoint == "서울시 성동구" && apoint == "서울시 관악구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성동구')")).has($(".arrivespan").filter(":contains('관악구')")).show();
+							
+					}else if(spoint == "서울시 성동구" && apoint == "서울시 광진구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성동구')")).has($(".arrivespan").filter(":contains('광진구')")).show();
+							
+					}else if(spoint == "서울시 성동구" && apoint == "서울시 구로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성동구')")).has($(".arrivespan").filter(":contains('구로구')")).show();
+							
+					}else if(spoint == "서울시 성동구" && apoint == "서울시 금천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성동구')")).has($(".arrivespan").filter(":contains('금천구')")).show();
+							
+					}else if(spoint == "서울시 성동구" && apoint == "서울시 노원구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성동구')")).has($(".arrivespan").filter(":contains('노원구')")).show();
+							
+					}else if(spoint == "서울시 성동구" && apoint == "서울시 도봉구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성동구')")).has($(".arrivespan").filter(":contains('도봉구')")).show();
+							
+					}else if(spoint == "서울시 성동구" && apoint == "서울시 동대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성동구')")).has($(".arrivespan").filter(":contains('동대문구')")).show();
+							
+					}else if(spoint == "서울시 성동구" && apoint == "서울시 동작구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성동구')")).has($(".arrivespan").filter(":contains('동작구')")).show();
+							
+					}else if(spoint == "서울시 성동구" && apoint == "서울시 마포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성동구')")).has($(".arrivespan").filter(":contains('마포구')")).show();
+							
+					}else if(spoint == "서울시 성동구" && apoint == "서울시 서대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성동구')")).has($(".arrivespan").filter(":contains('서대문구')")).show();
+							
+					}else if(spoint == "서울시 성동구" && apoint == "서울시 서초구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성동구')")).has($(".arrivespan").filter(":contains('서초구')")).show();
+							
+					}else if(spoint == "서울시 성동구" && apoint == "서울시 성동구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성동구')")).has($(".arrivespan").filter(":contains('성동구')")).show();
+							
+					}else if(spoint == "서울시 성동구" && apoint == "서울시 성북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성동구')")).has($(".arrivespan").filter(":contains('성북구')")).show();
+							
+					}else if(spoint == "서울시 성동구" && apoint == "서울시 송파구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성동구')")).has($(".arrivespan").filter(":contains('송파구')")).show();
+							
+					}else if(spoint == "서울시 성동구" && apoint == "서울시 양천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성동구')")).has($(".arrivespan").filter(":contains('양천구')")).show();
+							
+					}else if(spoint == "서울시 성동구" && apoint == "서울시 영등포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성동구')")).has($(".arrivespan").filter(":contains('영등포구')")).show();
+							
+					}else if(spoint == "서울시 성동구" && apoint == "서울시 용산구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성동구')")).has($(".arrivespan").filter(":contains('용산구')")).show();
+							
+					}else if(spoint == "서울시 성동구" && apoint == "서울시 은평구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성동구')")).has($(".arrivespan").filter(":contains('은평구')")).show();
+							
+					}else if(spoint == "서울시 성동구" && apoint == "서울시 종로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성동구')")).has($(".arrivespan").filter(":contains('종로구')")).show();
+							
+					}else if(spoint == "서울시 성동구" && apoint == "서울시 중구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성동구')")).has($(".arrivespan").filter(":contains('중구')")).show();
+							
+					}else if(spoint == "서울시 성동구" && apoint == "서울시 중랑구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성동구')")).has($(".arrivespan").filter(":contains('중랑구')")).show();							
+						
+					}else if(spoint == "서울시 성북구" && apoint == "서울시 강남구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('성북구')")).has($(".arrivespan").filter(":contains('강남구')")).show();
+					
+					}else if(spoint == "서울시 성북구" && apoint == "서울시 강동구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('성북구')")).has($(".arrivespan").filter(":contains('강동구')")).show();							
+					}else if(spoint == "서울시 성북구" && apoint == "서울시 강북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성북구')")).has($(".arrivespan").filter(":contains('강북구')")).show();
+							
+					}else if(spoint == "서울시 성북구" && apoint == "서울시 강서구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성북구')")).has($(".arrivespan").filter(":contains('강서구')")).show();
+							
+					}else if(spoint == "서울시 성북구" && apoint == "서울시 관악구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성북구')")).has($(".arrivespan").filter(":contains('관악구')")).show();
+							
+					}else if(spoint == "서울시 성북구" && apoint == "서울시 광진구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성북구')")).has($(".arrivespan").filter(":contains('광진구')")).show();
+							
+					}else if(spoint == "서울시 성북구" && apoint == "서울시 구로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성북구')")).has($(".arrivespan").filter(":contains('구로구')")).show();
+							
+					}else if(spoint == "서울시 성북구" && apoint == "서울시 금천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성북구')")).has($(".arrivespan").filter(":contains('금천구')")).show();
+							
+					}else if(spoint == "서울시 성북구" && apoint == "서울시 노원구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성북구')")).has($(".arrivespan").filter(":contains('노원구')")).show();
+							
+					}else if(spoint == "서울시 성북구" && apoint == "서울시 도봉구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성북구')")).has($(".arrivespan").filter(":contains('도봉구')")).show();
+							
+					}else if(spoint == "서울시 성북구" && apoint == "서울시 동대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성북구')")).has($(".arrivespan").filter(":contains('동대문구')")).show();
+							
+					}else if(spoint == "서울시 성북구" && apoint == "서울시 동작구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성북구')")).has($(".arrivespan").filter(":contains('동작구')")).show();
+							
+					}else if(spoint == "서울시 성북구" && apoint == "서울시 마포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성북구')")).has($(".arrivespan").filter(":contains('마포구')")).show();
+							
+					}else if(spoint == "서울시 성북구" && apoint == "서울시 서대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성북구')")).has($(".arrivespan").filter(":contains('서대문구')")).show();
+							
+					}else if(spoint == "서울시 성북구" && apoint == "서울시 서초구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성동구')")).has($(".arrivespan").filter(":contains('서초구')")).show();
+							
+					}else if(spoint == "서울시 성북구" && apoint == "서울시 성동구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성동구')")).has($(".arrivespan").filter(":contains('성동구')")).show();
+							
+					}else if(spoint == "서울시 성북구" && apoint == "서울시 성북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성동구')")).has($(".arrivespan").filter(":contains('성북구')")).show();
+							
+					}else if(spoint == "서울시 성북구" && apoint == "서울시 송파구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성동구')")).has($(".arrivespan").filter(":contains('송파구')")).show();
+							
+					}else if(spoint == "서울시 성북구" && apoint == "서울시 양천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성동구')")).has($(".arrivespan").filter(":contains('양천구')")).show();
+							
+					}else if(spoint == "서울시 성북구" && apoint == "서울시 영등포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성동구')")).has($(".arrivespan").filter(":contains('영등포구')")).show();
+							
+					}else if(spoint == "서울시 성북구" && apoint == "서울시 용산구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성동구')")).has($(".arrivespan").filter(":contains('용산구')")).show();
+							
+					}else if(spoint == "서울시 성북구" && apoint == "서울시 은평구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성동구')")).has($(".arrivespan").filter(":contains('은평구')")).show();
+							
+					}else if(spoint == "서울시 성북구" && apoint == "서울시 종로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성북구')")).has($(".arrivespan").filter(":contains('종로구')")).show();
+							
+					}else if(spoint == "서울시 성북구" && apoint == "서울시 중구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성북구')")).has($(".arrivespan").filter(":contains('중구')")).show();
+							
+					}else if(spoint == "서울시 성북구" && apoint == "서울시 중랑구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('성북구')")).has($(".arrivespan").filter(":contains('중랑구')")).show();							
+						
+					}else if(spoint == "서울시 송파구" && apoint == "서울시 강남구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('송파구')")).has($(".arrivespan").filter(":contains('강남구')")).show();
+					
+					}else if(spoint == "서울시 송파구" && apoint == "서울시 강동구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('송파구')")).has($(".arrivespan").filter(":contains('강동구')")).show();							
+					}else if(spoint == "서울시 송파구" && apoint == "서울시 강북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('송파구')")).has($(".arrivespan").filter(":contains('강북구')")).show();
+							
+					}else if(spoint == "서울시 송파구" && apoint == "서울시 강서구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('송파구')")).has($(".arrivespan").filter(":contains('강서구')")).show();
+							
+					}else if(spoint == "서울시 송파구" && apoint == "서울시 관악구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('송파구')")).has($(".arrivespan").filter(":contains('관악구')")).show();
+							
+					}else if(spoint == "서울시 송파구" && apoint == "서울시 광진구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('송파구')")).has($(".arrivespan").filter(":contains('광진구')")).show();
+							
+					}else if(spoint == "서울시 송파구" && apoint == "서울시 구로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('송파구')")).has($(".arrivespan").filter(":contains('구로구')")).show();
+							
+					}else if(spoint == "서울시 송파구" && apoint == "서울시 금천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('송파구')")).has($(".arrivespan").filter(":contains('금천구')")).show();
+							
+					}else if(spoint == "서울시 송파구" && apoint == "서울시 노원구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('송파구')")).has($(".arrivespan").filter(":contains('노원구')")).show();
+							
+					}else if(spoint == "서울시 송파구" && apoint == "서울시 도봉구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('송파구')")).has($(".arrivespan").filter(":contains('도봉구')")).show();
+							
+					}else if(spoint == "서울시 송파구" && apoint == "서울시 동대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('송파구')")).has($(".arrivespan").filter(":contains('동대문구')")).show();
+							
+					}else if(spoint == "서울시 송파구" && apoint == "서울시 동작구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('송파구')")).has($(".arrivespan").filter(":contains('동작구')")).show();
+							
+					}else if(spoint == "서울시 송파구" && apoint == "서울시 마포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('송파구')")).has($(".arrivespan").filter(":contains('마포구')")).show();
+							
+					}else if(spoint == "서울시 송파구" && apoint == "서울시 서대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('송파구')")).has($(".arrivespan").filter(":contains('서대문구')")).show();
+							
+					}else if(spoint == "서울시 송파구" && apoint == "서울시 서초구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('송파구')")).has($(".arrivespan").filter(":contains('서초구')")).show();
+							
+					}else if(spoint == "서울시 송파구" && apoint == "서울시 성동구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('송파구')")).has($(".arrivespan").filter(":contains('성동구')")).show();
+							
+					}else if(spoint == "서울시 송파구" && apoint == "서울시 성북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('송파구')")).has($(".arrivespan").filter(":contains('성북구')")).show();
+							
+					}else if(spoint == "서울시 송파구" && apoint == "서울시 송파구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('송파구')")).has($(".arrivespan").filter(":contains('송파구')")).show();
+							
+					}else if(spoint == "서울시 송파구" && apoint == "서울시 양천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('송파구')")).has($(".arrivespan").filter(":contains('양천구')")).show();
+							
+					}else if(spoint == "서울시 송파구" && apoint == "서울시 영등포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('송파구')")).has($(".arrivespan").filter(":contains('영등포구')")).show();
+							
+					}else if(spoint == "서울시 송파구" && apoint == "서울시 용산구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('송파구')")).has($(".arrivespan").filter(":contains('용산구')")).show();
+							
+					}else if(spoint == "서울시 송파구" && apoint == "서울시 은평구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('송파구')")).has($(".arrivespan").filter(":contains('은평구')")).show();
+							
+					}else if(spoint == "서울시 송파구" && apoint == "서울시 종로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('송파구')")).has($(".arrivespan").filter(":contains('종로구')")).show();
+							
+					}else if(spoint == "서울시 송파구" && apoint == "서울시 중구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('송파구')")).has($(".arrivespan").filter(":contains('중구')")).show();
+							
+					}else if(spoint == "서울시 송파구" && apoint == "서울시 중랑구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('송파구')")).has($(".arrivespan").filter(":contains('중랑구')")).show();							
+						
+					}else if(spoint == "서울시 양천구" && apoint == "서울시 강남구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('양천구')")).has($(".arrivespan").filter(":contains('강남구')")).show();
+					
+					}else if(spoint == "서울시 양천구" && apoint == "서울시 강동구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('양천구')")).has($(".arrivespan").filter(":contains('강동구')")).show();							
+					}else if(spoint == "서울시 양천구" && apoint == "서울시 강북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('양천구')")).has($(".arrivespan").filter(":contains('강북구')")).show();
+							
+					}else if(apoint == "서울시 강서구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('양천구')")).has($(".arrivespan").filter(":contains('강서구')")).show();
+							
+					}else if(spoint == "서울시 양천구" && apoint == "서울시 관악구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('양천구')")).has($(".arrivespan").filter(":contains('관악구')")).show();
+							
+					}else if(spoint == "서울시 양천구" && apoint == "서울시 광진구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('양천구')")).has($(".arrivespan").filter(":contains('광진구')")).show();
+							
+					}else if(spoint == "서울시 양천구" && apoint == "서울시 구로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('양천구')")).has($(".arrivespan").filter(":contains('구로구')")).show();
+							
+					}else if(spoint == "서울시 양천구" && apoint == "서울시 금천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('양천구')")).has($(".arrivespan").filter(":contains('금천구')")).show();
+							
+					}else if(spoint == "서울시 양천구" && apoint == "서울시 노원구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('양천구')")).has($(".arrivespan").filter(":contains('노원구')")).show();
+							
+					}else if(spoint == "서울시 양천구" && apoint == "서울시 도봉구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('양천구')")).has($(".arrivespan").filter(":contains('도봉구')")).show();
+							
+					}else if(spoint == "서울시 양천구" && apoint == "서울시 동대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('양천구')")).has($(".arrivespan").filter(":contains('동대문구')")).show();
+							
+					}else if(spoint == "서울시 양천구" && apoint == "서울시 동작구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('양천구')")).has($(".arrivespan").filter(":contains('동작구')")).show();
+							
+					}else if(spoint == "서울시 양천구" && apoint == "서울시 마포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('양천구')")).has($(".arrivespan").filter(":contains('마포구')")).show();
+							
+					}else if(spoint == "서울시 양천구" && apoint == "서울시 서대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('양천구')")).has($(".arrivespan").filter(":contains('서대문구')")).show();
+							
+					}else if(spoint == "서울시 양천구" && apoint == "서울시 서초구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('양천구')")).has($(".arrivespan").filter(":contains('서초구')")).show();
+							
+					}else if(spoint == "서울시 양천구" && apoint == "서울시 성동구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('양천구')")).has($(".arrivespan").filter(":contains('성동구')")).show();
+							
+					}else if(spoint == "서울시 양천구" && apoint == "서울시 성북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('양천구')")).has($(".arrivespan").filter(":contains('성북구')")).show();
+							
+					}else if(spoint == "서울시 양천구" && apoint == "서울시 송파구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('양천구')")).has($(".arrivespan").filter(":contains('송파구')")).show();
+							
+					}else if(spoint == "서울시 양천구" && apoint == "서울시 양천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('양천구')")).has($(".arrivespan").filter(":contains('양천구')")).show();
+							
+					}else if(spoint == "서울시 양천구" && apoint == "서울시 영등포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('양천구')")).has($(".arrivespan").filter(":contains('영등포구')")).show();
+							
+					}else if(spoint == "서울시 양천구" && apoint == "서울시 용산구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('양천구')")).has($(".arrivespan").filter(":contains('용산구')")).show();
+							
+					}else if(spoint == "서울시 양천구" && apoint == "서울시 은평구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('양천구')")).has($(".arrivespan").filter(":contains('은평구')")).show();
+							
+					}else if(spoint == "서울시 양천구" && apoint == "서울시 종로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('양천구')")).has($(".arrivespan").filter(":contains('종로구')")).show();
+							
+					}else if(spoint == "서울시 양천구" && apoint == "서울시 중구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('양천구')")).has($(".arrivespan").filter(":contains('중구')")).show();
+							
+					}else if(spoint == "서울시 양천구" && apoint == "서울시 중랑구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('양천구')")).has($(".arrivespan").filter(":contains('중랑구')")).show();							
+						
+					}else if(spoint == "서울시 영등포구" && apoint == "서울시 강남구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('영등포구')")).has($(".arrivespan").filter(":contains('강남구')")).show();
+					
+					}else if(spoint == "서울시 영등포구" && apoint == "서울시 강동구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('영등포구')")).has($(".arrivespan").filter(":contains('강동구')")).show();							
+					}else if(spoint == "서울시 영등포구" && apoint == "서울시 강북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('영등포구')")).has($(".arrivespan").filter(":contains('강북구')")).show();
+							
+					}else if(spoint == "서울시 영등포구" && apoint == "서울시 강서구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('영등포구')")).has($(".arrivespan").filter(":contains('강서구')")).show();
+							
+					}else if(spoint == "서울시 영등포구" && apoint == "서울시 관악구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('영등포구')")).has($(".arrivespan").filter(":contains('관악구')")).show();
+							
+					}else if(spoint == "서울시 영등포구" && apoint == "서울시 광진구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('영등포구')")).has($(".arrivespan").filter(":contains('광진구')")).show();
+							
+					}else if(spoint == "서울시 영등포구" && apoint == "서울시 구로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('영등포구')")).has($(".arrivespan").filter(":contains('구로구')")).show();
+							
+					}else if(spoint == "서울시 영등포구" && apoint == "서울시 금천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('영등포구')")).has($(".arrivespan").filter(":contains('금천구')")).show();
+							
+					}else if(spoint == "서울시 영등포구" && apoint == "서울시 노원구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('영등포구')")).has($(".arrivespan").filter(":contains('노원구')")).show();
+							
+					}else if(spoint == "서울시 영등포구" && apoint == "서울시 도봉구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('영등포구')")).has($(".arrivespan").filter(":contains('도봉구')")).show();
+							
+					}else if(spoint == "서울시 영등포구" && apoint == "서울시 동대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('영등포구')")).has($(".arrivespan").filter(":contains('동대문구')")).show();
+							
+					}else if(spoint == "서울시 영등포구" && apoint == "서울시 동작구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('영등포구')")).has($(".arrivespan").filter(":contains('동작구')")).show();
+							
+					}else if(spoint == "서울시 영등포구" && apoint == "서울시 마포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('영등포구')")).has($(".arrivespan").filter(":contains('마포구')")).show();
+							
+					}else if(spoint == "서울시 영등포구" && apoint == "서울시 서대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('영등포구')")).has($(".arrivespan").filter(":contains('서대문구')")).show();
+							
+					}else if(spoint == "서울시 영등포구" && apoint == "서울시 서초구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('영등포구')")).has($(".arrivespan").filter(":contains('서초구')")).show();
+							
+					}else if(spoint == "서울시 영등포구" && apoint == "서울시 성동구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('영등포구')")).has($(".arrivespan").filter(":contains('성동구')")).show();
+							
+					}else if(spoint == "서울시 영등포구" && apoint == "서울시 성북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('영등포구')")).has($(".arrivespan").filter(":contains('성북구')")).show();
+							
+					}else if(spoint == "서울시 영등포구" && apoint == "서울시 송파구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('영등포구')")).has($(".arrivespan").filter(":contains('송파구')")).show();
+							
+					}else if(spoint == "서울시 영등포구" && apoint == "서울시 양천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('영등포구')")).has($(".arrivespan").filter(":contains('양천구')")).show();
+							
+					}else if(spoint == "서울시 영등포구" && apoint == "서울시 영등포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('영등포구')")).has($(".arrivespan").filter(":contains('영등포구')")).show();
+							
+					}else if(spoint == "서울시 영등포구" && apoint == "서울시 용산구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('영등포구')")).has($(".arrivespan").filter(":contains('용산구')")).show();
+							
+					}else if(spoint == "서울시 영등포구" && apoint == "서울시 은평구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('영등포구')")).has($(".arrivespan").filter(":contains('은평구')")).show();
+							
+					}else if(spoint == "서울시 영등포구" && apoint == "서울시 종로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('영등포구')")).has($(".arrivespan").filter(":contains('종로구')")).show();
+							
+					}else if(spoint == "서울시 영등포구" && apoint == "서울시 중구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('영등포구')")).has($(".arrivespan").filter(":contains('중구')")).show();
+							
+					}else if(spoint == "서울시 영등포구" && apoint == "서울시 중랑구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('영등포구')")).has($(".arrivespan").filter(":contains('중랑구')")).show();							
+						
+					}else if(spoint == "서울시 용산구" && apoint == "서울시 강남구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('용산구')")).has($(".arrivespan").filter(":contains('강남구')")).show();	
+					
+					}else if(spoint == "서울시 용산구" && apoint == "서울시 강동구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('용산구')")).has($(".arrivespan").filter(":contains('강동구')")).show();							
+					}else if(spoint == "서울시 용산구" && apoint == "서울시 강북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('용산구')")).has($(".arrivespan").filter(":contains('강북구')")).show();
+							
+					}else if(spoint == "서울시 용산구" && apoint == "서울시 강서구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('용산구')")).has($(".arrivespan").filter(":contains('강서구')")).show();
+							
+					}else if(spoint == "서울시 용산구" && apoint == "서울시 관악구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('용산구')")).has($(".arrivespan").filter(":contains('관악구')")).show();
+							
+					}else if(spoint == "서울시 용산구" && apoint == "서울시 광진구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('용산구')")).has($(".arrivespan").filter(":contains('광진구')")).show();
+							
+					}else if(spoint == "서울시 용산구" && apoint == "서울시 구로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('용산구')")).has($(".arrivespan").filter(":contains('구로구')")).show();
+							
+					}else if(spoint == "서울시 용산구" && apoint == "서울시 금천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('용산구')")).has($(".arrivespan").filter(":contains('금천구')")).show();
+							
+					}else if(spoint == "서울시 용산구" && apoint == "서울시 노원구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('용산구')")).has($(".arrivespan").filter(":contains('노원구')")).show();
+							
+					}else if(spoint == "서울시 용산구" && apoint == "서울시 도봉구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('용산구')")).has($(".arrivespan").filter(":contains('도봉구')")).show();
+							
+					}else if(spoint == "서울시 용산구" && apoint == "서울시 동대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('용산구')")).has($(".arrivespan").filter(":contains('동대문구')")).show();
+							
+					}else if(spoint == "서울시 용산구" && apoint == "서울시 동작구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('용산구')")).has($(".arrivespan").filter(":contains('동작구')")).show();
+							
+					}else if(spoint == "서울시 용산구" && apoint == "서울시 마포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('용산구')")).has($(".arrivespan").filter(":contains('마포구')")).show();
+							
+					}else if(spoint == "서울시 용산구" && apoint == "서울시 서대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('용산구')")).has($(".arrivespan").filter(":contains('서대문구')")).show();
+							
+					}else if(spoint == "서울시 용산구" && apoint == "서울시 서초구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('용산구')")).has($(".arrivespan").filter(":contains('서초구')")).show();
+							
+					}else if(spoint == "서울시 용산구" && apoint == "서울시 성동구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('용산구')")).has($(".arrivespan").filter(":contains('성동구')")).show();
+							
+					}else if(spoint == "서울시 용산구" && apoint == "서울시 성북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('용산구')")).has($(".arrivespan").filter(":contains('성북구')")).show();
+							
+					}else if(spoint == "서울시 용산구" && apoint == "서울시 송파구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('용산구')")).has($(".arrivespan").filter(":contains('송파구')")).show();
+							
+					}else if(spoint == "서울시 용산구" && apoint == "서울시 양천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('용산구')")).has($(".arrivespan").filter(":contains('양천구')")).show();
+							
+					}else if(spoint == "서울시 용산구" && apoint == "서울시 영등포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('용산구')")).has($(".arrivespan").filter(":contains('영등포구')")).show();
+							
+					}else if(spoint == "서울시 용산구" && apoint == "서울시 용산구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('용산구')")).has($(".arrivespan").filter(":contains('용산구')")).show();
+							
+					}else if(spoint == "서울시 용산구" && apoint == "서울시 은평구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('용산구')")).has($(".arrivespan").filter(":contains('은평구')")).show();
+							
+					}else if(spoint == "서울시 용산구" && apoint == "서울시 종로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('용산구')")).has($(".arrivespan").filter(":contains('종로구')")).show();
+							
+					}else if(spoint == "서울시 용산구" && apoint == "서울시 중구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('용산구')")).has($(".arrivespan").filter(":contains('중구')")).show();
+							
+					}else if(spoint == "서울시 용산구" && apoint == "서울시 중랑구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('용산구')")).has($(".arrivespan").filter(":contains('중랑구')")).show();							
+						
+					}else if(spoint == "서울시 은평구" && apoint == "서울시 강남구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('은평구')")).has($(".arrivespan").filter(":contains('강남구')")).show();
+					
+					}else if(spoint == "서울시 은평구" && apoint == "서울시 강동구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('은평구')")).has($(".arrivespan").filter(":contains('강동구')")).show();							
+					}else if(spoint == "서울시 은평구" && apoint == "서울시 강북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('은평구')")).has($(".arrivespan").filter(":contains('강북구')")).show();
+							
+					}else if(spoint == "서울시 은평구" && apoint == "서울시 강서구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('은평구')")).has($(".arrivespan").filter(":contains('강서구')")).show();
+							
+					}else if(spoint == "서울시 은평구" && apoint == "서울시 관악구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('은평구')")).has($(".arrivespan").filter(":contains('관악구')")).show();
+							
+					}else if(spoint == "서울시 은평구" && apoint == "서울시 광진구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('은평구')")).has($(".arrivespan").filter(":contains('광진구')")).show();
+							
+					}else if(spoint == "서울시 은평구" && apoint == "서울시 구로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('은평구')")).has($(".arrivespan").filter(":contains('구로구')")).show();
+							
+					}else if(spoint == "서울시 은평구" && apoint == "서울시 금천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('은평구')")).has($(".arrivespan").filter(":contains('금천구')")).show();
+							
+					}else if(spoint == "서울시 은평구" && apoint == "서울시 노원구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('은평구')")).has($(".arrivespan").filter(":contains('노원구')")).show();
+							
+					}else if(spoint == "서울시 은평구" && apoint == "서울시 도봉구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('은평구')")).has($(".arrivespan").filter(":contains('도봉구')")).show();
+							
+					}else if(spoint == "서울시 은평구" && apoint == "서울시 동대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('은평구')")).has($(".arrivespan").filter(":contains('동대문구')")).show();
+							
+					}else if(spoint == "서울시 은평구" && apoint == "서울시 동작구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('은평구')")).has($(".arrivespan").filter(":contains('동작구')")).show();
+							
+					}else if(spoint == "서울시 은평구" && apoint == "서울시 마포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('은평구')")).has($(".arrivespan").filter(":contains('마포구')")).show();
+							
+					}else if(spoint == "서울시 은평구" && apoint == "서울시 서대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('은평구')")).has($(".arrivespan").filter(":contains('서대문구')")).show();
+							
+					}else if(spoint == "서울시 은평구" && apoint == "서울시 서초구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('은평구')")).has($(".arrivespan").filter(":contains('서초구')")).show();
+							
+					}else if(spoint == "서울시 은평구" && apoint == "서울시 성동구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('은평구')")).has($(".arrivespan").filter(":contains('성동구')")).show();
+							
+					}else if(spoint == "서울시 은평구" && apoint == "서울시 성북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('은평구')")).has($(".arrivespan").filter(":contains('성북구')")).show();
+							
+					}else if(spoint == "서울시 은평구" && apoint == "서울시 송파구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('은평구')")).has($(".arrivespan").filter(":contains('송파구')")).show();
+							
+					}else if(spoint == "서울시 은평구" && apoint == "서울시 양천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('은평구')")).has($(".arrivespan").filter(":contains('양천구')")).show();
+							
+					}else if(spoint == "서울시 은평구" && apoint == "서울시 영등포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('은평구')")).has($(".arrivespan").filter(":contains('영등포구')")).show();
+							
+					}else if(spoint == "서울시 은평구" && apoint == "서울시 용산구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('은평구')")).has($(".arrivespan").filter(":contains('용산구')")).show();
+							
+					}else if(spoint == "서울시 은평구" && apoint == "서울시 은평구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('은평구')")).has($(".arrivespan").filter(":contains('은평구')")).show();
+							
+					}else if(spoint == "서울시 은평구" && apoint == "서울시 종로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('은평구')")).has($(".arrivespan").filter(":contains('종로구')")).show();
+							
+					}else if(spoint == "서울시 은평구" && apoint == "서울시 중구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('은평구')")).has($(".arrivespan").filter(":contains('중구')")).show();
+							
+					}else if(spoint == "서울시 은평구" && apoint == "서울시 중랑구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('은평구')")).has($(".arrivespan").filter(":contains('중랑구')")).show();							
+						
+					}else if(spoint == "서울시 종로구" && apoint == "서울시 강남구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('종로구')")).has($(".arrivespan").filter(":contains('강남구')")).show();
+					
+					}else if(spoint == "서울시 종로구" && apoint == "서울시 강동구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('종로구')")).has($(".arrivespan").filter(":contains('강동구')")).show();							
+					}else if(spoint == "서울시 종로구" && apoint == "서울시 강북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('종로구')")).has($(".arrivespan").filter(":contains('강북구')")).show();
+							
+					}else if(spoint == "서울시 종로구" && apoint == "서울시 강서구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('종로구')")).has($(".arrivespan").filter(":contains('강서구')")).show();
+							
+					}else if(spoint == "서울시 종로구" && apoint == "서울시 관악구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('종로구')")).has($(".arrivespan").filter(":contains('관악구')")).show();
+							
+					}else if(spoint == "서울시 종로구" && apoint == "서울시 광진구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('종로구')")).has($(".arrivespan").filter(":contains('광진구')")).show();
+							
+					}else if(spoint == "서울시 종로구" && apoint == "서울시 구로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('종로구')")).has($(".arrivespan").filter(":contains('구로구')")).show();
+							
+					}else if(spoint == "서울시 종로구" && apoint == "서울시 금천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('종로구')")).has($(".arrivespan").filter(":contains('금천구')")).show();
+							
+					}else if(spoint == "서울시 종로구" && apoint == "서울시 노원구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('종로구')")).has($(".arrivespan").filter(":contains('노원구')")).show();
+							
+					}else if(spoint == "서울시 종로구" && apoint == "서울시 도봉구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('종로구')")).has($(".arrivespan").filter(":contains('도봉구')")).show();
+							
+					}else if(spoint == "서울시 종로구" && apoint == "서울시 동대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('종로구')")).has($(".arrivespan").filter(":contains('동대문구')")).show();
+							
+					}else if(spoint == "서울시 종로구" && apoint == "서울시 동작구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('종로구')")).has($(".arrivespan").filter(":contains('동작구')")).show();
+							
+					}else if(spoint == "서울시 종로구" && apoint == "서울시 마포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('종로구')")).has($(".arrivespan").filter(":contains('마포구')")).show();
+							
+					}else if(spoint == "서울시 종로구" && apoint == "서울시 서대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('종로구')")).has($(".arrivespan").filter(":contains('서대문구')")).show();
+							
+					}else if(spoint == "서울시 종로구" && apoint == "서울시 서초구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('종로구')")).has($(".arrivespan").filter(":contains('서초구')")).show();
+							
+					}else if(spoint == "서울시 종로구" && apoint == "서울시 성동구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('종로구')")).has($(".arrivespan").filter(":contains('성동구')")).show();
+							
+					}else if(spoint == "서울시 종로구" && apoint == "서울시 성북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('종로구')")).has($(".arrivespan").filter(":contains('성북구')")).show();
+							
+					}else if(spoint == "서울시 종로구" && apoint == "서울시 송파구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('종로구')")).has($(".arrivespan").filter(":contains('송파구')")).show();
+							
+					}else if(spoint == "서울시 종로구" && apoint == "서울시 양천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('종로구')")).has($(".arrivespan").filter(":contains('양천구')")).show();
+							
+					}else if(spoint == "서울시 종로구" && apoint == "서울시 영등포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('종로구')")).has($(".arrivespan").filter(":contains('영등포구')")).show();
+							
+					}else if(spoint == "서울시 종로구" && apoint == "서울시 용산구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('종로구')")).has($(".arrivespan").filter(":contains('용산구')")).show();
+							
+					}else if(spoint == "서울시 종로구" && apoint == "서울시 은평구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('종로구')")).has($(".arrivespan").filter(":contains('은평구')")).show();
+							
+					}else if(spoint == "서울시 종로구" && apoint == "서울시 종로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('종로구')")).has($(".arrivespan").filter(":contains('종로구')")).show();
+							
+					}else if(spoint == "서울시 종로구" && apoint == "서울시 중구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('종로구')")).has($(".arrivespan").filter(":contains('중구')")).show();
+							
+					}else if(spoint == "서울시 종로구" && apoint == "서울시 중랑구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('종로구')")).has($(".arrivespan").filter(":contains('중랑구')")).show();							
+						
+					}else if(spoint == "서울시 중구" && apoint == "서울시 강남구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('중구')")).has($(".arrivespan").filter(":contains('강남구')")).show();
+					
+					}else if(spoint == "서울시 중구" && apoint == "서울시 강동구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('중구')")).has($(".arrivespan").filter(":contains('강동구')")).show();							
+					}else if(spoint == "서울시 중구" && apoint == "서울시 강북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중구')")).has($(".arrivespan").filter(":contains('강북구')")).show();
+							
+					}else if(spoint == "서울시 중구" && apoint == "서울시 강서구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중구')")).has($(".arrivespan").filter(":contains('강서구')")).show();
+							
+					}else if(spoint == "서울시 중구" && apoint == "서울시 관악구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중구')")).has($(".arrivespan").filter(":contains('관악구')")).show();
+							
+					}else if(spoint == "서울시 중구" && apoint == "서울시 광진구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중구')")).has($(".arrivespan").filter(":contains('광진구')")).show();
+							
+					}else if(spoint == "서울시 중구" && apoint == "서울시 구로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중구')")).has($(".arrivespan").filter(":contains('구로구')")).show();
+							
+					}else if(spoint == "서울시 중구" && apoint == "서울시 금천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중구')")).has($(".arrivespan").filter(":contains('금천구')")).show();
+							
+					}else if(spoint == "서울시 중구" && apoint == "서울시 노원구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중구')")).has($(".arrivespan").filter(":contains('노원구')")).show();
+							
+					}else if(spoint == "서울시 중구" && apoint == "서울시 도봉구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중구')")).has($(".arrivespan").filter(":contains('도봉구')")).show();
+							
+					}else if(spoint == "서울시 중구" && apoint == "서울시 동대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중구')")).has($(".arrivespan").filter(":contains('동대문구')")).show();
+							
+					}else if(spoint == "서울시 중구" && apoint == "서울시 동작구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중구')")).has($(".arrivespan").filter(":contains('동작구')")).show();
+							
+					}else if(spoint == "서울시 중구" && apoint == "서울시 마포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중구')")).has($(".arrivespan").filter(":contains('마포구')")).show();
+							
+					}else if(spoint == "서울시 중구" && apoint == "서울시 서대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중구')")).has($(".arrivespan").filter(":contains('서대문구')")).show();
+							
+					}else if(spoint == "서울시 중구" && apoint == "서울시 서초구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중구')")).has($(".arrivespan").filter(":contains('서초구')")).show();
+							
+					}else if(spoint == "서울시 중구" && apoint == "서울시 성동구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중구')")).has($(".arrivespan").filter(":contains('성동구')")).show();
+							
+					}else if(spoint == "서울시 중구" && apoint == "서울시 성북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중구')")).has($(".arrivespan").filter(":contains('성북구')")).show();
+							
+					}else if(spoint == "서울시 중구" && apoint == "서울시 송파구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중구')")).has($(".arrivespan").filter(":contains('송파구')")).show();
+							
+					}else if(spoint == "서울시 중구" && apoint == "서울시 양천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중구')")).has($(".arrivespan").filter(":contains('양천구')")).show();
+							
+					}else if(spoint == "서울시 중구" && apoint == "서울시 영등포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중구')")).has($(".arrivespan").filter(":contains('영등포구')")).show();
+							
+					}else if(spoint == "서울시 중구" && apoint == "서울시 용산구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중구')")).has($(".arrivespan").filter(":contains('용산구')")).show();
+							
+					}else if(spoint == "서울시 중구" && apoint == "서울시 은평구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중구')")).has($(".arrivespan").filter(":contains('은평구')")).show();
+							
+					}else if(spoint == "서울시 중구" && apoint == "서울시 종로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중구')")).has($(".arrivespan").filter(":contains('종로구')")).show();
+							
+					}else if(spoint == "서울시 중구" && apoint == "서울시 중구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중구')")).has($(".arrivespan").filter(":contains('중구')")).show();
+							
+					}else if(spoint == "서울시 중구" && apoint == "서울시 중랑구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중구')")).has($(".arrivespan").filter(":contains('중랑구')")).show();							
+						
+					}else if(spoint == "서울시 중랑구" && apoint == "서울시 강남구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('중랑구')")).has($(".arrivespan").filter(":contains('강남구')")).show();	
+					
+					}else if(spoint == "서울시 중랑구" && apoint == "서울시 강동구"){
+							filterDiv.hide();							
+							filterDiv.has($(".startspan").filter(":contains('중랑구')")).has($(".arrivespan").filter(":contains('강동구')")).show();							
+					}else if(spoint == "서울시 중랑구" && apoint == "서울시 강북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중랑구')")).has($(".arrivespan").filter(":contains('강북구')")).show();
+							
+					}else if(spoint == "서울시 중랑구" && apoint == "서울시 강서구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중랑구')")).has($(".arrivespan").filter(":contains('강서구')")).show();
+							
+					}else if(spoint == "서울시 중랑구" && apoint == "서울시 관악구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중랑구')")).has($(".arrivespan").filter(":contains('관악구')")).show();
+							
+					}else if(spoint == "서울시 중랑구" && apoint == "서울시 광진구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중랑구')")).has($(".arrivespan").filter(":contains('광진구')")).show();
+							
+					}else if(spoint == "서울시 중랑구" && apoint == "서울시 구로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중랑구')")).has($(".arrivespan").filter(":contains('구로구')")).show();
+							
+					}else if(spoint == "서울시 중랑구" && apoint == "서울시 금천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중랑구')")).has($(".arrivespan").filter(":contains('금천구')")).show();
+							
+					}else if(spoint == "서울시 중랑구" && apoint == "서울시 노원구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중랑구')")).has($(".arrivespan").filter(":contains('노원구')")).show();
+							
+					}else if(spoint == "서울시 중랑구" && apoint == "서울시 도봉구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중랑구')")).has($(".arrivespan").filter(":contains('도봉구')")).show();
+							
+					}else if(spoint == "서울시 중랑구" && apoint == "서울시 동대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중랑구')")).has($(".arrivespan").filter(":contains('동대문구')")).show();
+							
+					}else if(spoint == "서울시 중랑구" && apoint == "서울시 동작구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중랑구')")).has($(".arrivespan").filter(":contains('동작구')")).show();
+							
+					}else if(spoint == "서울시 중랑구" && apoint == "서울시 마포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중랑구')")).has($(".arrivespan").filter(":contains('마포구')")).show();
+							
+					}else if(spoint == "서울시 중랑구" && apoint == "서울시 서대문구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중랑구')")).has($(".arrivespan").filter(":contains('서대문구')")).show();
+							
+					}else if(spoint == "서울시 중랑구" && apoint == "서울시 서초구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중랑구')")).has($(".arrivespan").filter(":contains('서초구')")).show();
+							
+					}else if(spoint == "서울시 중랑구" && apoint == "서울시 성동구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중랑구')")).has($(".arrivespan").filter(":contains('성동구')")).show();
+							
+					}else if(spoint == "서울시 중랑구" && apoint == "서울시 성북구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중랑구')")).has($(".arrivespan").filter(":contains('성북구')")).show();
+							
+					}else if(spoint == "서울시 중랑구" && apoint == "서울시 송파구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중랑구')")).has($(".arrivespan").filter(":contains('송파구')")).show();
+							
+					}else if(spoint == "서울시 중랑구" && apoint == "서울시 양천구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중랑구')")).has($(".arrivespan").filter(":contains('양천구')")).show();
+							
+					}else if(spoint == "서울시 중랑구" && apoint == "서울시 영등포구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중랑구')")).has($(".arrivespan").filter(":contains('영등포구')")).show();
+							
+					}else if(spoint == "서울시 중랑구" && apoint == "서울시 용산구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중랑구')")).has($(".arrivespan").filter(":contains('용산구')")).show();
+							
+					}else if(spoint == "서울시 중랑구" && apoint == "서울시 은평구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중랑구')")).has($(".arrivespan").filter(":contains('은평구')")).show();
+							
+					}else if(spoint == "서울시 중랑구" && apoint == "서울시 종로구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중랑구')")).has($(".arrivespan").filter(":contains('종로구')")).show();
+							
+					}else if(spoint == "서울시 중랑구" && apoint == "서울시 중구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중랑구')")).has($(".arrivespan").filter(":contains('중구')")).show();
+							
+					}else if(spoint == "서울시 중랑구" && apoint == "서울시 중랑구"){
+							filterDiv.hide();					
+							filterDiv.has($(".startspan").filter(":contains('중랑구')")).has($(".arrivespan").filter(":contains('중랑구')")).show();							
+					}
 				}
-			});
-			
-			
+			});	
 		});
 		
 		

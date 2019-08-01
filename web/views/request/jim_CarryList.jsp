@@ -88,11 +88,11 @@
 		<h1>내 짐캐리 리스트</h1>
 
 		<div id="filt" align="right">
-			<select name="driver_filter">
+			<select id="driver_filter" name="driver_filter">
 				<option value="전체보기" selected>전체보기</option>
 				<option value="매칭대기">매칭대기</option>
 				<option value="매칭완료">매칭완료</option>
-				<option value="매칭완료">매칭완료</option>
+				<option value="매칭완료">이용대기</option>
 				<option value="이용완료">이용완료</option>
 				<option value="이용취소">이용취소</option>
 			</select>
@@ -140,7 +140,7 @@
 				
 				if (req.getConditionReq().equals("매칭대기")) {
 		%>
-		<div>
+		<div class="matchWait">
 			<img src="/semi/images/mc1.png" class="imgs" style="float: left">
 
 			<div id="reqno">
@@ -156,8 +156,8 @@
 			</div>
 			<div id="reqInfo">
 				<h4>
-					<input type="hidden" value="<%=req.getReqNo() %>">
-					<a id="reqInfoBtn">견적확인 →</a>
+					<span class="reqInfoBtn" style="cursor: pointer">견적확인 →</span>
+					<input type="hidden" id="reqInfo" name="reqInfo" value="<%=req.getReqNo() %>">
 				</h4>
 			</div>
 			
@@ -171,7 +171,7 @@
 			<div id="reqpri">
 				<h4>
 					<input type="hidden" value="<%=req.getReqNo() %>">
-					<a id="orderInfoBtn">입찰내역 확인 →</a>
+					<span id="orderInfoBtn" style="cursor: pointer">입찰내역 확인 →</span>
 				</h4>
 			</div>
 
@@ -192,7 +192,7 @@
 			} else if (req.getConditionReq().equals("매칭완료")) {
 				reqOrder = orderMap.get(req.getReqNo());
 		%>
-		<div>
+		<div class="matchOk">
 			<img src="/semi/images/mc2.png" class="imgs" style="float: left">
 
 			<div id="reqno">
@@ -245,7 +245,7 @@
 				
 				if(nowTime < nowTime /* moveTime+moveTimeH*3600000 */){
 		%>			
-					<div>
+		<div class="usingWait">
 			<img src="/semi/images/mc3.png" class="imgs" style="float: left">
 
 			<div id="reqno">
@@ -262,8 +262,7 @@
 
 
 			<div id="date" class="text">
-				<h3>
-					<h3>
+				<h3>					
 					예약일 :
 					<%=req.getReservationDate()%>
 				</h3>
@@ -271,7 +270,8 @@
 			<div id="reqprice">
 				<h4>
 					이용요금 :
-					<%=req.getOrderPrice()%></h4>
+					<%=req.getOrderPrice()%>
+				</h4>
 			</div>
 
 			<div id="count" class="text">
@@ -295,7 +295,7 @@
 		<% 		
 				}else{
 		%>			
-					<div>
+		<div class="usingWait">
 			<img src="/semi/images/mc3.png" class="imgs" style="float: left">
 
 			<div id="reqno">
@@ -351,7 +351,7 @@
 				reqOrder = orderMap.get(req.getReqNo());
 		%>
 
-		<div>
+		<div class="usingOk">
 			<img src="/semi/images/mc4.png" class="imgs" style="float: left">
 
 			<div id="reqno">
@@ -385,6 +385,43 @@
 			<hr>
 		</div>
 		<%
+			} else if (req.getConditionReq().equals("이용완료")) {
+				reqOrder = orderMap.get(req.getReqNo());
+		%>
+		<div class="matchCancel">
+			<img src="/semi/images/mc4.png" class="imgs" style="float: left">
+
+			<div id="reqno">
+				<p>견적번호 : <%=req.getReqNo() %></p>
+			</div>
+
+			<div id="title" class="text">
+				<h1><%=req.getStartPoint() %> → <%=req.getArrivalPoint() %></h1>
+			</div>
+
+
+			<div id="date" class="text">
+				<h3>완료일 : <%=req.getReservationDate() %></h3>
+			</div>
+			<div id="reqprice">
+				<h4>이용요금 : <%=req.getOrderPrice() %></h4>
+			</div>
+
+			<div id="count" class="text">
+				<h3>
+					기사명 :
+					<%= reqOrder.getDriverName() %>
+					&nbsp;&nbsp;평점 :
+					<%=reqOrder.getGrade()%></h3>
+			</div>
+			
+			<div id="done" align="right">
+				<h5>취소된 견적 입니다.</h5>
+			</div>
+
+			<hr>
+		</div>
+		<%
 			}
 
 			}
@@ -397,7 +434,7 @@
 		<div class="pagingArea" align="center">
 			<button
 				onclick="location.href='<%=request.getContextPath()%>/myJcarrylist.jc?currentPage=1'">
-				<<</button>
+				</button>
 
 			<%
 				if (currentPage <= 1) {
@@ -453,12 +490,17 @@
 	
 	<script>
 	$(function(){
-		$("#reqInfoBtn").click(function(){
-			var no = $(this).parent().children("input").val();
+		$(".reqInfoBtn").click(function(){
+			var no = $(this).next().val();
+			
+			console.log(no);
+			
+			$("#reqInfo").val(no);
 			
 			location.href="<%=request.getContextPath()%>/checkReq.jc?no=" + no;
 		});
 	});
+
 	
 	
 	$(function(){
@@ -469,6 +511,27 @@
 		});
 	});
 	
+	$(function(){
+		$("#driver_filter").change(function(){
+			var status = $("#driver_filter").val();
+			
+			console.log(status);
+			
+			
+			var matchWait = $(".matchWait");
+			var matchOk = $(".matchOk");
+			var usingWait = $(".usingWait");
+			var usingOk = $(".usingOk");
+			var matchCancel = $(".matchCancel");
+			
+			if(stats == "매칭대기"){
+				
+			}
+			
+			
+			
+		});
+	});
 	
 	
 	</script>
