@@ -40,6 +40,7 @@ public class LoginServlet extends HttpServlet {
 		
 		
 		Member loginUser = new MemberService().loginCheck(userId, userPwd);
+		Member loginDriver = new MemberService().driverLoginCheck(userId, userPwd);
 		String page = "";
 		
 		if(loginUser != null) {
@@ -48,23 +49,23 @@ public class LoginServlet extends HttpServlet {
 				session.setAttribute("loginUser", loginUser);
 				
 				response.sendRedirect("/semi/selectAll.u");
-			}else if(loginUser.getSeqNo().contains("D")) {
-					HttpSession session = request.getSession();
-					session.setAttribute("loginUser", loginUser);		
-				
-				response.sendRedirect("views/driver_MainPage.jsp");
 			}else if(loginUser.getSeqNo().contains("U")) {
 				HttpSession session = request.getSession();
 				session.setAttribute("loginUser", loginUser);
 				
 				response.sendRedirect("views/mainPage.jsp");
+			}else if(loginUser.getSeqNo().contains("D")) {
+					HttpSession session = request.getSession();
+					session.setAttribute("loginUser", loginUser);
+					session.setAttribute("loginDriver", loginDriver);
+				
+					response.sendRedirect("views/driver_MainPage.jsp");
+				}
 			}else {
 				request.setAttribute("msg", "로그인 실패 다시 입력해주세요~");
 				request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);				
-				
 			}
 		}
-	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

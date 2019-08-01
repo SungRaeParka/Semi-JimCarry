@@ -80,7 +80,7 @@ public class MemberDao {
 				loginUser.setPhone(rset.getString("PHONE"));
 				loginUser.setEnrollDate(rset.getDate("ENROLL_DATE"));
 				loginUser.setStatusCheck(rset.getString("STATUS_CHECK"));
-				loginUser.setUdCheck(rset.getString("UD_CHECK"));
+				loginUser.setUdCheck(rset.getString("UD_CHECK"));		
 			}
 			
 			
@@ -229,6 +229,56 @@ public class MemberDao {
 		
 		return result;
 	}
+
+	public Member driverLoginCheck(Connection con, String userId, String userPwd) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Member loginDriver = null;
+		
+		String query = prop.getProperty("driverLoginCheck");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			
+			pstmt.setString(1, userId);
+			pstmt.setString(2, userPwd);
+			
+			rset = pstmt.executeQuery();
+			
+			
+			if(rset.next()) {
+				System.out.println(rset.getString("MEMBER_ID"));
+				
+				loginDriver = new Member();
+				
+				loginDriver.setSeqNo(rset.getString("MEMBER_NO"));
+				loginDriver.setUserId(rset.getString("MEMBER_ID"));
+				loginDriver.setUserPwd(rset.getString("MEMBER_PWD"));
+				loginDriver.setUserName(rset.getString("MEMBER_NAME"));
+				loginDriver.setPhone(rset.getString("PHONE"));
+				loginDriver.setEnrollDate(rset.getDate("ENROLL_DATE"));
+				loginDriver.setStatusCheck(rset.getString("STATUS_CHECK"));
+				loginDriver.setUdCheck(rset.getString("UD_CHECK"));
+				loginDriver.setAgent(rset.getString("AGENT_NAME"));
+				loginDriver.setBusinessNo(rset.getString("BUSINESS_NO"));
+				loginDriver.setBusinessAddress(rset.getString("BUSINESS_ADDRESS"));
+				loginDriver.setCarType(rset.getString("CAR_TYPE"));
+				loginDriver.setCarNo(rset.getString("CAR_NO"));
+				loginDriver.setBlacklistCheck(rset.getString("BLACK_CHECK"));			
+			}
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+		}
+		
+		
+		return loginDriver;
+	}
+
 	
 }
 

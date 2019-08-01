@@ -87,12 +87,14 @@ public class InsertDriverServlet extends HttpServlet {
 			String address1 = multiRequest.getParameter("address1");
 			String address2 = multiRequest.getParameter("address2");
 			String address3 = multiRequest.getParameter("address3");
-			String businessAddress = address1 + address2 + address3;
+			String businessAddress = address1 + " " + address2 +  " " + address3;
 			String carType = multiRequest.getParameter("carType");
 			String carSize = multiRequest.getParameter("carSize");
 			String bankName = multiRequest.getParameter("bankName");
 			String accountNo = multiRequest.getParameter("accountNo");
-			String carNo = multiRequest.getParameter("carNo");
+			String carNo1 = multiRequest.getParameter("carNo1");
+			String carNo2 = multiRequest.getParameter("carNo2");
+			String carNo = carNo1 + "/" + carNo2;
 			String idPhoto = multiRequest.getParameter("idPhoto");
 			String certificate = multiRequest.getParameter("certificate");
 			String bankBook = multiRequest.getParameter("bankBook");
