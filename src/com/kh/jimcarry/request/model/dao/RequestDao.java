@@ -254,6 +254,7 @@ public class RequestDao {
 				Request ro = new Request();
 
 				ro.setReqNo(rset.getString("REQ_NO"));
+				ro.setDriverNo(rset.getString("DRIVER_NO"));
 				ro.setOrderPrice(rset.getInt("ORDER_PRICE"));
 				ro.setDriverName(rset.getString("MEMBER_NAME"));
 				ro.setGrade(rset.getString("GRADE"));
@@ -310,6 +311,49 @@ public class RequestDao {
 
 		return minPrice;
 	}
+
+	//결제정보 가져기
+	public Request makePayInfo(Connection con, String reqNo, String roNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Request payInfo = null;
+		
+		String query = prop.getProperty("makePayInfo");
+		System.out.println(query);
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			
+			pstmt.setString(1, reqNo);
+			pstmt.setString(2, roNo);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				payInfo = new Request();
+				
+				payInfo.setUserNo(rset.getString("USER_NO"));
+				payInfo.setUserName(rset.getString("MEMBER_NAME"));
+				payInfo.setReqNo(rset.getString("REQ_NO"));
+				payInfo.setDriverNo(rset.getString("DRIVER_NO"));
+				payInfo.setOrderPrice(rset.getInt("ORDER_PRICE"));
+				
+				System.out.println(payInfo.getUserNo());
+			}
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		
+		return payInfo;
+	}
+
 
 
 
@@ -1233,6 +1277,8 @@ public class RequestDao {
 	}
 
 
+
+	
 
 
 

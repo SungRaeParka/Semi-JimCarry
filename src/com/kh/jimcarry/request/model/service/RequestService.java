@@ -93,6 +93,19 @@ public class RequestService {
 			}
 
 
+			public Request makePayInfo(String reqNo, String roNo) {
+				Connection con = getConnection();
+				
+				Request payInfo = new RequestDao().makePayInfo(con,reqNo,roNo);
+				
+				close(con);
+				
+				return payInfo;
+			}
+
+
+			
+
 			public int insertRequest(Request r) {
 				Connection con = getConnection();
 				
