@@ -74,9 +74,11 @@ public class QandADao {
 		
 		String query = prop.getProperty("selectOneqa");
 		
+		
+		
 		try {
 			pstmt=con.prepareStatement(query);
-			
+			pstmt.setInt(1, num);
 			
 			
 			
@@ -132,7 +134,7 @@ public class QandADao {
 		try {
 			pstmt =con.prepareStatement(query);
 			
-			pstmt.setString(1,"문의");
+			pstmt.setString(1,"Q&A");
 			
 			rset=pstmt.executeQuery();
 			
