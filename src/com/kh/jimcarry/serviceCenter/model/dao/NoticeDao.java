@@ -46,6 +46,7 @@ public class NoticeDao {
 			while (rset.next()) {
 				Notice n = new Notice();
 				// POST_TYPE, POST_NO,B_COUNT
+				n.setPostcode(rset.getString("POST_CODE"));
 				n.setUserNo(rset.getString("USER_NO"));
 				n.setPostdate(rset.getDate("POST_DATE"));
 				n.setPostTitle(rset.getString("POST_TITLE"));
@@ -79,9 +80,12 @@ public class NoticeDao {
 		
 		String query=prop.getProperty("selectOne");
 		
+		System.out.println("query : "+query);
+		
 		try{
 		pstmt=con.prepareStatement(query);
-		pstmt.setInt(1,num);
+		pstmt.setInt(1, num);
+		
 		
 		rset= pstmt.executeQuery();
 		

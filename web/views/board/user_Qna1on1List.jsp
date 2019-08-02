@@ -19,11 +19,11 @@
     int startPage1 = pi1.getStartPage1();
     int endPage1 = pi1.getEndPage1();
     PageInfo pi2=(PageInfo) request.getAttribute("pi2");
-    int listCount2 = pi2.getListCount2();
-    int currentPage2 = pi2.getCurrentPage2();
-    int maxPage2=pi2.getMaxPage2();
-    int startPage2 = pi2.getStartPage2();
-    int endPage2 = pi2.getEndPage2();  
+    int listCount2 = pi2.getListCount();
+    int currentPage2 = pi2.getCurrentPage();
+    int maxPage2=pi2.getMaxPage();
+    int startPage2 = pi2.getStartPage();
+    int endPage2 = pi2.getEndPage();  
     %>
 <!DOCTYPE html>
 <html>
@@ -131,6 +131,19 @@ container{
 </div>
 
 </div>
+<script>
+		$("#listArea td").mouseenter(function(){
+			$(this).parent().css({"background":"yellow", "cursor":"pointer"});
+		}).mouseout(function(){
+			$(this).parent().css({"background":"white"});
+		}).click(function(){
+			var num = $(this).parent().children().eq(0).text();
+			
+			//console.log(num);
+			
+			location.href="<%=request.getContextPath()%>/selectOne.no?num=" + num;
+		});
+	</script>
 
 <br><br><br>
 <div class="container">
@@ -359,9 +372,9 @@ container{
 <script>
 		$(function(){
 			$("#listArea th").mouseenter(function(){
-				$(this).parent().css({"background":"darkgray", "cursor":"pointer"});
+				$(this).parent().css({"background":"yellow", "cursor":"pointer"});
 			}).mouseout(function(){
-				$(this).parent().css({"background":"black"});
+				$(this).parent().css({"background":"white"});
 			}).click(function(){
 				var num = $(this).parent().children("input").val();
 				

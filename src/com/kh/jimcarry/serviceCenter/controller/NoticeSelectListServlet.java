@@ -59,13 +59,21 @@ public class NoticeSelectListServlet extends HttpServlet {
 		currentPage1 =1 ;
 		currentPage2 =1 ;
 		
-		if(request.getParameter("currentPage")!= null 
+		/*if(request.getParameter("currentPage")!= null 
 				&& request.getParameter("currentPage1")!= null 
 				&& request.getParameter("currentPage2")!= null) {
 			currentPage = Integer.parseInt(request.getParameter("currentPage"));
 			currentPage1 = Integer.parseInt(request.getParameter("currentPage1"));
 			currentPage2 = Integer.parseInt(request.getParameter("currentPage2"));
-		}
+		}*/
+		
+		if (request.getParameter("currentPage")!= null ) 
+			currentPage = Integer.parseInt(request.getParameter("currentPage"));
+		if (request.getParameter("currentPage1")!= null ) 
+			currentPage1 = Integer.parseInt(request.getParameter("currentPage1"));
+		if (request.getParameter("currentPage2")!= null ) 
+			currentPage2 = Integer.parseInt(request.getParameter("currentPage2"));
+		
 		
 		limit = 10;
 		limit1 = 10;
@@ -106,12 +114,15 @@ public class NoticeSelectListServlet extends HttpServlet {
 		
 		
 		ArrayList<Notice> list = new NoticeService().selectList(currentPage, limit);
-		ArrayList<QandA> list1=new QandAService().selectList(currentPage, limit);
-		ArrayList<OneQ> list2=new OneQService().selectList(currentPage, limit);
+		ArrayList<QandA> list1=new QandAService().selectList(currentPage1, limit1);
+		ArrayList<OneQ> list2=new OneQService().selectList(currentPage2, limit2);
+		
+		System.out.println("list1 : " + list1.size());
+		System.out.println("list2 : " + list2.size());
 		
 		String page = "";
 		
-		if (list != null && list1 != null && list2 != null) {
+		if (list != null || list1 != null || list2 != null) {
 			page="views/board/user_Qna1on1List.jsp";
 			request.setAttribute("list", list);
 			request.setAttribute("list1", list1);

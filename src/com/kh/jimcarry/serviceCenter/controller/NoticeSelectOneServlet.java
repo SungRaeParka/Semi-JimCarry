@@ -43,10 +43,13 @@ public class NoticeSelectOneServlet extends HttpServlet {
 		String page="";
 		
 		if(n !=null) {
-			//나중에 페이지 바꾸기
-			page="/notice.no";
+			page="views/board/user_NoticeDetail.jsp";
 			request.setAttribute("n", n);
-		}else {
+		}else if(one != null) {
+			page="views/board/user_Insert1onDetail.jsp;";
+			request.setAttribute("qa", qa);
+		}
+		else {
 			page="views/common/errorPage.jsp";
 			request.setAttribute("msg", "공지사항 상세보기 실패!");
 		}

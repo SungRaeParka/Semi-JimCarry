@@ -150,7 +150,7 @@ public class OneQDao {
 		try {
 			pstmt =con.prepareStatement(query);
 			
-			pstmt.setString(1,"질의응답");
+			pstmt.setString(1,"1:1문의");
 			
 			rset=pstmt.executeQuery();
 			
@@ -187,8 +187,9 @@ public class OneQDao {
 			int startRow = (currentPage2 - 1) * limit2 + 1;
 			int endRow=startRow + limit2 -1;
 			
-			pstmt.setInt(1, startRow);
-			pstmt.setInt(2, endRow);
+			pstmt.setString(1, "1:1문의");
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
 			
 			rset=pstmt.executeQuery();
 			
