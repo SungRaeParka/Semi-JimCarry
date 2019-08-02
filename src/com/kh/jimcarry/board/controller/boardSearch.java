@@ -70,7 +70,7 @@ public class boardSearch extends HttpServlet {
 
 		ArrayList<Board> list = new BoardService().searchList(currentPage,limit, searchCondition, word);
 
-		ArrayList<Board> listPage = new BoardService().searchList(currentPage,limit);
+		//ArrayList<Board> listPage = new BoardService().searchList(currentPage,limit);
 
 
 		//System.out.println("검색 text 값 :  "  + word);
@@ -84,7 +84,8 @@ public class boardSearch extends HttpServlet {
 			request.setAttribute("list", list);
 			request.setAttribute("pi", pi);
 			request.setAttribute("word", word);
-			request.setAttribute("listPage", listPage);
+			request.setAttribute("searchCondition", searchCondition);
+			//request.setAttribute("listPage", listPage);
 		}else {
 			page = "views/common/Review_errorPage.jsp";
 			request.setAttribute("msg", "게시판 검색실패!");
