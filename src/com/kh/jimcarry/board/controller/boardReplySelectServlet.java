@@ -24,11 +24,10 @@ public class boardReplySelectServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String bcode = request.getParameter("bcode");
 
-		Comments c = new Comments();
-		c.setPostCode(bcode);
 
 
-		ArrayList<Comments> replyList = new BoardService().selectReply(c);
+
+		ArrayList<Comments> replyList = new BoardService().selectReply1(bcode);
 
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");

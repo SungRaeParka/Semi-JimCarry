@@ -101,7 +101,7 @@ public class BoardService {
 	public ArrayList<Board> searchList(int currentPage, int limit, String searchCondition, String word) {
 		Connection con = getConnection();
 
-		ArrayList<Board> list = new BoardDao().searchList(con,searchCondition, word);
+		ArrayList<Board> list = new BoardDao().searchList(con,searchCondition, word, currentPage, limit );
 
 
 
@@ -165,10 +165,10 @@ public class BoardService {
 	}
 
 	//댓글 전체조회
-	public ArrayList<Comments> selectReply(Comments c) {
+	public ArrayList<Comments> selectReply1(String bcode) {
 		Connection con = getConnection();
 
-		ArrayList<Comments> replyList = new BoardDao().selectReplyList(con, c);
+		ArrayList<Comments> replyList = new BoardDao().selectReplyList1(con, bcode);
 
 		close(con);
 
@@ -181,20 +181,11 @@ public class BoardService {
 
 		int listCount = new BoardDao().getListCountsearch(con, word, searchCondition);
 		close(con);
+		System.out.println("word ::: searchCondition ::" + word + "나와 : "  + searchCondition + "제발" );
 
 		return listCount;
 	}
-	//검색 페이징
-	public ArrayList<Board> searchList(int currentPage, int limit) {
-		Connection con = getConnection();
 
-
-		ArrayList<Board> listPage = new BoardDao().searchPage(con,currentPage,limit);
-		close(con);
-
-
-		return listPage;
-	}
 
 
 

@@ -191,55 +191,6 @@ a.btn_02 {
 			<button onclick="location.href='<%=request.getContextPath()%>/selectList.bo?currentPage=<%=maxPage%>'">>></button>
 		</div>
 
-
-<%--
-		<%-- 페이징처리 검색
-		<div class="panginArea" align="center">
-			<button onclick="location.href'<%=request.getContextPath()%>/search.bo?currentPage=1'"><<</button>
-		<% if(currentPage <= 1) { %>
-					<button disabled><<</button>
-					<% }else { %>
-					<button onclick="location.href='<%=request.getContextPath() %>/search.bo?currentPage=<%=currentPage -1%>'"><</button>
-				 <% } %>
-
-			<% for(int p = startPage; p <= endPage; p++){
-				if(currentPage == p){
-			%>
-					<button disabled style="color:red;"><%= p %></button>
-			<% } else { %>
-					<button onclick="location.href='<%=request.getContextPath()%>/search.bo?currentPage=<%=p%>'"><%= p %></button>
-			<%
-				}
-			   }
-			%>
-
-				 <% if(currentPage >= maxPage) { %>
-
-				  <% }else {%>
-				  	<button onclick="location.href='<%=request.getContextPath() %>/search.bo?currentPage=<%=currentPage +1%>'">></button>
-
-				  <% } %>
-			<button onclick="location.href='<%=request.getContextPath()%>/search.bo?currentPage=<%=maxPage%>'">>></button>
-		</div>
- --%>
-
-
-
-		<!-- <div class="con">
-			<ul class="pagination">
-				<li><a href="#">1</a></li>
-				<li class="active"><a href="#">2</a></li>
-				<li><a href="#">3</a></li>
-				<li><a href="#">4</a></li>
-				<li><a href="#">5</a></li>
-				<li><a href="#">다음</a></li>
-				<li><a href="#">맨끝</a></li>
-			</ul>
-		</div> -->
-
-
-
-
 	</div>
 
 	<%-- 검색영역 --%>
@@ -248,7 +199,6 @@ a.btn_02 {
 			<select name="searchCondition" id="searchCondition">
 				<option value="title">제목</option>
 				<option value="writer">작성자</option>
-				<option value="content">내용</option>
 			</select>
 
 			<input type="search" name="word" placeholder="특수문자는 사용할수 없습니다."/>
