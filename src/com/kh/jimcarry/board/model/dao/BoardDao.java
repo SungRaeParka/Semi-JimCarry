@@ -331,34 +331,38 @@ public class BoardDao {
 	// 검색 기능 메소드
 
 	public ArrayList<Board> searchList(Connection con, String searchCondition,
-			String word) {
+			String word, int currentPage, int limit) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		ArrayList<Board> list = null;
 		Board b = null;
 		String search = "%" + word + "%";
+		String sql = "";
+		int startRow = (currentPage - 1) * limit + 1;
+		int endRow = startRow + limit - 1;
 
 		try {
 
 			// 제목으로 검색
 			if (searchCondition.equals("title")) {
-				String queryTitle = prop.getProperty("searchTitle");
-				pstmt = con.prepareStatement(queryTitle);
-				pstmt.setString(1, search);
-
+				sql = prop.getProperty("searchTitle");
 				// 작정자로 검색
 			} else if (searchCondition.equals("writer")) {
-				String queryWriter = prop.getProperty("searchWriter");
-				pstmt = con.prepareStatement(queryWriter);
-				pstmt.setString(1, search);
+				sql = prop.getProperty("searchWriter");
+				System.out.println("searchCondition 어디 : " + searchCondition);
+				System.out.println("word 어디여 : " + word);
+
 				// 내용으로 검색
-			} else if (searchCondition.equals("content")) {
-				String queryContent = prop.getProperty("searchContent");
-				pstmt = con.prepareStatement(queryContent);
-				pstmt.setString(1, search);
-			}else {
+			} else {
 
 			}
+
+			System.out.println( sql );
+
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, search);
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
 
 			rset = pstmt.executeQuery();
 
@@ -376,6 +380,7 @@ public class BoardDao {
 				b.setWriter(rset.getString("MEMBER_ID"));
 
 				list.add(b);
+				System.out.println("나는 리스트다 : ::: " + list);
 			}
 
 		} catch (SQLException e) {
@@ -389,7 +394,7 @@ public class BoardDao {
 		return list;
 	}
 
-	//검색 페이징
+	/*//검색 페이징
 	public ArrayList<Board> searchPage(Connection con, int currentPage, int limit) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -439,7 +444,7 @@ public class BoardDao {
 		}
 
 		return list;
-	}
+	}*/
 
 	//게시글 업데이트
 	public int updateBoard(Connection con, Board b) {
@@ -533,6 +538,7 @@ public class BoardDao {
 
 		return result;
 	}
+
 	//댓글 조회
 
 	public ArrayList<Comments> selectReplyList(Connection con, String postCode) {
@@ -579,7 +585,7 @@ public class BoardDao {
 	}
 
     //댓글 전체조회
-	public ArrayList<Comments> selectReplyList(Connection con, Comments c) {
+	public ArrayList<Comments> selectReplyList1(Connection con, String bcode) {
 		PreparedStatement pstmt= null;
 		ResultSet rset = null;
 		ArrayList<Comments> list = null;
@@ -588,7 +594,7 @@ public class BoardDao {
 
 		try {
 			pstmt = con.prepareStatement(query);
-			pstmt.setString(1, c.getPostCode());
+			pstmt.setString(1, bcode);
 
 			rset = pstmt.executeQuery();
 
@@ -596,15 +602,27 @@ public class BoardDao {
 
 
 			while(rset.next()) {
-				c = new Comments();
+				Comments c = new Comments();
+
+				c.setCommentCode(rset.getString("COMMENT_CODE"));
+				c.setPostCode(rset.getString("POST_CODE"));
+				c.setUserNo(rset.getString("USER_NO"));
+				c.setCommentDate(rset.getDate("COMMENT_DATE"));
+				c.setCommentContents(rset.getString("COMMENT_CONTENTS"));
+				c.setWriter(rset.getString("MEMBER_ID"));
+
+				list.add(c);
 
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			close(pstmt);
+			close(rset);
 		}
 
-		return null;
+		return list;
 	}
 
 
@@ -612,13 +630,13 @@ public class BoardDao {
 		PreparedStatement pstmt = null;
 		int listCount = 0;
 		ResultSet rset = null;
-		Board b = null;
+
 		String search = "%" + word + "%";
 
 
 			try {
 				String query = prop.getProperty("selectListCountTitle");
-				b =  new Board();
+
 				if(searchCondition.equals("title")) {
 				pstmt = con.prepareStatement(query);
 				pstmt.setString(1, search);
@@ -632,9 +650,8 @@ public class BoardDao {
 
 
 				}else if(searchCondition.equals("writer")){
-					b =  new Board();
 					String  user = prop.getProperty("selectListCountTitleUser");
-					pstmt = con.prepareStatement(query);
+					pstmt = con.prepareStatement(user);
 					pstmt.setString(1, search);
 
 					rset = pstmt.executeQuery();
@@ -656,7 +673,7 @@ public class BoardDao {
 				close(pstmt);
 			}
 
-		System.out.println("================================ : : " +  listCount);
+
 		return listCount;
 	}
 

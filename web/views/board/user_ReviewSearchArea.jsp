@@ -14,6 +14,7 @@
 		int startPage = pi.getStartPage();
 		int endPage = pi.getEndPage();
 		String word = (String) request.getAttribute("word");
+		String searchCondition = (String)request.getAttribute("searchCondition");
 
 
 
@@ -108,7 +109,7 @@ a.btn_02 {
 </head>
 <body>
 
-	<%@ include file="/views/common/main_TopBar.jsp"%>
+	<%@ include file="/views/common/user_TopBar.jsp"%>
 	<br>
 	<br>
 	<br>
@@ -167,11 +168,11 @@ a.btn_02 {
 
 		<%-- 페이징처리 검색 --%>
 		<div class="panginArea" align="center">
-			<button onclick="location.href'<%=request.getContextPath()%>/search.bo?currentPage=1&searchCondition=title&word=<%=word %>'"><<</button>
+			<button onclick="location.href'<%=request.getContextPath()%>/search.bo?currentPage=1&searchCondition=<%=searchCondition %>&word=<%=word %>'"><<</button>
 		<% if(currentPage <= 1) { %>
 					<button disabled><<</button>
 					<% }else { %>
-					<button onclick="location.href='<%=request.getContextPath() %>/search.bo?currentPage=<%=currentPage -1%>&searchCondition=title&word=<%=word %>'"><</button>
+					<button onclick="location.href='<%=request.getContextPath() %>/search.bo?currentPage=<%=currentPage -1%>&searchCondition=<%=searchCondition %>&word=<%=word %>'"><</button>
 				 <% } %>
 
 			<% for(int p = startPage; p <= endPage; p++){
@@ -179,7 +180,7 @@ a.btn_02 {
 			%>
 					<button disabled style="color:red;"><%= p %></button>
 			<% } else { %>
-					<button onclick="location.href='<%=request.getContextPath()%>/search.bo?currentPage=<%=p%>&searchCondition=title&word=<%=word %>'"><%= p %></button>
+					<button onclick="location.href='<%=request.getContextPath()%>/search.bo?currentPage=<%=p%>&searchCondition=<%=searchCondition%>&word=<%=word %>'"><%= p %></button>
 			<%
 				}
 			   }
@@ -187,10 +188,10 @@ a.btn_02 {
 				 <% if(currentPage >= maxPage) { %>
 
 				  <% }else {%>
-				  	<button onclick="location.href='<%=request.getContextPath() %>/search.bo?currentPage=<%=currentPage +1%>&searchCondition=title&word=<%=word %>'">></button>
+				  	<button onclick="location.href='<%=request.getContextPath() %>/search.bo?currentPage=<%=currentPage +1%>&searchCondition=<%=searchCondition %>&word=<%=word %>'">></button>
 
 				  <% } %>
-			<button onclick="location.href='<%=request.getContextPath()%>/search.bo?currentPage=<%=maxPage%>&searchCondition=title&word=<%=word %>'">>></button>
+			<button onclick="location.href='<%=request.getContextPath()%>/search.bo?currentPage=<%=maxPage%>&searchCondition=<%=searchCondition%>&word=<%=word %>'">>></button>
 		</div>
 	</div>
 
