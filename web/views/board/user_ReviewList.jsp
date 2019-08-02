@@ -1,5 +1,6 @@
 
 
+<%@page import="sun.util.logging.resources.logging"%>
 <%@page import="java.nio.channels.SeekableByteChannel"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -14,6 +15,9 @@
 		int startPage = pi.getStartPage();
 		int endPage = pi.getEndPage();
 
+		//Member loginDriver = (Member) session.getAttribute("loginDriver");
+
+
 		System.out.println("listCount : " + listCount);
 		System.out.println("currentPage : " + currentPage);
 		System.out.println("maxPage : " + maxPage);
@@ -21,7 +25,7 @@
 		System.out.println("endPage : " + endPage);
 
 
-		//Member loginUser = (Member) session.getAttribute("loginUser");
+
 
 	%>
 
@@ -118,8 +122,14 @@ a.btn_02 {
 			style="margin: 0 auto; border: 1px solid red; width: 300px; height: 100px;">
 			<h2>짐캐리 사용후기</h2>
 		</div>
+
+
 		<div>
+
+			<%if(loginUser.getUdCheck().equalsIgnoreCase("U")){ %>
 			<a onclick="location.href='views/board/user_ReviewInsert.jsp'" class="btn_02">글쓰기</a>
+
+			<%} %>
 		</div>
 
 		<br>

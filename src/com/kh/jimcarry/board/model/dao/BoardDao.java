@@ -17,6 +17,7 @@ import com.kh.jimcarry.board.model.vo.Board;
 import com.kh.jimcarry.board.model.vo.Comments;
 import com.sun.xml.internal.messaging.saaj.util.FinalArrayList;
 
+import jdk.nashorn.internal.ir.GetSplitState;
 import oracle.net.aso.f;
 import sun.print.PSStreamPrinterFactory;
 
@@ -584,46 +585,7 @@ public class BoardDao {
 
 	}
 
-    //댓글 전체조회
-	public ArrayList<Comments> selectReplyList1(Connection con, String bcode) {
-		PreparedStatement pstmt= null;
-		ResultSet rset = null;
-		ArrayList<Comments> list = null;
 
-		String query = prop.getProperty("selectReplyAll");
-
-		try {
-			pstmt = con.prepareStatement(query);
-			pstmt.setString(1, bcode);
-
-			rset = pstmt.executeQuery();
-
-			list = new ArrayList<Comments>();
-
-
-			while(rset.next()) {
-				Comments c = new Comments();
-
-				c.setCommentCode(rset.getString("COMMENT_CODE"));
-				c.setPostCode(rset.getString("POST_CODE"));
-				c.setUserNo(rset.getString("USER_NO"));
-				c.setCommentDate(rset.getDate("COMMENT_DATE"));
-				c.setCommentContents(rset.getString("COMMENT_CONTENTS"));
-				c.setWriter(rset.getString("MEMBER_ID"));
-
-				list.add(c);
-
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}finally {
-			close(pstmt);
-			close(rset);
-		}
-
-		return list;
-	}
 
 
 	public int getListCountsearch(Connection con, String word, String searchCondition) {
@@ -675,6 +637,44 @@ public class BoardDao {
 
 
 		return listCount;
+	}
+
+	public ArrayList<Comments> selectReplyListOne(Connection con, String num) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<Comments> comment = null;
+
+		String query =  prop.getProperty("ReplyOne");
+
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, num);
+
+			rset = pstmt.executeQuery();
+			comment = new ArrayList<Comments>();
+
+			while(rset.next()) {
+				Comments c = new Comments();
+				c.setWriter(rset.getString("MEMBER_ID"));
+				c.setCommentContents(rset.getString("COMMENT_CONTENTS"));
+				c.setCommentDate(rset.getDate("COMMENT_DATE"));
+				c.setCommentCode(rset.getString("COMMENT_CODE"));
+				c.setPostCode(rset.getString("POST_CODE"));
+
+				comment.add(c);
+
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+			close(rset);
+		}
+
+
+
+		return comment;
 	}
 
 

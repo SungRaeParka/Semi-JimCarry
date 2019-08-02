@@ -164,16 +164,7 @@ public class BoardService {
 		return replyList;
 	}
 
-	//댓글 전체조회
-	public ArrayList<Comments> selectReply1(String bcode) {
-		Connection con = getConnection();
 
-		ArrayList<Comments> replyList = new BoardDao().selectReplyList1(con, bcode);
-
-		close(con);
-
-		return replyList;
-	}
 
 	//검색 갯수 카운터
 	public int getListCountsearch(String word,String searchCondition) {
@@ -184,6 +175,15 @@ public class BoardService {
 		System.out.println("word ::: searchCondition ::" + word + "나와 : "  + searchCondition + "제발" );
 
 		return listCount;
+	}
+	//댓글이여ㅛ
+	public ArrayList<Comments> selectReplyListOne(String num) {
+		Connection con = getConnection();
+
+		ArrayList<Comments> comments = new BoardDao().selectReplyListOne(con, num);
+
+		close(con);
+		return comments;
 	}
 
 

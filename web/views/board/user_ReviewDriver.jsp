@@ -1,5 +1,6 @@
 
 
+<%@page import="sun.util.logging.resources.logging"%>
 <%@page import="java.nio.channels.SeekableByteChannel"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -13,9 +14,8 @@
 		int maxPage = pi.getMaxPage();
 		int startPage = pi.getStartPage();
 		int endPage = pi.getEndPage();
-		String word = (String) request.getAttribute("word");
-		String searchCondition = (String)request.getAttribute("searchCondition");
 
+		//Member loginDriver = (Member) session.getAttribute("loginDriver");
 
 
 		System.out.println("listCount : " + listCount);
@@ -25,7 +25,7 @@
 		System.out.println("endPage : " + endPage);
 
 
-		//Member loginUser = (Member) session.getAttribute("loginUser");
+
 
 	%>
 
@@ -122,11 +122,17 @@ a.btn_02 {
 			style="margin: 0 auto; border: 1px solid red; width: 300px; height: 100px;">
 			<h2>짐캐리 사용후기</h2>
 		</div>
+
+
 		<div>
+
 			<%if(loginUser.getUdCheck().equalsIgnoreCase("U")){ %>
 			<a onclick="location.href='views/board/user_ReviewInsert.jsp'" class="btn_02">글쓰기</a>
 
-			<% } %>
+
+
+			<%} %>
+
 		</div>
 
 		<br>
@@ -142,7 +148,7 @@ a.btn_02 {
 				<col width="10%" />
 			</colgroup>
 
-		<thead class="thead">
+			<thead class="thead">
 
 
 				<tr>
@@ -152,7 +158,7 @@ a.btn_02 {
 					<th scope="col">일자</th>
 					<th scope="col">조회수</th>
 				</tr>
-		</thead>
+			</thead>
 
 
 			<% for(Board b : list) { %>
@@ -169,13 +175,13 @@ a.btn_02 {
 		</table>
 		</div>
 
-		<%-- 페이징처리 검색 --%>
+		<%-- 페이징처리 --%>
 		<div class="panginArea" align="center">
-			<button onclick="location.href'<%=request.getContextPath()%>/search.bo?currentPage=1&searchCondition=<%=searchCondition %>&word=<%=word %>'"><<</button>
+			<button onclick="location.href'<%=request.getContextPath()%>/selectList.bo?currentPage=1'"><<</button>
 		<% if(currentPage <= 1) { %>
 					<button disabled><<</button>
 					<% }else { %>
-					<button onclick="location.href='<%=request.getContextPath() %>/search.bo?currentPage=<%=currentPage -1%>&searchCondition=<%=searchCondition %>&word=<%=word %>'"><</button>
+					<button onclick="location.href='<%=request.getContextPath() %>/selectList.bo?currentPage=<%=currentPage -1%>'"><</button>
 				 <% } %>
 
 			<% for(int p = startPage; p <= endPage; p++){
@@ -183,19 +189,21 @@ a.btn_02 {
 			%>
 					<button disabled style="color:red;"><%= p %></button>
 			<% } else { %>
-					<button onclick="location.href='<%=request.getContextPath()%>/search.bo?currentPage=<%=p%>&searchCondition=<%=searchCondition%>&word=<%=word %>'"><%= p %></button>
+					<button onclick="location.href='<%=request.getContextPath()%>/selectList.bo?currentPage=<%=p%>'"><%= p %></button>
 			<%
 				}
 			   }
 			%>
+
 				 <% if(currentPage >= maxPage) { %>
 
 				  <% }else {%>
-				  	<button onclick="location.href='<%=request.getContextPath() %>/search.bo?currentPage=<%=currentPage +1%>&searchCondition=<%=searchCondition %>&word=<%=word %>'">></button>
+				  	<button onclick="location.href='<%=request.getContextPath() %>/selectList.bo?currentPage=<%=currentPage +1%>'">></button>
 
 				  <% } %>
-			<button onclick="location.href='<%=request.getContextPath()%>/search.bo?currentPage=<%=maxPage%>&searchCondition=<%=searchCondition%>&word=<%=word %>'">>></button>
+			<button onclick="location.href='<%=request.getContextPath()%>/selectList.bo?currentPage=<%=maxPage%>'">>></button>
 		</div>
+
 	</div>
 
 	<%-- 검색영역 --%>
@@ -205,11 +213,8 @@ a.btn_02 {
 				<option value="title">제목</option>
 				<option value="writer">작성자</option>
 			</select>
-			<script>
 
-			</script>
-
-			<input type="search" name="word" value="" placeholder="특수문자는 사용할수 없습니다."/>
+			<input type="search" name="word" placeholder="특수문자는 사용할수 없습니다."/>
 			<button type="submit">검색하기</button>
 
 	</form>
