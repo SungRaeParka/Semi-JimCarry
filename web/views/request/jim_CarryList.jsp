@@ -94,7 +94,7 @@
 				<option value="매칭완료">매칭완료</option>
 				<option value="이용대기">이용대기</option>
 				<option value="이용완료">이용완료</option>
-				<option value="이용취소">이용취소</option>
+				<option value="취소">취소</option>
 			</select>
 		</div>
 
@@ -185,8 +185,8 @@
 			</div>
 			<div id="reqpri">
 				<h4>
-					<input type="hidden" value="<%=req.getReqNo() %>">
 					<span id="orderInfoBtn" style="cursor: pointer">입찰내역 확인 →</span>
+					<input type="hidden" id="reqInfo" name="reqInfo" value="<%=req.getReqNo() %>">
 				</h4>
 			</div>
 
@@ -349,6 +349,7 @@
 
 				<h3>
 					<span id="doneBtn" style="cursor: pointer">완료하기 →</span>
+					
 				</h3>
 
 			</div>
@@ -400,7 +401,7 @@
 			<hr>
 		</div>
 		<%
-			} else if (req.getConditionReq().equals("이용취소")) {
+			} else if (req.getConditionReq().equals("취소")) {
 				reqOrder = orderMap.get(req.getReqNo());
 		%>
 		<div class="matchCancel">
@@ -520,7 +521,9 @@
 	
 	$(function(){//입찰내역보기
 		$("#orderInfoBtn").click(function(){
-			var no = $(this).parent().children("input").val();
+			var no = $(this).next().val();
+			
+			$("#reqInfo").val(no);
 			
 			location.href="<%=request.getContextPath()%>/checkOrder.jc?no=" + no;
 		});
@@ -535,7 +538,7 @@
 			
 			/* var reqNo= 
 			var userNo=
-			var driverNo= */
+			var driverNo=  */
 			
 			window.open(url,name,option);
 		})
@@ -587,7 +590,7 @@
 				usingWait.hide();
 				usingOk.show();
 				matchCancel.hide();
-			}else if(status == "이용취소"){
+			}else if(status == "취소"){
 				matchWait.hide();
 				matchOk.hide();
 				usingWait.hide();
