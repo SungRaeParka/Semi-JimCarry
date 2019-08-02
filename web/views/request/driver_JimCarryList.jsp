@@ -112,7 +112,7 @@ html, body {
 				<option value="이용완료">이용완료</option>
 				<option value="정산대기">정산대기</option>
 				<option value="정산완료">정산완료</option>
-				<option value="매칭취소">매칭취소</option>
+				<option value="취소">취소</option>
 			</select>
 		</div>
 
@@ -175,7 +175,8 @@ html, body {
 			
 			<div id="reqInfo">
 				<h4>
-					<a href="#">상세 짐보기→</a>
+					<span class="reqInfoBtn" style="cursor: pointer">상세짐보기 →</span>
+					<input type="hidden" id="reqInfo" name="reqInfo" value="<%=req.getReqNo() %>">
 				</h4>
 			</div>
 			
@@ -238,7 +239,8 @@ html, body {
 			
 			<div id="reqprice">
 				<h3>
-					<a href="#">상세 짐 보기→</a>
+					<span class="reqInfoBtn" style="cursor: pointer">상세짐보기 →</span>
+					<input type="hidden" id="reqInfo" name="reqInfo" value="<%=req.getReqNo() %>">
 				</h3>
 			</div>
 
@@ -294,7 +296,8 @@ html, body {
 			<div id="reqcencle" align="right">
 
 				<h3>
-					<a href="#">상세 짐보기→</a>
+					<span class="reqInfoBtn" style="cursor: pointer">상세짐보기 →</span>
+					<input type="hidden" id="reqInfo" name="reqInfo" value="<%=req.getReqNo() %>">
 				</h3>
 
 			</div>
@@ -346,7 +349,8 @@ html, body {
 			<div id="reqcencle" align="right">
 
 				<h3>
-					<a href="#">상세 짐보기→</a>
+					<span class="reqInfoBtn" style="cursor: pointer">상세짐보기 →</span>
+					<input type="hidden" id="reqInfo" name="reqInfo" value="<%=req.getReqNo() %>">
 				</h3>
 
 			</div>
@@ -558,6 +562,22 @@ html, body {
 		</div>
 	</div>
 	<script>
+	
+	$(function(){//견적상세보기
+		$(".reqInfoBtn").click(function(){
+			var no = $(this).next().val();
+			
+			console.log(no);
+			
+			$("#reqInfo").val(no);
+			
+			//location.href="<%=request.getContextPath()%>
+		});
+	});
+	
+	
+	
+	
 	$(function(){
 		$("#driver_filter").change(function(){
 			var status = $("#driver_filter").val();
@@ -613,7 +633,7 @@ html, body {
 				calWait.hide();
 				calOk.hide();
 				matchCancel.hide();
-			}else if(status == "매칭취소"){
+			}else if(status == "취소"){
 				matchWait.hide();
 				matchOk.hide();
 				usingWait.hide();

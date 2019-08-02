@@ -28,7 +28,7 @@
 	<script>
 
 BootPay.request({
-	price: '3000<%-- <%=ro.getOrderPrice()%> --%>', //실제 결제되는 가격
+	price: '3000' <%-- '<%=ro.getOrderPrice()%>' --%>, //실제 결제되는 가격
 	application_id: "5d40ec7602f57e0030f7fe2c",
 	name: '견적 매칭', //결제창에서 보여질 이름
 	pg: 'danal',
@@ -39,7 +39,7 @@ BootPay.request({
 			item_name: '<%=ro.getReqNo()%>', //상품명
 			qty: 1,
 			unique: '<%=ro.getReqNo()%>', //해당 상품을 구분짓는 primary key
-			price: 3000<%-- <%=ro.getOrderPrice()%> --%>, //상품 단가
+			price: 3000<%-- <%=ro.getOrderPrice()%> --%> //상품 단가
 			
 		}
 	],
