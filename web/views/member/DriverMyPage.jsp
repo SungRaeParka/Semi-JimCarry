@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.*, com.kh.jimcarry.member.model.vo.*, java.text.DecimalFormat, com.kh.jimcarry.admin.accounting.model.vo.*"%>
+    pageEncoding="UTF-8" import="java.util.*, com.kh.jimcarry.member.model.vo.*"%>
 <%
 	Member loginDriver = (Member) session.getAttribute("loginDriver");
-	ArrayList<AccountingMember> list = (ArrayList<AccountingMember>) request.getAttribute("list");
 %>
 <!DOCTYPE html>
 <html>
@@ -248,6 +247,7 @@
     				</form>
     			</div>
     			<div id="menu1" class="tab-pane fade">
+    			<form action="<%=request.getContextPath()%>/driverlist.me" method="post">
     				<div class="container">
     				<table class="table">
   				 	<thead>
@@ -262,66 +262,20 @@
     				</tr>
     				</thead>
     				<tbody>
-    				<%-- <% for(AccountingMember am : list){ %>
       				<tr>
-        				<td><%=am.getPayNo() %></td>
-        				<td><%=am.getMemberName() %></td>
-        				<td><%=am.getPayDate() %></td>
-        				<td><%=am.getReservationDate() %></td>
-        				<td><%=am.getPayAmount() %></td>
-        				<td><%=am.getDriverPay() %></td>
-        				<td>매칭신청</td>
-      				</tr>
-      				<% } %> --%>
-      				<tr>
-        				<td>2</td>
-        				<td>메시</td>
-        				<td>2019-06-11</td>
-        				<td>2019-06-14</td>
-        				<td>75,000</td>
-        				<td>72,000</td>
-        				<td>매칭완료</td>
-      				</tr>
-      				<tr>
-        				<td>3</td>
-        				<td>수아레즈</td>
-        				<td>2019-06-16</td>
-        				<td>2019-06-20</td>
-        				<td>65,000</td>
-        				<td>62,000</td>
-        				<td>이용대기</td>
-      				</tr>
-      				<tr>
-        				<td>4</td>
-        				<td>네이마르</td>
-        				<td>2019-06-24</td>
-        				<td>2019-06-30</td>
-        				<td>72,000</td>
-        				<td>69,000</td>
-        				<td>이용완료</td>
-      				</tr>
-      				<tr>
-        				<td>5</td>
-        				<td>그리즈만</td>
-        				<td>2019-06-27</td>
-        				<td>2019-07-01</td>
-        				<td>78,000</td>
-        				<td>75,000</td>
-        				<td>정산대기</td>
-      				</tr>
-      				<tr>
-        				<td>6</td>
-        				<td>부스케츠</td>
-        				<td>2019-07-04</td>
-        				<td>2019-07-07</td>
-        				<td>105,000</td>
-        				<td>100,000</td>
-        				<td>정산완료</td>
+        				<td><%=loginUser.getSeqNo() %></td>
+        				<td><%=loginUser.getUserName() %></td>
+        				<td></td>
+        				<td></td>
+        				<td></td>
+        				<td></td>
+        				<td>매칭대기</td>
       				</tr>
     				</tbody>
   				</table>
   				</div>
-    			</div>    			
+    			</form>		
+    			</div>    	
   			</div>
 		</div>
 	</div>
