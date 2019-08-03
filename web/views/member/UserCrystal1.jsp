@@ -54,16 +54,6 @@
 		height:30px;
 		width:57px;
 	}
-	input[type=file]{
-		height:35px;
-		width:300px; 
-		border:1px solid white;
-		margin-top:5px;
-		margin-left:90px;
-		font-size:15px;
-		background:white;
-		color:black;
-	}
 </style>
 </head>
 <body>
@@ -79,34 +69,37 @@
 		<div class="container" style="display: inline-block">
   			<ul class="nav nav-tabs">
     			<li class="active"><a href="#home">회원정보</a></li>
-    			<li><a href="/semi/UserList.me">이용내역</a></li>
+    			<li><a href="#menu1">이용내역</a></li>
   			</ul>
 
   			<div class="tab-content">
     			<div id="home" class="tab-pane fade in active" style="border: 1px solid black">
   			<form action="<%=request.getContextPath()%>/update.me" method="post">
-    				<table align="center">
-    					<tr class="showMemberInfo">
+    					<h3 align="center" class=updateMemberInfo>사용자 회원정보 변경</h3>
+    					<table align="center">
+    					<tr class="updateMemberInfo">
     						<td><label>아이디 : </label></td>
     						<td><input type="text" name="userId" value="<%=loginUser.getUserId() %>" readonly></td>
-    					</tr>    					
-    					<tr class="showMemberInfo">
+    						<td><input type="hidden" name="seqNo" value="<%=loginUser.getSeqNo() %>" readonly></td>
+    					</tr>
+    					<tr class="updateMemberInfo">
+    						<td><label>비밀번호 : </label>&nbsp;&nbsp;</td>
+    						<td><input type="password" name="password"></td>
+    					</tr>      					
+    					<tr class="updateMemberInfo">
     						<td><label>이름 : </label></td>
     						<td><input type="text" name="userName" value="<%=loginUser.getUserName() %>" readonly></td>
     					</tr>
-    					<tr class="showMemberInfo">
+    					<tr class="updateMemberInfo">
 							<td><label>휴대폰 번호 :</label>&nbsp;&nbsp;</td>
 							<td>
-							<input type="text" maxlength="3" name="tel1" id="tel" value="<%=loginUser.getPhone().substring(0, 3) %>"> -
-							<input type="text" maxlength="4" name="tel2" id="tel" value="<%=loginUser.getPhone().substring(4, 8) %>"> -
-							<input type="text" maxlength="4" name="tel3" id="tel" value="<%=loginUser.getPhone().substring(9, 13) %>">
-							</td>		
-						</tr>
-    					<tr class="showMemberInfo">
-    						<td colspan="2"><input type="button" value="회원정보 변경" id="updatebtn"></td>    						
-    					</tr>
-    					<tr class="showMemberInfo">
-    						<td colspan="2"><input type="button" value="회원 탈퇴" id="deletebtn"></td>
+							<input type="text" maxlength="3" name="tel4" value="010" id="tel"> -
+							<input type="text" maxlength="4" name="tel5" value="0000" id="tel"> -
+							<input type="text" maxlength="4" name="tel6" value="0000" id="tel"></td>
+							<td><button id="btn" onclick="Confirm();">인증</button></td>			
+						</tr>   					
+    					<tr class="updateMemberInfo">
+    						<td colspan="2"><input type="button" value="수정 완료" id="updateMemberbtn" onclick="updateOk();"></td>    						
     					</tr>
     				</table>
     				</form>
@@ -120,16 +113,9 @@
 	</div>
 
 	<script>
-		$(function() {
-			$("#deletebtn").click(function(){
-				window.confirm("회원을 탈퇴하시겠습니까?");
-				location.href = "../main/mainPage.jsp";
-			});
-			$("#updatebtn").click(function(){
-				location.href = "UserCrystal.jsp";
-			});
-		});
-
+		function updateOk(){
+			$("form").submit();
+		}
 	</script>
 
 </body>
