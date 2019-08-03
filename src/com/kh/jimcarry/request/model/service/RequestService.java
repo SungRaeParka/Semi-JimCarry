@@ -313,6 +313,17 @@ public class RequestService {
 			}
 
 
+			public ArrayList<HashMap<String, Object>> selectDriverReqList(String driver) {
+				Connection con = getConnection();
+				
+				ArrayList<HashMap<String,Object>> reqInfoList = new RequestDao().selectDriverReqList(con,driver);
+				
+				close(con);
+				
+				return reqInfoList;
+			}
+
+
 
 			
 }

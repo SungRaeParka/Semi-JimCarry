@@ -512,8 +512,7 @@ html, body {
 		<%-- 페이징처리 --%>
 		<div class="pagingArea" align="center">
 			<button
-				onclick="location.href='<%=request.getContextPath()%>/driverJcarrylist.jc?currentPage=1'">
-				<<</button>
+				onclick="location.href='<%=request.getContextPath()%>/driverJcarrylist.jc?currentPage=1'"> << </button>
 
 			<%
 				if (currentPage <= 1) {
@@ -523,8 +522,7 @@ html, body {
 				} else {
 			%>
 			<button
-				onclick="location.href='<%=request.getContextPath()%>/driverJcarrylist.jc?currentPage=<%=currentPage - 1%>'">
-				<</button>
+				onclick="location.href='<%=request.getContextPath()%>/driverJcarrylist.jc?currentPage=<%=currentPage - 1%>'"><</button>
 			<%
 				}
 			%>
@@ -566,12 +564,13 @@ html, body {
 	$(function(){//견적상세보기
 		$(".reqInfoBtn").click(function(){
 			var no = $(this).next().val();
+			var driver = '<%=loginUser.getSeqNo()%>';
 			
 			console.log(no);
 			
-			$("#reqInfo").val(no);
+			//$("#reqInfo").val(no);
 			
-			//location.href="<%=request.getContextPath()%>
+			location.href="<%=request.getContextPath()%>/driverJcCheckReq.jc?no=" + no+"&driver="+driver;
 		});
 	});
 	

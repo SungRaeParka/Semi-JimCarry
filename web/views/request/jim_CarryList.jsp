@@ -185,8 +185,8 @@
 			</div>
 			<div id="reqpri">
 				<h4>
-					<span id="orderInfoBtn" style="cursor: pointer">입찰내역 확인 →</span>
-					<input type="hidden" id="reqInfo" name="reqInfo" value="<%=req.getReqNo() %>">
+					<span class="orderInfoBtn" style="cursor: pointer">입찰내역 확인 →</span>
+					<input type="hidden" id="orderInfo" name="orderInfo" value="<%=req.getReqNo() %>">
 				</h4>
 			</div>
 
@@ -260,6 +260,7 @@
 				
 				if(nowTime < moveTime){
 		%>			
+		
 		<div class="usingWait">
 			<img src="/semi/images/mc3.png" class="imgs" style="float: left">
 
@@ -349,7 +350,8 @@
 
 				<h3>
 					<span id="doneBtn" style="cursor: pointer">완료하기 →</span>
-					
+					<input type="hidden" id="reqNo" value="<%=req.getReqNo() %>">
+					<input type="hidden" id="driverNo" value="<%=reqOrder.getDriverNo() %>">
 				</h3>
 
 			</div>
@@ -448,9 +450,7 @@
 
 		<%-- 페이징처리 --%>
 		<div class="pagingArea" align="center">
-			<button
-				onclick="location.href='<%=request.getContextPath()%>/myJcarrylist.jc?currentPage=1'">
-				</button>
+			<button onclick="location.href='<%=request.getContextPath()%>/myJcarrylist.jc?currentPage=1'"> << </button>
 
 			<%
 				if (currentPage <= 1) {
@@ -460,8 +460,7 @@
 				} else {
 			%>
 			<button
-				onclick="location.href='<%=request.getContextPath()%>/myJcarrylist.jc?currentPage=<%=currentPage - 1%>'">
-				<</button>
+				onclick="location.href='<%=request.getContextPath()%>/myJcarrylist.jc?currentPage=<%=currentPage - 1%>'"><</button>
 			<%
 				}
 			%>
@@ -511,7 +510,7 @@
 			
 			console.log(no);
 			
-			$("#reqInfo").val(no);
+			//$("#reqInfo").val(no);
 			
 			location.href="<%=request.getContextPath()%>/checkReq.jc?no=" + no;
 		});
@@ -520,10 +519,10 @@
 	
 	
 	$(function(){//입찰내역보기
-		$("#orderInfoBtn").click(function(){
+		$(".orderInfoBtn").click(function(){
 			var no = $(this).next().val();
 			
-			$("#reqInfo").val(no);
+			//$("#orderInfo").val(no);
 			
 			location.href="<%=request.getContextPath()%>/checkOrder.jc?no=" + no;
 		});
@@ -532,13 +531,17 @@
 	
 	$(function(){//완료버튼
 		$("#doneBtn").click(function(){
-			var url = "/semi/views/popup/pop_reqSuccess.jsp";
+			var user ='<%=loginUser.getSeqNo()%>';
+			var req = $(this).next().val();
+			var driver = $(this).next().next().val();
+			
+			console.log(user);
+			console.log(req);
+			console.log(driver);
+			
+			var url = "/semi/views/popup/pop_reqSuccess.jsp?user="+user+"&req="+req+"&driver="+driver;
 			var name = "donePopup";
 			var option = "with=300, height=350, top=30, left=50";
-			
-			/* var reqNo= 
-			var userNo=
-			var driverNo=  */
 			
 			window.open(url,name,option);
 		})

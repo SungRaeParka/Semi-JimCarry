@@ -65,7 +65,7 @@ public class MyJimcarryListServlet extends HttpServlet {
 		
 		limit=5;
 		
-		maxPage = (int)((double)listCount/limit+0.95);
+		maxPage = (int)((double)listCount/limit+0.8);
 		
 		startPage = (((int)((double)currentPage/limit + 0.8))-1)*5+1;
 		endPage = startPage+5-1;
