@@ -313,6 +313,7 @@ public class RequestDao {
 
 			int startRow = (currentPage-1)*limit + 1;
 			int endRow = startRow + limit -1;
+			
 
 			pstmt.setString(1, logUserNo);
 			pstmt.setInt(2, startRow);
@@ -378,6 +379,7 @@ public class RequestDao {
 
 				or.setReqNo(rset.getString("REQ_NO"));
 				or.setOrderPrice(rset.getInt("ORDER_PRICE"));
+				or.setDriverNo(rset.getString("DRIVER_NO"));
 				or.setDriverName(rset.getString("MEMBER_NAME"));
 				or.setGrade(rset.getString("GRADE"));
 
@@ -1524,6 +1526,47 @@ public class RequestDao {
 		}
 
 		return ProductInfo;
+	}
+
+
+
+	public ArrayList<HashMap<String, Object>> selectDriverReqList(Connection con, String driver) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<HashMap<String, Object>> reqInfoList = null;
+		HashMap<String, Object> hmap = null;
+
+		String query = prop.getProperty("selectreqInfoList");
+
+		try {
+			pstmt = con.prepareStatement(query);
+			
+			pstmt.setString(1,driver);
+
+			rset = pstmt.executeQuery();
+
+			reqInfoList = new ArrayList<HashMap<String, Object>>();
+			
+			while(rset.next()) {
+				hmap = new HashMap<String, Object>();
+				System.out.println(rset.getString("REQ_NO"));
+
+				hmap.put("reqNo", rset.getString("REQ_NO"));
+
+				reqInfoList.add(hmap);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+		}
+
+		return reqInfoList;
+		
+		
+		
+		
 	}
 
 

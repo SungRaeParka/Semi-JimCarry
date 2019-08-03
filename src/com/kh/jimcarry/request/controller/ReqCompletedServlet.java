@@ -20,11 +20,25 @@ public class ReqCompletedServlet extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String userNo = request.getParameter("userNo");
+		String reqNo = request.getParameter("reqNo");
+		String driverNo = request.getParameter("driverNo");
+		
 		int grade = Integer.parseInt(request.getParameter("grade"));
 		String review = request.getParameter("review");
 		
+		System.out.println(userNo);
+		System.out.println(reqNo);
+		System.out.println(driverNo);
+		
 		System.out.println(grade);
 		System.out.println(review);
+		
+	
+		
+		
+		
+		
 		
 		/*int result1 = new RequestService().update*/
 		

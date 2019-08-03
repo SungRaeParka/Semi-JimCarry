@@ -58,12 +58,12 @@ BootPay.request({
 	
 }).error(function (data) {
 	//결제 진행시 에러가 발생하면 수행됩니다.
-	 var msg = "결제 에러입니다.: " + JSON.stringify(data);
+	 var msg = "결제 에러입니다. " 
         alert(msg);
 	console.log(data);
 }).cancel(function (data) {
 	//결제가 취소되면 수행됩니다.
-	 var msg = "결제 취소입니다.: " + JSON.stringify(data);
+	 var msg = "결제 취소입니다. "
         alert(msg);
 	console.log(data);
 }).ready(function (data) {
@@ -78,12 +78,12 @@ BootPay.request({
 		this.transactionConfirm(data); // 조건이 맞으면 승인 처리를 한다.
 	} else {
 		this.removePaymentWindow(); // 조건이 맞지 않으면 결제 창을 닫고 결제를 승인하지 않는다.
-		var msg = "결제가 승인거절되었습니다.: " + JSON.stringify(data);
+		var msg = "결제가 승인거절되었습니다." 
         alert(msg);
 	}
 }).close(function (data) {
     // 결제창이 닫힐때 수행됩니다. (성공,실패,취소에 상관없이 모두 수행됨)
-    location.href="/semi//myJcarrylist.jc";
+    location.href="/semi/myJcarrylist.jc";
     console.log(data);
     
 }).done(function (data) {
