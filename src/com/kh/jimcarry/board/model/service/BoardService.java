@@ -175,14 +175,16 @@ public class BoardService {
 
 		return listCount;
 	}
-	//댓글이여ㅛ
-	public ArrayList<Comments> selectReplyListOne(String num) {
+
+	//댓글 조회
+	public ArrayList<Comments> selectReply1(String bcode) {
+
 		Connection con = getConnection();
 
-		ArrayList<Comments> comments = new BoardDao().selectReplyListOne(con, num);
+		ArrayList<Comments> replyList = new BoardDao().selectReply1(con, bcode);
 
 		close(con);
-		return comments;
+		return replyList;
 	}
 
 

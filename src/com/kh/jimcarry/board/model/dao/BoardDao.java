@@ -632,30 +632,31 @@ public class BoardDao {
 
 		return listCount;
 	}
-
-	public ArrayList<Comments> selectReplyListOne(Connection con, String num) {
+	//댓글 조회 원 나와라 제발
+	public ArrayList<Comments> selectReply1(Connection con, String bcode) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		ArrayList<Comments> comment = null;
+		ArrayList<Comments> replyList = null;
 
 		String query =  prop.getProperty("ReplyOne");
 
 		try {
 			pstmt = con.prepareStatement(query);
-			pstmt.setString(1, num);
+			pstmt.setString(1, bcode);
 
 			rset = pstmt.executeQuery();
-			comment = new ArrayList<Comments>();
+			replyList = new ArrayList<Comments>();
 
 			while(rset.next()) {
 				Comments c = new Comments();
+
 				c.setWriter(rset.getString("MEMBER_ID"));
 				c.setCommentContents(rset.getString("COMMENT_CONTENTS"));
 				c.setCommentDate(rset.getDate("COMMENT_DATE"));
 				c.setCommentCode(rset.getString("COMMENT_CODE"));
 				c.setPostCode(rset.getString("POST_CODE"));
 
-				comment.add(c);
+				replyList.add(c);
 
 			}
 		} catch (SQLException e) {
@@ -668,7 +669,7 @@ public class BoardDao {
 
 
 
-		return comment;
+		return replyList;
 	}
 
 

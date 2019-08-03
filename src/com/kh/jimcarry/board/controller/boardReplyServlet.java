@@ -21,22 +21,23 @@ public class boardReplyServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		String writer = request.getParameter("writer");
 		String bcode = request.getParameter("bcode");
 		String content = request.getParameter("content");
-
 		System.out.println("writer : " + writer);
 		System.out.println("bcode : " + bcode);
 		System.out.println("content : " +  content);
 
 		Comments c = new Comments();
+
 		c.setUserNo(writer);
 		c.setPostCode(bcode);
 		c.setCommentCode(content);
 
 		ArrayList<Comments> replyList = new BoardService().insertReply(c);
 
-		response.setContentType("application/json");
+
 		response.setCharacterEncoding("UTF-8");
 		new Gson().toJson(replyList,response.getWriter());
 

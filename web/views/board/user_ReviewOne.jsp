@@ -3,7 +3,8 @@
 <%@page import="com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
         import="java.util.*,com.kh.jimcarry.board.model.vo.*"
-        import="com.kh.jimcarry.member.model.vo.Member"%>
+        import="com.kh.jimcarry.member.model.vo.Member"
+        %>
 <!DOCTYPE html>
 	<%
 		Board b = (Board) request.getAttribute("b");
@@ -12,6 +13,8 @@
 
 		Attachment photo1 = fileList.get(0);
 		Attachment photo2 = fileList.get(1);
+
+		//Comments c = (Comments) request.getAttribute("comment");
 
 
 
@@ -148,21 +151,23 @@
 		<div>
 			<table id="replySelectTable" border="1" align="center">
 				<tbody></tbody>
+
 			</table>
 		</div>
 	</div>
 
-	<div style="text-align: center;">
-		<button onclick="" id="rebtn">댓글조회</button>
-	</div>
+	<input type="hidden" />
 	<script>
+
+
 	$(function(){
-	$(document).ready(function(){
+
+		$(document).ready(function(){
 
 			var bcode = "<%=b.getPostCode()%>";
 
 			$.ajax({
-				url:"/semi//selectOne.bo?num=<%=b.getPostCode()%>",
+				url:"/semi/selectReply.bo",
 				data:{bcode:bcode},
 				type:"get",
 				success:function(data){
@@ -171,11 +176,30 @@
 					console.log(data);
 				for(var key in data) {
 					var $tr = $("<tr>");
-					var $writeTd = $("<td>").text(data[key].writer).css("width","100px");
+					var $writeTd = $("<td>").text(data[key].writer).css({'width':'100px','height':'50px','text-align':'center'});
 					var $contentTd = $("<td>").text(data[key].commentContents).css("width","400px");
-					var $dateTd = $("<td>").text(data[key].commentDate).css("width","200px");
-					var $btn1Td =  $("<td><button id='del1' class='btn2' onclick='godel();'>삭제</button></td>");
-					var $btn2Td =  $("<td><button id='up' class='btn2' onclick='goup();'>수정</button></td>");
+					var $dateTd = $("<td>").text(data[key].commentDate).css("width","120px");
+
+					var $btn1Td =  $("<td><button id='delete' class='btn2' onclick='godel();'>삭제</button></td>").on('click',function(){
+						var	aa = confirm('삭제하겠습니까?');
+						var ccode = $("<input>").hide(data[key].commentCode);
+
+						if(aa = true){
+							$.ajax({
+								url:"/semi/delReply.bo",
+								data:{ccode:ccode},
+								type:"get",
+								success:function(data){
+									console.log(data);
+
+
+								}
+
+							})
+
+						}
+					});
+					var $btn2Td =  $("<td><button id='update' class='btn2' onclick='goup();'>수정</button></td>");
 
 					console.log($writeTd)
 					$tr.append($writeTd);
@@ -213,14 +237,19 @@
 
 				for(var key in data) {
 					var $tr = $("<tr>");
-					var $writeTd = $("<td>").text(data[key].writer).css("width","100px");
+					var $writeTd = $("<td>").text(data[key].writer).css({'width':'100px','height':'50px','text-align':'center'});
 					var $contentTd = $("<td>").text(data[key].commentContents).css("width","400px");
-					var $dateTd = $("<td>").text(data[key].commentDate).css("width","200px");
+					var $dateTd = $("<td>").text(data[key].commentDate).css("width","120px");
 
 
 
-					var $btn1Td =  $("<td><button id='addUsers' class='btn2' onclick='addUsers();'>삭제</button></td>");
-					var $btn2Td =  $("<td><button id='addUsers' class='btn2' onclick='addUsers();'>수정</button></td>");
+					var $btn1Td =  $("<td><button id='delete' class='btn2' onclick='godel();'>삭제</button></td>")
+
+
+					var $btn2Td =  $("<td><button id='update' class='btn2' onclick='goup();'>수정</button></td>")
+
+
+
 					//console.log($writeTd)
 
 					$tr.append($writeTd);
@@ -241,6 +270,8 @@
 			});
 		});
 	});
+
+
 
 
 	</script>
