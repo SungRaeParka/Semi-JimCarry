@@ -33,7 +33,7 @@ public class boardReplySelectServlet extends HttpServlet {
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
 		new Gson().toJson(replyList,response.getWriter());
-		System.out.println("replyList  replyList : replyList : replyList : replyList : " + replyList);
+		 System.out.println("replyList  replyList : replyList : replyList : replyList : " + replyList);
 	}
 
 	/**

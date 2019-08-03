@@ -44,7 +44,7 @@ public class SelectBoardServlet extends HttpServlet {
 			request.setAttribute("msg", "게시판 상세보기 실패!!!");
 		}
 
-		request.getRequestDispatcher(page).forward(request, response);
+			request.getRequestDispatcher(page).forward(request, response);
 	}
 
 

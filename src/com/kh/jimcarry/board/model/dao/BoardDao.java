@@ -653,7 +653,7 @@ public class BoardDao {
 				c.setWriter(rset.getString("MEMBER_ID"));
 				c.setCommentContents(rset.getString("COMMENT_CONTENTS"));
 				c.setCommentDate(rset.getDate("COMMENT_DATE"));
-				c.setCommentCode(rset.getString("COMMENT_CODE"));
+				 c.setCommentCode(rset.getString("COMMENT_CODE"));
 				c.setPostCode(rset.getString("POST_CODE"));
 
 				replyList.add(c);

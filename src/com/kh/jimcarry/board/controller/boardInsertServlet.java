@@ -83,7 +83,7 @@ public class boardInsertServlet extends HttpServlet {
 
 
 			//Board객체 생성
-			Board b = new Board();
+			 Board b = new Board();
 			b.setPostTitle(multiTitle);
 			b.setPostContents(multiiContent);
 			b.setUserNo(userNo);

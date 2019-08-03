@@ -160,7 +160,7 @@
 	<script>
 
 
-	$(function(){
+	 $(function(){
 
 		$(document).ready(function(){
 

@@ -29,7 +29,7 @@ public class boardReplyServlet extends HttpServlet {
 		System.out.println("bcode : " + bcode);
 		System.out.println("content : " +  content);
 
-		Comments c = new Comments();
+		 Comments c = new Comments();
 
 		c.setUserNo(writer);
 		c.setPostCode(bcode);

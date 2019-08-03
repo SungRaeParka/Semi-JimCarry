@@ -179,7 +179,7 @@ public class BoardService {
 	//댓글 조회
 	public ArrayList<Comments> selectReply1(String bcode) {
 
-		Connection con = getConnection();
+		 Connection con = getConnection();
 
 		ArrayList<Comments> replyList = new BoardDao().selectReply1(con, bcode);
 

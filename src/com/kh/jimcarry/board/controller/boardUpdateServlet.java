@@ -40,7 +40,7 @@ public class boardUpdateServlet extends HttpServlet {
 			String savePath = root + "images_uploadFiles/";
 
 			System.out.println("root" + root);
-			// FileRenamePolicy 상속 후 오버라이딩
+				// FileRenamePolicy 상속 후 오버라이딩
 			MultipartRequest multiRequest = new MultipartRequest(request, savePath, maxSize, "UTF-8",
 					new MyFileRenamePolicy());
 

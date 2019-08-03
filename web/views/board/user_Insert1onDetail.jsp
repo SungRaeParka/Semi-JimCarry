@@ -17,7 +17,7 @@
 	align:ceter;
 	}
 	table {
-		
+
 		width:40%;
 		height: 100px;
 		margin: auto;
@@ -65,14 +65,14 @@
 </table>
 
 	<div align="center" style="margin-top: 10px;">
-	<input type="hidden" name="name" id="name" value="<%=loginUser.getSeqNo()%>"> 
-	
+	<input type="hidden" name="name" id="name" value="<%=loginUser.getSeqNo()%>">
+
 		<button onclick="location.href='<%=request.getContextPath()%>/selectOne.no'">메뉴로 돌아가기</button>
 		 <% if(loginUser != null && loginUser.getUserId().equals("admin")){ %>
 					<button onclick="location.href='<%=request.getContextPath()%>/selectOne.no?num1=<%=one.getPostcode()%>'">수정하기</button>
-					<% } %> 
+					<% } %>
 	</div>
 	</form>
-	
+
 </body>
 </html>

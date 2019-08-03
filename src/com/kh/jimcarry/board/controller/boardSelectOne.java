@@ -34,7 +34,7 @@ public class boardSelectOne extends HttpServlet {
 
 
 		HashMap<String, Object> hmap = new BoardService().selectBoardMap(num);
-		Board b = (Board) hmap.get("board");
+		 Board b = (Board) hmap.get("board");
 
 
 
