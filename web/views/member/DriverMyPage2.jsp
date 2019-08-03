@@ -87,72 +87,48 @@
 	<div id="main">
 		<div style="display: inline-block; padding-top: 7%;">
 			<b style="font-size: 50px;">마이 페이지</b>
+			<input type="hidden" id="hid" value="<%=loginUser.getSeqNo() %>">
 		</div>
 		
 		<br>
 		<hr>
 		<div class="container" style="display: inline-block">
   			<ul class="nav nav-tabs">
-    			<li class="active"><a href="#home">회원정보</a></li>
+    			<li><a href="/semi/views/member/DriverMyPage.jsp">회원정보</a></li>
     			<li><a href="/semi/driverList.me">이용내역</a></li>
   			</ul>
-
+			
   			<div class="tab-content">
-    			<div id="home" class="tab-pane fade in active" style="border: 1px solid black">
-    				<form action="<%=request.getContextPath()%>/updateDriver.me" method="post" encType="multipart/form-data">
-    				<table align="center">
-    					<tr class="showMemberInfo">
-    						<td><label>아이디 : </label></td>
-    						<td><input type="text" name="userId" value="<%=loginDriver.getUserId() %>" readonly></td>
-    					</tr>    					
-    					<tr class="showMemberInfo">
-    						<td><label>이름 : </label></td>
-    						<td><input type="text" name="userName" value="<%=loginDriver.getUserName() %>" readonly></td>
-    					</tr>
-    					<tr class="showMemberInfo">
-							<td><label>휴대폰 번호 :</label>&nbsp;&nbsp;</td>
-							<td>
-							<input type="text" maxlength="3" name="tel1" id="tel" value="<%=loginDriver.getPhone().substring(0, 3) %>" readonly> -
-							<input type="text" maxlength="4" name="tel2" id="tel" value="<%=loginDriver.getPhone().substring(4, 8) %>" readonly> -
-							<input type="text" maxlength="4" name="tel3" id="tel" value="<%=loginDriver.getPhone().substring(9, 13) %>" readonly>
-							</td>
-						</tr>
-						<tr class="showMemberInfo">
-							<td><label>대표자</label>
-							<td><input type="text" name="agent" id="box" readonly value="<%=loginDriver.getAgent() %>"></td>	
-						</tr>
-						<tr class="showMemberInfo">
-							<td><label>사업자등록번호 :</label>
-							<td><input type="text" name="businessNumber" id="box" readonly value="<%=loginDriver.getBusinessNo() %>"></td> 
-						<tr class="showMemberInfo">
-							<td><label>우편 번호</label></td>
-							<td><input type="text" id="sample6_postcode" name = "address1" placeholder="우편번호" value="<%=loginDriver.getBusinessAddress() %>" readonly></td>
-       				  	</tr>
-						<tr class="showMemberInfo">
-							<td><label>차총 :</label>
-							<td><input type="text" name="carType" id="box" readonly value="<%=loginDriver.getCarType() %>"></td>
-						</tr>
-						<tr class="showMemberInfo">
-							<td><label>차량번호 :</label>
-							<td>
-							<input type="text" name="carNumber" id="ca1" readonly value="<%=loginDriver.getCarNo() %>">
-							</td>
-						</tr>
-						<tr class="showMemberInfo">
-    						<td><label>블랙리스트 유무 :</label></td>
-    						<td><input type="text" name="BlacklistCheck" readonly value="<%=loginDriver.getBlacklistCheck() %>"></td>
-    					</tr>
-    					<tr class="showMemberInfo">
-    						<td colspan="2"><input type="button" value="회원정보 변경" id="updatebtn"></td>    						
-    					</tr>
-    					<tr class="showMemberInfo">
-    						<td colspan="2"><input type="button" value="회원 탈퇴" id="deletebtn"></td>
-    					</tr>
-    				</table>			
-    				</form>
+    			<div id="home" class="tab-pane fade">
     			</div>
-    			<div id="menu1" class="tab-pane fade">
+    			<div id="menu1" class="tab-pane fade in active" style="border: 1px solid black">
     				<div class="container">
+    				<table class="table">
+  				 	<thead>
+					<tr>
+						<td>견적번호</td>
+ 				        <td>사용자명</td>
+   					    <td>매칭일자</td>
+   					    <td>예약일자</td>
+   					    <td>견적금액</td>
+   					    <td>정산금액</td>
+   					    <td>매칭상태</td>
+    				</tr>
+    				</thead>
+    				<tbody>
+    				<% for(DriverList dl : list){ %>
+      				<tr>
+        				<td><%=dl.getReqNo() %></td>
+        				<td><%=dl.getUserName() %></td>
+        				<td><%=dl.getMatchingDate() %></td>
+        				<td><%=dl.getReservattonDate() %></td>
+        				<td><%=dl.getOrderPrice() %></td>
+        				<td><%=dl.getDriverPay() %></td>
+        				<td><%=dl.getConditionReq() %></td>
+      				</tr>
+      				<% } %>
+    				</tbody>
+  				</table>
   				</div>	
     			</div>    	
   			</div>
@@ -208,14 +184,44 @@
 	         }).open();
 	    }
 		$(function() {
-			$("#updatebtn").click(function(){
-				location.href = "DriverCrystal.jsp";
+			$(".updateMemberInfo").hide();
+			$(".checkPwd").hide();
+
+			$("#updatebtn").click(function() {
+				$(".showMemberInfo").hide();
+				$(".updateMemberInfo").hide();
+				$(".checkPwd").show();
 			});
+			
+			$("#checkPwdbtn").click(function() {
+				// if문으로 비밀번호가 틀리면 출력
+				var pwd = $('#pwd').val();
+	            var pwd1 = $('#password1').val();
+	            if(pwd != pwd1){	
+					window.confirm("비밀번호가 틀립니다. 다시입력하세요");
+					$("#password1").val("").focus();	            	
+	            }else{
+					$(".showMemberInfo").hide();
+					$(".updateMemberInfo").show();
+					$(".checkPwd").hide();
+	            }
+			});
+			
+			/* $("#updateMemberbtn").click(function() {
+				window.confirm("회원정보가 수정되었습니다.");
+				$(".showMemberInfo").show();
+				$(".updateMemberInfo").hide();
+				$(".checkPwd").hide();
+			}); */
+			
 			$("#deletebtn").click(function(){
 				window.confirm("회원을 탈퇴하시겠습니까?");
 				location.href = "../main/mainPage.jsp";
 			});
 		});
+		function updateOk(){
+			$("form").submit();
+		}
 	</script>
 
 </body>

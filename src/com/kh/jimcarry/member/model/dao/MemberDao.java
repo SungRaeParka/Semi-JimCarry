@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import com.kh.jimcarry.member.model.vo.AttachmentMember;
+import com.kh.jimcarry.member.model.vo.DriverList;
 import com.kh.jimcarry.member.model.vo.Member;
 import static com.kh.jimcarry.common.JDBCTemplate.*;
 
@@ -217,7 +218,8 @@ public class MemberDao {
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, m.getUserPwd());
 			pstmt.setString(2, m.getPhone());
-			pstmt.setString(3, m.getSeqNo());
+			pstmt.setString(3, m.getUserName());
+			pstmt.setString(4, m.getSeqNo());
 			
 			System.out.println("pstmt : "+pstmt);
 			result = pstmt.executeUpdate();
@@ -367,6 +369,41 @@ public class MemberDao {
 		
 		
 		return attachNo;
+	}
+
+	public ArrayList<DriverList> driverList(Connection con) {
+		Statement stmt = null;
+		ResultSet rset = null;
+		ArrayList<DriverList> list = null;
+
+		String query = prop.getProperty("driverList");
+
+		try {
+			stmt = con.createStatement();
+			rset = stmt.executeQuery(query);
+
+			list = new ArrayList<DriverList>();
+			while(rset.next()) {
+				DriverList dl= new DriverList();
+
+				dl.setDriverNo(rset.getString("DVIVER_NO"));
+				dl.setReservattonDate(rset.getDate("RESERVATTON_DATE"));
+				dl.setUserName(rset.getString("MEMBER_NAME"));
+				dl.setReqNo(rset.getString("REQ_NO"));
+				dl.setMatchingDate(rset.getDate("MATCHING_DATE"));
+				dl.setConditionReq(rset.getString("CONDITION_REQ"));
+				dl.setOrderPrice(rset.getInt("ORDER_PRICE"));
+				dl.setDriverPay(rset.getInt("DRIVER_PAY"));
+				list.add(dl);
+			}
+			System.out.println("list : " + list);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(stmt);
+			close(rset);
+		}
+		return list;
 	}
 }
 

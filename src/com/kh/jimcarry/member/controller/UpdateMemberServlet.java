@@ -32,6 +32,7 @@ public class UpdateMemberServlet extends HttpServlet {
 		String seqNo = request.getParameter("seqNo");
 		String userId = request.getParameter("userId");
 		String userPwd = request.getParameter("password");
+		String userName = request.getParameter("userName");
 		String tel4 = request.getParameter("tel4");
 		String tel5 = request.getParameter("tel5");
 		String tel6 = request.getParameter("tel6");
@@ -43,6 +44,8 @@ public class UpdateMemberServlet extends HttpServlet {
 		m.setUserId(userId);
 		m.setUserPwd(userPwd);
 		m.setPhone(phone);
+		m.setUserName(userName);
+		m.setSeqNo(seqNo);
 		System.out.println(m);
 		
 		

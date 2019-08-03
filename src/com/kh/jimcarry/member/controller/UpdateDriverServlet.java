@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
@@ -127,7 +128,7 @@ public class UpdateDriverServlet extends HttpServlet {
 			
 			System.out.println("회원정보 : " + m);
 			
-			/*DriverList list = new */
+			ArrayList<DriverList> list = new  MemberService().driverList();
 			
 			ArrayList<AttachmentMember> fileList = new ArrayList<AttachmentMember>();
 			for(int i = originFiles.size() -1; i >= 0; i--) {
@@ -179,6 +180,7 @@ public class UpdateDriverServlet extends HttpServlet {
 			if(result > 0) {
 				page = "views/member/DriverMyPage.jsp";
 				response.sendRedirect(page);
+				request.setAttribute("list", list);
 			}else {
 			page = "views/common/driver_errorPage.jsp";
 			request.setAttribute("msg", "회원정보 수정 실패!");
