@@ -50,23 +50,23 @@ public class OneQService {
 	
 	
 
-	public OneQ selectOneQ(int num) {
+	public OneQ selectOneQ(String num1) {
 		// TODO Auto-generated method stub
 		
 		Connection con = getConnection();
 		
-		OneQ one = new OneQDao().selectQ(con, num);
+		OneQ one = new OneQDao().selectQ(con, num1);
 		
 		if(one != null) {
-			int result = new OneQDao().updateCountQ(con, num);
+			int result = new OneQDao().updateCount(con, num1);
 			
 			if (result > 0) {
 				commit(con);
 			} else {
 				rollback(con);
 			}
-		}
 		
+		}
 		return one;
 	}
 	public int getListCount() {

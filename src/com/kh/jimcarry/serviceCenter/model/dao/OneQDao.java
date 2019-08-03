@@ -102,8 +102,8 @@ public class OneQDao {
 		}
 		return result;
 	}
-
-	public OneQ selectQ(Connection con, int num) {
+//상세보기
+	public OneQ selectQ(Connection con, String num1) {
 		// TODO Auto-generated method stub
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -111,34 +111,61 @@ public class OneQDao {
 		
 		String query=prop.getProperty("selectOne");
 		
+		System.out.println("query 1:1 ::: "+query);
 		
-		
-		
-		
-		
-		
-		
-		
+		try {
+			pstmt=con.prepareStatement(query);
+			pstmt.setString(1, num1);
+			
+			rset=pstmt.executeQuery();
+			
+			if(rset.next()){
+				one=new OneQ();
+
+				one.setPostcode(rset.getString("POST_CODE"));
+				one.setMemberNo(rset.getString("MEMBER_NO"));
+				one.setPostDate(rset.getDate("POST_DATE"));
+				one.setPostTitle(rset.getString("POST_TITLE"));
+				one.setPostContent(rset.getString("POST_CONTENTS"));
+				one.setPostType(rset.getString("POST_TYPE"));
+				one.setPostNo(rset.getInt("POST_NO"));
+				one.setBCount(rset.getInt("B_COUNT"));
+				}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+	
 		return one;
 	}
-
-	public int updateCountQ(Connection con, int num) {
-		// TODO Auto-generated method stub
-		PreparedStatement pstmt = null;
-		int result = 0;
-		
-		String query = prop.getProperty("updateCount");
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		return result;
-	}
+	//조회수 증가
+		public int updateCount(Connection con, String num1) {
+			// TODO Auto-generated method stub
+			PreparedStatement pstmt = null;
+			int result = 0;
+			
+			String query = prop.getProperty("updateCount");
+			
+			try {
+				pstmt=con.prepareStatement(query);
+				pstmt.setString(1, num1);
+				pstmt.setString(2, num1);
+				
+				result = pstmt.executeUpdate();
+				
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				close(pstmt);
+			}
+			
+			return result;
+		}
 
 	public int getListCount(Connection con) {
 		// TODO Auto-generated method stub

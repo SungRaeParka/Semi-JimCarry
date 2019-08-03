@@ -65,7 +65,7 @@ public class QandADao {
 		
 		return list1;
 	}
-	//상세보기용
+	/*//상세보기용
 	public QandA selectOneQA(Connection con, int num) {
 		// TODO Auto-generated method stub
 		PreparedStatement pstmt = null;
@@ -123,7 +123,7 @@ public class QandADao {
 		}
 		
 		return result;
-	}
+	}*/
 	public int getListCount(Connection con) {
 		// TODO Auto-generated method stub
 		PreparedStatement pstmt = null;
