@@ -153,7 +153,6 @@
     			</div>
     			<div id="menu1" class="tab-pane fade">
     				<div class="container">
-  				</div>	
     			</div>    	
   			</div>
 		</div>

@@ -1,148 +1,147 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="java.util.*, com.kh.jimcarry.board.model.vo.*"%>
+<%
+	ArrayList<DP> dpList = (ArrayList<DP>) request.getAttribute("dpList");
+	DPPageInfo pi = (DPPageInfo) request.getAttribute("pi");
+	
+	int listCount = pi.getListCount();
+	int currentPage = pi.getCurrentPage();
+	int maxPage = pi.getMaxPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+%>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <head>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
 <title>게시판 목록</title>
-<style type="text/css">
-	* {font-size: 9pt;}
-	p {width: 600px; text-align: right; margin: 0 auto;}
-	table thead tr th {background-color: gray;}
-
-
-	.con{
-
-		margin:0 auto;
-		padding: 1px;
-		text-align: center;
-		margin-top: 15px;
-
-
+<style>
+	.outer {
+		margin-top: 90px;
 	}
-
-
+	
+	.tableArea {
+		width: 800px;
+	}
+	
+	#topArea {
+		height: 30px;
+		width: 800px;
+		background: #EFEFEF;
+	}
+	
+	#listArea {
+		width: 800px;
+		display: inline-block;
+		border-bottom: 1px solid #F2F2F2;
+	}
+	
+	#imgArea {
+		width: 70px;
+		height: 70px;
+		text-align: left;	
+		margin-left: 10px;
+		float: left;
+	}	
+	
+	#title {
+		color: #4D85FD;
+		font-size: 25px;
+	}
+	
+	#titleArea {
+		float: left;
+		margin-left: 10px;
+	}
+	
+	.pagingArea > span {
+		padding-left: 30px;
+		padding-bottom: 30px;
+		padding-top: 30px;
+		color:lightgray;
+	}
+	
+	.pagingArea > span:hover{
+		color:black;
+	}
+	
 </style>
-<script type="text/javascript">
-	function goUrl(url) {
-		location.href=url;
-	}
-</script>
 </head>
 <body>
 	<%@ include file="/views/common/user_TopBar.jsp"%>
-		<br><br><br><br><br>
-	<div>
-		<form name="searchForm" action="" method="get">
-	<p>
-		<select name="searchType">
-			<option value="ALL">전체검색</option>
-			<option value="SUBJECT">제목</option>
-			<option value="WRITER">작성자</option>
-			<option value="CONTENTS">내용</option>
-		</select>
-		<input type="text" name="searchText" value="" />
-		<input type="submit" value="검색" />
-	</p>
-
-	<table align="center" border="1" summary="게시판 목록">
-		<caption>게시판 목록</caption>
-		<colgroup>
-			<col width="50" />
-			<col width="300" />
-			<col width="80" />
-			<col width="100" />
-			<col width="70" />
-		</colgroup>
-		<thead>
-			<tr>
-				<th>번호</th>
-				<th>제목</th>
-				<th>작성자</th>
-				<th>등록 일시</th>
-				<th>조회수</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td align="center" colspan="5">등록된 게시물이 없습니다.</td>
-			</tr>
-
-
-			<tr>
-				<td align="center">1</td>
-				<td><a href="boardView.jsp">>[3월의 기사님] 짧은 기간에도 불구하고 이사 진행 건수가 많았던 진짜 이유 - 이현우 기사님</a></td>
-				<td align="center">관리자</td>
-				<td align="center">2019.06.24</td>
-				<td align="center">11</td>
-			</tr>
-		</tbody>
-		<tfoot>
-				<tr>
-				 <td colspan="5">
-				 	<div class="con">
-	  <ul class="pagination">
-	    <li><a href="#">1</a></li>
-	    <li class="active"><a href="#">2</a></li>
-	    <li><a href="#">3</a></li>
-	    <li><a href="#">4</a></li>
-	    <li><a href="#">5</a></li>
-	     <li><a href="#">다음</a></li>
-	      <li><a href="#">맨끝</a></li>
-	  </ul>
+		
+	<div class="outer" align="center">		
+		<h2>기사 홍보 게시판</h2>
+		<div class="tableArea">
+			<div id="topArea">
+			</div>
+		<%for(DP dp : dpList){ %>
+			<div id="listArea">
+				<div id="imgArea">
+					<img src="/semi/images/air.png" style="width: 70px; height: 70px;">
+				</div>
+				<div id="titleArea" class="titleArea2">
+				<input type="hidden" name="postNo" value="<%=dp.getPostNo() %>">
+					<span class="titleSpan" id="title"><%=dp.getPostTitle() %></span>
+					<br>
+					<span style="float: left;">작성자 : 운영자</span>	
+					<br>	
+					<span style="float: left;">작성일 : <%=dp.getPostDate() %></span>			
+				</div>
+			</div>	
+		<%} %>		
+		</div>
+		
+		<div class="pagingArea" align="center">
+			<span class="span" style="cursor: pointer;" onclick="location.href='<%=request.getContextPath()%>/selectList.dp?currentPage=1'">첫 페이지로</span>
+			
+			<!-- currentPage가 1페이지인 경우 -->
+			<% if(currentPage <= 1) { %>
+			<!-- 버튼 비 활성화 -->
+			<span class="span" style="cursor: pointer;">이전 페이지</span>
+			<% }else{ %>
+			<!-- 1페이지가 아닐 경우 이전으로 이동 -->
+			<span class="span" style="cursor: pointer;" onclick="location.href='<%=request.getContextPath()%>/selectList.dp?currentPage=<%=currentPage-1%>'">이전 페이지로</span>
+			<% } %>
+			
+			<% for(int p = startPage; p <= endPage; p++) {
+				if(currentPage == p){
+			%>
+				<span class="span" style="cursor: pointer;"><%= p %></span>
+			<%  }else { %>
+				<span class="span" style="cursor: pointer;" onclick="location.href='<%=request.getContextPath()%>/selectList.dp?currentPage=<%=p%>'"><%=p %></span>
+			<%  }
+			   } %>
+			   
+			<!-- 다음 페이지 -->
+			<% if(currentPage >= maxPage) { %>
+			<span class="span" style="cursor: pointer;">다음 페이지</span>
+			<% }else{ %>
+			<span class="span" style="cursor: pointer;" onclick="location.href='<%=request.getContextPath()%>/selectList.dp?currentPage=<%=currentPage+1%>'">다음 페이지</span>
+			<% } %>
+			
+			
+			<span class="span" style="cursor: pointer;" onclick="location.href='<%=request.getContextPath()%>/selectList.dp?currentPage=<%=maxPage%>'">끝 페이지로</span>		
+		</div>
+		
 	</div>
-				 </td>
-
-				</tr>
-
-			<!--  <tr>
-				<td align="center" colspan="5">1</td>
-			</tr> -->
-		</tfoot>
-	</table>
-	<br />
-	<p>
-		<!-- <input type="button" value="목록" onclick="goUrl('boardList.jsp');" /> -->
-		<select>
-			<option>5줄로 보기</option>
-			<option>10줄로 보기</option>
-
-		</select>
-		</p>
-
-
-		<table align="center" border="1" summary="게시판 상세조회">
-		<caption>게시판 상세조회</caption>
-		<colgroup>
-			<col width="100" />
-			<col width="500" />
-		</colgroup>
-		<tbody>
-			<tr>
-				<th align="center">제목</th>
-				<td>[3월의 기사님] 짧은 기간에도 불구하고 이사 진행 건수가 많았던 진짜 이유 - 이현우 기사님</td>
-			</tr>
-			<tr>
-				<th align="center">작성자/조회수</th>
-				<td>관리자 / 11</td>
-			</tr>
-			<tr>
-				<td colspan="2">
-				<img src="../board/images/driver1.png" width="300px" height="300px"  />
-				빠르게 옮기는 것도 좋지만, 그보다 중요한 건 안전이에요. 우선 첫째로 사람이 다치지 않아야 하고, 둘째로 물건이 다치지 않아야 해요. 하루는 고객 이사를 도와주러 온 남자분이 힘도 넘치고 의욕도 넘쳐서 여기저기 엄청 뛰어다니는 거예요. 저러다 다칠까 봐 걱정되더라구요. 아니나 다를까, 지하 주차장에 대있던 트럭에 폴짝 뛰어 올라서더니 ‘억!’ 하는 소리를 내는거에요. 주차장 천장에 머리가 부딪힌 거죠. 남자분이 괜찮다고 얘기하는데 머리에서 피가 주르륵 흐르는 거에요. 놀라서  마무리는 혼자 할 테니 얼른 짐내려두고 얼른 병원 갔다 오라고 했던 일이 있었어요. 기분 좋은 이삿날 사람이든 물건이든 다치면 마음이 아프잖아요. 그래서 항상 이사하러 갈 때마다 고객한테 신신당부해요. 천천히 하더라도 안전하고 기분 좋게 이사를 마치자고.
-				</td>
-			</tr>
-		</tbody>
-
-	</table>
-
-
-	</form>
-	</div>
-
-
+	
+	<script>
+	$(function(){
+		$(".titleArea2").mouseenter(function(){
+			$(this).parent().css({"background":"#FAFAFA", "cursor":"pointer"});
+		}).mouseout(function(){
+			$(this).parent().css({"background":"white"});
+		}).click(function(){
+			var num = $(this).children().eq(0).val();	
+			
+			console.log(num);
+			
+			location.href="<%=request.getContextPath()%>/selectOne.dp?num=" + num;
+		});
+	});
+</script>
+	
 </body>
 </html>
 
