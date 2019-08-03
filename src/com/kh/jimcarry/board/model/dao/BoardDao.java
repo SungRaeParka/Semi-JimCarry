@@ -1,8 +1,9 @@
 package com.kh.jimcarry.board.model.dao;
 
+import static com.kh.jimcarry.common.JDBCTemplate.close;
+
 import java.io.FileReader;
 import java.io.IOException;
-import java.security.KeyStore.ProtectionParameter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,12 +16,6 @@ import java.util.Properties;
 import com.kh.jimcarry.board.model.vo.Attachment;
 import com.kh.jimcarry.board.model.vo.Board;
 import com.kh.jimcarry.board.model.vo.Comments;
-import com.sun.xml.internal.messaging.saaj.util.FinalArrayList;
-
-import oracle.net.aso.f;
-import sun.print.PSStreamPrinterFactory;
-
-import static com.kh.jimcarry.common.JDBCTemplate.*;
 
 public class BoardDao {
 	private Properties prop = new Properties();

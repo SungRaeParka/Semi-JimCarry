@@ -419,6 +419,7 @@
 			
 			$(".proTdphoto1").append("<input type='hidden' id='proKind' name='proKind' value='가전'>");
 			$(".proTdphoto1").append("<input type='hidden' id='proName' name='proName' value='냉장고'>");
+			console.log($("#proName").val())
 		});
 		
 		$(".proTdminus1").click(function(){
@@ -429,6 +430,7 @@
 			
 			$("#proKind").remove();
 			$("#proName").remove();
+			console.log($("#proName").val())
 			
 			if(count1 == 0){
 				$(".proTdphoto1").removeAttr("style");
@@ -452,6 +454,7 @@
 			
 			$(".proTdphoto2").append("<input type='hidden' id='proKind' name='proKind' value='가전'>");
 			$(".proTdphoto2").append("<input type='hidden' id='proName' name='proName' value='세탁기'>");
+			console.log($("#proName").val())
 		});	
 		
 		$(".proTdminus2").click(function(){
@@ -462,6 +465,8 @@
 			
 			$("#proKind").remove();
 			$("#proName").remove();
+			
+			console.log($("#proName").val())
 			
 			if(count2 == 0){
 				$(".proTdphoto2").removeAttr("style");

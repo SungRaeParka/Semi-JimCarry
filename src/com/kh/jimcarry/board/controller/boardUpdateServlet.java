@@ -1,6 +1,5 @@
 package com.kh.jimcarry.board.controller;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Enumeration;
@@ -10,7 +9,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.swing.plaf.synth.SynthSpinnerUI;
 
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
@@ -18,9 +16,7 @@ import com.kh.jimcarry.board.model.service.BoardService;
 import com.kh.jimcarry.board.model.vo.Attachment;
 import com.kh.jimcarry.board.model.vo.Board;
 import com.kh.jimcarry.common.MyFileRenamePolicy;
-import com.kh.jimcarry.member.model.vo.Member;
 import com.oreilly.servlet.MultipartRequest;
-import com.sun.org.apache.bcel.internal.generic.CPInstruction;
 
 /**
  * Servlet implementation class boardUpdateServlet

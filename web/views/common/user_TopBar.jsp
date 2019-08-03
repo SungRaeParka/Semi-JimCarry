@@ -21,7 +21,7 @@
 			<div class="w3-right w3-hide-small">
 				<a href="/semi/views/request/req_ProSelect.jsp" class="w3-bar-item w3-button" style="text-decoration:none">견적신청</a>
 				<a onclick="goBoard();" class="w3-bar-item w3-button" style="text-decoration:none">사용후기</a>
-				<a href="/semi/views/board/driverPromotion/driver_PromotionList.jsp"	class="w3-bar-item w3-button" style="text-decoration:none">기사홍보</a>
+				<a onclick="goDP();"	class="w3-bar-item w3-button" style="text-decoration:none">기사홍보</a>
 				<a class="w3-bar-item w3-button" style="text-decoration:none" onclick="myJimcarry();">내 짐 캐리 리스트</a>
 				<a href="/semi/noticelist.no" class="w3-bar-item w3-button" style="text-decoration:none">고객센터</a>
 				<a href="/semi/views/member/UserMyPage.jsp" class="w3-bar-item w3-button" style="text-decoration:none">마이페이지</a>
@@ -42,6 +42,11 @@
 
 		function myJimcarry(){
 			location.href="/semi/myJcarrylist.jc";
+		};
+		
+		function goDP(){
+			
+			location.href="/semi/selectList.dp";
 		};
 
 	</script>

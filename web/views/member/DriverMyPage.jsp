@@ -262,7 +262,7 @@
     				</tr>
     				</thead>
     				<tbody>
-      				<tr>
+      			<%-- 	<tr>
         				<td><%=loginUser.getSeqNo() %></td>
         				<td><%=loginUser.getUserName() %></td>
         				<td></td>
@@ -270,7 +270,7 @@
         				<td></td>
         				<td></td>
         				<td>매칭대기</td>
-      				</tr>
+      				</tr> --%>
     				</tbody>
   				</table>
   				</div>

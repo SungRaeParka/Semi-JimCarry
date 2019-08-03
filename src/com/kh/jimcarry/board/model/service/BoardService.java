@@ -1,19 +1,18 @@
 package com.kh.jimcarry.board.model.service;
 
+import static com.kh.jimcarry.common.JDBCTemplate.close;
+import static com.kh.jimcarry.common.JDBCTemplate.commit;
+import static com.kh.jimcarry.common.JDBCTemplate.getConnection;
+import static com.kh.jimcarry.common.JDBCTemplate.rollback;
+
 import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.HashMap;
-
-import javax.swing.plaf.synth.SynthSpinnerUI;
 
 import com.kh.jimcarry.board.model.dao.BoardDao;
 import com.kh.jimcarry.board.model.vo.Attachment;
 import com.kh.jimcarry.board.model.vo.Board;
 import com.kh.jimcarry.board.model.vo.Comments;
-
-import sun.awt.RepaintArea;
-
-import static com.kh.jimcarry.common.JDBCTemplate.*;
 
 public class BoardService {
 
