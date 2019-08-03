@@ -26,7 +26,7 @@ public class NoticeService {
 	}
 	//공지사항 상세 보기용 메소드
 
-	public Notice selectOne(int num) {
+	public Notice selectOne(String num) {
 		// TODO Auto-generated method stub
 		
 		Connection con =getConnection();
@@ -45,6 +45,15 @@ public class NoticeService {
 		close(con);
 		
 		return n;
+		
+		/*int result = new NoticeDao().updateCount(con,num);
+		
+		if (result > 0) {
+			commit(con);
+			n = new NoticeDao().selectOne(con, num);
+		} else {
+			rollback(con);
+		}*/
 	}
 	//게시글 수 조회
 	public int getListCount() {
