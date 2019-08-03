@@ -3,7 +3,7 @@ package com.kh.jimcarry.admin.statistics.model.vo;
 import java.sql.Date;
 
 public class StatisticsMember implements java.io.Serializable{
-	private Date period;
+	private String period;
 	private int userCount;
 	private int driverCount;
 	private int blCount;
@@ -12,7 +12,7 @@ public class StatisticsMember implements java.io.Serializable{
 
 	public StatisticsMember() {}
 
-	public StatisticsMember(Date period, int userCount, int driverCount, int blCount, int memberCount,
+	public StatisticsMember(String period, int userCount, int driverCount, int blCount, int memberCount,
 			String periodResult) {
 		super();
 		this.period = period;
@@ -23,11 +23,11 @@ public class StatisticsMember implements java.io.Serializable{
 		this.periodResult = periodResult;
 	}
 
-	public Date getPeriod() {
+	public String getPeriod() {
 		return period;
 	}
 
-	public void setPeriod(Date period) {
+	public void setPeriod(String period) {
 		this.period = period;
 	}
 

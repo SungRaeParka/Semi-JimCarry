@@ -68,6 +68,7 @@ public class AccountingDao {
 				ap.setTotalPayAmount(rset.getInt("SUM"));
 				ap.setTotalCount(rset.getInt("COUNT"));
 				ap.setTotalFeesIncome(rset.getInt("INCOME"));
+				ap.setTotalRefundFee(rset.getInt("REFUND_FEES"));
 				ap.setPeriodSort(periodResult);
 
 				list.add(ap);

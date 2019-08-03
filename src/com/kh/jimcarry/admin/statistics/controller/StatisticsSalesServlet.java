@@ -10,19 +10,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.kh.jimcarry.admin.statistics.model.service.StatisticsService;
-import com.kh.jimcarry.admin.statistics.model.vo.StatisticsMember;
+import com.kh.jimcarry.admin.statistics.model.vo.StatisticsSales;
 
 /**
- * Servlet implementation class StatisticsMemberServlet
+ * Servlet implementation class StatisticsSalesServlet
  */
-@WebServlet("/statistics.mm")
-public class StatisticsMemberServlet extends HttpServlet {
+@WebServlet("/statistics.sl")
+public class StatisticsSalesServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public StatisticsMemberServlet() {
+    public StatisticsSalesServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,12 +31,12 @@ public class StatisticsMemberServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<StatisticsMember> list = new StatisticsService().member();
+		ArrayList<StatisticsSales> list = new StatisticsService().sales();
 
 		String page ="";
 
 		if(list != null) {
-			page = "views/admin/statistics/admin_StatisticsMember.jsp";
+			page = "views/admin/statistics/admin_StatisticsSales.jsp";
 			request.setAttribute("list", list);
 		}else {
 			page = "views/common/admin_errorPage.jsp";
