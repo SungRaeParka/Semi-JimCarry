@@ -57,23 +57,22 @@ table * {
 										readonly> <input type="hidden"
 										value="<%=n.getUserNo() %> " name="uno" readonly /></td>
 									<td>작성일</td>
-									<td><input type="date" name="date" value="<%=n.getPostdate() %>" readonly
-									></td>
+									<td><input type="date" name="date" value="<%=n.getPostdate() %>" readonly></td>
 								</tr>
 								<tr>
-									<td colspan="4">내&nbsp;&nbsp;&nbsp;&nbsp;용</td>
+									<td colspan="4" >내                            용</td>
 								</tr>
 								<tr>
-									<td colspan="4"><textarea name="content" id="" cols="60"
-											rows="15" style="resize: none" value=<%=n.getPostContent() %> readonly></textarea></td>
+									<td colspan="4"><textarea name="content"cols="60"
+											rows="15" style="resize: none"  readonly><%=n.getPostContent() %></textarea></td>
 								</tr>
 							</table>
 							<br>
 							<div align="center">
-								<button onclick="location.href='<%=request.getContextPath()%>/selectlist.no'">메뉴로 돌아가기</button>
-								<% if(loginUser != null && loginUser.getUserId().equals("admin")){ %>
-					<button onclick="location.href='<%=request.getContextPath()%>/selectlist.no?num=<%=n.getPostNo()%>'">수정하기</button>
-					<% } %>
+								<button onclick="location.href='<%=request.getContextPath()%>/noticelist.no'">메뉴로 돌아가기</button>
+								 <% if(loginUser != null && loginUser.getUserId().equals("admin")){ %>
+					<button onclick="location.href='<%=request.getContextPath()%>/selectOne.no?num=<%=n.getPostcode()%>'">수정하기</button>
+					<% } %> 
 							</div>
 						</form>
 					</div>

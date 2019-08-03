@@ -2,6 +2,7 @@
     pageEncoding="UTF-8" import="java.util.*, com.kh.jimcarry.member.model.vo.*"%>
 <%
 	Member loginDriver = (Member) session.getAttribute("loginDriver");
+	ArrayList<DriverList> list = (ArrayList<DriverList>) session.getAttribute("list");
 %>
 <!DOCTYPE html>
 <html>
@@ -92,8 +93,8 @@
 		<hr>
 		<div class="container" style="display: inline-block">
   			<ul class="nav nav-tabs">
-    			<li class="active"><a data-toggle="tab" href="#home">회원정보</a></li>
-    			<li><a data-toggle="tab" href="#menu1">이용내역</a></li>
+    			<li class="active"><a href="#home">회원정보</a></li>
+    			<li><a href="/semi/driverList.me">이용내역</a></li>
   			</ul>
 
   			<div class="tab-content">
@@ -125,16 +126,8 @@
 							<td><input type="text" name="businessNumber" id="box" readonly value="<%=loginDriver.getBusinessNo() %>"></td> 
 						<tr class="showMemberInfo">
 							<td><label>우편 번호</label></td>
-							<td><input type="text" id="sample6_postcode" name = "address1" placeholder="우편번호" value="<%=loginDriver.getBusinessAddress().substring(0, 4) %>" readonly></td>
+							<td><input type="text" id="sample6_postcode" name = "address1" placeholder="우편번호" value="<%=loginDriver.getBusinessAddress() %>" readonly></td>
        				  	</tr>
-      				   	<tr class="showMemberInfo">
-       				  		<td><label>사업장 주소</label></td>
-      				   		<td><input type="text"  id="sample6_address" name="address2" placeholder="주소" value="<%=loginDriver.getBusinessAddress().substring(6, 20) %>" readonly></td>
-        			 	</tr>
-      				   	<tr class="showMemberInfo">
-      				   		<td><label>상세주소</label></td>
-      				  		<td><input type="text"  id="sample6_detailAddress" name="address3" placeholder="상세주소" value="<%=loginDriver.getBusinessAddress().substring(23) %>" readonly></td>
-						</tr>
 						<tr class="showMemberInfo">
 							<td><label>차총 :</label>
 							<td><input type="text" name="carType" id="box" readonly value="<%=loginDriver.getCarType() %>"></td>
@@ -155,126 +148,11 @@
     					<tr class="showMemberInfo">
     						<td colspan="2"><input type="button" value="회원 탈퇴" id="deletebtn"></td>
     					</tr>
-    					   					
-    					<h3 align="center" class="checkPwd">비밀번호 확인</h3>  					
-    					<tr class="checkPwd">
-    						<td><label>아이디 : </label></td>
-    						<td><input type="text" name="userId" value="<%=loginDriver.getUserId() %>" readonly></td>
-    						<td><input type="hidden" name="seqNo" value="<%=loginDriver.getSeqNo() %>" readonly></td>
-    					</tr>
-    					<tr class="checkPwd">
-    						<td><label>비밀번호 :</label>&nbsp;&nbsp;</td>
-    						<td><input type="password" name="password1" id="password1"></td>
-    						<td><input type="hidden" name="pwd" id="pwd" value="<%=loginUser.getUserPwd()%>"></td>
-    					</tr>    
-    					<tr class="checkPwd">
-    						<td colspan="2"><input type="button" value="비밀번호 확인" id="checkPwdbtn"></td> 						
-    					</tr>
-    					
-    					<h3 align="center" class=updateMemberInfo>기사 회원정보 변경</h3>
-    					<tr class="updateMemberInfo">
-    						<td><label>아이디 : </label></td>
-    						<td><input type="text" name="userId" value="<%=loginDriver.getUserId() %>" readonly></td>
-    					</tr>
-    					<tr class="updateMemberInfo">
-    						<td><label>비밀번호 : </label>&nbsp;&nbsp;</td>
-    						<td><input type="password" name="password"></td>
-    					</tr>      					
-    					<tr class="updateMemberInfo">
-    						<td><label>이름 : </label></td>
-    						<td><input type="text" name="userName" value="<%=loginDriver.getUserName() %>" readonly></td>
-    					</tr>
-    					<tr class="updateMemberInfo">
-							<td><label>휴대폰 번호 :</label>&nbsp;&nbsp;</td>
-							<td>
-							<input type="text" maxlength="3" name="tel4" value="010" id="tel"> -
-							<input type="text" maxlength="4" name="tel5" value="0000" id="tel"> -
-							<input type="text" maxlength="4" name="tel6" value="0000" id="tel"></td>
-							<td><button id="btn" onclick="Confirm();">인증</button></td>			
-						</tr>  
-						<tr class="updateMemberInfo">
-							<td><label>대표자</label>
-							<td><input type="text" name="delegate" id="box" value="<%=loginDriver.getAgent() %>"></td>	
-						</tr>
-						<tr class="updateMemberInfo">
-							<td><label>사업자등록번호</label>
-							<td><input type="text" name="businessNumber" id="box" value="<%=loginDriver.getBusinessNo() %>"></td> 
-						</tr>
-						<tr class="updateMemberInfo">
-							<td><label>우편 번호</label></td>
-							<td><input type="text" id="sample6_postcode" name = "address1" placeholder="우편번호" value="<%=loginDriver.getBusinessAddress().substring(0, 4) %>"></td>
-       				  		<td><input type="button" id="btn" name="zipCode"class="btn_overlap" onclick="sample6_execDaumPostcode()"value="검색"></td>
-       				  	</tr>
-      				   	<tr class="updateMemberInfo">
-       				  		<td><label>사업장 주소</label></td>
-      				   		<td><input type="text"  id="sample6_address" name="address2" placeholder="주소" value="<%=loginDriver.getBusinessAddress().substring(6, 20) %>"></td>
-        			 	</tr>
-      				   <tr class="updateMemberInfo">
-      				   		<td><label>상세주소</label></td>
-      				  		<td><input type="text"  id="sample6_detailAddress" name="address3" placeholder="상세주소" value="<%=loginDriver.getBusinessAddress().substring(23) %>"></td>
-						</tr>
-						<tr class="updateMemberInfo">
-							<td><label>차총 :</label>
-							<td><input type="text" name="carType" id="box" value="<%=loginDriver.getCarType() %>"></td>
-						</tr>
-						<tr class="updateMemberInfo">
-							<td><label>차량번호 :</label>
-							<td>
-							<input type="text" name="carNumber1" id="ca" value="<%=loginDriver.getCarNo().substring(0, 3) %>">
-							<input type="text" name="carNumber2" id="ca" value="<%=loginDriver.getCarNo().substring(4, 8) %>">
-						</td>
-						</tr>
-						<tr class="updateMemberInfo">
-							<td><label>본인사진 :</label>
-							<td><input type="file" name="idPhoto" value="<%=loginDriver.getIdPhoto() %>"></td>
-						</tr>
-						<tr class="updateMemberInfo">
-							<td><label>차량등록증 :</label>
-							<td><input type="file" name="certificate" value="<%=loginDriver.getCertificate() %>"></td>
-						</tr>
-						<tr class="updateMemberInfo">
-							<td><label>통장사본 :</label>
-							<td><input type="file" name="bankBook" value="<%=loginDriver.getBankBook() %>"></td>
-						</tr>
-						<tr class="updateMemberInfo">
-							<td><label>사업자등록증 :</label>
-							<td><input type="file" name="attestation" value="<%=loginDriver.getAttestation() %>"></td>
-						</tr>   					
-    					<tr class="updateMemberInfo">
-    						<td colspan="2"><input type="button" value="수정 완료" id="updateMemberbtn" onclick="updateOk();"></td>    						
-    					</tr>
-    				</table>
+    				</table>			
     				</form>
     			</div>
     			<div id="menu1" class="tab-pane fade">
-    			<form action="<%=request.getContextPath()%>/driverlist.me" method="post">
     				<div class="container">
-    				<table class="table">
-  				 	<thead>
-					<tr>
-						<td>견적번호</td>
- 				        <td>사용자명</td>
-   					    <td>매칭일자</td>
-   					    <td>예약일자</td>
-   					    <td>견적금액</td>
-   					    <td>정산금액</td>
-   					    <td>매칭상태</td>
-    				</tr>
-    				</thead>
-    				<tbody>
-      			<%-- 	<tr>
-        				<td><%=loginUser.getSeqNo() %></td>
-        				<td><%=loginUser.getUserName() %></td>
-        				<td></td>
-        				<td></td>
-        				<td></td>
-        				<td></td>
-        				<td>매칭대기</td>
-      				</tr> --%>
-    				</tbody>
-  				</table>
-  				</div>
-    			</form>		
     			</div>    	
   			</div>
 		</div>
@@ -329,46 +207,14 @@
 	         }).open();
 	    }
 		$(function() {
-			$(".updateMemberInfo").hide();
-			$(".checkPwd").hide();
-
-			$("#updatebtn").click(function() {
-				$(".showMemberInfo").hide();
-				$(".updateMemberInfo").hide();
-				$(".checkPwd").show();
+			$("#updatebtn").click(function(){
+				location.href = "DriverCrystal.jsp";
 			});
-			
-			$("#checkPwdbtn").click(function() {
-				// if문으로 비밀번호가 틀리면 출력
-				var pwd = $('#pwd').val();
-	            var pwd1 = $('#password1').val();
-	            if(pwd != pwd1){	
-					window.confirm("비밀번호가 틀립니다. 다시입력하세요");
-					$("#password1").val("").focus();	            	
-	            }else{
-					$(".showMemberInfo").hide();
-					$(".updateMemberInfo").show();
-					$(".checkPwd").hide();
-	            }
-			});
-			
-			/* $("#updateMemberbtn").click(function() {
-				window.confirm("회원정보가 수정되었습니다.");
-				$(".showMemberInfo").show();
-				$(".updateMemberInfo").hide();
-				$(".checkPwd").hide();
-			}); */
-			
 			$("#deletebtn").click(function(){
 				window.confirm("회원을 탈퇴하시겠습니까?");
 				location.href = "../main/mainPage.jsp";
 			});
-			
-			
 		});
-		function updateOk(){
-			$("form").submit();
-		}
 	</script>
 
 </body>

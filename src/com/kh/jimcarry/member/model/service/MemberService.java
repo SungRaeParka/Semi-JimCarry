@@ -2,6 +2,7 @@ package com.kh.jimcarry.member.model.service;
 
 import com.kh.jimcarry.member.model.dao.MemberDao;
 import com.kh.jimcarry.member.model.vo.AttachmentMember;
+import com.kh.jimcarry.member.model.vo.DriverList;
 import com.kh.jimcarry.member.model.vo.Member;
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -136,6 +137,16 @@ public class MemberService {
 		}
 		System.out.println(result);
 		return result;
+	}
+
+	public ArrayList<DriverList> driverList() {
+		Connection con = getConnection();
+		
+		ArrayList<DriverList> list = new MemberDao().driverList(con);
+		
+		close(con);
+		
+		return list;
 	}
 
 	

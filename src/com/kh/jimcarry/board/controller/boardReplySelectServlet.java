@@ -26,12 +26,12 @@ public class boardReplySelectServlet extends HttpServlet {
 
 
 
-
+/*
 		ArrayList<Comments> replyList = new BoardService().selectReply1(bcode);
 
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
-		new Gson().toJson(replyList,response.getWriter());
+		new Gson().toJson(replyList,response.getWriter());*/
 	}
 
 	/**

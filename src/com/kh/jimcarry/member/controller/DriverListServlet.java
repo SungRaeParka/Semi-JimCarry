@@ -1,11 +1,16 @@
 package com.kh.jimcarry.member.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.kh.jimcarry.member.model.service.MemberService;
+import com.kh.jimcarry.member.model.vo.DriverList;
 
 /**
  * Servlet implementation class DriverListServlet
@@ -26,6 +31,19 @@ public class DriverListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		ArrayList<DriverList> list = new  MemberService().driverList();
+		System.out.println("sdsd :"+list);
+		String page ="";
+
+		if(list != null) {
+			page = "views/member/DriverMyPage2.jsp";
+			request.setAttribute("list", list);
+		}else {
+			page = "views/common/errorPage.jsp";
+			request.setAttribute("msg", "목록 조회 실패!");
+		}
+		request.getRequestDispatcher(page).forward(request, response);
+		
 		
 	}
 

@@ -34,24 +34,35 @@ public class NoticeSelectOneServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		int num = Integer.parseInt(request.getParameter("num"));
+		String num = request.getParameter("num");
+		String num1 =request.getParameter("num1");
+		
+		System.out.println("num : "+num);
+		System.out.println("num1 : "+num1);
 
 		Notice n = new NoticeService().selectOne(num);
-		QandA qa = new QandAService().selectOneQA(num);
-		OneQ one = new OneQService().selectOneQ(num);
+		//QandA qa = new QandAService().selectOneQA(num);
+		OneQ one = new OneQService().selectOneQ(num1);
+		
+		System.out.println("n : "+ n);
+		System.out.println("one : "+one);
 		
 		String page="";
 		
-		if(n !=null) {
+		if(n !=null||one != null) {
 			page="views/board/user_NoticeDetail.jsp";
-			request.setAttribute("n", n);
-		}else if(one != null) {
 			page="views/board/user_Insert1onDetail.jsp;";
-			request.setAttribute("qa", qa);
+			request.setAttribute("n", n);
+			request.setAttribute("one", one);
 		}
 		else {
+			if(n == null) {
 			page="views/common/errorPage.jsp";
 			request.setAttribute("msg", "공지사항 상세보기 실패!");
+		}else if(one == null) {
+			page="views/common/errorPage.jsp";
+			request.setAttribute("msg", "1:1문의상세보기 실패!");
+		}
 		}
 		request.getRequestDispatcher(page).forward(request, response);
 	}

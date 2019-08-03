@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="java.util.*, com.kh.jimcarry.serviceCenter.model.vo.*"%>
     <%
+   
     ArrayList<Notice> list=(ArrayList<Notice>) request.getAttribute("list"); 
      ArrayList<QandA> list1=(ArrayList<QandA>)request.getAttribute("list1");
     ArrayList<OneQ> list2=(ArrayList<OneQ>)request.getAttribute("list2"); 
@@ -64,6 +65,7 @@ container{
      <%for(Notice n : list) {%>
      
       <tr>
+      <input type="hidden" value="<%=n.getPostcode() %>">
       <td><%=n.getPostNo() %></td>
       <td><%=n.getPostTitle() %></td>
       <td><%=n.getUserNo() %></td>
@@ -72,11 +74,6 @@ container{
       </tr>
       
       <%
-      System.out.println("번호"+n.getPostNo());
-      System.out.println("제목"+n.getPostTitle());
-      System.out.println("작성자"+n.getUserNo() );
-      System.out.println("날짜"+n.getPostdate());
-      System.out.println("조회수"+n.getbCount());
     } %> 
       
      <!--  <tr>
@@ -141,7 +138,7 @@ container{
 			
 			//console.log(num);
 			
-			location.href="<%=request.getContextPath()%>/selectOne.no?num=" + num;
+			location.href="<%=request.getContextPath()%>/selectOne.no?num="+num;
 		});
 	</script>
 
@@ -356,16 +353,16 @@ container{
 		if(currentPage2 == p){%>
 		<button disabled><%=p %></button>
 	<% }else {%>
-		<button onclick="location.href='<%=request.getContextPath()%>/noticelist.no2?currentPage2=<%=p%>'"><%=p%></button>
+		<button onclick="location.href='<%=request.getContextPath()%>/noticelist.no?currentPage2=<%=p%>'"><%=p%></button>
 	<%}} %>
 	
 	<%if(currentPage2 >= maxPage2){ %>
 	<button disabled>다음</button>
 	<%}else { %>
-	<button onckick="location.href='<%=request.getContextPath() %>/noticelist.no2?currentPage2=<%=currentPage2 + 1 %>'">다음</button>
+	<button onckick="location.href='<%=request.getContextPath() %>/noticelist.no?currentPage2=<%=currentPage2 + 1 %>'">다음</button>
 	<%} %>
 	
-	<button onclick="location.href='<%=request.getContextPath() %>/noticelist.no2?currentPage2=<%=maxPage2 %>'">끝으로</button>
+	<button onclick="location.href='<%=request.getContextPath() %>/noticelist.no?currentPage2=<%=maxPage2 %>'">끝으로</button>
 </div>
 </div>  
 

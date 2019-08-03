@@ -72,7 +72,7 @@ public class NoticeDao {
 		return list;
 	}
 	//상세보기용
-	public Notice selectOne(Connection con, int num) {
+	public Notice selectOne(Connection con, String num) {
 		// TODO Auto-generated method stub
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -84,10 +84,12 @@ public class NoticeDao {
 		
 		try{
 		pstmt=con.prepareStatement(query);
-		pstmt.setInt(1, num);
+		pstmt.setString(1, num);
 		
 		
 		rset= pstmt.executeQuery();
+		
+		System.out.println("보여줘 :::: "+rset);
 		
 		if(rset.next()){
 			n=new Notice();
@@ -111,7 +113,7 @@ public class NoticeDao {
 		return n;
 	}
 	//조회수 증가
-	public int updateCount(Connection con, int num) {
+	public int updateCount(Connection con, String num) {
 		// TODO Auto-generated method stub
 		PreparedStatement pstmt = null;
 		int result = 0;
@@ -120,8 +122,8 @@ public class NoticeDao {
 		
 		try {
 			pstmt=con.prepareStatement(query);
-			pstmt.setInt(1, num);
-			pstmt.setInt(2, num);
+			pstmt.setString(1, num);
+			pstmt.setString(2, num);
 			
 			result = pstmt.executeUpdate();
 			

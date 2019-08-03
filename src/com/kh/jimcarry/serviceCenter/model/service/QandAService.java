@@ -21,7 +21,7 @@ public class QandAService {
 		
 		return list1;
 	}
-	//상세보기용
+	/*//상세보기용
 	public QandA selectOneQA(int num) {
 		// TODO Auto-generated method stub
 		Connection con = getConnection();
@@ -39,7 +39,7 @@ public class QandAService {
 		}
 		
 		return qa;
-	}
+	}*/
 	public int getListCount() {
 		// TODO Auto-generated method stub
 		Connection con = getConnection();

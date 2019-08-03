@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"  import="java.util.*, com.kh.jimcarry.serviceCenter.model.vo.*"%>
+<%
+    OneQ one =(OneQ) request.getAttribute("one");
+	 %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,29 +37,29 @@
 		<th>
 			<input type="hidden" name="postType" value="유형">
 			<input type="hidden" name="answerCheck">
-			<input type="radio" id="check" name="questionCheck" value="견적관련">견적관련
-			<input type="radio" id="check" name="questionCheck" value="운송관련">운송관련
-			<input type="radio" id="check" name="questionCheck" value="결제관련">결제관련
-			<input type="radio" id="check" name="questionCheck" value="취소관련">취소관련
-			<input type="radio" id="check" name="questionCheck" value="기타">기타
+			<input type="radio" id="check" name="questionCheck" value="<%=one.getQuestionType() %>" readonly>견적관련
+			<input type="radio" id="check" name="questionCheck" value="<%=one.getQuestionType() %>" readonly>운송관련
+			<input type="radio" id="check" name="questionCheck" value="<%=one.getQuestionType() %>" readonly>결제관련
+			<input type="radio" id="check" name="questionCheck" value="<%=one.getQuestionType() %>" readonly>취소관련
+			<input type="radio" id="check" name="questionCheck" value="<%=one.getQuestionType() %>" readonly>기타
 		</th>
 	</tr>
 	<tr>
 		<th>제목</th>
 		<th>
-			<input type="text" placeholder="제목을 입력해주세요." name="postTitle">
+			<input type="text" placeholder="제목을 입력해주세요." name="postTitle" value="<%=one.getPostTitle() %>" readonly>
 		</th>
 	</tr>
 	<tr>
 		<th>내용</th>
 		<th>
-			<textarea name="postContent" rows="5" placeholder="내용을 입력해주세요." ></textarea>
+			<textarea name="postContent" rows="5" placeholder="내용을 입력해주세요." readonly><%=one.getPostContent() %></textarea>
 		</th>
 	</tr>
 	<tr>
 		<th>첨부파일</th>
 		<th>
-			<input type="file" value="첨부파일" name="attachment"  >
+			<input type="file" value="<%=one.getAttachment() %>" name="attachment"  readonly>
 		</th>
 	</tr>
 </table>
@@ -64,8 +67,10 @@
 	<div align="center" style="margin-top: 10px;">
 	<input type="hidden" name="name" id="name" value="<%=loginUser.getSeqNo()%>"> 
 	
-		<button type="submit" value="문의하기"> 문의하기</button>&nbsp;
-		<button type="reset" value="취소하기"> 취소하기</button>
+		<button onclick="location.href='<%=request.getContextPath()%>/selectOne.no'">메뉴로 돌아가기</button>
+		 <% if(loginUser != null && loginUser.getUserId().equals("admin")){ %>
+					<button onclick="location.href='<%=request.getContextPath()%>/selectOne.no?num1=<%=one.getPostcode()%>'">수정하기</button>
+					<% } %> 
 	</div>
 	</form>
 	

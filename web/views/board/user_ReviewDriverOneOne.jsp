@@ -58,7 +58,7 @@
 </head>
 
 <body>
-	<%@include file="/views/common/user_TopBar.jsp" %>
+	<%@include file="/views/common/driver_TopBar.jsp" %>
 	<%if(loginUser != null){ %>
 	<div class="outer">
 		<h2 align="center">게시판 상세 보기</h2>
@@ -108,7 +108,6 @@
 
 
 
-
 			<div style="border: 1px solid white; width: 760px; text-align: right;">
 			<% if(loginUser.getUserId().equals(b.getWriter())) { %>
 			<button onclick="del();" id="belbtn">삭제</button>&nbsp;&nbsp;
@@ -151,40 +150,36 @@
 			</table>
 		</div>
 	</div>
-
-	<div style="text-align: center;">
-		<button onclick="" id="rebtn">댓글조회</button>
-	</div>
 	<script>
 	$(function(){
-	$(document).ready(function(){
-
+		$(document).ready(function(){
 			var bcode = "<%=b.getPostCode()%>";
 
 			$.ajax({
-				url:"/semi//selectOne.bo?num=<%=b.getPostCode()%>",
+				url:"/semi/selectReply.bo",
 				data:{bcode:bcode},
 				type:"get",
 				success:function(data){
 					var $replySelectTable = $("#replySelectTable tbody");
 					$replySelectTable.html("");
-					console.log(data);
+
 				for(var key in data) {
 					var $tr = $("<tr>");
 					var $writeTd = $("<td>").text(data[key].writer).css("width","100px");
 					var $contentTd = $("<td>").text(data[key].commentContents).css("width","400px");
 					var $dateTd = $("<td>").text(data[key].commentDate).css("width","200px");
-					var $btn1Td =  $("<td><button id='del1' class='btn2' onclick='godel();'>삭제</button></td>");
-					var $btn2Td =  $("<td><button id='up' class='btn2' onclick='goup();'>수정</button></td>");
+					var $btn1Td =  $("<td><button id='addUsers' class='btn2' onclick='addUsers();'>삭제</button></td>");
+					var $btn2Td =  $("<td><button id='addUsers' class='btn2' onclick='addUsers();'>수정</button></td>");
 
-					console.log($writeTd)
+
+
+					//console.log($writeTd)
+
 					$tr.append($writeTd);
 					$tr.append($contentTd);
 					$tr.append($dateTd);
-
 					$tr.append($btn1Td);
 					$tr.append($btn2Td);
-
 
 					$replySelectTable.append($tr);
 
@@ -216,11 +211,11 @@
 					var $writeTd = $("<td>").text(data[key].writer).css("width","100px");
 					var $contentTd = $("<td>").text(data[key].commentContents).css("width","400px");
 					var $dateTd = $("<td>").text(data[key].commentDate).css("width","200px");
-
-
-
 					var $btn1Td =  $("<td><button id='addUsers' class='btn2' onclick='addUsers();'>삭제</button></td>");
 					var $btn2Td =  $("<td><button id='addUsers' class='btn2' onclick='addUsers();'>수정</button></td>");
+
+
+
 					//console.log($writeTd)
 
 					$tr.append($writeTd);
@@ -228,7 +223,6 @@
 					$tr.append($dateTd);
 					$tr.append($btn1Td);
 					$tr.append($btn2Td);
-
 
 					$replySelectTable.append($tr);
 

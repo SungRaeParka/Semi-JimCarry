@@ -10,11 +10,12 @@ public class DriverList {
 	private String driverNo;		//기사번호
 	private int orderPrice;			//견적금액
 	private int driverPay;			//정산금액
+	private String userName;		//유저이름
 	
 	public DriverList () {}
 
 	public DriverList(Date reservattonDate, Date matchingDate, String reqNo, String conditionReq, String driverNo,
-			int orderPrice, int driverPay) {
+			int orderPrice, int driverPay, String userName) {
 		super();
 		this.reservattonDate = reservattonDate;
 		this.matchingDate = matchingDate;
@@ -23,6 +24,7 @@ public class DriverList {
 		this.driverNo = driverNo;
 		this.orderPrice = orderPrice;
 		this.driverPay = driverPay;
+		this.userName = userName;
 	}
 
 	public Date getReservattonDate() {
@@ -81,12 +83,22 @@ public class DriverList {
 		this.driverPay = driverPay;
 	}
 
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
 	@Override
 	public String toString() {
 		return "DriverList [reservattonDate=" + reservattonDate + ", matchingDate=" + matchingDate + ", reqNo=" + reqNo
 				+ ", ConditionReq=" + ConditionReq + ", driverNo=" + driverNo + ", orderPrice=" + orderPrice
-				+ ", driverPay=" + driverPay + "]";
+				+ ", driverPay=" + driverPay + ", userName=" + userName + "]";
 	}
+
+	
 	
 	
 }
