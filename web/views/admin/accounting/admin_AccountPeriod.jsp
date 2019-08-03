@@ -79,16 +79,16 @@
 							<th> <%= periodSort %> </th>
 							<th>총매출</th>
 							<th>이용건수</th>
+							<th>환불금액</th>
 							<th>순수익</th>
-							<!-- <th>환불금액</th> -->
 						</tr>
 						<% for(AccountingPeriod ap : list){ %>
 						<tr>
 							<td><%=ap.getAccountDate() %></td>
 							<td><%=df.format(ap.getTotalPayAmount()) %></td>
 							<td><%=ap.getTotalCount() %></td>
+							<td><%=df.format(ap.getTotalRefundFee()) %></td>
 							<td><%=df.format(ap.getTotalFeesIncome()) %></td>
-							<%-- <td><%=ap.getTotalRefundFee() %></td> --%>
 						</tr>
 						<% } %>
 					</table>
