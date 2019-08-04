@@ -14,11 +14,13 @@ public class DP {
 	private Date delDate;
 	private String writer;
 	private String status;
+	private String changeName;
+	private String filePath;
 	
 	public DP() {}
 
 	public DP(String postCode, String userNo, Date postDate, String postTitle, String postContents, String postType,
-			int postNo, int bCount, Date delDate, String writer, String status) {
+			int postNo, int bCount, Date delDate, String writer, String status, String changeName, String filePath) {
 		super();
 		this.postCode = postCode;
 		this.userNo = userNo;
@@ -31,6 +33,8 @@ public class DP {
 		this.delDate = delDate;
 		this.writer = writer;
 		this.status = status;
+		this.changeName = changeName;
+		this.filePath = filePath;
 	}
 
 	public String getPostCode() {
@@ -121,13 +125,30 @@ public class DP {
 		this.status = status;
 	}
 
+	public String getChangeName() {
+		return changeName;
+	}
+
+	public void setChangeName(String changeName) {
+		this.changeName = changeName;
+	}
+
+	public String getFilePath() {
+		return filePath;
+	}
+
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
+	}
+
 	@Override
 	public String toString() {
 		return "DP [postCode=" + postCode + ", userNo=" + userNo + ", postDate=" + postDate + ", postTitle=" + postTitle
 				+ ", postContents=" + postContents + ", postType=" + postType + ", postNo=" + postNo + ", bCount="
-				+ bCount + ", delDate=" + delDate + ", writer=" + writer + ", status=" + status + "]";
+				+ bCount + ", delDate=" + delDate + ", writer=" + writer + ", status=" + status + ", changeName="
+				+ changeName + ", filePath=" + filePath + "]";
 	}
-
+	
 	
 	
 }

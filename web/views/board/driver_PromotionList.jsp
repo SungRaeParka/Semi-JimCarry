@@ -78,7 +78,7 @@
 		<%for(DP dp : dpList){ %>
 			<div id="listArea">
 				<div id="imgArea">
-					<img src="/semi/images/air.png" style="width: 70px; height: 70px;">
+					<img src="/semi/images_uploadFiles/<%=dp.getChangeName()%>" style="width: 70px; height: 70px;">
 				</div>
 				<div id="titleArea" class="titleArea2">
 				<input type="hidden" name="postNo" value="<%=dp.getPostNo() %>">
@@ -140,7 +140,9 @@
 			location.href="<%=request.getContextPath()%>/selectOne.dp?num=" + num;
 		});
 	});
-</script>
+	
+
+	</script>
 	
 </body>
 </html>

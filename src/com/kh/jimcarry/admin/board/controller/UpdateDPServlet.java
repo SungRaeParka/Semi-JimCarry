@@ -19,8 +19,8 @@ import com.kh.jimcarry.board.model.vo.DP;
 import com.kh.jimcarry.common.MyFileRenamePolicy;
 import com.oreilly.servlet.MultipartRequest;
 
-@WebServlet("/insert.dp")
-public class InsertDPServlet extends HttpServlet {
+@WebServlet("/update.dp")
+public class UpdateDPServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -54,12 +54,14 @@ public class InsertDPServlet extends HttpServlet {
 			
 			String multiTitle = multiRequest.getParameter("title");
 			String multiContent = multiRequest.getParameter("content");
+			String postCode = multiRequest.getParameter("postCode");
 			
 			
 			DP dp = new DP();
 			
 			dp.setPostTitle(multiTitle);
 			dp.setPostContents(multiContent);
+			dp.setPostCode(postCode);
 			dp.setWriter("운영자");
 			
 			ArrayList<Attachment> fileList = new ArrayList<Attachment>();
@@ -79,7 +81,7 @@ public class InsertDPServlet extends HttpServlet {
 			System.out.println("controller attachment list :::" + fileList);
 			
 			
-			int result = new DPService().insertAdminDPContent(dp, fileList);
+			int result = new DPService().updateAdminDPContent(dp, fileList);
 			
 			if(result > 0) {
 				response.sendRedirect(request.getContextPath() + "/selectAdmin.dp");
@@ -89,7 +91,7 @@ public class InsertDPServlet extends HttpServlet {
 					failedFile.delete();
 				}
 				
-				request.setAttribute("msg", "기사홍보게시판 등록 실패");
+				request.setAttribute("msg", "기사홍보게시판 수정 실패");
 				request.getRequestDispatcher("views/common/admin_errorPage.jsp").forward(request, response);
 			}
 		}

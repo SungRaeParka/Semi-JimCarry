@@ -84,26 +84,31 @@
 	  <div class="tab-content">
 	    <div id="home" class="tab-pane fade in active">
 	    	<div class="outer" align="center">		
-			<div class="tableArea">
+			<div class="tableArea" style="border-top: 1px solid #F2F2F2; border-left: 1px solid #F2F2F2; border-right: 1px solid #F2F2F2">
 			<%for(DP dp : dpList){ %>
 				<div id="listArea">
 					<div id="imgArea">
-						<img src="/semi/images/air.png" style="width: 70px; height: 70px;">
+						<img src="/semi/images_uploadFiles/<%=dp.getChangeName()%>" style="width: 70px; height: 70px;">
 					</div>
 					<div id="titleArea" class="titleArea2">
-					<input type="hidden" name="postNo" value="<%=dp.getPostNo() %>">
+					<input type="hidden" id="postNo" name="postNo" value="<%=dp.getPostNo() %>">
 						<span class="titleSpan" id="title"><%=dp.getPostTitle() %></span>
 						<br>
 						<span style="float: left;">작성자 : 운영자</span>	
 						<br>	
 						<span style="float: left;">작성일 : <%=dp.getPostDate() %></span>			
 					</div>
+					<div class="updateArea" style="float: right">
+						<input class="postNoclass" type="hidden" id="postNo2" name="postNo2" value="<%=dp.getPostNo() %>">
+						<input type="button" value="삭제" class="deleteBtn">
+						<input type="button" value="수정" class="updateBtn">
+					</div>	
 				</div>	
-			<%} %>		
+			<%} %>				
 			</div>
 			
 			<div class="pagingArea" align="center">
-				<span class="span" style="cursor: pointer;" onclick="location.href='<%=request.getContextPath()%>/selectAdminOne?currentPage=1'">첫 페이지로</span>
+				<span class="span" style="cursor: pointer;" onclick="location.href='<%=request.getContextPath()%>/selectAdmin.dp?currentPage=1'">첫 페이지로</span>
 				
 				<!-- currentPage가 1페이지인 경우 -->
 				<% if(currentPage <= 1) { %>
@@ -111,7 +116,7 @@
 				<span class="span" style="cursor: pointer;">이전 페이지</span>
 				<% }else{ %>
 				<!-- 1페이지가 아닐 경우 이전으로 이동 -->
-				<span class="span" style="cursor: pointer;" onclick="location.href='<%=request.getContextPath()%>/selectAdminOne.dp?currentPage=<%=currentPage-1%>'">이전 페이지로</span>
+				<span class="span" style="cursor: pointer;" onclick="location.href='<%=request.getContextPath()%>/selectAdmin.dp?currentPage=<%=currentPage-1%>'">이전 페이지로</span>
 				<% } %>
 				
 				<% for(int p = startPage; p <= endPage; p++) {
@@ -119,7 +124,7 @@
 				%>
 					<span class="span" style="cursor: pointer;"><%= p %></span>
 				<%  }else { %>
-					<span class="span" style="cursor: pointer;" onclick="location.href='<%=request.getContextPath()%>/selectAdminOne.dp?currentPage=<%=p%>'"><%=p %></span>
+					<span class="span" style="cursor: pointer;" onclick="location.href='<%=request.getContextPath()%>/selectAdmin.dp?currentPage=<%=p%>'"><%=p %></span>
 				<%  }
 				   } %>
 				   
@@ -127,11 +132,11 @@
 				<% if(currentPage >= maxPage) { %>
 				<span class="span" style="cursor: pointer;">다음 페이지</span>
 				<% }else{ %>
-				<span class="span" style="cursor: pointer;" onclick="location.href='<%=request.getContextPath()%>/selectAdminOne.dp?currentPage=<%=currentPage+1%>'">다음 페이지</span>
+				<span class="span" style="cursor: pointer;" onclick="location.href='<%=request.getContextPath()%>/selectAdmin.dp?currentPage=<%=currentPage+1%>'">다음 페이지</span>
 				<% } %>
 				
 				
-				<span class="span" style="cursor: pointer;" onclick="location.href='<%=request.getContextPath()%>/selectAdminOne.dp?currentPage=<%=maxPage%>'">끝 페이지로</span>	
+				<span class="span" style="cursor: pointer;" onclick="location.href='<%=request.getContextPath()%>/selectAdmin.dp?currentPage=<%=maxPage%>'">끝 페이지로</span>	
 				
 				<button style="float: right;" onclick="insertBoard()">글쓰기</button>	
 			</div>
@@ -165,6 +170,33 @@
 	function insertBoard(){
 		location.href="/semi/views/admin/board/admin_inserDPForm.jsp";
 	};
+	
+	$(function(){
+		$(".deleteBtn").click(function(){
+			
+			var num = $(this).parent().children(".postNoclass").val();
+				
+			console.log(num);
+				
+			alert("정말 삭제하시겠습니까?")
+				
+			location.href="<%=request.getContextPath()%>/delete.dp?num=" + num;			
+				
+		});
+		
+		$(".updateBtn").click(function(){
+			
+			var num = $(this).parent().children(".postNoclass").val();
+				
+			console.log(num);				
+				
+			location.href="<%=request.getContextPath()%>/updatePreSelect.dp?num=" + num;			
+				
+		});
+	});	
+	
+	
+	
 </script>
 	
 </body>
