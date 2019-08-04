@@ -88,6 +88,7 @@
 				/* contentType: false,
 
 				processData: false, */
+				
 
 				sucess:function(data){
 					alert("접속완료");

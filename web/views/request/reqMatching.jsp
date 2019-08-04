@@ -97,13 +97,18 @@ BootPay.request({
 		type:'get',
 		data:{
 			reqNo:"<%= ro.getReqNo()%>",
-			driverNo:"<%=ro.getDriverNo()%>"
+			driverNo:"<%=ro.getDriverNo()%>",
+			price:"<%=ro.getOrderPrice()%>",
+			userNo:"<%=ro.getUserNo()%>",
+			userName:"<%=ro.getUserName()%>"
 		},
 		success:function(data){
+			alert("접속완료");
 			console.log("접속완료");
 			
 		},
 		error:function(data){
+			alert("접속실패");
 			console.log("접속실패");
 		}
 	})

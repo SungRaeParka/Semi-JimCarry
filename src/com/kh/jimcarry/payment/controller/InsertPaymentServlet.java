@@ -8,8 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.kh.jimcarry.payment.model.service.PaymentService;
+import com.kh.jimcarry.payment.model.vo.Payment;
 import com.kh.jimcarry.request.model.service.RequestService;
-import com.kh.jimcarry.request.model.vo.Request;
 
 
 @WebServlet("/insert.py")
@@ -27,8 +28,16 @@ public class InsertPaymentServlet extends HttpServlet {
 		String reqNo = request.getParameter("reqNo");
 		String driverNo = request.getParameter("driverNo");
 		
+		int price = Integer.parseInt(request.getParameter("price"));
+		String userNo = request.getParameter("userNo");
+		String userName = request.getParameter("userName");
+		
 		System.out.println(reqNo);
 		System.out.println(driverNo);
+		
+		System.out.println(price);
+		System.out.println(userNo);
+		System.out.println(userName);
 		
 		
 		
@@ -49,6 +58,20 @@ public class InsertPaymentServlet extends HttpServlet {
 			System.out.println("로직처리 실패");
 		}
 		
+		Payment pay = new Payment();
+		pay.setPayer(userName);
+		pay.setPayAmount(price);
+		pay.setUserNo(userNo);
+		pay.setDriverNo(driverNo);
+		pay.setReqNo(reqNo);
+		
+		int result = new PaymentService().insertPayment(pay);
+		
+		if(result>0) {
+			System.out.println("payment 정보입력 성공");
+		}else {
+			System.out.println("payment 정보입력 실패");
+		}
 	
 		
 	}

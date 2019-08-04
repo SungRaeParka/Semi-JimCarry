@@ -232,7 +232,7 @@
 			<div id="reqprice">
 				<h4>
 					이용요금 :
-					<%=req.getOrderPrice()%></h4>
+					<%=reqOrder.getOrderPrice()%></h4>
 			</div>
 
 			<div id="count" class="text">
@@ -286,7 +286,7 @@
 			<div id="reqprice">
 				<h4>
 					이용요금 :
-					<%=req.getOrderPrice()%>
+					<%=reqOrder.getOrderPrice()%>
 				</h4>
 			</div>
 
@@ -336,7 +336,7 @@
 			<div id="reqprice">
 				<h4>
 					이용요금 :
-					<%=req.getOrderPrice()%></h4>
+					<%=reqOrder.getOrderPrice()%></h4>
 			</div>
 
 			<div id="count" class="text">
@@ -385,7 +385,7 @@
 				<h3>완료일 : <%=req.getReservationDate() %></h3>
 			</div>
 			<div id="reqprice">
-				<h4>이용요금 : <%=req.getOrderPrice() %></h4>
+				<h4>이용요금 : <%=reqOrder.getOrderPrice() %></h4>
 			</div>
 
 			<div id="count" class="text">
@@ -422,7 +422,7 @@
 				<h3>완료일 : <%=req.getReservationDate() %></h3>
 			</div>
 			<div id="reqprice">
-				<h4>이용요금 : <%=req.getOrderPrice() %></h4>
+				<h4>이용요금 : <%=reqOrder.getOrderPrice() %></h4>
 			</div>
 
 			<div id="count" class="text">
@@ -521,8 +521,6 @@
 	$(function(){//입찰내역보기
 		$(".orderInfoBtn").click(function(){
 			var no = $(this).next().val();
-			
-			//$("#orderInfo").val(no);
 			
 			location.href="<%=request.getContextPath()%>/checkOrder.jc?no=" + no;
 		});
