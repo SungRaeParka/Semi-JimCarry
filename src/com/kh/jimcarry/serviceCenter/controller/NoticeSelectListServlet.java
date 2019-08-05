@@ -25,7 +25,7 @@ import com.kh.jimcarry.serviceCenter.model.vo.QandA;
  * Servlet implementation class NoticeSelectServlet
  */
 @WebServlet("/noticelist.no")
-public class NoticeSelectListServlet extends HttpServlet {
+ public class NoticeSelectListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**

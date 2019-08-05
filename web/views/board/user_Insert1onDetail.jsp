@@ -52,7 +52,7 @@
 	<tr>
 		<th>내용</th>
 		<th>
-			<textarea name="postContent" rows="5" placeholder="내용을 입력해주세요." readonly><%=one.getPostContent() %></textarea>
+			<textarea  name="postContent" rows="5" placeholder="내용을 입력해주세요." readonly><%=one.getPostContent() %></textarea>
 		</th>
 	</tr>
 	<tr>

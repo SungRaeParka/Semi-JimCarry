@@ -1,4 +1,4 @@
-package com.kh.jimcarry.serviceCenter.model.vo;
+ package com.kh.jimcarry.serviceCenter.model.vo;
 
 public class PageInfo implements java.io.Serializable{
 	

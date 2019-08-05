@@ -1,4 +1,4 @@
-package com.kh.jimcarry.serviceCenter.model.vo;
+ package com.kh.jimcarry.serviceCenter.model.vo;
 
 import java.sql.Date;
 

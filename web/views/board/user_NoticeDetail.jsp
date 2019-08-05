@@ -21,7 +21,7 @@ table * {
 	text-align: center;
 }
 
-.tableArea {
+  .tableArea {
 	width: 45opx;
 	height: 350px;
 	margin: 0 auto;
