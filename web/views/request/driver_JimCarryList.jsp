@@ -399,7 +399,8 @@ html, body {
 			<div id="reqcencle" align="right">
 
 				<h3>
-					<a href="#">정산신청→</a>
+					<span class="calculate" style="cursor: pointer">정산신청 →</span>
+					<input type="hidden" id="price" name="price" value="<%=req.getOrderPrice()%>">
 				</h3>
 
 			</div>
@@ -575,6 +576,17 @@ html, body {
 	});
 	
 	
+	$(function(){
+		$(".calculate").click(function(){
+			var price = $(this).next().val();
+			
+			var url = "/semi/views/popup/pop_Driver.calculate.jsp?price="+price;,
+			var name = "calcPopup";
+			var option = "with=300, height=350, top=30, left=50";
+				
+			swindow.open(url,name,option)
+		})
+	})
 	
 	
 	$(function(){

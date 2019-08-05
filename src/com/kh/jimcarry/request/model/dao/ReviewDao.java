@@ -1,20 +1,21 @@
-package com.kh.jimcarry.payment.model.dao;
+package com.kh.jimcarry.request.model.dao;
 
 import java.io.FileReader;
-import static com.kh.jimcarry.common.JDBCTemplate.*;
+
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Properties;
 
-import com.kh.jimcarry.payment.model.vo.Payment;
+import com.kh.jimcarry.request.model.vo.Reviews;
+import static com.kh.jimcarry.common.JDBCTemplate.*;
 
-public class PaymentDao {
+public class ReviewDao {
 	private Properties prop = new Properties();
 	
-	public PaymentDao() {
-		String fileName = PaymentDao.class.getResource("/sql/payment/payment-query.properties").getPath();
+	public ReviewDao() {
+		String fileName = ReviewDao.class.getResource("/sql/request/reviews-query.properties").getPath();
 		
 		try {
 			prop.load(new FileReader(fileName));
@@ -25,19 +26,19 @@ public class PaymentDao {
 		}
 	}
 
-	public int insertPayment(Connection con, Payment pay) {
+	public int insertReviews(Connection con, Reviews rev) {
 		PreparedStatement pstmt = null;
-		int result = 0;
+		int result=0;
 		
-		String query = prop.getProperty("insertPayment");
+		String query = prop.getProperty("insertReviews");
 		
 		try {
 			pstmt = con.prepareStatement(query);
-			pstmt.setString(1, pay.getPayer());
-			pstmt.setInt(2, pay.getPayAmount());
-			pstmt.setString(3, pay.getUserNo());
-			pstmt.setString(4, pay.getDriverNo());
-			pstmt.setString(5, pay.getReqNo());
+			pstmt.setString(1, rev.getUserNo());
+			pstmt.setString(2, rev.getDriverNo());
+			pstmt.setInt(3, rev.getGrade());
+			pstmt.setString(4, rev.getReview());
+			pstmt.setString(5, rev.getReqNo());
 			
 			result = pstmt.executeUpdate();
 			
@@ -50,4 +51,5 @@ public class PaymentDao {
 		
 		return result;
 	}
+
 }

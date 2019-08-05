@@ -150,11 +150,42 @@ public class RequestService {
 				
 				return result;
 			}
-
-
-
 			
+			
+			public int updateConditionReq2(String reqNo) {
+				Connection con  = getConnection();
+				
+				int result = new RequestDao().updateConditionReq2(con,reqNo);
+				
+				if(result>0) {
+					commit(con);
+				}else {
+					rollback(con);
+				}
+				close(con);
+				
+				return result;
+				
+			}
+			
+			
+			public int updateConditionDo2(String reqNo, String driverNo) {
+				Connection con = getConnection();
+				
+				int result = new RequestDao().updateConditionDo2(con,reqNo,driverNo);
+				
+				if(result>0) {
+					commit(con);
+				}else {
+					rollback(con);	
+				}
+				close(con);
+				
+				return result;
+				
+			}
 
+	
 			
 
 			public int insertRequest(Request r) {
@@ -322,6 +353,10 @@ public class RequestService {
 				
 				return reqInfoList;
 			}
+
+
+			
+		
 
 
 
