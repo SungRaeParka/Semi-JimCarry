@@ -78,8 +78,8 @@
 		<hr>
 		<div class="container" style="display: inline-block">
   			<ul class="nav nav-tabs">
-    			<li class="active"><a href="#home">회원정보</a></li>
-    			<li><a href="#menu1">이용내역</a></li>
+    			<li class="active"><a href="/semi/views/member/UserMyPage.jsp">회원정보</a></li>
+    			<li><a onclick="userList();">이용내역</a></li>
   			</ul>
 
   			<div class="tab-content">

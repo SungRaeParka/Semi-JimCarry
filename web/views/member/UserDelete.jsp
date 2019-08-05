@@ -73,7 +73,7 @@
 		<div style="display: inline-block; padding-top: 7%;">
 			<b style="font-size: 50px;">마이 페이지</b>
 		</div>
-		<form action="<%=request.getContextPath()%>/select.me" method="post">
+		
 		<br>
 		<hr>
 		<div class="container" style="display: inline-block">
@@ -84,31 +84,24 @@
 
   			<div class="tab-content">
     			<div id="home" class="tab-pane fade in active" style="border: 1px solid black">
+  			<form action="<%=request.getContextPath()%>/delete.me" method="post">
     				<table align="center">
-    					<tr class="showMemberInfo">
+    					<h3 align="center" class="checkPwd">비밀번호 확인</h3>  					
+    					<tr class="checkPwd">
     						<td><label>아이디 : </label></td>
     						<td><input type="text" name="userId" value="<%=loginUser.getUserId() %>" readonly></td>
-    						<td><input type="text" name="hid" value="<%=loginUser.getSeqNo() %>"></td>
-    					</tr>    					
-    					<tr class="showMemberInfo">
-    						<td><label>이름 : </label></td>
-    						<td><input type="text" name="userName" value="<%=loginUser.getUserName() %>" readonly></td>
+    						<td><input type="hidden" name="hid" value="<%=loginUser.getUserId() %>" readonly></td>
     					</tr>
-    					<tr class="showMemberInfo">
-							<td><label>휴대폰 번호 :</label>&nbsp;&nbsp;</td>
-							<td>
-							<input type="text" maxlength="3" name="tel1" id="tel" value="<%=loginUser.getPhone().substring(0, 3) %>"> -
-							<input type="text" maxlength="4" name="tel2" id="tel" value="<%=loginUser.getPhone().substring(4, 8) %>"> -
-							<input type="text" maxlength="4" name="tel3" id="tel" value="<%=loginUser.getPhone().substring(9, 13) %>">
-							</td>		
-						</tr>
-    					<tr class="showMemberInfo">
-    						<td colspan="2"><input type="button" value="회원정보 변경" id="updatebtn"></td>    						
-    					</tr>
-    					<tr class="showMemberInfo">
-    						<td colspan="2"><input type="button" value="회원 탈퇴" id="deletebtn"></td>
+    					<tr class="checkPwd">
+    						<td><label>비밀번호 :</label>&nbsp;&nbsp;</td>
+    						<td><input type="password" name="password1" id="password1"></td>
+    						<td><input type="hidden" name="pwd" id="pwd" value="<%=loginUser.getUserPwd()%>"></td>
+    					</tr>  
+    					<tr class="checkPwd">
+    						<td colspan="2"><input type="button" value="탈퇴하기" id="checkPwdbtn"></td> 						
     					</tr>
     				</table>
+    				</form>
     			</div>
     			<div id="menu1" class="tab-pane fade">
     			<div class="container">
@@ -116,22 +109,24 @@
     			</div>    			
   			</div>
 		</div>
-		</form>
 	</div>
 
 	<script>
 		$(function() {
-			$("#deletebtn").click(function(){
-				window.confirm("회원을 탈퇴하시겠습니까?");
-				location.href = "UserDelete.jsp";
-			});
-			$("#updatebtn").click(function(){
-				location.href = "UserCrystal.jsp";
+			$("#checkPwdbtn").click(function() {
+				// if문으로 비밀번호가 틀리면 출력
+				var pwd = $('#pwd').val();
+	            var pwd1 = $('#password1').val();
+	            if(pwd != pwd1){	
+					window.confirm("비밀번호가 틀립니다. 다시입력하세요");
+					$("#password1").val("").focus();	            	
+	            }else{
+	            	$("form").submit();
+	            	/* window.confirm("회원탈퇴 완료")
+	            	location.href = "/semi/index.jsp"; */
+	            }
 			});
 		});
-		function userList(){
-			$("form").submit();
-		}
 	</script>
 
 </body>
