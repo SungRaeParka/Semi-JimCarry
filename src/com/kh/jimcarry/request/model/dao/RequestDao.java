@@ -601,6 +601,57 @@ public class RequestDao {
 		
 		return result;
 	}
+	
+	
+	public int updateConditionReq2(Connection con, String reqNo) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String query = prop.getProperty("updateConditionReq");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, "이용완료");
+			pstmt.setString(2, reqNo);
+			
+			result = pstmt.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+
+	public int updateConditionDo2(Connection con, String reqNo, String driverNo) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String query = prop.getProperty("updateConditionDo");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			
+			pstmt.setString(1, "이용완료");
+			pstmt.setString(2, reqNo);
+			pstmt.setString(3, driverNo);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
 
 
 
@@ -1568,6 +1619,12 @@ public class RequestDao {
 		
 		
 	}
+
+
+
+	
+
+	
 
 
 

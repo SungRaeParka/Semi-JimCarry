@@ -85,10 +85,10 @@
 					reqNo:"reqNo",
 					driverNo:"driverNo"
 				}, */
-				/* contentType: false,
-
-				processData: false, */
-				
+				/* 
+				contentType: false,
+				processData: false, 
+				 */
 
 				sucess:function(data){
 					alert("접속완료");
@@ -97,6 +97,9 @@
 					alert("접속실패");
 				}
 			})
+			
+			window.opener.location.reload();
+			window.close();
 			
 			
 		})
