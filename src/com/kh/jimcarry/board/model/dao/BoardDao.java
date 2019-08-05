@@ -447,7 +447,7 @@ public class BoardDao {
 		int result = 0;
 
 		String query = prop.getProperty("updateBoard");
-
+		System.out.println(query);
 		try {
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, b.getPostTitle());
@@ -653,8 +653,9 @@ public class BoardDao {
 				c.setWriter(rset.getString("MEMBER_ID"));
 				c.setCommentContents(rset.getString("COMMENT_CONTENTS"));
 				c.setCommentDate(rset.getDate("COMMENT_DATE"));
-				 c.setCommentCode(rset.getString("COMMENT_CODE"));
+				c.setCommentCode(rset.getString("COMMENT_CODE"));
 				c.setPostCode(rset.getString("POST_CODE"));
+				c.setUserNo(rset.getString("USER_NO"));
 
 				replyList.add(c);
 
@@ -670,6 +671,28 @@ public class BoardDao {
 
 
 		return replyList;
+	}
+	//삭제 댓글
+	public int deleteReply(Connection con, String ccode) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+
+		String query = prop.getProperty("deleteReply");
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, ccode);
+
+			result = pstmt.executeUpdate();
+
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+
+		return result;
 	}
 
 

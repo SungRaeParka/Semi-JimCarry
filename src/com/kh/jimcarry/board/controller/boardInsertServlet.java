@@ -57,17 +57,20 @@ public class boardInsertServlet extends HttpServlet {
 			while(files.hasMoreElements()) {
 				//파일 리턴
 				String name = files.nextElement();
-
 				System.out.println("name " + name);
 
-				//저장된 이름 가져올떄
-				saveFiles.add(multiRequest.getFilesystemName(name));
-				//원본 파일저장할떄
-				originFiles.add(multiRequest.getOriginalFileName(name));
 
-				//넘어온 파일은 역순으로 꺼내온다.
-				System.out.println("filesSystem name : " + multiRequest.getFilesystemName(name));
-				System.out.println("OriginalFile name : " + multiRequest.getOriginalFileName(name));
+				if(multiRequest.getFile(name) != null) {
+
+					//저장된 이름 가져올떄
+					saveFiles.add(multiRequest.getFilesystemName(name));
+					//원본 파일저장할떄
+					originFiles.add(multiRequest.getOriginalFileName(name));
+
+					//넘어온 파일은 역순으로 꺼내온다.
+					System.out.println("filesSystem name : " + multiRequest.getFilesystemName(name));
+					System.out.println("OriginalFile name : " + multiRequest.getOriginalFileName(name));
+				};
 
 
 			}
@@ -98,11 +101,12 @@ public class boardInsertServlet extends HttpServlet {
 			//Attachment 객체생성하여 ArrayList 객체에 저장
 			ArrayList<Attachment> fileList = new ArrayList<Attachment>();
 			//전송순서 역순으로 저장되기 떄문에 반복문을 역으로 돌려 list에 저장
-			for(int i = originFiles.size() -1; i >= 0; i--) {
+			for(int i=0; i < originFiles.size(); i++) {
+				int num = originFiles.size() - 1 - i;
 				Attachment at = new Attachment();
 				at.setFilePath(savePath);
-				at.setOriginName(originFiles.get(i));
-				at.setChangeName(saveFiles.get(i));
+				at.setOriginName(originFiles.get(num));
+				at.setChangeName(saveFiles.get(num));
 				at.setAttachType(reViews);
 
 				fileList.add(at);

@@ -85,7 +85,7 @@ public class BoardService {
 				}
 		}
 		int result2 = new BoardDao().inserAttachment(con, fileList);
-		if(result1 > 0 && result2 > 0) {
+		if(result1 > 0 || result2 > 0) {
 			commit(con);
 			result = 1;
 
@@ -119,7 +119,7 @@ public class BoardService {
 
 		int result2 = new BoardDao().updateAttachmen(con, fileList);
 		System.out.println("update 서비스 사진 : " + fileList);
-		if(result1 > 0 && result2 > 0) {
+		if(result1 > 0 || result2 > 0) {
 			commit(con);
 			result = 1;
 
@@ -185,6 +185,19 @@ public class BoardService {
 
 		close(con);
 		return replyList;
+	}
+	//삭제 댓글
+	public int deleteReply(String ccode) {
+		Connection con = getConnection();
+
+		int result = new BoardDao().deleteReply(con,ccode);
+		if(result > 0) {
+			commit(con);
+		}else {
+			rollback(con);
+		}
+		close(con);
+		return result;
 	}
 
 

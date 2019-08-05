@@ -11,8 +11,21 @@
 		ArrayList<Attachment> fileList = (ArrayList<Attachment>) request.getAttribute("fileList");
 		System.out.println("views  : "  + b );
 
-		Attachment photo1 = fileList.get(0);
-		Attachment photo2 = fileList.get(1);
+
+		Attachment photo1 = new Attachment();
+		photo1.setChangeName("");
+		Attachment photo2 = new Attachment();
+		photo2.setChangeName("");
+
+		if(fileList.size() == 1) {
+
+			photo1 = fileList.get(0);
+
+		}
+		if(fileList.size() == 2) {
+			photo1 = fileList.get(0);
+			photo2 = fileList.get(1);
+		}
 
 		//Comments c = (Comments) request.getAttribute("comment");
 
@@ -63,6 +76,7 @@
 <body>
 	<%@include file="/views/common/user_TopBar.jsp" %>
 	<%if(loginUser != null){ %>
+	<input type="hidden" id="loginUser" value="<%=loginUser.getSeqNo()%>">
 	<div class="outer">
 		<h2 align="center">게시판 상세 보기</h2>
 		<div class="tableArea">
@@ -144,7 +158,11 @@
 				<tr>
 					<td>댓글 작성</td>
 					<td><textarea rows="3" cols="80" id="replyContent"></textarea></td>
-					<td><button id="addReply">댓글 등록</button></td>
+					<td>
+					<button id="addReply">댓글 등록</button>
+
+					</td>
+
 				</tr>
 			</table>
 		</div>
@@ -159,65 +177,116 @@
 	<input type="hidden" />
 	<script>
 
+	function godel(data) {
+
+
+		console.log(data);
+
+
+		if(confirm('삭제하겠습니까?')){
+			$.ajax({
+				url:"/semi/delReply.bo",
+				data:{
+					ccode:data,
+				},
+				type:"get",
+				success:function(data){
+					console.log(data);
+					location.reload();
+
+
+
+
+				},
+				error:function(){
+					console.log("실패!!!");
+				}
+
+			})
+
+		}
+	}
+	function goup(data) {
+
+
+		console.log(data);
+
+
+		if(confirm('수정하시겠습니까?')){
+			$.ajax({
+				url:"",
+				data:{
+					ccode:data,
+				},
+				type:"get",
+				success:function(data){
+					console.log(data);
+
+				},
+				error:function(){
+					console.log("실패!!!");
+				}
+
+			})
+
+		}
+	}
+
+
+
+function getCommentList() {
+
+	$.ajax({
+		url:"/semi/selectReply.bo",
+		data:{bcode:bcode},
+		type:"get",
+		success:function(data){
+			var $replySelectTable = $("#replySelectTable tbody");
+			$replySelectTable.html("");
+			console.log(data);
+			for(var key in data) {
+				console.log(key);
+				var $tr = $("<tr>");
+				var $writeTd = $("<td>").text(data[key].writer).css({'width':'100px','height':'50px','text-align':'center'});
+				var $contentTd = $("<td>").text(data[key].commentContents).css("width","400px");
+				var $dateTd = $("<td>").text(data[key].commentDate).css("width","120px");
+
+				var $btn1Td =  $("<td><button id='delete' class='btn2' onclick='godel(\"" + data[key].commentCode + "\");'>삭제</button></td>");
+
+				var $btn2Td =  $("<td><button id='update' class='btn2' onclick='goup(\"" + data[key].commentCode + "\");'>수정</button></td>");
+
+				console.log($writeTd)
+				$tr.append($writeTd);
+				$tr.append($contentTd);
+				$tr.append($dateTd);
+				console.log($("#loginUser").val());
+				console.log(data[key].writer);
+				if($("#loginUser").val() == data[key].userNo) {
+					$tr.append($btn1Td);
+					$tr.append($btn2Td);
+				}
+
+				$replySelectTable.append($tr);
+
+			}
+
+			$("#replyContent").val("");
+		},
+		error:function(){
+			console.log("실패!!!");
+		}
+	});
+}
+
+var bcode;
 
 	 $(function(){
 
 		$(document).ready(function(){
 
-			var bcode = "<%=b.getPostCode()%>";
+			bcode = "<%=b.getPostCode()%>";
 
-			$.ajax({
-				url:"/semi/selectReply.bo",
-				data:{bcode:bcode},
-				type:"get",
-				success:function(data){
-					var $replySelectTable = $("#replySelectTable tbody");
-					$replySelectTable.html("");
-					console.log(data);
-				for(var key in data) {
-					var $tr = $("<tr>");
-					var $writeTd = $("<td>").text(data[key].writer).css({'width':'100px','height':'50px','text-align':'center'});
-					var $contentTd = $("<td>").text(data[key].commentContents).css("width","400px");
-					var $dateTd = $("<td>").text(data[key].commentDate).css("width","120px");
-
-					var $btn1Td =  $("<td><button id='delete' class='btn2' onclick='godel();'>삭제</button></td>").on('click',function(){
-						var	aa = confirm('삭제하겠습니까?');
-						var ccode = $("<input>").hide(data[key].commentCode);
-
-						if(aa = true){
-							$.ajax({
-								url:"/semi/delReply.bo",
-								data:{ccode:ccode},
-								type:"get",
-								success:function(data){
-									console.log(data);
-
-
-								}
-
-							})
-
-						}
-					});
-					var $btn2Td =  $("<td><button id='update' class='btn2' onclick='goup();'>수정</button></td>");
-
-					console.log($writeTd)
-					$tr.append($writeTd);
-					$tr.append($contentTd);
-					$tr.append($dateTd);
-
-					$tr.append($btn1Td);
-					$tr.append($btn2Td);
-
-
-					$replySelectTable.append($tr);
-
-					}
-				},
-				error:function(){
-					console.log("실패!!!");
-				}
-			});
+			getCommentList();
 		});
 
 		$("#addReply").click(function(){
@@ -230,39 +299,9 @@
 				data:{writer:writer, bcode:bcode, content:content},
 				type:"post",
 				success:function(data){
-					//console.log(data);
 
-					var $replySelectTable = $("#replySelectTable tbody");
-					$replySelectTable.html("");
+					getCommentList();
 
-				for(var key in data) {
-					var $tr = $("<tr>");
-					var $writeTd = $("<td>").text(data[key].writer).css({'width':'100px','height':'50px','text-align':'center'});
-					var $contentTd = $("<td>").text(data[key].commentContents).css("width","400px");
-					var $dateTd = $("<td>").text(data[key].commentDate).css("width","120px");
-
-
-
-					var $btn1Td =  $("<td><button id='delete' class='btn2' onclick='godel();'>삭제</button></td>")
-
-
-					var $btn2Td =  $("<td><button id='update' class='btn2' onclick='goup();'>수정</button></td>")
-
-
-
-					//console.log($writeTd)
-
-					$tr.append($writeTd);
-					$tr.append($contentTd);
-					$tr.append($dateTd);
-					$tr.append($btn1Td);
-					$tr.append($btn2Td);
-
-
-					$replySelectTable.append($tr);
-
-				}
-				reply.value = "";
 				},
 				error:function(){
 					console.log("실패!!!");
