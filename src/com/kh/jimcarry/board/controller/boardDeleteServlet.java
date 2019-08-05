@@ -25,7 +25,7 @@ public class boardDeleteServlet extends HttpServlet {
 		int result = new BoardService().deleteBoard(num);
 
 		String page = "";
-		if(result > 0) {
+		 if(result > 0) {
 			page = "selectList.bo";
 			//response.sendRedirect("/semi/selectList.bo");
 

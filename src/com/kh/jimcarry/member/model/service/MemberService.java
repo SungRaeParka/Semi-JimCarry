@@ -4,6 +4,8 @@ import com.kh.jimcarry.member.model.dao.MemberDao;
 import com.kh.jimcarry.member.model.vo.AttachmentMember;
 import com.kh.jimcarry.member.model.vo.DriverList;
 import com.kh.jimcarry.member.model.vo.Member;
+import com.kh.jimcarry.member.model.vo.UserList;
+
 import java.sql.Connection;
 import java.util.ArrayList;
 
@@ -139,14 +141,38 @@ public class MemberService {
 		return result;
 	}
 
-	public ArrayList<DriverList> driverList() {
+	public ArrayList<DriverList> driverList(String seqNo) {
 		Connection con = getConnection();
 		
-		ArrayList<DriverList> list = new MemberDao().driverList(con);
+		ArrayList<DriverList> list = new MemberDao().driverList(con, seqNo);
 		
 		close(con);
 		
 		return list;
+	}
+
+	public ArrayList<UserList> userList(String seqNo) {
+		Connection con = getConnection();
+		
+		ArrayList<UserList> list = new MemberDao().UserList(con, seqNo);
+		
+		close(con);
+		
+		return list;
+	}
+
+	public int userDelete(Member m) {
+		Connection con = getConnection();
+		int result = new MemberDao().userDelete(con, m);
+		
+		if(result > 0) {
+			commit(con);
+		}else {
+			rollback(con);
+		}
+		close(con);
+		
+		return result;
 	}
 
 	

@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.kh.jimcarry.member.model.service.MemberService;
 import com.kh.jimcarry.member.model.vo.DriverList;
@@ -31,15 +32,18 @@ public class DriverListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<DriverList> list = new  MemberService().driverList();
-		System.out.println("sdsd :"+list);
+		String seqNo = request.getParameter("hid");
+		System.out.println(seqNo);
+		ArrayList<DriverList> list = new  MemberService().driverList(seqNo);
+		System.out.println("sdsd :"+ list);
 		String page ="";
 
 		if(list != null) {
 			page = "views/member/DriverMyPage2.jsp";
-			request.setAttribute("list", list);
+			HttpSession session = request.getSession();
+			session.setAttribute("list", list);
 		}else {
-			page = "views/common/errorPage.jsp";
+			page = "views/common/driver_errorPage.jsp";
 			request.setAttribute("msg", "목록 조회 실패!");
 		}
 		request.getRequestDispatcher(page).forward(request, response);

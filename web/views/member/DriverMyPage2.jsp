@@ -83,11 +83,10 @@
 </head>
 <body>
 	<%@ include file="/views/common/driver_TopBar.jsp" %>
-	
+	<%-- <form action="<%=request.getContextPath()%>/driverList.me" method="post"> --%>
 	<div id="main">
 		<div style="display: inline-block; padding-top: 7%;">
 			<b style="font-size: 50px;">마이 페이지</b>
-			<input type="hidden" id="hid" value="<%=loginUser.getSeqNo() %>">
 		</div>
 		
 		<br>
@@ -95,9 +94,9 @@
 		<div class="container" style="display: inline-block">
   			<ul class="nav nav-tabs">
     			<li><a href="/semi/views/member/DriverMyPage.jsp">회원정보</a></li>
-    			<li><a href="/semi/driverList.me">이용내역</a></li>
+    			<li class="active"><a onclick="driverList();">이용내역</a></li>
   			</ul>
-			
+			<%-- <form action="<%=request.getContextPath()%>/driverList.me" method="post"> --%>
   			<div class="tab-content">
     			<div id="home" class="tab-pane fade">
     			</div>
@@ -116,7 +115,7 @@
     				</tr>
     				</thead>
     				<tbody>
-    				<% for(DriverList dl : list){ %>
+    				<% for(DriverList dl : list) { %>
       				<tr>
         				<td><%=dl.getReqNo() %></td>
         				<td><%=dl.getUserName() %></td>
@@ -184,15 +183,6 @@
 	         }).open();
 	    }
 		$(function() {
-			$(".updateMemberInfo").hide();
-			$(".checkPwd").hide();
-
-			$("#updatebtn").click(function() {
-				$(".showMemberInfo").hide();
-				$(".updateMemberInfo").hide();
-				$(".checkPwd").show();
-			});
-			
 			$("#checkPwdbtn").click(function() {
 				// if문으로 비밀번호가 틀리면 출력
 				var pwd = $('#pwd').val();
@@ -219,9 +209,6 @@
 				location.href = "../main/mainPage.jsp";
 			});
 		});
-		function updateOk(){
-			$("form").submit();
-		}
 	</script>
 
 </body>

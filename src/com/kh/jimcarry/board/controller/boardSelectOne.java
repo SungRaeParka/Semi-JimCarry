@@ -26,11 +26,16 @@ public class boardSelectOne extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String num = request.getParameter("num");
 		System.out.println("num : " + num);
-		System.out.println();
+
+
+
+
+
 
 
 		HashMap<String, Object> hmap = new BoardService().selectBoardMap(num);
-		Board b = (Board) hmap.get("board");
+		 Board b = (Board) hmap.get("board");
+
 
 
 		System.out.println("b : " + b);
@@ -38,14 +43,13 @@ public class boardSelectOne extends HttpServlet {
 		System.out.println("파일 리스트 : " + fileList);
 		String page = "";
 
-		ArrayList<Comments> comment = new BoardService().selectReplyListOne(num);
 
 
 			if(hmap != null) {
 			page = "views/board/user_ReviewOne.jsp";
 			request.setAttribute("b", b);
 			request.setAttribute("fileList", fileList);
-			//request.setAttribute("comment", comment);
+
 		}else {
 			page = "views/common/Review_errorPage.jsp";
 			request.setAttribute("msg", "게시판 상세보기 실패!!!");

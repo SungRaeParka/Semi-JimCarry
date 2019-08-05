@@ -17,7 +17,7 @@
 	align:ceter;
 	}
 	table {
-		
+
 		width:40%;
 		height: 100px;
 		margin: auto;
@@ -63,13 +63,12 @@
 	</tr>
 </table>
 
-	<div align="center" style="margin-top: 10px;">
-	
+	<div align="center" style="margin-top: 10px;">	
 		<button onclick="location.href='<%=request.getContextPath()%>/noticelist.no'">메뉴로 돌아가기</button>
+
 		 <% if(loginUser != null && loginUser.getUserId().equals("admin")){ %>
 					<button onclick="location.href='<%=request.getContextPath()%>/selectOne.no?num1=<%=one.getPostcode()%>'">수정하기</button>
-					<% } %> 
+					<% } %>
 	</div>
-	
 </body>
 </html>

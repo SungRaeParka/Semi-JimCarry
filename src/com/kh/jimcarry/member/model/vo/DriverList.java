@@ -3,7 +3,7 @@ package com.kh.jimcarry.member.model.vo;
 import java.sql.Date;
 
 public class DriverList {
-	private Date reservattonDate;	//예약일자
+	private String reservattonDate;	//예약일자
 	private Date matchingDate;		//매칭일자
 	private String reqNo;			//견적번호
 	private String ConditionReq;	//견적상태
@@ -14,7 +14,7 @@ public class DriverList {
 	
 	public DriverList () {}
 
-	public DriverList(Date reservattonDate, Date matchingDate, String reqNo, String conditionReq, String driverNo,
+	public DriverList(String reservattonDate, Date matchingDate, String reqNo, String conditionReq, String driverNo,
 			int orderPrice, int driverPay, String userName) {
 		super();
 		this.reservattonDate = reservattonDate;
@@ -27,11 +27,11 @@ public class DriverList {
 		this.userName = userName;
 	}
 
-	public Date getReservattonDate() {
+	public String getReservattonDate() {
 		return reservattonDate;
 	}
 
-	public void setReservattonDate(Date reservattonDate) {
+	public void setReservattonDate(String reservattonDate) {
 		this.reservattonDate = reservattonDate;
 	}
 
@@ -97,6 +97,8 @@ public class DriverList {
 				+ ", ConditionReq=" + ConditionReq + ", driverNo=" + driverNo + ", orderPrice=" + orderPrice
 				+ ", driverPay=" + driverPay + ", userName=" + userName + "]";
 	}
+
+	
 
 	
 	
