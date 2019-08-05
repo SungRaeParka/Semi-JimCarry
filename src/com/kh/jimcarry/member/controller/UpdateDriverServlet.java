@@ -126,9 +126,7 @@ public class UpdateDriverServlet extends HttpServlet {
 			m.setBankBook(bankBook);
 			m.setAttestation(attestation);
 			
-			System.out.println("회원정보 : " + m);
-			
-			ArrayList<DriverList> list = new  MemberService().driverList();
+			System.out.println("회원정보 : " + m);			
 			
 			ArrayList<AttachmentMember> fileList = new ArrayList<AttachmentMember>();
 			for(int i = originFiles.size() -1; i >= 0; i--) {
@@ -180,7 +178,6 @@ public class UpdateDriverServlet extends HttpServlet {
 			if(result > 0) {
 				page = "views/member/DriverMyPage.jsp";
 				response.sendRedirect(page);
-				request.setAttribute("list", list);
 			}else {
 			page = "views/common/driver_errorPage.jsp";
 			request.setAttribute("msg", "회원정보 수정 실패!");
