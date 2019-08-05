@@ -28,7 +28,6 @@ public class boardSelectServlet extends HttpServlet {
 		int startPage;
 		int endPage;
 
-
 		//게시판은 1페이지부터 시작함 그래서 1로 초기값
 		currentPage = 1;
 

@@ -1,5 +1,6 @@
 package com.kh.jimcarry.board.controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Enumeration;
@@ -40,7 +41,7 @@ public class boardUpdateServlet extends HttpServlet {
 			String savePath = root + "images_uploadFiles/";
 
 			System.out.println("root" + root);
-			// FileRenamePolicy 상속 후 오버라이딩
+				// FileRenamePolicy 상속 후 오버라이딩
 			MultipartRequest multiRequest = new MultipartRequest(request, savePath, maxSize, "UTF-8",
 					new MyFileRenamePolicy());
 
@@ -76,9 +77,6 @@ public class boardUpdateServlet extends HttpServlet {
 
 			System.out.println("updateservlet : " + b);
 
-			Attachment at = new Attachment();
-
-			System.out.println("Attachment : " + at);
 
 			// 파일이 전송된 이름을 반환한다.
 			Enumeration<String> files = multiRequest.getFileNames();
@@ -104,8 +102,8 @@ public class boardUpdateServlet extends HttpServlet {
 					originFiles.add(multiRequest.getOriginalFileName(name));
 
 						/*File failedFile = new File(savePath + imgstr.get(0));
-						failedFile.delete();*/
-
+						failedFile.delete();
+*/
 
 				} else if (name != null && photo1 == null && photo2 != null) {
 
@@ -115,12 +113,17 @@ public class boardUpdateServlet extends HttpServlet {
 					originFiles.add(multiRequest.getOriginalFileName(name));
 
 
-/*
-						File failedFile = new File(savePath + imgstr.get(1));
-						failedFile.delete();*/
+
+						/*File failedFile = new File(savePath + imgstr.get(1));
+						failedFile.delete();
+*/
 
 
-
+				} else {
+					// 저장된 이름 가져올떄
+					saveFiles.add(multiRequest.getFilesystemName(name));
+					// 원본 파일저장할떄
+					originFiles.add(multiRequest.getOriginalFileName(name));
 				}
 				System.out.println("imgstr : " + imgstr);
 				System.out.println("name " + name);
@@ -129,6 +132,7 @@ public class boardUpdateServlet extends HttpServlet {
 
 				ArrayList<Attachment> fileList = new ArrayList<Attachment>();
 				for (int i = originFiles.size() - 1; i >= 0; i--) {
+					Attachment at = new Attachment();
 					at.setFilePath(savePath);
 					at.setOriginName(originFiles.get(i));
 					at.setChangeName(saveFiles.get(i));
@@ -146,7 +150,7 @@ public class boardUpdateServlet extends HttpServlet {
 					request.setAttribute("fileList", fileList);
 				} else {
 					page = "views/common/Review_errorPage.jsp";
-					request.setAttribute("msg", "게시판 상세보기 실패!!!");
+					request.setAttribute("msg", "게시판 업데이트 실패!!!");
 					// 실패시 저장된 사진 삭제
 					/*for (int i = 0; i < saveFiles.size(); i++) {
 						File failedFile = new File(savePath + saveFiles.get(i));

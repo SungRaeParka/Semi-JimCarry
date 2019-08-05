@@ -3,15 +3,31 @@
 <%@page import="com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
         import="java.util.*,com.kh.jimcarry.board.model.vo.*"
-        import="com.kh.jimcarry.member.model.vo.Member"%>
+        import="com.kh.jimcarry.member.model.vo.Member"
+        %>
 <!DOCTYPE html>
 	<%
 		Board b = (Board) request.getAttribute("b");
 		ArrayList<Attachment> fileList = (ArrayList<Attachment>) request.getAttribute("fileList");
 		System.out.println("views  : "  + b );
 
-		Attachment photo1 = fileList.get(0);
-		Attachment photo2 = fileList.get(1);
+
+		Attachment photo1 = new Attachment();
+		photo1.setChangeName("");
+		Attachment photo2 = new Attachment();
+		photo2.setChangeName("");
+
+		if(fileList.size() == 1) {
+
+			photo1 = fileList.get(0);
+
+		}
+		if(fileList.size() == 2) {
+			photo1 = fileList.get(0);
+			photo2 = fileList.get(1);
+		}
+
+		//Comments c = (Comments) request.getAttribute("comment");
 
 
 
@@ -60,6 +76,7 @@
 <body>
 	<%@include file="/views/common/user_TopBar.jsp" %>
 	<%if(loginUser != null){ %>
+	<input type="hidden" id="loginUser" value="<%=loginUser.getSeqNo()%>">
 	<div class="outer">
 		<h2 align="center">게시판 상세 보기</h2>
 		<div class="tableArea">
@@ -141,59 +158,135 @@
 				<tr>
 					<td>댓글 작성</td>
 					<td><textarea rows="3" cols="80" id="replyContent"></textarea></td>
-					<td><button id="addReply">댓글 등록</button></td>
+					<td>
+					<button id="addReply">댓글 등록</button>
+
+					</td>
+
 				</tr>
 			</table>
 		</div>
 		<div>
 			<table id="replySelectTable" border="1" align="center">
 				<tbody></tbody>
+
 			</table>
 		</div>
 	</div>
 
-	<div style="text-align: center;">
-		<button onclick="" id="rebtn">댓글조회</button>
-	</div>
+	<input type="hidden" />
 	<script>
-	$(function(){
-	$(document).ready(function(){
 
-			var bcode = "<%=b.getPostCode()%>";
+	function godel(data) {
 
+
+		console.log(data);
+
+
+		if(confirm('삭제하겠습니까?')){
 			$.ajax({
-				url:"/semi//selectOne.bo?num=<%=b.getPostCode()%>",
-				data:{bcode:bcode},
+				url:"/semi/delReply.bo",
+				data:{
+					ccode:data,
+				},
 				type:"get",
 				success:function(data){
-					var $replySelectTable = $("#replySelectTable tbody");
-					$replySelectTable.html("");
 					console.log(data);
-				for(var key in data) {
-					var $tr = $("<tr>");
-					var $writeTd = $("<td>").text(data[key].writer).css("width","100px");
-					var $contentTd = $("<td>").text(data[key].commentContents).css("width","400px");
-					var $dateTd = $("<td>").text(data[key].commentDate).css("width","200px");
-					var $btn1Td =  $("<td><button id='del1' class='btn2' onclick='godel();'>삭제</button></td>");
-					var $btn2Td =  $("<td><button id='up' class='btn2' onclick='goup();'>수정</button></td>");
-
-					console.log($writeTd)
-					$tr.append($writeTd);
-					$tr.append($contentTd);
-					$tr.append($dateTd);
-
-					$tr.append($btn1Td);
-					$tr.append($btn2Td);
+					location.reload();
 
 
-					$replySelectTable.append($tr);
 
-					}
+
 				},
 				error:function(){
 					console.log("실패!!!");
 				}
-			});
+
+			})
+
+		}
+	}
+	function goup(data) {
+
+
+		console.log(data);
+
+
+		if(confirm('수정하시겠습니까?')){
+			$.ajax({
+				url:"",
+				data:{
+					ccode:data,
+				},
+				type:"get",
+				success:function(data){
+					console.log(data);
+
+				},
+				error:function(){
+					console.log("실패!!!");
+				}
+
+			})
+
+		}
+	}
+
+
+
+function getCommentList() {
+
+	$.ajax({
+		url:"/semi/selectReply.bo",
+		data:{bcode:bcode},
+		type:"get",
+		success:function(data){
+			var $replySelectTable = $("#replySelectTable tbody");
+			$replySelectTable.html("");
+			console.log(data);
+			for(var key in data) {
+				console.log(key);
+				var $tr = $("<tr>");
+				var $writeTd = $("<td>").text(data[key].writer).css({'width':'100px','height':'50px','text-align':'center'});
+				var $contentTd = $("<td>").text(data[key].commentContents).css("width","400px");
+				var $dateTd = $("<td>").text(data[key].commentDate).css("width","120px");
+
+				var $btn1Td =  $("<td><button id='delete' class='btn2' onclick='godel(\"" + data[key].commentCode + "\");'>삭제</button></td>");
+
+				var $btn2Td =  $("<td><button id='update' class='btn2' onclick='goup(\"" + data[key].commentCode + "\");'>수정</button></td>");
+
+				console.log($writeTd)
+				$tr.append($writeTd);
+				$tr.append($contentTd);
+				$tr.append($dateTd);
+				console.log($("#loginUser").val());
+				console.log(data[key].writer);
+				if($("#loginUser").val() == data[key].userNo) {
+					$tr.append($btn1Td);
+					$tr.append($btn2Td);
+				}
+
+				$replySelectTable.append($tr);
+
+			}
+
+			$("#replyContent").val("");
+		},
+		error:function(){
+			console.log("실패!!!");
+		}
+	});
+}
+
+var bcode;
+
+	 $(function(){
+
+		$(document).ready(function(){
+
+			bcode = "<%=b.getPostCode()%>";
+
+			getCommentList();
 		});
 
 		$("#addReply").click(function(){
@@ -206,34 +299,9 @@
 				data:{writer:writer, bcode:bcode, content:content},
 				type:"post",
 				success:function(data){
-					//console.log(data);
 
-					var $replySelectTable = $("#replySelectTable tbody");
-					$replySelectTable.html("");
+					getCommentList();
 
-				for(var key in data) {
-					var $tr = $("<tr>");
-					var $writeTd = $("<td>").text(data[key].writer).css("width","100px");
-					var $contentTd = $("<td>").text(data[key].commentContents).css("width","400px");
-					var $dateTd = $("<td>").text(data[key].commentDate).css("width","200px");
-
-
-
-					var $btn1Td =  $("<td><button id='addUsers' class='btn2' onclick='addUsers();'>삭제</button></td>");
-					var $btn2Td =  $("<td><button id='addUsers' class='btn2' onclick='addUsers();'>수정</button></td>");
-					//console.log($writeTd)
-
-					$tr.append($writeTd);
-					$tr.append($contentTd);
-					$tr.append($dateTd);
-					$tr.append($btn1Td);
-					$tr.append($btn2Td);
-
-
-					$replySelectTable.append($tr);
-
-				}
-				reply.value = "";
 				},
 				error:function(){
 					console.log("실패!!!");
@@ -241,6 +309,8 @@
 			});
 		});
 	});
+
+
 
 
 	</script>
