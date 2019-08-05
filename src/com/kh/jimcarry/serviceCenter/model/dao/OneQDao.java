@@ -1,4 +1,4 @@
-package com.kh.jimcarry.serviceCenter.model.dao;
+ package com.kh.jimcarry.serviceCenter.model.dao;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -87,7 +87,7 @@ public class OneQDao {
 			pstmt.setString(5, one.getPostType());
 			pstmt.setString(6, one.getQuestionType());
 			
-			System.out.println(one.getMemberNo());
+			System.out.println("이건가?? :::"+one.getMemberNo());
 			
 			System.out.println("유형 : "+one.getPostType());
 			

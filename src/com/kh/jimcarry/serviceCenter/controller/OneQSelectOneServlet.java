@@ -7,24 +7,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.jimcarry.serviceCenter.model.service.NoticeService;
 import com.kh.jimcarry.serviceCenter.model.service.OneQService;
-import com.kh.jimcarry.serviceCenter.model.service.QandAService;
-import com.kh.jimcarry.serviceCenter.model.vo.Notice;
 import com.kh.jimcarry.serviceCenter.model.vo.OneQ;
-import com.kh.jimcarry.serviceCenter.model.vo.QandA;
 
 /**
- * Servlet implementation class NoticeSelectOneServlet
+ * Servlet implementation class OneQSelectOneServlet
  */
-@WebServlet("/selectOne.no")
-public class NoticeSelectOneServlet extends HttpServlet {
+@WebServlet("/selectOne.one")
+public class OneQSelectOneServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public NoticeSelectOneServlet() {
+    public OneQSelectOneServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,33 +30,31 @@ public class NoticeSelectOneServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String num = request.getParameter("num");
-//		String num1 =request.getParameter("num1");
+		String num1 =request.getParameter("num1");
 		
-		System.out.println("num : "+num);
-
-		Notice n = new NoticeService().selectOne(num);
-		//QandA qa = new QandAService().selectOneQA(num);
-		//OneQ one = new OneQService().selectOneQ(num1);
+		System.out.println("num1 : "+num1);
 		
-		System.out.println("n : "+ n);
-		
-		
+		OneQ one = new OneQService().selectOneQ(num1);
+	
+		System.out.println("one : "+one);
+	
 		String page="";
-		
-		if(n !=null) {
-			page="views/board/user_NoticeDetail.jsp";
-			//page="views/board/user_Insert1onDetail.jsp;";
-			request.setAttribute("n", n);
-			//request.setAttribute("one", one);
-		
-		}else {
-		
-			page="views/common/errorPage.jsp";
-			request.setAttribute("msg", "공지사항 상세보기 실패!");
-		
-		}
-		request.getRequestDispatcher(page).forward(request, response);
+	
+	if(one != null) {
+		page="views/board/user_Insert1onDetail.jsp;";
+		request.setAttribute("one", one);
+	}else {
+		page="views/common/errorPage.jsp";
+		request.setAttribute("msg", "1:1문의 상세보기 실패!");
+	}
+	request.getRequestDispatcher(page).forward(request, response);
+	
+	
+	
+	
+	
+	
+	
 	}
 
 	/**

@@ -31,7 +31,7 @@ public class NoticeInsertServlet extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public NoticeInsertServlet() {
+     public NoticeInsertServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -86,7 +86,7 @@ public class NoticeInsertServlet extends HttpServlet {
 		String attachment = multiRequest.getParameter("attachment");
 		
 		System.out.println("유형 : "+postType);
-		System.out.println("라디오버튼"+question);
+		System.out.println("라디오버튼 :"+question);
 		OneQ one = new OneQ();
 		
 		one.setMemberNo(member);

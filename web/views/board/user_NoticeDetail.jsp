@@ -21,29 +21,34 @@ table * {
 	text-align: center;
 }
 
-.tableArea {
+  .tableArea {
 	width: 45opx;
 	height: 350px;
 	margin: 0 auto;
 }
 </style>
+<script>
+function fnList() {
+	//location.href = '<%=request.getContextPath()%>';
+	location.href = 'http://localhost:8001/semi/noticelist.no';
+	
+}
+</script>
 </head>
 <body>
-	<%@ include file="/views/common/admin_TopBar.jsp"%>
+	<%@ include file="/views/common/user_TopBar.jsp"%>
 	<%-- <% if(loginUser != null && loginUser.getUserId().equals("admin")){ %> --%>
 	<div class="container" style="margin-top: 70px;">
-		<h2>고객센터 관리</h2>
-		<br />
+		<h2>공지사항 상세보기</h2>
+		<br>
 
 		<div class="tab-content">
 			<div id="user" class="tab-pane fade in active">
 
 				<div class="outer">
-					<h3 align="center">공지사항 작성</h3>
-					<br />
-					<div class="tableArea">
-						<form action="<%-- <%=request.getContextPath()%>/insert.no --%>"
-							method="post">
+					<h3 align="center">공지사항 상세보기</h3>
+					<br>
+					
 							<table border="1px" align="center">
 								<tr>
 									<td>제목</td>
@@ -69,25 +74,13 @@ table * {
 							</table>
 							<br>
 							<div align="center">
-								<button onclick="location.href='<%=request.getContextPath()%>/noticelist.no'">메뉴로 돌아가기</button>
-								 <% if(loginUser != null && loginUser.getUserId().equals("admin")){ %>
-					<button onclick="location.href='<%=request.getContextPath()%>/selectOne.no?num=<%=n.getPostcode()%>'">수정하기</button>
-					<% } %> 
+								<button onclick="javascript:fnList()">목록</button>
+							 
 							</div>
-						</form>
-					</div>
-
-
 				</div>
 			</div>
 		</div>
 	</div>
 
-	<%-- <%}else{
-		request.setAttribute("msg", "잘못된 경로로 접근하셨습니다.");
-		request.getRequestDispatcher("../common/errorPage.jsp").forward(request, response);
-	}
-
-	%> --%>
 </body>
 </html>

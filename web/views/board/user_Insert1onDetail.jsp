@@ -30,7 +30,6 @@
 	<%@ include file="/views/common/user_TopBar.jsp"%>
 
 <h1 align="center">1:1 문의</h1>
-<form action="<%=request.getContextPath() %>/notice.no" method="post" enctype="multipart/form-data">
 <table>
 	<tr>
 		<th>문의유형</th>
@@ -53,7 +52,7 @@
 	<tr>
 		<th>내용</th>
 		<th>
-			<textarea name="postContent" rows="5" placeholder="내용을 입력해주세요." readonly><%=one.getPostContent() %></textarea>
+			<textarea  name="postContent" rows="5" placeholder="내용을 입력해주세요." readonly><%=one.getPostContent() %></textarea>
 		</th>
 	</tr>
 	<tr>
@@ -64,15 +63,12 @@
 	</tr>
 </table>
 
-	<div align="center" style="margin-top: 10px;">
-	<input type="hidden" name="name" id="name" value="<%=loginUser.getSeqNo()%>">
+	<div align="center" style="margin-top: 10px;">	
+		<button onclick="location.href='<%=request.getContextPath()%>/noticelist.no'">메뉴로 돌아가기</button>
 
-		<button onclick="location.href='<%=request.getContextPath()%>/selectOne.no'">메뉴로 돌아가기</button>
 		 <% if(loginUser != null && loginUser.getUserId().equals("admin")){ %>
 					<button onclick="location.href='<%=request.getContextPath()%>/selectOne.no?num1=<%=one.getPostcode()%>'">수정하기</button>
 					<% } %>
 	</div>
-	</form>
-
 </body>
 </html>

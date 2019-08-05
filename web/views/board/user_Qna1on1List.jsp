@@ -6,6 +6,8 @@
     ArrayList<Notice> list=(ArrayList<Notice>) request.getAttribute("list"); 
      ArrayList<QandA> list1=(ArrayList<QandA>)request.getAttribute("list1");
     ArrayList<OneQ> list2=(ArrayList<OneQ>)request.getAttribute("list2"); 
+    ArrayList<Declaration> list3 = 
+    		(ArrayList<Declaration>)request.getAttribute("list3");
     
     PageInfo pi = (PageInfo) request.getAttribute("pi");
     int listCount = pi.getListCount();
@@ -25,6 +27,12 @@
     int maxPage2=pi2.getMaxPage();
     int startPage2 = pi2.getStartPage();
     int endPage2 = pi2.getEndPage();  
+    PageInfo pi3=(PageInfo) request.getAttribute("pi3");
+    int listCount3 = pi3.getListCount();
+    int currentPage3 = pi3.getCurrentPage();
+    int maxPage3=pi3.getMaxPage();
+    int startPage3 = pi3.getStartPage();
+    int endPage3 = pi3.getEndPage(); 
     %>
 <!DOCTYPE html>
 <html>
@@ -64,7 +72,7 @@ container{
     <tbody id="listArea">
      <%for(Notice n : list) {%>
      
-      <tr>
+      <tr onclick="javascript:fnMoves('<%=n.getPostcode() %>')">
       <input type="hidden" value="<%=n.getPostcode() %>">
       <td><%=n.getPostNo() %></td>
       <td><%=n.getPostTitle() %></td>
@@ -76,27 +84,6 @@ container{
       <%
     } %> 
       
-     <!--  <tr>
-         <td>1</td>
-        <td>2</td>
-        <td>3</td>
-        <td>r</td>
-        <td>s</td>
-      </tr>
-      <tr>
-        <td>4</td>
-        <td>5</td>
-        <td>6</td>
-        <td>t</td>
-        <td>d</td>
-      </tr> -->
-     <!-- <tr>
-        <td>7</td>
-        <td>8</td>
-        <td>9</td>
-        <td>q</td>
-        <td>a</td>
-	</tr> -->
     </tbody>
   </table>
 
@@ -134,12 +121,16 @@ container{
 		}).mouseout(function(){
 			$(this).parent().css({"background":"white"});
 		}).click(function(){
-			var num = $(this).parent().children().eq(0).text();
-			
+			//var num = $(this).parent().children().eq(0).text();
+			//alert($(this).text());
 			//console.log(num);
 			
 			location.href="<%=request.getContextPath()%>/selectOne.no?num="+num;
 		});
+		
+function fnMoves(postCode) {
+	location.href="<%=request.getContextPath()%>/selectOne.no?num="+postCode;
+}
 	</script>
 
 <br><br><br>
@@ -307,8 +298,6 @@ container{
 	</div>
 
 </div>
-
- 
 </div> 
 
 <br><br><br>
@@ -324,12 +313,13 @@ container{
         <th>문의내역</th> 
         <th>제목</th>
         <th>문의날짜</th>
-        <th>답변
+        <th>답변</th>
       </tr>
     </thead>
     <tbody id="listArea">
      <%for(OneQ one : list2) {%>
-      <tr>
+      <tr onclick="javascript:fnMove('<%=one.getPostcode() %>')">
+      <input type="hidden" value="<%=one.getPostcode() %>">
       <input type="hidden">
       <th><%=one.getQuestionType() %></th>
       <th><%=one.getPostTitle() %></th>
@@ -343,7 +333,7 @@ container{
 <div class="pagingArea" align="center">
 	<button onclick="location.href='<%=request.getContextPath() %>/noticelist.no?currentPage2=1'">처음으로</button>
 	
-	<%if(currentPage <= 1) {%>
+	<%if(currentPage2 <= 1) {%>
 	<button disabled>이전</button>
 	<%}else { %>
 	<button onclick="location.href='<%=request.getContextPath() %>/noticelist.no?currentPage2=<%=currentPage2 - 1 %>'">끝으로</button>
@@ -373,10 +363,79 @@ container{
 			}).mouseout(function(){
 				$(this).parent().css({"background":"white"});
 			}).click(function(){
-				var num = $(this).parent().children("input").val();
+				/* var num = $(this).parent().children("input").val(); */
 				
-				location.href="<%=request.getContextPath()%>/selectOne.no?num=" + num;
+				location.href="<%=request.getContextPath()%>/selectOne.one?num1=" + num1;
 			});
+		});
+		function fnMove(postCode) {
+			location.href="<%=request.getContextPath()%>/selectOne.one?num1="+postCode;
+		}
+	</script>
+	
+	
+	<div class="container">
+  <h2>신고합니다</h2>
+  <p style="float:left">The .table-hover class enables a hover state on table rows:</p>            
+  <table class="table table-hover">
+    <thead>
+       <tr>
+        <th>신고내용</th> 
+        <th>신고날짜</th>
+        <th>기사님 성함</th>
+        <th>작성자</th>
+        <th>신고버튼</th>
+      </tr>
+    </thead>
+    
+    <tbody id="listArea">
+       <%for(Declaration de : list3) {%>
+      <tr>
+      <th><%=de.getDeclReason() %></th>
+      <th><%=de.getDeclDate() %></th>
+      <th><%=de.getDriverNo() %></th>
+      <th><%=de.getUserNo() %></th>
+       <th><input type="button" name="Declaration" value="신고하기"></th>  
+      
+      <% } %>
+      </tr>
+    </tbody>
+  </table>
+  <!-- ㅠㅔ이징 처리 -->
+<div class="pagingArea" align="center">
+	<button onclick="location.href='<%=request.getContextPath() %>/noticelist.no?currentPage3=1'">처음으로</button>
+	
+	<%if(currentPage3 <= 1) {%>
+	<button disabled>이전</button>
+	<%}else { %>
+	<button onclick="location.href='<%=request.getContextPath() %>/noticelist.no?currentPage3=<%=currentPage3 - 1 %>'">끝으로</button>
+	<%} %>
+	
+	<%for(int p=startPage3; p<=endPage3;p++){
+		if(currentPage3 == p){%>
+		<button disabled><%=p %></button>
+	<% }else {%>
+		<button onclick="location.href='<%=request.getContextPath()%>/noticelist.no?currentPage3=<%=p%>'"><%=p%></button>
+	<%}} %>
+	
+	<%if(currentPage3 >= maxPage3){ %>
+	<button disabled>다음</button>
+	<%}else { %>
+	<button onckick="location.href='<%=request.getContextPath() %>/noticelist.no?currentPage3=<%=currentPage3 + 1 %>'">다음</button>
+	<%} %>
+	
+	<button onclick="location.href='<%=request.getContextPath() %>/noticelist.no?currentPage3=<%=maxPage3 %>'">끝으로</button>
+</div>
+  
+</div>
+	
+<script>
+		$(function(){
+			$("#listArea th").mouseenter(function(){
+				$(this).parent().css({"background":"yellow", "cursor":"pointer"});
+			}).mouseout(function(){
+				$(this).parent().css({"background":"white"});
+			})
 		});
 	</script>
 
