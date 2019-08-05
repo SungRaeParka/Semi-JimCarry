@@ -38,7 +38,6 @@ public class RequestDao {
 	}
 
 
-
 	//게시물 수 조회_사용자,기사
 	public int getListCount(Connection con,String logUserNo) {
 		PreparedStatement pstmt = null;

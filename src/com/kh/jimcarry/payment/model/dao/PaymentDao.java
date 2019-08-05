@@ -25,6 +25,7 @@ public class PaymentDao {
 		}
 	}
 
+	
 	public int insertPayment(Connection con, Payment pay) {
 		PreparedStatement pstmt = null;
 		int result = 0;

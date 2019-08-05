@@ -16,13 +16,11 @@ import com.kh.jimcarry.request.model.service.RequestService;
 @WebServlet("/insert.py")
 public class InsertPaymentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
     
     public InsertPaymentServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
-
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String reqNo = request.getParameter("reqNo");

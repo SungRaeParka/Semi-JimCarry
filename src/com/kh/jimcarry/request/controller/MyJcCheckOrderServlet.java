@@ -17,12 +17,10 @@ import com.kh.jimcarry.request.model.vo.Request;
 public class MyJcCheckOrderServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    
     public MyJcCheckOrderServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
-
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String no = request.getParameter("no");

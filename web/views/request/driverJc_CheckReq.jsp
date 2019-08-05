@@ -40,6 +40,7 @@ import="java.util.*, java.text.SimpleDateFormat, com.kh.jimcarry.request.model.v
 
 </head>
 <body>
+
 <%@ include file="/views/common/driver_TopBar.jsp" %>
 
 	<div id="outer">

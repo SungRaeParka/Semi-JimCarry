@@ -8,9 +8,6 @@
 	int minPrice = (int) request.getAttribute("minPrice");
 %>
 
-
-
-
 <!DOCTYPE html>
 <html>
 <head>

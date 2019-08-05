@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.*"%>
-    
+    pageEncoding="UTF-8" import="java.util.*"%>   
 <%
 	ArrayList<HashMap<String, Object>> reqNoList = (ArrayList<HashMap<String, Object>>) request.getAttribute("reqNoList");
 	ArrayList<HashMap<String, Object>> reqList = (ArrayList<HashMap<String, Object>>) request.getAttribute("reqList");

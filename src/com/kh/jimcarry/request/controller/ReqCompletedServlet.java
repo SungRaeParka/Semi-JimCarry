@@ -16,13 +16,11 @@ import com.kh.jimcarry.request.model.vo.Reviews;
 @WebServlet("/reqCompleted.jc")
 public class ReqCompletedServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
     
     public ReqCompletedServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
-
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String userNo = request.getParameter("userNo");

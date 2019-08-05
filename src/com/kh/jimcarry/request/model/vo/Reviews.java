@@ -11,6 +11,7 @@ public class Reviews implements Serializable{
 	private String reqNo;
 	private String status;
 	
+	
 	public Reviews() {}
 
 	public Reviews(String reviewCode, String userNo, String driverNo, int grade, String review, String reqNo,

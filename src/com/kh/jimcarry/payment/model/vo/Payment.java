@@ -15,6 +15,7 @@ public class Payment implements Serializable{
 	private String driverNo;
 	private String refundReq;
 	
+	
 	public Payment() {}
 
 	public Payment(String payNo, String cardPayNo, String cardCompany, String payer, int payAmount, Date payDate,
