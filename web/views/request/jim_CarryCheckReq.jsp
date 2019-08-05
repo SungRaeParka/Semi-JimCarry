@@ -7,8 +7,6 @@
 	ArrayList<HashMap<String, Object>> productInfo = (ArrayList<HashMap<String, Object>>)session.getAttribute("productInfo");
 %>
 
-	
-
 <!DOCTYPE html>
 <html>
 <head>

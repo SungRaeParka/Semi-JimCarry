@@ -19,12 +19,10 @@ import com.kh.jimcarry.request.model.vo.ShowRP;
 public class DriverJcCheckReqServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    
     public DriverJcCheckReqServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
-
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String reqNo = request.getParameter("no");

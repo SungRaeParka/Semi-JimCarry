@@ -48,7 +48,6 @@
 			<br>
 			
 			<textarea id="review" placeholder="이용하신 기사님의 리뷰를 작성해주세요." style="width: 300px; height: 150px;"></textarea>
-			
 						
 		</div>
 		
