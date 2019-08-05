@@ -27,13 +27,13 @@
 				<tr>
 					<td>내용</td>
 					<td colspan="3">
-						<textarea cols="100" rows="30" style="resize: none;"></textarea>
+						<textarea cols="100" rows="30" style="resize: none;" id="content" name="content"></textarea>
 					</td>
 				</tr>
 				<tr>
 					<td>파일첨부</td>
 					<td colspan="3">
-						<input type="file">
+						<input type="file" name="img">
 					</td>
 				</tr>
 				<tr>

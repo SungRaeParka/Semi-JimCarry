@@ -59,8 +59,15 @@
 		border-right : 1px solid #F1F1F1;
 	}
 	
-	#dpContent {
+	#goList {
+		color: #F1F1F1;
+		font-size: 15px;
+		padding-top: 30px; 
+		cursor: pointer;
+	}
 	
+	#goList:hover {
+		color: black;
 	}
 </style>
 </head>
@@ -76,12 +83,21 @@
 			<span style="color: #C9CDD0; float: right; margin-top: 13px;">조회수 : <span id="dpCount"><%=dpOne.getbCount()%></span></span>			
 		</div>
 		<div id="contentArea">
-			<img src="/semi/images/air.png" style="width: 500px; height: 300px;">
+			<img src="/semi/images_uploadFiles/<%=dpOne.getChangeName()%>" style="width: 500px; height: 300px;">
 			<br>
 			<span id="dpContent"><%=dpOne.getPostContents() %></span>
 			<br>
 			<br>
 		</div>
+		<div style="width: 800px;" class="goListClass">
+			<span id="goList" onclick="goList()">목록으로</span>
+		</div>
 	</div>
+	<script>
+		function goList(){
+			location.href="<%=request.getContextPath()%>/selectAdmin.dp";
+		}
+	</script>
+	
 </body>
 </html>
