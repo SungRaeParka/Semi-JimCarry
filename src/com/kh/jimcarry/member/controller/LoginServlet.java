@@ -1,6 +1,7 @@
 package com.kh.jimcarry.member.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -42,9 +43,10 @@ public class LoginServlet extends HttpServlet {
 		
 		Member loginUser = new MemberService().loginCheck(userId, userPwd);
 		Member loginDriver = new MemberService().driverLoginCheck(userId, userPwd);
+		System.out.println( "테스트~ : " + loginDriver);
 		String page = "";
 		
-		if(loginUser != null) {
+		if(loginUser != null && loginUser.getStatusCheck().equals("N")) {
 			if(loginUser.getUserId().contains("admin")) {
 				HttpSession session = request.getSession();
 				session.setAttribute("loginUser", loginUser);
@@ -53,6 +55,7 @@ public class LoginServlet extends HttpServlet {
 			}else if(loginUser.getSeqNo().contains("U")) {
 				HttpSession session = request.getSession();
 				session.setAttribute("loginUser", loginUser);
+				session.setAttribute("loginDriver", loginDriver);
 				
 				response.sendRedirect("views/mainPage.jsp");
 			}else if(loginUser.getSeqNo().contains("D")) {

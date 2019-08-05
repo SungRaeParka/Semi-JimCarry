@@ -13,6 +13,8 @@ import java.util.Properties;
 import com.kh.jimcarry.member.model.vo.AttachmentMember;
 import com.kh.jimcarry.member.model.vo.DriverList;
 import com.kh.jimcarry.member.model.vo.Member;
+import com.kh.jimcarry.member.model.vo.UserList;
+
 import static com.kh.jimcarry.common.JDBCTemplate.*;
 
 public class MemberDao {
@@ -371,39 +373,106 @@ public class MemberDao {
 		return attachNo;
 	}
 
-	public ArrayList<DriverList> driverList(Connection con) {
-		Statement stmt = null;
+	public ArrayList<DriverList> driverList(Connection con, String seqNo) {
+		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		ArrayList<DriverList> list = null;
-
+		
+		System.out.println("여긴 ? : " + list);
+		System.out.println("이건 ? : " + seqNo);
 		String query = prop.getProperty("driverList");
-
+		
 		try {
-			stmt = con.createStatement();
-			rset = stmt.executeQuery(query);
-
+			pstmt = con.prepareStatement(query);
+			
+			pstmt.setString(1, seqNo);
+			
+			rset = pstmt.executeQuery();
 			list = new ArrayList<DriverList>();
 			while(rset.next()) {
+				System.out.println("seqNo 넘어오냐? : " + seqNo);
 				DriverList dl= new DriverList();
-
-				dl.setDriverNo(rset.getString("DVIVER_NO"));
-				dl.setReservattonDate(rset.getDate("RESERVATTON_DATE"));
+				
+				
 				dl.setUserName(rset.getString("MEMBER_NAME"));
-				dl.setReqNo(rset.getString("REQ_NO"));
-				dl.setMatchingDate(rset.getDate("MATCHING_DATE"));
-				dl.setConditionReq(rset.getString("CONDITION_REQ"));
-				dl.setOrderPrice(rset.getInt("ORDER_PRICE"));
 				dl.setDriverPay(rset.getInt("DRIVER_PAY"));
+				dl.setOrderPrice(rset.getInt("ORDER_PRICE"));
+				dl.setMatchingDate(rset.getDate("MATCHING_DATE"));
+				dl.setReqNo(rset.getString("REQ_NO"));
+				dl.setReservattonDate(rset.getString("RESERVATION_DATE"));
+				dl.setConditionReq(rset.getString("CONDITION_REQ"));
+				
 				list.add(dl);
+				System.out.println(list);
 			}
-			System.out.println("list : " + list);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			close(stmt);
+			close(pstmt);
 			close(rset);
 		}
 		return list;
+	}
+
+	public ArrayList<UserList> UserList(Connection con, String seqNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<UserList> list = null;
+		
+		System.out.println("여긴 ? : " + list);
+		System.out.println("이건 ? : " + seqNo);
+		String query = prop.getProperty("userList");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			
+			pstmt.setString(1, seqNo);
+			
+			rset = pstmt.executeQuery();
+			list = new ArrayList<UserList>();
+			while(rset.next()) {
+				System.out.println("seqNo 넘어오냐? : " + seqNo);
+				UserList ul= new UserList();
+				
+				
+				ul.setReqNo(rset.getString("REQ_NO"));
+				ul.setUserName(rset.getString("MEMBER_NAME"));
+				ul.setMatchingDate(rset.getDate("MATCHING_DATE"));
+				ul.setReservattonDate(rset.getString("RESERVATION_DATE"));
+				ul.setOrderPrice(rset.getInt("ORDER_PRICE"));
+				ul.setConditionReq(rset.getString("CONDITION_REQ"));
+				
+				list.add(ul);
+				System.out.println(list);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+		}
+		return list;
+	}
+
+	public int userDelete(Connection con, Member m) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = prop.getProperty("userDelete");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, m.getStatusCheck());
+			pstmt.setString(2, m.getUserId());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
 	}
 }
 

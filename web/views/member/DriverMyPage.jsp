@@ -89,21 +89,21 @@
 			<b style="font-size: 50px;">마이 페이지</b>
 		</div>
 		
+    	<form action="<%=request.getContextPath()%>/driverList.me" method="post">
 		<br>
 		<hr>
 		<div class="container" style="display: inline-block">
   			<ul class="nav nav-tabs">
     			<li class="active"><a href="#home">회원정보</a></li>
-    			<li><a href="/semi/driverList.me">이용내역</a></li>
+    			<li><a onclick="driverList();">이용내역</a></li>
   			</ul>
-
   			<div class="tab-content">
     			<div id="home" class="tab-pane fade in active" style="border: 1px solid black">
-    				<form action="<%=request.getContextPath()%>/updateDriver.me" method="post" encType="multipart/form-data">
     				<table align="center">
     					<tr class="showMemberInfo">
     						<td><label>아이디 : </label></td>
     						<td><input type="text" name="userId" value="<%=loginDriver.getUserId() %>" readonly></td>
+    						<td><input type="text" name="hid" value="<%=loginDriver.getSeqNo() %>"></td>
     					</tr>    					
     					<tr class="showMemberInfo">
     						<td><label>이름 : </label></td>
@@ -149,13 +149,14 @@
     						<td colspan="2"><input type="button" value="회원 탈퇴" id="deletebtn"></td>
     					</tr>
     				</table>			
-    				</form>
     			</div>
     			<div id="menu1" class="tab-pane fade">
     				<div class="container">
+    				</div>
     			</div>    	
   			</div>
 		</div>
+    	</form>
 	</div>
 
 	<script>
@@ -212,9 +213,12 @@
 			});
 			$("#deletebtn").click(function(){
 				window.confirm("회원을 탈퇴하시겠습니까?");
-				location.href = "../main/mainPage.jsp";
+				location.href = "DriverDelete.jsp";
 			});
 		});
+		function driverList(){
+			$("form").submit();
+		}
 	</script>
 
 </body>

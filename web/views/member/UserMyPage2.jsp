@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="com.kh.jimcarry.member.model.vo.Member"%>
+    pageEncoding="UTF-8" import="java.util.*,com.kh.jimcarry.member.model.vo.*"%>
 <%
 	String password1 = request.getParameter("password1");
+	ArrayList<UserList> list = (ArrayList<UserList>) session.getAttribute("list");
 %>
 <!DOCTYPE html>
 <html>
@@ -73,22 +74,21 @@
 		<div style="display: inline-block; padding-top: 7%;">
 			<b style="font-size: 50px;">마이 페이지</b>
 		</div>
-		<form action="<%=request.getContextPath()%>/select.me" method="post">
+		
 		<br>
 		<hr>
 		<div class="container" style="display: inline-block">
   			<ul class="nav nav-tabs">
-    			<li class="active"><a href="/semi/views/member/UserMyPage.jsp">회원정보</a></li>
-    			<li><a onclick="userList();">이용내역</a></li>
+    			<li><a href="/semi/views/member/UserMyPage.jsp">회원정보</a></li>
+    			<li class="active"><a onclick="userList();">이용내역</a></li>
   			</ul>
 
   			<div class="tab-content">
-    			<div id="home" class="tab-pane fade in active" style="border: 1px solid black">
+    			<div id="home" class="tab-pane fade in active" style="border: 1px solid black">			
     				<table align="center">
     					<tr class="showMemberInfo">
     						<td><label>아이디 : </label></td>
     						<td><input type="text" name="userId" value="<%=loginUser.getUserId() %>" readonly></td>
-    						<td><input type="text" name="hid" value="<%=loginUser.getSeqNo() %>"></td>
     					</tr>    					
     					<tr class="showMemberInfo">
     						<td><label>이름 : </label></td>
@@ -109,29 +109,52 @@
     						<td colspan="2"><input type="button" value="회원 탈퇴" id="deletebtn"></td>
     					</tr>
     				</table>
+   
     			</div>
     			<div id="menu1" class="tab-pane fade">
     			<div class="container">
+    				<table class="table">
+  				 	<thead>
+					<tr>
+						<td>견적번호</td>
+ 				        <td>기사명</td>
+   					    <td>매칭일자</td>
+   					    <td>예약일자</td>
+   					    <td>견적금액</td>
+   					    <td>매칭상태</td>
+   					    <td>환불</td>
+    				</tr>
+    				</thead>
+    				<tbody>
+    				<% for(UserList ul : list) { %>
+      				<tr>
+        				<td><%=ul.getReqNo() %></td>
+        				<td><%=ul.getUserName() %></td>
+        				<td><%=ul.getMatchingDate() %></td>
+        				<td><%=ul.getReservattonDate() %></td>
+        				<td><%=ul.getOrderPrice() %></td>
+        				<td><%=ul.getConditionReq() %></td>
+      				</tr>
+      				<% } %>
+    				</tbody>
+      				</table>
   				</div>
     			</div>    			
   			</div>
 		</div>
-		</form>
 	</div>
 
 	<script>
 		$(function() {
 			$("#deletebtn").click(function(){
 				window.confirm("회원을 탈퇴하시겠습니까?");
-				location.href = "UserDelete.jsp";
+				location.href = "../main/mainPage.jsp";
 			});
 			$("#updatebtn").click(function(){
 				location.href = "UserCrystal.jsp";
 			});
 		});
-		function userList(){
-			$("form").submit();
-		}
+
 	</script>
 
 </body>

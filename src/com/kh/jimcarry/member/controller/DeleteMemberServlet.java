@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.kh.jimcarry.member.model.service.MemberService;
+import com.kh.jimcarry.member.model.vo.Member;
+
 /**
  * Servlet implementation class DeleteMemberServlet
  */
@@ -26,8 +29,26 @@ public class DeleteMemberServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		String status = "Y";
+		System.out.println(status);
+		String userId = request.getParameter("hid");
+		System.out.println(userId);
+		
+		Member m = new Member();
+		m.setStatusCheck(status);
+		m.setUserId(userId);
+		
+		int result = new MemberService().userDelete(m);
+		
+		String page = "";
+		if(result > 0) {
+			page = "index.jsp";
+			response.sendRedirect(page);
+		}else {
+			page = "views/common/errorPage.jsp";
+			request.setAttribute("msg", "회원탈퇴 실패!");
+			request.getRequestDispatcher(page).forward(request, response);
+		}
 	}
 
 	/**
