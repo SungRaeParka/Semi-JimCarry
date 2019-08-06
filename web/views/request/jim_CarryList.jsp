@@ -18,18 +18,20 @@
 <head>
 <meta charset="UTF-8">
 <title>내 짐캐리 리스트</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	
+<link href="https://fonts.googleapis.com/css?family=Cute+Font&display=swap&subset=korean" rel="stylesheet">
 <style>
+
+
 #outer {
 	width: 870px;
 	margin: 0 auto;
+	font-family: 'Sunflower', sans-serif;
 }
 
 .imgs {
@@ -83,8 +85,8 @@
 	<%@ include file="/views/common/user_TopBar.jsp"%>
 
 	<div id="outer">
-		<br> <br> <br> <br>
-
+		<br> <br> <br> <br><br> <br> <br> <br>
+		<br> <br> <br> <br><br> <br> 
 		<h1>내 짐캐리 리스트</h1>
 
 		<div id="filt" align="right">
@@ -496,7 +498,7 @@
 			<%
 				} else {
 			%>
-			<button
+			<button 
 				onclick="location.href='<%=request.getContextPath()%>/myJcarrylist.jc?currentPage=<%=p%>'"><%=p%></button>
 			<%
 				}
@@ -510,11 +512,11 @@
 			<%
 				} else {
 			%>
-			<button
+			<button 
 				onclick="location.href='<%=request.getContextPath()%>/myJcarrylist.jc?currentPage=<%=currentPage + 1%>'">
 				></button>
 			<%} %>
-			<button
+			<button 
 				onclick="location.href='<%=request.getContextPath() %>/myJcarrylist.jc?currentPage=<%=maxPage %>'">
 				>></button>
 
