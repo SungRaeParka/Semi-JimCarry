@@ -119,7 +119,7 @@ public class AccountingDao {
 				AccountingRefund ar = new AccountingRefund();
 
 				ar.setPayNo(rset.getString("PAY_NO"));
-				ar.setReservationDate(rset.getDate("RESERVATION_DATE"));
+				ar.setReservationDate(rset.getString("RESERVATION_DATE"));
 				ar.setMemberName(rset.getString("MEMBER_NAME"));
 				ar.setRefundReqDate(rset.getDate("REFUND_REQ_DATE"));
 				ar.setPayAmount(rset.getInt("PAY_AMOUNT"));
