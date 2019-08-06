@@ -9,39 +9,39 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.kh.jimcarry.request.model.service.RequestService;
-import com.kh.jimcarry.request.model.vo.Request;
 
 
-@WebServlet("/makePayment.py")
-public class MakePaymentServlet extends HttpServlet {
+@WebServlet("/calcApply.py")
+public class CalcApplyServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    
-    public MakePaymentServlet() {
+     
+    public CalcApplyServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
+
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String driverNo = request.getParameter("driver");
 		String reqNo = request.getParameter("reqNo");
-		System.out.println("reqNo::" + reqNo);
-		String driverNo = request.getParameter("driverNo");
-		System.out.println("driverNo::" + driverNo);
+		int price = Integer.parseInt(request.getParameter("price"));
+		int calc = Integer.parseInt(request.getParameter("calc"));
 		
+		System.out.println("서블릿 호출...");
+		System.out.println(driverNo);
+		System.out.println(reqNo);
+		System.out.println(price);
+		System.out.println(calc);
 		
-		Request reqOrder = new RequestService().makePayInfo(reqNo,driverNo);
+		int result = new RequestService().updateConditionDo3(reqNo,driverNo);
+		System.out.println("result:" + result);
 		
-		System.out.println(reqOrder);
-		
-		String page="";
-		
-		if(reqOrder != null) {
-			page = "views/request/reqMatching.jsp";
-			request.setAttribute("reqOrder", reqOrder);
+		if(result>0) {
+			System.out.println("정산신청 업데이트 성공");
 		}else {
-			page = "views/common/errorPage.jsp";
-			request.setAttribute("msg", "결제정보 가져오기 실패!");
+			System.out.println("정산신청 업데이트 실패");
 		}
-		request.getRequestDispatcher(page).forward(request, response);
+		
 		
 	}
 

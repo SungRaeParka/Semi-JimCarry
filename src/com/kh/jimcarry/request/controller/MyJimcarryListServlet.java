@@ -1,6 +1,9 @@
 package com.kh.jimcarry.request.controller;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -28,6 +31,67 @@ public class MyJimcarryListServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		HttpSession session = request.getSession();
+		Member loginUser = (Member)session.getAttribute("loginUser");
+		String logUserNo = loginUser.getSeqNo();
+		
+		/*ArrayList<Request> list = new RequestService().selectList(logUserNo);
+		System.out.println("견적리스트 조회"+list.size());
+		
+		Request req = null;
+		
+		Date startDay = new Date();
+		Date finishDay = new Date(); 
+		Date nowDay = new Date(); 
+		
+		long startTime;  
+		long finishTime;  
+		long nowTime;  
+		
+		for(int i=0 ; i<=list.size() ; i++) {
+			req = list.get(i);
+			
+			startDay = req.getReqStart();
+			finishDay = req.getReqFinish();
+			
+			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+			
+			try {
+				startDay = dateFormat.parse(dateFormat.format(startDay));
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			startTime = startDay.getTime();
+			
+			try {
+				finishDay = dateFormat.parse(dateFormat.format(finishDay));
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			finishTime = finishDay.getTime();
+			
+			try {
+				nowDay = dateFormat.parse(dateFormat.format(nowDay));
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			nowTime = nowDay.getTime();
+			
+			//견적매칭 종료일이 지났는데 매칭 대기상태일때 취소로 업데이트
+			if(req.getConditionReq().equals("매칭대기") && nowTime >= finishTime) {
+				
+			}
+			
+			//매칭완료후 다음날지나면 이용완료로 업데이트
+			if(req.getConditionReq().equals("매칭완료") && nowTime >= startTime) {
+				
+			}
+		}
+		*/
+		
 		
 		int currentPage;
 		int limit;
@@ -41,10 +105,6 @@ public class MyJimcarryListServlet extends HttpServlet {
 			currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		}
 		
-		
-		HttpSession session = request.getSession();
-		Member loginUser = (Member)session.getAttribute("loginUser");
-		String logUserNo = loginUser.getSeqNo();
 		
 		//전체목록 갯수 리턴
 		int listCount = new RequestService().getListCount(logUserNo);
@@ -79,14 +139,10 @@ public class MyJimcarryListServlet extends HttpServlet {
 		System.out.println("견적리스트 조회"+jimList.get(0));
 		
 		
+		
 		//오더리스트 조회
 		HashMap<String,Request> orderMap = new RequestService().selectOrderList(logUserNo);	
-		
-		/*for(int i = 0; i < jimList.size(); i++) {
-			if(!jimList.get(i).equals("매칭대기")) {
-				orderMap = new RequestService().selectOrderList(logUserNo);				
-			}
-		}*/	
+			
 		
 		if(jimList != null) {
 			page = "views/request/jim_CarryList.jsp";

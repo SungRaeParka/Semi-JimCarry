@@ -1,10 +1,12 @@
 package com.kh.jimcarry.payment.model.dao;
 
+import static com.kh.jimcarry.common.JDBCTemplate.close;
+
 import java.io.FileReader;
-import static com.kh.jimcarry.common.JDBCTemplate.*;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
 
@@ -50,5 +52,37 @@ public class PaymentDao {
 		}
 		
 		return result;
+	}
+
+
+	public Payment selectRefundPayInfo(Connection con, String reqNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Payment pay = null;
+		
+		String query = prop.getProperty("selectPayInfo");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, reqNo);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				pay = new Payment();
+				
+				pay.setPayNo(rset.getString(""));
+				
+				
+			}
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	
+		return pay;
 	}
 }

@@ -401,6 +401,7 @@ html, body {
 				<h3>
 					<span class="calculate" style="cursor: pointer">정산신청 →</span>
 					<input type="hidden" id="price" name="price" value="<%=req.getOrderPrice()%>">
+					<input type="hidden" id="reqNo" name="reqNo" value="<%=req.getReqNo() %>">
 				</h3>
 
 			</div>
@@ -577,14 +578,17 @@ html, body {
 	
 	
 	$(function(){
-		$(".calculate").click(function(){
+		$(".calculate").click(function(){ //정산신청 버튼
 			var price = $(this).next().val();
+			var driver = '<%=loginUser.getSeqNo()%>'
+			var reqNo = $(this).next().next().val();
+		
 			
-			var url = "/semi/views/popup/pop_Driver.calculate.jsp?price="+price;,
+			var url = "/semi/views/popup/pop_Driver_Calculate.jsp?price="+price+"&driver="+driver+"&reqNo="+reqNo;
 			var name = "calcPopup";
-			var option = "with=300, height=350, top=30, left=50";
+			var option = "with=300, height=250, top=30, left=50";
 				
-			swindow.open(url,name,option)
+			window.open(url,name,option);
 		})
 	})
 	
