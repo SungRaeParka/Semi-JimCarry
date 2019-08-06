@@ -42,8 +42,12 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+   <link href="https://fonts.googleapis.com/css?family=Sunflower:300&display=swap" rel="stylesheet">
 <title>Insert title here</title>
 <style>
+body{
+	font-family: 'Sunflower', sans-serif;
+}
 container{
 	align:"center";
 }
@@ -66,7 +70,7 @@ button{
 <body>
 	<%@ include file="/views/common/user_TopBar.jsp"%>
 	
-<div class="container" style="margin-top: 25%;">
+<div class="container" style="margin-top: 25%; font-family: 'Sunflower', sans-serif;">
 <br><br><br>
   <h2>공지사항</h2>
   <table class="table table-hover" >
@@ -98,7 +102,7 @@ button{
   </table>
 
 <!-- ㅠㅔ이징 처리 -->
-<div class="pagingArea" align="center">
+<div class="pagingArea" align="center" style="font-family: 'Sunflower', sans-serif;">
 	<button onclick="location.href='<%=request.getContextPath() %>/noticelist.no?currentPage=1'">처음으로</button>
 	
 	<%if(currentPage <= 1) {%>

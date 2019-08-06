@@ -32,13 +32,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link href="https://fonts.googleapis.com/css?family=Cute+Font&display=swap&subset=korean" rel="stylesheet">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Sunflower:300&display=swap" rel="stylesheet">
 <meta charset="UTF-8">
-<link href="https://fonts.googleapis.com/css?family=Lato|Nanum+Pen+Script&display=swap" rel="stylesheet">
 <style>
 #search {
 	clear: both;
@@ -153,7 +152,7 @@ background:linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
 	<br>
 	<br><br><br><br><br><br><br><br><br><br>
 	<div class="boardcss_list_table"
-		style="margin: 0 auto; width: 700px; height: 600px;">
+		style="margin: 0 auto; width: 700px; height: 600px; font-family: 'Sunflower', sans-serif;">
 
 
 		<div
