@@ -64,7 +64,7 @@ int index = 0;
      *  세로길이를 잡아주지 않으면 overflow-y가 걸리지 않습니다.
      */
 			width: 100%;
-			height: 350px;
+			height: 500px;
 			overflow-x: scroll;
 			overflow-y: scroll;
 			border-top: 1px solid #d0d0d0;
@@ -184,8 +184,7 @@ int index = 0;
 
 											<td class="content right_border">
 											<%if(ar.getRefundCondition().equals("대기")) {%>
-												<button type="button" id="yesRefundBtn" class="button" name="refundBtn" value="승인" onclick="yes('<%=index %>');">승인</button>
-												&nbsp;
+												<button type="button" id="yesRefundBtn" class="button" name="refundBtn" value="승인" onclick="yes('<%=index %>');">승인</button>&nbsp;
 												<button type="button"id="noRefundBtn" class="button" name="refundBtn" value="거절" onclick="no('<%=index %>');">거절</button>
 												<input type="hidden" id="refundBtnVal" name="refundBtnVal">
 
@@ -271,7 +270,7 @@ int index = 0;
 
 
 		});
-			//신청 기사관리 탭의 상태 결정 버튼 3
+			//환불신청 상태 결정 버튼
 			function yes(num) {
 			var refundMember = "<%= refundMember %>";
 			var confirm = window.confirm("해당 환불건을 승인하시겠습니까?");

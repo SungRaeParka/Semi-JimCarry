@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class AccountingRefund implements java.io.Serializable{
 	private String payNo;
-	private Date reservationDate;
+	private String reservationDate;
 	private String memberName;
 	private Date refundReqDate;
 	private int payAmount;
@@ -16,7 +16,7 @@ public class AccountingRefund implements java.io.Serializable{
 
 	public AccountingRefund() {}
 
-	public AccountingRefund(String payNo, Date reservationDate, String memberName, Date refundReqDate, int payAmount,
+	public AccountingRefund(String payNo, String reservationDate, String memberName, Date refundReqDate, int payAmount,
 			int refundFees, String refundReason, String refundCondition, String companionReason, String refundMember) {
 		super();
 		this.payNo = payNo;
@@ -39,11 +39,11 @@ public class AccountingRefund implements java.io.Serializable{
 		this.payNo = payNo;
 	}
 
-	public Date getReservationDate() {
+	public String getReservationDate() {
 		return reservationDate;
 	}
 
-	public void setReservationDate(Date reservationDate) {
+	public void setReservationDate(String reservationDate) {
 		this.reservationDate = reservationDate;
 	}
 
@@ -118,8 +118,6 @@ public class AccountingRefund implements java.io.Serializable{
 				+ refundFees + ", refundReason=" + refundReason + ", refundCondition=" + refundCondition
 				+ ", companionReason=" + companionReason + ", refundMember=" + refundMember + "]";
 	}
-
-
 
 
 }

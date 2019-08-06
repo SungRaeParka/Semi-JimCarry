@@ -56,7 +56,7 @@
      *  세로길이를 잡아주지 않으면 overflow-y가 걸리지 않습니다.
      */
 			width: 100%;
-			height: 350px;
+			height: 500px;
 			overflow-x: scroll;
 			overflow-y: scroll;
 			border-top: 1px solid #d0d0d0;
@@ -281,7 +281,7 @@
 										<td class="title">이름</td>
 										<td class="title">연락처</td>
 										<td class="title">탈퇴 여부</td>
-										<td class="title">이용건수(현재UD구분 추후 변경)</td>
+										<td class="title">이용건수</td>
 										<td></td>
 									</tr>
 								</table>
@@ -318,7 +318,7 @@
 											<%=m.getStatusCheck() %>
 										</td>
 										<td class="content right_border">
-											<%=m.getUdCheck() %>
+											<%=m.getUsingCount() %>
 										</td>
 									</tr>
 									<% } %>
