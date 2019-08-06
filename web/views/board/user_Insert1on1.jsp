@@ -7,10 +7,9 @@
 <title>Insert title here</title>
 <style>
 
-	table, th {
+	table, th, td{
 	border:1px solid black;
 	border-collapse:collapse;
-	border-radius:20%;
 	align:ceter;
 	}
 	table {
@@ -21,17 +20,21 @@
 		margin-top:100px;
 		text-align: center;
 	}
+	th{
+	background-color: #ffd24d;
+  	color: white;
+	}
 </style>
 </head>
 <body>
 	<%@ include file="/views/common/user_TopBar.jsp"%>
-<div style="margin-top: 30%;">
+<div style="margin-top: 20%;">
 <h1 align="center">1:1 문의</h1>
 <form action="<%=request.getContextPath() %>/notice.no" method="post" enctype="multipart/form-data">
 <table>
 	<tr>
 		<th>문의유형</th>
-		<th>
+		<td>
 			<input type="hidden" name="postType" value="유형">
 			<input type="hidden" name="answerCheck">
 			<input type="hidden" name="name" id="name" value="<%=loginUser.getSeqNo()%>"> 
@@ -41,25 +44,25 @@
 			<input type="radio" id="check" name="questionCheck" value="결제관련">결제관련
 			<input type="radio" id="check" name="questionCheck" value="취소관련">취소관련
 			<input type="radio" id="check" name="questionCheck" value="기타">기타
-		</th>
+		</td>
 	</tr>
 	<tr>
 		<th>제목</th>
-		<th>
+		<td>
 			<input type="text" placeholder="제목을 입력해주세요." name="postTitle">
-		</th>
+		</td>
 	</tr>
 	<tr>
 		<th>내용</th>
-		<th>
-			<textarea name="postContent" rows="5" placeholder="내용을 입력해주세요." ></textarea>
-		</th>
+		<td>
+			<textarea name="postContent" cols="20" rows="5" placeholder="내용을 입력해주세요." ></textarea>
+		</td>
 	</tr>
 	<tr>
 		<th>첨부파일</th>
-		<th>
+		<td>
 			<input type="file" value="첨부파일" name="attachment"  >
-		</th>
+		</td>
 	</tr>
 </table>
 

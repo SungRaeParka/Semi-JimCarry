@@ -10,10 +10,9 @@
 <title>Insert title here</title>
 <style>
 
-	table, th {
+	table, th, td{
 	border:1px solid black;
 	border-collapse:collapse;
-	border-radius:20%;
 	align:ceter;
 	}
 	table {
@@ -24,16 +23,20 @@
 		margin-top:100px;
 		text-align: center;
 	}
+	th{
+	background-color: #ffd24d;
+  	color: white;
+	}
 </style>
 </head>
 <body>
 	<%@ include file="/views/common/user_TopBar.jsp"%>
-
+<div style="margin-top: 20%;">
 <h1 align="center">1:1 문의</h1>
 <table>
 	<tr>
 		<th>문의유형</th>
-		<th>
+		<td>
 			<input type="hidden" name="postType" value="유형">
 			<input type="hidden" name="answerCheck">
 			<input type="radio" id="check" name="questionCheck" value="<%=one.getQuestionType() %>" >견적관련
@@ -41,25 +44,25 @@
 			<input type="radio" id="check" name="questionCheck" value="<%=one.getQuestionType() %>" >결제관련
 			<input type="radio" id="check" name="questionCheck" value="<%=one.getQuestionType() %>" >취소관련
 			<input type="radio" id="check" name="questionCheck" value="<%=one.getQuestionType() %>" >기타
-		</th>
+		</td>
 	</tr>
 	<tr>
 		<th>제목</th>
-		<th>
+		<td>
 			<input type="text" placeholder="제목을 입력해주세요." name="postTitle" value="<%=one.getPostTitle() %>" readonly>
-		</th>
+		</td>
 	</tr>
 	<tr>
 		<th>내용</th>
-		<th>
+		<td>
 			<textarea  name="postContent" rows="5" placeholder="내용을 입력해주세요." readonly><%=one.getPostContent() %></textarea>
-		</th>
+		</td>
 	</tr>
 	<tr>
 		<th>첨부파일</th>
-		<th>
+		<td>
 			<input type="file" value="<%=one.getAttachment() %>" name="attachment"  readonly>
-		</th>
+		</td>
 	</tr>
 </table>
 
@@ -69,6 +72,7 @@
 		 <% if(loginUser != null && loginUser.getUserId().equals("admin")){ %>
 					<button onclick="location.href='<%=request.getContextPath()%>/selectOne.no?num1=<%=one.getPostcode()%>'">수정하기</button>
 					<% } %>
+	</div>
 	</div>
 </body>
 </html>
