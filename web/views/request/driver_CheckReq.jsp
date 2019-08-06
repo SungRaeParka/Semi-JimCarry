@@ -47,7 +47,8 @@
 
 	<div id="outer">
 
-		<br> <br> <br> <br>	
+		<br> <br> <br> <br><br> <br> <br> <br>
+		<br> <br> <br> <br><br> <br> 
 	
 
 		<h1 align="center">최종 견적서</h1>
