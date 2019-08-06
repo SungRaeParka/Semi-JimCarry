@@ -31,7 +31,7 @@ public class boardSelectServlet extends HttpServlet {
 		//게시판은 1페이지부터 시작함 그래서 1로 초기값
 		currentPage = 1;
 
-		if(request.getParameter("currentPage") != null) {
+		 if(request.getParameter("currentPage") != null) {
 			currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		}
 

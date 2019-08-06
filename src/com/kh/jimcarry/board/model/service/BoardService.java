@@ -78,7 +78,6 @@ public class BoardService {
 
 			if(result1 > 0) {
 				String postCode = new BoardDao().selectCurrval(con);
-				System.out.println("postCode : " + postCode);
 
 				for(int i = 0; i < fileList.size(); i++) {
 					fileList.get(i).setPostCode(postCode);
@@ -115,10 +114,9 @@ public class BoardService {
 		int result = 0;
 
 		int result1 = new BoardDao().updateBoard(con,b);
-		System.out.println("update 서비스  보더 : " + b);
 
-		int result2 = new BoardDao().updateAttachmen(con, fileList);
-		System.out.println("update 서비스 사진 : " + fileList);
+		int result2 = new BoardDao().updateAttachmen(con, fileList, b);
+
 		if(result1 > 0 || result2 > 0) {
 			commit(con);
 			result = 1;
@@ -171,7 +169,6 @@ public class BoardService {
 
 		int listCount = new BoardDao().getListCountsearch(con, word, searchCondition);
 		close(con);
-		System.out.println("word ::: searchCondition ::" + word + "나와 : "  + searchCondition + "제발" );
 
 		return listCount;
 	}
