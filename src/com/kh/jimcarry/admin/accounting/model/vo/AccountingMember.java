@@ -13,12 +13,13 @@ public class AccountingMember implements java.io.Serializable{
 	private String refundReq;
 	private int driverPay;
 	private String userDriver;
+	private String calculateCheck;
 //	private Date 정산일??
 
 	public AccountingMember() {}
 
 	public AccountingMember(String memberName, String memberNo, String memberId, String payNo, String reservationDate,
-			int payAmount, Date payDate, String refundReq, int driverPay, String userDriver) {
+			int payAmount, Date payDate, String refundReq, int driverPay, String userDriver, String calculateCheck) {
 		super();
 		this.memberName = memberName;
 		this.memberNo = memberNo;
@@ -30,6 +31,7 @@ public class AccountingMember implements java.io.Serializable{
 		this.refundReq = refundReq;
 		this.driverPay = driverPay;
 		this.userDriver = userDriver;
+		this.calculateCheck = calculateCheck;
 	}
 
 	public String getMemberName() {
@@ -112,13 +114,23 @@ public class AccountingMember implements java.io.Serializable{
 		this.userDriver = userDriver;
 	}
 
+	public String getCalculateCheck() {
+		return calculateCheck;
+	}
+
+	public void setCalculateCheck(String calculateCheck) {
+		this.calculateCheck = calculateCheck;
+	}
+
 	@Override
 	public String toString() {
 		return "AccountingMember [memberName=" + memberName + ", memberNo=" + memberNo + ", memberId=" + memberId
 				+ ", payNo=" + payNo + ", reservationDate=" + reservationDate + ", payAmount=" + payAmount
 				+ ", payDate=" + payDate + ", refundReq=" + refundReq + ", driverPay=" + driverPay + ", userDriver="
-				+ userDriver + "]";
-	}
+				+ userDriver + ", calculateCheck=" + calculateCheck + "]";
+	};
+
+
 
 
 

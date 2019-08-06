@@ -12,6 +12,7 @@ import com.kh.jimcarry.admin.accounting.model.dao.AccountingDao;
 import com.kh.jimcarry.admin.accounting.model.vo.AccountingMember;
 import com.kh.jimcarry.admin.accounting.model.vo.AccountingPeriod;
 import com.kh.jimcarry.admin.accounting.model.vo.AccountingRefund;
+import com.kh.jimcarry.admin.member.model.dao.MemberDao;
 
 public class AccountingService {
 
@@ -31,12 +32,32 @@ public class AccountingService {
 		return list;
 	}
 
-	public ArrayList<AccountingRefund> updateRefund(String resultD, String driverNo, String prompt, String refundSelect) {
+	public ArrayList<AccountingRefund> updateYesRefund(String refundBtnVal, String payNoVal, String refundSelect) {
 		Connection con = getConnection();
 
 
 //		if (list != null) {
-			int result = new AccountingDao().updateRefund(con,resultD,driverNo,prompt,refundSelect);
+			int result = new AccountingDao().updateYesRefund(con,refundBtnVal,payNoVal,refundSelect);
+
+			if(result > 0) {
+				commit(con);
+			}else {
+				rollback(con);
+			}
+//		}else {
+//
+//		}
+		ArrayList<AccountingRefund> list = new AccountingDao().refund(con, refundSelect);
+
+		close(con);
+
+		return list;
+	}
+
+	public ArrayList<AccountingRefund> updateNoRefund(String refundBtnVal, String payNoVal, String promptVal, String refundSelect) {
+		Connection con = getConnection();
+//		if (list != null) {
+			int result = new AccountingDao().updateNoRefund(con,refundBtnVal,payNoVal,promptVal,refundSelect);
 
 			if(result > 0) {
 				commit(con);
@@ -60,6 +81,32 @@ public class AccountingService {
 		close(con);
 		return list;
 	}
+
+	public ArrayList<AccountingMember> updateMember(String calCheckBtnVal, String payNoVal, String memberSelect) {
+		Connection con = getConnection();
+		ArrayList<AccountingMember> list = null;
+
+
+//		if (list != null) {
+			int result = new AccountingDao().updateMember(con,calCheckBtnVal,payNoVal);
+			System.out.println("memberSelect in service : " + memberSelect);
+			if(result > 0) {
+				commit(con);
+				list = new AccountingDao().member(con, memberSelect);
+			}else {
+				rollback(con);
+			}
+//		}else {
+//
+//		}
+			System.out.println("memberSelect in service ::::::::::::::: " + memberSelect);
+
+		close(con);
+
+		return list;
+	}
+
+
 
 
 
