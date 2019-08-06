@@ -20,6 +20,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Sunflower:300&display=swap" rel="stylesheet">
 <style>
 	html, body{
 		height:100%;
@@ -41,6 +42,9 @@
 		height: 500px;
 	} 
 	
+	span, table, td {
+		font-family: 'Sunflower', sans-serif;
+	}
      
 </style>
 </head>
@@ -48,7 +52,7 @@
 	<%@ include file="/views/common/user_TopBar.jsp" %>
 	<div id="main">
 	<form action="<%=request.getContextPath()%>/updateAll.pr" method="post" id="frm">
-		<div style="padding-top: 65px; padding-left: 20px;">
+		<div style="padding-top: 30%; padding-left: 20px;">
 			<span style="font-size: 45px; font-weight: bold">선택한 짐들의 상세정보를 선택하세요.</span><br>
 			<span>물품명을 선택하시면 상세정보를 선택 할 수 있습니다.</span>
 		</div>
@@ -246,7 +250,7 @@
 			<a href="req_ProSelect.jsp" style="text-decoration: none">
 				<span style="font-size: 30px">뒤로가기</span>	
 			</a>
-			<span id="updateProDetail" onclick="updateProDetail();" style="font-size: 30px; cursor: pointer;" >다음 단계로</span>	
+			<span id="updateProDetail" onclick="updateProDetail();" style="font-size: 30px; cursor: pointer; padding-left: 30px;" >다음 단계로</span>	
 		</div>
 		<div class="hiddenArea">
 		

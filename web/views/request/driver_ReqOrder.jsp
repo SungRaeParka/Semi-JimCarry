@@ -10,6 +10,7 @@
 <meta charset=UTF-8>
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Sunflower:300&display=swap" rel="stylesheet">
 <style>
 	html, body{
 		height:100%;
@@ -18,13 +19,14 @@
 	}	
 	#main {
 		min-height: 100%;
+		font-family: 'Sunflower', sans-serif;
 	}
 </style>
 </head>
 <body>
 	<%@ include file="/views/common/driver_TopBar.jsp" %>
 	<div id="main">	
-		<div style="padding-top: 65px; padding-left: 20px;">
+		<div style="padding-top: 30%; padding-left: 20px;">
 			<span style="font-size: 45px; font-weight: bold">옮기고 싶은 짐을 선택하세요.</span><br>
 			<span style="font-size: 20px;">사용자가 당신의 견적을 기다립니다.</span>
 			<br>
@@ -131,7 +133,7 @@
 				<div style="float: right; font-size: 20px; padding-right: 30px">
 					<span><%=hmap2.get("reqNo")%></span>
 				</div>
-				<div style="float: right; padding-right: 100px;">
+				<div style="float: right; padding-right: 150px;">
 					<span style="font-size: 30px; cursor: pointer;" class="lastReq">상세 견적 보기</span>
 					<input type="hidden" name="tempReq" id="tempReq" value=<%=hmap2.get("reqNo")%>>
 				</div>	

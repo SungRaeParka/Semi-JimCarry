@@ -6,11 +6,12 @@
 <meta charset=UTF-8>
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Sunflower:300&display=swap" rel="stylesheet">
 <style>
 	html, body{ 
 		height:100%;
 		margin: 0;
-		padding: 0;		
+		padding: 0;				
 	}	
 	#main {
 		min-height: 100%;
@@ -39,6 +40,10 @@
 	#proTdcount19 {position: absolute; top: 45%; left: 45%;}
 	#proTdcount20 {position: absolute; top: 45%; left: 45%;}
 	
+	table td {
+		font-family: 'Sunflower', sans-serif;
+	}
+	
 
 	
 </style>
@@ -47,9 +52,9 @@
 	<%@ include file="/views/common/user_TopBar.jsp" %>
 	
 	<div id="main">		
-		<div style="padding-top: 65px; padding-left: 20px;">
-			<span style="font-size: 45px; font-weight: bold">용달차가 필요하세요?</span><br>
-			<span style="font-size: 20px;">옮기실 짐을 선택하세요. 짐 캐리가 기사님을 찾아드립니다.</span>
+		<div style="padding-top: 30%; padding-left: 20px;">
+			<span style="font-size: 45px; font-weight: bold; font-family: 'Sunflower', sans-serif;">용달차가 필요하세요?</span><br>
+			<span style="font-size: 20px; font-family: 'Sunflower', sans-serif;">옮기실 짐을 선택하세요. 짐 캐리가 기사님을 찾아드립니다.</span>
 			<br>
 			<br>			
 		</div>
@@ -59,7 +64,7 @@
 		<div align="center">
 			<table>
 				<tr>
-					<td><label style="font-size: 30px; font-weight: bold;">물품 선택</label></td>
+					<td><label style="font-size: 30px; font-weight: bold; font-family: 'Sunflower', sans-serif;">물품 선택</label></td>
 					<td><label> → </label></td>
 					<td><label>물품 상세 정보 선택</label></td>						
 					<td><label> → </label></td>
@@ -73,7 +78,7 @@
 		
 		<form action="<%= request.getContextPath()%>/insert.rq" method="post">					
 		<div style="padding-left: 20px;">
-			<span style="font-size: 30px; font-weight: bold">가전</span>												
+			<span style="font-size: 30px; font-weight: bold; font-family: 'Sunflower', sans-serif;">가전</span>												
 			<table style="width: 500px; height: 300px; border: 1px solid black;">
 				<tr>
 					<td class="proTd" id="proTd1" style="border: 1px solid black;">						
@@ -183,7 +188,7 @@
 		<hr>
 			
 		<div style="padding-left: 20px;">
-			<div style="font-size: 30px; font-weight: bold">가구</div>
+			<div style="font-size: 30px; font-weight: bold; font-family: 'Sunflower', sans-serif;">가구</div>
 			<table style="width: 500px; height: 300px; border: 1px solid black;">
 				<tr>
 					<td class="proTd" id="proTd8" style="border: 1px solid black;">						
@@ -352,7 +357,7 @@
 		<hr>
 			
 		<div style="padding-left: 20px;">
-			<div style="font-size: 30px; font-weight: bold">기타</div>
+			<div style="font-size: 30px; font-weight: bold; font-family: 'Sunflower', sans-serif;">기타</div>
 			<table style="width: 500px; height: 150px; border: 1px solid black;">
 				<tr>
 					<td class="proTd" id="proTd19" style="border: 1px solid black;">						
@@ -392,7 +397,7 @@
 		<hr>
 		
 		<div align="center" style="margin-bottom: 10px">		
-			<span id="insertPro" onclick="insertPro();" style="font-size: 30px; cursor: pointer;">다음 단계로</span>			
+			<span id="insertPro" onclick="insertPro();" style="font-size: 30px; cursor: pointer; font-family: 'Sunflower', sans-serif;">다음 단계로</span>			
 		</div>
 		</form>		
 	</div>

@@ -177,11 +177,11 @@ a.btn_02 {
 
 		<%-- 페이징처리 --%>
 		<div class="panginArea" align="center">
-			<button onclick="location.href'<%=request.getContextPath()%>/selectList.bo?currentPage=1'"><<</button>
+			<button onclick="location.href'<%=request.getContextPath()%>/detailDriver.bo?currentPage=1'"><<</button>
 		<% if(currentPage <= 1) { %>
 					<button disabled><<</button>
 					<% }else { %>
-					<button onclick="location.href='<%=request.getContextPath() %>/selectList.bo?currentPage=<%=currentPage -1%>'"><</button>
+					<button onclick="location.href='<%=request.getContextPath() %>/detailDriver.bo?currentPage=<%=currentPage -1%>'"><</button>
 				 <% } %>
 
 			<% for(int p = startPage; p <= endPage; p++){
@@ -189,7 +189,7 @@ a.btn_02 {
 			%>
 					<button disabled style="color:red;"><%= p %></button>
 			<% } else { %>
-					<button onclick="location.href='<%=request.getContextPath()%>/selectList.bo?currentPage=<%=p%>'"><%= p %></button>
+					<button onclick="location.href='<%=request.getContextPath()%>/detailDriver.bo?currentPage=<%=p%>'"><%= p %></button>
 			<%
 				}
 			   }
@@ -198,17 +198,17 @@ a.btn_02 {
 				 <% if(currentPage >= maxPage) { %>
 
 				  <% }else {%>
-				  	<button onclick="location.href='<%=request.getContextPath() %>/selectList.bo?currentPage=<%=currentPage +1%>'">></button>
+				  	<button onclick="location.href='<%=request.getContextPath() %>/detailDriver.bo?currentPage=<%=currentPage +1%>'">></button>
 
 				  <% } %>
-			<button onclick="location.href='<%=request.getContextPath()%>/selectList.bo?currentPage=<%=maxPage%>'">>></button>
+			<button onclick="location.href='<%=request.getContextPath()%>/detailDriver.bo?currentPage=<%=maxPage%>'">>></button>
 		</div>
 
 	</div>
 
 	<%-- 검색영역 --%>
 		<div class="searchArea" align="center">
-	<form action="<%=request.getContextPath()%>/search.bo" method="get">
+	<form action="<%=request.getContextPath()%>/boardSerachDriver" method="get">
 			<select name="searchCondition" id="searchCondition">
 				<option value="title">제목</option>
 				<option value="writer">작성자</option>
@@ -228,7 +228,7 @@ a.btn_02 {
 		}).click(function(){
 			var num = $(this).parent().children("input").val();
 
-			location.href="<%=request.getContextPath()%>/selectOne.bo?num=" + num;
+			location.href="<%=request.getContextPath()%>/detailDriver.bo?num=" + num;
 		});
 	});
 	</script>

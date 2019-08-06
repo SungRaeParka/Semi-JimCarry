@@ -70,7 +70,7 @@
 </style>
 </head>
 <body>
-	<%@ include file="/views/common/user_TopBar.jsp"%>
+	<%@ include file="/views/common/driver_TopBar.jsp"%>
 		
 	<div class="outer" align="center">		
 		<h2>기사 홍보 게시판</h2>
@@ -95,7 +95,7 @@
 		</div>
 		
 		<div class="pagingArea" align="center">
-			<span class="span" style="cursor: pointer;" onclick="location.href='<%=request.getContextPath()%>/selectList.dp?currentPage=1'">첫 페이지로</span>
+			<span class="span" style="cursor: pointer;" onclick="location.href='<%=request.getContextPath()%>/selecdpListDriver.dp?currentPage=1'">첫 페이지로</span>
 			
 			<!-- currentPage가 1페이지인 경우 -->
 			<% if(currentPage <= 1) { %>
@@ -103,7 +103,7 @@
 			<span class="span" style="cursor: pointer;">이전 페이지</span>
 			<% }else{ %>
 			<!-- 1페이지가 아닐 경우 이전으로 이동 -->
-			<span class="span" style="cursor: pointer;" onclick="location.href='<%=request.getContextPath()%>/selectList.dp?currentPage=<%=currentPage-1%>'">이전 페이지로</span>
+			<span class="span" style="cursor: pointer;" onclick="location.href='<%=request.getContextPath()%>/selecdpListDriver.dp?currentPage=<%=currentPage-1%>'">이전 페이지로</span>
 			<% } %>
 			
 			<% for(int p = startPage; p <= endPage; p++) {
@@ -111,7 +111,7 @@
 			%>
 				<span class="span" style="cursor: pointer;"><%= p %></span>
 			<%  }else { %>
-				<span class="span" style="cursor: pointer;" onclick="location.href='<%=request.getContextPath()%>/selectList.dp?currentPage=<%=p%>'"><%=p %></span>
+				<span class="span" style="cursor: pointer;" onclick="location.href='<%=request.getContextPath()%>/selecdpListDriver.dp?currentPage=<%=p%>'"><%=p %></span>
 			<%  }
 			   } %>
 			   
@@ -119,11 +119,11 @@
 			<% if(currentPage >= maxPage) { %>
 			<span class="span" style="cursor: pointer;">다음 페이지</span>
 			<% }else{ %>
-			<span class="span" style="cursor: pointer;" onclick="location.href='<%=request.getContextPath()%>/selectList.dp?currentPage=<%=currentPage+1%>'">다음 페이지</span>
+			<span class="span" style="cursor: pointer;" onclick="location.href='<%=request.getContextPath()%>/selecdpListDriver.dp?currentPage=<%=currentPage+1%>'">다음 페이지</span>
 			<% } %>
 			
 			
-			<span class="span" style="cursor: pointer;" onclick="location.href='<%=request.getContextPath()%>/selectList.dp?currentPage=<%=maxPage%>'">끝 페이지로</span>		
+			<span class="span" style="cursor: pointer;" onclick="location.href='<%=request.getContextPath()%>/selecdpListDriver.dp?currentPage=<%=maxPage%>'">끝 페이지로</span>		
 		</div>
 		
 	</div>
@@ -139,7 +139,7 @@
 			
 			console.log(num);
 			
-			location.href="<%=request.getContextPath()%>/selectOne.dp?num=" + num;
+			location.href="<%=request.getContextPath()%>/dpDetailDriver.dp?num=" + num;
 		});
 	});
 	

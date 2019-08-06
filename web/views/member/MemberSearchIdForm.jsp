@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.kh.jimcarry.member.model.vo.*"%>
+<%
+	String checkNo = Integer.toString((int)(Math.random()*999999) + 100000);
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,7 +10,7 @@
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <style>
-	#box {
+	#box, #userName {
 		height:40px;
 		width:200px;
 	}
@@ -25,7 +28,7 @@
 		background:#5e5e5e;
 		color:#ffffff;
 	}
-	#btn{
+	#successSearchId{
 		height:30px;
 		width:80px;
 		border:3px solid #5e5e5e;
@@ -34,6 +37,37 @@
 		font-size:15px;
 		background:#5e5e5e;
 		color:#ffffff;
+		cursor: pointer;
+	}
+	#checkPhone {
+		height:25px;
+		width:110px;
+		border:3px solid #5e5e5e;
+		border-radius:10px;
+		text-align:center;
+		margin-top:5px;
+		font-size:15px;
+		background:#5e5e5e;
+		color:#ffffff;
+		cursor: pointer;
+	}
+	
+	#checkNumber {
+		height:25px;
+		width:70px;
+		border:3px solid #5e5e5e;
+		border-radius:10px;
+		text-align:center;
+		margin-top:5px;
+		font-size:15px;
+		background:#5e5e5e;
+		color:#ffffff;
+		cursor: pointer;
+	}
+	
+	#checkNo {
+		height:40px;
+		width:200px;
 	}
 </style>
 </head>
@@ -45,37 +79,135 @@
 		<table>
 			<tr>
 				<td><label>이름</label></td>
-				<td><input type="text" name="userName" id="box"></td>
+				<td><input type="text" name="userName" id="userName" value=""></td>
 			</tr>
 			<tr>
 				<td><label>휴대폰 번호</label></td>
 				<td>
-					<input type="text" maxlength="3" name="tel1" value="010" id="tel"> -
-					<input type="text" maxlength="4" name="tel2" value="0000" id="tel"> -
-					<input type="text" maxlength="4" name="tel3" value="0000" id="tel">
+					<input type="text" maxlength="3" name="tel1" placeholder="010" id="tel"> -
+					<input type="text" maxlength="4" name="tel2" placeholder="0000" id="tel"> -
+					<input type="text" maxlength="4" name="tel3" placeholder="0000" id="tel">
+				</td>					
+				<td>
+					<div id="checkPhone">인증 번호 발송</div>
 				</td>
-					<td><button id="btn" onclick="Confirm();">인증</button></td>	
+			</tr>
+			<tr>
+				<td>인증번호 입력</td>
+				<td><input type="text" name="checkNo" id="checkNo" placeholder="인증번호 입력"></td>
+				<td>
+					<input type="hidden" name="action" value="go">      
+			        <input type="hidden" name="msg" value="<%=checkNo%>">
+			        <input type="hidden" name="rphone" value="" placeholder="받는 번호">
+			        <input type="hidden" name="allPhone" value="" id="allPhone">
+			        <input type="hidden" name="sphone1" value="010">
+			        <input type="hidden" name="sphone2" value="6693">
+			        <input type="hidden" name="sphone3" value="7764">
+			        <div id="checkNumber">인증하기</div>			       
+			   </td>
 			</tr>
 			<tr>
 				<td></td>
-				<td><input type="password" name="confirm" id="box"></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td><a href="/semi/views/member/popup/MemberIdView.jsp"><button id="join" onclick="ok();">완료</button></a></td>
+				<td align="center"><button id="successSearchId">완료</button></td>
 			</tr>
 		</table>
 		</div>
 		<script>
-			function send(){
-				window.alert("전송완료! 이메일 확인하세요!");
-			}
-			function Confirm(){
-				window.alert("인증완료!");
-			}
-			function ok(){
-				window.alert("가입완료!");
-			}
+			$(function(){
+				$("#checkPhone").click(function(){
+					var tel1 = $("input[name='tel1']").val();
+					var tel2 = $("input[name='tel2']").val();
+					var tel3 = $("input[name='tel3']").val();
+					
+					var rphone = tel1 + "-" + tel2 + "-" + tel3;			
+					var sphone1 = $("input[name='sphone1']").val();
+					var sphone2 = $("input[name='sphone2']").val();
+					var sphone3 = $("input[name='sphone3']").val();
+					var msg = $("input[name='msg']").val();
+					console.log("msg :::: " + msg);
+					var action = $("input[name='action']").val();
+					
+					
+					// 인증번호 입력창
+								
+					
+					$.ajax({
+						url:"smssend.jsp",
+						data:{rphone:rphone, sphone1:sphone1, sphone2:sphone2, sphone3:sphone3, msg:msg, action:action},
+						dataType:"text",
+						type:"post",
+						success:function(data){
+							alert("인증번호가 발송되었습니다.");			
+							
+							var checkPhone = data;					
+							
+							$("#checkPhone").hide();
+							
+							
+							$("#checkNumber").on("click", function(){
+								
+								var checkNo = $("input[name='checkNo']").val();
+								
+								console.log("checkNo :::: " + checkNo);
+								console.log("checkPohne ::::" + checkPhone);
+								
+								if(checkNo == checkPhone){
+									$("#checkNo").attr({"readonly":"true"});
+									$("#checkNumber").hide();
+									alert("인증이 완료되었습니다.");
+								}else{
+									alert("인증번호가 틀렸습니다. 다시 입력하세요.");
+									$("#checkPhone").show();
+								}
+								
+								$("#successSearchId").click(function(){
+									var tel1 = $("input[name='tel1']").val();
+									var tel2 = $("input[name='tel2']").val();
+									var tel3 = $("input[name='tel3']").val();
+										
+									var phoneNo = tel1 + "-" + tel2 + "-" + tel3;
+										
+									$("#allPhone").val(phoneNo);
+										
+									var allPhone = $("#allPhone").val();
+									var userName = $("#userName").val();
+										
+									console.log(allPhone);
+									console.log(userName);
+									
+									$.ajax({
+										url:"<%=request.getContextPath()%>/searchID.me",
+										data:{allPhone:allPhone, userName:userName},
+										dataType:"text",
+										type:"post",
+										success:function(data2){	
+											var beforeId = data2;										
+											
+											var length = beforeId.length;
+											
+											console.log(beforeId.length);
+											
+											var userId = beforeId.substr(0, length-4) + "****"
+											
+											alert("검색하신 아이디는 " + userId + " 입니다.");	
+											
+											location.href = "/semi/views/member/MemberLoginForm.jsp";
+										},
+										error:function(request,status,error){
+											console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+									    }	
+									});									
+								});
+							});
+						},
+						error:function(request,status,error){
+							alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+					    }			
+					});
+			});
+			
+		});
+			
 		</script>
 		
 	

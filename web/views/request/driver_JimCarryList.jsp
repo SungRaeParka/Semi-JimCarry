@@ -38,11 +38,13 @@ html, body {
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Sunflower:300&display=swap" rel="stylesheet">
 
 <style>
 #outer {
 	width: 870px;
 	margin: 0 auto;
+	font-family: 'Sunflower', sans-serif;
 }
 
 .imgs {

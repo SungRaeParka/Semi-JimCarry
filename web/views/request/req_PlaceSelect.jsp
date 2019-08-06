@@ -13,6 +13,7 @@
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+ <link href="https://fonts.googleapis.com/css?family=Sunflower:300&display=swap" rel="stylesheet">
  <script>
  	$(function(){
 		$("#insertPIMG").click(function(event){			
@@ -70,6 +71,10 @@
   
    #productImgArea1:hover, #productImgArea2:hover, #productImgArea3:hover, #productImgArea4:hover, #productImgArea5:hover{
    	cursor: pointer;
+   }
+   
+   span {
+   	font-family: 'Sunflower', sans-serif;
    }
   
 </style>
@@ -230,7 +235,7 @@
 				<a href="req_ProDetailSelect.jsp" style="text-decoration: none">
 					<span style="font-size: 30px">뒤로가기</span>	
 				</a>
-					<span style="font-size: 30px; cursor: pointer;" onclick="insertReq()">다음 단계로</span>	
+					<span style="font-size: 30px; cursor: pointer; padding-left: 30px" onclick="insertReq()">다음 단계로</span>	
 			</div>				
 		
 	</div>

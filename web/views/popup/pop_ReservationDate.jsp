@@ -21,15 +21,7 @@
 	    <input type="text" id="datepicker" placeholder="날짜를 선택하세요" readonly>
 	    <br>
 	    <br>
-	    <select id="selectTime">
-	    	<option>시간</option>
-	    	<option>1</option>
-	    	<option>2</option>
-	    	<option>3</option>
-	    	<option>4</option>
-	    	<option>5</option>
-	    	<option>6</option>
-	    	<option>7</option>
+	    <select id="selectTime">	    	
 	    	<option>8</option>
 	    	<option>9</option>
 	    	<option>10</option>
@@ -40,13 +32,7 @@
 	    	<option>15</option>
 	    	<option>16</option>
 	    	<option>17</option>
-	    	<option>18</option>
-	    	<option>19</option>
-	    	<option>20</option>
-	    	<option>21</option>
-	    	<option>22</option>
-	    	<option>23</option>
-	    	<option>24</option>
+	    	<option>18</option>	    	   	
 	    </select>
 	    <br>
 	    <br>
@@ -97,11 +83,11 @@
         	var currDay = diff / (24 * 60 * 60 * 1000);
         	
 			if(currDay == 0){
-				alert("이용 당일은 예약 할 수 없습니다. 날짜를 다시 선택 하세요.");
-			}else if(currDay <= 2){
-				alert("예약 2일 전 ~ 이용 전 날 예약 취소시 50%의 수수료가 부과됩니다. 예약하시겠습니까?");
+				alert("이용 당일은 예약 시 환불이 불가합니다. 예약하시겠습니까?");
+			}else if(currDay <= 3){
+				alert("예약 3일 전 ~ 이용 전 날 예약 취소시 70%의 수수료가 부과됩니다. 예약하시겠습니까?");
 			}else if(currDay <= 7){
-				alert("예약 7일 전 ~ 3일 전 예약 취소시 10%의 수수료가 부과됩니다. 예약하시겠습니까?");
+				alert("예약 7일 전 ~ 4일 전 예약 취소시 30%의 수수료가 부과됩니다. 예약하시겠습니까?");
 			}
 			
         	self.close();
