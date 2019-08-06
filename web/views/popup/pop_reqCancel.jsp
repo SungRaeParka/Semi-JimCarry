@@ -133,7 +133,7 @@ if(tempday<=0){
 					alert("접속완료");
 				},
 				error:function(data){
-					alert("접속실패");
+					//alert("접속실패");
 				}
 			})
 			window.opener.location.reload();

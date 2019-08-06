@@ -64,8 +64,8 @@ public class InsertMemberServlet extends HttpServlet {
 			page = "views/common/errorPage.jsp";
 			request.setAttribute("msg", "회원 가입실패!");
 			
+			request.getRequestDispatcher(page).forward(request, response);
 		}
-		request.getRequestDispatcher(page).forward(request, response);
 	}
 
 	/**

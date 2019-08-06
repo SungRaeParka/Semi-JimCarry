@@ -692,7 +692,7 @@ public class RequestDao {
 		
 		try {
 			pstmt = con.prepareStatement(query);
-			pstmt.setString(1, "매칭완료");
+			pstmt.setString(1, "이용대기");
 			pstmt.setString(2, reqNo);
 			
 			result = pstmt.executeUpdate();
@@ -719,7 +719,7 @@ public class RequestDao {
 		try {
 			pstmt = con.prepareStatement(query);
 			
-			pstmt.setString(1, "매칭완료");
+			pstmt.setString(1, "이용대기");
 			pstmt.setString(2, reqNo);
 			pstmt.setString(3, driverNo);
 			

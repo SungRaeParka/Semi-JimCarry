@@ -86,7 +86,7 @@
 
 
 	<div id="main">
-		<div style="padding-top: 65px; padding-left: 20px;">
+		<div style="padding-top: 30%; padding-left: 20px;">
 			<span style="font-size: 45px; font-weight: bold">출발지, 도착지, 날짜를 선택하세요.</span><br>
 			<span>상세정보입력을 클릭하시면 주소를 검색할 수 있습니다.</span>
 		</div>

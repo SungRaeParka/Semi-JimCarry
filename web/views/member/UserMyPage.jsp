@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-<link href="https://fonts.googleapis.com/css?family=Cute+Font&display=swap&subset=korean" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css?family=Sunflower:300&display=swap" rel="stylesheet">
 <title>Insert title here</title>
 <style>
 	html, body{
@@ -81,7 +81,7 @@
 <body>
 	<%@ include file="/views/common/user_TopBar.jsp"%>
 	
-	<div id="main">
+	<div id="main" style="font-family: 'Sunflower', sans-serif;">
 		<div style="display: inline-block; padding-top: 7%;">
 			<b style="font-size: 50px;">마이 페이지</b>
 		</div>
