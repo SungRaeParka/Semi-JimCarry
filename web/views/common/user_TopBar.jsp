@@ -12,10 +12,50 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
 <title>Insert title here</title>
+<style>
+	#logoDiv {
+		width: 100%; 
+		height:205px; 
+		background: white;
+		position: relative;
+	}
+	
+	.front {
+		position: absolute;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+	
+	.back {
+		margin-top: 10%;
+	}
+	
+	.w3-bar {
+		font-family: 'Sunflower', sans-serif;
+		font-size: 15px;
+	}
+	
+	.w3-white {
+		background-color: #FFC730!important;
+		color:white!important;
+	}
+	.w3-button:hover {
+		color: black;	
+		background: #FFC730!important;
+	}
+</style>
 </head>
 <body>
 	<!-- 상단 고정바 -->
 	<div class="w3-top">
+		<div id="logoDiv">
+			<div class="front">
+				<img src="/semi/images/main_logo.png" style="width: 350px; height: 200px; display: block; margin-left: auto; margin-right: auto;">			
+			</div>
+			<div class="back" style="float:left;">			
+				<img src="/semi/images/logo_gif.gif">
+			</div>
+		</div>
 		<div class="w3-bar w3-white w3-wide w3-padding w3-card">
 			<a href="/semi/views/mainPage.jsp" class="w3-bar-item w3-button" style="text-decoration:none"><b>짐 캐리</b></a>
 			<div class="w3-right w3-hide-small">

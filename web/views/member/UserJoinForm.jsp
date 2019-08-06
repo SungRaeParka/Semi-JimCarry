@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	String checkNo = Integer.toString((int)(Math.random()*999999) + 100000);
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,7 +37,7 @@
 		background:#5e5e5e;
 		color:#ffffff;
 	}
-	#check{
+	#check {
 		height:25px;
 		width:70px;
 		border:3px solid #5e5e5e;
@@ -44,6 +47,33 @@
 		font-size:15px;
 		background:#5e5e5e;
 		color:#ffffff;
+		cursor: pointer;
+	}
+	
+	#checkPhone {
+		height:25px;
+		width:110px;
+		border:3px solid #5e5e5e;
+		border-radius:10px;
+		text-align:center;
+		margin-top:5px;
+		font-size:15px;
+		background:#5e5e5e;
+		color:#ffffff;
+		cursor: pointer;
+	}
+	
+	#checkNumber {
+		height:25px;
+		width:70px;
+		border:3px solid #5e5e5e;
+		border-radius:10px;
+		text-align:center;
+		margin-top:5px;
+		font-size:15px;
+		background:#5e5e5e;
+		color:#ffffff;
+		cursor: pointer;
 	}
 </style>
 </head>
@@ -76,13 +106,25 @@
 				<td>
 					<input type="text" maxlength="3" name="tel1" placeholder="010" id="tel"> -
 					<input type="text" maxlength="4" name="tel2" placeholder="0000" id="tel"> -
-					<input type="text" maxlength="4" name="tel3" placeholder="0000" id="tel"></td>
-					<td><button id="conFirm" onclick="Confirm();">인증</button></td>			
+					<input type="text" maxlength="4" name="tel3" placeholder="0000" id="tel">
+				</td>					
+				<td>
+					<div id="checkPhone">인증 번호 발송</div>
+				</td>			
 			</tr>
 			<tr>
 				<td></td>
 				<td><input type="text" name="checkNo" id="checkNo" placeholder="인증번호 입력"></td>
-				<td><button id="checkNobtn" onclick="checkNobtn();">확인</button></td>
+				<td>
+					<input type="hidden" name="action" value="go">      
+			        <input type="hidden" name="msg" value="<%=checkNo%>">
+			        <input type="hidden" name="rphone" value="" placeholder="받는 번호">
+			        <input type="hidden" name="sphone1" value="010">
+			        <input type="hidden" name="sphone2" value="6693">
+			        <input type="hidden" name="sphone3" value="7764">
+			        <div id="checkNumber">인증하기</div>
+			       
+			   </td>
 			</tr>
 			<tr>
 				<td></td>
@@ -92,6 +134,7 @@
 		</form>
 		</div>
 		<script>
+		
 		$(function(){
 			$("#check").click(function(){
 				var userId = $("#userId").val();
@@ -115,6 +158,72 @@
 				});
 			});
 		});
+
+		$("#join").click(function() {
+			// if문으로 비밀번호가 틀리면 출력
+			var pwd = $("#password").val();
+	        var pwd1 = $("#password1").val();
+	        if(pwd != pwd1){	
+				window.confirm("비밀번호가 틀립니다. 다시입력하세요");	            	
+	        }else{
+	        	$("form").submit();
+	        }
+		});	
+		
+		$("#checkPhone").click(function(){
+			var tel1 = $("input[name='tel1']").val();
+			var tel2 = $("input[name='tel2']").val();
+			var tel3 = $("input[name='tel3']").val();
+			
+			var rphone = tel1 + "-" + tel2 + "-" + tel3;			
+			var sphone1 = $("input[name='sphone1']").val();
+			var sphone2 = $("input[name='sphone2']").val();
+			var sphone3 = $("input[name='sphone3']").val();
+			var msg = $("input[name='msg']").val();
+			console.log("msg :::: " + msg);
+			var action = $("input[name='action']").val();
+			
+			
+			// 인증번호 입력창
+						
+			
+			$.ajax({
+				url:"smssend.jsp",
+				data:{rphone:rphone, sphone1:sphone1, sphone2:sphone2, sphone3:sphone3, msg:msg, action:action},
+				dataType:"text",
+				type:"post",
+				success:function(data){
+					alert("인증번호가 발송되었습니다.");			
+					
+					var checkPhone = data;					
+					
+					$("#checkPhone").hide();
+					
+					
+					$("#checkNumber").on("click", function(){
+						
+						var checkNo = $("input[name='checkNo']").val();
+						
+						console.log("checkNo :::: " + checkNo);
+						console.log("checkPohne ::::" + checkPhone);
+						
+						if(checkNo == checkPhone){
+							$("#checkNo").attr({"readonly":"true"});
+							$("#checkNumber").hide();
+							alert("인증이 완료되었습니다.");
+						}else{
+							alert("인증번호가 틀렸습니다. 다시 입력하세요.");
+							$("#checkPhone").show();
+						}
+								
+					});
+				},
+				error:function(request,status,error){
+					alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+			    }			
+			});
+			
+
 		
 		$("#password").keyup(function(){
 			$("font[name=check]").text("");
@@ -130,6 +239,7 @@
 					$("form").submit();	
 				});
 			}
+
 		});
 		
 		</script>

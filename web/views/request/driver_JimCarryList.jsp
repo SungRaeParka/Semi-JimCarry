@@ -584,13 +584,17 @@ html, body {
 			var reqNo = $(this).next().next().val();
 		
 			
+
 			var url = "/semi/views/popup/pop_Driver_Calculate.jsp?price="+price+"&driver="+driver+"&reqNo="+reqNo;
+
 			var name = "calcPopup";
 			var option = "with=300, height=250, top=30, left=50";
 				
+
 			window.open(url,name,option);
+
 		})
-	})
+	});
 	
 	
 	$(function(){

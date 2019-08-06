@@ -21,10 +21,6 @@
 	    <input type="text" id="datepicker" placeholder="날짜를 선택하세요" readonly>
 	    <br>
 	    <br>
-	    <select id="selectAMPM">
-	    	<option>오전</option>
-	    	<option>오후</option>
-	    </select>
 	    <select id="selectTime">
 	    	<option>시간</option>
 	    	<option>1</option>
@@ -75,9 +71,8 @@
         	var dateExrr = dateEx.split("/");
         	var dateInfo1 = dateExrr[2] + "년 " + dateExrr[0] + "월 " + dateExrr[1] + "일";        	
         	
-        	var ampmEx = $("#selectAMPM option:selected").val();        	
         	var timeEx = $("#selectTime option:selected").val();
-        	var timeInfo1 = " " + ampmEx + " " + timeEx + "시";    	
+        	var timeInfo1 = " " + timeEx + "시";    	
         	     
         	showStartPlace.html(dateInfo1 + timeInfo1);
         	

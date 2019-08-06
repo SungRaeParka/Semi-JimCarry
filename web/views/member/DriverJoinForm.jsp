@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	String checkNo = Integer.toString((int)(Math.random()*999999) + 100000);
+%>    
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +17,9 @@
 		margin:50px;
 		margin-top:10px;
 	}
-	#box , #userId, #password1, #password{
+
+	#box , #userId, #password1, #password, #checkNo{
+
 		height:35px;
 		width:150px;
 	}
@@ -67,6 +73,30 @@
 		background:#5e5e5e;
 		color:#ffffff;
 	}
+	#checkNumber {
+		height:25px;
+		width:70px;
+		border:3px solid #5e5e5e;
+		border-radius:10px;
+		text-align:center;
+		margin-top:5px;
+		font-size:15px;
+		background:#5e5e5e;
+		color:#ffffff;
+		cursor: pointer;
+	}
+	 #checkPhone {
+	 	height:25px;
+		width:110px;
+		border:3px solid #5e5e5e;
+		border-radius:10px;
+		text-align:center;
+		margin-top:5px;
+		font-size:15px;
+		background:#5e5e5e;
+		color:#ffffff;
+		cursor: pointer;
+	 }
 </style>
 </head>
 <body>
@@ -101,7 +131,21 @@
 					<input type="text" maxlength="4" name="tel2" id="tel" placeholder="0000"> -
 					<input type="text" maxlength="4" name="tel3" id="tel" placeholder="0000">
 				</td>
-					<td><button id="btn" onclick="Confirm();">인증</button></td>	
+				<td>
+					<div id="checkPhone">인증 번호 발송</div>
+				</td>				
+			<tr>
+				<td><label>휴대폰 인증</label>
+				<td><input type="text" name="checkNo" id="checkNo" placeholder="인증번호 입력"></td>
+				<td>
+					<input type="hidden" name="action" value="go">      
+			        <input type="hidden" name="msg" value="<%=checkNo%>">
+			        <input type="hidden" name="rphone" value="" placeholder="받는 번호">
+			        <input type="hidden" name="sphone1" value="010">
+			        <input type="hidden" name="sphone2" value="6693">
+			        <input type="hidden" name="sphone3" value="7764">
+			        <div id="checkNumber">인증하기</div>			       
+			   </td>			
 			</tr>
 			<tr>
 				<td><label>대표자</label>
@@ -245,7 +289,62 @@
 				}
 			});
 		});
+		
+		$("#checkPhone").click(function(){
+			var tel1 = $("input[name='tel1']").val();
+			var tel2 = $("input[name='tel2']").val();
+			var tel3 = $("input[name='tel3']").val();
+			
+			var rphone = tel1 + "-" + tel2 + "-" + tel3;			
+			var sphone1 = $("input[name='sphone1']").val();
+			var sphone2 = $("input[name='sphone2']").val();
+			var sphone3 = $("input[name='sphone3']").val();
+			var msg = $("input[name='msg']").val();
+			console.log("msg :::: " + msg);
+			var action = $("input[name='action']").val();
+			
+			
+			// 인증번호 입력창
+						
+			
+			$.ajax({
+				url:"smssend.jsp",
+				data:{rphone:rphone, sphone1:sphone1, sphone2:sphone2, sphone3:sphone3, msg:msg, action:action},
+				dataType:"text",
+				type:"post",
+				success:function(data){
+					alert("인증번호가 발송되었습니다.");			
+					
+					var checkPhone = data;					
+					
+					$("#checkPhone").hide();
+					
+					
+					$("#checkNumber").on("click", function(){
+						
+						var checkNo = $("input[name='checkNo']").val();
+						
+						console.log("checkNo :::: " + checkNo);
+						console.log("checkPohne ::::" + checkPhone);
+						
+						if(checkNo == checkPhone){
+							$("#checkNo").attr({"readonly":"true"});
+							$("#checkNumber").hide();
+							alert("인증이 완료되었습니다.");
+						}else{
+							alert("인증번호가 틀렸습니다. 다시 입력하세요.");
+							$("#checkPhone").show();
+						}
+								
+					});
+				},
+				error:function(request,status,error){
+					alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+			    }			
+			});
+		});
 	});
+
 	
 	$("#password").keyup(function(){
 		$("font[name=check]").text("");
