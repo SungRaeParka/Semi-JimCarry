@@ -32,7 +32,7 @@ public class SelectBoardServlet extends HttpServlet {
 
 		System.out.println("b : " + b);
 		ArrayList<Attachment> fileList = (ArrayList<Attachment>) hmap.get("attachment");
-		System.out.println("파일 리스트 : " + fileList);
+
 		String page = "";
 
 		if(hmap != null) {

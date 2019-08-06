@@ -40,6 +40,7 @@ public class boardReplyServlet extends HttpServlet {
 
 		response.setCharacterEncoding("UTF-8");
 		new Gson().toJson(replyList,response.getWriter());
+		System.out.println("댓글 인설트 ::::::: ::: :: : " + replyList);
 
 	}
 

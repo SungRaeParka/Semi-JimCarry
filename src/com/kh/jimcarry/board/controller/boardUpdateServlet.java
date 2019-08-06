@@ -54,6 +54,10 @@ public class boardUpdateServlet extends HttpServlet {
 			String multiTitle = multiRequest.getParameter("btitle");
 			String multiiContent = multiRequest.getParameter("bcontent");
 			String num = multiRequest.getParameter("pagebno");
+			String attno1 = multiRequest.getParameter("attno1");
+			String attno2 = multiRequest.getParameter("attno2");
+			System.out.println("attno1 : attno1 : attno1 : " + attno1);
+			System.out.println("attno2 : attno2 : attno2 : " + attno2);
 			//String img1 = multiRequest.getParameter("img1");
 		//x	String img2 = multiRequest.getParameter("img2");
 			String photo1 = multiRequest.getParameter("photo1");
@@ -62,13 +66,9 @@ public class boardUpdateServlet extends HttpServlet {
 			System.out.println("multiTitle : " + multiTitle);
 			System.out.println("multiiContent" + multiiContent);
 			System.out.println("pagebno : " + num);
-			System.out.println("photo1 : "  + photo1);
-			System.out.println("photo2 : "  + photo2);
 
-			// 기본값 파일
-			ArrayList<String> imgstr = new ArrayList<String>();
-			//imgstr.add(img1);
-			//imgstr.add(img2);
+
+
 
 			Board b = new Board();
 			b.setPostTitle(multiTitle);
@@ -88,35 +88,7 @@ public class boardUpdateServlet extends HttpServlet {
 				String name = files.nextElement();
 				if (name == null) {
 
-					/*for (int i = imgstr.size() - 1; i >= 0; i--) {
 
-						at.setOriginName(imgstr.get(i));
-						fileList.add(at);
-					}*/
-
-				} else if (name != null && photo1 != null && photo2 == null) {
-
-					// 저장된 이름 가져올떄
-					saveFiles.add(multiRequest.getFilesystemName(name));
-					// 원본 파일저장할떄
-					originFiles.add(multiRequest.getOriginalFileName(name));
-
-						/*File failedFile = new File(savePath + imgstr.get(0));
-						failedFile.delete();
-*/
-
-				} else if (name != null && photo1 == null && photo2 != null) {
-
-					// 저장된 이름 가져올떄
-					saveFiles.add(multiRequest.getFilesystemName(name));
-					// 원본 파일저장할떄
-					originFiles.add(multiRequest.getOriginalFileName(name));
-
-
-
-						/*File failedFile = new File(savePath + imgstr.get(1));
-						failedFile.delete();
-*/
 
 
 				} else {
@@ -125,14 +97,17 @@ public class boardUpdateServlet extends HttpServlet {
 					// 원본 파일저장할떄
 					originFiles.add(multiRequest.getOriginalFileName(name));
 				}
-				System.out.println("imgstr : " + imgstr);
-				System.out.println("name " + name);
-				System.out.println("filesSystem name : " + multiRequest.getFilesystemName(name));
-				System.out.println("OriginalFile name : " + multiRequest.getOriginalFileName(name));
+			}
 
-				ArrayList<Attachment> fileList = new ArrayList<Attachment>();
+			ArrayList<String> attno = new ArrayList<String>();
+
+			attno.add(attno1);
+			attno.add(attno2);
+
+			ArrayList<Attachment> fileList = new ArrayList<Attachment>();
 				for (int i = originFiles.size() - 1; i >= 0; i--) {
 					Attachment at = new Attachment();
+					at.setAttachNo(attno.get(i));
 					at.setFilePath(savePath);
 					at.setOriginName(originFiles.get(i));
 					at.setChangeName(saveFiles.get(i));
@@ -145,7 +120,7 @@ public class boardUpdateServlet extends HttpServlet {
 				if (result > 0) {
 					//equest.setNextPath("selectBoard.bo?num=" + b.getPostCode();
 					//forward.setNextPath("BoardListAction.bo?page="+pageNum);
-					page = "views/board/user_ReviewUpdateForm.jsp";
+					page = "/selectOne.bo?num="+num;
 					request.setAttribute("b", b);
 					request.setAttribute("fileList", fileList);
 				} else {
@@ -157,7 +132,7 @@ public class boardUpdateServlet extends HttpServlet {
 						failedFile.delete();
 					}*/
 				}
-			}
+
 		}
 		request.getRequestDispatcher(page).forward(request, response);
 

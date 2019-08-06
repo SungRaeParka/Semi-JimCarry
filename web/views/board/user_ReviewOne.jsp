@@ -27,10 +27,7 @@
 			photo2 = fileList.get(1);
 		}
 
-		//Comments c = (Comments) request.getAttribute("comment");
-
-
-
+		//Comments c = (Comments) request.getAttribute("comment");w
 
 	%>
 <html>
@@ -44,13 +41,6 @@
 		margin-right: auto;
 		margin-top: auto;
 	}
-/* 	#imgArea td {
-		width: 200px;
-		height: 250px;
-		background: 3px solid red;
-
-
-	} */
 
 	.detailImg{
 		width: 320px;
@@ -123,9 +113,6 @@
 					</tr>
 			</table>
 
-
-
-
 			<div style="border: 1px solid white; width: 760px; text-align: right;">
 			<% if(loginUser.getUserId().equals(b.getWriter())) { %>
 			<button onclick="del();" id="belbtn">삭제</button>&nbsp;&nbsp;
@@ -146,7 +133,6 @@
 
 				}
 
-
 			</script>
 
 		</div>
@@ -157,7 +143,7 @@
 			<table align="center" border="1">
 				<tr>
 					<td>댓글 작성</td>
-					<td><textarea rows="3" cols="80" id="replyContent"></textarea></td>
+					<td><textarea rows="3" cols="70" id="replyContent"></textarea></td>
 					<td>
 					<button id="addReply">댓글 등록</button>
 
@@ -172,9 +158,10 @@
 
 			</table>
 		</div>
+
 	</div>
 
-	<input type="hidden" />
+	<input type="hidden" id="id1" />
 	<script>
 
 	function godel(data) {
@@ -194,9 +181,6 @@
 					console.log(data);
 					location.reload();
 
-
-
-
 				},
 				error:function(){
 					console.log("실패!!!");
@@ -209,12 +193,12 @@
 	function goup(data) {
 
 
-		console.log(data);
+		console.log("ㅎㅇㅎㅇㅎㅇ");
 
 
 		if(confirm('수정하시겠습니까?')){
 			$.ajax({
-				url:"",
+				url:"/updateReply.bo",
 				data:{
 					ccode:data,
 				},
@@ -234,7 +218,7 @@
 
 
 
-function getCommentList() {
+  function getCommentList() {
 
 	$.ajax({
 		url:"/semi/selectReply.bo",
@@ -243,7 +227,7 @@ function getCommentList() {
 		success:function(data){
 			var $replySelectTable = $("#replySelectTable tbody");
 			$replySelectTable.html("");
-			console.log(data);
+
 			for(var key in data) {
 				console.log(key);
 				var $tr = $("<tr>");
@@ -253,7 +237,8 @@ function getCommentList() {
 
 				var $btn1Td =  $("<td><button id='delete' class='btn2' onclick='godel(\"" + data[key].commentCode + "\");'>삭제</button></td>");
 
-				var $btn2Td =  $("<td><button id='update' class='btn2' onclick='goup(\"" + data[key].commentCode + "\");'>수정</button></td>");
+				var $btn2Td =  $("<td><button id='update'>수정</button></td>");/* $("<td><button id='update' class='btn2' onclick='goup(\"" + data[key].commentCode + "\");'>수정</button></td>"); */
+
 
 				console.log($writeTd)
 				$tr.append($writeTd);
@@ -271,11 +256,23 @@ function getCommentList() {
 			}
 
 			$("#replyContent").val("");
+
+			var $test = $("<td><input type='text' id='testContent' name='testContent' value='asdasd'></td>").css("width","400px");
+
+			console.log($test);
+
+			/* $("#update").on("click", function(){
+				//$contentTd.remove();
+				$tr.children().append($test).attr("input");
+
+
+			}); */
 		},
 		error:function(){
 			console.log("실패!!!");
 		}
 	});
+
 }
 
 var bcode;
@@ -309,8 +306,6 @@ var bcode;
 			});
 		});
 	});
-
-
 
 
 	</script>
