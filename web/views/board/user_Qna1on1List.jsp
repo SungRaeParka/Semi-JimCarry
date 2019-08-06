@@ -51,6 +51,16 @@ container{
  list-style-type: none;
  font-size: 15px;
 }
+th {
+  background-color: #ffd24d;
+  color: white;
+  }
+span{
+	background-color: #ffd24d;
+  color: white;
+  border-radius: 40px;
+}
+
 </style>
 </head>
 <body>
@@ -61,7 +71,7 @@ container{
   <h2>공지사항</h2>
   <table class="table table-hover" >
     <thead>
-      <tr>
+      <tr >
       	<th>번호</th>
         <th>제목</th>
         <th>작성자</th>
@@ -89,35 +99,35 @@ container{
 
 <!-- ㅠㅔ이징 처리 -->
 <div class="pagingArea" align="center">
-	<button onclick="location.href='<%=request.getContextPath() %>/noticelist.no?currentPage=1'">처음으로</button>
+	<span onclick="location.href='<%=request.getContextPath() %>/noticelist.no?currentPage=1'">처음으로</span>
 	
 	<%if(currentPage <= 1) {%>
-	<button disabled>이전</button>
+	<span disabled>이전</span>
 	<%}else { %>
-	<button onclick="location.href='<%=request.getContextPath() %>/noticelist.no?currentPage=<%=currentPage - 1 %>'">이전</button>
+	<span onclick="location.href='<%=request.getContextPath() %>/noticelist.no?currentPage=<%=currentPage - 1 %>'">이전</span>
 	<%} %>
 	
 	<%for(int p=startPage; p<=endPage;p++){
 		if(currentPage == p){
 		%>
-		<button disabled><%=p %></button>
+		<span disabled><%=p %></span>
 	<% }else {%>
-		<button onclick="location.href='<%=request.getContextPath()%>/noticelist.no?currentPage=<%=p%>'"><%=p%></button>
+		<span onclick="location.href='<%=request.getContextPath()%>/noticelist.no?currentPage=<%=p%>'"><%=p%></span>
 	<%}} %>
 	
 	<%if(currentPage >= maxPage){ %>
-	<button disabled>다음</button>
+	<span disabled>다음</span>
 	<%}else { %>
-	<button onckick="location.href='<%=request.getContextPath() %>/noticelist.no?currentPage=<%=currentPage + 1 %>'">다음</button>
+	<span input="button" onclick="location.href='<%=request.getContextPath() %>/noticelist.no?currentPage=<%=currentPage + 1 %>'">다음</span>
 	<%} %>
 	
-	<button onclick="location.href='<%=request.getContextPath() %>/noticelist.no?currentPage=<%=maxPage %>'">끝으로</button>
+	<span onclick="location.href='<%=request.getContextPath() %>/noticelist.no?currentPage=<%=maxPage %>'">끝으로</span>
 </div>
 
 </div>
 <script>
 		$("#listArea td").mouseenter(function(){
-			$(this).parent().css({"background":"yellow", "cursor":"pointer"});
+			$(this).parent().css({"background":"#ffff4d", "cursor":"pointer"});
 		}).mouseout(function(){
 			$(this).parent().css({"background":"white"});
 		}).click(function(){
@@ -317,16 +327,19 @@ function fnMoves(postCode) {
       </tr>
     </thead>
     <tbody id="listArea">
-     <%for(OneQ one : list2) {%>
+    <%
+     for(OneQ one : list2) {%>
       <tr onclick="javascript:fnMove('<%=one.getPostcode() %>')">
-      <input type="hidden" value="<%=one.getPostcode() %>">
-      <input type="hidden">
-      <th><%=one.getQuestionType() %></th>
-      <th><%=one.getPostTitle() %></th>
-      <th><%=one.getPostDate() %></th>
-       <th><%=one.getAnswerCheck() %></th>  
       
-      <% } %>
+      <input type="hidden" value="<%=one.getPostcode() %>">
+      <input type="hidden" name="name" id="name" value="<%=loginUser.getSeqNo()%>"> 
+      
+      <td><%=one.getQuestionType() %></td>
+      <td><%=one.getPostTitle() %></td>
+      <td><%=one.getPostDate() %></td>
+       <td><%=one.getAnswerCheck() %></td>  
+      </tr>
+      <%  }%>
     </tbody>
   </table>
 <!-- ㅠㅔ이징 처리 -->
@@ -349,7 +362,7 @@ function fnMoves(postCode) {
 	<%if(currentPage2 >= maxPage2){ %>
 	<button disabled>다음</button>
 	<%}else { %>
-	<button onckick="location.href='<%=request.getContextPath() %>/noticelist.no?currentPage2=<%=currentPage2 + 1 %>'">다음</button>
+	<button onclick="location.href='<%=request.getContextPath() %>/noticelist.no?currentPage2=<%=currentPage2 + 1 %>'">다음</button>
 	<%} %>
 	
 	<button onclick="location.href='<%=request.getContextPath() %>/noticelist.no?currentPage2=<%=maxPage2 %>'">끝으로</button>
@@ -359,7 +372,7 @@ function fnMoves(postCode) {
 <script>
 		$(function(){
 			$("#listArea th").mouseenter(function(){
-				$(this).parent().css({"background":"yellow", "cursor":"pointer"});
+				$(this).parent().css({"background":"#ffff4d", "cursor":"pointer"});
 			}).mouseout(function(){
 				$(this).parent().css({"background":"white"});
 			}).click(function(){
@@ -373,10 +386,11 @@ function fnMoves(postCode) {
 		}
 	</script>
 	
-	
+	<% if(loginUser != null && loginUser.getUdCheck().equals("U")){ %>
 	<div class="container">
   <h2>신고합니다</h2>
-  <p style="float:left">The .table-hover class enables a hover state on table rows:</p>            
+  <p style="float:left">불친절한 기사님들을 말해 줄 수있는 공간입니다.</p>      
+  <a href="/semi/views/board/user_InsertDe.jsp"><button  style="float:right;">신고하기</button></a>          
   <table class="table table-hover">
     <thead>
        <tr>
@@ -384,60 +398,48 @@ function fnMoves(postCode) {
         <th>신고날짜</th>
         <th>기사님 성함</th>
         <th>작성자</th>
-        <th>신고버튼</th>
+        
       </tr>
     </thead>
     
     <tbody id="listArea">
        <%for(Declaration de : list3) {%>
-      <tr>
-      <th><%=de.getDeclReason() %></th>
-      <th><%=de.getDeclDate() %></th>
-      <th><%=de.getDriverNo() %></th>
-      <th><%=de.getUserNo() %></th>
-       <th><input type="button" name="Declaration" value="신고하기"></th>  
+        <tr onclick="javascript:fnMove3('<%=de.getDeclNo() %>')">
+      
+      <td><%=de.getDeclReason() %></td>
+      <td><%=de.getDeclDate() %></td>
+      <td><%=de.getDriverNo() %></td>
+      <td><%=de.getUserNo() %></td>
+       
+       
       
       <% } %>
       </tr>
     </tbody>
   </table>
-  <!-- ㅠㅔ이징 처리 -->
-<div class="pagingArea" align="center">
-	<button onclick="location.href='<%=request.getContextPath() %>/noticelist.no?currentPage3=1'">처음으로</button>
-	
-	<%if(currentPage3 <= 1) {%>
-	<button disabled>이전</button>
-	<%}else { %>
-	<button onclick="location.href='<%=request.getContextPath() %>/noticelist.no?currentPage3=<%=currentPage3 - 1 %>'">끝으로</button>
-	<%} %>
-	
-	<%for(int p=startPage3; p<=endPage3;p++){
-		if(currentPage3 == p){%>
-		<button disabled><%=p %></button>
-	<% }else {%>
-		<button onclick="location.href='<%=request.getContextPath()%>/noticelist.no?currentPage3=<%=p%>'"><%=p%></button>
-	<%}} %>
-	
-	<%if(currentPage3 >= maxPage3){ %>
-	<button disabled>다음</button>
-	<%}else { %>
-	<button onckick="location.href='<%=request.getContextPath() %>/noticelist.no?currentPage3=<%=currentPage3 + 1 %>'">다음</button>
-	<%} %>
-	
-	<button onclick="location.href='<%=request.getContextPath() %>/noticelist.no?currentPage3=<%=maxPage3 %>'">끝으로</button>
-</div>
-  
+ 
 </div>
 	
 <script>
 		$(function(){
 			$("#listArea th").mouseenter(function(){
-				$(this).parent().css({"background":"yellow", "cursor":"pointer"});
+				$(this).parent().css({"background":"#ffff4d", "cursor":"pointer"});
 			}).mouseout(function(){
 				$(this).parent().css({"background":"white"});
-			})
+			}).click(function(){
+				// var num3 = $(this).parent().children("input").val(); 
+				
+				location.href="<%=request.getContextPath()%>/SelectOne.de?num3=" + num3;
+			});
 		});
+		function fnMove3(declNo) {
+			location.href="<%=request.getContextPath()%>/SelectOne.de?num3="+declNo;
+		}
+			
+			
+		
 	</script>
+	<%} %>
 
 </body>
 </html>

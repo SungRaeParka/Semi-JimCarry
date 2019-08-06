@@ -32,5 +32,38 @@ public class DeclarationService {
 		return list;
 	}
 
+	public int insertDeclaration(Declaration de) {
+		// TODO Auto-generated method stub
+		
+		Connection con = getConnection();
+		
+		int result = new DeclarationDao().insertDeclaration(con,de);
+		
+		if (result > 0) {
+			commit(con);
+		} else {
+			rollback(con);
+		}
+		return result;
+	}
+
+	public Declaration selectOne(String num) {
+		// TODO Auto-generated method stub
+		Connection con = getConnection();
+		
+		Declaration de = new DeclarationDao().selectOne(con, num);
+		
+		if (de != null) {
+			int result = new DeclarationDao().updateCount(con,num);
+			if (result > 0) {
+				commit(con);
+			} else {
+				rollback(con);
+			}
+		}
+		close(con);
+		return de;
+	}
+
 
 }

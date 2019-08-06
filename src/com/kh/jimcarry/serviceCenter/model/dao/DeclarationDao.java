@@ -104,4 +104,86 @@ public class DeclarationDao {
 		return list3;
 	}
 
-}
+	public int insertDeclaration(Connection con, Declaration de) {
+		// TODO Auto-generated method stub
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = prop.getProperty("insertNotice");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt .setString(1, de.getUserNo());
+			pstmt.setString(2, de.getDriverNo());
+			pstmt.setString(3, de.getDeclReason());
+			pstmt.setString(4, de.getDeclContent());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+	public Declaration selectOne(Connection con, String num) {
+		// TODO Auto-generated method stub
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Declaration de = null;
+		
+		String query = prop.getProperty("selectOne");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				de = new  Declaration();
+				
+				de.setDeclNo(rset.getString("DECL_NO"));
+				de.setDeclDate(rset.getDate("DECL_DATE"));
+				de.setDriverNo(rset.getString("DRIVER_NO"));
+				de.setUserNo(rset.getString("USER_NO"));
+				de.setDeclReason(rset.getString("DECL_REASON"));
+				de.setDeclContent(rset.getString("DECL_CONTENTS"));
+			}
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return de;
+	}
+
+	public int updateCount(Connection con,String num) {
+		// TODO Auto-generated method stub
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = prop.getProperty("updateCount");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, num);
+			pstmt.setString(2, num);
+			
+			result = pstmt.executeUpdate();
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+	}
+
+
