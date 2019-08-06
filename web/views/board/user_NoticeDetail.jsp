@@ -26,6 +26,10 @@ table * {
 	height: 350px;
 	margin: 0 auto;
 }
+th {
+  background-color: #ffd24d;
+  color: white;
+  }
 </style>
 <script>
 function fnList() {
@@ -37,8 +41,8 @@ function fnList() {
 </head>
 <body>
 	<%@ include file="/views/common/user_TopBar.jsp"%>
-	<%-- <% if(loginUser != null && loginUser.getUserId().equals("admin")){ %> --%>
-	<div class="container" style="margin-top: 70px;">
+	
+	<div class="container" style="margin-top: 22%;">
 		<h2>공지사항 상세보기</h2>
 		<br>
 
@@ -51,21 +55,21 @@ function fnList() {
 					
 							<table border="1px" align="center">
 								<tr>
-									<td>제목</td>
+									<th>제목</th>
 									<td colspan="3"><input type="text" size="50" name="title"
 									value="<%=n.getPostTitle() %>" readonly></td>
 								</tr>
 								<tr>
-									<td>작성자</td>
+									<th>작성자</th>
 									<td><input type="text"
 										value="<%=n.getUserNo() %>" name="writer"
 										readonly> <input type="hidden"
 										value="<%=n.getUserNo() %> " name="uno" readonly /></td>
-									<td>작성일</td>
+									<th>작성일</th>
 									<td><input type="date" name="date" value="<%=n.getPostdate() %>" readonly></td>
 								</tr>
 								<tr>
-									<td colspan="4" >내                            용</td>
+									<th colspan="4" >내                            용</th>
 								</tr>
 								<tr>
 									<td colspan="4"><textarea name="content"cols="60"

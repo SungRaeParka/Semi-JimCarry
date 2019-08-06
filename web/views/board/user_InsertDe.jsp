@@ -7,10 +7,9 @@
 <title>Insert title here</title>
 <style>
 
-	table, th {
+	table, th, td {
 	border:1px solid black;
 	border-collapse:collapse;
-	border-radius:20%;
 	align:ceter;
 	}
 	table {
@@ -20,6 +19,10 @@
 		margin: auto;
 		margin-top:100px;
 		text-align: center;
+	}
+	th{
+	background-color: #ffd24d;
+  	color: white;
 	}
 </style>
 </head>
@@ -31,20 +34,20 @@
 <table>
 	<tr>
 		<th>신고내용</th>
-		<th colspan='3'>
+		<td colspan='3'>
 			<input type="hidden" name="postType" value="유형">
 			<input type="hidden" name="answerCheck">
 			<input type="radio" id="check" name="rbtn" value="불친절">불친절
 			<input type="radio" id="check" name="rbtn" value="시간지연">시간지연
 			<input type="radio" id="check" name="rbtn" value="추가금요구">추가금 요구
 			<input type="radio" id="check" name="rbtn" value="기타">기타
-		</th>
+		</td>
 	</tr>
 	<tr>
 		<th>신고날짜</th>
-		<th colspan='3'>
+		<td colspan='3'>
 		<input type="date" name="date">
-		</th>
+		</td>
 	</tr>
 	<tr>
 		<th>기사님 성함</th>
@@ -55,9 +58,9 @@
 
 	<tr>
 		<th>상세내용</th>
-		<th colspan='3'>
+		<td colspan='3'>
 			<textarea name="Content" rows="20" placeholder="내용을 입력해주세요." ></textarea>
-		</th>
+		</td>
 	</tr>
 	
 </table>

@@ -330,7 +330,7 @@ function fnMoves(postCode) {
         <th>답변</th>
       </tr>
     </thead>
-    <tbody id="listArea">
+    <tbody id="listArea2">
     <%
      for(OneQ one : list2) {%>
       <tr onclick="javascript:fnMove('<%=one.getPostcode() %>')">
@@ -375,7 +375,7 @@ function fnMoves(postCode) {
 
 <script>
 		$(function(){
-			$("#listArea th").mouseenter(function(){
+			$("#listArea2 td").mouseenter(function(){
 				$(this).parent().css({"background":"#ffff4d", "cursor":"pointer"});
 			}).mouseout(function(){
 				$(this).parent().css({"background":"white"});
@@ -406,9 +406,9 @@ function fnMoves(postCode) {
       </tr>
     </thead>
     
-    <tbody id="listArea">
+    <tbody id ="listArea2">
        <%for(Declaration de : list3) {%>
-        <tr onclick="javascript:fnMove3('<%=de.getDeclNo() %>')">
+        <tr onclick="javascript:fnMove3(' <%=de.getDeclNo() %>')">
       
       <td><%=de.getDeclReason() %></td>
       <td><%=de.getDeclDate() %></td>
@@ -426,7 +426,7 @@ function fnMoves(postCode) {
 	
 <script>
 		$(function(){
-			$("#listArea th").mouseenter(function(){
+			$("#listArea2 td").mouseenter(function(){
 				$(this).parent().css({"background":"#ffff4d", "cursor":"pointer"});
 			}).mouseout(function(){
 				$(this).parent().css({"background":"white"});
