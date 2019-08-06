@@ -38,5 +38,15 @@ public class PaymentService {
 		return pay;
 	}
 
+	public String selectpay(String reqNo, String driverNo) {
+		Connection con = getConnection();
+		
+		String payNo = new PaymentDao().selectpay(con,reqNo,driverNo);
+		
+		close(con);
+		
+		return payNo;
+	}
+
 }
 

@@ -72,17 +72,48 @@ public class PaymentDao {
 				pay = new Payment();
 				
 				pay.setPayNo(rset.getString(""));
-				
-				
-			}
 			
+			}
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-	
 		return pay;
+	}
+
+
+	public String selectpay(Connection con, String reqNo, String driverNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String payNo = null;
+		
+		
+		String query = prop.getProperty("selectpayNo");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, reqNo);
+			pstmt.setString(2, driverNo);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				payNo = rset.getString("PAY_NO");
+				System.out.println(payNo);
+			}
+			
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return payNo;
 	}
 }

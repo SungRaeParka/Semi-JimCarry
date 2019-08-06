@@ -38,7 +38,7 @@ int refunPri=0;
 String msg="";
 
 if(tempday<=0){
-	msg = "당일 취소는 불가능 합니다.";
+	msg = "당일 취소는 불가능 합니다. \n 취소 신청을 하실경우, 환불을 받으실수 없습니다.";
 	
 }else if(tempday>=1 && tempday<=3){
 	msg = "고객님의 남은 예약일수는 "+tempday+"이며, 환불 금액은 "+(int)(price*0.3)+"입니다.  \n 정말 취소신청 하시겠습니까?";
@@ -121,13 +121,16 @@ if(tempday<=0){
 			var reason = $("#matchingCancel option:selected").val();
 			
 			console.log(reqNo);
+			console.log(reason);
 			
 			$.ajax({
 				url:"/semi/reqCancelApply.jc",
 				type:"post",
 				data:{
 					reqNo:reqNo,
-					reason:reason
+					reason:reason,
+					tempday:<%=tempday%>,
+					price:<%=price%>
 				},
 				sucess:function(data){
 					alert("접속완료");
@@ -138,7 +141,6 @@ if(tempday<=0){
 			})
 			window.opener.location.reload();
 			window.close();
-			
 		})
 	})
 	
