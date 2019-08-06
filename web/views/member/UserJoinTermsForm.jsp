@@ -9,10 +9,12 @@
   <script src="</script'>http://code.jquery.com/jquery-1.10.2.js'"></script>
   <script src="</script'>http://code.jquery.com/ui/1.11.4/jquery-ui.js'"></script>
   <link rel="stylesheet" href="/resources/demos/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Cute+Font&display=swap&subset=korean" rel="stylesheet">
    <style type="text/css">
     #d1{
      width:770px;
      margin:0 auto;
+     font-family: 'Sunflower', sans-serif;"
     }
     #btn{
 		height:30px;
@@ -23,6 +25,7 @@
 		font-size:15px;
 		background:#5e5e5e;
 		color:#ffffff;
+		font-family: 'Sunflower', sans-serif;"
 	}
     
    </style>
@@ -531,11 +534,7 @@
    </div>
     <h3 align="right"><a href="#"><font size="2">개인정보 수집 및 이용에 대한 안내(필수)</font><input type="checkbox" name="c2" id="c2"/></a></h3>
  </div>
-  <tr>
-   <td align="left"><font size="2">이벤트 등 프로모션 알림 메일 수신(선택)</font></td>
-   <td><input type="checkbox" name="c4" id="c4"></td>
-   <hr>
-  </tr>
+	<hr>
  
  <div align="center">
   <br/>

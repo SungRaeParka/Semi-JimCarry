@@ -79,6 +79,9 @@
 		height:30px;
 		width:100px;
 	}
+	#main {
+		margin-top: 10%;
+	}
 </style>
 </head>
 <body>

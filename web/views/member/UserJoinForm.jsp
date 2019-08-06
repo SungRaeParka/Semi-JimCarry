@@ -9,6 +9,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Cute+Font&display=swap&subset=korean" rel="stylesheet">
 <style>
 	input {
 		height:40px;
@@ -128,7 +129,7 @@
 			</tr>
 			<tr>
 				<td></td>
-				<td><button id="join">가입하기</button></td>
+				<td><input type="button" id="join" value="가입하기" onclick="joinok();"></td>
 			</tr>
 		</table>
 		</form>
@@ -136,6 +137,9 @@
 		<script>
 		
 		$(function(){
+			num = 0;
+			num1 = 0;
+			
 			$("#check").click(function(){
 				var userId = $("#userId").val();
 				
@@ -156,20 +160,8 @@
 						console.log("실패!");
 					}
 				});
-			});
-		});
-
-		$("#join").click(function() {
-			// if문으로 비밀번호가 틀리면 출력
-			var pwd = $("#password").val();
-	        var pwd1 = $("#password1").val();
-	        if(pwd != pwd1){	
-				window.confirm("비밀번호가 틀립니다. 다시입력하세요");	            	
-	        }else{
-	        	$("form").submit();
-	        }
-		});	
-		
+			});	
+	
 		$("#checkPhone").click(function(){
 			var tel1 = $("input[name='tel1']").val();
 			var tel2 = $("input[name='tel2']").val();
@@ -211,6 +203,7 @@
 							$("#checkNo").attr({"readonly":"true"});
 							$("#checkNumber").hide();
 							alert("인증이 완료되었습니다.");
+							num = 1;
 						}else{
 							alert("인증번호가 틀렸습니다. 다시 입력하세요.");
 							$("#checkPhone").show();
@@ -222,9 +215,7 @@
 					alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 			    }			
 			});
-			
-
-		
+		});
 		$("#password").keyup(function(){
 			$("font[name=check]").text("");
 		});
@@ -235,13 +226,20 @@
 			}else{
 				$("font[name=check1]").text("");
 				$("font[name=check1]").html("비밀번호 일치");
-				$("#join").click(function() {
-					$("form").submit();	
-				});
+				num1 = 1;
 			}
-
 		});
-		
+	});
+	
+	function joinok(){
+		if(num >= 1 && num1 >= 1){	
+				$("form").submit();
+		}else if(num >= 1 && num1 <= 1){
+			alert("정보를 정확히 입력하세요~");
+		}else if(num1 >= 1 && num <= 1){
+			alert("본인인증을 하세요~");
+		}	
+	}
 		</script>
 	
 </body>

@@ -131,7 +131,10 @@ $(function(){
 		background:#5e5e5e;
 		color:#ffffff;
 		cursor: pointer;
-	}	
+	}
+	#main {
+		margin-top: 10%;
+	}
 </style>
 </head>
 <body>

@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Cute+Font&display=swap&subset=korean" rel="stylesheet">
 <style>
 
 	input {
@@ -15,9 +16,11 @@
 		border-radius:10px;
 		margin-top:10px;
 		font-size:15px;
+		font-family: 'Sunflower', sans-serif;"
 	}
 	#join{
 		margin-top:2px;
+		font-family: 'Sunflower', sans-serif;"
 	}
 	#login{
 		height:50px;
@@ -28,27 +31,31 @@
 		font-size:15px;
 		background:#5e5e5e;
 		color:#ffffff;
+		font-family: 'Sunflower', sans-serif;"
 	}
 	#naver{
 		height:50px;
 		width:300px;
 		margin-top:5px;
+		font-family: 'Sunflower', sans-serif;"
 	}
 	#kakao{
 		height:50px;
 		width:300px;
 		margin-top:5px;
+		font-family: 'Sunflower', sans-serif;"
 	}
 	#ot{
 		height:15px;
 		width:20px;
+		font-family: 'Sunflower', sans-serif;"
 	}
 </style>
 </head>
 <body>
 <br><br><br>
 	<div align="center">
-		<h1>짐캐리</h1>
+			<img src="/semi/images/main_logo.png" style="width: 350px; height: 200px; display: block; margin-left: auto; margin-right: auto;">			
 	</div>
 	<form action="<%=request.getContextPath()%>/login.me" method="post">
 	<div align="center">
@@ -66,7 +73,6 @@
 	</div>
 	<div align="center">
 		<a><button id="login" onclick="ok();">로그인</button></a><br>
-		<a href="#"><img src="../../images/logo.PNG" id="logo"></a>
 	</div>
 	</form>
 	<script>
