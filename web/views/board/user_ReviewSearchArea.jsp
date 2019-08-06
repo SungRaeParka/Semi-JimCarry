@@ -32,6 +32,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link href="https://fonts.googleapis.com/css?family=Cute+Font&display=swap&subset=korean" rel="stylesheet">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <script
@@ -77,7 +78,7 @@ ul, li {list-style-none;
 th {
 	padding: 2px;
 	border-bottom: 1px solid #eeeeee;
-	background: #E5ecef;
+	background: #abfad3;
 	text-align: center;
 }
 
@@ -102,6 +103,38 @@ a.btn_02 {
 		margin: 0 auto;
 	}
 
+	button {
+	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #f6f6f6));
+	background:-moz-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+	background:-webkit-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+	background:-o-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+	background:-ms-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+	background:linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f6f6f6',GradientType=0);
+	background-color:#ffffff;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	cursor:pointer;
+	color:#666666;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:1px 8px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+}
+button:hover {
+background:linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f6f6f6', endColorstr='#ffffff',GradientType=0);
+	background-color:#f6f6f6;
+}
+
 
 </style>
 
@@ -116,7 +149,7 @@ a.btn_02 {
 	<br>
 	<br>
 	<div class="boardcss_list_table"
-		style="margin: 0 auto; border: 1px solid red; width: 700px; height: 600px;">
+		style="margin: 0 auto; width: 700px; height: 600px;">
 
 		<div
 			style="margin: 0 auto; border: 1px solid red; width: 300px; height: 100px;">
@@ -181,7 +214,7 @@ a.btn_02 {
 			<% for(int p = startPage; p <= endPage; p++){
 				if(currentPage == p){
 			%>
-					<button disabled style="color:red;"><%= p %></button>
+					<button disabled style="color:skyblue;"><%= p %></button>
 			<% } else { %>
 					<button onclick="location.href='<%=request.getContextPath()%>/search.bo?currentPage=<%=p%>&searchCondition=<%=searchCondition%>&word=<%=word %>'"><%= p %></button>
 			<%

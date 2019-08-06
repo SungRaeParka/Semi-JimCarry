@@ -36,7 +36,7 @@
 .outer {
 	width: 800px;
 	height: 650px;
-	border: 1px solid red;
+
 	color: black;
 	margin-left: auto;
 	margin-right: auto;
@@ -58,6 +58,48 @@ table {
 	color: white;
 	margin: 0 auto;
 	width: 200px;
+}
+button {
+	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #f6f6f6));
+	background:-moz-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+	background:-webkit-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+	background:-o-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+	background:-ms-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+	background:linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f6f6f6',GradientType=0);
+	background-color:#ffffff;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	cursor:pointer;
+	color:#666666;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:1px 8px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+}
+button:hover {
+background:linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f6f6f6', endColorstr='#ffffff',GradientType=0);
+	background-color:#f6f6f6;
+}
+.imgrog{
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	width:85px;
+	margin-left: 100px;
+
+
+
+
 }
 </style>
 <%-- <script type="text/javascript">
@@ -136,15 +178,20 @@ td {
 </head>
 <body>
 
-	<%@ include file="/views/common/main_TopBar.jsp"%>
 	<%@ include file="/views/common/user_TopBar.jsp"%>
+		<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br><br><br><br><br><br><br><br><br><br>
 
-	<br>
-	<br>
-	<br>
-	<br>
 
-	<h2 align="center">짐캐리 사용후기</h2>
+		<div
+			style="margin: 0 auto; width: 300px; height: 100px;">
+			<img src="/semi/images/main_logo.png" class="imgrog"><h2 style="text-align: center;">짐캐리 사용후기  수정</h2>
+		</div>
 
 	<br>
 	<br>
@@ -155,7 +202,7 @@ td {
 			<div class="insertArea">
 				<table align="center" border=1>
 					<tr>
-						<td width="100px" height="50px" align="center">제목</td>
+						<td width="100px" height="50px" align="center" style="background: #abccff;">제목</td>
 						<td colspan="4"><input type="text" size=40 name="btitle"
 							value="<%=b.getPostTitle()%>"> <input type="hidden"
 							name="pagebno" value="<%=b.getPostCode()%>" />
@@ -165,16 +212,16 @@ td {
 
 					</tr>
 					<tr align="center">
-						<td height="50x">작성자</td>
-						<td style="width: 150px"><label for=""><%=loginUser.getUserId() %></label></td>
-						<td>작성일자</td>
-						<td><label for=""><%=date1%></label></td>
+						<td height="50x" style="background: #abccff;">작성자</td>
+						<td style="width: 150px; background: #e3f2fd;"><label for=""><%=loginUser.getUserId() %></label></td>
+						<td style="background: #abccff;">작성일자</td>
+						<td style="background: #e3f2fd;"><label for=""><%=date1%></label></td>
 					</tr>
 
 					<tr>
-						<td style="color: red; height: 50px;" align="center">기존 이미지</td>
+						<td style="height: 50px; background: #abccff;" align="center" >기존 이미지</td>
 
-						<td colspan="3" style="color: red; text-align: center;">
+						<td colspan="3" style="text-align: center;">
 
 						<img  src="<%=request.getContextPath()%>/images_uploadFiles/<%=photo1.getChangeName()%>">
 							<input type="hidden" name="img1" value="<%=photo2.getOriginName() %>">
@@ -187,7 +234,7 @@ td {
 
 
 					<tr>
-						<td height="100px" style="color: red; height: 50px;"
+						<td height="100px" style="height: 50px; background: #abccff;"
 							align="center" rowspan="2">이미지</td>
 
 
@@ -206,7 +253,7 @@ td {
 
 
 					<tr>
-						<th align="center" style="color: red">내용</th>
+						<th align="center" style="background: #abccff;">내용</th>
 						<td colspan="4"><textarea cols="40%" rows="10%"
 								maxlength="2048" placeholder="글 내용" name="bcontent"><%=b.getPostContents() %></textarea>
 
