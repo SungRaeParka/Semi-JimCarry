@@ -10,10 +10,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Properties;
 
+import com.kh.jimcarry.member.model.vo.Member;
 import com.kh.jimcarry.serviceCenter.model.vo.Attachment;
-import com.kh.jimcarry.serviceCenter.model.vo.Notice;
 import com.kh.jimcarry.serviceCenter.model.vo.OneQ;
-import com.kh.jimcarry.serviceCenter.model.vo.QandA;
 
 import static com.kh.jimcarry.common.JDBCTemplate.*;
 
@@ -204,6 +203,7 @@ public class OneQDao {
 		ResultSet rset = null;
 		ArrayList<OneQ> list2 = null;
 		
+		
 		String query = prop.getProperty("selectListWithPaging");
 		
 		try {
@@ -214,9 +214,13 @@ public class OneQDao {
 			int startRow = (currentPage2 - 1) * limit2 + 1;
 			int endRow=startRow + limit2 -1;
 			
+			
+			
 			pstmt.setString(1, "1:1문의");
 			pstmt.setInt(2, startRow);
 			pstmt.setInt(3, endRow);
+			
+			
 			
 			rset=pstmt.executeQuery();
 			
@@ -247,6 +251,11 @@ public class OneQDao {
 			close(pstmt);
 		}
 		return list2;
+	}
+
+	private String getPostNo() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	//첨부파일 insert

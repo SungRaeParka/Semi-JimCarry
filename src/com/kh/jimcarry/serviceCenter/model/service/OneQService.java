@@ -3,6 +3,7 @@
 import java.sql.Connection;
 import java.util.ArrayList;
 
+import com.kh.jimcarry.member.model.vo.Member;
 import com.kh.jimcarry.serviceCenter.model.dao.OneQDao;
 import com.kh.jimcarry.serviceCenter.model.dao.QandADao;
 import com.kh.jimcarry.serviceCenter.model.vo.Attachment;

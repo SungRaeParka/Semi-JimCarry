@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.kh.jimcarry.serviceCenter.model.vo.PageInfo;
+import com.kh.jimcarry.member.model.vo.Member;
 import com.kh.jimcarry.serviceCenter.model.service.DeclarationService;
 import com.kh.jimcarry.serviceCenter.model.service.NoticeService;
 import com.kh.jimcarry.serviceCenter.model.service.OneQService;
@@ -62,7 +63,6 @@ import com.kh.jimcarry.serviceCenter.model.vo.QandA;
 		int endPage1;
 		int endPage2;
 		int endPage3;
-		
 		
 		
 		currentPage =1 ;
@@ -133,13 +133,16 @@ import com.kh.jimcarry.serviceCenter.model.vo.QandA;
 		PageInfo pi3=
 				new PageInfo(currentPage3, listCount3, limit3, maxPage3, startPage3, endPage3);
 		
+		
 		ArrayList<Notice> list = new NoticeService().selectList(currentPage, limit);
 		ArrayList<QandA> list1=new QandAService().selectList(currentPage1, limit1);
 		ArrayList<OneQ> list2=new OneQService().selectList(currentPage2, limit2);
 		ArrayList<Declaration> list3=new DeclarationService().selectList(currentPage3, limit3);
 		
+		
 		System.out.println("list1 : " + list1.size());
 		System.out.println("list2 : " + list2.size());
+		
 		
 		String page = "";
 		
