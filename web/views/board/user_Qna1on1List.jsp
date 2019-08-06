@@ -118,7 +118,7 @@ button{
 	<%if(currentPage >= maxPage){ %>
 	<button disabled>다음</button>
 	<%}else { %>
-	<button input="button" onclick="location.href='<%=request.getContextPath() %>/noticelist.no?currentPage=<%=currentPage + 1 %>'">다음</button>
+	<button input="button" onclick=" location.href='<%=request.getContextPath() %>/noticelist.no?currentPage=<%=currentPage + 1 %>'">다음</button>
 	<%} %>
 	
 	<button onclick="location.href='<%=request.getContextPath() %>/noticelist.no?currentPage=<%=maxPage %>'">끝으로</button>
