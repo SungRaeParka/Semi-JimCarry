@@ -134,9 +134,22 @@ background:linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f6f6f6', endColorstr='#ffffff',GradientType=0);
 	background-color:#f6f6f6;
 }
+.imgrog{
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	width:85px;
+	margin-left: 100px;
 
 
+
+
+}
 </style>
+
+
+
+
 
 <title>Insert title here</title>
 </head>
@@ -148,13 +161,19 @@ background:linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
 	<br>
 	<br>
 	<br>
+	<br>
+	<br><br><br><br><br><br><br><br><br><br>
+
+
+		<div
+			style="margin: 0 auto; width: 300px; height: 100px;">
+			<img src="/semi/images/main_logo.png" class="imgrog"><h2 style="text-align: center;">짐캐리 사용후기</h2>
+		</div>
+
 	<div class="boardcss_list_table"
 		style="margin: 0 auto; width: 700px; height: 600px;">
 
-		<div
-			style="margin: 0 auto; border: 1px solid red; width: 300px; height: 100px;">
-			<h2>짐캐리 사용후기</h2>
-		</div>
+
 		<div>
 			<%if(loginUser.getUdCheck().equalsIgnoreCase("U")){ %>
 			<a onclick="location.href='views/board/user_ReviewInsert.jsp'" class="btn_02">글쓰기</a>
