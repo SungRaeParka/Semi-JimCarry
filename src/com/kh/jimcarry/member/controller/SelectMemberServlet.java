@@ -40,7 +40,7 @@ public class SelectMemberServlet extends HttpServlet {
 		String page ="";
 
 		if(list != null) {
-			page = "views/member/DriverMyPage2.jsp";
+			page = "views/member/UserMyPage2.jsp";
 			HttpSession session = request.getSession();
 			session.setAttribute("list", list);
 		}else {

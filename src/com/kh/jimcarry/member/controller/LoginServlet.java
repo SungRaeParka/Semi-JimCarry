@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.kh.jimcarry.member.model.service.MemberService;
+import com.kh.jimcarry.member.model.vo.AttachmentMember;
 import com.kh.jimcarry.member.model.vo.DriverList;
 import com.kh.jimcarry.member.model.vo.Member;
 
@@ -43,7 +44,8 @@ public class LoginServlet extends HttpServlet {
 		
 		Member loginUser = new MemberService().loginCheck(userId, userPwd);
 		Member loginDriver = new MemberService().driverLoginCheck(userId, userPwd);
-		System.out.println( "테스트~ : " + loginDriver);
+		ArrayList<AttachmentMember> attachment = new MemberService().driverAttachment(userId, userPwd);
+		System.out.println("atc : " + attachment);
 		String page = "";
 		
 		if(loginUser != null && loginUser.getStatusCheck().equals("N")) {
@@ -62,6 +64,7 @@ public class LoginServlet extends HttpServlet {
 					HttpSession session = request.getSession();
 					session.setAttribute("loginUser", loginUser);
 					session.setAttribute("loginDriver", loginDriver);
+					session.setAttribute("attachment", attachment);
 					response.sendRedirect("views/driver_MainPage.jsp");
 				}
 			}else {

@@ -29,13 +29,10 @@ public class DeleteMemberServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String status = "Y";
-		System.out.println(status);
 		String userId = request.getParameter("hid");
 		System.out.println(userId);
 		
 		Member m = new Member();
-		m.setStatusCheck(status);
 		m.setUserId(userId);
 		
 		int result = new MemberService().userDelete(m);

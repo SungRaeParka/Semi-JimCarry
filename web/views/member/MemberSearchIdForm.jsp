@@ -58,6 +58,10 @@
 			</tr>
 			<tr>
 				<td></td>
+				<td><input type="password" name="confirm" id="box"></td>
+			</tr>
+			<tr>
+				<td></td>
 				<td><a href="/semi/views/member/popup/MemberIdView.jsp"><button id="join" onclick="ok();">완료</button></a></td>
 			</tr>
 		</table>

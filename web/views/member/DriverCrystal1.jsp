@@ -2,6 +2,7 @@
     pageEncoding="UTF-8" import="java.util.*, com.kh.jimcarry.member.model.vo.*"%>
 <%
 	Member loginDriver = (Member) session.getAttribute("loginDriver");
+ArrayList<AttachmentMember> attachment = (ArrayList<AttachmentMember>) session.getAttribute("attachment");
 %>
 <!DOCTYPE html>
 <html>
@@ -95,6 +96,7 @@
     			<li class="active"><a href="#home">회원정보</a></li>
     			<li><a href="/semi/driverList.me">이용내역</a></li>
   			</ul>
+  		</div>
 
   			<div class="tab-content">
     			<div id="home" class="tab-pane fade in active" style="border: 1px solid black">
@@ -104,6 +106,7 @@
     					<tr class="updateMemberInfo">
     						<td><label>아이디 : </label></td>
     						<td><input type="text" name="userId" value="<%=loginDriver.getUserId() %>" readonly></td>
+    						<td><input type="hidden" name="seqNo" value="<%=loginDriver.getSeqNo() %>" readonly></td>
     					</tr>
     					<tr class="updateMemberInfo">
     						<td><label>비밀번호 : </label>&nbsp;&nbsp;</td>
@@ -155,23 +158,28 @@
 						</tr>
 						<tr class="updateMemberInfo">
 							<td><label>본인사진 :</label>
-							<td><input type="file" name="idPhoto" value="<%=loginDriver.getIdPhoto() %>"></td>
+							<td><input type="file" name="idPhoto" value="<%=attachment.get(0) %>"></td>
+							<td><input type="hidden" name="hid" value="<%=attachment.get(0).getAttachNo() %>"></td>
 						</tr>
 						<tr class="updateMemberInfo">
 							<td><label>차량등록증 :</label>
-							<td><input type="file" name="certificate" value="<%=loginDriver.getCertificate() %>"></td>
+							<td><input type="file" name="certificate" value="<%=attachment.get(1)%>"></td>
+							<td><input type="hidden" name="hid1" value="<%=attachment.get(1).getAttachNo() %>"></td>
 						</tr>
 						<tr class="updateMemberInfo">
 							<td><label>통장사본 :</label>
-							<td><input type="file" name="bankBook" value="<%=loginDriver.getBankBook() %>"></td>
+							<td><input type="file" name="bankBook" value="<%=attachment.get(2) %>"></td>
+							<td><input type="hidden" name="hid2" value="<%=attachment.get(2).getAttachNo() %>"></td>
 						</tr>
 						<tr class="updateMemberInfo">
 							<td><label>사업자등록증 :</label>
-							<td><input type="file" name="attestation" value="<%=loginDriver.getAttestation() %>"></td>
+							<td><input type="file" name="attestation" value="<%=attachment.get(3) %>"></td>
+							<td><input type="hidden" name="hid3" value="<%=attachment.get(3).getAttachNo() %>"></td>
 						</tr>   					
     					<tr class="updateMemberInfo">
     						<td colspan="2"><input type="button" value="수정 완료" id="updateMemberbtn" onclick="updateOk();"></td>    						
     					</tr>
+    					</table>
     				</form>
     			</div>
     			<div id="menu1" class="tab-pane fade">
@@ -180,7 +188,6 @@
     			</div>    	
   			</div>
 		</div>
-	</div>
 
 	<script>
 	function sample6_execDaumPostcode(){

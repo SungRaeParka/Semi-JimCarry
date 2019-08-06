@@ -119,17 +119,15 @@ public class MemberService {
 		int result = 0;
 		
 		int result1 = new MemberDao().updateMember(con, m);
-		System.out.println(result1);
 		if(result1 > 0) {
 			int result2 = new MemberDao().updateDriver(con, m);
 			if(result2 > 0) {
+				commit(con);
 				System.out.println("r2 : " +result2);
 			}
-			AttachmentMember result3 = new MemberDao().attachnoSelect(con,  m, fileList);
-			System.out.println( " res:" + result3);
-			int result4 = new MemberDao().updateAttachment(con, fileList);
-			System.out.println("r3 :" +result4);
-			if(result1 > 0 && result2 > 0 && result4 > 0) {
+			int result3 = new MemberDao().updateAttachment(con, fileList);
+			System.out.println("r3 :" +result3);
+			if(result1 > 0 && result2 > 0 && result3 > 0) {
 				commit(con);
 				result = 1;
 			}else {
@@ -173,6 +171,16 @@ public class MemberService {
 		close(con);
 		
 		return result;
+	}
+
+	public ArrayList<AttachmentMember> driverAttachment(String userId, String userPwd) {
+		Connection con = getConnection();
+		
+		ArrayList<AttachmentMember> attachment = new MemberDao().driverAttachment(con, userId, userPwd);
+		
+		close(con);
+		
+		return attachment;
 	}
 
 	

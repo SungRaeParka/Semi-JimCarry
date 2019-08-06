@@ -64,12 +64,12 @@
 			</tr>
 			<tr>
 				<td><label>비밀번호</label></td>
-				<td><input type="password" name="password" id="password" placeholder="비밀번호 입력"></td>
+				<td><input type="password" name="password" id="password" placeholder="비밀번호 입력" class="form-control"></td>
 			</tr>
 			<tr>
 				<td><label>비밀번호 재확인</label></td>
-				<td><input type="password" name="password1" id="password1" placeholder="비밀번호 재입력"></td>
-		<!--  	<td><button id="pwdCheck" onclick="pwdCheck();">확인</button><td> -->
+				<td><input type="password" name="password1" id="password1" placeholder="비밀번호 재입력" class="form-control"></td>
+				<td><font name="check1" size="2" color="red"></font></td>
 			</tr>
 			<tr>
 				<td><label>휴대폰 번호</label></td>
@@ -115,15 +115,21 @@
 				});
 			});
 		});
-		$("#join").click(function() {
-			// if문으로 비밀번호가 틀리면 출력
-			var pwd = $("#password").val();
-	        var pwd1 = $("#password1").val();
-	        if(pwd != pwd1){	
-				window.confirm("비밀번호가 틀립니다. 다시입력하세요");	            	
-	        }else{
-	        	$("form").submit();
-	        }
+		
+		$("#password").keyup(function(){
+			$("font[name=check]").text("");
+		});
+		$("#password1").keyup(function(){
+			if($("#password").val()!= $("#password1").val()){
+				$("font[name=check1]").text("");
+				$("font[name=check1]").html("비밀번호 불일치");
+			}else{
+				$("font[name=check1]").text("");
+				$("font[name=check1]").html("비밀번호 일치");
+				$("#join").click(function() {
+					$("form").submit();	
+				});
+			}
 		});
 		
 		</script>
