@@ -20,21 +20,15 @@
 <html>
 <head>
 <style>
+
 	.outer {
 		width: 800px;
-		height: 600px;
-		border: 1px solid red;
+		height: 500px;
+
 		margin-left: auto;
 		margin-right: auto;
 		margin-top: auto;
 	}
-/* 	#imgArea td {
-		width: 200px;
-		height: 250px;
-		background: 3px solid red;
-
-
-	} */
 
 	.detailImg{
 		width: 320px;
@@ -51,45 +45,128 @@
 
 }
 
+.imgrog{
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	width:85px;
+	margin-left: 100px;
+}
+button{
+	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #f6f6f6));
+	background:-moz-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+	background:-webkit-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+	background:-o-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+	background:-ms-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+	background:linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f6f6f6',GradientType=0);
+	background-color:#ffffff;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	cursor:pointer;
+	color:#666666;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:1px 8px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+
+
+}
+
+
+.emdfhr{
+	-moz-box-shadow: 0px 1px 0px 0px #f0f7fa;
+	-webkit-box-shadow: 0px 1px 0px 0px #f0f7fa;
+	box-shadow: 0px 1px 0px 0px #f0f7fa;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #00bfff), color-stop(1, #00bbff));
+	background:-moz-linear-gradient(top, #00bfff 5%, #00bbff 100%);
+	background:-webkit-linear-gradient(top, #00bfff 5%, #00bbff 100%);
+	background:-o-linear-gradient(top, #00bfff 5%, #00bbff 100%);
+	background:-ms-linear-gradient(top, #00bfff 5%, #00bbff 100%);
+	background:linear-gradient(to bottom, #00bfff 5%, #00bbff 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#00bfff', endColorstr='#00bbff',GradientType=0);
+	background-color:#00bfff;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:1px solid #009dff;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+
+	text-decoration:none;
+	text-shadow:0px -1px 0px #5b6178;
+	height: 54px;
+
+
+}
+
+
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css?family=Sunflower:300&display=swap" rel="stylesheet">
 <title>Insert title here</title>
 </head>
 
 <body>
 	<%@include file="/views/common/driver_TopBar.jsp" %>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br><br><br><br><br><br><br><br><br><br>
+		<div
+			style="margin: 0 auto; width: 300px; height: 100px;">
+			<img src="/semi/images/main_logo.png" class="imgrog"><h2 style="text-align: center;">짐캐리 사용후기 작성</h2>
+		</div>
+		<br>
+
 	<%if(loginUser != null){ %>
+
+	<input type="hidden" id="loginUser" value="<%=loginUser.getSeqNo()%>">
 	<div class="outer">
-		<h2 align="center">게시판 상세 보기</h2>
 		<div class="tableArea">
-			<table align="center" border="1">
+			<table align="center" border="1" class="table1">
 				<tr>
-					<td width="50px" height="40px" align="center">제목</td>
+					<td width="50px" height="40px" align="center" style="background:#abccff;">제목</td>
 					<td colspan="5">
 						<label for=""><%=b.getPostTitle() %></label>
 					</td>
 				</tr>
 
 				<tr align="center">
-					<td width="50px" height="40px">작성자</td>
-					<td><label for=""><%=b.getWriter() %></label></td>
-					<td>조회수</td>
-					<td><label for=""><%=b.getbCount() %></label></td>
-					<td>작성일</td>
-					<td><label for=""><%=b.getPostDate() %></label></td>
+					<td width="50px" height="40px" style="background:#abccff;">작성자</td>
+					<td style="background:#e3f2fd;"><label for=""><%=b.getWriter() %></label></td>
+					<td style="background:#abccff;">조회수</td>
+					<td style="background:#e3f2fd;"><label for=""><%=b.getbCount() %></label></td>
+					<td style="background:#abccff;" >작성일</td>
+					<td style="background:#e3f2fd;"><label for=""><%=b.getPostDate() %></label></td>
 
 				</tr>
 
 				<tr>
-					<td>이미지</td>
+					<td style="background:#abccff;">이미지</td>
 					<td colspan="3">
 						<div id="imgArea">
 							<img src="<%=request.getContextPath() %>/images_uploadFiles/<%=photo1.getChangeName() %>" id="photo1" class="detailImg" />
 						</div>
 					</td>
 
-					<td colspan="2">
+					<td colspan="2" >
 						<div id="imgArea">
 							<img src="<%=request.getContextPath() %>/images_uploadFiles/<%=photo2.getChangeName() %>" id="photo2" class="detailImg" />
 						</div>
@@ -97,7 +174,7 @@
 
 				</tr>
 					<tr>
-						<td align="center">내용</td>
+						<td align="center" style="background:#abccff;">내용</td>
 						<td colspan="6"><textarea cols="69%" rows="6%"
 								maxlength="2048" name="bcontent" readonly="readonly" id="bContent"><%=b.getPostContents() %></textarea>
 

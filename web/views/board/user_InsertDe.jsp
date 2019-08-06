@@ -25,8 +25,7 @@
 </head>
 <body>
 	<%@ include file="/views/common/user_TopBar.jsp"%>
-	<br><br>
-
+<div style="margin-top: 30%">
 <h1 align="center">신고합니다</h1>
 <form action="<%=request.getContextPath() %>/declaration.de" method="post">
 <table>
@@ -70,6 +69,6 @@
 		<button type="reset" value="취소하기"> 취소하기</button>
 	</div>
 	</form>
-	
+</div>
 </body>
 </html>

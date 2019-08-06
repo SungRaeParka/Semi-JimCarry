@@ -66,7 +66,7 @@ span{
 <body>
 	<%@ include file="/views/common/driver_TopBar.jsp"%>
 	
-<div class="container">
+<div class="container" style="margin-top: 20%;">
 <br><br><br>
   <h2>공지사항</h2>
   <table class="table table-hover" >
