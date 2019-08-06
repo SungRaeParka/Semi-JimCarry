@@ -223,9 +223,9 @@ td {
 
 						<td colspan="3" style="text-align: center;">
 
-						<img  src="<%=request.getContextPath()%>/images_uploadFiles/<%=photo1.getChangeName()%>">
+						<img  style="width: 100px; height: 100px;" src="<%=request.getContextPath()%>/images_uploadFiles/<%=photo1.getChangeName()%>">
 							<input type="hidden" name="img1" value="<%=photo2.getOriginName() %>">
-						<img  src="<%=request.getContextPath()%>/images_uploadFiles/<%=photo2.getChangeName()%>">
+						<img style="width: 100px; height: 100px;"  src="<%=request.getContextPath()%>/images_uploadFiles/<%=photo2.getChangeName()%>">
 							<input type="hidden" name="img2" value="<%=photo1.getOriginName() %>">
 
 						</td>

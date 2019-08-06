@@ -11,33 +11,33 @@
 <title>Insert title here</title>
 <style>
 	#logoDiv {
-		width: 100%; 
-		height:205px; 
+		width: 100%;
+		height:205px;
 		background: white;
 		position: relative;
 	}
-	
+
 	.front {
 		position: absolute;
 		left: 50%;
 		transform: translateX(-50%);
 	}
-	
+
 	.back {
 		margin-top: 10%;
 	}
-	
+
 	.w3-bar {
 		font-family: 'Sunflower', sans-serif;
 		font-size: 15px;
 	}
-	
+
 	.w3-white {
 		background-color: #FFC730!important;
 		color:white!important;
 	}
 	.w3-button:hover {
-		color: black;	
+		color: black;
 		background: #FFC730!important;
 	}
 </style>
@@ -47,9 +47,9 @@
 	<div class="w3-top" align="center">
 		<div id="logoDiv">
 			<div class="front">
-				<img src="/semi/images/main_logo.png" style="width: 350px; height: 200px; display: block; margin-left: auto; margin-right: auto;">			
+				<img src="/semi/images/main_logo.png" style="width: 350px; height: 200px; display: block; margin-left: auto; margin-right: auto;">
 			</div>
-			<div class="back" style="float:left;">			
+			<div class="back" style="float:left;">
 				<img src="/semi/images/logo_gif.gif">
 			</div>
 		</div>
@@ -66,11 +66,6 @@
 		</div>
 	</div>
 	<script>
-
-	/* 사용후기 */
-	function goBoard(){
-		location.href="/semi/selectList.bo";
-		}
 
 	</script>
 </body>

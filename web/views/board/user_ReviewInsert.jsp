@@ -177,10 +177,16 @@ table {
 				</table>
 				<br>
 				<div class="btnArea" >
-					<button type="reset" class="btn1">취소하기</button>
+					<button onclick="ex();" type="reset" class="btn1">취소하기</button>
 					&nbsp; &nbsp; &nbsp;
 					<button type="submit" class="btn1">작성하기</button>
 				</div>
+
+				<script>
+					function ex(){
+						location.href="<%=request.getContextPath()%>/selectList.bo";
+					}
+				</script>
 
 			</div>
 
