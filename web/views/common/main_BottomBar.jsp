@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="https://fonts.googleapis.com/css?family=Sunflower:300&display=swap" rel="stylesheet">
 <style>
 	ul {
 		list-style-type: none;
@@ -23,13 +24,12 @@
 </style>
 </head>
 <body>
-	<hr>
 	<div style="width:100%; height:30px; background:white;">
 		<div style="display: inline; float:left; margin-left: 3%">
-			<h2>짐 캐리</h2>
+			<img src="/semi/images/main_logo.png" style="width: 150px; height: 100px;">
 		</div>		
-		<div style="display: inline; float:left; margin-top: 2%; margin-left: 2%;">
-			<p>당신의 짐을 캐리 합니다. 추가 금액 없는 투명한 가격으로 친절한 기사님을 만나보세요. </p>
+		<div style="display: inline; float:left; margin-top: 5%; margin-left: 2%;">
+			<span style="font-family: 'Sunflower', sans-serif; font-weight: bold;">당신의 짐을 캐리 합니다. 추가 금액 없는 투명한 가격으로 친절한 기사님을 만나보세요. </span>
 		</div>
 		<div style="float: right; padding-top: 10px; padding-right: 10px;">
 			<ul>

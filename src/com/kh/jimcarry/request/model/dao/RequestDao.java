@@ -321,13 +321,174 @@ public class RequestDao {
 			rset = pstmt.executeQuery();
 
 			list = new ArrayList<Request>();
+			String reqStart = "";
+			String reqArrive = "";
 
 			while(rset.next()) {
 				Request req = new Request();
 
 				req.setReqNo(rset.getString("REQ_NO"));
-				req.setStartPoint(rset.getString("START_POINT"));
-				req.setArrivalPoint(rset.getString("ARRIVE_POINT"));
+				
+				if(rset.getString("START_POINT").contains("강남구")) {
+					reqStart = "서울시 강남구";
+					req.setStartPoint(reqStart);
+				}else if(rset.getString("START_POINT").contains("강동구")) {
+					reqStart = "서울시 강동구";
+					req.setStartPoint(reqStart);
+				}else if(rset.getString("START_POINT").contains("강북구")) {
+					reqStart = "서울시 강북구";
+					req.setStartPoint(reqStart);
+				}else if(rset.getString("START_POINT").contains("강서구")) {
+					reqStart = "서울시 강서구";
+					req.setStartPoint(reqStart);
+				}else if(rset.getString("START_POINT").contains("관악구")) {
+					reqStart = "서울시 관악구";
+					req.setStartPoint(reqStart);
+				}else if(rset.getString("START_POINT").contains("광진구")) {
+					reqStart = "서울시 광진구";
+					req.setStartPoint(reqStart);
+				}else if(rset.getString("START_POINT").contains("구로구")) {
+					reqStart = "서울시 구로구";
+					req.setStartPoint(reqStart);
+				}else if(rset.getString("START_POINT").contains("금천구")) {
+					reqStart = "서울시 금천구";
+					req.setStartPoint(reqStart);
+				}else if(rset.getString("START_POINT").contains("노원구")) {
+					reqStart = "서울시 노원구";
+					req.setStartPoint(reqStart);
+				}else if(rset.getString("START_POINT").contains("도봉구")) {
+					reqStart = "서울시 도봉구";
+					req.setStartPoint(reqStart);
+				}else if(rset.getString("START_POINT").contains("동대문구")) {
+					reqStart = "서울시 동대문구";
+					req.setStartPoint(reqStart);
+				}else if(rset.getString("START_POINT").contains("동작구")) {
+					reqStart = "서울시 동작구";
+					req.setStartPoint(reqStart);
+				}else if(rset.getString("START_POINT").contains("마포구")) {
+					reqStart = "서울시 마포구";
+					req.setStartPoint(reqStart);
+				}else if(rset.getString("START_POINT").contains("서대문구")) {
+					reqStart = "서울시 서대문구";
+					req.setStartPoint(reqStart);
+				}else if(rset.getString("START_POINT").contains("서초구")) {
+					reqStart = "서울시 서초구";
+					req.setStartPoint(reqStart);
+				}else if(rset.getString("START_POINT").contains("성동구")) {
+					reqStart = "서울시 성동구";
+					req.setStartPoint(reqStart);
+				}else if(rset.getString("START_POINT").contains("성북구")) {
+					reqStart = "서울시 성북구";
+					req.setStartPoint(reqStart);
+				}else if(rset.getString("START_POINT").contains("송파구")) {
+					reqStart = "서울시 송파구";
+					req.setStartPoint(reqStart);
+				}else if(rset.getString("START_POINT").contains("강동구")) {
+					reqStart = "서울시 강동구";
+					req.setStartPoint(reqStart);
+				}else if(rset.getString("START_POINT").contains("양천구")) {
+					reqStart = "서울시 양천구";
+					req.setStartPoint(reqStart);
+				}else if(rset.getString("START_POINT").contains("영등포구")) {
+					reqStart = "서울시 영등포구";
+					req.setStartPoint(reqStart);
+				}else if(rset.getString("START_POINT").contains("용산구")) {
+					reqStart = "서울시 용산구";
+					req.setStartPoint(reqStart);
+				}else if(rset.getString("START_POINT").contains("은평구")) {
+					reqStart = "서울시 은평구";
+					req.setStartPoint(reqStart);
+				}else if(rset.getString("START_POINT").contains("종로구")) {
+					reqStart = "서울시 종로구";
+					req.setStartPoint(reqStart);
+				}else if(rset.getString("START_POINT").contains("중구")) {
+					reqStart = "서울시 중구";
+					req.setStartPoint(reqStart);
+				}else if(rset.getString("START_POINT").contains("중랑구")) {
+					reqStart = "서울시 중랑구";
+					req.setStartPoint(reqStart);
+				}
+				
+				
+				if(rset.getString("ARRIVE_POINT").contains("강남구")) {
+					reqArrive = "서울시 강남구";
+					req.setArrivalPoint(reqArrive);
+				}else if(rset.getString("ARRIVE_POINT").contains("강동구")) {
+					reqArrive = "서울시 강동구";
+					req.setArrivalPoint(reqArrive);
+				}else if(rset.getString("ARRIVE_POINT").contains("강북구")) {
+					reqArrive = "서울시 강북구";
+					req.setArrivalPoint(reqArrive);
+				}else if(rset.getString("ARRIVE_POINT").contains("강서구")) {
+					reqArrive = "서울시 강서구";
+					req.setArrivalPoint(reqArrive);
+				}else if(rset.getString("ARRIVE_POINT").contains("관악구")) {
+					reqArrive = "서울시 관악구";
+					req.setArrivalPoint(reqArrive);
+				}else if(rset.getString("ARRIVE_POINT").contains("광진구")) {
+					reqArrive = "서울시 광진구";
+					req.setArrivalPoint(reqArrive);
+				}else if(rset.getString("ARRIVE_POINT").contains("구로구")) {
+					reqArrive = "서울시 구로구";
+					req.setArrivalPoint(reqArrive);
+				}else if(rset.getString("ARRIVE_POINT").contains("금천구")) {
+					reqArrive = "서울시 금천구";
+					req.setArrivalPoint(reqArrive);
+				}else if(rset.getString("ARRIVE_POINT").contains("노원구")) {
+					reqArrive = "서울시 노원구";
+					req.setArrivalPoint(reqArrive);
+				}else if(rset.getString("ARRIVE_POINT").contains("도봉구")) {
+					reqArrive = "서울시 도봉구";
+					req.setArrivalPoint(reqArrive);
+				}else if(rset.getString("ARRIVE_POINT").contains("동대문구")) {
+					reqArrive = "서울시 동대문구";
+					req.setArrivalPoint(reqArrive);
+				}else if(rset.getString("ARRIVE_POINT").contains("동작구")) {
+					reqArrive = "서울시 동작구";
+					req.setArrivalPoint(reqArrive);
+				}else if(rset.getString("ARRIVE_POINT").contains("마포구")) {
+					reqArrive = "서울시 마포구";
+					req.setArrivalPoint(reqArrive);
+				}else if(rset.getString("ARRIVE_POINT").contains("서대문구")) {
+					reqArrive = "서울시 서대문구";
+					req.setArrivalPoint(reqArrive);
+				}else if(rset.getString("ARRIVE_POINT").contains("서초구")) {
+					reqArrive = "서울시 서초구";
+					req.setArrivalPoint(reqArrive);
+				}else if(rset.getString("ARRIVE_POINT").contains("성동구")) {
+					reqArrive = "서울시 성동구";
+					req.setArrivalPoint(reqArrive);
+				}else if(rset.getString("ARRIVE_POINT").contains("성북구")) {
+					reqArrive = "서울시 성북구";
+					req.setArrivalPoint(reqArrive);
+				}else if(rset.getString("ARRIVE_POINT").contains("송파구")) {
+					reqArrive = "서울시 송파구";
+					req.setArrivalPoint(reqArrive);
+				}else if(rset.getString("ARRIVE_POINT").contains("강동구")) {
+					reqArrive = "서울시 강동구";
+					req.setArrivalPoint(reqArrive);
+				}else if(rset.getString("ARRIVE_POINT").contains("양천구")) {
+					reqArrive = "서울시 양천구";
+					req.setArrivalPoint(reqArrive);
+				}else if(rset.getString("ARRIVE_POINT").contains("영등포구")) {
+					reqArrive = "서울시 영등포구";
+					req.setArrivalPoint(reqArrive);
+				}else if(rset.getString("ARRIVE_POINT").contains("용산구")) {
+					reqArrive = "서울시 용산구";
+					req.setArrivalPoint(reqArrive);
+				}else if(rset.getString("ARRIVE_POINT").contains("은평구")) {
+					reqArrive = "서울시 은평구";
+					req.setArrivalPoint(reqArrive);
+				}else if(rset.getString("ARRIVE_POINT").contains("종로구")) {
+					reqArrive = "서울시 종로구";
+					req.setArrivalPoint(reqArrive);
+				}else if(rset.getString("ARRIVE_POINT").contains("중구")) {
+					reqArrive = "서울시 중구";
+					req.setArrivalPoint(reqArrive);
+				}else if(rset.getString("ARRIVE_POINT").contains("중랑구")) {
+					reqArrive = "서울시 중랑구";
+					req.setArrivalPoint(reqArrive);
+				}	
 				req.setReservationDate(rset.getString("RESERVATION_DATE"));
 				req.setReqFinish(rset.getDate("REQ_FINISH"));
 				req.setUserName(rset.getString("MEMBER_NAME"));

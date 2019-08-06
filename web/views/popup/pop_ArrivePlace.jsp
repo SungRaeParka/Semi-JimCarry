@@ -10,7 +10,7 @@
 <body>
 	<form>
 		<div align="center">
-			<span style="font-size:40px; font-weight: bold">출발지 검색</span>
+			<span style="font-size:40px; font-weight: bold">도착지 검색</span>
 		</div>
 		
 		<hr>

@@ -580,13 +580,13 @@ html, body {
 		$(".calculate").click(function(){
 			var price = $(this).next().val();
 			
-			var url = "/semi/views/popup/pop_Driver.calculate.jsp?price="+price;,
+			var url = "/semi/views/popup/pop_Driver.calculate.jsp?price=" + price;
 			var name = "calcPopup";
 			var option = "with=300, height=350, top=30, left=50";
 				
-			swindow.open(url,name,option)
+			swindow.open(url,name,option);
 		})
-	})
+	});
 	
 	
 	$(function(){
