@@ -18,7 +18,7 @@ public class RefundDao {
 	private Properties prop = new Properties();
 	
 	public RefundDao() {
-		String fileName = RequestDao.class.getResource("/sql/payment/refund-query.properties").getPath();
+		String fileName = RefundDao.class.getResource("/sql/payment/refund-query.properties").getPath();
 		
 		try {
 			prop.load(new FileReader(fileName));
@@ -76,7 +76,8 @@ public class RefundDao {
 			pstmt.setString(1, ref.getPayNo());
 			pstmt.setString(2, ref.getReservationDate());
 			pstmt.setInt(3, ref.getPayAmount());
-			pstmt.setString(4, ref.getRefundReason());
+			pstmt.setInt(4, ref.getRefundFees());
+			pstmt.setString(5, ref.getRefundReason());
 			
 			System.out.println(ref.getPayNo());
 			System.out.println(ref.getReservationDate());

@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.kh.jimcarry.payment.model.service.CalculateService;
+import com.kh.jimcarry.payment.model.service.PaymentService;
 import com.kh.jimcarry.request.model.service.RequestService;
 
 
@@ -33,6 +35,7 @@ public class CalcApplyServlet extends HttpServlet {
 		System.out.println(price);
 		System.out.println(calc);
 		
+		
 		int result = new RequestService().updateConditionDo3(reqNo,driverNo);
 		System.out.println("result:" + result);
 		
@@ -42,6 +45,17 @@ public class CalcApplyServlet extends HttpServlet {
 			System.out.println("정산신청 업데이트 실패");
 		}
 		
+		
+		String calNo = new PaymentService().selectpay(reqNo,driverNo);
+		System.out.println("결제이력 번호 : " + calNo);
+		
+		int result2 = new CalculateService().insertCal(driverNo,price,calNo);
+		
+		if(result2 >0) {
+			System.out.println("정산신청 인설트 성공");
+		}else {
+			System.out.println("정산신청 인설트 실패");
+		}
 		
 	}
 
