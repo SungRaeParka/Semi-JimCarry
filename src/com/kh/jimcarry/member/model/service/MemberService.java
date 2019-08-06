@@ -183,6 +183,16 @@ public class MemberService {
 		return attachment;
 	}
 
+	public Member idSelect(Member m) {
+		Connection con = getConnection();
+		
+		Member idSelect = new MemberDao().idSelect(con, m);
+		
+		close(con);
+		
+		return idSelect;
+	}
+
 	
 }
 

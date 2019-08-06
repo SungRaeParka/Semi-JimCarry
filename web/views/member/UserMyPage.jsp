@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Cute+Font&display=swap&subset=korean" rel="stylesheet">
 <title>Insert title here</title>
 <style>
 	html, body{
@@ -20,17 +21,20 @@
 	}
 	.checkPwd, .updateMemberInfo {
 		margin-left:75px;
+		font-family: 'Sunflower', sans-serif;"
 	}
 		
 	#main {
 		min-height: 100%;
 		text-align: center;
+		font-family: 'Sunflower', sans-serif;"
 	}	
 	
 	table {
  	 	border-collapse: separate;
  		border-spacing: 0 20px;
  		text-align:center;
+ 		font-family: 'Sunflower', sans-serif;"
 	}
 	input[type=button]{
 		height:30px;
@@ -42,17 +46,21 @@
 		font-size:15px;
 		background:#5e5e5e; 
 		color:#ffffff;
+		font-family: 'Sunflower', sans-serif;"
 	}
 	#checkPwdbtn {
 		margin-left: 80px;
+		font-family: 'Sunflower', sans-serif;"
 	}
 	#tel1 {
 		height:30px;
 		width:210px;
+		font-family: 'Sunflower', sans-serif;"
 	}
 	#tel {
 		height:30px;
 		width:57px;
+		font-family: 'Sunflower', sans-serif;"
 	}
 	input[type=file]{
 		height:35px;
@@ -63,6 +71,10 @@
 		font-size:15px;
 		background:white;
 		color:black;
+		font-family: 'Sunflower', sans-serif;"
+	}
+	#main {
+		margin-top: 8%;
 	}
 </style>
 </head>

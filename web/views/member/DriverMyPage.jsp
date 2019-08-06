@@ -13,6 +13,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Cute+Font&display=swap&subset=korean" rel="stylesheet">
 <title>Insert title here</title>
 <style>
 	html, body{
@@ -79,18 +80,18 @@
 		height:30px;
 		width:100px;
 	}
+	#main {
+		margin-top: 10%;
+	}
 </style>
 </head>
 <body>
 	<%@ include file="/views/common/driver_TopBar.jsp" %>
-	
 	<div id="main">
 		<div style="display: inline-block; padding-top: 7%;">
-			<b style="font-size: 50px;">마이 페이지</b>
+			<b style="font-size: 50px; font-family:Sunflower, sans-serif;">마이 페이지</b>
 		</div>
-		
     	<form action="<%=request.getContextPath()%>/driverList.me" method="post">
-		<br>
 		<hr>
 		<div class="container" style="display: inline-block">
   			<ul class="nav nav-tabs">
