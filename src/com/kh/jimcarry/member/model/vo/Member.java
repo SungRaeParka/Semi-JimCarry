@@ -28,6 +28,7 @@ public class Member implements java.io.Serializable{
 	private String attestation;
 	private String attachType;
 
+
 	public Member() {}
 
 	public Member(String seqNo, String userName, String userId, String userPwd, String phone, Date enrollDate,
@@ -252,9 +253,12 @@ public class Member implements java.io.Serializable{
 				+ ", carType=" + carType + ", carNo=" + carNo + ", bankName=" + bankName + ", accountNo=" + accountNo
 				+ ", carSize=" + carSize + ", blacklistCheck=" + blacklistCheck + ", joinCheck=" + joinCheck
 				+ ", refuseReason=" + refuseReason + ", idPhoto=" + idPhoto + ", certificate=" + certificate
-				+ ", bankBook=" + bankBook + ", attestation=" + attestation + "]";
+				+ ", bankBook=" + bankBook + ", attestation=" + attestation + ", attachType=" + attachType + "]";
 	}
+	
 
+	
+	
 	
 
 	

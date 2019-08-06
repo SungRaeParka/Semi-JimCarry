@@ -30,6 +30,7 @@ public class ReqCompletedServlet extends HttpServlet {
 		int grade = Integer.parseInt(request.getParameter("grade"));
 		String review = request.getParameter("review");
 		
+		System.out.println("서블릿 호출...");
 		System.out.println(userNo);
 		System.out.println(reqNo);
 		System.out.println(driverNo);
@@ -51,6 +52,21 @@ public class ReqCompletedServlet extends HttpServlet {
 		}else {
 			System.out.println("review정보 입력 실패");
 		}
+		
+		//기사 평점 구하기
+		double gradeAvg = new ReviewService().countGrade(driverNo);
+		System.out.println("기사 평점 : "+gradeAvg);
+		
+		//기사평점 업데이트
+		double result3 = new ReviewService().updateGrade(driverNo,gradeAvg);
+		
+		if(result3>0) {
+			System.out.println("기사 평점 평균 업데이트 성공");
+		}else {
+			System.out.println("기사 평점 평균 업데이트 실패");
+		}
+		
+		
 		
 		int result1 = new RequestService().updateConditionReq2(reqNo);
 		System.out.println("result1:"+result1);

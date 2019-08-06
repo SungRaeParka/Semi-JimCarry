@@ -380,7 +380,7 @@ public class RequestDao {
 				or.setOrderPrice(rset.getInt("ORDER_PRICE"));
 				or.setDriverNo(rset.getString("DRIVER_NO"));
 				or.setDriverName(rset.getString("MEMBER_NAME"));
-				or.setGrade(rset.getString("GRADE"));
+				or.setGrade(rset.getString("GRADE_AVG"));
 
 				System.out.println(or.getReqNo());
 				orderMap.put(or.getReqNo(),or);
@@ -426,8 +426,8 @@ public class RequestDao {
 				ro.setDriverNo(rset.getString("DRIVER_NO"));
 				ro.setOrderPrice(rset.getInt("ORDER_PRICE"));
 				ro.setDriverName(rset.getString("MEMBER_NAME"));
-				ro.setGrade(rset.getString("GRADE"));
-				ro.setReview(rset.getString("REVIEW"));
+				ro.setGrade(rset.getString("GRADE_AVG"));
+				//ro.setReview(rset.getString("REVIEW"));
 				ro.setReqFinish(rset.getDate("REQ_FINISH"));
 
 				rolist.add(ro);
@@ -651,13 +651,88 @@ public class RequestDao {
 		
 		return result;
 	}
+	
+	
+
+	public int updateConditionDo3(Connection con, String reqNo, String driverNo) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String query = prop.getProperty("updateConditionDo");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			
+			pstmt.setString(1, "정산대기");
+			pstmt.setString(2, reqNo);
+			pstmt.setString(3, driverNo);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public int updateConditionReq4(Connection con, String reqNo) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String query = prop.getProperty("updateConditionReq");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, "취소");
+			pstmt.setString(2, reqNo);
+			
+			result = pstmt.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+	
+	
+	public int updateConditionDo4(Connection con, String reqNo) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String query = prop.getProperty("updateConditionDo2");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			
+			pstmt.setString(1, "취소");
+			pstmt.setString(2, reqNo);
+			
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
 
 
 
-
-
-
-
+	
+	
 
 	public int insertRequest(Connection con, Request r) {
 		PreparedStatement pstmt = null;
@@ -1619,6 +1694,49 @@ public class RequestDao {
 		
 	}
 
+
+	public ArrayList<Request> selectList(Connection con, String logUserNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<Request> list = null;
+		
+		String query = prop.getProperty("selectList2");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, logUserNo);
+			
+			rset = pstmt.executeQuery();
+			
+			list = new ArrayList<Request>();
+			
+			while(rset.next()) {
+				Request r = new Request();
+				
+				r.setReqNo(rset.getString("REQ_NO"));
+				r.setReservationDate(rset.getString("RESERVATION_DATE"));
+				r.setReqStart(rset.getDate("REQ_START"));
+				r.setReqFinish(rset.getDate("REQ_FINISH"));
+				r.setConditionReq(rset.getString("CONDITION_REQ"));
+				
+				list.add(r);
+			}
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+	}
+
+
+	
+	
 
 
 	

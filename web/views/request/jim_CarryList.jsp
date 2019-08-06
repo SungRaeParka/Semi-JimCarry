@@ -116,6 +116,12 @@
 			long timeReH; //남은시간_시간
 			long timeReM; //남은시간_분
 			
+			Date moveDay22;
+			Date nowDay22;
+			long moveTime22;
+			long nowTime22;
+			long tempDay;
+			
 
 			for (int i = 0; i < jimList.size(); i++) {
 				req = jimList.get(i);
@@ -124,6 +130,7 @@
 				moveDay = req.getReservationDate(); //예약일(짐옮기는 날)
 				
 				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+				SimpleDateFormat dateFormat2 = new SimpleDateFormat("yyyy-MM-dd");
 				
 				nowDay = dateFormat.parse(dateFormat.format(nowDay));
 				nowTime = nowDay.getTime();
@@ -149,7 +156,17 @@
 				timeReH = (timeRemain/60000)/60;
 				timeReM = (timeRemain/60000)%60;
 				
-				
+				//예약일까지 남은 일수
+				nowDay22 = dateFormat2.parse(dateFormat2.format(nowDay));
+				moveDay22 = dateFormat2.parse(dateFormat2.format(moveDay2));
+				nowTime22 = nowDay22.getTime();
+				moveTime22 = moveDay22.getTime();
+				System.out.println(nowDay22);
+				System.out.println(moveDay22);
+				System.out.println(nowTime22);
+				System.out.println(moveTime22);
+				tempDay = (moveTime22-nowTime22)/86400000;
+				System.out.println(tempDay);
 				
 				
 				
@@ -243,9 +260,11 @@
 					<%=reqOrder.getGrade()%></h3>
 			</div>
 			<div id="reqcencle" align="right">
-
 				<h3>
-					<a href="/semi/views/request/popup/pop_reqCancel.jsp">입찰 취소→</a>
+					<span class="orderCancel" style="cursor: pointer">입찰 취소 →</span>
+					<input type="hidden" id="reqNo" name="reqNo" value="<%=req.getReqNo()%>">
+					<input type="hidden" id="tempDay" name="tempDay" value="<%=tempDay %>">
+					<input type="hidden" id="price" name="price" value="<%=reqOrder.getOrderPrice()%>">
 				</h3>
 
 			</div>
@@ -300,7 +319,10 @@
 			<div id="reqcencle" align="right">
 
 				<h3>
-					<a href="/semi/views/request/popup/pop_reqCancel.jsp">입찰 취소→</a>
+					<span class="orderCancel" style="cursor: pointer">입찰 취소 →</span>
+					<input type="hidden" id="reqNo" name="reqNo" value="<%=req.getReqNo()%>">
+					<input type="hidden" id="tempDay" name="tempDay" value="<%=tempDay %>">
+					<input type="hidden" id="price" name="price" value="<%=reqOrder.getOrderPrice()%>">
 				</h3>
 
 			</div>
@@ -525,6 +547,20 @@
 			location.href="<%=request.getContextPath()%>/checkOrder.jc?no=" + no;
 		});
 	});
+	
+	$(function(){//입찰취소 버튼
+		$(".orderCancel").click(function(){
+			var reqNo = $(this).next().val();
+			var tempday = $(this).next().next().val();
+			var price = $(this).next().next().next().val();
+			
+			var url = "/semi/views/popup/pop_reqCancel.jsp?reqNo="+reqNo+"&tempday="+tempday+"&price="+price;
+			var name = "cancelpopup";
+			option = "with=300, height=350, top=30, left=50";
+			
+			window.open(url,name,option);
+		})
+	})
 	
 	
 	$(function(){//완료버튼
