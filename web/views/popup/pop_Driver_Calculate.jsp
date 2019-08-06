@@ -5,12 +5,16 @@
 <%
  int price = Integer.parseInt(request.getParameter("price"));
 int calc = (int)(price*(0.9));
+String driver = request.getParameter("driver");
+String reqNo = request.getParameter("reqNo");
+
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset=UTF-8>
 <title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body>
 	<form>
@@ -30,13 +34,56 @@ int calc = (int)(price*(0.9));
 			
 			<hr>
 			
-			<div>
-				<a style="text-decoration: none">
-					<span style="font-size: 30px; font-weight: bold;">확인</span>
-					<span style="font-size: 30px; font-weight: bold;">취소</span>
-				</a>
-			</div>
+			<div align="center">
+			<input type="button" class="done" value="확인">
+			<input type="button" class="cancel" value="취소">
+		</div>
 		</div>	
 	</form>
+	
+	<script>
+	$(function(){
+		$(".done").click(function(){
+			var driver = "<%=driver%>"
+			var reqNo = "<%=reqNo%>"
+			var price = "<%=price%>"
+			var calc = "<%=calc%>"
+			
+			console.log(driver);
+			console.log(reqNo);
+			console.log(price);
+			console.log(calc);
+			
+			$.ajax({
+				url:"/semi/calcApply.py",
+				type:"post",
+				data:{
+					driver:driver,
+					reqNo:reqNo,
+					price:price,
+					calc:calc
+				},
+				success:function(data){
+					//alert("접속완료");
+				},error:function(data){
+					//alert("접속실패");
+				}
+			})
+			
+			window.opener.location.reload();
+			window.close();
+		})
+	})
+	
+	
+	$(function(){
+		$(".cancel").click(function(){
+			window.close();
+		})
+	})
+	
+	</script>
+	
+	
 </body>
 </html>

@@ -27,5 +27,16 @@ public class PaymentService {
 		return result;
 	}
 
+	public Payment selectRefundPayInfo(String reqNo) {
+		Connection con = getConnection();
+		Payment pay=null;
+		
+		pay = new PaymentDao().selectRefundPayInfo(con,reqNo);
+		
+		close(con);
+		
+		return pay;
+	}
+
 }
 

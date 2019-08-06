@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" import="com.kh.jimcarry.board.model.vo.*"
 	import="java.util.Date" import="java.text.SimpleDateFormat"
@@ -11,7 +12,7 @@
 
 		Attachment photo1 = fileList.get(0);
 		Attachment photo2 = fileList.get(1);
-		System.out.println(photo1.getChangeName());
+
 
 		System.out.println("포토 1 : " + photo1);
 		System.out.println("포토 2 : " + photo2);
@@ -157,7 +158,10 @@ td {
 						<td width="100px" height="50px" align="center">제목</td>
 						<td colspan="4"><input type="text" size=40 name="btitle"
 							value="<%=b.getPostTitle()%>"> <input type="hidden"
-							name="pagebno" value="<%=b.getPostCode()%>" /></td>
+							name="pagebno" value="<%=b.getPostCode()%>" />
+							<input type="hidden" name="attno1" value="<%=fileList.get(0).getAttachNo() %>"  />
+							<input type="hidden" name="attno2"value="<%=fileList.get(1).getAttachNo()%>">
+							</td>
 
 					</tr>
 					<tr align="center">
@@ -173,9 +177,9 @@ td {
 						<td colspan="3" style="color: red; text-align: center;">
 
 						<img  src="<%=request.getContextPath()%>/images_uploadFiles/<%=photo1.getChangeName()%>">
-							<input type="hidden" name="img1" value="<%=photo1.getOriginName() %>">
+							<input type="hidden" name="img1" value="<%=photo2.getOriginName() %>">
 						<img  src="<%=request.getContextPath()%>/images_uploadFiles/<%=photo2.getChangeName()%>">
-							<input type="hidden" name="img2" value="<%=photo2.getOriginName() %>">
+							<input type="hidden" name="img2" value="<%=photo1.getOriginName() %>">
 
 						</td>
 
@@ -187,13 +191,13 @@ td {
 							align="center" rowspan="2">이미지</td>
 
 
-						<td colspan="3"><input type="file" name=photo1 id="contentImgArea1"></td>
+						<td colspan="3"><input type="file" name=photo2 id="contentImgArea1"></td>
 
 
 					</tr>
 						<tr>
 						<td colspan="3">
-							<input type="file" name=photo2 id="contentImgArea2" />
+							<input type="file" name=photo1 id="contentImgArea2" />
 						</td>
 
 						</tr>

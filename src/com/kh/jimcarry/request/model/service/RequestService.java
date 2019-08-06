@@ -185,9 +185,58 @@ public class RequestService {
 				return result;
 				
 			}
-
-	
 			
+
+			public int updateConditionDo3(String reqNo, String driverNo) {
+				Connection con = getConnection();
+				
+				int result = new RequestDao().updateConditionDo3(con,reqNo,driverNo);
+				
+				if(result>0) {
+					commit(con);
+				}else {
+					rollback(con);	
+				}
+				close(con);
+				
+				return result;
+			}
+
+
+			public int updateConditionReq4(String reqNo) {
+				Connection con  = getConnection();
+				
+				int result = new RequestDao().updateConditionReq4(con,reqNo);
+				
+				if(result>0) {
+					commit(con);
+				}else {
+					rollback(con);
+				}
+				close(con);
+				
+				return result;
+			}
+
+
+			public int updateConditionDo4(String reqNo) {
+				Connection con = getConnection();
+				
+				int result = new RequestDao().updateConditionDo4(con,reqNo);
+				
+				if(result>0) {
+					commit(con);
+				}else {
+					rollback(con);	
+				}
+				close(con);
+				
+				return result;
+			}
+
+
+			
+
 
 			public int insertRequest(Request r) {
 				Connection con = getConnection();
@@ -205,9 +254,7 @@ public class RequestService {
 				return result;
 			}
 			
-		
 			
-
 
 			public int insertPIMG(ArrayList<RequestAttachment> fileList, String reqNo, String proNo) {
 				Connection con = getConnection();	
@@ -354,6 +401,22 @@ public class RequestService {
 				
 				return reqInfoList;
 			}
+
+
+
+			public ArrayList<Request> selectList(String logUserNo) {
+				Connection con = getConnection();
+				
+				ArrayList<Request> jimList = new RequestDao().selectList(con, logUserNo);
+				
+				close(con);
+				
+				return jimList;
+			}
+
+
+
+			
 
 
 			

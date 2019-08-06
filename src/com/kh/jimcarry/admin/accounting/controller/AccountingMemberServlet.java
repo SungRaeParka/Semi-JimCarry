@@ -32,7 +32,7 @@ public class AccountingMemberServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String memberSelect = request.getParameter("memberSelect");
-		System.out.println("refundSelect : " + memberSelect);
+		System.out.println("memberSelect in controller : " + memberSelect);
 
 		ArrayList<AccountingMember> list = new AccountingService().member(memberSelect);
 

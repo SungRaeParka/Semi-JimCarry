@@ -38,7 +38,7 @@ public class boardReplyDeleteServlet extends HttpServlet {
 		int result = new BoardService().deleteReply(ccode);
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
-		System.out.println("result : result : result :  "  + result);
+
 		new Gson().toJson(result,response.getWriter());
 	}
 

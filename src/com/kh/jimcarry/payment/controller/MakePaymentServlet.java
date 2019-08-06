@@ -24,11 +24,11 @@ public class MakePaymentServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String reqNo = request.getParameter("reqNo");
 		System.out.println("reqNo::" + reqNo);
-		String roNo = request.getParameter("roNo");
-		System.out.println("driverNo::" + roNo);
+		String driverNo = request.getParameter("driverNo");
+		System.out.println("driverNo::" + driverNo);
 		
 		
-		Request reqOrder = new RequestService().makePayInfo(reqNo,roNo);
+		Request reqOrder = new RequestService().makePayInfo(reqNo,driverNo);
 		
 		System.out.println(reqOrder);
 		

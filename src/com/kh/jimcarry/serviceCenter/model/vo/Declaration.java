@@ -8,6 +8,7 @@ public class Declaration {
 	private String driverNo;
 	private Date declDate;
 	private String declReason;
+	private String declContent;
 	
 	
 	public Declaration() {
@@ -15,13 +16,15 @@ public class Declaration {
 	}
 
 
-	public Declaration(String declNo, String userNo, String driverNo, Date declDate, String declReason) {
+	public Declaration(String declNo, String userNo, String driverNo, Date declDate, String declReason,
+			String declContent) {
 		super();
 		this.declNo = declNo;
 		this.userNo = userNo;
 		this.driverNo = driverNo;
 		this.declDate = declDate;
 		this.declReason = declReason;
+		this.declContent = declContent;
 	}
 
 
@@ -73,13 +76,27 @@ public class Declaration {
 	public void setDeclReason(String declReason) {
 		this.declReason = declReason;
 	}
+	
+
+
+	public String getDeclContent() {
+		return declContent;
+	}
+
+
+	public void setDeclContent(String declContent) {
+		this.declContent = declContent;
+	}
 
 
 	@Override
 	public String toString() {
 		return "Declaration [declNo=" + declNo + ", userNo=" + userNo + ", driverNo=" + driverNo + ", declDate="
-				+ declDate + ", declReason=" + declReason + "]";
+				+ declDate + ", declReason=" + declReason + ", declContent=" + declContent + "]";
 	}
+
+
+
 	
 	 
 }

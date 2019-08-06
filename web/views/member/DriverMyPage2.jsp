@@ -100,7 +100,7 @@
   			<div class="tab-content">
     			<div id="home" class="tab-pane fade">
     			</div>
-    			<div id="menu1" class="tab-pane fade in active" style="border: 1px solid black">
+    			<div id="menu1" class="tab-pane fade in active">
     				<div class="container">
     				<table class="table">
   				 	<thead>

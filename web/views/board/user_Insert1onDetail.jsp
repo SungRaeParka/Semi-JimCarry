@@ -36,11 +36,11 @@
 		<th>
 			<input type="hidden" name="postType" value="유형">
 			<input type="hidden" name="answerCheck">
-			<input type="radio" id="check" name="questionCheck" value="<%=one.getQuestionType() %>" readonly>견적관련
-			<input type="radio" id="check" name="questionCheck" value="<%=one.getQuestionType() %>" readonly>운송관련
-			<input type="radio" id="check" name="questionCheck" value="<%=one.getQuestionType() %>" readonly>결제관련
-			<input type="radio" id="check" name="questionCheck" value="<%=one.getQuestionType() %>" readonly>취소관련
-			<input type="radio" id="check" name="questionCheck" value="<%=one.getQuestionType() %>" readonly>기타
+			<input type="radio" id="check" name="questionCheck" value="<%=one.getQuestionType() %>" >견적관련
+			<input type="radio" id="check" name="questionCheck" value="<%=one.getQuestionType() %>" >운송관련
+			<input type="radio" id="check" name="questionCheck" value="<%=one.getQuestionType() %>" >결제관련
+			<input type="radio" id="check" name="questionCheck" value="<%=one.getQuestionType() %>" >취소관련
+			<input type="radio" id="check" name="questionCheck" value="<%=one.getQuestionType() %>" >기타
 		</th>
 	</tr>
 	<tr>

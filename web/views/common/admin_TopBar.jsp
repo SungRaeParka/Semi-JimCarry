@@ -19,7 +19,7 @@
 			<div class="w3-right w3-hide-small">
 				<a href="/semi/selectAll.u" class="w3-bar-item w3-button">회원관리</a>
 				<a href="/semi/accounting.pr" class="w3-bar-item w3-button">정산관리</a>
-				<a href="/semi/views/admin/admin_Statistics.jsp"	class="w3-bar-item w3-button">통계</a>
+				<a href="/semi/statistics.mm"	class="w3-bar-item w3-button">통계</a>
 				<a href="/semi/views/admin/customerCenter/admin_CCNoList.jsp" class="w3-bar-item w3-button">고객센터관리</a>
 				<a onclick="goBoard()" class="w3-bar-item w3-button">게시판관리</a>
 				<a class="w3-bar-item w3-button" onclick="logout();">로그아웃</a>
@@ -32,7 +32,7 @@
 			alert("로그아웃 하시겠습니까?");
 			location.href="<%=request.getContextPath()%>/logout.me";
 		};
-		
+
 		function goBoard(){
 			location.href="<%=request.getContextPath()%>/selectAdmin.dp";
 		}

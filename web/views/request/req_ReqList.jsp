@@ -25,6 +25,7 @@
 #outer {
 	width: 870px;
 	margin: 0 auto;
+	min-height: 100%;
 }
 
 #driverImg {
@@ -69,7 +70,7 @@ html, body {
 	<%@ include file="/views/common/user_TopBar.jsp"%>
 
 
-	<div id="outer main">
+	<div id="outer">
 
 		<br> <br> <br> <br>
 
@@ -127,12 +128,11 @@ html, body {
 
 		
 
-		<form action="<%=request.getContextPath()%>/makePayment.py?roNo=">
 		<%
 			for (int i = 0; i < rolist.size(); i++) {
 				ro = rolist.get(i);
-				
 		%>
+		
 		<div>
 			<img src="/semi/images/mc1.png" style="float: left" id="driverImg">
 			<div id="drivername">
@@ -150,20 +150,21 @@ html, body {
 				<h4>
 					평점 :
 					<%=ro.getGrade()%></h4>
-				<h4>
-					리뷰 :<%=ro.getReview()%></h4>
+				<%-- <h4>
+					리뷰 :<%=ro.getReview()%></h4> --%>
 			</div>
 
 
 			<div class="container" align="right">
-				<button type="button" class="btn" id="selectReqOrder">선택하기</button>
-				<input type="hidden" name="tempRo" id="tempRo" value="<%=ro.getDriverNo()%>">
+				<button type="button" class="selectReqOrder" id="selectReqOrder">선택하기</button>
+				<input type="hidden" name="reqNo" id="reqNo" value="<%=reqNo%>">
+				<input type="hidden" name="roNo" id="roNo" value="<%=ro.getDriverNo()%>">
 			</div>
 			<hr>
 		</div>
-		<input type="hidden" name="roNo" id="roNo">
-		<input type="hidden" name="reqNo" id="reqNo" value="<%=reqNo%>">
-		</form>
+		
+		
+	
 
 
 		<%
@@ -174,13 +175,11 @@ html, body {
 
 		<script>
 		$(function(){
-			$("#selectReqOrder").click(function(){
+			$(".selectReqOrder").click(function(){
+				var reqNo = $(this).next().val();
+				var driverNo = $(this).next().next().val();
 				
-				var roVal = $(this).next().val();
-				
-				$("#roNo").val(roVal);
-				
-				$("form").submit();
+				location.href="<%=request.getContextPath()%>/makePayment.py?reqNo=" + reqNo+"&driverNo="+driverNo;
 			});
 		});
 		

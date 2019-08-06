@@ -143,16 +143,39 @@ public class AccountingDao {
 		return list;
 	}
 
-	public int updateRefund(Connection con, String resultD, String driverNo, String prompt, String refundSelect) {
+
+	public int updateYesRefund(Connection con, String refundBtnVal, String payNoVal, String refundSelect) {
 		PreparedStatement pstmt = null;
 		int result = 0;
-		String query = prop.getProperty("updateBlackListDriver");
+		String query = prop.getProperty("updateYesRefund");
 
 		try {
 			pstmt = con.prepareStatement(query);
-			pstmt.setString(1, resultD);
-			pstmt.setString(2, prompt);
-			pstmt.setString(3, driverNo);
+			pstmt.setString(1, refundBtnVal);
+			pstmt.setString(2, payNoVal);
+
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+
+		return result;
+	}
+
+
+	public int updateNoRefund(Connection con, String refundBtnVal, String payNoVal, String promptVal, String refundSelect) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = prop.getProperty("updateNoRefund");
+
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, refundBtnVal);
+			pstmt.setString(2, promptVal);
+			pstmt.setString(3, payNoVal);
 
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -175,10 +198,12 @@ public class AccountingDao {
 			memberSelectResult = "사용자";
 		}
 
-		System.out.println("periodResult 1 : " + memberSelectResult);
+		System.out.println("accountingMemberDao memberSelected : " + memberSelectResult);
 		if(memberSelectResult.equals("사용자")) {
 			query = prop.getProperty("accountingUser");
 		}else if(memberSelectResult.equals("기사")) {
+			query = prop.getProperty("accountingDriver");
+		}else {
 			query = prop.getProperty("accountingDriver");
 		}
 
@@ -203,13 +228,14 @@ public class AccountingDao {
 				am.setPayDate(rset.getDate("PAY_DATE"));
 				am.setRefundReq(rset.getString("REFUND_REQ"));
 				am.setDriverPay(rset.getInt("DRIVER_PAY"));
+				am.setCalculateCheck(rset.getString("CALCULATE_CHECK"));
 				am.setUserDriver(memberSelectResult);
 
 				list.add(am);
 			}
 			System.out.println("MemberDao list : " + list);
-			String userDriver = list.get(0).getUserDriver();
-			System.out.println("userDriver : " + userDriver);
+			String memberSelectedresult = list.get(0).getUserDriver();
+			System.out.println("디비 조회 후 accountingDao Member memberSelectedresult : " + memberSelectedresult);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -218,6 +244,30 @@ public class AccountingDao {
 		}
 		return list;
 	}
+
+	public int updateMember(Connection con, String calCheckBtnVal, String payNoVal
+			) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = prop.getProperty("accountingMemberUpdate");
+
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, calCheckBtnVal);
+			pstmt.setString(2, payNoVal);
+
+			result = pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+
+		return result;
+	}
+
 
 
 

@@ -34,6 +34,8 @@
 		<th>
 			<input type="hidden" name="postType" value="유형">
 			<input type="hidden" name="answerCheck">
+			<input type="hidden" name="name" id="name" value="<%=loginUser.getSeqNo()%>"> 
+			
 			<input type="radio" id="check" name="questionCheck" value="견적관련">견적관련
 			<input type="radio" id="check" name="questionCheck" value="운송관련">운송관련
 			<input type="radio" id="check" name="questionCheck" value="결제관련">결제관련
@@ -62,7 +64,7 @@
 </table>
 
 	<div align="center" style="margin-top: 10px;">
-	<input type="hidden" name="name" id="name" value="<%=loginUser.getSeqNo()%>"> 
+	
 	
 		<button type="submit" value="문의하기"> 문의하기</button>&nbsp;
 		<button type="reset" value="취소하기"> 취소하기</button>

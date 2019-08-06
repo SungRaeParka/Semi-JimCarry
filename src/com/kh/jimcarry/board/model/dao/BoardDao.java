@@ -344,8 +344,7 @@ public class BoardDao {
 				// 작정자로 검색
 			} else if (searchCondition.equals("writer")) {
 				sql = prop.getProperty("searchWriter");
-				System.out.println("searchCondition 어디 : " + searchCondition);
-				System.out.println("word 어디여 : " + word);
+
 
 				// 내용으로 검색
 			} else {
@@ -464,7 +463,7 @@ public class BoardDao {
 		return result;
 	}
 	//게시 사진 업데이트
-	public int updateAttachmen(Connection con, ArrayList<Attachment> fileList) {
+	public int updateAttachmen(Connection con, ArrayList<Attachment> fileList, Board b) {
 		PreparedStatement pstmt = null;
 		int result = 0;
 
@@ -475,7 +474,11 @@ public class BoardDao {
 				pstmt = con.prepareStatement(query);
 				pstmt.setString(1, fileList.get(i).getOriginName());
 				pstmt.setString(2, fileList.get(i).getChangeName());
-				pstmt.setString(3, fileList.get(i).getPostCode());
+				pstmt.setString(3, fileList.get(i).getFilePath());
+				pstmt.setString(4, b.getPostCode());
+				pstmt.setString(5, fileList.get(i).getAttachNo());
+
+				result += pstmt.executeUpdate();
 			}
 		} catch (SQLException e) {
 
@@ -483,6 +486,7 @@ public class BoardDao {
 		}finally {
 			close(pstmt);
 		}
+		System.out.println("DAO :사진 번호 나오세요 : " + result);
 		return result;
 	}
 
@@ -530,7 +534,7 @@ public class BoardDao {
 		}finally {
 			close(pstmt);
 		}
-
+		System.out.println("댓글 생성구문 ::::::::: " + result);
 		return result;
 	}
 
@@ -573,7 +577,7 @@ public class BoardDao {
 				close(pstmt);
 				close(rset);
 			}
-			System.out.println("댓글 조회 : " + list);
+			System.out.println("댓글 생성후 조회  ::::: :: : :: : : :DAO : " + list);
 			return list;
 
 
@@ -632,7 +636,7 @@ public class BoardDao {
 
 		return listCount;
 	}
-	//댓글 조회 원 나와라 제발
+	//댓글 전체 조회
 	public ArrayList<Comments> selectReply1(Connection con, String bcode) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -668,7 +672,7 @@ public class BoardDao {
 			close(rset);
 		}
 
-
+		System.out.println("Dao replyList  ::::::::: : " + replyList);
 
 		return replyList;
 	}

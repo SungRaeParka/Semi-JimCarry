@@ -27,16 +27,8 @@ public class boardSelectOne extends HttpServlet {
 		String num = request.getParameter("num");
 		System.out.println("num : " + num);
 
-
-
-
-
-
-
 		HashMap<String, Object> hmap = new BoardService().selectBoardMap(num);
 		 Board b = (Board) hmap.get("board");
-
-
 
 		System.out.println("b : " + b);
 		ArrayList<Attachment> fileList = (ArrayList<Attachment>) hmap.get("attachment");

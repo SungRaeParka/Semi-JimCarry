@@ -84,34 +84,9 @@
   			</ul>
 
   			<div class="tab-content">
-    			<div id="home" class="tab-pane fade in active" style="border: 1px solid black">			
-    				<table align="center">
-    					<tr class="showMemberInfo">
-    						<td><label>아이디 : </label></td>
-    						<td><input type="text" name="userId" value="<%=loginUser.getUserId() %>" readonly></td>
-    					</tr>    					
-    					<tr class="showMemberInfo">
-    						<td><label>이름 : </label></td>
-    						<td><input type="text" name="userName" value="<%=loginUser.getUserName() %>" readonly></td>
-    					</tr>
-    					<tr class="showMemberInfo">
-							<td><label>휴대폰 번호 :</label>&nbsp;&nbsp;</td>
-							<td>
-							<input type="text" maxlength="3" name="tel1" id="tel" value="<%=loginUser.getPhone().substring(0, 3) %>"> -
-							<input type="text" maxlength="4" name="tel2" id="tel" value="<%=loginUser.getPhone().substring(4, 8) %>"> -
-							<input type="text" maxlength="4" name="tel3" id="tel" value="<%=loginUser.getPhone().substring(9, 13) %>">
-							</td>		
-						</tr>
-    					<tr class="showMemberInfo">
-    						<td colspan="2"><input type="button" value="회원정보 변경" id="updatebtn"></td>    						
-    					</tr>
-    					<tr class="showMemberInfo">
-    						<td colspan="2"><input type="button" value="회원 탈퇴" id="deletebtn"></td>
-    					</tr>
-    				</table>
-   
+    			<div id="home" class="tab-pane fade">			
     			</div>
-    			<div id="menu1" class="tab-pane fade">
+    			<div id="menu1" class="tab-pane fade in active">
     			<div class="container">
     				<table class="table">
   				 	<thead>
@@ -122,7 +97,6 @@
    					    <td>예약일자</td>
    					    <td>견적금액</td>
    					    <td>매칭상태</td>
-   					    <td>환불</td>
     				</tr>
     				</thead>
     				<tbody>
