@@ -13,7 +13,7 @@
 		margin:50px;
 		margin-top:10px;
 	}
-	#box , #userId{
+	#box , #userId, #password1, #password{
 		height:35px;
 		width:150px;
 	}
@@ -87,11 +87,12 @@
 			</tr>
 			<tr>
 				<td><label>비밀번호</label>
-				<td><input type="password" name="password" id="box" placeholder="비밀번호"></td>
+				<td><input type="password" name="password" id="password" placeholder="비밀번호"></td>
 			</tr>
 			<tr>
 				<td><label>비밀번호 재확인</label>
-				<td><input type="password" name="password1" id="box" placeholder="비밀번호 재입력"></td>
+				<td><input type="password" name="password1" id="password1" placeholder="비밀번호 재입력"></td>
+				<td><font name="check1" size="2" color="red"></font></td>
 			</tr>
 			<tr>
 				<td><label>휴대폰 번호</label></td>
@@ -222,9 +223,6 @@
              }
          }).open();
     }
-    function ok(){
-		$("form").submit();
-	};
 	$(function(){
 		$("#check").click(function(){
 			var userId = $("#userId").val();
@@ -248,18 +246,21 @@
 			});
 		});
 	});
-	$("#checkPwdbtn").click(function() {
-		// if문으로 비밀번호가 틀리면 출력
-		var pwd = $('#password').val();
-        var pwd1 = $('#password1').val();
-        if(pwd != pwd1){	
-			window.confirm("비밀번호가 틀립니다. 다시입력하세요");
-			$("#password1").val("").focus();	            	
-        }else{
-			$(".showMemberInfo").hide();
-			$(".updateMemberInfo").show();
-			$(".checkPwd").hide();
-        }
+	
+	$("#password").keyup(function(){
+		$("font[name=check]").text("");
+	});
+	$("#password1").keyup(function(){
+		if($("#password").val()!= $("#password1").val()){
+			$("font[name=check1]").text("");
+			$("font[name=check1]").html("비밀번호 불일치");
+		}else{
+			$("font[name=check1]").text("");
+			$("font[name=check1]").html("비밀번호 일치");
+			$("#join").click(function() {
+				$("form").submit();	
+			});
+		}
 	});
 	
 	</script>

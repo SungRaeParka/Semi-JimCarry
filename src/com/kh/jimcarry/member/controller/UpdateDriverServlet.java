@@ -76,14 +76,18 @@ public class UpdateDriverServlet extends HttpServlet {
 				
 				
 			}
+			String attNo = multiRequest.getParameter("hid");
+			String attNo1 = multiRequest.getParameter("hid1");
+			String attNo2 = multiRequest.getParameter("hid2");
+			String attNo3 = multiRequest.getParameter("hid3");
 			String seqNo = multiRequest.getParameter("seqNo");
 			String userId = multiRequest.getParameter("userId");
 			String userName = multiRequest.getParameter("userName");
 			String userPwd = multiRequest.getParameter("password");
-			String tel1 = multiRequest.getParameter("tel1");
-			String tel2 = multiRequest.getParameter("tel2");
-			String tel3 = multiRequest.getParameter("tel3");
-			String phone = tel1 + "-" + tel2 + "-" + tel3;
+			String tel4 = multiRequest.getParameter("tel4");
+			String tel5 = multiRequest.getParameter("tel5");
+			String tel6 = multiRequest.getParameter("tel6");
+			String phone = tel4 + "-" + tel5 + "-" + tel6;
 			String agent = multiRequest.getParameter("delegate");
 			String businessNo = multiRequest.getParameter("businessNumber");
 			String address1 = multiRequest.getParameter("address1");
@@ -134,35 +138,43 @@ public class UpdateDriverServlet extends HttpServlet {
 				am.getAttachNo();
 				/*am.setDriverNo(seqNo);*/
 				if(i == 0) {
+					am.setAttachNo(attNo3);
 					am.setFilePath(savePath);
 					am.setOriginName(originFiles.get(i));
 					am.setChangeName(saveFiles.get(i));
 					am.setFileLevel(fileLevel);
 					am.setStatus(status);
-					attachType = "차량등록증";
+					am.setDriverNo(seqNo);
+					attachType = "사업자등록증";
 					am.setAttachType(attachType);
 				}else if(i == 1){
+					am.setAttachNo(attNo2);
 					am.setFilePath(savePath);
 					am.setOriginName(originFiles.get(i));
 					am.setChangeName(saveFiles.get(i));
 					am.setFileLevel(fileLevel);
 					am.setStatus(status);
+					am.setDriverNo(seqNo);
 					attachType = "통장사본";
 					am.setAttachType(attachType);
 				}else if(i == 2){
+					am.setAttachNo(attNo1);
 					am.setFilePath(savePath);
 					am.setOriginName(originFiles.get(i));
 					am.setChangeName(saveFiles.get(i));
 					am.setFileLevel(fileLevel);
 					am.setStatus(status);
-					attachType = "사업자등록증";
+					am.setDriverNo(seqNo);
+					attachType = "차량등록증";
 					am.setAttachType(attachType);
 				}else if(i == 3){
+					am.setAttachNo(attNo);
 					am.setFilePath(savePath);
 					am.setOriginName(originFiles.get(i));
 					am.setChangeName(saveFiles.get(i));
 					am.setFileLevel(fileLevel);
 					am.setStatus(status);
+					am.setDriverNo(seqNo);
 					attachType = "본인사진";
 					am.setAttachType(attachType);
 				}

@@ -223,17 +223,16 @@ public class MemberDao {
 			pstmt.setString(3, m.getUserName());
 			pstmt.setString(4, m.getSeqNo());
 			
-			System.out.println("pstmt : "+pstmt);
+			System.out.println("1111 : "+pstmt);
 			result = pstmt.executeUpdate();
 			
-			System.out.println(result);
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close(pstmt);
 		}
-		System.out.println( "member result : "+result);
+		System.out.println( "2222 : "+ result);
 		return result;
 	}
 
@@ -314,9 +313,11 @@ public class MemberDao {
 	public int updateAttachment(Connection con, ArrayList<AttachmentMember> fileList) {
 		PreparedStatement pstmt = null;
 		int result = 0;
+		
 		String query = prop.getProperty("updateArrachment");
 		
-		System.out.println("ffff : "+fileList);
+		System.out.println("3333 : "+fileList.size());
+		System.out.println("4444 : " + fileList);
 			try {
 				for(int i = 0; i < fileList.size(); i++) {
 					pstmt = con.prepareStatement(query);
@@ -324,10 +325,10 @@ public class MemberDao {
 					pstmt.setString(1, fileList.get(i).getOriginName());
 					pstmt.setString(2, fileList.get(i).getChangeName());
 					pstmt.setString(3, fileList.get(i).getFilePath());
-					pstmt.setString(4, fileList.get(i).getDriverNo());
-					pstmt.setString(5, fileList.get(i).getAttachNo());
-
-					result += pstmt.executeUpdate();
+					pstmt.setString(4, fileList.get(i).getAttachNo());
+					/*System.out.println(fileList.get(i).getChangeName() + ":::::::::::dsabhjdba");*/
+					
+					result = pstmt.executeUpdate();
 					
 				}
 			} catch (SQLException e) {
@@ -335,14 +336,14 @@ public class MemberDao {
 			} finally {
 				close(pstmt);
 			}
-		System.out.println("마지막~ : " + result);
-		return result;
+			System.out.println("5555~ : " + result);
+			return result;
 	}
 
-	public AttachmentMember attachnoSelect(Connection con, Member m, ArrayList<AttachmentMember> fileList) {
+	public ArrayList<AttachmentMember> attachnoSelect(Connection con, Member m) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		AttachmentMember attachNo = null;
+		ArrayList<AttachmentMember> fileList = null;
 		
 		String query = prop.getProperty("attachnoSelect");
 		
@@ -353,12 +354,14 @@ public class MemberDao {
 			
 			rset = pstmt.executeQuery();
 			
-			
-			if(rset.next()) {
+			fileList = new ArrayList<AttachmentMember>();
+				while(rset.next()) {
 				
-				attachNo = new AttachmentMember();
-				attachNo.getAttachNo();
-					
+				AttachmentMember am = new AttachmentMember();
+				
+				am.setAttachNo(rset.getString("ATTACH_NO"));
+				
+				fileList.add(am);
 			}
 			
 			
@@ -370,7 +373,7 @@ public class MemberDao {
 		}
 		
 		
-		return attachNo;
+		return fileList;
 	}
 
 	public ArrayList<DriverList> driverList(Connection con, String seqNo) {
@@ -394,13 +397,13 @@ public class MemberDao {
 				DriverList dl= new DriverList();
 				
 				
-				dl.setUserName(rset.getString("MEMBER_NAME"));
-				dl.setDriverPay(rset.getInt("DRIVER_PAY"));
-				dl.setOrderPrice(rset.getInt("ORDER_PRICE"));
-				dl.setMatchingDate(rset.getDate("MATCHING_DATE"));
 				dl.setReqNo(rset.getString("REQ_NO"));
+				dl.setUserName(rset.getString("MEMBER_NAME"));
+				dl.setMatchingDate(rset.getDate("MATCHING_DATE"));
 				dl.setReservattonDate(rset.getString("RESERVATION_DATE"));
-				dl.setConditionReq(rset.getString("CONDITION_REQ"));
+				dl.setOrderPrice(rset.getInt("ORDER_PRICE"));
+				dl.setDriverPay(rset.getInt("DRIVER_PAY"));
+				dl.setConditionReq(rset.getString("CONDITION_DO"));
 				
 				list.add(dl);
 				System.out.println(list);
@@ -462,8 +465,7 @@ public class MemberDao {
 		
 		try {
 			pstmt = con.prepareStatement(query);
-			pstmt.setString(1, m.getStatusCheck());
-			pstmt.setString(2, m.getUserId());
+			pstmt.setString(1, m.getUserId());
 			
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -473,6 +475,42 @@ public class MemberDao {
 		}
 		
 		return result;
+	}
+
+	public ArrayList<AttachmentMember> driverAttachment(Connection con, String userId, String userPwd) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<AttachmentMember> attachment = null;
+		
+		String query = prop.getProperty("attachment");
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			
+			pstmt.setString(1, userId);
+			pstmt.setString(2, userPwd);
+			
+			rset = pstmt.executeQuery();
+			attachment = new ArrayList<AttachmentMember>();
+			while(rset.next()) {
+				
+				AttachmentMember am = new AttachmentMember();
+				
+				am.setAttachNo(rset.getString("ATTACH_NO"));
+				
+				attachment.add(am);
+			}
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+		}
+		
+		
+		return attachment;
 	}
 }
 

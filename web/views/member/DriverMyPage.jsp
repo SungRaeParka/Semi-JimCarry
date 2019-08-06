@@ -103,7 +103,7 @@
     					<tr class="showMemberInfo">
     						<td><label>아이디 : </label></td>
     						<td><input type="text" name="userId" value="<%=loginDriver.getUserId() %>" readonly></td>
-    						<td><input type="text" name="hid" value="<%=loginDriver.getSeqNo() %>"></td>
+    						<td><input type="hidden" name="hid" value="<%=loginDriver.getSeqNo() %>"></td>
     					</tr>    					
     					<tr class="showMemberInfo">
     						<td><label>이름 : </label></td>
