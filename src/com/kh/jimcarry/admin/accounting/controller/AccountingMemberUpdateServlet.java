@@ -13,16 +13,16 @@ import com.kh.jimcarry.admin.accounting.model.service.AccountingService;
 import com.kh.jimcarry.admin.accounting.model.vo.AccountingMember;
 
 /**
- * Servlet implementation class AccountingMemberServlet
+ * Servlet implementation class AccountingMemberUpdateServlet
  */
-@WebServlet("/accounting.mm")
-public class AccountingMemberServlet extends HttpServlet {
+@WebServlet("/AccountingUpdate.mm")
+public class AccountingMemberUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AccountingMemberServlet() {
+    public AccountingMemberUpdateServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,23 +31,30 @@ public class AccountingMemberServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String memberSelect = request.getParameter("memberSelect");
-		System.out.println("memberSelect in controller : " + memberSelect);
+		String calCheckBtnVal = request.getParameter("calCheckBtnVal");
+		String payNoVal = request.getParameter("payNoVal");
+		String memberSelect = "기사";
 
-		ArrayList<AccountingMember> list = new AccountingService().member(memberSelect);
 
-		String page ="";
-		if(list != null) {
-			page = "views/admin/accounting/admin_AccountMember.jsp";
-			request.setAttribute("list", list);
-		}else {
-			page = "views/common/errorPage.jsp";
-			request.setAttribute("msg", "목록 조회 실패!");
-		}
-		System.out.println("list in servlet : " + list);
+		System.out.println("calCheckBtnVal in controller : " + calCheckBtnVal);
+		System.out.println("payNoVal in controller : " + payNoVal);
 
-		request.getRequestDispatcher(page).forward(request, response);
-	}
+
+			ArrayList<AccountingMember> list = new AccountingService().updateMember(calCheckBtnVal, payNoVal, memberSelect);
+
+				String page ="";
+
+				if(list != null) {
+					page = "/semi/accounting.mm?memberSelect=기사";
+//					request.setAttribute("list", list);
+					response.sendRedirect(page);
+				}else {
+					page = "views/common/admin_errorPage.jsp";
+					request.setAttribute("msg", "목록 조회 실패!");
+					request.getRequestDispatcher(page).forward(request, response);
+				}
+				System.out.println("SelectAllDriver.svl list : " + list);
+				}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

@@ -5,7 +5,7 @@
 ArrayList<AccountingRefund> list = (ArrayList<AccountingRefund>) request.getAttribute("list");
 String refundMember = list.get(0).getRefundMember();
 DecimalFormat df = new DecimalFormat("###,###,###,###");
-
+int index = 0;
 %>
 <!DOCTYPE html>
 <html>
@@ -19,31 +19,10 @@ DecimalFormat df = new DecimalFormat("###,###,###,###");
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 	<title>Insert title here</title>
 	<style>
-		/* table, th {
-	border: 1px solid black;
-	border-collapse: collapse;
-	border-radius: 20%;
-	align: center;
-	text-align: center;
-}
-
-table th, table td {
-	text-align: center
-}
-
-table {
-	width: 100%;
-	height: 100px;
-	margin: auto;
-}
-
-th {
-	padding: 15px;
-} */
-
-select {
-	float: right;
-	margin-top: -30px;
+		select {
+			float: right;
+			margin-top: -30px;
+		}
 
 			/* 사용자 회원 관리 테이블 */
 		#tblBackground {
@@ -101,156 +80,7 @@ select {
 			border-collapse: collapse;
 		}
 
-		/* 기사 회원 관리 테이블 */
 
-		#tblBackground2 {
-			width: 940px;
-			table-layout: fixed;
-		}
-
-		#divHeadScroll2 {
-			width: 100%;
-			overflow-x: hidden;
-			overflow-y: hidden;
-			border-top: 2px solid #d0d0d0;
-		}
-
-		#tblHead2 {
-			table-layout: fixed;
-			background-color: #efefef;
-			padding-top: 4px;
-			width: 1117px;
-			height: 30px;
-			border-collapse: collapse;
-		}
-
-		#divBodyScroll2 {
-			width: 100%;
-			height: 350px;
-			overflow-x: scroll;
-			overflow-y: scroll;
-			border-top: 1px solid #d0d0d0;
-		}
-
-		#tblBody2 {
-			width: 1100px;
-			table-layout: fixed;
-			height: 30px;
-			border-collapse: collapse;
-		}
-
-		/* 신청 기사 회원 관리 테이블 */
-		#tblBackground5 {
-			width: 940px;
-			table-layout: fixed;
-		}
-
-		#divHeadScroll5 {
-			width: 100%;
-			overflow-x: hidden;
-			overflow-y: hidden;
-			border-top: 2px solid #d0d0d0;
-		}
-
-		#tblHead5 {
-			table-layout: fixed;
-			background-color: #efefef;
-			padding-top: 4px;
-			width: 1117px;
-			height: 30px;
-			border-collapse: collapse;
-		}
-
-		#divBodyScroll5 {
-			width: 100%;
-			height: 350px;
-			overflow-x: scroll;
-			overflow-y: scroll;
-			border-top: 1px solid #d0d0d0;
-		}
-
-		#tblBody5 {
-			width: 1100px;
-			table-layout: fixed;
-			height: 30px;
-			border-collapse: collapse;
-		}
-
-		/* 기사 블랙리스트 관리 테이블 */
-
-		#tblBackground3 {
-			width: 940px;
-			table-layout: fixed;
-		}
-
-		#divHeadScroll3 {
-			width: 100%;
-			overflow-x: hidden;
-			overflow-y: hidden;
-			border-top: 2px solid #d0d0d0;
-		}
-
-		#tblHead3 {
-			table-layout: fixed;
-			background-color: #efefef;
-			padding-top: 4px;
-			width: 947px;
-			height: 30px;
-			border-collapse: collapse;
-		}
-
-		#divBodyScroll3 {
-			width: 100%;
-			height: 350px;
-			overflow-x: scroll;
-			overflow-y: scroll;
-			border-top: 1px solid #d0d0d0;
-		}
-
-		#tblBody3 {
-			width: 940px;
-			table-layout: fixed;
-			height: 30px;
-			border-collapse: collapse;
-		}
-
-		/* 신고내역 관리 테이블 */
-
-		#tblBackground4 {
-			width: 940px;
-			table-layout: fixed;
-		}
-
-		#divHeadScroll4 {
-			width: 100%;
-			overflow-x: hidden;
-			overflow-y: hidden;
-			border-top: 2px solid #d0d0d0;
-		}
-
-		#tblHead4 {
-			table-layout: fixed;
-			background-color: #efefef;
-			padding-top: 4px;
-			width: 947px;
-			height: 30px;
-			border-collapse: collapse;
-		}
-
-		#divBodyScroll4 {
-			width: 100%;
-			height: 350px;
-			overflow-x: scroll;
-			overflow-y: scroll;
-			border-top: 1px solid #d0d0d0;
-		}
-
-		#tblBody4 {
-			width: 940px;
-			table-layout: fixed;
-			height: 30px;
-			border-collapse: collapse;
-		}
 
 		/* 테이블 스타일용 */
 		.title {
@@ -267,7 +97,11 @@ select {
 			overflow: hidden;
 
 		}
-}
+		.button {
+		background-color: #e7e7e7; color: black;
+		border-radius: 8px;
+		}
+
 </style>
 
 </head>
@@ -297,11 +131,11 @@ select {
 						<option id="yesRefund" value="완료">완료</option>
 						<option id="noRefund" value="반려">반려</option>
 					</select> <br> <br>
-					<table id="tblBackground5" cellspacing="0">
+					<table id="tblBackground" cellspacing="0">
 						<tr>
 							<td>
-								<div id="divHeadScroll5">
-									<table id="tblHead5" border="0">
+								<div id="divHeadScroll">
+									<table id="tblHead" border="0">
 										<colgroup>
 											<col style="width: 150px;" />
 											<col style="width: 100px;" />
@@ -310,13 +144,14 @@ select {
 											<col style="width: 100px;" />
 											<col style="width: 100px;" />
 											<col style="width: 100px;" />
-											<col style="width: 300px;" />
 											<col style="width: 100px;" />
+											<col style="width: 300px;" />
 											<col style="width: 300px;" />
 											<col style="width: 17px;" />
 										</colgroup>
 										<tr>
 											<td class="title">상태</td>
+											<td class="title">환불상태</td>
 											<td class="title">결제이력번호</td>
 											<td class="title">예약(이용)일자</td>
 											<td class="title">회원명</td>
@@ -324,66 +159,75 @@ select {
 											<td class="title">결제금액</td>
 											<td class="title">환불수수료</td>
 											<td class="title">환불사유</td>
-											<td class="title">환불상태</td>
 											<td class="title">반려사유</td>
 											<td></td>
 										</tr>
 									</table>
 								</div>
-								<div id="divBodyScroll5">
+								<div id="divBodyScroll">
 									<!-- <form id="yesnoForm" action="<%= request.getContextPath()%>/updateApprove.d"> -->
-										<table id="tblBody5" border="0">
-											<colgroup>
-												<col style="width: 150px;" class="right_border" />
-												<col style="width: 100px;" class="right_border" />
-												<col style="width: 100px;" class="right_border" />
-												<col style="width: 100px;" class="right_border" />
-												<col style="width: 100px;" class="right_border" />
-												<col style="width: 100px;" class="right_border" />
-												<col style="width: 100px;" class="right_border" />
-												<col style="width: 300px;" class="right_border" />
-												<col style="width: 100px;" class="right_border" />
-												<col style="width: 300px;" class="right_border" />
-											</colgroup>
-											<% for(AccountingRefund ar : list){ %>
-											<tr>
+									<table id="tblBody" border="0">
+										<colgroup>
+											<col style="width: 150px;" class="right_border" />
+											<col style="width: 100px;" class="right_border" />
+											<col style="width: 100px;" class="right_border" />
+											<col style="width: 100px;" class="right_border" />
+											<col style="width: 100px;" class="right_border" />
+											<col style="width: 100px;" class="right_border" />
+											<col style="width: 100px;" class="right_border" />
+											<col style="width: 100px;" class="right_border" />
+											<col style="width: 300px;" class="right_border" />
+											<col style="width: 300px;" class="right_border" />
+										</colgroup>
+										<% for(AccountingRefund ar : list){index++; %>
+										<tr>
 
-												<td class="content right_border">
-													<%-- <button type="button" id="yesD" name="resultD" value="승인" onclick="yes('<%=index %>');">승인</button> &nbsp;
-													<button type="button" id="noD" name="resultD" value="거절" onclick="no('<%=index %>');">거절</button> <input
-													 type="hidden" id="prompt" name="prompt"> <input type="hidden" id="resultD" name="resultD"> <input type="hidden"
-													 id="driverNo<%=index%>" value="<%=m.getSeqNo()%>"> <input type="hidden" id="driverNoResult" name="driverNo"> --%>
-												</td>
-												<td class="content right_border">
-													<%=ar.getPayNo() %>
-												</td>
-												<td class="content right_border">
-													<%=ar.getReservationDate() %>
-												</td>
-												<td class="content right_border">
-													<%=ar.getMemberName() %>
-												</td>
-												<td class="content right_border">
-													<%=ar.getRefundReqDate() %>
-												</td>
-												<td class="content right_border">
-													<%=df.format(ar.getPayAmount()) %>
-												</td>
-												<td class="content right_border">
-													<%=df.format(ar.getRefundFees()) %>
-												</td>
-												<td class="content right_border">
-													<%=ar.getRefundReason() %>
-												</td>
-												<td class="content right_border">
+											<td class="content right_border">
+											<%if(ar.getRefundCondition().equals("대기")) {%>
+												<button type="button" id="yesRefundBtn" class="button" name="refundBtn" value="승인" onclick="yes('<%=index %>');">승인</button>
+												&nbsp;
+												<button type="button"id="noRefundBtn" class="button" name="refundBtn" value="거절" onclick="no('<%=index %>');">거절</button>
+												<input type="hidden" id="refundBtnVal" name="refundBtnVal">
+
+												<input type="hidden" id="payNo<%=index%>" value="<%=ar.getPayNo() %>">
+												<input type="hidden" id="payNoVal" name="payNoVal">
+
+												<input type="hidden" id="promptVal" name="promptVal">
+												<%}else{ %>
+												-
+												<%} %>
+											</td>
+											<td class="content right_border">
 													<%=ar.getRefundCondition() %>
-												</td>
-												<td class="content right_border">
-													<%=ar.getCompanionReason() %>
-												</td>
-											</tr>
-											<% } %>
-										</table>
+											</td>
+											<td class="content right_border">
+												<%=ar.getPayNo() %>
+											</td>
+											<td class="content right_border">
+												<%=ar.getReservationDate() %>
+											</td>
+											<td class="content right_border">
+												<%=ar.getMemberName() %>
+											</td>
+											<td class="content right_border">
+												<%=ar.getRefundReqDate() %>
+											</td>
+											<td class="content right_border">
+												<%=df.format(ar.getPayAmount()) %>
+											</td>
+											<td class="content right_border">
+												<%=df.format(ar.getRefundFees()) %>
+											</td>
+											<td class="content right_border">
+												<%=ar.getRefundReason() %>
+											</td>
+
+											<td class="content right_border">
+												<%=ar.getCompanionReason() %>
+											</td>
+										</tr>
+										<% } %>
+									</table>
 								</div>
 							</td>
 						</tr>
@@ -422,7 +266,60 @@ select {
 				$("#refundForm").attr("action", "<%=request.getContextPath()%>/accounting.rf");
 				$("#refundForm").submit();
 			}
+
+
+
+
 		});
+			//신청 기사관리 탭의 상태 결정 버튼 3
+			function yes(num) {
+			var refundMember = "<%= refundMember %>";
+			var confirm = window.confirm("해당 환불건을 승인하시겠습니까?");
+			var refundBtnVal = $("#yesRefundBtn").val();
+			$("#refundBtnVal").attr('value', refundBtnVal);
+
+			var payNoVal = $("#payNo" + num).val();
+			$("#payNoVal").attr('value', payNoVal);
+			// alert(driverNo);
+
+			if (confirm == true) {
+				//해당 기사를 기사 db에 추가 후 기사에게 메시지 보내기
+				// alert("승인을 승인한다")
+				$("#refundForm").attr("action", "<%= request.getContextPath()%>/accountingUpdate.rf")
+				$("#refundForm").submit()
+			} else {
+				//해당 작업 취소
+				// alert("해당작업 취소")
+				location.href = "/semi/accounting.rf?refundSelect="+refundMember;
+			}
+		};
+
+		function no(num) {
+			var refundMember = "<%= refundMember %>";
+			var promptVal = window.prompt("환불 반려 사유를 해당 고객님에게 남겨주세요.");
+			$("#promptVal").attr('value', promptVal);
+			// var promptVal = document.getElementById("promptVal");
+			var refundBtnVal = document.getElementById("noRefundBtn").value;
+			$("#refundBtnVal").attr('value', refundBtnVal);
+
+			console.log("promptVal" + promptVal);
+			console.log("refundBtnVal : " + refundBtnVal);
+
+			var payNoVal = $("#payNo" + num).val();
+			$("#payNoVal").attr('value', payNoVal);
+
+			// alert(driverNo);
+			if (promptVal != null) {
+				//해당 기사에게 거절 사유 메시지 보내기
+				// alert("notNull");
+				$("#refundForm").attr("action", "<%= request.getContextPath()%>/accountingUpdate.rf")
+				$("#refundForm").submit()
+			} else {
+				// alert("null");
+				//해당 작업 취소
+				location.href = "/semi/accounting.rf?refundSelect="+refundMember;
+			}
+		};
 	</script>
 
 	<script>
@@ -482,54 +379,7 @@ select {
 		});
 
 	</script>
-	<script>
-		//신청 기사관리 탭의 상태 결정 버튼 3
-		function yes(num) {
-			var result = window.confirm("해당 기사님을 짐캐리 기사로 승인하시겠습니까?");
-			var resultD = $("#yesD").val();
-			$("#resultD").attr('value', resultD);
 
-			var driverNo = $("#driverNo" + num).val();
-			$("#driverNoResult").attr('value', driverNo);
-			// alert(driverNo);
-
-			if (result == true) {
-				//해당 기사를 기사 db에 추가 후 기사에게 메시지 보내기
-				// alert("승인을 승인한다")
-				$("#yesnoForm").attr("action", "<%= request.getContextPath()%>/updateApprove.d")
-				$("#yesnoForm").submit()
-			} else {
-				//해당 작업 취소
-				// alert("해당작업 취소")
-				location.href = "/semi/approve.d";
-			}
-		};
-
-		function no(num) {
-			var result = window.prompt("거절 사유를 해당 기사님에게 남겨주세요.")
-			var prompt = document.getElementById("prompt");
-			var resultD = document.getElementById("noD").value;
-			$("#prompt").attr('value', result);
-			$("#resultD").attr('value', resultD);
-			console.log("resultD" + resultD);
-			console.log("result : " + result);
-
-			var driverNo = $("#driverNo" + num).val();
-			$("#driverNoResult").attr('value', driverNo);
-			// alert(driverNo);
-			if (result != null) {
-				//해당 기사에게 거절 사유 메시지 보내기
-				// alert("notNull");
-				$("#yesnoForm").attr("action", "<%= request.getContextPath()%>/updateApprove.d")
-				$("#yesnoForm").submit()
-			} else {
-				// alert("null");
-				//해당 작업 취소
-				location.href = "/semi/approve.d";
-			}
-		};
-
-	</script>
 
 </body>
 
