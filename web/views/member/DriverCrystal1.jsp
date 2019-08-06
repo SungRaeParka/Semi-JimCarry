@@ -162,6 +162,9 @@ $(function(){
 		margin-left:-120px;
 		cursor: pointer;
 	}
+	#main {
+		margin-top: 10%;
+	}
 </style>
 </head>
 <body>

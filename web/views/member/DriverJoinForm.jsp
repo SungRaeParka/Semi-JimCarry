@@ -15,7 +15,7 @@
 	.main1 {
 		display: inline-block;
 		margin:50px;
-		margin-top:10px;
+		margin-top:5px;
 	}
 
 	#box , #userId, #password1, #password, #checkNo{
@@ -213,8 +213,12 @@
 			</tr>
 			<tr>
 				<td></td>
-				<td><button id="join" onclick="ok();">가입신청</button></td>
+				<td><input type="button" id="join" onclick="joinok();" value="가입신청"></td>
 			</tr>
+			<tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>
+			<tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>
+			<tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>
+			<tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>
 			</table>
 		</div>
 		</form>
@@ -267,12 +271,15 @@
              }
          }).open();
     }
-	$(function(){
+    $(function(){
+		num = 0;
+		num1 = 0;
+		
 		$("#check").click(function(){
 			var userId = $("#userId").val();
 			
 			$.ajax({
-				url:"/semi/driverIdCheck.me",
+				url:"/semi/userIdCheck.me",
 				type:"post",
 				data:{userId:userId},
 				success:function(data){
@@ -288,64 +295,62 @@
 					console.log("실패!");
 				}
 			});
-		});
+		});	
+
+	$("#checkPhone").click(function(){
+		var tel1 = $("input[name='tel1']").val();
+		var tel2 = $("input[name='tel2']").val();
+		var tel3 = $("input[name='tel3']").val();
 		
-		$("#checkPhone").click(function(){
-			var tel1 = $("input[name='tel1']").val();
-			var tel2 = $("input[name='tel2']").val();
-			var tel3 = $("input[name='tel3']").val();
-			
-			var rphone = tel1 + "-" + tel2 + "-" + tel3;			
-			var sphone1 = $("input[name='sphone1']").val();
-			var sphone2 = $("input[name='sphone2']").val();
-			var sphone3 = $("input[name='sphone3']").val();
-			var msg = $("input[name='msg']").val();
-			console.log("msg :::: " + msg);
-			var action = $("input[name='action']").val();
-			
-			
-			// 인증번호 입력창
-						
-			
-			$.ajax({
-				url:"smssend.jsp",
-				data:{rphone:rphone, sphone1:sphone1, sphone2:sphone2, sphone3:sphone3, msg:msg, action:action},
-				dataType:"text",
-				type:"post",
-				success:function(data){
-					alert("인증번호가 발송되었습니다.");			
+		var rphone = tel1 + "-" + tel2 + "-" + tel3;			
+		var sphone1 = $("input[name='sphone1']").val();
+		var sphone2 = $("input[name='sphone2']").val();
+		var sphone3 = $("input[name='sphone3']").val();
+		var msg = $("input[name='msg']").val();
+		console.log("msg :::: " + msg);
+		var action = $("input[name='action']").val();
+		
+		
+		// 인증번호 입력창
 					
-					var checkPhone = data;					
+		
+		$.ajax({
+			url:"smssend.jsp",
+			data:{rphone:rphone, sphone1:sphone1, sphone2:sphone2, sphone3:sphone3, msg:msg, action:action},
+			dataType:"text",
+			type:"post",
+			success:function(data){
+				alert("인증번호가 발송되었습니다.");			
+				
+				var checkPhone = data;					
+				
+				$("#checkPhone").hide();
+				
+				
+				$("#checkNumber").on("click", function(){
 					
-					$("#checkPhone").hide();
+					var checkNo = $("input[name='checkNo']").val();
 					
+					console.log("checkNo :::: " + checkNo);
+					console.log("checkPohne ::::" + checkPhone);
 					
-					$("#checkNumber").on("click", function(){
-						
-						var checkNo = $("input[name='checkNo']").val();
-						
-						console.log("checkNo :::: " + checkNo);
-						console.log("checkPohne ::::" + checkPhone);
-						
-						if(checkNo == checkPhone){
-							$("#checkNo").attr({"readonly":"true"});
-							$("#checkNumber").hide();
-							alert("인증이 완료되었습니다.");
-						}else{
-							alert("인증번호가 틀렸습니다. 다시 입력하세요.");
-							$("#checkPhone").show();
-						}
-								
-					});
-				},
-				error:function(request,status,error){
-					alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-			    }			
-			});
+					if(checkNo == checkPhone){
+						$("#checkNo").attr({"readonly":"true"});
+						$("#checkNumber").hide();
+						alert("인증이 완료되었습니다.");
+						num = 1;
+					}else{
+						alert("인증번호가 틀렸습니다. 다시 입력하세요.");
+						$("#checkPhone").show();
+					}
+							
+				});
+			},
+			error:function(request,status,error){
+				alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+		    }			
 		});
 	});
-
-	
 	$("#password").keyup(function(){
 		$("font[name=check]").text("");
 	});
@@ -356,12 +361,20 @@
 		}else{
 			$("font[name=check1]").text("");
 			$("font[name=check1]").html("비밀번호 일치");
-			$("#join").click(function() {
-				$("form").submit();	
-			});
+			num1 = 1;
 		}
 	});
-	
+});
+
+	function joinok(){
+		if(num >= 1 && num1 >= 1){	
+				$("form").submit();
+		}else if(num >= 1 && num1 <= 1){
+			alert("정보를 정확히 입력하세요~");
+		}else if(num1 >= 1 && num <= 1){
+			alert("본인인증을 하세요~");
+		}
+	}
 	</script>
 	
 </body>

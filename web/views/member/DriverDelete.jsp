@@ -64,6 +64,9 @@
 		background:white;
 		color:black;
 	}
+	#main {
+		margin-top: 10%;
+	}
 </style>
 </head>
 <body>

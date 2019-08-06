@@ -571,10 +571,7 @@
    <h3 align="right"><a href="#"><font size="2">기사 이용약관(필수)</font><input type="checkbox" name="c2" id="c2"/></a></h3>
    </div>
  </div>
-  <tr>
-   <td align="left"><font size="2">이벤트 등 프로모션 알림 메일 수신(선택)</font></td>
-   <td><input type="checkbox" name="c4" id="c4"></td><hr/>
-  </tr>
+  <hr>
  
  <div align="center">
   <br/>

@@ -55,7 +55,7 @@ th {
   background-color: #ffd24d;
   color: white;
   }
-span{
+button{
 	background-color: #ffd24d;
   color: white;
   border-radius: 40px;
@@ -99,29 +99,29 @@ span{
 
 <!-- ㅠㅔ이징 처리 -->
 <div class="pagingArea" align="center">
-	<span onclick="location.href='<%=request.getContextPath() %>/noticelist.no?currentPage=1'">처음으로</span>
+	<button onclick="location.href='<%=request.getContextPath() %>/noticelist.no?currentPage=1'">처음으로</button>
 	
 	<%if(currentPage <= 1) {%>
-	<span disabled>이전</span>
+	<button disabled>이전</button>
 	<%}else { %>
-	<span onclick="location.href='<%=request.getContextPath() %>/noticelist.no?currentPage=<%=currentPage - 1 %>'">이전</span>
+	<button onclick="location.href='<%=request.getContextPath() %>/noticelist.no?currentPage=<%=currentPage - 1 %>'">이전</button>
 	<%} %>
 	
 	<%for(int p=startPage; p<=endPage;p++){
 		if(currentPage == p){
 		%>
-		<span disabled><%=p %></span>
+		<button disabled><%=p %></button>
 	<% }else {%>
-		<span onclick="location.href='<%=request.getContextPath()%>/noticelist.no?currentPage=<%=p%>'"><%=p%></span>
+		<button onclick="location.href='<%=request.getContextPath()%>/noticelist.no?currentPage=<%=p%>'"><%=p%></button>
 	<%}} %>
 	
 	<%if(currentPage >= maxPage){ %>
-	<span disabled>다음</span>
+	<button disabled>다음</button>
 	<%}else { %>
-	<span input="button" onclick="location.href='<%=request.getContextPath() %>/noticelist.no?currentPage=<%=currentPage + 1 %>'">다음</span>
+	<button input="button" onclick=" location.href='<%=request.getContextPath() %>/noticelist.no?currentPage=<%=currentPage + 1 %>'">다음</button>
 	<%} %>
 	
-	<span onclick="location.href='<%=request.getContextPath() %>/noticelist.no?currentPage=<%=maxPage %>'">끝으로</span>
+	<button onclick="location.href='<%=request.getContextPath() %>/noticelist.no?currentPage=<%=maxPage %>'">끝으로</button>
 </div>
 
 </div>

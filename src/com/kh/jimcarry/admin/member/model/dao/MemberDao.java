@@ -52,6 +52,7 @@ public class MemberDao {
 				m.setEnrollDate(rset.getDate("ENROLL_DATE"));
 				m.setStatusCheck(rset.getString("STATUS_CHECK"));
 				m.setUdCheck(rset.getString("UD_CHECK"));
+				m.setUsingCount(rset.getInt("USING_COUNT"));
 
 				list.add(m);
 			}
@@ -97,6 +98,7 @@ public class MemberDao {
 				m.setBlacklistCheck(rset.getString("BLACK_CHECK"));
 				m.setJoinCheck(rset.getString("JOIN_CHECK"));
 				m.setRefuseReason(rset.getString("REFUSE_REASON"));
+				m.setUsingCount(rset.getInt("USING_COUNT"));
 				list.add(m);
 			}
 			System.out.println("MemberDao list : " + list);

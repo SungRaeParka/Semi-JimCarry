@@ -49,10 +49,7 @@
 	<%@ include file="/views/common/driver_TopBar.jsp" %>
 
 	<div id="outer">
-
-	
-
-		<h1 align="center">최종 견적서</h1>
+    <h1 align="center">최종 견적서</h1>
 		<hr>
 		<div>
 			<h3>예정일</h3>

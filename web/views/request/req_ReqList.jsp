@@ -31,28 +31,34 @@
 #driverImg {
 	width: auto;
 	height: auto;
-	max-width: 130px;
+	max-width: 150px;
 	max-height: 130px;
+	padding-left: 10px;
 }
 
 #drivername {
-	padding-top: 5px;
-	padding-left: 130px;
+	padding-top: 15px;
+	padding-left: 160px;
 }
 
 #rev {
-	margin-top: 20px;
-	padding-left: 130px;
+	margin-top: 30px;
+	padding-left: 160px;
 }
 
 #price {
-	margin-top: -20px;
+	margin-top: -40px;
+}
+#price, .container{
+	float: right;
+	padding-right: 20px;
 }
 
 .container {
-	padding-right: 100px;
-	margin-top: -30px;
+	margin-top: -40px;
 }
+
+
 
 html, body {
 	height: 100%;
@@ -61,7 +67,7 @@ html, body {
 }
 
 #main {
-	min-height: 100%;
+	/* min-height: 100%; */
 }
 </style>
 
@@ -72,7 +78,8 @@ html, body {
 
 	<div id="outer">
 
-		<br> <br> <br> <br>
+		<br> <br> <br> <br><br> <br> <br> <br>
+		<br> <br> <br> <br><br> <br> 
 
 
 		<%
@@ -133,13 +140,13 @@ html, body {
 				ro = rolist.get(i);
 		%>
 		
-		<div>
+		<div style="display:inline">
 			<img src="/semi/images/mc1.png" style="float: left" id="driverImg">
 			<div id="drivername">
 				<h3><%=ro.getDriverName()%></h3>
 			</div>
 
-			<div id="price" style="float: right">
+			<div id="price">
 				<h3>
 					가격 :
 					<%=ro.getOrderPrice()%>원
@@ -154,12 +161,13 @@ html, body {
 					리뷰 :<%=ro.getReview()%></h4> --%>
 			</div>
 
-
-			<div class="container" align="right">
-				<button type="button" class="selectReqOrder" id="selectReqOrder">선택하기</button>
+				
+			<div class="container" align="right" >
+				<button type="button" class="btn" id="selectReqOrder">선택하기</button>
 				<input type="hidden" name="reqNo" id="reqNo" value="<%=reqNo%>">
 				<input type="hidden" name="roNo" id="roNo" value="<%=ro.getDriverNo()%>">
 			</div>
+			<br>
 			<hr>
 		</div>
 		
@@ -175,7 +183,7 @@ html, body {
 
 		<script>
 		$(function(){
-			$(".selectReqOrder").click(function(){
+			$(".btn").click(function(){
 				var reqNo = $(this).next().val();
 				var driverNo = $(this).next().next().val();
 				

@@ -56,7 +56,7 @@
      *  세로길이를 잡아주지 않으면 overflow-y가 걸리지 않습니다.
      */
 			width: 100%;
-			height: 350px;
+			height: 500px;
 			overflow-x: scroll;
 			overflow-y: scroll;
 			border-top: 1px solid #d0d0d0;
@@ -72,43 +72,6 @@
 			border-collapse: collapse;
 		}
 
-		/* 기사 회원 관리 테이블 */
-
-		#tblBackground2 {
-			width: 940px;
-			table-layout: fixed;
-		}
-
-		#divHeadScroll2 {
-			width: 100%;
-			overflow-x: hidden;
-			overflow-y: hidden;
-			border-top: 2px solid #d0d0d0;
-		}
-
-		#tblHead2 {
-			table-layout: fixed;
-			background-color: #efefef;
-			padding-top: 4px;
-			width: 1117px;
-			height: 30px;
-			border-collapse: collapse;
-		}
-
-		#divBodyScroll2 {
-			width: 100%;
-			height: 350px;
-			overflow-x: scroll;
-			overflow-y: scroll;
-			border-top: 1px solid #d0d0d0;
-		}
-
-		#tblBody2 {
-			width: 1100px;
-			table-layout: fixed;
-			height: 30px;
-			border-collapse: collapse;
-		}
 
 		/* 신청 기사 회원 관리 테이블 */
 		#tblBackground5 {
@@ -134,7 +97,7 @@
 
 		#divBodyScroll5 {
 			width: 100%;
-			height: 350px;
+			height: 500px;
 			overflow-x: scroll;
 			overflow-y: scroll;
 			border-top: 1px solid #d0d0d0;
@@ -147,81 +110,8 @@
 			border-collapse: collapse;
 		}
 
-		/* 기사 블랙리스트 관리 테이블 */
 
-		#tblBackground3 {
-			width: 940px;
-			table-layout: fixed;
-		}
 
-		#divHeadScroll3 {
-			width: 100%;
-			overflow-x: hidden;
-			overflow-y: hidden;
-			border-top: 2px solid #d0d0d0;
-		}
-
-		#tblHead3 {
-			table-layout: fixed;
-			background-color: #efefef;
-			padding-top: 4px;
-			width: 947px;
-			height: 30px;
-			border-collapse: collapse;
-		}
-
-		#divBodyScroll3 {
-			width: 100%;
-			height: 350px;
-			overflow-x: scroll;
-			overflow-y: scroll;
-			border-top: 1px solid #d0d0d0;
-		}
-
-		#tblBody3 {
-			width: 940px;
-			table-layout: fixed;
-			height: 30px;
-			border-collapse: collapse;
-		}
-
-		/* 신고내역 관리 테이블 */
-
-		#tblBackground4 {
-			width: 940px;
-			table-layout: fixed;
-		}
-
-		#divHeadScroll4 {
-			width: 100%;
-			overflow-x: hidden;
-			overflow-y: hidden;
-			border-top: 2px solid #d0d0d0;
-		}
-
-		#tblHead4 {
-			table-layout: fixed;
-			background-color: #efefef;
-			padding-top: 4px;
-			width: 947px;
-			height: 30px;
-			border-collapse: collapse;
-		}
-
-		#divBodyScroll4 {
-			width: 100%;
-			height: 350px;
-			overflow-x: scroll;
-			overflow-y: scroll;
-			border-top: 1px solid #d0d0d0;
-		}
-
-		#tblBody4 {
-			width: 940px;
-			table-layout: fixed;
-			height: 30px;
-			border-collapse: collapse;
-		}
 
 		/* 테이블 스타일용 */
 		.title {
@@ -433,50 +323,6 @@
 	</div>
 
 	<script>
-		$(function () {
-			// divBodyScroll의 스크롤이 동작할때에 함수를 불러옵니다.
-			$('#divBodyScroll').scroll(function () {
-				// divBodyScroll의 x좌표가 움직인 거리를 가져옵니다.
-				var xPoint = $('#divBodyScroll').scrollLeft();
-
-				// 가져온 x좌표를 divHeadScroll에 적용시켜 같이 움직일수 있도록 합니다.
-				$('#divHeadScroll').scrollLeft(xPoint);
-			});
-		});
-
-		$(function () {
-			// divBodyScroll의 스크롤이 동작할때에 함수를 불러옵니다.
-			$('#divBodyScroll2').scroll(function () {
-				// divBodyScroll의 x좌표가 움직인 거리를 가져옵니다.
-				var xPoint = $('#divBodyScroll2').scrollLeft();
-
-				// 가져온 x좌표를 divHeadScroll에 적용시켜 같이 움직일수 있도록 합니다.
-				$('#divHeadScroll2').scrollLeft(xPoint);
-			});
-		});
-
-		$(function () {
-			// divBodyScroll의 스크롤이 동작할때에 함수를 불러옵니다.
-			$('#divBodyScroll3').scroll(function () {
-				// divBodyScroll의 x좌표가 움직인 거리를 가져옵니다.
-				var xPoint = $('#divBodyScroll3').scrollLeft();
-
-				// 가져온 x좌표를 divHeadScroll에 적용시켜 같이 움직일수 있도록 합니다.
-				$('#divHeadScroll3').scrollLeft(xPoint);
-			});
-		});
-
-		$(function () {
-			// divBodyScroll의 스크롤이 동작할때에 함수를 불러옵니다.
-			$('#divBodyScroll4').scroll(function () {
-				// divBodyScroll의 x좌표가 움직인 거리를 가져옵니다.
-				var xPoint = $('#divBodyScroll4').scrollLeft();
-
-				// 가져온 x좌표를 divHeadScroll에 적용시켜 같이 움직일수 있도록 합니다.
-				$('#divHeadScroll4').scrollLeft(xPoint);
-			});
-		});
-
 		$(function () {
 			// divBodyScroll의 스크롤이 동작할때에 함수를 불러옵니다.
 			$('#divBodyScroll5').scroll(function () {
