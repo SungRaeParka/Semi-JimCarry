@@ -183,6 +183,15 @@ public class MemberService {
 		return attachment;
 	}
 
+	public Member searchId(String phone, String userName) {
+		Connection con = getConnection();
+		
+		Member m = new MemberDao().searchID(con, phone, userName);
+		
+		close(con);
+		
+		return m;
+  }
 	public Member idSelect(Member m) {
 		Connection con = getConnection();
 		

@@ -108,28 +108,6 @@
 
 
 
-			<div style="border: 1px solid white; width: 760px; text-align: right;">
-			<% if(loginUser.getUserId().equals(b.getWriter())) { %>
-			<button onclick="del();" id="belbtn">삭제</button>&nbsp;&nbsp;
-			<button onclick="location.href='<%=request.getContextPath()%>/selectBoard.bo?num=<%=b.getPostCode()%>'">수정하기</button>&nbsp;
-			<% } %>
-			</div>
-			<script>
-				function del(){
-
-					var tt = confirm("삭제를 하시겠습니까?");
-					if(tt == true){
-
-						location.href="<%=request.getContextPath()%>/Delete.bo?num=<%=b.getPostCode()%>";
-
-					}else {
-						return;
-					}
-
-				}
-
-
-			</script>
 
 		</div>
 	</div>

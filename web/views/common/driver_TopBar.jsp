@@ -59,9 +59,9 @@
 			<div class="w3-right w3-hide-small">
 				<a onclick="goDriverOrder();"class="w3-bar-item w3-button" style="text-decoration:none">견적매칭</a>
 				<a onclick="goDriverBoard();" class="w3-bar-item w3-button" style="text-decoration:none">사용후기</a>
-				<a href="#"	class="w3-bar-item w3-button" style="text-decoration:none">기사홍보</a>
+				<a onclick="goDriverPromotion();"	class="w3-bar-item w3-button" style="text-decoration:none">기사홍보</a>
 				<a class="w3-bar-item w3-button" style="text-decoration:none" onclick="myJimcarry();">내 짐 캐리 리스트</a> 
-				<a href="/semi/noticelist.no" class="w3-bar-item w3-button" style="text-decoration:none">고객센터</a> 
+				<a href="/semi/driverNoticeSelect.de" class="w3-bar-item w3-button" style="text-decoration:none">고객센터</a> 
 				<a href="/semi/views/member/DriverMyPage.jsp" class="w3-bar-item w3-button" style="text-decoration:none">마이페이지</a>
 				<a class="w3-bar-item w3-button" style="text-decoration:none" onclick="logout();">로그아웃</a>
 			</div>
@@ -73,6 +73,10 @@
 			alert("로그아웃 하시겠습니까?");
 			location.href="<%=request.getContextPath()%>/logout.me";
 		};
+		
+		function goDriverPromotion(){
+			location.href="<%=request.getContextPath()%>/selecdpListDriver.dp";
+		}
 
 		function myJimcarry(){
 			location.href="/semi/driverJcarrylist.jc";
@@ -82,7 +86,7 @@
 			location.href="<%=request.getContextPath()%>/driverOrder.rq";
 		};
 		function goDriverBoard(){
-			location.href="/semi/selectList.bo";
+			location.href="/semi/selectDriver.bo";
 		};
 
 	</script>

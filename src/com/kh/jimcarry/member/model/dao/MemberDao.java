@@ -519,34 +519,58 @@ public class MemberDao {
 		Member idSelect = null;
 		
 		String query = prop.getProperty("idSelect");
-		
-		try {
+    try {
 			pstmt = con.prepareStatement(query);
+  
+      pstmt.setString(1, m.getUserName());
 			
-			pstmt.setString(1, m.getUserName());
-			
-			rset = pstmt.executeQuery();
-			
+			rset = pstmt.executeQuery();		
 			
 			if(rset.next()) {
 				System.out.println(rset.getString("MEMBER_ID"));
 				
 				idSelect = new Member();
 				
-				idSelect.setUserId(rset.getString("MEMBER_ID"));			
+				idSelect.setUserId(rset.getString("MEMBER_ID"));		
+      }
+    } catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+		  close(pstmt);
+			close(rset);
+		}
+		return idSelect;
+	}
+
+    public Member searchID(Connection con, String phone, String userName) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Member m = null;
+		
+		String query = prop.getProperty("searchId");
+		try {
+			pstmt = con.prepareStatement(query);
+      
+			pstmt.setString(1, phone);
+			pstmt.setString(2, userName);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				m = new Member();
+				
+				m.setUserId(rset.getString("MEMBER_ID"));			
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			close(pstmt);
 			close(rset);
+			close(pstmt);
 		}
-		return idSelect;
 		
-	}
-
+		return m;
+  }
 }
-
 
 
 

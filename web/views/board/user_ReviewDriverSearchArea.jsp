@@ -122,12 +122,6 @@ a.btn_02 {
 			style="margin: 0 auto; border: 1px solid red; width: 300px; height: 100px;">
 			<h2>짐캐리 사용후기</h2>
 		</div>
-		<div>
-			<%if(loginUser.getUdCheck().equalsIgnoreCase("U")){ %>
-			<a onclick="location.href='views/board/user_ReviewInsert.jsp'" class="btn_02">글쓰기</a>
-
-			<% } %>
-		</div>
 
 		<br>
 		<br>
@@ -171,11 +165,11 @@ a.btn_02 {
 
 		<%-- 페이징처리 검색 --%>
 		<div class="panginArea" align="center">
-			<button onclick="location.href'<%=request.getContextPath()%>/search.bo?currentPage=1&searchCondition=<%=searchCondition %>&word=<%=word %>'"><<</button>
+			<button onclick="location.href'<%=request.getContextPath()%>/boardSerachDriver?currentPage=1&searchCondition=<%=searchCondition %>&word=<%=word %>'"><<</button>
 		<% if(currentPage <= 1) { %>
 					<button disabled><<</button>
 					<% }else { %>
-					<button onclick="location.href='<%=request.getContextPath() %>/search.bo?currentPage=<%=currentPage -1%>&searchCondition=<%=searchCondition %>&word=<%=word %>'"><</button>
+					<button onclick="location.href='<%=request.getContextPath() %>/boardSerachDriver?currentPage=<%=currentPage -1%>&searchCondition=<%=searchCondition %>&word=<%=word %>'"><</button>
 				 <% } %>
 
 			<% for(int p = startPage; p <= endPage; p++){
@@ -183,7 +177,7 @@ a.btn_02 {
 			%>
 					<button disabled style="color:red;"><%= p %></button>
 			<% } else { %>
-					<button onclick="location.href='<%=request.getContextPath()%>/search.bo?currentPage=<%=p%>&searchCondition=<%=searchCondition%>&word=<%=word %>'"><%= p %></button>
+					<button onclick="location.href='<%=request.getContextPath()%>/boardSerachDriver?currentPage=<%=p%>&searchCondition=<%=searchCondition%>&word=<%=word %>'"><%= p %></button>
 			<%
 				}
 			   }
@@ -191,16 +185,16 @@ a.btn_02 {
 				 <% if(currentPage >= maxPage) { %>
 
 				  <% }else {%>
-				  	<button onclick="location.href='<%=request.getContextPath() %>/search.bo?currentPage=<%=currentPage +1%>&searchCondition=<%=searchCondition %>&word=<%=word %>'">></button>
+				  	<button onclick="location.href='<%=request.getContextPath() %>/boardSerachDriver?currentPage=<%=currentPage +1%>&searchCondition=<%=searchCondition %>&word=<%=word %>'">></button>
 
 				  <% } %>
-			<button onclick="location.href='<%=request.getContextPath()%>/search.bo?currentPage=<%=maxPage%>&searchCondition=<%=searchCondition%>&word=<%=word %>'">>></button>
+			<button onclick="location.href='<%=request.getContextPath()%>/boardSerachDriver?currentPage=<%=maxPage%>&searchCondition=<%=searchCondition%>&word=<%=word %>'">>></button>
 		</div>
 	</div>
 
 	<%-- 검색영역 --%>
 		<div class="searchArea" align="center">
-	<form action="<%=request.getContextPath()%>/search.bo" method="get">
+	<form action="<%=request.getContextPath()%>/boardSerachDriver" method="get">
 			<select name="searchCondition" id="searchCondition">
 				<option value="title">제목</option>
 				<option value="writer">작성자</option>
@@ -223,7 +217,7 @@ a.btn_02 {
 		}).click(function(){
 			var num = $(this).parent().children("input").val();
 
-			location.href="<%=request.getContextPath()%>/selectOne.bo?num=" + num;
+			location.href="<%=request.getContextPath()%>/detailDriver.bo?num=" + num;
 		});
 	});
 	</script>
